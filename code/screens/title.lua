@@ -1,8 +1,6 @@
 function DrawTitleScreen()
     local logoImage = love.graphics.newImage(settings.main_logo_path)
     local logoScale = 1
-    local blackImage = love.graphics.newImage(settings.black_screen_path)
-    local blackScale = 1
 
     love.graphics.clear(unpack(colors.black))
     love.graphics.draw(
@@ -21,15 +19,15 @@ function DrawTitleScreen()
     local newY = logoImage:getHeight()*logoScale
     local newH = 60
 
-    local loadW = (dimensions.window_width * 1/5)
-    local loadX = (dimensions.window_width * 10/18) - loadW
-    local loadY = logoImage:getHeight()*logoScale
-    local loadH = 60
-
     local scenesW = (dimensions.window_width * 1/3.75)
-    local scenesX = (dimensions.window_width * 16.5/18) - scenesW
+    local scenesX = (dimensions.window_width * 10.75/18) - scenesW
     local scenesY = logoImage:getHeight()*logoScale
     local scenesH = 60
+
+    local loadW = (dimensions.window_width * 1/3.75)
+    local loadX = (dimensions.window_width * 17/18) - loadW
+    local loadY = logoImage:getHeight()*logoScale
+    local loadH = 60
 
     -- blue bounding box offset
     local dx = 8
@@ -117,7 +115,7 @@ TitleScreenConfig = {
             TitleSelection = "Load Game"
         elseif key == controls.press_left then
             TitleSelection = "New Game"
-        elseif key == controls.press_up then
+        elseif key == controls.pause_nav_down then
             TitleSelection = "Browse Scenes"
         end
     end;

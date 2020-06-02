@@ -16,13 +16,13 @@ CHARACTER_LOCATION "Judge Brent" COURT_JUDGE
 CHARACTER_LOCATION "Tutorial Boy" COURT_PROSECUTION
 CHARACTER_LOCATION Ross COURT_WITNESS
 
-EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." evidence/grapes.png
+EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recrding" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
 COURT_RECORD_ADD EVIDENCE LivestreamRecording
-EVIDENCE_INITIALIZE JorysBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/JorysBackpack.png
+EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/Jory'sBackpack.png
 COURT_RECORD_ADD EVIDENCE JorysBackpack
-EVIDENCE_INITIALIZE Stolendinos "Stolen dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." evidence/grapes.png
-COURT_RECORD_ADD EVIDENCE Stolendinos
-EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." evidence/grapes.png
+EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." sprites/StolenDinos.png
+COURT_RECORD_ADD EVIDENCE StolenDinos
+EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
 COURT_RECORD_ADD EVIDENCE BentCoins
 
 DEFINE TRIAL_FAIL
