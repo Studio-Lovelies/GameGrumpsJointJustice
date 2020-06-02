@@ -39,6 +39,7 @@ GAVEL
 PLAY_MUSIC TRIAL
 
 SPEAK_FROM COURT_JUDGE
+
     "Court is now in session for the trial of Jory Griffis."
 
 SPEAK_FROM COURT_DEFENSE
@@ -49,9 +50,12 @@ SPEAK Arin
 
 SFX lightbulb
 SPEAK_FROM COURT_JUDGE
+Pose Judge normaltalking
     "Yeah, being the manager of Game Grumps is just my side hustle."
+
 SPEAK "Judge Brent"
     "My main job is right here. Presiding as judge over the Attitude City Courthouse."
+
 SPEAK "Judge Brent"
     "After all, what is a judge if not a manager of the law?"
 
@@ -217,7 +221,7 @@ PAN COURT_WITNESS COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "So you ADMIT that you jumped on the opportunity to be the one to do the gruntwork for the Grumps?"
 SPEAK "Tutorial Boy"
-    "How suspicious! Surely there were other, less busy people who could have easily gotten it, but you didn't hesitate!"
+    "How suspicious! Surely there were other, less busy people who could have gotten it, but you didn't hesitate!"
 
 SPEAK_FROM COURT_WITNESS
     "Eep! Yeah... I guess I didn't... but again it's part of my jo-"
