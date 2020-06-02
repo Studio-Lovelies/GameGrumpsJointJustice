@@ -1,0 +1,84 @@
+SET_SCENE_TYPE INVESTIGATION 
+
+CHARACTER_INITIALIZE Phoenix phoenix MALE
+CHARACTER_LOCATION Phoenix NONE
+
+CHARACTER_INITIALIZE Mia mia FEMALE
+CHARACTER_INITIALIZE_POSE Mia Ohmy
+CHARACTER_LOCATION Mia LOBBY
+
+EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possesion." evidence/badge.png
+COURT_RECORD_ADD EVIDENCE Badge
+EVIDENCE_INITIALIZE Autopsy "Autopsy Report" "Time: Yesterday, Cause: Yes" evidence/autopsy.png
+COURT_RECORD_ADD Autopsy
+
+TYPEWRITER
+    "August 3rd, 10:05AM#District Court#Defendant Lobby No. 1"
+
+PLAY_MUSIC PRELUDE
+
+JUMPCUT LOBBY
+
+DEFINE TalkWhatHappened
+    POSE Mia Ohmy
+    SPEAK Mia
+        "I don't know Phoenix! You really lawyered it up in there."
+
+    POSE Mia Normal
+END_DEFINE
+
+DEFINE TalkMenuLobby
+    INVESTIGATION_MENU 
+        "What happened?" TalkWhatHappened
+        "Back" ChooseLobby
+
+END_DEFINE
+
+DEFINE ExamineTest
+    POSE Mia HIDDEN
+
+    SET_FLAG ExaminedFlag True
+
+    SPEAK Phoenix
+        "Examined successfully."
+
+    POSE Mia Normal
+END_DEFINE
+
+DEFINE ExamineLobby
+    IF ExaminedFlag IS True THEN ExamineLobby2
+
+    EXAMINE
+        "50" "50" "100" "100" ExamineTest
+
+END_DEFINE
+
+DEFINE ExamineLobby2
+    EXAMINE
+        "100" "100" "150" "150" ExamineTest
+
+END_DEFINE
+
+DEFINE ChooseLobby
+    SPEAK Mia
+        "Howdy2"
+
+    INVESTIGATION_MENU 
+        "Examine" ExamineLobby
+        "Move" ChooseLobby
+        "Talk" TalkMenuLobby
+        "Present" ChooseLobby
+
+END_DEFINE
+
+SPEAK Mia
+    "Howdy."
+
+JUMP ChooseLobby
+
+
+
+
+
+
+    

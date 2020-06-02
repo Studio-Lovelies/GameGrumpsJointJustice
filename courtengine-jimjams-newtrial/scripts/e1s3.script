@@ -1,0 +1,586 @@
+SET_SCENE_TYPE TRIAL
+
+CHARACTER_INITIALIZE Phoenix phoenix MALE
+CHARACTER_INITIALIZE_POSE Phoenix Point
+CHARACTER_INITIALIZE_POSE Phoenix Sweaty
+CHARACTER_INITIALIZE_POSE Phoenix Confident
+CHARACTER_INITIALIZE_ANIMATION Phoenix DeskSlam
+CHARACTER_INITIALIZE_SOUND Phoenix objection
+CHARACTER_INITIALIZE_SOUND Phoenix holdit
+
+CHARACTER_INITIALIZE Payne payne MALE
+CHARACTER_INITIALIZE_POSE Payne Confident
+CHARACTER_INITIALIZE_POSE Payne Sweaty
+CHARACTER_INITIALIZE_SOUND Payne objection
+
+CHARACTER_INITIALIZE Judge judge MALE
+
+CHARACTER_INITIALIZE Mia mia FEMALE
+CHARACTER_INITIALIZE_POSE Mia Ohmy
+
+CHARACTER_INITIALIZE Sahwit ross MALE
+CHARACTER_INITIALIZE_POSE Sahwit Sweaty UNPADDED
+
+CHARACTER_LOCATION Phoenix COURT_DEFENSE
+CHARACTER_LOCATION Payne COURT_PROSECUTION
+CHARACTER_LOCATION Judge COURT_JUDGE
+CHARACTER_LOCATION Mia COURT_ASSISTANT
+CHARACTER_LOCATION Sahwit COURT_WITNESS
+
+EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." evidence/badge.png
+COURT_RECORD_ADD EVIDENCE Badge
+EVIDENCE_INITIALIZE Autopsy "Cindy's Autopsy Report" "7/31 4-5PM, Blunt Trauma" evidence/autopsy.png
+COURT_RECORD_ADD Autopsy
+EVIDENCE_INITIALIZE Statue "Statue" "A statue of The Thinker" evidence/thinker.png
+COURT_RECORD_ADD Statue
+EVIDENCE_INITIALIZE Passport "Passport" "Arrived home from Paris on 7/30" evidence/passport.png
+COURT_RECORD_ADD Passport
+
+DEFINE TRIAL_FAIL
+    SPEAK_FROM COURT_JUDGE
+        "Phoenix, you lost."
+
+    POSE Payne Confident
+    SPEAK_FROM COURT_PROSECUTION
+        "Haha! The rookie killer strikes again."
+
+    POSE Mia Ohmy
+    SPEAK_FROM COURT_ASSISTANT
+        "Phoenix, how could you?"
+
+    GAME_OVER
+END_DEFINE
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SCENE START
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+JUMPCUT COURT_WITNESS  // Need to hold on him for a few seconds
+
+SPEAK_FROM COURT_PROSECUTION
+    "Mr. Sahwit, you sell newspaper subscriptions, is this correct?"
+
+SPEAK_FROM COURT_WITNESS
+    "Oh, oh yes! Newspapers, yes!"
+
+SPEAK_FROM COURT_JUDGE
+    "Mr. Sahwit, you may proceed with your testimony."
+
+SPEAK Judge  // Angry pose
+    "Please tell the court what you saw on the day of the murder."
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SAHWIT TESTIMONY
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+JUMPCUT COURT_WITNESS
+PLAY_MUSIC QUESTIONING
+
+WITNESS_EVENT WitnessTestimony Sahwit "-- Witness's Account --"
+    "I was going door-to-door, selling subscriptions when I saw a man fleeing an apartment."
+    "I thought he must be in a hurry because he left the door half-open behind him."  // Flashback BG 1
+    "Thinking it strange, I looked inside the apartment." 
+    "Then I saw her lying there... A woman... not moving... dead!"  // Flashback BG 2
+    "I quailed in fright and found myself unable to go inside."
+    "I thought to call the police immediately!"
+    "However, the phone in her apartment wasn't working."
+    "I went to a nearby park and found a public phone."
+    "I remember the time exactly: It was 1:00 PM."  // Courtroom
+    "The man who ran was, without a doubt, the defendant sitting right over there."
+
+STOP_MUSIC
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// END TESTIMONY
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SPEAK_FROM COURT_JUDGE  // Angry pose
+    "Hmm..."
+
+JUMPCUT COURT_DEFENSE
+// ANIMATION Phoenix DeskSlam
+THINK Phoenix
+    "(Larry! Why didn't you tell the truth?)"
+
+POSE Phoenix Sweaty
+THINK Phoenix
+    "(I can't defend you against a testimony like that!)"
+
+SPEAK_FROM COURT_JUDGE  // Angry pose
+    "Incidentally, why wasn't the phone in the victim's apartment working?"
+
+SPEAK_FROM COURT_PROSECUTION
+    "Your Honor, at the time of the murder, there was a blackout in the building."
+
+SPEAK_FROM COURT_JUDGE  // Surprised pose
+    "Aren't phones supposed to work during a blackout?"
+
+SPEAK_FROM COURT_PROSECUTION
+    "Yes, Your Honor... However, some cordless phones do not function normally."
+
+SPEAK Payne  // Flashback BG 2
+    "The phone that Mr. Sahwit used was one of those."
+
+SPEAK Payne  // Courtroom
+    "Your Honor..."
+
+SPEAK Payne
+    "I have a record of the blackout, for your perusal."
+
+EVIDENCE_INITIALIZE BlackoutRecord "Blackout Record" "Electricity to Ms. Stone's building was out from noon to 6PM on the day of the crime." evidence/grapes.png  // Need evidence file
+COURT_RECORD_ADD_ANIMATION BlackoutRecord
+
+SPEAK_FROM COURT_JUDGE  // Angry pose
+    "Now, Mr. Wright..."
+
+SPEAK_FROM COURT_DEFENSE
+    "Yes! Er... yes, Your Honor?"
+
+SPEAK_FROM COURT_JUDGE  // Angry pose
+    "You may begin your %1cross-examination%0."
+
+SPEAK_FROM COURT_DEFENSE  // Thinking pose
+    "%1C-Cross-examination%0, Your Honor?"
+
+SPEAK_FROM COURT_ASSISTANT  // Side profile pose
+    "Alright, Wright, this is it. The real deal."
+
+SPEAK Phoenix
+    "Uh... what exactly am I supposed to do?"
+
+SPEAK Mia
+    "Why, you expose the %1lies%0 in the testimony the witness just gave!"
+
+SPEAK Phoenix
+    "Lies! What?! He was lying!?"
+
+SPEAK Mia
+    "Your client is innocent, right? Then that witness must have lied in his testimony! Or is your client really... guilty?"
+
+SPEAK Phoenix
+    "!!! How do I prove he's not?"
+
+SPEAK Mia
+    "You hold the key! It's in the evidence!"
+
+SPEAK Mia    
+    "Compare the witness's testimony to the %1evidence%0 at hand. There's bound to be a %1contradiction%0 in there! 
+    
+SPEAK Mia
+    "First, find contradictions between the %1Court Record%0 and the witness's testimony." 
+    
+SPEAK Mia
+    "Then, once you've found the contradicting %1evidence%0... %1present%0 it and rub it#in the witness's face!"
+
+SPEAK Phoenix
+    "Um... okay."
+
+SPEAK Mia
+    "Open the %1Court Record%0 and point out %1contradictions%0 in the testimony!"
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CROSS EXAMINATION
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE PressA1
+    SHOUT Phoenix holdit
+    SPEAK_FROM COURT_DEFENSE  // Thinking pose
+        "Isn't a man leaving an apartment a common sight? I find it odd you would take notice of him..."
+
+    SPEAK_FROM COURT_WITNESS
+        "Er... heh. I don't know. He just seemed strange to me, that's all. Like he was mad, and yet frightened at the same time. Just like... a criminal fleeing the scene of a crime!"
+    
+    JUMPCUT COURT_DEFENSE
+    // ANIMATION Phoenix DeskSlam
+    SCREEN_SHAKE
+    SPEAK Phoenix
+        "The defense requests that the witness refrain from conjecture!"
+
+    SPEAK_FROM COURT_PROSECUTION
+        "Of course. What the witness means is that the man he saw looked suspicious. So, what happened next?"
+END_DEFINE
+
+DEFINE PressA2
+    SHOUT Phoenix holdit
+    SPEAK_FROM COURT_DEFENSE  // Thinking pose
+        "Half-open... you say?"
+
+    SPEAK_FROM COURT_WITNESS
+        "Yes, yes, the door was open halfway. Yes. I watched for a moment, but no one came to close the door. "That's odd, in a big city like this," I thought..."
+
+    SPEAK_FROM COURT_PROSECUTION
+        "I see. And what happened next?"
+END_DEFINE
+
+DEFINE PressA3
+    SHOUT Phoenix holdit
+    SPEAK_FROM COURT_DEFENSE  // Thinking pose
+        "What gave you the idea to do that?"
+
+    SPEAK_FROM COURT_WITNESS
+        "Well, the door was half-open, you see. Isn't it only human to want to... peek? We climb mountains because they are there! It's the same thing."
+
+    SPEAK_FROM COURT_PROSECUTION
+        "Truer words have never been spoken! Anyone would look inside!"
+
+    JUMPCUT COURT_DEFENSE  // Thinking pose
+    THINK Phoenix
+        "(Hmm... why did Payne cut him off so quickly?)"
+
+    SPEAK_FROM COURT_PROSECUTION
+        "So you looked into the apartment. What happened then?"
+END_DEFINE
+
+DEFINE PressA4
+    SHOUT Phoenix holdit
+    JUMPCUT COURT_DEFENSE
+    // ANIMATION Phoenix DeskSlam
+    SPEAK Phoenix
+        "Are you sure she was dead?"
+
+    SPEAK_FROM COURT_WITNESS
+        "W-Well, no, I guess I wasn't. But, she wasn't moving at all, and there was blood everywhere."
+
+    JUMPCUT COURT_DEFENSE 
+    THINK Phoenix  // Thinking pose
+        "(I guess that would look fatal to anyone...)"
+
+    SPEAK Phoenix
+        "Very well, what happened next?"
+END_DEFINE
+
+DEFINE PressA5
+    SHOUT Phoenix holdit
+    SPEAK_FROM COURT_DEFENSE  // Thinking pose
+        "So, you didn't touch ANYTHING in the apartment?"
+
+    SPEAK_FROM COURT_WITNESS
+        "Um, yes. I mean no! Nothing."
+
+    SPEAK_FROM COURT_DEFENSE
+        "Okay. What happened next?"
+END_DEFINE
+
+DEFINE PressA6
+    SHOUT Phoenix holdit
+    JUMPCUT COURT_DEFENSE
+    // ANIMATION Phoenix DeskSlam
+    SPEAK Phoenix
+        "You "thought" to call the police? Does that mean you didn't actually call them!?"
+
+    SPEAK_FROM COURT_PROSECUTION
+        "Please, please... Listen to the rest of the testimony. You thought to call the police... What happened next?"
+END_DEFINE
+
+DEFINE PressA7
+    SHOUT Phoenix holdit
+    SPEAK_FROM COURT_DEFENSE  // Thinking pose
+        "The phone in her apartment wasn't working?"
+
+    SPEAK_FROM COURT_WITNESS
+        "Yes. I mean, no, no it wasn't. Right."
+
+    SPEAK_FROM COURT_DEFENSE
+        "But you said you didn't go into the apartment... or did you?"
+
+    SPEAK_FROM COURT_WITNESS
+        "Oh, oh, that? I can explain that! There was a cordless phone on a shelf in the entranceway. I reached inside and tried using that to call..."
+
+    SPEAK_FROM COURT_PROSECUTION
+        "And that phone wasn't working, correct? What happened next?"
+END_DEFINE
+
+DEFINE PressA8
+    SHOUT Phoenix holdit
+    SPEAK_FROM COURT_DEFENSE  // Thinking pose
+        "Why use a public phone?"
+
+    SPEAK_FROM COURT_WITNESS
+        "Well, you see, I don't have a cell phone. And, being the middle of the afternoon, there was no answer at the nearby apartments."
+
+    SPEAK_FROM COURT_DEFENSE  // Thinking pose
+        "Ah, right... what time did you call again?"
+END_DEFINE
+
+DEFINE PressA9
+    SHOUT Phoenix holdit
+    JUMPCUT COURT_DEFENSE
+    // ANIMATION Phoenix DeskSlam
+    SPEAK Phoenix
+        "1:00 PM! Are you certain?"
+
+    SPEAK_FROM COURT_WITNESS
+        "Yes. Absolutely."
+
+    JUMPCUT COURT_DEFENSE
+    THINK Phoenix  // Thinking pose
+        "(Hmm... He seems really confident.)"
+
+    SPEAK_FROM COURT_ASSISTANT
+        "%11:00 PM%0? Wright. Doesn't that seem strange to you? Present some %1evidence%0 to %1contradict%0 him!"
+END_DEFINE
+
+DEFINE PressA10
+    SHOUT Phoenix holdit
+    JUMPCUT COURT_DEFENSE
+    // ANIMATION Phoenix DeskSlam
+    SPEAK Phoenix
+        "Are you absolutely, 100% positive?"
+    
+    SPEAK_FROM COURT_WITNESS
+        "Yes, it was him. No mistake about it."
+
+    SPEAK_FROM COURT_PROSECUTION
+        "The witness says he's certain!"
+END_DEFINE
+
+// TODO: redefine fail condition
+DEFINE CrossExamFail
+    SHOUT Phoenix objection
+    POSE Phoenix Confident
+    SPEAK_FROM COURT_DEFENSE
+        "I object to that!"
+
+    SPEAK_FROM COURT_JUDGE
+        "Sorry Wright. I can see no contradictions there."
+
+    ISSUE_PENALTY
+    POSE Phoenix Normal
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+JUMPCUT COURT_WITNESS
+PLAY_MUSIC QUESTIONING
+
+WITNESS_EVENT CrossExamination Sahwit "-- Witness's Account --" CrossExamFail
+    "I was going door-to-door, selling subscriptions when I saw a man fleeing an apartment." PressA1 0
+    "I thought he must be in a hurry because he left the door half-open behind him." PressA2 0
+    "Thinking it strange, I looked inside the apartment." PressA3 0
+    "Then I saw her lying there... A woman... not moving... dead!" PressA4 0
+    "I quailed in fright and found myself unable to go inside." PressA5 0
+    "I thought to call the police immediately!" PressA6 0
+    "However, the phone in her apartment wasn't working." PressA7 0
+    "I went to a nearby park and found a public phone." PressA8 0
+    "I remember the time exactly: It was 1:00 PM." PressA9 BlackoutRecord
+    "The man who ran was, without a doubt, the defendant sitting right over there." PressA10 0
+
+// TODO: Mia makes a comment before looping back to start of cross examination
+// "That's all of it. There must be a contradiction in there somewhere. Examine the %1Court Record%0 button if something strikes you as being suspicious. Then, find the evidence that contradictsh is testimony, and %1present%0 it to him!"
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// END CROSS EXAMINATION
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SHOUT Phoenix objection
+PLAY_MUSIC OBJECTION
+POSE Phoenix Point
+SPEAK_FROM COURT_DEFENSE
+    "You found the body at 1:00 PM. You're sure?"
+
+SPEAK_FROM COURT_WITNESS
+    "Yes. It was 1:00 PM, for certain."
+
+JUMPCUT COURT_DEFENSE
+// ANIMATION Phoenix DeskSlam
+SPEAK Phoenix
+    "Frankly,"
+
+SCREEN_SHAKE
+SPEAK Phoenix  // Normal pose
+    "Frankly, I find that hard to believe!"
+
+SPEAK Phoenix  // Tapping paper pose
+    "Your statement directly contradicts the autopsy report."
+
+SPEAK Phoenix  // Tapping paper pose
+    "The autopsy notes the time of death at sometime after 4PM. There was nobody to... er... no $qbody$q to find at 1:00 PM!"
+
+POSE Phoenix Confident
+SPEAK Phoenix
+    "How do you explain this three-hour gap?"
+
+SPEAK_FROM COURT_WITNESS  // Sweaty pose
+    "!!!"
+
+SPEAK Sahwit  // Sweaty pose
+    "Oh, that! Oh, er..."
+
+SHOUT Payne objection
+POSE Payne Sweaty
+SPEAK_FROM COURT_PROSECUTION
+    "This is trivial! The witness merely forgot the time!"
+
+// Judge shaking head animation
+SPEAK_FROM COURT_JUDGE
+    "After his testimony, I find that hard to believe."
+
+SPEAK Judge  // Angry pose
+    "Mr. Sahwit... Why were you so certain that you found the body at 1:00 PM?"
+
+SPEAK_FROM COURT_WITNESS  // Sweaty pose
+    "I... er... well, I... Gee, that's a really good question!"
+
+SPEAK_FROM COURT_ASSISTANT
+    "Great job, Wright! Way to put him on the spot!"
+
+SPEAK Mia    
+    "That's all you have to do: point out contradictions!"
+    
+SPEAK Mia
+    "Lies always beget more lies! See through one and their whole story falls apart!"
+
+JUMPCUT COURT_WITNESS
+SCREEN_SHAKE
+SPEAK Sahwit
+    "Wait! I remember now!"
+
+SPEAK_FROM COURT_JUDGE  // Angry pose
+    "Would you care to give your testimony again?"
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SAHWIT TESTIMONY 2
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+JUMPCUT COURT_WITNESS
+PLAY_MUSIC QUESTIONING
+
+WITNESS_EVENT WitnessTestimony Sahwit "-- The Time of Discovery --"
+    "You see, when I found the body, I heard the time."
+    "There was a voice saying the time... It was probably coming from the television."  // Flashback BG 2
+    "Oh, but it was three hours off, wasn't it?"
+    "I guess the victim must have been watching a video of a taped program!"
+    "That's why I thought it was 1:00 PM!"  // Courtroom
+    "Terribly sorry about the misunderstanding..."
+
+STOP_MUSIC
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// END TESTIMONY
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SPEAK_FROM COURT_JUDGE  // Angry pose
+    "Hmm... I see. You heard a voice saying the time on a taped program. Mr. Wright, you may cross-examine the witness."
+
+SPEAK_FROM COURT_ASSISTANT
+    "Wright! You know what to do!"
+
+SPEAK Phoenix
+    "I've got this one."
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CROSS EXAMINATION 2
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE PressB1
+    SHOUT Phoenix holdit
+    SPEAK_FROM COURT_DEFENSE  // Thinking pose
+        "You said $qheard$q... Not $qsaw$q?"
+
+    SPEAK_FROM COURT_WITNESS
+        "Yes, heard. All I saw was the body lying there... I didn't think to look at anything else, least of all my watch."
+
+    SPEAK_FROM COURT_DEFENSE  // Thinking pose
+        "Hmm... Isn't that a little strange?"
+
+    SPEAK Phoenix
+        "So you're saying you $qheard$q something. But if you were so shocked by the body, you wouldn't hear anything at all!"
+
+    SHOUT Payne objection
+    POSE Payne Sweaty
+    SPEAK_FROM COURT_PROSECUTION
+        "The witness did say he actually heard the time. It's ludicrous to suggest he $qwouldn't hear anything$q!"
+
+    SPEAK_FROM COURT_JUDGE  // Angry pose
+        "Hmm... I have to agree with the prosecution. Witness, continue your testimony."
+END_DEFINE
+
+DEFINE PressB2
+    SHOUT Phoenix holdit
+    SPEAK_FROM COURT_DEFENSE 
+        "Are you sure it was a television and not... a radio?"
+
+    SPEAK_FROM COURT_WITNESS
+        "Well, no, I guess it might have been a radio."
+
+    SPEAK_FROM COURT_PROSECUTION
+        "Incidentally, there was no radio on the premises. There was only one large televison."
+
+    SPEAK_FROM COURT_ASSISTANT
+        "Wright! I can't put my finger on it, but something about this seems fishy. Something about $qhearing$q the television..."
+
+    SPEAK_FROM COURT_PROSECUTION
+        "The witness has testified. He heard the time."
+END_DEFINE
+
+DEFINE PressB3
+    SHOUT Phoenix holdit
+    POSE Phoenix Point
+    SPEAK_FROM COURT_DEFENSE
+        "How do you explain the gap!"
+
+    SPEAK_FROM COURT_JUDGE  // Angry pose
+        "Well, witness? Can you explain this?"
+END_DEFINE
+
+DEFINE PressB4
+    SHOUT Phoenix holdit
+    SPEAK_FROM COURT_DEFENSE  // Thinking pose
+        "A... video?"
+
+    SPEAK_FROM COURT_PROSECUTION
+        "Yes, that would explain why the time was wrong!"
+
+    SPEAK_FROM COURT_DEFENSE
+        "True, true..."
+
+    SPEAK_FROM COURT_ASSISTANT  // Worried pose
+        "Wright! I think the problem lies someplace else..."
+
+    SPEAK_FROM COURT_JUDGE  // Angry pose
+        "We're agreed that you heard the time at the scene, then."
+END_DEFINE
+
+DEFINE PressB5
+    SHOUT Phoenix holdit
+    SPEAK_FROM COURT_DEFENSE
+        "Are you sure the voice you heard said it was 1:00 PM?"
+
+    SPEAK_FROM COURT_WITNESS
+        "Yes, I can practically hear it now. It was quite clear."
+
+    SPEAK_FROM COURT_JUDGE  // Angry pose
+        "Mr. Payne, has the prosecution verified this testimony?"
+
+    POSE Payne Sweaty
+    SPEAK_FROM COURT_PROSECUTION
+        "My apologies, Your Honor. I, too, have only just learned that the witness $qheard$q the time."
+
+    SPEAK_FROM COURT_WITNESS
+        "Oh, I'm really sorry. I only remembered it just now."
+END_DEFINE
+
+DEFINE PressB6
+    SHOUT Phoenix holdit
+    POSE Phoenix Point
+    SPEAK_FROM COURT_DEFENSE
+        "Well, you just watch it!"
+
+    THINK Phoenix  // Thinking pose
+        "(Hmm... Not much point pressing him on that one, was there?)"
+END_DEFINE
+
+// TODO: Define fail case CrossExamFail
+
+JUMPCUT COURT_WITNESS
+PLAY_MUSIC QUESTIONING
+
+WITNESS_EVENT CrossExamination Sahwit "-- The Time of Discovery --" CrossExamFail
+    "You see, when I found the body, I heard the time." PressB1 0
+    "There was a voice saying the time... It was probably coming from the television." PressB2 0
+    "Oh, but it was three hours off, wasn't it?" PressB3 0
+    "I guess the victim must have been watching a video of a taped program!" PressB4 0
+    "That's why I thought it was 1:00 PM!" PressB5 0
+    "Terribly sorry about the misunderstanding..." PressB6 0
+
+// TODO: Mia makes a comment before looping back to start of cross examination
+// "Notice anything suspicious?"

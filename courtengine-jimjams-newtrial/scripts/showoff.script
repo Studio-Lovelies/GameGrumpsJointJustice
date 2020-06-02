@@ -1,0 +1,192 @@
+SET_SCENE_TYPE TRIAL
+
+CHARACTER_INITIALIZE Phoenix phoenix MALE
+CHARACTER_INITIALIZE Edgeworth edgeworth MALE
+CHARACTER_INITIALIZE Judge judge MALE
+CHARACTER_INITIALIZE Mia mia FEMALE
+
+CHARACTER_LOCATION Phoenix COURT_DEFENSE
+CHARACTER_LOCATION Edgeworth COURT_PROSECUTION
+CHARACTER_LOCATION Judge COURT_JUDGE
+CHARACTER_LOCATION Mia COURT_ASSISTANT
+
+DEFINE TRIAL_FAIL
+    SPEAK_FROM COURT_JUDGE
+        "Honestly, fuck you.#You're such a bitch ass."
+
+    GAME_OVER
+END_DEFINE
+
+TYPEWRITER
+    "August 3rd, 10:00AM#District Court#Courtroom No. 2"
+
+WIDESHOT
+GAVEL
+
+PLAY_MUSIC TRIAL
+
+SPEAK_FROM COURT_JUDGE
+    "The Court is now in session, so shut up."
+
+SPEAK_FROM COURT_PROSECUTION
+    "The prosecution is ready, Your Honor."
+
+POSE Phoenix Sweaty
+SPEAK_FROM COURT_DEFENSE
+    "The-uh, the defense is uhm, ready, your... your heinous?"
+
+SPEAK_FROM COURT_JUDGE
+    "..."
+SPEAK Judge
+    "Are you fucking kidding me?"
+POSE Edgeworth Confident
+JUMPCUT COURT_PROSECUTION
+ANIMATION Edgeworth Nope 6
+SPEAK Edgeworth
+    "You don't seem ready."
+SPEAK_FROM COURT_JUDGE
+    "Honestly, whatever. Prosecution, what happened?"
+
+THINK_FROM COURT_DEFENSE
+    "Uh oh, this isn't going so well! Already on the Judge's bad side!"
+
+POSE Edgeworth Thinking
+SPEAK_FROM COURT_PROSECUTION
+    "I'm not really sure, but these grapes were found at the crime scene."
+
+SPEAK_FROM COURT_JUDGE
+    "Great. Added to court record."
+
+EVIDENCE_INITIALIZE Grapes "Some Grapes" "" evidence/grapes.png
+COURT_RECORD_ADD Grapes
+COURT_RECORD_ADD_ANIMATION Grapes
+    "Grapes added to Court Record"
+
+SPEAK Judge
+    "Let's get this shit over with. First witness, please."
+
+POSE Phoenix Normal
+THINK_FROM COURT_DEFENSE
+    "I can do this."
+POSE Phoenix Confident
+THINK_FROM COURT_DEFENSE
+    "Fake it 'til you make it, right?'"
+
+SPEAK_FROM COURT_PROSECUTION
+    "Detective Gumshoe to the stand."
+
+CHARACTER_INITIALIZE Gumshoe gumshoe MALE
+CHARACTER_LOCATION Gumshoe COURT_WITNESS
+
+SPEAK_FROM COURT_WITNESS
+    "Aw jeez pal, is this a cross examination?"
+
+SPEAK_FROM COURT_JUDGE
+    "Sadly.#Please proceed."
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// START OF CROSS EXAMINATION
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+DEFINE PressA1
+    POSE Phoenix Normal
+    HOLD_IT Phoenix
+    SPEAK_FROM COURT_DEFENSE
+        "Where did you sneeze?"
+    POSE Gumshoe Normal
+    SPEAK_FROM COURT_WITNESS
+        "The crime scene."
+
+    SPEAK_FROM COURT_JUDGE
+        "Phoenix, that was a stupid question to ask. Penalty."
+
+    ISSUE_PENALTY
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+DEFINE PressA2
+    POSE Phoenix Confident
+    HOLD_IT Phoenix
+    SPEAK_FROM COURT_DEFENSE
+        "How cool was it?"
+    POSE Gumshoe Confident
+    SPEAK_FROM COURT_WITNESS
+        "Really really cool."
+
+    SPEAK_FROM COURT_JUDGE
+        "Phoenix, great question. I admire your dedication to the trade."
+
+    POSE Edgeworth Thinking
+    SPEAK_FROM COURT_PROSECUTION
+        "I agree. And I don't often do that."
+
+    JUMPCUT COURT_WITNESS
+    POSE Edgeworth Normal
+END_DEFINE
+
+DEFINE PressA3
+    HOLD_IT Phoenix
+    POSE Phoenix Normal
+    SPEAK_FROM COURT_DEFENSE
+        "Why does that sound familiar...?"
+
+    POSE Mia Ohmy
+    SPEAK_FROM COURT_ASSISTANT
+        "Are you that stupid, Phoenix? The evidence, you idiot."
+
+    POSE Phoenix Sweaty
+    SPEAK_FROM COURT_DEFENSE
+        "Oh, yeah, right."
+
+    JUMPCUT COURT_WITNESS
+    POSE Phoenix Normal
+END_DEFINE
+
+DEFINE CrossExamineFail
+    SHOUT Phoenix objection
+    POSE Phoenix Confident
+    SPEAK_FROM COURT_DEFENSE
+        "I object to that!"
+
+    SPEAK_FROM COURT_JUDGE
+        "Sorry Wright. I can see no contradictions there."
+
+    ISSUE_PENALTY
+    POSE Phoenix Normal
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+JUMPCUT COURT_WITNESS
+PLAY_MUSIC QUESTIONING
+
+CROSS_EXAMINATION Gumshoe "-- The Grape Danger --" CrossExamineFail
+    "I sneezed all over my new shirt today." PressA1 0 Sad
+    "It was a cool shirt too." PressA2 0 Normal
+    "Luckily I ate some grapes at the crime scene to make me feel better." PressA3 Grapes Confident
+
+PAN COURT_WITNESS COURT_DEFENSE
+JUMPCUT COURT_DEFENSE
+ANIMATION Phoenix DeskSlam
+SHOUT Phoenix objection
+POSE Phoenix Point
+PLAY_MUSIC OBJECTION
+SPEAK_FROM COURT_DEFENSE
+    "You couldn't have eaten grapes at the crime scene,"
+POSE Phoenix Confident
+SPEAK_FROM COURT_DEFENSE
+    "as the grapes at the crime scene are right here!"
+
+POSE Edgeworth HandOnDesk
+SHOUT Edgeworth objection
+PAN COURT_DEFENSE COURT_PROSECUTION
+SPEAK_FROM COURT_PROSECUTION
+    "There is no proof that he ate the grapes at the crime scene,"
+POSE Edgeworth Confident
+SPEAK_FROM COURT_PROSECUTION
+    "He simply brought his grapes from home."
+
+WIDESHOT
+GAVEL
+
+SPEAK_FROM COURT_JUDGE
+    "That is true. You suck at this, Wright.

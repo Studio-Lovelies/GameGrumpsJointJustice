@@ -1,0 +1,271 @@
+//////////////////////
+// INITIALIZE SCENE //
+//////////////////////
+
+SET_SCENE_TYPE TRIAL
+
+CHARACTER_INITIALIZE Arin arin MALE
+CHARACTER_INITIALIZE Dan dan MALE
+CHARACTER_INITIALIZE "Judge Brent" judge MALE
+CHARACTER_INITIALIZE "Tutorial Boy" payne MALE
+CHARACTER_INITIALIZE Ross ross MALE
+
+CHARACTER_LOCATION Arin COURT_DEFENSE
+CHARACTER_LOCATION Dan COURT_ASSISTANT
+CHARACTER_LOCATION "Judge Brent" COURT_JUDGE
+CHARACTER_LOCATION "Tutorial Boy" COURT_PROSECUTION
+CHARACTER_LOCATION Ross COURT_WITNESS
+
+EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." evidence/grapes.png
+COURT_RECORD_ADD EVIDENCE LivestreamRecording
+EVIDENCE_INITIALIZE JorysBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/JorysBackpack.png
+COURT_RECORD_ADD EVIDENCE JorysBackpack
+EVIDENCE_INITIALIZE Stolendinos "Stolen dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." evidence/grapes.png
+COURT_RECORD_ADD EVIDENCE Stolendinos
+EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." evidence/grapes.png
+COURT_RECORD_ADD EVIDENCE BentCoins
+
+DEFINE TRIAL_FAIL
+    JUMPCUT BLACK_SCREEN
+    SPEAK "Judge Brent"
+        "The defense loses."
+END_DEFINE
+
+
+//////////////////
+// START SCRIPT //
+//////////////////
+
+JUMPCUT COURT_WITNESS
+PLAY_MUSIC QUESTIONING
+
+WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
+    "I was animating by myself over in my room at the office."
+    "But then... I saw someone taking the dinos!!"
+    "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!"
+    "I thought perhaps it was for an art reference or something like that..."
+    "But now that I know they were stolen, that means the culprit must be Jory!"
+
+STOP_MUSIC
+FADE_TO_BLACK
+
+// POSE "Judge Brent" Thinking
+SPEAK_FROM COURT_JUDGE
+    "Hm..."
+POSE "Judge Brent" Normal
+SPEAK "Judge Brent"
+    "A remarkably solid testimony here."
+
+SPEAK_FROM COURT_PROSECUTION
+    "Of course, Your Honor. You can only expect the BEST from me."
+
+// POSE Arin Determined
+SPEAK_FROM COURT_DEFENSE
+    "Dude, that testimony was incredible! Stupendous! AMAZING!"
+
+SPEAK Dan
+    "Alright already! You can stop jerking him off now I get it."
+
+SPEAK Arin
+    "There's absolutely no way we can get Jory off now."
+
+SPEAK Dan
+    "Phrasing, Arin."
+SPEAK_FROM COURT_ASSISTANT
+    "But we have to try don't we? I mean, no matter how bulletproof that testimony may seem, we have to TAKE THE SHOT, right?"
+
+SPEAK Arin
+    "You're right Dan, of course. But what the heck should I do next?"
+
+SPEAK_FROM COURT_ASSISTANT
+    "I don't know, dude, just look for things in his testimony that don't add up."
+SPEAK Dan
+    "He totally has to have messed up in there somewhere!"
+
+JUMPCUT COURT_DEFENSE
+ANIMATION Arin DeskSlam
+POSE Arin DeskSlam
+SPEAK Arin
+    "Alright, let's do it then."
+
+SPEAK_FROM COURT_JUDGE
+    "Is the defense ready for the CROSS-EXAMINATION?"
+
+POSE Arin Normal
+SPEAK_FROM COURT_DEFENSE
+    "Yes, Your Honor."
+
+SPEAK_FROM COURT_JUDGE
+    "Good. Then you may begin."
+
+///////////////////////
+// Cross Examination //
+///////////////////////
+
+DEFINE CrossExamFail
+    JUMPCUT BLACK_SCREEN
+    SPEAK "Judge Brent"
+        "The defense loses."
+END_DEFINE
+
+DEFINE PressA1
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "What were you animating?"
+        
+    SHOUT "Tutorial Boy" Objection
+    SPEAK_FROM COURT_PROSECUTION
+        "Your Honour, this is clearly irrelevant to the case."
+
+    SPEAK_FROM COURT_JUDGE
+        "I agree. Arin, try being serious about this."
+
+    SPEAK_FROM COURT_PROSECUTION
+        "Ross, continue your testimony."
+
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+DEFINE PressA2
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "Who did you see?"
+
+    SPEAK_FROM COURT_WITNESS
+        "I'm getting to it, just be patient. I'm trying to build suspense for the viewers."
+
+    SPEAK_FROM COURT_DEFENSE
+        "But this isn't being broadcasted..."
+
+    SPEAK_FROM COURT_PROSECUTION
+        "Quick! Back to the testimony before we break the fourth wall again!"
+
+    SPEAK_FROM COURT_JUDGE
+        "Witness, carry on."
+
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+DEFINE PressA3
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "You said you saw Jory in the 10 Minute Power Hour room, correct?"
+
+    PAN COURT_DEFENSE COURT_WITNESS
+    SPEAK_FROM COURT_WITNESS
+        "Yes that's correct!"
+
+    PAN COURT_WITNESS COURT_DEFENSE
+    SPEAK_FROM COURT_DEFENSE
+        "Yet you also say you were in your office animating."
+
+    SHOUT "Tutorial Boy" Objection
+    SPEAK_FROM COURT_PROSECUTION
+        "Are you saying that my client is a liar?"
+    SPEAK "Tutorial Boy"
+        "I'm sure Ross has a very reasonable explanation for all this."
+
+    SPEAK_FROM COURT_WITNESS
+        "That's right! The reason I was able to see Jory was because I needed to poop."
+
+    SPEAK_FROM COURT_DEFENSE
+        "Your Honor, this needs to be added to the witness's testimony."
+
+    SPEAK_FROM COURT_JUDGE
+        "Agreed. Ross, add your poop story to your testimony."
+
+    SPEAK_FROM COURT_ASSISTANT
+        "There's something strange about the way he left this out. Way to go Big Cat!"
+    
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+DEFINE PressA4
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "What do you mean $qobviously$q? This proves nothing!"
+
+    SPEAK_FROM COURT_PROSECUTION
+        "We have concrete evidence and a solid testimony to show that Jory did it, what more do you want?"
+
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+FADE_TO_BLACK
+JUMPCUT COURT_WITNESS
+PLAY_MUSIC QUESTIONING
+
+WITNESS_EVENT CrossExamination Ross "-- Witness's Account --" CrossExamFail
+    "I was animating by myself over in my room at the office." PressA1 0
+    "But then... I saw someone taking the dinos!!" PressA2 0
+    "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressA3 0  // Advance script
+    "I thought perhaps it was for an art reference or something like that... But now that I know they were stolen, that means the culprit must be Jory!" PressA4 0
+
+
+///////////////////////
+// Revised Testimony //
+///////////////////////
+
+DEFINE PressB4
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "What were you doing by the office toilet Ross?"
+
+    SPEAK_FROM COURT_WITNESS
+        "Well obviously I'd just finished taking a massive dump. Because that's the reason the toilet is there."
+
+    SPEAK_FROM COURT_ASSISTANT
+        "Something smells fishy, and I'm not talking about Ross's poop."
+    SPEAK Dan
+        "Don't we have some evidence that contradicts this?"
+
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+WITNESS_EVENT CrossExamination Ross "-- Witness's Account --" CrossExamFail
+    "I was animating by myself over in my room at the office." PressA1 0
+    "But then... I saw someone taking the dinos!!" PressA2 0
+    "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressB3 0
+    "The reason I was able to see Jory taking the dinos is because I was just on my way back from the office toilet." PressB4 PlumbingInvoice
+    "I thought perhaps it was for an art reference or something like that... But now that I know they were stolen, that means the culprit must be Jory!" PressB5 0
+
+
+/////////////////////////
+// Found Contradiction //
+/////////////////////////
+
+SHOUT Arin Objection
+SPEAK_FROM COURT_DEFENSE
+    "Not so fast Ross!"
+SPEAK Arin
+    "Are you absolutely certain that you had just used the office toilet at (insert time of theft here)?"
+
+SPEAK_FROM COURT_WITNESS
+    "Of course I am."
+
+SPEAK_FROM COURT_DEFENSE
+    "Then why does this plumbing invoice state very clearly that the toilets were undergoing maintenance at that time?"
+
+SPEAK_FROM COURT_PROSECUTION
+    "Your honour, my client is merely confused about the time he went on a bathroom break."
+
+SHOUT Arin Objection
+SPEAK_FROM COURT_DEFENSE
+    "If Ross wasn't using the bathroom at the time he stated,"
+SPEAK Arin
+    "then that would mean he wasn't present at the time of the crime!"
+SPEAK Arin
+    "That means he can't possibly have seen anything!"
+
+WIDESHOT
+
+SPEAK_FROM COURT_JUDGE
+    "Order in the court! Witness, what do you have to say about this?"
+
+SPEAK_FROM COURT_WITNESS
+    "Wait, now I remember why it was definitely Jory that stole the dinos."
+
+SPEAK_FROM COURT_JUDGE
+    "Then we'll take a short break."
+SPEAK "Judge Brent"
+    "Tutorial Boy, make sure your witnesses testimony is reliable when we come back."

@@ -1,0 +1,272 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// INITIALIZE SCENE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SET_SCENE_TYPE INVESTIGATION
+
+CHARACTER_INITIALIZE Arin arin MALE
+CHARACTER_INITIALIZE Dan dan MALE
+
+EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." evidence/badge.png
+COURT_RECORD_ADD EVIDENCE Badge
+
+PLAY_MUSIC PRELUDE
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// START SCRIPT
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+THINK Arin
+    "(It started out just like every time after our livestream)"
+THINK Arin
+    "(We had just finished a session playing Penix Wright: Facial Attorney)"
+THINK Arin
+    "(Dan and I were discussing some very important matters...)"
+
+JUMPCUT LOBBY
+CHARACTER_LOCATION Dan LOBBY
+POSE Dan Normal
+SPEAK Dan
+    "So that's when I said, $qthat's not mayonnaise!$q"
+SPEAK Dan
+    "And everyone immediately and violently threw up."
+SPEAK Arin
+    "What.#Are you talking about, Dan."
+SPEAK Dan
+    "Weren't you listening? I was telling you a very important story about how I graduated from ninja party school."
+SPEAK Arin
+    "Ninja Party School?#The infamous NPS?"
+
+POSE Dan Angry
+SPEAK Dan
+    "Dude!#You're the one who asked me about it!"
+POSE Dan Normal
+SPEAK Dan
+    "You said it had something to do with the 10 minute power hour we were doing today."
+
+SFX Realization
+SPEAK Arin
+    "Oh yeah that's right, I remember now!"
+SPEAK Arin
+    "Do you know what we're doing for the ten minute power hour today?"
+
+SCREEN_SHAKE
+POSE Dan Angry
+SPEAK Dan
+    "NO goddamnit, I'm asking you!"
+SPEAK Dan
+    "You asked me about my graduation party and said it had to do with today's episode"
+
+POSE Dan Lean
+SPEAK Dan
+    "You okay dude?#Your memory is worse than usual today."
+SPEAK Arin
+    "Ooooooooooooooooh m'bad?#Hah, I guess I got distracted."
+
+POSE Dan Normal
+SPEAK Dan
+    "From what?"
+SPEAK Arin
+    "Well, I got the invoice for the bathrooms today."
+SPEAK Arin
+    "The plumbers just finished fixing the toilets in the north end of the building, and that got me thinking..."
+
+POSE Dan Hair
+SPEAK Dan
+    "You mean you asked me to tell you all about one of the longest nights of my life just to be distracted by that?"
+SPEAK Arin
+    "Well you know how much I like poopin'!"
+
+POSE Dan SideLaugh
+SPEAK Dan
+    "Yeah, yeah you do like poopin'."
+
+POSE Dan Normal
+SPEAK Dan
+    "So what ARE we doing for the 10 minute power hour today?"
+SPEAK Arin
+    "Well, remember the dunking pool the second night of your graduation party?"
+SPEAK Dan
+    "You mean the whipped cream dunking machine?"
+
+SFX lightbulb
+POSE Dan Lean
+SPEAK Dan
+    "You don't mean...?"
+SPEAK Arin
+    "Yea dude! We're going to give people a glimpse into what it means to be a %1Ninja Sex Party Dude(tm)%0!"
+SPEAK Dan
+    "You gotta be buttfuckin' me dude, really?"
+SPEAK Arin
+    "Well, if I gotta be doin' it, Dan..."
+
+POSE Dan Normal
+SPEAK Dan
+    "This is no time for hilarious jokes, Arin, we have some tanks to set up!"
+
+SFX Dooropens
+POSE Dan Normal
+SPEAK ???
+    "Actually guys, we've got a problem..."
+SPEAK Arin
+    "Huh?#Jory?"
+
+CHARACTER_LOCATION Jory LOBBY
+POSE Jory Sweaty
+WAIT 2
+SPEAK Jory
+    "Apparently the dinos were missing when we started to set up for the episode."
+
+POSE Jory Nervous
+SPEAK Jory
+    "We spent the last ten minutes looking for them."
+SPEAK Arin
+    "Well that's not that long, they can't have gone far."
+SPEAK Jory
+    "Well that's the thing... we already found them."
+
+POSE Jory Sweaty
+SPEAK Arin
+    "So then what's the problem?"
+
+POSE Jory Nervous
+SPEAK Jory
+    "The problem is...#apparently they were found in %1MY backpack%0."
+POSE Jory Sweaty
+
+SCREEN_SHAKE
+SFX Damage1
+// Should be surprised
+POSE Dan Normal
+CHARACTER_LOCATION Dan LOBBY
+SPEAK Dan
+    "What?"
+
+POSE Jory Sweaty
+
+SCREEN_SHAKE
+SFX Damage1
+SPEAK Arin
+    "Did you take them?"
+    
+CHARACTER_LOCATION Dan LOBBY
+POSE Dan Angry
+SPEAK Dan
+    "ARIN!"
+SPEAK Arin
+    "What? It's a legitimate question!"
+SPEAK Dan
+    "Obviously he didn't do it, look at his face!#Is that the face of someone who is guilty?"
+
+CHARACTER_LOCATION Jory LOBBY
+POSE Jory ThumbsUp
+SPEAK Arin
+    "..."
+
+WAIT 1
+SPEAK Arin
+    "Yes...?"
+
+SFX Stab
+CHARACTER_LOCATION Dan LOBBY
+SPEAK Dan
+    "No! Why would he come to us then if he's guilty?#Tell us what happened, Jory."
+
+CHARACTER_LOCATION Jory LOBBY
+POSE Jory Nervous
+SPEAK Jory
+    "I wish I could, but everyone wants to hold a trial for this, and it's starting in just a few minutes!"
+SPEAK Jory
+    "Everyone is calling for my goodboy coins to be taken, even after all the work I put into getting them."
+SPEAK Jory
+    "And I've got nobody in my corner!"
+
+POSE Jory Sweaty
+SPEAK Arin
+    "That sucks dude."
+
+CHARACTER_LOCATION Dan LOBBY
+POSE Dan Normal
+SPEAK Dan
+    "Arin, don't you get it?"
+SPEAK Arin
+    "Get what?"
+SPEAK Dan
+    "He wants US to defend him in this trial!#Right, Jory?"
+
+POSE Jory ThumbsUp
+CHARACTER_LOCATION Jory LOBBY
+
+SCREEN_SHAKE
+SFX Damage1
+SPEAK Arin
+    "Whaaaat?!"
+SCREEN_SHAKE
+SFX Damage1
+
+WAIT 1
+SPEAK Jory
+    "Well, I guess so."
+SPEAK Jory
+    "I didn't really know what to do, and you guys know I'd never do anything like that."
+SPEAK Arin
+    "Well, I'm not really sure about all this..."
+
+CHARACTER_LOCATION Dan LOBBY
+POSE Dan Angry
+SPEAK Dan
+    "ARIN!"
+
+POSE Dan Normal
+SPEAK Dan
+    "Cmon bro, be a bro and bro this one out for our bro... Brory."
+
+SPEAK Jory
+    "Wow, thanks guys.#I guess I'll head to the, uh, %1$qCourtroom$q%0 then."
+SPEAK Jory
+    "They turned the main grumps office space into a makeshift courtroom just for this."
+SPEAK Jory
+    "So uh, see you there."
+
+HIDE_TEXT
+CLEAR_LOCATION LOBBY
+SFX Dooropens
+WAIT 2
+
+CHARACTER_LOCATION Dan LOBBY
+SPEAK Dan
+    "Wow, I didn't expect you to change your mind so quickly like that."
+
+POSE Dan Hair
+SPEAK Dan
+    "I guess what Jory Sr. said about trust and love made a difference, huh?"
+SPEAK Arin
+    "Yea, trust and love and whatever.#What do you think Jory Sr. is going to give us when we win?"
+
+POSE Dan Angry
+SPEAK Dan
+    "Arin!"
+SPEAK Arin
+    "WHAT? We're helping him aren't we?#That's the whole point, right?!"
+SPEAK Dan
+    "You are just... UN..."
+SPEAK Arin
+    "...#...#..."
+INTERRUPTED_SPEAK Arin
+    "I'm wha---"
+
+SCREEN_SHAKE
+POSE Dan Normal
+SPEAK Dan
+    "BELIEVEABLE!"
+SPEAK Arin
+    "Ok, ok, let's get ready."
+SPEAK Arin
+    "I just got a new suit just for something like this.#You're gonna love it."
+
+WAIT 1
+FADE_TO_BLACK
+JUMPCUT BLACK_SCREEN
+WAIT 3
+
+END_SCENE

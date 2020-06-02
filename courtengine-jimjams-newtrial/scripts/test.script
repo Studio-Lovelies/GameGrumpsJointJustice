@@ -1,0 +1,182 @@
+// Characters and evidence must be initialized before they are used
+// I recommend initializing as many as you can at the beginnning
+
+// CHARACTER_INITIALIZE format: 
+// name, folder location
+CHARACTER_INITIALIZE Arin arin
+CHARACTER_INITIALIZE Edgeworth edgeworth
+CHARACTER_INITIALIZE Judge judge
+CHARACTER_INITIALIZE Gumshoe gumshoe
+
+// set characters to a background, so when you cut to that background they are there
+CHARACTER_LOCATION Arin COURT_DEFENSE
+CHARACTER_LOCATION Edgeworth COURT_PROSECUTION
+CHARACTER_LOCATION Judge COURT_JUDGE
+CHARACTER_LOCATION Gumshoe COURT_WITNESS
+
+// initalize evidence:
+// internal name, external name, description, artwork
+EVIDENCE_INITIALIZE BrokenWineGlass "Broken Wine Glass" "It's sharp and pointy, useful for murder." evidence/broken_wine_glass.png
+EVIDENCE_INITIALIZE Grapes "Grapes" "Looks pretty tasty." evidence/grapes.png
+COURT_RECORD_ADD BrokenWineGlass
+COURT_RECORD_ADD Grapes
+
+// Every trial needs a fail condition, when you run out of exclamation points
+// it must be named TRIAL_FAIL and must be defined at the start of the trial
+DEFINE TRIAL_FAIL
+    JUMPCUT COURT_JUDGE
+    SPEAK Judge
+        "yooooooo arin you lost bro"
+
+    GAME_OVER
+END_DEFINE
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// START OF TRIAL
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//TYPEWRITER
+//    "August 3rd, 9:47AM#District Cout#Defendant Lobby No. 2"
+
+PLAY_MUSIC TRIAL
+
+JUMPCUT COURT_JUDGE
+SPEAK Judge 
+    "now starting a trial"
+SPEAK Judge 
+    "defense, are you ready?"
+
+DEFINE Choice1
+    SPEAK_FROM COURT_JUDGE
+        "haha you fool!"
+    SPEAK_FROM COURT_JUDGE
+        "that dialogue response incurs a penalty!"
+
+    ISSUE_PENALTY
+END_DEFINE
+
+JUMPCUT COURT_DEFENSE
+CHOICE 
+    "nope" Choice1
+    "yeah sure" 0
+
+// SPEAK_FROM is a shortcut
+// it combines JUMPCUT and SPEAK into one line
+// so you don't have to jumpcut and speak every time a character talks
+// you still can though, if you want more control
+SPEAK_FROM COURT_DEFENSE 
+    "i'm always ready your honor"
+
+PAN COURT_DEFENSE COURT_PROSECUTION
+SPEAK_FROM COURT_PROSECUTION
+    "and i'm ready too."
+
+PAN COURT_PROSECUTION COURT_DEFENSE
+SPEAK_FROM COURT_DEFENSE 
+    "cross examination?"
+
+SPEAK_FROM COURT_PROSECUTION
+    "cross examination."
+
+PAN COURT_PROSECUTION COURT_WITNESS
+SPEAK_FROM COURT_WITNESS
+    "hey there pals. is it time for another cross examination?"
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CROSS EXAMINATION 1
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// whenever you "press" a witness, the events that happen when they are press must be defined
+// BEFORE the cross examination starts!
+
+DEFINE PressA1
+    HOLD_IT Arin
+    JUMPCUT COURT_DEFENSE
+    SPEAK Arin
+        "what type of spraypaint?"
+
+    JUMPCUT COURT_WITNESS
+    SPEAK Gumshoe
+        "it was silver spraypaint, if you really must know"
+    SPEAK Gumshoe
+        "the spraypaint was all over the victim's mouth, pal"
+    SPEAK Gumshoe
+        "it looked like they were on the set for some sort of show..."
+END_DEFINE
+
+DEFINE PressA2
+    HOLD_IT Arin
+    JUMPCUT COURT_DEFENSE
+    SPEAK Arin
+        "are you sure it was 4:30 pm?"
+
+    JUMPCUT COURT_WITNESS
+    SPEAK Gumshoe
+        "the time sounds about right, pal. the body was still slightly warm when we got there"
+
+    JUMPCUT COURT_DEFENSE
+    SPEAK Arin
+        "when did you get there?"
+
+    JUMPCUT COURT_WITNESS
+    SPEAK Gumshoe
+        "just before 4:45, and you won't believe this..."
+END_DEFINE
+
+DEFINE PressA3
+    HOLD_IT Arin
+    SPEAK_FROM COURT_DEFENSE
+        "was it really him?"
+
+    JUMPCUT COURT_WITNESS
+    SPEAK Gumshoe
+        "who else could it be pal? i saw him there!"
+END_DEFINE
+
+DEFINE CrossExamineFail
+    OBJECTION Arin
+    JUMPCUT COURT_DEFENSE
+    SPEAK Arin
+        "i uhhhh object to that!"
+
+    JUMPCUT COURT_JUDGE
+    SPEAK Judge
+        "hahaha arin you wrong"
+
+    ISSUE_PENALTY
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+// jumpcut to the witness and actually do the cross examination!
+// definitions can also be arbitrarily executed at any time by writing @ and name of the definition
+// @CrossExamineFail would run the cross examination fail protocol, for example
+
+JUMPCUT COURT_WITNESS
+PLAY_MUSIC QUESTIONING
+
+CROSS_EXAMINATION Gumshoe "-- ten minutes is all i need, baby --" CrossExamineFail
+    "the victim died from huffing spraypaint" PressA1 BrokenWineGlass
+    "at 4:30 pm on the 19th" PressA2 0
+    "daniel sexbang was there at the scene of the crime when we arrived!" PressA3 0
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// TRIAL PART 2
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+OBJECTION Arin
+PLAY_MUSIC OBJECTION
+POSE Arin Point
+SPEAK_FROM COURT_DEFENSE
+    "detective gumshoe, you are WRONG!"
+
+SPEAK_FROM COURT_WITNESS
+    "what do you mean, pal?"
+
+POSE Arin NORMAL
+SPEAK_FROM COURT_DEFENSE
+    "the victim was not killed by huffing spraypaint."
+SPEAK_FROM COURT_DEFENSE
+    "he was killed with this broken wine glass!"
+
+SPEAK_FROM COURT_WITNESS
+    "ahhhhhhhh the french"
