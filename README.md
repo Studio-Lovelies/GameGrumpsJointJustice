@@ -6,7 +6,7 @@ Trials are written using a custom scripting language; check out the documentatio
 
 Created for the Game Grumps Phoenix Wright fan project.
 
-Visit the Github Repository to download, clone, or fork: https://github.com/GameGrumpsJointJustice/courtengine
+Visit the Github Repository to download, clone, or fork: https://github.com/IsaacLaquerre/GameGrumpsJointJustice
 
 ![courtengine3](courtengine3.gif)
 
@@ -16,7 +16,7 @@ Visit the Github Repository to download, clone, or fork: https://github.com/Game
 
 Download Love2D: https://love2d.org/
 
-- Go to the Github Repository, https://github.com/GameGrumpsJointJustice/courtengine
+- Go to the Github Repository, https://github.com/IsaacLaquerre/GameGrumpsJointJustice
 - Click the green download button at the top right
 - Extract the downloaded zip
 - Drag the folder onto the Love2D application icon (works on all OSs)
