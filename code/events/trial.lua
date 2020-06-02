@@ -3,7 +3,7 @@ function NewShoutEvent(who, what)
     self.timer = 0
     self.x,self.y = 0,0
     self.who = who
-    self.what = what
+    self.what = what:lower()
     local shout = Shouts[self.what]
 
     self.update = function (self, scene, dt)
@@ -52,10 +52,10 @@ function NewWitnessEvent(queue)
             else
                 self.textIndex = self.textIndex + 3
             end
-      
+
             self.textScroll = 1
             self.wasPressing = true
-      
+
             if self.textIndex > #self.queue then  -- Loop cross examination
                 self.textIndex = 4
             end
@@ -114,7 +114,7 @@ function NewWitnessEvent(queue)
 
         -- Advance text
         local pressing = love.keyboard.isDown("x")
-        if pressing 
+        if pressing
         and not self.wasPressing
         and canAdvance then
             self:advanceText()

@@ -213,6 +213,9 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "FADE_TO_BLACK" then
                     AddToStack(stack, NewFadeToBlackEvent(), lineParts)
                 end
+                if lineParts[1] == "FADE_IN" then
+                    AddToStack(stack, NewFadeInEvent(), lineParts)
+                end
                 if lineParts[1] == "SCREEN_SHAKE" then
                     AddToStack(stack, NewScreenShakeEvent(), lineParts)
                 end
@@ -267,7 +270,7 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "INTERRUPTED_SPEAK" then
                     queuedInterruptedSpeak = {lineParts[2], "literal", lineParts[3]}
                 end
-                
+
             end
         end
     end

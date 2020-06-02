@@ -16,6 +16,7 @@ settings = {
     sfx_directory = "sounds/";
 
     main_logo_path = "main_logo_1024_flipped.png";
+    black_screen_path = "backgrounds/BLACK_SCREEN.png";
     episode_path = "scripts/episode1.meta";
 }
 
@@ -29,7 +30,6 @@ controls = {
     press_court_record = "z";
     press_right = "right";
     press_left = "left";
-    press_confirm = "up";
     press_toggle_profiles = "down";
 }
 

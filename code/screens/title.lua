@@ -14,13 +14,18 @@ function DrawTitleScreen()
     )
 
     -- get dimensions for New Game and Load Game buttons
-    local newX = (dimensions.window_width * 1/9)
-    local newW = (dimensions.window_width * 1/3)
+    local newW = (dimensions.window_width * 1/5)
+    local newX = (dimensions.window_width * 1/18)
     local newY = logoImage:getHeight()*logoScale
     local newH = 60
 
-    local loadW = (dimensions.window_width * 1/3)
-    local loadX = (dimensions.window_width * 8/9) - loadW
+    local scenesW = (dimensions.window_width * 1/3.75)
+    local scenesX = (dimensions.window_width * 10.75/18) - scenesW
+    local scenesY = logoImage:getHeight()*logoScale
+    local scenesH = 60
+
+    local loadW = (dimensions.window_width * 1/3.75)
+    local loadX = (dimensions.window_width * 17/18) - loadW
     local loadY = logoImage:getHeight()*logoScale
     local loadH = 60
 
@@ -31,16 +36,22 @@ function DrawTitleScreen()
     love.graphics.setColor(0.44,0.56,0.89) -- roughly GG blue
     if TitleSelection == "New Game" then
         love.graphics.rectangle("fill", newX-dx, newY-dy, newW+2*dx, newH+2*dy)
-    else
+    elseif TitleSelection == "Load Game" then
         love.graphics.rectangle("fill", loadX-dx, loadY-dy, loadW+2*dx, loadH+2*dy)
+    else
+        love.graphics.rectangle("fill", scenesX-dx, scenesY-dy, scenesW+2*dx, scenesH+2*dy)
     end
 
-    -- draw New Game, Load Game, and text
+    -- draw New Game, Load Game, Browse Scenes, and text
     love.graphics.setColor(0.96,0.53,0.23) -- roughly GG orange
     love.graphics.rectangle("fill", newX, newY, newW, newH)
 
     love.graphics.setColor(0.3,0.3,0.3) -- greyed out
     love.graphics.rectangle("fill", loadX, loadY, loadW, loadH)
+
+
+    love.graphics.setColor(0.3,0.3,0.3) -- greyed out
+    love.graphics.rectangle("fill", scenesX, scenesY, scenesW, scenesH)
 
     love.graphics.setColor(1,1,1)
     local textScale = 3
@@ -63,6 +74,16 @@ function DrawTitleScreen()
         textScale,
         textScale
     )
+
+    local scenesText = love.graphics.newText(GameFont, "Browse Scenes")
+    love.graphics.draw(
+        scenesText,
+        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/1.5,
+        scenesY + scenesH/2-(loadGameText:getHeight() * textScale)/2,
+        0,
+        textScale,
+        textScale
+    )
 end
 
 TitleScreenConfig = {
@@ -76,6 +97,16 @@ TitleScreenConfig = {
             if TitleSelection == "Load Game" then
                 -- replace this and handle load game logic
                 Episode:begin()
+            elseif TitleSelection == "Browse Scenes" then
+                -- browse scenes screen here
+                love.graphics.draw(
+                    blackImage,
+                    GetCenterOffset(blackImage:getWidth() * blackScale, false),
+                    0,
+                    0,
+                    blackScale,
+                    blackScale
+                )
             else
                 -- replace this and handle new game logic
                 Episode:begin()
@@ -84,6 +115,8 @@ TitleScreenConfig = {
             TitleSelection = "Load Game"
         elseif key == controls.press_left then
             TitleSelection = "New Game"
+        elseif key == controls.pause_nav_down then
+            TitleSelection = "Browse Scenes"
         end
     end;
     onDisplay = function ()
