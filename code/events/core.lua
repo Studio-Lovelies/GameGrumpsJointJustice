@@ -17,7 +17,7 @@ end
 function NewPoseEvent(name, pose)
     local self = {}
     self.name = name
-    self.pose = pose:lower()
+    self.pose = pose
     self.update = function (self, scene, dt)
         scene.characters[self.name].frame = self.pose
 
@@ -520,21 +520,18 @@ end
 
 function NewFadeInEvent()
     local self = {}
-    self.timer = 100
+    self.timer = 255
 
     self.update = function (self, scene, dt)
         scene.textHidden = true
         scene.canShowCourtRecord = false
 
-        local lastTimer = self.timer
         self.timer = self.timer - dt
-
-        return self.timer > 1 and lastTimer > 1
     end
 
     self.draw = function (self, scene)
-        love.graphics.setColor(0,0,0, self.timer)
-        love.graphics.rectangle("fill", 0,0, GraphicsWidth,GraphicsHeight)
+        love.graphics.setColor(0, 0, 0, self.timer)
+        love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
     end
 
     return self
@@ -558,7 +555,7 @@ function NewSetFlagEvent(flag, set)
 
     self.update = function (self, scene, dt)
         scene.flags[self.flag] = self.set
-        print("set " .. self.flag .. " to " .. self.set)
+        print("set "..self.flag.." to "..self.set)
         return false
     end
 
