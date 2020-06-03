@@ -519,13 +519,22 @@ function NewFadeToBlackEvent()
 end
 
 function NewFadeInEvent()
+    local self = {}
+    self.timer = 100
 
-    function love.update(dt)
-        if fade_timer > 0 then fade_timer = fade_timer - dt end
+    self.update = function (self, scene, dt)
+        scene.textHidden = true
+        scene.canShowCourtRecord = false
+
+        local lastTimer = self.timer
+        self.timer = self.timer - dt
+
+        return self.timer > 1 and lastTimer > 1
     end
 
-    function love.draw()
-        love.graphics.setColor(0, 0, 0, fade_timer*(255/fade_time))
+    self.draw = function (self, scene)
+        love.graphics.setColor(0,0,0, self.timer)
+        love.graphics.rectangle("fill", 0,0, GraphicsWidth,GraphicsHeight)
     end
 
     return self
