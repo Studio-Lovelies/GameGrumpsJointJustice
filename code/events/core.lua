@@ -17,7 +17,7 @@ end
 function NewPoseEvent(name, pose)
     local self = {}
     self.name = name
-    self.pose = pose
+    self.pose = pose:lower()
     self.update = function (self, scene, dt)
         scene.characters[self.name].frame = self.pose
 
