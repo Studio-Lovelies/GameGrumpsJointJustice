@@ -184,9 +184,9 @@ SPEAK_FROM COURT_JUDGE
     "Keep your pants on. I make up the rules in this courthouse. I will allow the testifying of the defendant." 
 
 FADE_TO_BLACK
+FADE_IN
 JUMPCUT COURT_WITNESS
 WAIT 2
-FADE_IN
 
 SPEAK_FROM COURT_PROSECUTION
     "So you-"
@@ -416,7 +416,7 @@ SPEAK "Tutorial Boy"
 SPEAK_FROM COURT_WITNESS
     "N-no! I would never-"
 
-ANIMATION "Tutorial Boy" HeadSlam 3
+// ANIMATION "Tutorial Boy" HeadSlam 3
 SPEAK_FROM COURT_PROSECUTION
     "Save your lies! This is a courtroom of truth!"
 
