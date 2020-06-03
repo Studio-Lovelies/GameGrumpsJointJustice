@@ -39,7 +39,6 @@ GAVEL
 PLAY_MUSIC TRIAL
 
 SPEAK_FROM COURT_JUDGE
-
     "Court is now in session for the trial of Jory Griffis."
 
 SPEAK_FROM COURT_DEFENSE
@@ -50,7 +49,7 @@ SPEAK Arin
 
 SFX lightbulb
 SPEAK_FROM COURT_JUDGE
-Pose Judge normaltalking
+POSE Judge Normal
     "Yeah, being the manager of Game Grumps is just my side hustle."
 
 SPEAK "Judge Brent"
