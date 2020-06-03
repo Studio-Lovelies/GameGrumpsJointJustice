@@ -18,7 +18,6 @@ function NewPoseEvent(name, pose)
     local self = {}
     self.name = name
     self.pose = pose
-
     self.update = function (self, scene, dt)
         scene.characters[self.name].frame = self.pose
 
@@ -361,7 +360,7 @@ function NewAddToCourtRecordAnimationEvent(evidenceSpriteName)
 
     self.draw = function (self, scene)
         love.graphics.setColor(1,1,1)
-        love.graphics.draw(Sprites[self.evidence:gsub(" ", "")], 64,64)
+        love.graphics.draw(Sprites[self.evidence:gsub(" ", "")], 16,16)
     end
 
     return self
@@ -514,6 +513,19 @@ function NewFadeToBlackEvent()
     self.draw = function (self, scene)
         love.graphics.setColor(0,0,0, self.timer)
         love.graphics.rectangle("fill", 0,0, GraphicsWidth,GraphicsHeight)
+    end
+
+    return self
+end
+
+function NewFadeInEvent()
+
+    function love.update(dt)
+        if fade_timer > 0 then fade_timer = fade_timer - dt end
+    end
+
+    function love.draw()
+        love.graphics.setColor(0, 0, 0, fade_timer*(255/fade_time))
     end
 
     return self

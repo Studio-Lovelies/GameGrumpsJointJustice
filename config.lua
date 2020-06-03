@@ -30,7 +30,6 @@ controls = {
     press_court_record = "z";
     press_right = "right";
     press_left = "left";
-    press_up = "up";
     press_toggle_profiles = "down";
 }
 
