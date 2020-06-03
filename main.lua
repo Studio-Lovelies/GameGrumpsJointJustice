@@ -9,7 +9,7 @@ require "code/scriptloader"
 
 function love.load(arg)
     InitGlobalConfigVariables()
-    love.window.setMode(WindowWidth, WindowHeight, {})
+    love.window.setMode(WindowWidth, WindowHeight, {resizable=false})
     love.graphics.setDefaultFilter("nearest")
     love.graphics.setLineStyle("rough")
     Renderable = love.graphics.newCanvas(GraphicsWidth, GraphicsHeight)
@@ -52,6 +52,7 @@ function love.load(arg)
         end
     elseif arguments.script == nil then
         -- Title screen will take the player to the next scene on keypress
+        --screens.title.displayed = true
         screens.title.displayed = true
         -- This normally is triggered on keypress, but since we're showing
         -- the title manually, call this manually too
@@ -60,7 +61,7 @@ function love.load(arg)
 end
 
 -- love.update and love.draw get called 60 times per second
--- transfer the update and draw over to the current game scene 
+-- transfer the update and draw over to the current game scene
 function love.update(dt)
     if DtReset then
         dt = 1/60
@@ -116,10 +117,10 @@ function love.draw()
     love.graphics.setColor(unpack(colors.white))
 
     love.graphics.draw(
-        Renderable, 
+        Renderable,
         dx*love.graphics.getWidth()/GraphicsWidth,
         dy*love.graphics.getHeight()/GraphicsHeight,
-        0, 
+        0,
         love.graphics.getWidth()/GraphicsWidth,
         love.graphics.getHeight()/GraphicsHeight
     )
