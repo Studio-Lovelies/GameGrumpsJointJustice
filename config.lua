@@ -17,7 +17,7 @@ settings = {
 
     main_logo_path = "main_logo_1024_flipped.png";
     black_screen_path = "backgrounds/BLACK_SCREEN.png";
-    jory_trial_path = "scripts/trial.meta";
+    jory_trial_path = "scripts/jory_trial.meta";
     episode_path = "scripts/episode1.meta";
 }
 
@@ -32,6 +32,7 @@ controls = {
     press_right = "right";
     press_left = "left";
     press_toggle_profiles = "down";
+    debug = "end";
 }
 
 dimensions = {

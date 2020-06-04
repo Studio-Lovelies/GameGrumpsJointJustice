@@ -1,23 +1,27 @@
 function DrawBrowseScreen()
 
+    love.graphics.clear(unpack(colors.black))
+
     love.graphics.setColor(0, 0, 0, 100)
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+
+    local blackImage = love.graphics.newImage(settings.main_logo_path)
 
     local blackScale = 1
 
     local backW = (dimensions.window_width * 1/5)
     local backX = (dimensions.window_width * 1/18)
-    local backY = love.graphics.getHeight()*blackScale
+    local backY = blackImage:getHeight()*blackScale
     local backH = 60
 
     local pretrialW = (dimensions.window_width * 1/3.75)
     local pretrialX = (dimensions.window_width * 10.75/18) - pretrialW
-    local pretrialY = love.graphics.getHeight()*blackScale
+    local pretrialY = blackImage:getHeight()*blackScale
     local pretrialH = 60
 
     local jorytrialW = (dimensions.window_width * 1/3.75)
     local jorytrialX = (dimensions.window_width * 17/18) - jorytrialW
-    local jorytrialY = love.graphics.getHeight()*blackScale
+    local jorytrialY = blackImage:getHeight()*blackScale
     local jorytrialH = 60
 
     local dx = 8
@@ -80,21 +84,26 @@ sceneSelections = {}
 sceneSelections[0] = "Back";
 sceneSelections[1] = "Pre-Trial";
 sceneSelections[2] = "Jory's Trial";
-SelectionIndex = 0;
 
 BrowseScreenConfig = {
+    TitleSelection = "Back";
+    SelectionIndex = 0;
     displayed = false;
     onKeyPressed = function (key)
+        print(SelectionIndex)
         if key == controls.start_button then
-            screens.browsescenes.displayed = false;
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
                 screens.title.displayed = true;
+                screens.title.SelectionIndex = SelectionIndex;
                 DrawTitleScreen()
+                screens.browsescenes.displayed = false;
             elseif TitleSelection == "Pre-Trial" then
-                --Episode:begin()
+                Episode:begin()
+                screens.browsescenes.displayed = false;
             elseif TitleSelection == "Jory's Trial" then
-                --NewEpisode(settings.jory_trial_path):begin()
+                NewEpisode(settings.jory_trial_path):begin()
+                screens.browsescenes.displayed = false;
             end
         elseif key == controls.press_right then
             SelectionIndex = SelectionIndex + 1
@@ -110,10 +119,11 @@ BrowseScreenConfig = {
             TitleSelection = sceneSelections[SelectionIndex]
         end
     end;
-    onDisplay = function ()
-        TitleSelection = "Back"
+    onDisplay = function()
     end;
-    draw = function ()
-        DrawTitleScreen()
+    draw = function()
+        if screens.browsescenes.displayed == true then
+            DrawBrowseScreen()
+        end
     end;
 }

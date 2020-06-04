@@ -249,7 +249,7 @@ DEFINE PlayerObjects
     SHOUT Arin objection
     JUMPCUT COURT_DEFENSE
     ANIMATION Arin DeskSlam
-    POSE Arin DeskSlam
+    POSE Arin Normal //DeskSlam
     SPEAK Arin
         "My client's behavior during the livestream isn't suspicious in the least!"
     SPEAK Arin
@@ -315,7 +315,7 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "When you were asked to go get a replacement Switch, what did you do with those coins?"
 
-POSE Jory Thinking
+POSE Jory Normal // Thinking
 PAN COURT_PROSECUTION COURT_WITNESS
 SPEAK_FROM COURT_WITNESS
     "Well, since I had just finished polishing them, I decided to put them away in my backpack..."
@@ -413,7 +413,7 @@ SPEAK "Tutorial Boy"
 SPEAK_FROM COURT_WITNESS
     "N-no! I would never-"
 
-ANIMATION "Tutorial Boy" HeadSlam 3
+//ANIMATION "Tutorial Boy" HeadSlam 3
 SPEAK_FROM COURT_PROSECUTION
     "Save your lies! This is a courtroom of truth!"
 

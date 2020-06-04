@@ -79,7 +79,7 @@ end
 function NewSpeakEvent(who, text, locorlit, color, needsPressing)
     local self = {}
     self.text = text
-    self.textScroll = 1
+    self.textScroll = 0.1
     self.needsPressing = needsPressing ~= nil and needsPressing or true
     self.wasPressing = true
     self.who = who
@@ -101,9 +101,9 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
         local currentChar = string.sub(self.text, math.floor(self.textScroll), math.floor(self.textScroll))
 
         if controls.debug then
-            scrollSpeed = scrollSpeed*50--8
+            scrollSpeed = scrollSpeed*8
         elseif love.keyboard.isDown("lshift") then
-            scrollSpeed = scrollSpeed*50--8
+            scrollSpeed = scrollSpeed*8
         else
             if currentChar == "."
             or currentChar == "!"

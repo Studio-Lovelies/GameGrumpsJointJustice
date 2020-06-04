@@ -16,8 +16,10 @@ function NewEpisode(episodePath)
     self.update = function (self, dt)
         ScreenShake = math.max(ScreenShake - dt, 0)
         -- TODO: Decide if this applies to all screens that can be displayed
-        if not screens.title.displayed and not screens.pause.displayed then
-            CurrentScene:update(dt)
+        if screens.title.displayed == false and screens.pause.displayed == false then
+            if screens.browsescenes.displayed == false and screens.title.displayed == false then
+                CurrentScene:update(dt)
+            end
         end
     end
 
@@ -28,7 +30,7 @@ function NewEpisode(episodePath)
 
     self.nextScene = function ()
         self.sceneIndex = self.sceneIndex + 1
-        
+
         if self.sceneIndex <= #self.scenes then
             CurrentScene = NewScene(self.scenes[self.sceneIndex])
             CurrentScene:update(0)

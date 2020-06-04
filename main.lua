@@ -89,9 +89,10 @@ function love.keypressed(key)
             else
                 nextScreenToDisplay = screenConfig
             end
-        elseif screenConfig.displayed and screenConfig.onKeyPressed then
+        elseif screenConfig.displayed and screenConfig.onKeyPressed and nextScreenToDisplay == nil then
             screenConfig.onKeyPressed(key)
         end
+
     end
 
     if nextScreenToDisplay and currentDisplayedScreen == nil then

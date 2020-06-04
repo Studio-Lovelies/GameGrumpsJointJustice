@@ -21,7 +21,7 @@ function DrawCourtRecords(ui)
         for i=1, #Episode.courtRecords.evidence do
             table.insert(bodyOptions, Episode.courtRecords.evidence[i].sprite)
         end
-        
+
         table.insert(
             menuButtons,
             {
