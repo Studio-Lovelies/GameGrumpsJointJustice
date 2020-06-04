@@ -103,11 +103,17 @@ function NewEvidenceInitEvent(name, externalName, info, file)
     self.file = file
 
     self.update = function (self, scene, dt)
+        if FileExists(self.externalName:gsub(" ", "")) then
+            mSprite = love.graphics.newImage(self.file)
+        else
+            mSprite = love.graphics.newImage("sprites/MissingTexture.png")
+        end
         scene.evidence[self.name] = {
             name = self.name,
             externalName = self.externalName,
             info = self.info,
-            sprite = love.graphics.newImage(self.file),
+            sprite = mSprite,
+
         }
 
         return false
@@ -137,4 +143,14 @@ function NewProfileInitEvent(name, characterName, age, info, file)
     end
 
     return self
+end
+
+function FileExists(filename)
+    local f = io.open(filename,"r")
+    if f~=nil then
+        io.close(f)
+        return true
+    else
+        return false
+    end
 end
