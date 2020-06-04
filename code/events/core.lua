@@ -79,7 +79,7 @@ end
 function NewSpeakEvent(who, text, locorlit, color, needsPressing)
     local self = {}
     self.text = text
-    self.textScroll = 0.1
+    self.textScroll = 1
     self.needsPressing = needsPressing ~= nil and needsPressing or true
     self.wasPressing = true
     self.who = who
