@@ -152,7 +152,7 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
 
         scene.text = string.sub(self.text, 1, math.floor(self.textScroll))
 
-        local pressing = love.keyboard.isDown("x")
+        local pressing = love.keyboard.isDown(controls.next_line)
         -- What to do at the end of dialogue
         if self.textScroll >= #self.text then
             if self.needsPressing == false then

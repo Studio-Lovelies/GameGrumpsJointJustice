@@ -224,6 +224,143 @@ POSE Dan Normal
 SPEAK Dan
     "Cmon bro, be a bro and bro this one out for our bro... Brory."
 
+CHARACTER_LOCATION Jory LOBBY
+POSE Jory Nervous
+SPEAK Arin
+    "I'm sorry, Jory, but we don't know anything about criminal defense!"
+SPEAK Arin
+    "We're just idiots who say stupid things for laughs on the internet.#How are we supposed to help?"
+SPEAK Jory
+    "Yeah... I don't know, I didn't really have a plan or anything."
+SPEAK Jory
+    "The whole thing has just thrown me for a loop and I'm kind of grasping here..."
+
+CHARACTER_LOCATION Dan LOBBY
+// should be sad posed
+SPEAK Dan
+    "Sorry dude, but Arin's right.#We'd probably just screw it up."
+SPEAK Dan
+    "We're not lawyers.#The closest thing we've been playing is that Penix Wright(tm) game."
+SPEAK Dan
+    "And that's just a stupid game that everyone likes and is in love with!"
+SPEAK Arin
+    "Sorry Jory, but if we could help you we would."
+
+CHARACTER_LOCATION Jory LOBBY
+SPEAK Jory
+    "Yeah, I understand guys."
+
+SFX Pageturn
+POSE Jory Normal
+SPEAK Jory
+    "Huh? What's this?"
+SPEAK Arin
+    "A letter?#Who's it from?"
+SPEAK Jory
+    "Huh, it's from...#My dad?"
+
+SFX Realization
+CHARACTER_LOCATION Dan LOBBY
+POSE Dan Normal
+SPEAK Dan
+    "From %1Jory Sr.?%0"
+SPEAK Arin
+    "Open it up, what does it say?"
+
+SFX Pageturn
+CHARACTER_LOCATION Jory LOBBY
+SPEAK Jory
+    "....#It's from my dad alright, but it's addressed to you two!"
+
+SFX Realization
+SPEAK Arin
+    "Us? Like... me and Dan?"
+
+CHARACTER_LOCATION Dan LOBBY
+POSE Dan Hair
+SPEAK Dan
+    "I thought we made that up for our episodes."
+
+CHARACTER_LOCATION Jory LOBBY
+SPEAK Jory
+    "Well, judging from the handwriting and the way it's written, I think it's the real deal."
+SPEAK Arin
+    "Let me see that!"
+
+SFX Pageturn
+SPEAK Arin
+    "...#Wow, he's right! We should hold on to this, I think it might be important later"
+COURT_RECORD_ADD_ANIMATION JoryLetter "Jory Sr's Letter"
+SFX Evidenceshoop
+
+CHARACTER_LOCATION Dan LOBBY
+POSE Dan Normal
+SPEAK Dan
+    "What does it say?"
+SPEAK Arin
+    "*ahem*"
+SPEAK Arin GREEN
+    "$qHello Grumps, first of all I want to thank you for all the hard work you've done taking care of my son, Jory Jr.$q"
+
+// Should be shocked
+POSE Dan Hair
+SPEAK Dan
+    "You've gotta be kidding me."
+SPEAK Arin GREEN
+    "$qI've heard what happened to my son with the dinosaurs.$q"
+SPEAK Arin GREEN
+    "$qWhile I know it looks bad, I know my son is a good son who only does good things.$q"
+SPEAK Arin GREEN
+    "$qI know you know that too.#So please, defend him in court.$q"
+SPEAK Arin GREEN
+    "$qShow the world he is innocent of such a heinous and despicable crime and find out who the real culprit is.$q"
+
+POSE Dan Normal
+SPEAK Dan
+    "Wow, that was beautiful."
+SPEAK Arin GREEN
+    "$qP.S., remember, the second most important thing to winning this case is love and trust!$q"
+SPEAK Arin GREEN
+    "$qAnd the most important thing is I have something for you if you win!$q"
+
+POSE Dan Normal
+SPEAK Dan
+    "Wow... that was... beautiful?"
+SPEAK Arin
+    "Wait, there's one more thing."
+SPEAK Arin GREEN
+    "$qP.S.S., I hope you two have been continuing to provide my boy with wholesome food as well.$q"
+SPEAK Arin GREEN
+    "$qAnd I hope you've been avoiding giving him milk as he's deathly allergic to it.$q"
+SPEAK Dan
+    "Huh..."
+
+HIDE_TEXT
+CHARACTER_LOCATION Jory LOBBY
+POSE Jory Sweaty
+WAIT 2
+SPEAK Arin
+    "..."
+
+CHARACTER_LOCATION Dan LOBBY
+SPEAK Dan
+    "...#So...?"
+SPEAK Arin
+    "Jory, don't worry, we're on it buddy, because we trust you!"
+
+CHARACTER_LOCATION Jory LOBBY
+POSE Jory Normal
+SPEAK Jory
+    "Oh, uh, ok."
+
+CHARACTER_LOCATION Dan LOBBY
+POSE Dan Hair
+SPEAK Dan
+    "Really Arin?"
+SPEAK Arin
+    "Yep! I have no doubt we'll clear your good name, Jory!"
+
+POSE Jory Normal
 SPEAK Jory
     "Wow, thanks guys.#I guess I'll head to the, uh, %1$qCourtroom$q%0 then."
 SPEAK Jory
