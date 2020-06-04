@@ -90,7 +90,6 @@ BrowseScreenConfig = {
     SelectionIndex = 0;
     displayed = false;
     onKeyPressed = function (key)
-        print(SelectionIndex)
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then

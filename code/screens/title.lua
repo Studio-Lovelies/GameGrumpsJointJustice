@@ -102,7 +102,6 @@ titleSelections[2] = "Load Game";
 TitleScreenConfig = {
     displayed = false;
     onKeyPressed = function(key)
-        print(SelectionIndex)
         if key == controls.start_button then
             -- Since there's no displayKey, this screen
             -- is responsible for removing itself

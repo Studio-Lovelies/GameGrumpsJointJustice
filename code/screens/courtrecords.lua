@@ -1,3 +1,5 @@
+require "config"
+
 function DrawCourtRecords(ui)
     local bodyOptions = {}
     local bodySelected = nil
