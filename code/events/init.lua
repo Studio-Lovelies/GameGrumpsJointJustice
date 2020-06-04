@@ -122,16 +122,6 @@ function NewEvidenceInitEvent(name, externalName, info, file)
     return self
 end
 
-function FileExists(filename)
-    local f = io.open(filename,"r")
-    if f~=nil then
-        io.close(f)
-        return true
-    else
-        return false
-    end
-end
-
 function NewProfileInitEvent(name, characterName, age, info, file)
     local self = {}
     self.name = name
@@ -153,4 +143,14 @@ function NewProfileInitEvent(name, characterName, age, info, file)
     end
 
     return self
+end
+
+function FileExists(filename)
+    local f = io.open(filename,"r")
+    if f~=nil then
+        io.close(f)
+        return true
+    else
+        return false
+    end
 end
