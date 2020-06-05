@@ -16,6 +16,7 @@ settings = {
     sfx_directory = "sounds/";
 
     main_logo_path = "main_logo_1024_flipped.png";
+    power_hour_set_path = "backgrounds/POWER_HOUR_SET_HQ.png";
     black_screen_path = "backgrounds/BLACK_SCREEN.png";
     jory_trial_path = "scripts/jory_trial.meta";
     episode_path = "scripts/episode1.meta";
@@ -25,7 +26,7 @@ settings = {
 controls = {
     start_button = "return";
     pause = "escape";
-    next_line = "x";
+    advance_text = "x";
     pause_nav_up = "up";
     pause_nav_down = "down";
     press_confirm = "return";

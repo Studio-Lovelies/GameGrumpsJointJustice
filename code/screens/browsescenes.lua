@@ -94,7 +94,6 @@ BrowseScreenConfig = {
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
                 screens.title.displayed = true;
-                screens.title.SelectionIndex = SelectionIndex;
                 DrawTitleScreen()
                 screens.browsescenes.displayed = false;
             elseif TitleSelection == "Pre-Trial" then
@@ -119,6 +118,8 @@ BrowseScreenConfig = {
         end
     end;
     onDisplay = function()
+        screens.browsescenes.displayed = true
+        screens.title.displayed = false
     end;
     draw = function()
         if screens.browsescenes.displayed == true then

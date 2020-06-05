@@ -11,9 +11,13 @@ function DrawPauseScreen(self)
         height = love.graphics.getHeight() - 120,
         buttons = {
             {
-                title = "Back",
+                title = "Close",
                 key = controls.pause
             },
+            {
+                title = "Back to menu",
+                key = "End"
+            }
         },
     })
 
@@ -114,10 +118,16 @@ end
 PauseScreenConfig = {
     displayed = false;
     displayKey = controls.pause;
-    displayCondition = function ()
+    displayCondition = function()
         -- Don't let the pause menu show until the scene has
         -- started (AKA we're off the title screen)
         return Episode.loaded;
+    end;
+    onKeyPressed = function(key)
+        if key == "end" then
+            NewStopMusicEvent()
+            DrawTitleScreen()
+        end
     end;
     draw = function ()
         DrawPauseScreen()

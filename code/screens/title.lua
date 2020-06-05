@@ -1,11 +1,23 @@
 function DrawTitleScreen()
+    local background = love.graphics.newImage(settings.power_hour_set_path)
+    local backgroundScale = 1.35--3.8
+
+    love.graphics.clear(unpack(colors.black))
+
+    love.graphics.draw(
+        background,
+        GetCenterOffset(background:getWidth() * backgroundScale, false),
+        0,
+        0,
+        backgroundScale,
+        backgroundScale
+    )
+
     local logoImage = love.graphics.newImage(settings.main_logo_path)
     local logoScale = 1
 
-    love.graphics.clear(unpack(colors.black))
     love.graphics.draw(
         logoImage,
-        -- Center the logo in the window regardless of image or window size
         GetCenterOffset(logoImage:getWidth() * logoScale, false),
         0,
         0,
@@ -101,6 +113,8 @@ titleSelections[2] = "Load Game";
 
 TitleScreenConfig = {
     displayed = false;
+    TitleSelection = "Browse Scenes";
+    SelectionIndex = 1;
     onKeyPressed = function(key)
         if key == controls.start_button then
             -- Since there's no displayKey, this screen
@@ -109,8 +123,9 @@ TitleScreenConfig = {
             if TitleSelection == "Browse Scenes" then
                 -- browse scenes screen here
                 screens.browsescenes.displayed = true;
-                screens.browsescenes.SelectionIndex = SelectionIndex;
-                DrawBrowseScreen()
+                TitleSelection = "Back";
+                SelectionIndex = 0;
+                screens.browsescenes.onDisplay();
                 screens.title.displayed = false;
             elseif TitleSelection == "Load Game" then
                 -- replace this and handle load game logic
