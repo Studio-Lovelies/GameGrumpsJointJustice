@@ -118,7 +118,6 @@ SelectionIndex = 0;
 TitleScreenConfig = {
     displayed = false;
     onKeyPressed = function (key)
-        print(SelectionIndex..": "..TitleSelection)
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Browse Scenes" then
@@ -126,6 +125,7 @@ TitleScreenConfig = {
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
                 screens.title.displayed = false;
+                SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 -- replace this and handle load game logic
                 Episode:begin()

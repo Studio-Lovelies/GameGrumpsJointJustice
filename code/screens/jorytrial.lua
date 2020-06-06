@@ -5,28 +5,30 @@ function DrawJoryTrialScreen()
     love.graphics.setColor(0, 0, 0, 100)
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 
-    local blackImage = love.graphics.newImage(settings.main_logo_path)
+    local blackImage = love.graphics.newImage(settings.black_screen_path)
+    local blackScale = 3
 
-    local blackScale = 1
+    local trialImage = love.graphics.newImage(settings.court_path)
+    local trialImageScale = 3
 
     local backW = (dimensions.window_width * 1/7)
     local backX = (dimensions.window_width * 1/24)
-    local backY = blackImage:getHeight()*blackScale
+    local backY = blackImage:getHeight()*blackScale + 10
     local backH = 60
 
     local part1W = (dimensions.window_width * 1/7)
     local part1X = (dimensions.window_width * 10.75/24) - part1W
-    local part1Y = blackImage:getHeight()*blackScale
+    local part1Y = blackImage:getHeight()*blackScale + 10
     local part1H = 60
 
     local part2W = (dimensions.window_width * 1/7)
     local part2X = (dimensions.window_width * 15.5/24) - part2W
-    local part2Y = blackImage:getHeight()*blackScale
+    local part2Y = blackImage:getHeight()*blackScale + 10
     local part2H = 60
 
     local part3W = (dimensions.window_width * 1/7)
     local part3X = (dimensions.window_width * 20/24) - part3W
-    local part3Y = blackImage:getHeight()*blackScale
+    local part3Y = blackImage:getHeight()*blackScale + 10
     local part3H = 60
 
     local dx = 8
@@ -35,12 +37,44 @@ function DrawJoryTrialScreen()
     love.graphics.setColor(0.44,0.56,0.89)
     if TitleSelection == "Part 1" then
         love.graphics.rectangle("fill", part1X-dx, part1Y-dy, part1W+2*dx, part1H+2*dy)
+        love.graphics.draw(
+            trialImage,
+            GetCenterOffset(trialImage:getWidth() * trialImageScale, false),
+            0,
+            0,
+            trialImageScale,
+            trialImageScale
+        )
     elseif TitleSelection == "Part 2" then
         love.graphics.rectangle("fill", part2X-dx, part2Y-dy, part2W+2*dx, part2H+2*dy)
+        love.graphics.draw(
+            trialImage,
+            GetCenterOffset(trialImage:getWidth() * trialImageScale, false),
+            0,
+            0,
+            trialImageScale,
+            trialImageScale
+        )
     elseif TitleSelection == "Part 3" then
         love.graphics.rectangle("fill", part3X-dx, part3Y-dy, part3W+2*dx, part3H+2*dy)
+        love.graphics.draw(
+            trialImage,
+            GetCenterOffset(trialImage:getWidth() * trialImageScale, false),
+            0,
+            0,
+            trialImageScale,
+            trialImageScale
+        )
     else
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
+        love.graphics.draw(
+            blackImage,
+            GetCenterOffset(blackImage:getWidth() * blackScale, false),
+            0,
+            0,
+            blackImageScale,
+            blackImageScale
+        )
     end
 
     love.graphics.setColor(222, 0, 0)
@@ -111,20 +145,21 @@ SelectionIndex = 0;
 JoryTrialConfig = {
     displayed = false;
     onKeyPressed = function (key)
-        print(SelectionIndex..": "..TitleSelection)
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
                 screens.jorytrial.displayed = false;
+                TitleSelection = "Jory's Trial";
+                SelectionIndex = 2;
             elseif TitleSelection == "Part 1" then
                 NewEpisode(settings.jory_trial_1_path):begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 2" then
                 NewEpisode(settings.jory_trial_2_path):begin()
                 screens.jorytrial.displayed = false;
-            elseif TitleSelection == "Part 2" then
+            elseif TitleSelection == "Part 3" then
                 NewEpisode(settings.jory_trial_3_path):begin()
                 screens.jorytrial.displayed = false;
             end
