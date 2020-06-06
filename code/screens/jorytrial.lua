@@ -9,23 +9,23 @@ function DrawJoryTrialScreen()
 
     local blackScale = 1
 
-    local backW = (dimensions.window_width * 1/5)
+    local backW = (dimensions.window_width * 1/7)
     local backX = (dimensions.window_width * 1/24)
     local backY = blackImage:getHeight()*blackScale
     local backH = 60
 
-    local part1W = (dimensions.window_width * 1/3.75)
+    local part1W = (dimensions.window_width * 1/7)
     local part1X = (dimensions.window_width * 10.75/24) - part1W
     local part1Y = blackImage:getHeight()*blackScale
     local part1H = 60
 
-    local part2W = (dimensions.window_width * 1/3.75)
-    local part2X = (dimensions.window_width * 17/24) - part2W
+    local part2W = (dimensions.window_width * 1/7)
+    local part2X = (dimensions.window_width * 15.5/24) - part2W
     local part2Y = blackImage:getHeight()*blackScale
     local part2H = 60
 
-    local part3W = (dimensions.window_width * 1/3.75)
-    local part3X = (dimensions.window_width * 21/24) - part3W
+    local part3W = (dimensions.window_width * 1/7)
+    local part3X = (dimensions.window_width * 20/24) - part3W
     local part3Y = blackImage:getHeight()*blackScale
     local part3H = 60
 
@@ -114,8 +114,8 @@ JoryTrialConfig = {
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
                 screens.browsescenes.displayed = true;
-                screens.jorytrial.displayed = false;
                 DrawBrowseScreen();
+                screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 1" then
                 NewEpisode(settings.jory_trial_1_path):begin()
                 screens.jorytrial.displayed = false;
