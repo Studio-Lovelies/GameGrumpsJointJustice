@@ -28,12 +28,12 @@ function DrawBrowseScreen()
     local dy = 8
 
     love.graphics.setColor(0.44,0.56,0.89)
-    if TitleSelection == "Back" then
-        love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
+    if TitleSelection == "Pre-Trial" then
+        love.graphics.rectangle("fill", pretrialX-dx, pretrialY-dy, pretrialW+2*dx, pretrialH+2*dy)
     elseif TitleSelection == "Jory's Trial" then
         love.graphics.rectangle("fill", jorytrialX-dx, jorytrialY-dy, jorytrialW+2*dx, jorytrialH+2*dy)
     else
-        love.graphics.rectangle("fill", pretrialX-dx, pretrialY-dy, pretrialW+2*dx, pretrialH+2*dy)
+        love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
     end
 
     love.graphics.setColor(222, 0, 0)

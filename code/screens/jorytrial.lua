@@ -33,12 +33,14 @@ function DrawJoryTrialScreen()
     local dy = 8
 
     love.graphics.setColor(0.44,0.56,0.89)
-    if TitleSelection == "Back" then
-        love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
-    elseif TitleSelection == "Jory's Trial" then
-        love.graphics.rectangle("fill", part2X-dx, part2Y-dy, part2W+2*dx, part2H+2*dy)
-    else
+    if TitleSelection == "Part 1" then
         love.graphics.rectangle("fill", part1X-dx, part1Y-dy, part1W+2*dx, part1H+2*dy)
+    elseif TitleSelection == "Part 2" then
+        love.graphics.rectangle("fill", part2X-dx, part2Y-dy, part2W+2*dx, part2H+2*dy)
+    elseif TitleSelection == "Part 3" then
+        love.graphics.rectangle("fill", part3X-dx, part3Y-dy, part3W+2*dx, part3H+2*dy)
+    else
+        love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
     end
 
     love.graphics.setColor(222, 0, 0)
