@@ -41,10 +41,12 @@ require "code/screens/title"
 require "code/screens/pause"
 require "code/screens/courtrecords"
 require "code/screens/browsescenes"
+require "code/screens/jorytrial"
 
 screens = {
     title = TitleScreenConfig,
     pause = PauseScreenConfig,
     courtRecords = CourtRecordsConfig,
     browsescenes = BrowseScreenConfig,
+    jorytrial = JoryTrialConfig,
 }

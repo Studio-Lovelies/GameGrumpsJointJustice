@@ -1,6 +1,6 @@
 function DrawTitleScreen()
     local background = love.graphics.newImage(settings.power_hour_set_path)
-    local backgroundScale = 1.35--3.8
+    local backgroundScale = 1.326--3.8
 
     love.graphics.clear(unpack(colors.black))
 
@@ -96,6 +96,8 @@ function DrawTitleScreen()
         textScale,
         textScale
     )
+
+    return self
 end
 
 function getIndex(table, string)
@@ -110,23 +112,20 @@ titleSelections = {}
 titleSelections[0] = "New Game";
 titleSelections[1] = "Browse Scenes";
 titleSelections[2] = "Load Game";
+TitleSelection = "New Game";
+SelectionIndex = 0;
 
 TitleScreenConfig = {
     displayed = false;
-    TitleSelection = "Browse Scenes";
-    SelectionIndex = 1;
-    onKeyPressed = function(key)
+    onKeyPressed = function (key)
         if key == controls.start_button then
-            -- Since there's no displayKey, this screen
-            -- is responsible for removing itself
             love.graphics.clear(0,0,0);
             if TitleSelection == "Browse Scenes" then
                 -- browse scenes screen here
                 screens.browsescenes.displayed = true;
-                TitleSelection = "Back";
-                SelectionIndex = 0;
-                screens.browsescenes.onDisplay();
+                DrawBrowseScreen();
                 screens.title.displayed = false;
+                SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 -- replace this and handle load game logic
                 Episode:begin()
@@ -151,6 +150,11 @@ TitleScreenConfig = {
         end
     end;
     onDisplay = function()
+        screens.browsescenes.displayed = false
+        screens.pause.displayed = false
+        screens.courtRecords.displayed = false
+        screens.jorytrial.displayed = false
+        screens.title.displayed = true
         TitleSelection = "New Game";
         SelectionIndex = 0;
     end;

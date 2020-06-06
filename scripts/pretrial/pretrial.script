@@ -201,14 +201,12 @@ POSE Jory ThumbsUp
 CHARACTER_LOCATION Jory LOBBY
 
 SCREEN_SHAKE
+SCREEN_SHAKE
 SFX Damage1
 SPEAK Arin
     "Whaaaat?!"
-SCREEN_SHAKE
-SFX Damage1
 
 WAIT 1
-POSE Jory Sweaty
 SPEAK Jory
     "Well, I guess so."
 SPEAK Jory
@@ -252,8 +250,7 @@ SPEAK Jory
     "Yeah, I understand guys."
 
 SFX Pageturn
-// should be confused pose
-POSE Jory Normal 
+POSE Jory Normal
 SPEAK Jory
     "Huh? What's this?"
 SPEAK Arin
@@ -289,11 +286,12 @@ SPEAK Jory
 SPEAK Arin
     "Let me see that!"
 
+COURT_RECORD_ADD_ANIMATION EVIDENCE "Jory Sr's Letter"
+
 SFX Pageturn
 SPEAK Arin
     "...#Wow, he's right! We should hold on to this, I think it might be important later"
-SFX selectjingle
-COURT_RECORD_ADD_ANIMATION JoryLetter "Jory Sr's Letter"
+--EVIDENCE Jory Sr's Letter
 SFX Evidenceshoop
 
 CHARACTER_LOCATION Dan LOBBY
@@ -326,7 +324,6 @@ SPEAK Arin GREEN
 SPEAK Arin GREEN
     "$qAnd the most important thing is I have something for you if you win!$q"
 
-//POSE should be "Thinking"
 POSE Dan Normal
 SPEAK Dan
     "Wow... that was... beautiful?"
@@ -358,14 +355,13 @@ SPEAK Jory
     "Oh, uh, ok."
 
 CHARACTER_LOCATION Dan LOBBY
-//pose should be Shocked
 POSE Dan Hair
 SPEAK Dan
     "Really Arin?"
 SPEAK Arin
     "Yep! I have no doubt we'll clear your good name, Jory!"
 
-POSE Jory Normal
+CHARACTER_LOCATION Jory LOBBY
 SPEAK Jory
     "Wow, thanks guys.#I guess I'll head to the, uh, %1$qCourtroom$q%0 then."
 SPEAK Jory
@@ -388,7 +384,6 @@ SPEAK Dan
 SPEAK Arin
     "Yea, trust and love and whatever.#What do you think Jory Sr. is going to give us when we win?"
 
-//pose should be "Angry-maya"
 POSE Dan Angry
 SPEAK Dan
     "Arin!"

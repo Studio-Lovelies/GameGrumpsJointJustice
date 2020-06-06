@@ -18,7 +18,11 @@ settings = {
     main_logo_path = "main_logo_1024_flipped.png";
     power_hour_set_path = "backgrounds/POWER_HOUR_SET_HQ.png";
     black_screen_path = "backgrounds/BLACK_SCREEN.png";
-    jory_trial_path = "scripts/jory_trial.meta";
+    lobby_path = "backgrounds/LOBBY.png";
+    court_path = "sprites/WideShot.png";
+    jory_trial_1_path = "scripts/jory_trial_1.meta";
+    jory_trial_2_path = "scripts/jory_trial_2.meta";
+    jory_trial_3_path = "scripts/jory_trial_3.meta";
     episode_path = "scripts/episode1.meta";
 }
 
@@ -34,7 +38,6 @@ controls = {
     press_right = "right";
     press_left = "left";
     press_toggle_profiles = "down";
-    debug = "end";
 }
 
 dimensions = {

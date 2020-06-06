@@ -270,7 +270,6 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "INTERRUPTED_SPEAK" then
                     queuedInterruptedSpeak = {lineParts[2], "literal", lineParts[3]}
                 end
-
             end
         end
     end
