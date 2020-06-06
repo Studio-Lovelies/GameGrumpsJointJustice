@@ -60,7 +60,8 @@ WAIT 2
 SPEAK_FROM COURT_JUDGE
     "Someone actually witnessed the crime?"
  
-TUTORIAL BOI: Precisely, your honor.
+SPEAK_FROM COURT_PROSECUTION
+    "Precisely, your honor."
  
 JUMPCUT COURT_DEFENSE
 ANIMATION Arin Shock
@@ -141,3 +142,5 @@ SPEAK Arin
  
 SPEAK_FROM COURT_JUDGE
     "Alright. The witness may begin."
+
+END_SCENE

@@ -201,11 +201,10 @@ POSE Jory ThumbsUp
 CHARACTER_LOCATION Jory LOBBY
 
 SCREEN_SHAKE
+SCREEN_SHAKE
 SFX Damage1
 SPEAK Arin
     "Whaaaat?!"
-SCREEN_SHAKE
-SFX Damage1
 
 WAIT 1
 SPEAK Jory
@@ -287,10 +286,12 @@ SPEAK Jory
 SPEAK Arin
     "Let me see that!"
 
+COURT_RECORD_ADD_ANIMATION EVIDENCE "Jory Sr's Letter"
+
 SFX Pageturn
 SPEAK Arin
     "...#Wow, he's right! We should hold on to this, I think it might be important later"
-COURT_RECORD_ADD_ANIMATION JoryLetter "Jory Sr's Letter"
+--EVIDENCE Jory Sr's Letter
 SFX Evidenceshoop
 
 CHARACTER_LOCATION Dan LOBBY
@@ -360,7 +361,7 @@ SPEAK Dan
 SPEAK Arin
     "Yep! I have no doubt we'll clear your good name, Jory!"
 
-POSE Jory Normal
+CHARACTER_LOCATION Jory LOBBY
 SPEAK Jory
     "Wow, thanks guys.#I guess I'll head to the, uh, %1$qCourtroom$q%0 then."
 SPEAK Jory

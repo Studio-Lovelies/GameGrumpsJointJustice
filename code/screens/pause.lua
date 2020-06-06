@@ -126,7 +126,7 @@ PauseScreenConfig = {
     onKeyPressed = function(key)
         if key == "end" then
             NewStopMusicEvent()
-            DrawTitleScreen()
+            love.event.quit("restart")
         end
     end;
     draw = function ()

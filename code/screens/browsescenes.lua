@@ -80,27 +80,29 @@ function DrawBrowseScreen()
     return self
 end
 
-sceneSelections = {}
-sceneSelections[0] = "Back";
-sceneSelections[1] = "Pre-Trial";
-sceneSelections[2] = "Jory's Trial";
+browseSceneSelections = {}
+browseSceneSelections[0] = "Back";
+browseSceneSelections[1] = "Pre-Trial";
+browseSceneSelections[2] = "Jory's Trial";
+TitleSelection = "Back";
+SelectionIndex = 1;
 
 BrowseScreenConfig = {
-    TitleSelection = "Back";
-    SelectionIndex = 0;
     displayed = false;
     onKeyPressed = function (key)
+        print(SelectionIndex..": "..TitleSelection)
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
                 screens.title.displayed = true;
-                DrawTitleScreen()
+                DrawTitleScreen();
                 screens.browsescenes.displayed = false;
             elseif TitleSelection == "Pre-Trial" then
                 Episode:begin()
                 screens.browsescenes.displayed = false;
             elseif TitleSelection == "Jory's Trial" then
-                NewEpisode(settings.jory_trial_path):begin()
+                screens.jorytrial.displayed = true;
+                DrawJoryTrialScreen();
                 screens.browsescenes.displayed = false;
             end
         elseif key == controls.press_right then
@@ -108,13 +110,13 @@ BrowseScreenConfig = {
             if (SelectionIndex > 2) then
                 SelectionIndex = 0
             end
-            TitleSelection = sceneSelections[SelectionIndex]
+            TitleSelection = browseSceneSelections[SelectionIndex]
         elseif key == controls.press_left then
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
                 SelectionIndex = 2
             end
-            TitleSelection = sceneSelections[SelectionIndex]
+            TitleSelection = browseSceneSelections[SelectionIndex]
         end
     end;
     onDisplay = function()
