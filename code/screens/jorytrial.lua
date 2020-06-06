@@ -98,11 +98,11 @@ function DrawJoryTrialScreen()
     return self
 end
 
-sceneSelections = {}
-sceneSelections[0] = "Back";
-sceneSelections[1] = "Part 1";
-sceneSelections[2] = "Part 2";
-sceneSelections[3] = "Part 3";
+jorySceneSelections = {}
+jorySceneSelections[0] = "Back";
+jorySceneSelections[1] = "Part 1";
+jorySceneSelections[2] = "Part 2";
+jorySceneSelections[3] = "Part 3";
 TitleSelection = "Back";
 SelectionIndex = 0;
 
@@ -131,13 +131,13 @@ JoryTrialConfig = {
             if (SelectionIndex > 3) then
                 SelectionIndex = 0
             end
-            TitleSelection = sceneSelections[SelectionIndex]
+            TitleSelection = jorySceneSelections[SelectionIndex]
         elseif key == controls.press_left then
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
                 SelectionIndex = 3
             end
-            TitleSelection = sceneSelections[SelectionIndex]
+            TitleSelection = jorySceneSelections[SelectionIndex]
         end
     end;
     onDisplay = function()
