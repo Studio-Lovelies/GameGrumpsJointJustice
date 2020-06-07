@@ -81,6 +81,7 @@ SPEAK Arin
 PAN COURT_DEFENSE COURT_PROSECUTION
 // ANIMATION "Tutorial Boy" HeadSlam 3
 SCREEN_SHAKE
+SFX tutboy_wrong
 SPEAK_FROM COURT_PROSECUTION
     "WRONG!"
 SPEAK "Tutorial Boy"
@@ -90,15 +91,17 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "First you must listen to my-"
 
+POSE Arin Annoyed
 SPEAK_FROM COURT_DEFENSE
-    "Yep, uh-huh, got it. I know how this already works, I've got this, don't worry."
+    "Yep, uh-huh, got it. I already know how this works, I've got this, don't worry."
 
 PAN COURT_DEFENSE COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "Don't you dare skip me! I'm the-"
 
+POSE Arin Normal
 SPEAK_FROM COURT_DEFENSE
-    "Man, if the artists drew me yawning that's what you'd be seeing right now." 
+    "Man, if the artists drew me yawning, that's what you'd be seeing right now." 
 SPEAK Arin
     "When the heck is this trial going to start?"
 

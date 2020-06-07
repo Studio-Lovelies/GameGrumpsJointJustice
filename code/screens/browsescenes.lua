@@ -125,7 +125,7 @@ BrowseScreenConfig = {
                 screens.title.displayed = true;
                 DrawTitleScreen();
                 screens.browsescenes.displayed = false;
-                TitleSelection = "Browse Scenes";
+                TitleSelection = "Case Select";
                 SelectionIndex = 1;
             elseif TitleSelection == "Pre-Trial" then
                 Episode:begin()

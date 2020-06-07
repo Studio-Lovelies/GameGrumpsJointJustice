@@ -68,12 +68,12 @@ function DrawJoryTrialScreen()
     else
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
         love.graphics.draw(
-            blackImage,
-            GetCenterOffset(blackImage:getWidth() * blackScale, false),
+            trialImage,
+            GetCenterOffset(trialImage:getWidth() * trialImageScale, false),
             0,
             0,
-            blackImageScale,
-            blackImageScale
+            trialImageScale,
+            trialImageScale
         )
     end
 

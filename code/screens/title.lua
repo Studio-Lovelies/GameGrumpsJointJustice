@@ -87,10 +87,10 @@ function DrawTitleScreen()
         textScale
     )
 
-    local scenesText = love.graphics.newText(GameFont, "Browse Scenes")
+    local scenesText = love.graphics.newText(GameFont, "Case Select")
     love.graphics.draw(
         scenesText,
-        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/1.5,
+        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2,
         scenesY + scenesH/2-(loadGameText:getHeight() * textScale)/2,
         0,
         textScale,
@@ -110,7 +110,7 @@ end
 
 titleSelections = {}
 titleSelections[0] = "New Game";
-titleSelections[1] = "Browse Scenes";
+titleSelections[1] = "Case Select";
 titleSelections[2] = "Load Game";
 TitleSelection = "New Game";
 SelectionIndex = 0;
@@ -120,7 +120,7 @@ TitleScreenConfig = {
     onKeyPressed = function (key)
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
-            if TitleSelection == "Browse Scenes" then
+            if TitleSelection == "Case Select" then
                 -- browse scenes screen here
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
