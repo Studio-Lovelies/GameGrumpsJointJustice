@@ -49,6 +49,8 @@ SPEAK_FROM COURT_JUDGE
 SPEAK_FROM COURT_DEFENSE
     "The defense is ready Your H-"
 SCREEN_SHAKE
+
+POSE Arin Sweaty
 SPEAK Arin
     "Wait, Brent? Is that you?"
 
@@ -60,26 +62,31 @@ SPEAK "Judge Brent"
 SPEAK "Judge Brent"
     "After all, what is a judge if not a manager of the law?"
 
+POSE Dan SideNormal
 SPEAK_FROM COURT_ASSISTANT
-    "I don't know, seems a little suspicious..."
 
+SFX stab
 SPEAK_FROM COURT_PROSECUTION
-    "AHEM! The prosecution is ready, your honor."
+    "AHEM! The prosecution is also ready, your honor."
 
 SPEAK_FROM COURT_JUDGE
-    "Oh, right! The prosecution may give their opening statements."
+    "Oh, right! I have a guest prosecutor to help this go over smoothly."
+SPEAK "Judge Brent"
+    "He just happened to visiting this week."
 
 SPEAK_FROM COURT_PROSECUTION
-    "Mr. Hansen, Mr. Avidan, it's been a long time..."
+    "Mr.Hansen and Mr. Avidan. So we meet at last!"
 
 THINK_FROM COURT_DEFENSE
     "(Who exactly is this? He seems familiar but I can't put my finger on it...)"
 
 SPEAK_FROM COURT_ASSISTANT
-    "I have no idea who you are."
+    "Wait, doesn't he kind of look like..."
 
 SFX lightbulb
 JUMPCUT COURT_DEFENSE
+POSE Arin Shock
+POSE Arin Sweaty
 SPEAK Arin
     "T-trivia boy?!"
 
@@ -99,7 +106,7 @@ SPEAK "Tutorial Boy"
 // POSE Arin Annoyed
 POSE Arin Normal
 SPEAK_FROM COURT_DEFENSE
-    "Yep, uh-huh, got it. I already know how this works, I've got this, don't worry."
+    "Yeap, uh-huh, got it, tragic backstory tutorial blah blah blah, can we get this show on the road?"
 
 PAN COURT_DEFENSE COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
@@ -112,8 +119,10 @@ SPEAK Arin
     "When the heck is this trial going to start?"
 
 SCREEN_SHAKE
+POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
     "IT WILL BEGIN NOW!"
+Pose "Judge Brent" Normal
 SPEAK "Judge Brent"
     "May the prosecution please give their opening statements!"
 
@@ -131,6 +140,7 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "A recording of the livestream COULD be added to the court record if you riddle m-"
 
+//pose should be annoyed
 SPEAK_FROM COURT_DEFENSE
     "I already know where the court record is, could you get to the point, please?"
 
@@ -139,7 +149,9 @@ JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "W-well, you don't have to be so rude about it! Fine, it's been added to the court record."
 
+PLAY_SOUND evidenceshoop
 COURT_RECORD_ADD_ANIMATION EVIDENCE LivestreamRecording "Livestream Recording"
+SFX selectjingle
 
 SPEAK "Tutorial Boy"
     "Now... where was I?"
@@ -153,11 +165,14 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "At the time the defendant was carrying this backpack, which I will submit to the court record at this time."
 
+PLAY_SOUND evidenceshoop
 COURT_RECORD_ADD_ANIMATION EVIDENCE Jory'sBackpack "Jory's Backpack"
+SFX selectjingle
 
 SPEAK "Tutorial Boy"
     "However, when these dinos went missing, they were suspiciously found in the defendant's backpack!"
 
+PLAY_SOUND evidenceshoop
 COURT_RECORD_ADD_ANIMATION EVIDENCE StolenDinos "Stolen Dinos"
 
 SPEAK "Tutorial Boy"
@@ -194,13 +209,16 @@ FADE_IN
 JUMPCUT COURT_WITNESS
 WAIT 2
 
+PAN COURT_WITNESS COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "So you-"
 
 SCREEN_SHAKE
+POSE Jory Sweaty
 SPEAK_FROM COURT_WITNESS
     "I'm sorry! I know I'm guilty!"
 
+POSE Arin Sweaty
 SPEAK_FROM COURT_DEFENSE
     "Jory, we are trying to defend you! Stop getting yourself in trouble."
 
@@ -227,6 +245,7 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "How suspicious! Surely there were other, less busy people who could have easily gotten it, but you didn't hesitate!"
 
+POSE Jory Nervous
 SPEAK_FROM COURT_WITNESS
     "Eep! Yeah... I guess I didn't... but again it's part of my jo-"
 
@@ -246,7 +265,7 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "Especially since, according to the livestream recording here, you were busy cleaning your goodboy coins. Is this correct?"
 
-POSE Dan SideLean
+POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
     "Dude, what do his coins have to do with this? And what's with this guilt tripping over being helpful?"
 POSE Dan Normal
@@ -290,6 +309,7 @@ FAKE_CHOICE
     "Nah, we gucci." PlayerDoesntObject
 END_CHOICE
 
+POSE Arin Sweaty
 SPEAK_FROM COURT_DEFENSE 
     "Please don't slam your head into the desk again."
 SPEAK Arin
@@ -300,12 +320,14 @@ PAN COURT_DEFENSE COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "NEVER! It's my only way of objecting!"
 
+//pose should be annoyed. need talking sprites
 SPEAK_FROM COURT_DEFENSE
     "You can't be serious."
 
 SPEAK_FROM COURT_JUDGE
     "Objection sustained. I'll allow it."
 
+POSE Arin Normal //Should be deskslam pose, not animation
 SPEAK_FROM COURT_DEFENSE
     "Your Honor! That kind of behavior isn't appropriate in this courtroom!"
 
@@ -327,8 +349,8 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "When you were asked to go get a replacement Switch, what did you do with those coins?"
 
-POSE Jory Normal // Thinking
 PAN COURT_PROSECUTION COURT_WITNESS
+POSE Jory Thinking
 SPEAK_FROM COURT_WITNESS
     "Well, since I had just finished polishing them, I decided to put them away in my backpack..."
 SPEAK Jory
@@ -340,6 +362,7 @@ SCREEN_SHAKE
 SPEAK "Tutorial Boy"
     "THESE?!?!"
 
+PLAY_SOUND evidenceshoop
 COURT_RECORD_ADD_ANIMATION EVIDENCE BentCoins "Bent Coins"
 
 JUMPCUT COURT_WITNESS
@@ -401,12 +424,16 @@ SPEAK Jory
 SPEAK_FROM COURT_PROSECUTION
     "And what was this $qsomething$q that was so different?"
 
+POSE Jory Normal
 SPEAK_FROM COURT_WITNESS
     "Well, to put it simply, we were going to do a dunk tank contest."
 SPEAK Jory
     "but instead of water it was going to be Strawberries and Cream."
+//POSE Jory Thinking
 SPEAK Jory
     "Something about Ninja Party School, I don't know, it was Dan and Arin's idea..."
+
+POSE Jory Sweaty
 SPEAK Jory
     "but I wasn't really looking forward to being dunked in... cream..."
 
@@ -422,6 +449,7 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "I see right through you, Jory Griffis!"
 
+POSE Jory Nervous
 SPEAK_FROM COURT_WITNESS
     "N-no! I would never-"
 
@@ -449,6 +477,7 @@ SPEAK "Tutorial Boy"
     "We have a witness of the crime itself!"
 
 WIDESHOT
+SFX mutter
 JUMPCUT BLACK_SCREEN
 GAVEL
 
