@@ -177,6 +177,7 @@ SHOUT Arin objection
 SPEAK_FROM COURT_DEFENSE
     "Wait, you can't do that! It violates the Fifth Amendment!"
 
+POSE Dan SideNormal
 SPEAK_FROM COURT_ASSISTANT
     "Yeah! Wait... Is this even a real courthouse?"
 
@@ -240,8 +241,10 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "Especially since, according to the livestream recording here, you were busy cleaning your goodboy coins. Is this correct?"
 
+POSE Dan SideLean
 SPEAK_FROM COURT_ASSISTANT
     "Dude, what do his coins have to do with this? And what's with this guilt tripping over being helpful?"
+POSE Dan Normal
 SPEAK Dan
     "You should say something, Arin."
 
@@ -305,7 +308,7 @@ SPEAK_FROM COURT_JUDGE
     "Perhaps, but I get to make the call, and it's pretty funny to watch him do it."
 
 JUMPCUT COURT_PROSECUTION
-WAIT 2  // ANIMATION "Tutorial Boy" HeadSlam 3
+WAIT 2  // ANIMATION "Tutorial Boy" HeadSlam
 
 SPEAK_FROM COURT_JUDGE
     "Very amusing."
