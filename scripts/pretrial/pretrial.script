@@ -11,6 +11,7 @@ CHARACTER_INITIALIZE Jory jory MALE
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" sprite/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
 
 PLAY_MUSIC PRELUDE
@@ -76,8 +77,6 @@ SPEAK Arin
 SPEAK Arin
     "The plumbers just finished fixing the toilets in the north end of the building, and that got me thinking..."
 
-COURT_RECORD_ADD_ANIMATION EVIDENCE PlumberInvoice "Plumber Invoice"
-
 POSE Dan Hair
 SPEAK Dan
     "You mean you asked me to tell you all about one of the longest nights of my life just to be distracted by that?"
@@ -87,8 +86,9 @@ SPEAK Arin
 POSE Dan SideLaugh
 SPEAK Dan
     "Yeah, yeah you do like poopin'."
---EVIDENCE PlumberInvoice
-SFX evidenceshoop
+
+SFX EvidenceShoop
+COURT_RECORD_ADD_ANIMATION EVIDENCE PlumberInvoice "Plumber Invoice"
 
 POSE Dan Normal
 SPEAK Dan
@@ -293,6 +293,7 @@ SPEAK Jory
 SPEAK Arin
     "Let me see that!"
 
+SFX EvidenceShoop
 COURT_RECORD_ADD_ANIMATION EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 
 SFX Pageturn
