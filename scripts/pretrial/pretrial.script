@@ -414,6 +414,7 @@ SPEAK Arin
 SPEAK Arin
     "I just got a new suit just for something like this.#You're gonna love it."
 
+STOP_MUSIC
 WAIT 1
 FADE_TO_BLACK
 JUMPCUT BLACK_SCREEN
