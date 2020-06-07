@@ -91,7 +91,8 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "First you must listen to my-"
 
-POSE Arin Annoyed
+// POSE Arin Annoyed
+POSE Arin Normal
 SPEAK_FROM COURT_DEFENSE
     "Yep, uh-huh, got it. I already know how this works, I've got this, don't worry."
 
@@ -133,7 +134,7 @@ JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "W-well, you don't have to be so rude about it! Fine, it's been added to the court record."
 
-COURT_RECORD_ADD_ANIMATION EVIDENCE "Livestream Recording"
+COURT_RECORD_ADD_ANIMATION EVIDENCE LivestreamRecording "Livestream Recording"
 
 SPEAK "Tutorial Boy"
     "Now... where was I?"
@@ -147,12 +148,12 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "At the time the defendant was carrying this backpack, which I will submit to the court record at this time."
 
-COURT_RECORD_ADD_ANIMATION EVIDENCE "Jory's Backpack"
+COURT_RECORD_ADD_ANIMATION EVIDENCE Jory'sBackpack "Jory's Backpack"
 
 SPEAK "Tutorial Boy"
     "However, when these dinos went missing, they were suspiciously found in the defendant's backpack!"
 
-COURT_RECORD_ADD_ANIMATION EVIDENCE "Stolen Dinos"
+COURT_RECORD_ADD_ANIMATION EVIDENCE SotlenDinos "Stolen Dinos"
 
 SPEAK "Tutorial Boy"
     "While Mr. Griffis' backpack is fairly unique, in order to confirm the identity of the backpack's owner..."
@@ -331,7 +332,7 @@ SCREEN_SHAKE
 SPEAK "Tutorial Boy"
     "THESE?!?!"
 
-COURT_RECORD_ADD_ANIMATION EVIDENCE "Bent Coins"
+COURT_RECORD_ADD_ANIMATION EVIDENCE BentCoins "Bent Coins"
 
 JUMPCUT COURT_WITNESS
 SFX stab

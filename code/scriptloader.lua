@@ -145,7 +145,7 @@ function LoadScript(scene, scriptPath)
                 end
                 if lineParts[1] == "COURT_RECORD_ADD_ANIMATION" then
                     AddToStack(stack, NewCourtRecordAddEvent(lineParts[2], lineParts[3]), lineParts)
-                    AddToStack(stack, NewAddToCourtRecordAnimationEvent(lineParts[3]), lineParts)
+                    AddToStack(stack, NewAddToCourtRecordAnimationEvent(lineParts[4]), lineParts)
                 end
 
                 if lineParts[1] == "SET_SCENE_TYPE" then
