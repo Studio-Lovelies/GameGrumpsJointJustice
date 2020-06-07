@@ -122,32 +122,32 @@ BrowseScreenConfig = {
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
-                NewPlaySoundEvent("selectblip2")
+                Sounds["SELECTBLIP2"]:play()
                 screens.title.displayed = true;
                 DrawTitleScreen();
                 screens.browsescenes.displayed = false;
                 TitleSelection = "Case Select";
                 SelectionIndex = 1;
             elseif TitleSelection == "Pre-Trial" then
-                NewPlaySoundEvent("selectjingle")
+                Sounds["SELECTJINGLE"]:play()
                 Episode:begin()
                 screens.browsescenes.displayed = false;
             elseif TitleSelection == "Jory's Trial" then
-                NewPlaySoundEvent("selectblip2")
+                Sounds["SELECTBLIP2"]:play()
                 screens.jorytrial.displayed = true;
                 DrawJoryTrialScreen();
                 screens.browsescenes.displayed = false;
                 SelectionIndex = 0;
             end
         elseif key == controls.press_right then
-            NewPlaySoundEvent("selectblip2")
+            Sounds["SELECTBLIP2"]:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
                 SelectionIndex = 0
             end
             TitleSelection = browseSceneSelections[SelectionIndex]
         elseif key == controls.press_left then
-            NewPlaySoundEvent("selectblip2")
+            Sounds["SELECTBLIP2"]:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
                 SelectionIndex = 2
