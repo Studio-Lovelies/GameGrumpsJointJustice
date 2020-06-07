@@ -17,7 +17,7 @@ CHARACTER_LOCATION "Tutorial Boy" COURT_PROSECUTION
 CHARACTER_LOCATION Jory COURT_WITNESS
 
 EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
-EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/Jory'sBackpack.png
+EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy Coins in. The dinos were found inside." evidence/Jory'sBackpack.png
 EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." sprites/StolenDinos.png
 EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
 
@@ -153,7 +153,7 @@ COURT_RECORD_ADD_ANIMATION EVIDENCE Jory'sBackpack "Jory's Backpack"
 SPEAK "Tutorial Boy"
     "However, when these dinos went missing, they were suspiciously found in the defendant's backpack!"
 
-COURT_RECORD_ADD_ANIMATION EVIDENCE SotlenDinos "Stolen Dinos"
+COURT_RECORD_ADD_ANIMATION EVIDENCE StolenDinos "Stolen Dinos"
 
 SPEAK "Tutorial Boy"
     "While Mr. Griffis' backpack is fairly unique, in order to confirm the identity of the backpack's owner..."
@@ -426,7 +426,7 @@ PAN COURT_PROSECUTION COURT_DEFENSE
 POSE Arin Point
 SPEAK_FROM COURT_DEFENSE
     "There is no proof that Jory is lying!"
-ANIMATION Arin DeskSlam 2
+ANIMATION Arin DeskSlam
 SPEAK Arin
     "You're simply pushing a false narrative to make my client look bad."
 
@@ -441,6 +441,7 @@ SPEAK "Tutorial Boy"
     "We have a witness of the crime itself!"
 
 WIDESHOT
+JUMPCUT BLACK_SCREEN
 GAVEL
 
 // POSE "Judge Brent" Angry

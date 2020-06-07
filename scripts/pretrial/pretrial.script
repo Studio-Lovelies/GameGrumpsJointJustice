@@ -9,9 +9,9 @@ CHARACTER_INITIALIZE Dan dan MALE
 CHARACTER_INITIALIZE ??? jory MALE
 CHARACTER_INITIALIZE Jory jory MALE
 
-EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." evidence/badge.png
-EVIDENCE_INITIALIZE JorySrsLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
-COURT_RECORD_ADD EVIDENCE Badge
+EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
+EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
+COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
 
 PLAY_MUSIC PRELUDE
 
@@ -45,13 +45,13 @@ SPEAK Dan
     "Dude!#You're the one who asked me about it!"
 POSE Dan Normal
 SPEAK Dan
-    "You said it had something to do with the 10 minute power hour we were doing today."
+    "You said it had something to do with the 10 Minute Power Hour we were doing today."
 
 SFX Realization
 SPEAK Arin
     "Oh yeah that's right, I remember now!"
 SPEAK Arin
-    "Do you know what we're doing for the ten minute power hour today?"
+    "Do you know what we're doing for the Power Hour today?"
 
 SCREEN_SHAKE
 POSE Dan Angry
@@ -86,7 +86,7 @@ SPEAK Dan
 
 POSE Dan Normal
 SPEAK Dan
-    "So what ARE we doing for the 10 minute power hour today?"
+    "So what ARE we doing for the Power Hour?"
 SPEAK Arin
     "Well, remember the dunking pool the second night of your graduation party?"
 SPEAK Dan
@@ -207,6 +207,7 @@ SPEAK Arin
     "Whaaaat?!"
 
 WAIT 1
+POSE Jory Normal
 SPEAK Jory
     "Well, I guess so."
 SPEAK Jory
@@ -286,7 +287,7 @@ SPEAK Jory
 SPEAK Arin
     "Let me see that!"
 
-COURT_RECORD_ADD_ANIMATION EVIDENCE "Jory Sr's Letter"
+COURT_RECORD_ADD_ANIMATION EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 
 SFX Pageturn
 SPEAK Arin

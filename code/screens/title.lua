@@ -122,26 +122,31 @@ TitleScreenConfig = {
             love.graphics.clear(0,0,0);
             if TitleSelection == "Case Select" then
                 -- browse scenes screen here
+                NewPlaySoundEvent("selectblip2")
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
                 screens.title.displayed = false;
                 SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 -- replace this and handle load game logic
+                NewPlaySoundEvent("selectblip2")
                 Episode:begin()
                 screens.title.displayed = false;
             elseif TitleSelection == "New Game" then
                 -- replace this and handle new game logic
+                NewPlaySoundEvent("selectjingle")
                 Episode:begin()
                 screens.title.displayed = false;
             end
         elseif key == controls.press_right then
+            NewPlaySoundEvent("selectblip2")
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
                 SelectionIndex = 0
             end
             TitleSelection = titleSelections[SelectionIndex]
         elseif key == controls.press_left then
+            NewPlaySoundEvent("selectblip2")
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
                 SelectionIndex = 2

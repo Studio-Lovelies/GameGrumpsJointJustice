@@ -84,7 +84,7 @@ SPEAK Dan
 
 JUMPCUT COURT_DEFENSE
 ANIMATION Arin DeskSlam
-POSE Arin DeskSlam
+//POSE Arin DeskSlam
 SPEAK Arin
     "Alright, let's do it then."
 

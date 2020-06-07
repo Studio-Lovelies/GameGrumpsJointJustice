@@ -148,28 +148,34 @@ JoryTrialConfig = {
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
+                NewPlaySoundEvent("selectblip2")
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
                 screens.jorytrial.displayed = false;
                 TitleSelection = "Jory's Trial";
                 SelectionIndex = 2;
             elseif TitleSelection == "Part 1" then
+                NewPlaySoundEvent("selectjingle")
                 NewEpisode(settings.jory_trial_1_path):begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 2" then
+                NewPlaySoundEvent("selectjingle")
                 NewEpisode(settings.jory_trial_2_path):begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 3" then
+                NewPlaySoundEvent("selectjingle")
                 NewEpisode(settings.jory_trial_3_path):begin()
                 screens.jorytrial.displayed = false;
             end
         elseif key == controls.press_right then
+            NewPlaySoundEvent("selectblip2")
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 3) then
                 SelectionIndex = 0
             end
             TitleSelection = jorySceneSelections[SelectionIndex]
         elseif key == controls.press_left then
+            NewPlaySoundEvent("selectblip2")
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
                 SelectionIndex = 3
