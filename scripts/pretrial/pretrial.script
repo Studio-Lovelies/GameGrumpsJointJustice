@@ -54,6 +54,7 @@ SPEAK Arin
     "Do you know what we're doing for the Power Hour today?"
 
 SCREEN_SHAKE
+SFX stab
 POSE Dan Angry
 SPEAK Dan
     "NO goddamnit, I'm asking you!"
@@ -71,8 +72,11 @@ SPEAK Dan
     "From what?"
 SPEAK Arin
     "Well, I got the invoice for the bathrooms today."
+
 SPEAK Arin
     "The plumbers just finished fixing the toilets in the north end of the building, and that got me thinking..."
+
+COURT_RECORD_ADD_ANIMATION EVIDENCE PlumberInvoice "Plumber Invoice"
 
 POSE Dan Hair
 SPEAK Dan
@@ -83,6 +87,8 @@ SPEAK Arin
 POSE Dan SideLaugh
 SPEAK Dan
     "Yeah, yeah you do like poopin'."
+--EVIDENCE PlumberInvoice
+SFX evidenceshoop
 
 POSE Dan Normal
 SPEAK Dan
@@ -385,6 +391,8 @@ SPEAK Dan
 SPEAK Arin
     "Yea, trust and love and whatever.#What do you think Jory Sr. is going to give us when we win?"
 
+SCREEN_SHAKE
+SFX stab
 POSE Dan Angry
 SPEAK Dan
     "Arin!"
