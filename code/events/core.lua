@@ -524,13 +524,16 @@ end
 
 function NewFadeInEvent()
     local self = {}
-    self.timer = 255
+    self.timer = 1
 
     self.update = function (self, scene, dt)
         scene.textHidden = true
         scene.canShowCourtRecord = false
 
+        local lastTimer = self.timer
         self.timer = self.timer - dt
+
+        return self.timer >= 0 and lastTimer >=0
     end
 
     self.draw = function (self, scene)
