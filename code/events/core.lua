@@ -360,7 +360,7 @@ function NewAddToCourtRecordAnimationEvent(evidenceSpriteName)
 
     self.draw = function (self, scene)
         love.graphics.setColor(1,1,1)
-        if Sprites[self.evidence] == nil then
+        if Sprites[self.evidence:gsub(" ", "")] == nil then
             love.graphics.draw(Sprites["MissingTexture"], 16,16)
         else
             love.graphics.draw(Sprites[self.evidence:gsub(" ", "")], 24,24)
