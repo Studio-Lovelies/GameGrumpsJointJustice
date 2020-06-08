@@ -11,7 +11,7 @@ CHARACTER_INITIALIZE Jory jory MALE
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
-EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" sprite/PlumberInvoice.png
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
 
 PLAY_MUSIC PRELUDE
@@ -415,7 +415,6 @@ SPEAK Arin
 SPEAK Arin
     "I just got a new suit just for something like this.#You're gonna love it."
 
-STOP_MUSIC
 WAIT 1
 FADE_TO_BLACK
 JUMPCUT BLACK_SCREEN
