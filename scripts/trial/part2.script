@@ -65,6 +65,7 @@ JUMPCUT BLACK_SCREEN
 WAIT 1
 JUMPCUT COURT_WITNESS
 FADE_IN
+WAIT 2
 
 SPEAK_FROM COURT_JUDGE
     "Someone actually witnessed the crime?"
@@ -74,7 +75,7 @@ SPEAK_FROM COURT_PROSECUTION
  
 JUMPCUT COURT_DEFENSE
 ANIMATION Arin Shock
-POSE Arin Normal
+POSE Arin Sweaty
 SPEAK Arin
     "Ross?! They roped you into this as well?"
  
@@ -112,7 +113,8 @@ POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
     "Nothing, Your Honor!"
     "Ross O'Donovan, local animator, Mario Maker enthusiast, apparent sadist, and friend."  // WN -- that last one could be colored differently
- 
+
+POSE Dan SideNormal
 SPEAK_FROM COURT_ASSISTANT
     "Some friend... Testifying against Jory, treating him like a criminal."
  
@@ -124,14 +126,20 @@ SPEAK Dan
  
 SPEAK Arin
     "That a gavel, lubed properly, has many uses?"
- 
+
 SPEAK Dan
-    "No! Well, I mean yeah... That gayliff sure was creative."
+    "No!"
+
+POSE Dan SideLaugh
+SPEAK Dan
+    "Well, I mean yeah... That gayliff sure was creative."\
+
+POSE Dan SideNormal
 SPEAK Dan
     "But more importantly, you should go into it with confidence that your client is innocent."
 SPEAK Dan
     "We don't know if he's guilty, but if his own attorney doesn't believe him, why should the rest of the court?"
- 
+
 SPEAK Arin
     "You're right! We're here to defend our friend, so we should at least assume we're making the right call."
 
@@ -144,7 +152,9 @@ SPEAK_FROM COURT_JUDGE
 POSE Arin Sweaty
 THINK_FROM COURT_DEFENSE
     "Why does he act like he doesn't know anyone here?"
- 
+
+ANIMATION Arin Nodding
+
 POSE Arin Normal
 SPEAK Arin
     "We're ready, Your Honor."
