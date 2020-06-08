@@ -129,7 +129,7 @@ TitleScreenConfig = {
                 SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 -- replace this and handle load game logic
-                Sounds["SELECTBLIP2"]:play()
+                Sounds["SELECTJINGLE"]:play()
                 Episode:begin()
                 screens.title.displayed = false;
             elseif TitleSelection == "New Game" then
