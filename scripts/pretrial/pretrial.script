@@ -228,7 +228,7 @@ SPEAK Dan
 
 POSE Dan Normal
 SPEAK Dan
-    "Cmon bro, be a bro and bro this one out for our bro... Brory."
+    "C'mon bro, be a bro and bro this one out for our bro... Brory."
 
 CHARACTER_LOCATION Jory LOBBY
 POSE Jory Nervous
