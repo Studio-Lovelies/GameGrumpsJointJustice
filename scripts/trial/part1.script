@@ -22,6 +22,8 @@ EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour
 EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
+COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 
@@ -76,8 +78,9 @@ SPEAK "Judge Brent"
     "He just happened to be visiting this week."
 
 SPEAK_FROM COURT_PROSECUTION
-    "Mr.Hansen and Mr. Avidan. So we meet at last!"
+    "Mr. Hansen and Mr. Avidan... So we meet at last!"
 
+POSE Arin Normal
 THINK_FROM COURT_DEFENSE
     "(Who exactly is this? He seems familiar but I can't put my finger on it...)"
 
@@ -187,6 +190,7 @@ SPEAK "Tutorial Boy"
 
 SPEAK_FROM COURT_JUDGE
     "Hm... Yes, that seems to be a very solid opening statement."
+SPEAK "Judge Brent"
     "You may call your first witness, Mr. Boy."
 
 SPEAK_FROM COURT_PROSECUTION
@@ -204,6 +208,8 @@ SPEAK_FROM COURT_JUDGE
     "Keep your pants on. I make up the rules in this courthouse. I will allow the testifying of the defendant." 
 
 FADE_TO_BLACK
+JUMPCUT BLACK_SCREEN
+WAIT 1
 JUMPCUT COURT_WITNESS
 FADE_IN
 
@@ -241,7 +247,7 @@ PAN COURT_WITNESS COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "So you ADMIT that you jumped on the opportunity to be the one to do the gruntwork for the Grumps?"
 SPEAK "Tutorial Boy"
-    "How suspicious! Surely there were other, less busy people who could have easily gotten it, but you didn't hesitate!"
+    "How suspicious! Surely there were other, less busy people who could have gotten it, but you didn't hesitate!"
 
 POSE Jory Nervous
 SPEAK_FROM COURT_WITNESS
@@ -255,7 +261,7 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK_FROM COURT_WITNESS
     "YIKES!!!"
 
-SPEAK_FROM COURT_DEFENSE
+THINK_FROM COURT_DEFENSE
     "Jeez! This guy is intense!"
 
 SPEAK_FROM COURT_PROSECUTION
@@ -269,9 +275,6 @@ SPEAK_FROM COURT_ASSISTANT
 POSE Dan Angry
 SPEAK Dan
     "You should say something, Arin."
-
-SPEAK Arin
-    "Hm..."
 
 DEFINE PlayerObjects
     WAIT 1  // This is a temporary workaround
@@ -306,6 +309,9 @@ FAKE_CHOICE
     "Object!" PlayerObjects
     "Nah, we gucci." PlayerDoesntObject
 END_CHOICE
+
+SPEAK Arin
+    "Hm..."
 
 POSE Arin Sweaty
 SPEAK_FROM COURT_DEFENSE 
@@ -385,6 +391,7 @@ POSE "Tutorial Boy" Confident
 
 SHOUT Arin objection
 PAN COURT_PROSECUTION COURT_DEFENSE
+POSE Arin Point
 SPEAK_FROM COURT_DEFENSE
     "The prosecution is badgering the witness!"
 SPEAK Arin

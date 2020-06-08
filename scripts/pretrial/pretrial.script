@@ -293,14 +293,12 @@ SPEAK Jory
 SPEAK Arin
     "Let me see that!"
 
-SFX EvidenceShoop
-COURT_RECORD_ADD_ANIMATION EVIDENCE JorySr'sLetter "Jory Sr's Letter"
-
 SFX Pageturn
 SPEAK Arin
     "...#Wow, he's right! We should hold on to this, I think it might be important later"
---EVIDENCE Jory Sr's Letter
-SFX Evidenceshoop
+
+SFX EvidenceShoop
+COURT_RECORD_ADD_ANIMATION EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 
 CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
@@ -418,6 +416,7 @@ SPEAK Arin
 WAIT 1
 FADE_TO_BLACK
 JUMPCUT BLACK_SCREEN
-WAIT 3
+WAIT 2
 
+STOP_MUSIC
 END_SCENE
