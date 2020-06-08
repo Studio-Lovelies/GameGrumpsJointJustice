@@ -61,8 +61,10 @@ SPEAK_FROM COURT_PROSECUTION
 
 // SFX [Writer's Note -- One of them slashing sounds, I couldn't find it]
 FADE_TO_BLACK
+JUMPCUT BLACK_SCREEN
+WAIT 1
 JUMPCUT COURT_WITNESS
-WAIT 2
+FADE_IN
 
 SPEAK_FROM COURT_JUDGE
     "Someone actually witnessed the crime?"

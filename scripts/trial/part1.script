@@ -107,8 +107,7 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "First you must listen to my-"
 
-// POSE Arin Annoyed
-POSE Arin Normal
+POSE Arin Annoyed
 SPEAK_FROM COURT_DEFENSE
     "Yeap, uh-huh, got it, tragic backstory tutorial blah blah blah, can we get this show on the road?"
 
@@ -116,9 +115,9 @@ PAN COURT_DEFENSE COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "Don't you dare skip me! I'm the-"
 
-POSE Arin Normal
 SPEAK_FROM COURT_DEFENSE
-    "Man, if the artists drew me yawning, that's what you'd be seeing right now." 
+    "Man, if the artists drew me yawning, that's what you'd be seeing right now."
+POSE Arin Normal
 SPEAK Arin
     "When the heck is this trial going to start?"
 
@@ -144,7 +143,7 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "A recording of the livestream COULD be added to the court record if you riddle m-"
 
-// POSE Arin Annoyed
+POSE Arin Annoyed
 SPEAK_FROM COURT_DEFENSE
     "I already know where the court record is, could you get to the point, please?"
 
@@ -180,7 +179,7 @@ COURT_RECORD_ADD_ANIMATION EVIDENCE StolenDinos "Stolen Dinos"
 SPEAK "Tutorial Boy"
     "While Mr. Griffis' backpack is fairly unique, in order to confirm the identity of the backpack's owner..."
 SPEAK "Tutorial Boy"
-    "we found the very same Goodboy Coins Jory was polishing during the livestream in the exact same place as the dinosaurs,"
+    "we found the very same Good Boy Coins Jory was polishing during the livestream in the exact same place as the dinosaurs,"
 SPEAK "Tutorial Boy"
     "proving that our perpetrator is the defendant!"
 SPEAK "Tutorial Boy"
@@ -197,6 +196,7 @@ SPEAK_FROM COURT_PROSECUTION
     "I would now like to call said defendant, Jory Griffis, to the stand!"
 
 SHOUT Arin objection
+POSE Arin Point
 SPEAK_FROM COURT_DEFENSE
     "Wait, you can't do that! It violates the Fifth Amendment!"
 
@@ -262,12 +262,12 @@ SPEAK_FROM COURT_WITNESS
     "YIKES!!!"
 
 THINK_FROM COURT_DEFENSE
-    "Jeez! This guy is intense!"
+    "(Jeez! This guy is intense!)"
 
 SPEAK_FROM COURT_PROSECUTION
     "Suspicious behavior indeed!"
 SPEAK "Tutorial Boy"
-    "Especially since, according to the livestream recording here, you were busy cleaning your goodboy coins. Is this correct?"
+    "Especially since, according to the livestream recording here, you were busy cleaning your Good Boy Coins. Is this correct?"
 
 POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
@@ -305,13 +305,13 @@ DEFINE PlayerDoesntObject
         "Nah, we good I think."
 END_DEFINE
 
+SPEAK Arin
+    "Hm..."
+
 FAKE_CHOICE
     "Object!" PlayerObjects
     "Nah, we gucci." PlayerDoesntObject
 END_CHOICE
-
-SPEAK Arin
-    "Hm..."
 
 POSE Arin Sweaty
 SPEAK_FROM COURT_DEFENSE 
