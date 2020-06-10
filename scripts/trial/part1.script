@@ -178,9 +178,9 @@ COURT_RECORD_ADD_ANIMATION EVIDENCE StolenDinos "Stolen Dinos"
 SPEAK "Tutorial Boy"
     "While Mr. Griffis' backpack is fairly unique, in order to confirm the identity of the backpack's owner..."
 SPEAK "Tutorial Boy"
-    "we found the very same Good Boy Coins Jory was polishing during the livestream in the exact same place as the dinosaurs,"
+    "we found the very same Good Boy Coins Jory was polishing during the livestream,"
 SPEAK "Tutorial Boy"
-    "proving that our perpetrator is the defendant!"
+    "in the exact same place as the dinosaurs, proving that our perpetrator is the defendant!"
 SPEAK "Tutorial Boy"
     "I am here to prove beyond a shadow of a doubt that it was, in fact, Jory Griffis...
 SPEAK "Tutorial Boy"
@@ -330,7 +330,7 @@ SPEAK_FROM COURT_DEFENSE
 SPEAK_FROM COURT_JUDGE
     "Objection sustained. I'll allow it."
 
-POSE Arin Normal //Should be deskslam pose, not animation
+POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
     "Your Honor! That kind of behavior isn't appropriate in this courtroom!"
 
