@@ -50,8 +50,7 @@ SPEAK_FROM COURT_JUDGE
 
 SPEAK_FROM COURT_DEFENSE
     "The defense is ready Your H-"
-SCREEN_SHAKE
-
+SFX realization
 POSE Arin Sweaty
 SPEAK Arin
     "Wait, Brent? Is that you?"
@@ -281,7 +280,7 @@ DEFINE PlayerObjects
     SHOUT Arin objection
     JUMPCUT COURT_DEFENSE
     ANIMATION Arin DeskSlam
-    POSE Arin Normal //DeskSlam
+    POSE Arin DeskSlam
     SPEAK Arin
         "My client's behavior during the livestream isn't suspicious in the least!"
     SPEAK Arin

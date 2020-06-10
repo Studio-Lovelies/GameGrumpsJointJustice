@@ -1,0 +1,679 @@
+//////////////////////
+// INITIALIZE SCENE //
+//////////////////////
+
+SET_SCENE_TYPE TRIAL
+
+CHARACTER_INITIALIZE Arin arin MALE
+CHARACTER_INITIALIZE Dan dan MALE
+CHARACTER_INITIALIZE "Judge Brent" judge MALE
+CHARACTER_INITIALIZE "Tutorial Boy" payne MALE
+CHARACTER_INITIALIZE Ross ross MALE
+
+CHARACTER_LOCATION Arin COURT_DEFENSE
+CHARACTER_LOCATION Dan COURT_ASSISTANT
+CHARACTER_LOCATION "Judge Brent" COURT_JUDGE
+CHARACTER_LOCATION "Tutorial Boy" COURT_PROSECUTION
+CHARACTER_LOCATION Ross COURT_WITNESS
+
+EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recrding" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
+COURT_RECORD_ADD EVIDENCE LivestreamRecording
+EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/Jory'sBackpack.png
+COURT_RECORD_ADD EVIDENCE Jory'sBackpack
+EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." sprites/StolenDinos.png
+COURT_RECORD_ADD EVIDENCE StolenDinos
+EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
+COURT_RECORD_ADD EVIDENCE BentCoins
+EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
+COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
+COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
+EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
+COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
+
+DEFINE TRIAL_FAIL
+    JUMPCUT BLACK_SCREEN
+    SPEAK "Judge Brent"
+        "The defense loses."
+END_DEFINE
+
+
+//////////////////
+// START SCRIPT //
+//////////////////
+
+FADE_TO_BLACK
+JUMPCUT BLACK_SCREEN
+WAIT 1
+JUMPCUT COURT_WITNESS
+FADE_IN
+WAIT 1
+
+PLAY_MUSIC QUESTIONING
+
+WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
+    "Well I guess you got me. I did lie about what I was doing."
+    "I was actually making a special mario maker level for you guys."
+    "You’ve always been good sports about my troll levels, so I wanted to make you a nice one for a change!"
+    "It was when I was in the middle of making the level when I saw Jory walk by my office"
+    "I got tired of making the level so I wanted to see what he was up to."
+    "That’s when I saw it! He had taken the Dinos and stuffed them into his backpack!"
+    "That’s how I knew where to look for them."
+
+STOP_MUSIC
+FADE_TO_BLACK
+
+// POSE "Judge Brent" Thinking
+SPEAK_FROM COURT_JUDGE
+    "Hmm. So you were in your office working on a Mario Maker level but needed a break. That's when you saw Jory and saw the dinosaurs.
+
+POSE "Judge Brent" Normal
+SPEAK "Judge Brent"
+    "That seems to make sense."
+
+SPEAK_FROM COURT_PROSECUTION
+    "Without a doubt your honor. That is how it really happened."
+SPEAK "Tutorial Boy"
+    "I apologize for not being forthwith with that at the beginning, but you see we -- er, I mean, my client, wanted      to keep it a surprise.
+SPEAK "Tutorial Boy"
+    "I hope the defense is happy with themselves for ruining Ross' great gesture! We can add that to Jory's crimes!
+
+//ANIMATION "Tutorial Boy" HeadSlam
+
+SPEAK_FROM COURT_DEFENSE
+    "What do you think Dan?"
+
+SPEAK_FROM COURT_ASSISTANT
+    "Yeah... I can't really see any holes in his claim...
+Speak Arin
+    "Damn..."
+
+SFX lightbulb
+
+SPEAK Arin
+    "Wait! I've got an idea!"
+
+Speak Dan
+    "What is it?"
+
+SPEAK Arin
+    "I'll just BS my way through by questioning everything he said!"
+
+SPEAK Dan
+    "I don't know man. Do you really think that will work?"
+
+SPEAK Arin
+    "Well maybe, but it's worked for everything else I've ever done, so FUCK IT!!!"
+
+SPEAK Dan
+    "Well if you..."
+
+SPEAK Dan
+    "Wait, what do you mean every--"
+
+POSE Arin DeskSlam
+SPEAK_FROM COURT_DEFENSE
+    "LET'S DO IT!"
+
+SPEAK_FROM COURT_JUDGE
+    "If the defense would like to cross examine now...?"
+POSE Arin Point
+SPEAK_FROM COURT_DEFENSE
+    "You bet I would! I’ve got some questions that need answering!"
+
+SPEAK_FROM COURT_JUDGE
+    "Very well. The defense may begin their cross-examination."
+
+FADE_TO_BLACK
+JUMPCUT BLACK_SCREEN
+WAIT 1
+JUMPCUT COURT_WITNESS
+FADE_IN
+WAIT 1
+
+PLAY_MUSIC QUESTIONING
+
+///////////////////////
+// Cross Examination //
+///////////////////////
+
+
+//cross examination stuff goes here
+
+
+/////////////////////////
+// Found Contradiction //
+/////////////////////////
+
+SHOUT Arin Objection
+PAN_FROM COURT_WITNESS COURT_DEFENSE
+    "You said you were in the middle of making a level. Exactly how you were making it?"
+
+SPEAK_FROM COURT_WITNESS
+    "Duh! I was using my switch!, Like, how *else* could I be making it?"
+
+SPEAK_FROM COURT_PROSECUTION
+    "That’s the best question you can come up with? Laughable!"
+
+POSE Arin DeskSlam
+THINK_FROM COURT_DEFENSE
+    "Rrrrr, this guy is so annoying"
+
+SFX realization
+
+THINK Arin
+   "...!"
+
+POSE Arin Confident
+SPEAK Arin
+    "As a matter of fact, it IS the best question!"
+Speak Arin
+    "And it's the only question I need to see your lies for what they are!"
+
+SFX stab
+SCREEN_SHAKE
+SPEAK_FROM COURT_WITNESS
+///ANIMATION Ross Shocked (mario maker helm)
+POSE Ross Sweaty
+    "W-w-what?"
+
+PAN_FROM COURT_WITNESS COURT_DEFENSE
+POSE Arin Point
+SPEAK Arin
+    "There's no way you could have been using your switch when you said you were!"
+
+WIDESHOT
+
+//GAVEL X3
+
+POSE "Judge Brent" Angry
+SPEAK_FROM COURT_JUDGE
+    "ORDER! I will have order in this court!"
+
+POSE "Judge Brent" Surprised
+    "You say that he could not have been using his switch as he claims?"
+
+POSE Arin DeskSlam
+SPEAK_FROM COURT_DEFENSE
+    "That’s correct, your honor!"
+
+//ANIMATION TUTORIAL BOI [HEADSLAM]
+POSE "Tutorial Boy" Sweating
+SPEAK_FROM COURT_PROSECUTION
+    "Impossible! There’s no way you can prove such a thing!"
+
+POSE Arin DeskSlam
+SPEAK_FROM COURT_DEFENSE
+    "I CAN prove it, with this!"
+
+//PRESENT EVIDENCE [SWITCH]
+
+SHOUT Arin takethat
+
+//show switch icon
+
+SPEAK_FROM COURT_PROSECUTION
+    "What is this…?"
+
+POSE Arin Confident
+SPEAK_FROM COURT_DEFENSE
+    "Why it’s a Nintendo Switch. But not just any switch"
+
+ANIMATION Arin Objection
+POSE Arin Point
+SPEAK Arin
+    "It's Ross' switch!"
+
+ANIMATION Ross Shocked
+SFX stab
+SPEAK_FROM COURT_WITNESS
+    "GAH!"
+
+POSE "Judge Brent" Surprised
+SPEAK_FROM COURT_JUDGE
+    "His switch?"
+
+//ANIMATION "Tutorial Boy" HeadSlam
+POSE "Tutorial Boy" Sweaty
+SCREEN_SHAKE
+SPEAK_FROM COURT_PROSECUTION
+    "NO!"
+SPEAK "Tutorial Boy"
+    "That can't be!"
+
+Wait 2
+
+POSE "Tutorial Boy"
+SPEAK "Tutorial Boy"
+    "..."
+SPEAK "Tutorial Boy"
+    "Wait how is that relevant?"
+
+SPEAK_FROM COURT_JUDGE
+    "Does the prosecution have an... objection?"
+
+POSE "Tutorial Boy" Sweaty
+SPEAK_FROM COURT_PROSECUTION
+    "Oh right, my mistake"
+
+SHOUT "Tutorial Boy" objection
+//ANIMATION "Tutorial Boy" 
+
+SPEAK "Tutorial Boy"
+    "This has no relevance to this case, your honor!"
+SPEAK "Tutorial Boy"
+    "Not only is there no proof that this is even Ross’ own console..."
+POSE "Tutorial Boy" Confident
+SPEAK "Tutorial Boy"
+    "I don’t see how it’s possible that they can prove that Ross was or was not using this particular switch!"
+
+SHOUT Arin objection
+POSE Arin Point
+PAN_FROM COURT_PROSECUTION COURT_DEFENSE
+    "If you wouldn't interrupt, I'd show you just how possible it is."
+
+ANIMATION Arin DeskSlam
+Pose Arin DeskSlam
+    "Your honor, if i may explain"
+
+SPEAK_FROM COURT_JUDGE
+//ANIMATION "Judge Brent" Nodding
+    "Objection sustained. The defense will proceed"
+
+SPEAK_FROM COURT_DEFENSE
+    "Thank you, your honor"
+POSE Arin Paper
+    "Look closely on the back of this particular Switch."
+
+//bring up switch icon
+
+SPEAK Arin
+    "You’ll see that there clearly in the (correct location on the switch icon art) is a Slimemantha sticker on it!"
+
+POSE "Tutorial Boy" Sweaty
+SPEAK_FROM COURT_PROSECUTION
+    "S-so what? That still doesn’t help your case."
+
+POSE Arin Confident
+SPEAK_FROM COURT_DEFENSE
+    "Well just wait a minute and you’ll see how it helps!"
+
+SPEAK_FROM COURT_ASSISTANT
+    "Are you sure about this, Arin? Everytime you’re this confident you tend to blow it immediately."
+SPEAK Arin
+    "Don't worry Dan, check this shit out."
+
+
+//DEFINE PLAYER CHOICES
+//    PLAYER CHOICE
+//1.Show them what games are on the switch
+//2.Show them the last game played
+//3.SHOW EM UR TITS
+
+
+//CORRECT CHOICE
+
+//SFX takethat
+//ARIN [PAPER]
+//If you’ve ever owned a Switch, you’d know that the last game played always sits on the far left-hand side of the //screen !
+//ARIN:  That way you have quick and easy access to the game you were most recently playing.
+
+POSE "Judge Brent" Shocked
+SPEAK_FROM COURT_JUDGE
+SFX lightbulb
+   "That’s very true! I’ve noticed it on my own switch."
+
+POSE Arin Normal
+SPEAK_FROM COURT_DEFENSE
+    "Exactly! And what do we see when we load Ross’ switch to the home screen?"
+
+SPEAK Arin
+    "Well if the prosecution’s claim that Ross was making a Mario Maker level with his switch is true…"
+SPEAK Arin
+    "Then Mario Maker would be the game all the way on the left hand side of the screen!"
+
+ANIMATION Arin DeskSlam
+POSE Arin DeskSlam
+    "But if you’d take a look at Ross’ switch, your honor, that is NOT the game you’ll find."
+
+SPEAK Arin
+    "Your honor, would you do the honors of telling this court what game is actually there?"
+
+POSE "Judge Brent" Thinking
+WAIT 1
+POSE "Judge Brent" Normal
+SPEAK_FROM COURT_JUDGE
+    "Yes, let me see."
+
+//SWITCH ICON APPEARS AGAIN
+
+WAIT 2
+
+SFX realization
+POSE "Judge Brent" Surprised
+SPEAK "Judge Brent"
+    "Penix Wright: Facial Attorney?!"
+
+JUMPCUT COURT_WITNESS
+//ANIMATION Ross Shocked
+
+//POSE "Tutorial Boy" Shocked
+SPEAK_FROM COURT_PROSECUTION
+    "Absurd!"
+
+POSE Arin Confident
+SPEAK_FROM COURT_DEFENSE
+  "As you can plainly see, the witness is a liar liar and his pants..."
+POSE Arin Point
+SPEAK Arin
+    "surely are on fire!"
+
+//ANIMATION Dan AirGuitar
+SPEAK_FROM COURT_ASSISTANT
+   "Nice dude! That totally has them on the ropes!"
+
+SPEAK Arin
+    "Yea, I’d like to see them object to that!"
+
+SHOUT "Tutorial Boy" objection
+
+POSE Arin Sweaty //Joke sweaty with extra chins?
+SPEAK Arin
+    "Are you buttf*@#ing me dude?"
+
+PAN_FROM COURT_DEFENSE COURT_PROSECUTION
+POSE "Tutorial Boy" Objection
+    "Whatever game was last played doesn’t prove anything!"
+SPEAK "Tutorial Boy" 
+    "Ross could have accidentally loaded that game when he put his switch away!"
+SPEAK "Tutorial Boy" 
+    "Your honor this is baseless conjecture."
+
+POSE "Judge Brent" Thinking
+SPEAK_FROM COURT_JUDGE
+    "Well I don’t think it’s baseless, but it’s not as solid proof as I think the defense believes."
+
+SPEAK_FROM COURT_DEFENSE
+ANIMATION Arin Shocked
+POSE Arin Shocked
+SPEAK Arin
+    "W-W-W-HAAAT?!"
+
+POSE "Judge Brent" Normal
+SPEAK_FROM COURT_JUDGE
+    "I’m afraid I have to side with the prosecution on this."
+SPEAK "Judge Brent"
+    "While that evidence does seem very suspicious, it alone is not enough to support your claim."
+
+POSE Ross Glaring
+SPEAK_FROM COURT_WITNESS
+    "Y-yeah! You’re reaching real hard with that one Arin!"
+SPEAK Ross
+    "I was working hard to make you guys something, like, super cool for you guys!"
+
+POSE "Tutorial Boy" Normal
+PAN_FROM COURT_WITNESS COURT_PROSECUTION
+    "I’m going to have agree with the witness here. These two are making a mockery of justice with their tactics!"
+//ANIMATION "Tutorial Boy" HeadSlam
+SPEAK "Tutorial Boy"
+    "A mockery I say!"
+
+POSE Arin DeskSlam
+Think_FROM COURT_DEFENSE
+    "Damn, I was so close too! If only there was something else"
+
+DAN
+Hey Arin
+
+ARIN
+Huh?
+
+SPEAK_FROM COURT_ASSISTANT
+    "I think there’s something else here we’re all overlooking. Something to do with the switch. You know what I mean?"
+
+//PLAYER CHOICE
+//The milk stains and stickers you mean?
+//What are you talkin about Dan?!
+//I feel like we’ve seen it before
+
+//Player chooses correct answer #3:
+
+POSE Arin Thinking
+SPEAK_FROM COURT_DEFENSE
+    "Yeah… it does look somewhat familiar…"
+
+…! [sfx realization]
+
+SPEAK Arin
+    "I’ve got it!"
+
+POSE ARIN Point
+SPEAK Arin
+    "JUST A MOMENT YOUR HONOR!"
+
+POSE "Judge Brent" Angry
+SPEAK_FROM COURT_JUDGE
+    "Hey, no saying things in all capital letters in this courtroom!"
+
+POSE Arin Embarassed
+SPEAK_FROM COURT_DEFENSE
+    "Oh my bad!"
+
+ANIMATION Arin DeskSlam
+POSE Arin DeskSlam
+SPEAK Arin
+    "But seriously, hold on! I have more proof that the witness is lying."
+POSE Arin Point
+SPEAK Arin
+    "There’s no way he was working on a Mario Maker level at all."
+
+//prosecution objection here?
+POSE "Tutorial Boy" Sweaty
+SPEAK_FROM COURT_PROSECUTION
+    "Preposterous! You can’t prove that!
+
+SPEAK_FROM COURT_DEFENSE
+    "Yes I can! With this!!!"
+
+//PRESENT EVIDENCE [LIVESTREAM RECORDING]
+
+SHOUT Arin takethat
+
+POSE "Judge Brent" Surprised
+SPEAK_FROM COURT_JUDGE
+    "The livestream?"
+
+POSE Arin DeskSlam
+SPEAK_FROM COURT_DEFENSE
+    "That’s right, your honor!"
+SPEAK Arin
+    "If you recall from earlier, during the livestream our Switch broke and we sent Jory to get a backup."
+POSE Arin Normal
+SPEAK Arin
+    "This is when the prosecution claims Jory hid the dinosaurs away."
+SPEAK Arin
+    "But what they didn’t realize is that the switch Jory brought back was Ross’s switch!"
+
+POSE Arin Point
+SPEAK Arin
+    "Ross couldn’t have been using his switch..."
+
+//CLOSEUP BAR Arin
+    "..because we were using it during the livestream!"
+
+WIDESHOT
+
+GAVEL X3
+
+POSE "Judge Brent" Angry
+SPEAK_FROM COURT_JUDGE
+ORDER! Order I say!
+
+POSE "Judge Brent" Normal
+SPEAK "Judge Brent"
+    "Man, you guys are loud today!"
+
+POSE "Judge Brent" Surprised
+SPEAK "Judge Brent"
+    "This is indeed quite a revelation! Are you sure it was his?"
+
+POSE Arin Confident
+SPEAK_FROM COURT_DEFENSE
+    "You better gosh dang do believe I am. And both Dan and Jory can back me up on this one."
+
+POSE Dan SideLean
+SPEAK_FROM COURT_ASSISTANT
+    "He’s right your honor! I recognize the slime girl stickers and the milk stain on the switch from earlier today."
+
+SPEAK_FROM COURT_DEFENSE
+ARIN DeskSlam
+    "That means that the reason that Penix Wright is the last game on the list"
+
+PAN_FROM COURT_DEFENSE COURT_WITNESS
+POSE Ross Glaring
+SPEAK Arin
+    "because it was the game we were playing on the livestream!"
+
+SFX [STAB]
+SCREEN_SHAKE
+ANIMATION ROSS Shocked
+POSE Glaring
+SPEAK Ross
+    "AUGH..."
+
+SFX [STAB]
+SCREEN_SHAKE
+ANIMATION Ross Shocked
+SPEAK Ross
+    "UURGH!"
+
+SFX [STAB]
+SCREEN_SHAKE
+SFX [STAB]
+SCREEN_SHAKE
+ANIMATION Ross ThrowingHelmet
+SPEAK Ross
+    "A--A-A-AAAHAAAAAA!!!"
+
+PAN COURT_WITNESS COURT_DEFENSE
+//ANIMATION Helmet_Arin
+
+//POSE Ross Wigless
+SPEAK_FROM COURT_WITNESS
+    "You...guys..."
+SPEAK Ross
+    "Grrr!!! You’re all lying!"
+SPEAK Ross
+    "You just want to protect Jory!"
+SPEAK Ross
+    "He’s the culprit I tell you!"
+SPEAK Ross
+    "I saw him ! He’s the only one who could have taken it!"
+
+PAN_FROM COURT_WITNESS COURT_DEFENSE
+ANIMATION Arin DeskSlam
+POSE Arin DeskSlam
+SPEAK Arin
+    "The only one lying here is you Ross!"
+
+ANIMATION Arin Objection
+POSE Arin Point
+SPEAK Arin
+    "So tell us the truth! What really happened?!"
+
+SHOUT "Tutorial Boy" objection
+
+//POSE "Tutorial Boy" Objecting
+PAN_FROM COURT_DEFENSE COURT_PROSECUTION
+    "It's just as the witness said! There's no proof that any of these claims are true!
+SPEAK "Tutorial Boy"    
+    "There's no conclusive evidence that the switch the used was actually Ross'"
+SPEAK "Tutorial Boy"
+    "I request that last bit of evidence be stricken from the record!"
+
+//ANIMATION "Tutorial Boy" HeadSlam
+
+SPEAK "Tutorial Boy"
+    "The only hard evidence we have shows the dinosaurs in Jory’s backpack! Who else but him would have done it?!"
+
+SPEAK_FROM COURT_WITNESS
+    "YEAH MAN! I'm the one looking out for you guys here, I've done nothing wrong!
+SPEAK Ross
+    "I just was mistaken about a few things! That's no way to treat one of your oldest friends!"
+
+//POSE "Judge Brent" Thinking
+SPEAK_FROM COURT_JUDGE
+    "Hmmm... the prosecution does bring up a point."
+
+WAIT 2
+
+SPEAK "Judge Brent"
+    "Under these circumstances I cannot refute what the prosecution says. Objection sustained"
+
+SHOUT Arin Objection
+
+POSE Arin Point
+SPEAK_FROM COURT_DEFENSE
+    "Your honor we’ve just put the witness’ credibility in the furnace!"
+SPEAK Arin
+    "We can’t rely on what he said when many things were just now proven to have glaring contradictions."
+
+SPEAK_FROM COURT_JUDGE
+    "Be that as it may, unless the defense has more evidence of someone else more likely to have committed the crime      than Jory..."
+SPEAK "Judge Brent"
+    "I have no choice but to overrule your objection."
+
+POSE Arin Normal
+JUMPCUT COURT_DEFENSE
+ANIMATION Arin DeskSlam
+POSE DeskSlam
+THINK Arin
+    "(Damn, how could I let that slip through my fingers?)"
+    "(Sorry Jory, I did my best…)"
+
+WAIT 1
+
+SPEAK Dan
+    "Wait Arin! It’s not over yet!"
+
+POSE Dan SideNormal
+SPEAK_FROM COURT_ASSISTANT
+    "All we have to do is show that someone else could have done it right?"
+SPEAK Dan
+    "Well there were only two people who weren’t with us during the livestream today."
+SPEAK Dan
+    "One was Jory, and the other…"
+
+JUMPCUT COURT_DEFENSE
+ANIMATION Arin DeskSlam
+POSE Arin DeskSlam
+SPEAK Arin
+    "You're right Dan!"
+
+ANIMATION Arin Objection
+POSE Arin Point
+SPEAK Arin
+    "Your honor! There is one other person who could have done the deed!
+
+JUMPCUT COURT_WITNESS
+ANIMATION Ross Shock
+
+POSE "Tutorial Boy" Sweaty
+SPEAK_FROM COURT_PROSECUTION
+    "What?!"
+
+//POSE "Judge Brent" Surprised
+SPEAK_FROM COURT_JUDGE
+    "Another person? And who could that be?"
+
+//PRESENT EVIDENCE [ROSS CHARACTER PROFILE]
+
+POSE Arin DeskSlam
+SPEAK_FROM COURT_DEFENSE
+    "Why, the only other person who wasn’t at the livestream other than Jory!"
+
+//CLOSEUP [DEFENSE]
+SPEAK Arin
+    "ROSS O’DIDITVAN!"
+
+WIDESHOT

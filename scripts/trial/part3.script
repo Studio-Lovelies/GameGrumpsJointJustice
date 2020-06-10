@@ -65,32 +65,34 @@ SPEAK "Judge Brent"
 SPEAK_FROM COURT_PROSECUTION
     "Of course, Your Honor. You can only expect the BEST from me."
 
-// POSE Arin Determined
+POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
     "Dude, that testimony was incredible! Stupendous! AMAZING!"
 
-SPEAK Dan
+POSE Dan Fist
+SPEAK_FROM COURT_ASSISTANT
     "Alright already! You can stop jerking him off now I get it."
 
 SPEAK Arin
     "There's absolutely no way we can get Jory off now."
 
+POSE Dan SideNormal
 SPEAK Dan
     "Phrasing, Arin."
-SPEAK_FROM COURT_ASSISTANT
+SPEAK Dan
     "But we have to try don't we? I mean, no matter how bulletproof that testimony may seem, we have to take the shot, right?"
 
 SPEAK Arin
     "You're right Dan, of course. But what the heck should I do next?"
 
-SPEAK_FROM COURT_ASSISTANT
+SPEAK Dan
     "I don't know, dude, just look for things in his testimony that don't add up."
 SPEAK Dan
     "He totally has to have messed up in there somewhere!"
 
 JUMPCUT COURT_DEFENSE
 ANIMATION Arin DeskSlam
-//POSE Arin DeskSlam
+POSE Arin DeskSlam
 SPEAK Arin
     "Alright, let's do it then."
 
@@ -146,6 +148,7 @@ DEFINE PressA2
     SPEAK_FROM COURT_PROSECUTION
         "Quick! Back to the testimony before we break the fourth wall again!"
 
+//ANIMATION Judge Nodding
     SPEAK_FROM COURT_JUDGE
         "Witness, carry on."
 
@@ -154,16 +157,24 @@ END_DEFINE
 
 DEFINE PressA3
     SHOUT Arin HoldIt
+    PAN COURT_WITNESS COURT_DEFENSE
+    POSE Arin Point
+    POSE Arin Normal
     SPEAK_FROM COURT_DEFENSE
         "You said you saw Jory in the 10 Minute Power Hour room, correct?"
 
-    PAN COURT_DEFENSE COURT_WITNESS
     SPEAK_FROM COURT_WITNESS
         "Yes that's correct!"
 
     PAN COURT_WITNESS COURT_DEFENSE
     SPEAK_FROM COURT_DEFENSE
         "Yet you also say you were in your office animating."
+    
+    ANIMATION Objection
+    
+    POSE Point
+    SPEAK Arin
+        "Seems very odd to me! How could you see anyone while you were focused on your work!"
 
     SHOUT "Tutorial Boy" Objection
     SPEAK_FROM COURT_PROSECUTION
@@ -172,9 +183,22 @@ DEFINE PressA3
         "I'm sure Ross has a very reasonable explanation for all this."
 
     SPEAK_FROM COURT_WITNESS
-        "That's right! The reason I was able to see Jory was because I needed to poop."
+    POSE Ross Sweaty
+        "T-that's right! The reason I was able to see Jory was... because I needed to poop.!"
+    SPEAK Ross
+        "Yeah!"
 
+    POSE Arin Annoyed
     SPEAK_FROM COURT_DEFENSE
+        "Um...excuse me?
+    
+    SPEAK_FROM COURT_ASSISTANT
+        "Hah hah hah hah!!!"
+
+    THINK_FROM COURT_DEFENSE
+        "Goddamnit Ross"
+    
+    SPEAK Arin
         "Your Honor, this needs to be added to the witness's testimony."
 
     SPEAK_FROM COURT_JUDGE
