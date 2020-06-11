@@ -105,10 +105,13 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
         elseif love.keyboard.isDown("lshift") then
             scrollSpeed = scrollSpeed*8
         else
-            if currentChar == "."
-            or currentChar == "!"
-            or currentChar == "?"
-            then
+            if currentChar == "." then
+                if string.sub(self.text, math.floor(self.textScroll - 2), math.floor(self.textScroll)):lower() == "mr." then
+                    scrollSpeed = scrollSpeed
+                else
+                    scrollSpeed = scrollSpeed*0.15
+                end
+            elseif currentChar == "!" or currentChar == "?" then
                 scrollSpeed = scrollSpeed*0.15
             elseif currentChar == "," then
                 scrollSpeed = scrollSpeed*0.25
