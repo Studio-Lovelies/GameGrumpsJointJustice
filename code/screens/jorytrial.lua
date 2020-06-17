@@ -8,8 +8,8 @@ function DrawJoryTrialScreen()
     love.graphics.setColor(0, 0, 0, 100)
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 
-    local backW = (dimensions.window_width * 1/7)
-    local backX = (dimensions.window_width * 1/24)
+    local backW = (dimensions.window_width * 1/1.5)
+    local backX = (dimensions.window_width * 1/8)
     local backY = blackImage:getHeight()*blackScale + 10
     local backH = 60
 
@@ -19,12 +19,12 @@ function DrawJoryTrialScreen()
     local part1H = 60
 
     local part2W = (dimensions.window_width * 1/5)
-    local part2X = (dimensions.window_width * 6/12) - part2W
+    local part2X = (dimensions.window_width * 6.5/12) - part2W
     local part2Y = blackImage:getHeight()*blackScale - 500
     local part2H = 60
 
     local part3W = (dimensions.window_width * 1/5)
-    local part3X = (dimensions.window_width * 9/12) - part3W
+    local part3X = (dimensions.window_width * 10/12) - part3W
     local part3Y = blackImage:getHeight()*blackScale - 500
     local part3H = 60
 
@@ -34,12 +34,12 @@ function DrawJoryTrialScreen()
     local part4H = 60
 
     local part5W = (dimensions.window_width * 1/5)
-    local part5X = (dimensions.window_width * 6/12) - part5W
+    local part5X = (dimensions.window_width * 6.5/12) - part5W
     local part5Y = blackImage:getHeight()*blackScale - 300
     local part5H = 60
 
     local part6W = (dimensions.window_width * 1/5)
-    local part6X = (dimensions.window_width * 9/12) - part6W
+    local part6X = (dimensions.window_width * 10/12) - part6W
     local part6Y = blackImage:getHeight()*blackScale - 300
     local part6H = 60
 
@@ -168,6 +168,8 @@ for x = 0, 2 do
     end
 end
 jorySceneSelections[0][0] = "Back"
+jorySceneSelections[1][0] = "Back"
+jorySceneSelections[2][0] = "Back"
 jorySceneSelections[0][2] = "Part 1"
 jorySceneSelections[1][2] = "Part 2"
 jorySceneSelections[2][2] = "Part 3"
@@ -220,7 +222,7 @@ JoryTrialConfig = {
             Sounds["SELECTBLIP2"]:play()
             SelectionIndexX = SelectionIndexX + 1
             if SelectionIndexY == 0 then
-                if (SelectionIndexX > 0) then
+                if (SelectionIndexX ~= 0) then
                     SelectionIndexX = 0
                 end
             else
@@ -233,7 +235,7 @@ JoryTrialConfig = {
             Sounds["SELECTBLIP2"]:play()
             SelectionIndexX = SelectionIndexX - 1
             if SelectionIndexY == 0 then
-                if (SelectionIndexX < 0) then
+                if (SelectionIndexX ~= 0) then
                     SelectionIndexX = 0
                 end
             else
@@ -245,27 +247,15 @@ JoryTrialConfig = {
         elseif key == controls.pause_nav_up then
             Sounds["SELECTBLIP2"]:play()
             SelectionIndexY = SelectionIndexY + 1
-            if SelectionIndexX == 0 then
-                if (SelectionIndexY > 2) then
-                    SelectionIndexY = 0
-                end
-            else
-                if (SelectionIndexY > 2) then
-                    SelectionIndexY = 1
-                end
+            if (SelectionIndexY > 2) then
+                SelectionIndexY = 0
             end
             TitleSelection = jorySceneSelections[SelectionIndexX][SelectionIndexY]
         elseif key == controls.pause_nav_down then
             Sounds["SELECTBLIP2"]:play()
             SelectionIndexY = SelectionIndexY - 1
-            if SelectionIndexX == 0 then
-                if (SelectionIndexY < 0) then
-                    SelectionIndexY = 2
-                end
-            else
-                if (SelectionIndexY < 1) then
-                    SelectionIndexY = 2
-                end
+            if (SelectionIndexY < 0) then
+                SelectionIndexY = 2
             end
             TitleSelection = jorySceneSelections[SelectionIndexX][SelectionIndexY]
         end
