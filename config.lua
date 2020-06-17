@@ -23,6 +23,9 @@ settings = {
     jory_trial_1_path = "scripts/jory_trial_1.meta";
     jory_trial_2_path = "scripts/jory_trial_2.meta";
     jory_trial_3_path = "scripts/jory_trial_3.meta";
+    jory_trial_4_path = "scripts/jory_trial_4.meta";
+    jory_trial_5_path = "scripts/jory_trial_5.meta";
+    jory_trial_6_path = "scripts/jory_trial_6.meta";
     episode_path = "scripts/episode1.meta";
 }
 

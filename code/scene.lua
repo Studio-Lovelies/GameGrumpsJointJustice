@@ -77,8 +77,6 @@ function NewScene(scriptPath)
                 end
             end
 
-            print(pose.source);
-
             if self.characters[character.name].poses[character.frame] ~= nil then
                 if self.charAnimIndex >= #pose.anim then
                     self.charAnimIndex = 1
