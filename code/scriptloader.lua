@@ -217,8 +217,8 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewFadeToWhiteEvent(), lineParts)
                 end
                 if lineParts[1] == "FADE_IN" then
-                    NewCutToEvent("BLACK_SCREEN")
-                    AddToStack(stack, NewWaitEvent(linePart[2]), lineParts)
+                    AddToStack(stack, NewCutToEvent("BLACK_SCREEN"), lineParts)
+                    AddToStack(stack, NewWaitEvent(lineParts[2]), lineParts)
                     AddToStack(stack, NewCutToEvent(lineParts[3]), lineParts)
                     AddToStack(stack, NewFadeInEvent(), lineParts)
                 end
