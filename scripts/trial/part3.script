@@ -54,6 +54,10 @@ WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
 
 STOP_MUSIC
 FADE_TO_BLACK
+JUMPCUT BLACK_SCREEN
+WAIT 1
+JUMPCUT COURT_JUDGE
+FADE_IN
 
 // POSE "Judge Brent" Thinking
 SPEAK_FROM COURT_JUDGE
@@ -170,9 +174,9 @@ DEFINE PressA3
     SPEAK_FROM COURT_DEFENSE
         "Yet you also say you were in your office animating."
     
-    ANIMATION Objection
+    ANIMATION Arin Objection
     
-    POSE Point
+    POSE Arin Point
     SPEAK Arin
         "Seems very odd to me! How could you see anyone while you were focused on your work!"
 
@@ -222,14 +226,18 @@ DEFINE PressA4
 END_DEFINE
 
 FADE_TO_BLACK
+JUMPCUT BLACK_SCREEN
+WAIT 1
 JUMPCUT COURT_WITNESS
+FADE_IN
 PLAY_MUSIC QUESTIONING
 
 WITNESS_EVENT CrossExamination Ross "-- Witness's Account --" CrossExamFail
     "I was animating by myself over in my room at the office." PressA1 0
     "But then... I saw someone taking the dinos!!" PressA2 0
     "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressA3 0  // Advance script
-    "I thought perhaps it was for an art reference or something like that... But now that I know they were stolen, that means the culprit must be Jory!" PressA4 0
+    "I thought perhaps it was for an art reference or something like that" PressA4 0
+    "But now that I know they were stolen, that means the culprit must be Jory!" PressA4 0
 
 
 ///////////////////////
@@ -257,7 +265,8 @@ WITNESS_EVENT CrossExamination Ross "-- Witness's Account --" CrossExamFail
     "But then... I saw someone taking the dinos!!" PressA2 0
     "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressB3 0
     "The reason I was able to see Jory taking the dinos is because I was just on my way back from the office toilet." PressB4 PlumbingInvoice
-    "I thought perhaps it was for an art reference or something like that... But now that I know they were stolen, that means the culprit must be Jory!" PressB5 0
+    "I thought perhaps it was for an art reference or something like that..." PressB5 0
+    "But now that I know they were stolen, that means the culprit must be Jory!" PressB5 0
 
 
 /////////////////////////
@@ -288,6 +297,9 @@ SPEAK Arin
     "That means he can't possibly have seen anything!"
 
 WIDESHOT
+SFX mutter
+JUMPCUT BLACK_SCREEN
+GAVEL
 
 SPEAK_FROM COURT_JUDGE
     "Order in the court! Witness, what do you have to say about this?"
@@ -299,3 +311,5 @@ SPEAK_FROM COURT_JUDGE
     "Then we'll take a short break."
 SPEAK "Judge Brent"
     "Tutorial Boy, make sure your witnesses testimony is reliable when we come back."
+
+END_SCENE

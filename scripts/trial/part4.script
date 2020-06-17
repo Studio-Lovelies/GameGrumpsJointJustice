@@ -547,11 +547,11 @@ ANIMATION Ross Shocked
 SPEAK Ross
     "UURGH!"
 
-SFX [STAB]
+SFX stab
 SCREEN_SHAKE
-SFX [STAB]
+SFX stab
 SCREEN_SHAKE
-ANIMATION Ross ThrowingHelmet
+// ANIMATION Ross ThrowingHelmet
 SPEAK Ross
     "A--A-A-AAAHAAAAAA!!!"
 
@@ -677,3 +677,5 @@ SPEAK Arin
     "ROSS O’DIDITVAN!"
 
 WIDESHOT
+
+END_SCENE
