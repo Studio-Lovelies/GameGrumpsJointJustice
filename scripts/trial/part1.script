@@ -207,10 +207,7 @@ SPEAK_FROM COURT_JUDGE
     "Keep your pants on. I make up the rules in this courthouse. I will allow the testifying of the defendant." 
 
 FADE_TO_BLACK
-JUMPCUT BLACK_SCREEN
-WAIT 1
-JUMPCUT COURT_WITNESS
-FADE_IN
+FADE_IN 1 COURT_WITNESS
 
 PAN COURT_WITNESS COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION

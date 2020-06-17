@@ -525,6 +525,28 @@ function NewFadeToBlackEvent()
     return self
 end
 
+function NewFadeToWhiteEvent()
+    local self = {}
+    self.timer = 0
+
+    self.update = function (self, scene, dt)
+        scene.textHidden = true
+        scene.canShowCourtRecord = false
+
+        local lastTimer = self.timer
+        self.timer = self.timer + dt
+
+        return self.timer <= 1 and lastTimer <= 1
+    end
+
+    self.draw = function (self, scene)
+        love.graphics.setColor(255,255,255, self.timer)
+        love.graphics.rectangle("fill", 0,0, GraphicsWidth,GraphicsHeight)
+    end
+
+    return self
+end
+
 function NewFadeInEvent()
     local self = {}
     self.timer = 1

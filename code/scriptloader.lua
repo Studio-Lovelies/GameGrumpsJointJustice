@@ -213,7 +213,13 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "FADE_TO_BLACK" then
                     AddToStack(stack, NewFadeToBlackEvent(), lineParts)
                 end
+                if lineParts[1] == "FADE_TO_WHITE" then
+                    AddToStack(stack, NewFadeToWhiteEvent(), lineParts)
+                end
                 if lineParts[1] == "FADE_IN" then
+                    NewCutToEvent("BLACK_SCREEN")
+                    AddToStack(stack, NewWaitEvent(linePart[2]), lineParts)
+                    AddToStack(stack, NewCutToEvent(lineParts[3]), lineParts)
                     AddToStack(stack, NewFadeInEvent(), lineParts)
                 end
                 if lineParts[1] == "SCREEN_SHAKE" then
