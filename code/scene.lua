@@ -60,29 +60,42 @@ function NewScene(scriptPath)
 
     self.drawCharacterAt = function (self, characterLocation, x,y)
         local character = self.characterLocations[characterLocation]
-        if character ~= nil
-        and self.characters[character.name].poses[character.frame] ~= nil then
-            local char = self.characters[character.name]
-            local pose = char.poses[character.frame]
+        if character ~= nil then
+            if self.characters[character.name].poses[character.frame] ~= nil then
+                char = self.characters[character.name]
+                pose = char.poses[character.frame]
+            else
+                char = self.characters[character.name]
+                pose = Sprites["MissingCharacterSprite"]
+            end
 
             if self.characterTalking and char.name == self.textTalker then
-                pose = char.poses[character.frame.."Talking"]
+                if char.poses[character.frame.."Talking"] ~= nil then
+                    pose = char.poses[character.frame.."Talking"]
+                else
+                    pose = Sprites["MissingCharacterSpriteTalking"]
+                end
             end
 
+            print(pose.source);
 
-            if self.charAnimIndex >= #pose.anim then
-                self.charAnimIndex = 1
-            end
-            local animIndex = math.max(math.floor(self.charAnimIndex +0.5), 1)
-            local nextPose = pose.anim[animIndex]
-            local curX, curY, width, height = nextPose:getViewport()
-            -- If x is 0, we expect we wanted to center the image. Right now, not
-            -- every asset has been updated to the correct aspect ratio, so calculate
-            -- the amount we need to move it over by based on the width of the frame
-            if x == 0 then
-                love.graphics.draw(pose.source, nextPose, GetCenterOffset(width),y)
+            if self.characters[character.name].poses[character.frame] ~= nil then
+                if self.charAnimIndex >= #pose.anim then
+                    self.charAnimIndex = 1
+                end
+                local animIndex = math.max(math.floor(self.charAnimIndex +0.5), 1)
+                local nextPose = pose.anim[animIndex]
+                local curX, curY, width, height = nextPose:getViewport()
+                -- If x is 0, we expect we wanted to center the image. Right now, not
+                -- every asset has been updated to the correct aspect ratio, so calculate
+                -- the amount we need to move it over by based on the width of the frame
+                if x == 0 then
+                    love.graphics.draw(pose.source, nextPose, GetCenterOffset(width), y)
+                else
+                    love.graphics.draw(pose.source, nextPose, x, y)
+                end
             else
-                love.graphics.draw(pose.source, nextPose, x,y)
+                love.graphics.draw(Sprites["MissingCharacterSprite"], 0, x, y)
             end
         end
     end
