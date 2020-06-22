@@ -1,0 +1,162 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// INITIALIZE SCENE
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+SET_SCENE_TYPE INVESTIGATION
+
+CHARACTER_INITIALIZE Arin arin MALE
+CHARACTER_INITIALIZE Dan dan MALE
+CHARACTER_INITIALIZE ??? jory MALE
+CHARACTER_INITIALIZE Jory jory MALE
+
+EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
+EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
+COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
+
+PLAY_MUSIC PRELUDE
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// START SCRIPT
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+JUMPCUT LOBBY
+SPEAK Dan
+    *KSST*
+
+WAIT 1
+SFX chug
+WAIT 1
+SFX chug
+
+POSE Dan Normal
+    “AHH… this can of La Croix is as refreshing as that victory."
+
+//POSE Dan Pleased
+SPEAK Dan
+     "You did it Arin! I can’t believe you won the case!"
+
+SPEAK Arin
+    "Well technically WE won the case Dan. I’m still in shock that we won though."
+
+SPEAK Jory
+    "Well so am I, shocked with joy!"
+
+SPEAK Dan
+    "Oh hey Jory!
+
+CHARACTER_LOCATION Jory LOBBY
+POSE Jory Normal
+SPEAK Jory
+    "You guys really saved my butt out there! I can’t thank you enough!"
+
+SPEAK Arin
+    "Anytime man, we did what any good friend would have done in that situation"
+
+SPEAK Dan
+    "You mean pose as actual lawyers and thus taint the sanctity of the law and all it stands for?"
+
+SPEAK Arin
+    "EXACTLY!"
+
+SFX dooropens
+
+CHARACTER_LOCATION Dan LOBBY
+POSE Dan Angry
+SPEAK Dan
+    "Ross!"
+
+CHARACTER_LOCATION Ross LOBBY
+//POSE Ross Sad
+SPEAK Ross
+    "Hey guys..."
+
+SPEAK Arin
+    "Come by to sulk, Ross?
+
+SPEAK Ross
+    "Nah, I just wanted to say sorry to everyone.
+
+SPEAK Arin
+    "So why did you do it anyways? It's not like it was THAT big of a deal right?"
+
+SPEAK Ross
+    "I dunno man. I guess I just wanted some more recognition for the work I’ve done here."
+SPEAK Ross
+    "With all the new people coming in… I dunno. I guess I should have just listened to my conscience instead."
+
+SPEAK Arin
+    "...instead?"
+SPEAK Arin
+    "Instead of what?"
+
+SPEAK Ross
+    "That tutorial guy. Since he was visiting his brother Trivia boy we got to talking."
+SPEAK Ross
+    "I guess he sorta convinced me to get more recognition by framing Jory."
+
+SCREEN_SHAKE
+SFX stab1
+ANIMATION Ross Shocked
+POSE Ross Sad
+SPEAK Arin
+    "ROSS!"
+
+SPEAK Dan
+    "Dude, Ross, what the fuck man?"
+
+SPEAK Ross
+    "I’m sorry I’M SORRY! It was stupid I know."
+POSE Ross Sweaty
+SPEAK Ross
+    "But I’m working on those Mario maker levels to make up for it guys, don’t worry."
+
+SPEAK Arin
+    "It's ok Ross, we know how it is with you. But I think we gotta talk to this tutorial boy guy and get to the bottom of this.
+
+SPEAK Dan
+    "Can we do it later? I’m EXHAUSTED after all that deducing."
+
+SPEAK Arin
+    "Yeah I guess. Maybe tomorrow. For now I’m just glad Jory is alright."
+
+SFX pageturn
+
+//FADE OUT ROSS, THEN FADE IN DAN
+
+CHARACTER_LOCATION Dan LOBBY
+POSE Dan Surprised
+SPEAK Dan
+    "Hey look! Another letter."
+
+SPEAK Arin
+    "I think I know who this is from..."
+
+SPEAK Arin
+    "*ahem*"
+
+SPEAK Arin GREEN
+    "I’ve already heard how you valiantly defended my boy Jory Jr. in court and I am incredibly thankful for that."
+SPEAK Arin GREEN
+    "As a matter of fact, I think you two are natural born lawyers. 
+SPEAK Arin GREEN
+    "I can see that as I was once a lawyer myself in the famous Attitude City!"
+SPEAK Arin GREEN
+    "In fact it was after a world-famous trial where I defended a white whale against his weird peglegged stalker..."
+SPEAK Arin GREEN
+    "...that I was drawn to the sea to join the Merchant Marines."
+SPEAK Arin GREEN
+    "If you ever decide you want to explore the exciting and danger-filled world of being a city lawyer, let me know."
+SPEAK Arin GREEN
+    "Thank you again for saving my Jory Jr."
+SPEAK Arin GREEN
+    "Sincerely Jory Sr."
+
+POSE Dan Thinking
+SPEAK Dan
+    "Wow, Jory's dad has done a lot of things..."
+
+SPEAK Arin
+    "He also said a lot of words. Let's call it a day."
+
+//END_SCENE

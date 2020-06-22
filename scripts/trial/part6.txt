@@ -1,0 +1,287 @@
+//////////////////////
+// INITIALIZE SCENE //
+//////////////////////
+
+SET_SCENE_TYPE TRIAL
+
+CHARACTER_INITIALIZE Arin arin MALE
+CHARACTER_INITIALIZE Dan dan MALE
+CHARACTER_INITIALIZE "Judge Brent" judge MALE
+CHARACTER_INITIALIZE "Tutorial Boy" payne MALE
+CHARACTER_INITIALIZE Ross ross MALE
+
+CHARACTER_LOCATION Arin COURT_DEFENSE
+CHARACTER_LOCATION Dan COURT_ASSISTANT
+CHARACTER_LOCATION "Judge Brent" COURT_JUDGE
+CHARACTER_LOCATION "Tutorial Boy" COURT_PROSECUTION
+CHARACTER_LOCATION Ross COURT_WITNESS
+
+EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
+COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
+COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
+EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
+COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
+EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recrding" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
+COURT_RECORD_ADD EVIDENCE LivestreamRecording
+EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/Jory'sBackpack.png
+COURT_RECORD_ADD EVIDENCE Jory'sBackpack
+EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." sprites/StolenDinos.png
+COURT_RECORD_ADD EVIDENCE StolenDinos
+EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
+COURT_RECORD_ADD EVIDENCE BentCoins
+
+DEFINE TRIAL_FAIL
+    JUMPCUT BLACK_SCREEN
+    SPEAK "Judge Brent"
+        "The defense loses."
+END_DEFINE
+
+
+//////////////////
+// START SCRIPT //
+//////////////////
+
+
+POSE "Judge Brent" Surprised
+SPEAK_FROM COURT_JUDGE
+    "Somethingâ¦ off?"
+
+//ANIMATION "Tutorial Boy" HeadSlam
+SPEAK_FROM COURT_PROSECUTION
+    "Itâs covered in JIZZ, right? Hah Hah very funny we've heard that joke a million times! 
+SPEAK "Tutorial Boy"
+    "Thatâs no reason to interrupt the verdict."
+
+//POSE Ross Sweaty (bald)
+SPEAK_FROM COURT_WITNESS
+    "Y-yeah..! What does that have to do with anything!?"
+
+POSE Dan SideObjectiion
+SPEAK_FROM COURT_WITNESS
+    "It has EVERYTHING to do with this!"
+
+SPEAK Arin
+    "What are you talking about, Dan?"
+
+POSE Dan SideLaugh
+    "Roll with me Arin, I got this one."
+
+ANIMATION Dan SideObjectionIntro
+POSE Dan SideObjection
+SPEAK Dan
+    "What I mean is this!"
+
+//Dan [closeup]
+
+SPEAK Dan
+    "I donât think thatâs jizz AT ALL!"
+
+JUMPCUT COURT_WITNESS
+//ANIMATION Ross Shocked (bald)
+POSE Ross Shock
+SPEAK_FROM COURT_WITNESS
+    "UGH!"
+
+POSE "Tutorial Boy" Sweaty
+SPEAK_FROM COURT_PROSECUTION
+    "Notâ¦ Jizz?"
+
+POSE "Judge Brent" Surprised
+SPEAK_FROM COURT_JUDGE
+    "If itâs not jizz, then what is it? And what does that have to do with this case?"
+
+POSE Dan SideLean
+SPEAK_FROM COURT_ASSISTANT
+    "I think I know what it is, and if I can have those dinosaurs..."
+SPEAK Dan
+    "I think I can prove it and prove Jory's innocence"
+
+THINK_FROM COURT_DEFENSE
+    "(Waitâ¦ I think I know what Danâs getting at.)"
+
+ANIMATION Arin DeskSlam
+POSE Arin Point
+SPEAK Arin
+    "Your honor! I request that Dan..."
+
+******************
+
+CHOICE
+[1. Taste them]
+[2. Smell them]
+[3. Rub them on his nipples]
+
+1. Arin [pointing]
+	That Dan be allowed to taste those sexy dinosaurs, so we can find out whatâs really covering them!
+	
+	SPEAK_FROM COURT_WITNESS
+	ROSS [SWEATING]
+	GROSS!
+
+	SPEAK_FROM COURT_PROSECUTION
+	Tutorial boi [sweating]
+You canât be serious.
+
+SPEAK_FROM [DEFENSE]
+ARIN [serious]
+Iâm deadly serious!
+
+##END UNIQUE DIALOGUE
+
+
+2. Arin [pointing]
+That Dan be allowed to smell those stain-covered dinosaurs, so we can find out whatâs really covering them!
+
+SPEAK_FROM COURT_WITNESS
+ROSS [SHOCKED]
+Oh no!
+
+OBJECTION COURT_PROSECUTION
+
+SPEAK_FROM COURT_PROSECUTION
+Tutorial boi [HEADSLAM]
+That is an absurd request! I object to this! No trivial stain is going to change the outcome of this trial! 
+TUTORIAL BOY: You fools probably got it covered in some paint or something and you donât remember
+
+OBJECTION [DEFENSE]
+Arin [pointing]
+Then let us find out for sure to put all doubt to rest!
+
+##END UNIQUE DIALOGUE
+
+
+
+3. ARIN [POINTING]
+That Dan be allowed to rub the dinos all over his beautiful nude body!
+
+SPEAK_FROM COURT_JUDGE
+Brent [serious]
+â¦
+
+SPEAK_FROM COURT_ASSISTANT
+DAN [angry]
+Arin! Thatâs not at all what I want with those things. Why did you say that?
+
+SPEAK_FROM [DEFENSE]
+Arin [sweating]
+Oh, oops. Wishful thinking I guess.
+Arin [pointing]
+What I mean to say is, your honor... 
+
+END UNIQUE DIALOGUE
+
+CHOICE
+[1. Taste them]
+[2. Smell them]
+##[3. Rub them on his nipples] THIS CHOICE IN THIS SECTION IS ALREADY USED AND CAN'T BE SELECTED TWICE.
+
+##END CHOICE SECTION##
+
+SPEAK_FROM COURT_JUDGE
+BRENT [thinking]
+Iâm not sure what to think of thisâ¦ request.
+
+SPEAK_FROM [DEFENSE]
+ARIN [sweating]
+(Come on, Brentâ¦)
+
+
+
+OBJECTION COURT_PROSECUTION
+SPEAK_FROM (PROSECUTION)
+TUTORIAL BOI
+Your honor, please think about this. This is a trivial matter!
+TUTORIAL BOY: Theseâ¦ stains have no relation to anything relevant. The defense is stalling.
+
+SPEAK_FROM COURT_JUDGE
+	BRENT [serious]
+	â¦
+	BRENT: The prosecution has a point.
+	BRENT: Defense, can you prove the importance of these stains?
+
+	SPEAK_FROM [DEFENSE]
+	DAN [thinking]
+	Arin, I think we can.
+
+	ARIN [sweating]
+	Uh, yeah! Yeah, we can prove it. Withâ¦
+
+
+[PRESENT EVIDENCE]
+
+Incorrect Evidence
+	SPEAK_FROM COURT_JUDGE
+	BRENT [confused]
+	I donât understand what youâre trying to prove with this evidence.
+	
+	SPEAK_FROM [DEFENSE]
+	DANNY [annoyed]
+	Arinâ¦
+	ARIN [flustered]
+	Heh, well, hahaâ¦ whoops?
+
+	SPEAK_FROM COURT_JUDGE
+	BRENT [shaking head]
+	BRENT [serious]
+	Mr. Hanson, Mr. Avidan, Iâm afraid thatâs a penalty.
+	Iâll let you try again, though, because Iâm that cool.
+
+Correct Evidence (backpack)
+
+POSE "Judge Brent" Surprised
+SPEAK_FROM COURT_JUDGE
+    "The... backpack?"
+
+POSE Arin Point
+SPEAK_FROM COURT_DEFENSE
+    "Your honor, take a closer look at it."
+
+POSE "Judge Brent" Normal
+SPEAK_FROM COURT_JUDGE
+    "Okay, but this had better be good."
+
+WAIT 2
+
+SPEAK "Judge Brent"
+    "...."
+
+SFX lightbulb
+POSE "Judge Brent" Surprised
+SPEAK "Judge Brent"
+    "There's a stain here too!"
+
+SPEAK_FROM COURT_ASSISTANT
+    "Exactly. On one item, a stain may be trivial..."
+
+POSE Arin Confident
+SPEAK_FROM COURT_DEFENSE
+    "But similar stains on two pieces of evidence? That seems relevant to the case."
+
+SHOUT "Tutorial Boy" Objection
+
+JUMPCUT COURT_PROSECUTION
+POSE "Tutorial Boy" Sweaty
+SPEAK "Tutorial Boy"
+    "No! I donât... Iâ¦ itâs..."
+
+JUMPCUT COURT_JUDGE
+
+ANIMATION "Judge Brent" Shake
+
+POSE "Judge Brent" Angry
+SPEAK "Judge Brent"
+    "The prosecution will refrain from objecting without purpose."
+
+ANIMATION "Tutorial Boy" HeadSlam
+POSE "Tutorial Boy" Sweaty
+SPEAK_FROM COURT_PROSECUTION
+    "Iâ¦ apologize, your honor."
+
+POSE "Judge Brent" Normal
+SPEAK_FROM COURT_JUDGE
+    "The defense has proven its point. Mr. Avidan will be permitted to conduct his, erm, âTaste testâ."
+
+POSE Arin Confident
+THINK_FROM COURT_DEFENSE
+    "(Okay, now weâre getting somewhere. Weâve just gotta keep this up!)"
