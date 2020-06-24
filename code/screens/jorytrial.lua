@@ -183,7 +183,6 @@ SelectionIndexY = 0;
 JoryTrialConfig = {
     displayed = false;
     onKeyPressed = function (key)
-        print(TitleSelection.." ("..SelectionIndexX..", "..SelectionIndexY..")")
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
@@ -219,7 +218,9 @@ JoryTrialConfig = {
                 screens.jorytrial.displayed = false;
             end
         elseif key == controls.press_right then
-            Sounds["SELECTBLIP2"]:play()
+            if SelectionIndexY ~= 0 then
+                Sounds["SELECTBLIP2"]:play()
+            end
             SelectionIndexX = SelectionIndexX + 1
             if SelectionIndexY == 0 then
                 if (SelectionIndexX ~= 0) then
@@ -232,7 +233,9 @@ JoryTrialConfig = {
             end
             TitleSelection = jorySceneSelections[SelectionIndexX][SelectionIndexY]
         elseif key == controls.press_left then
-            Sounds["SELECTBLIP2"]:play()
+            if SelectionIndexY ~= 0 then
+                Sounds["SELECTBLIP2"]:play()
+            end
             SelectionIndexX = SelectionIndexX - 1
             if SelectionIndexY == 0 then
                 if (SelectionIndexX ~= 0) then
