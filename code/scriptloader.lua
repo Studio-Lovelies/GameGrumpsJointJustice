@@ -144,6 +144,7 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewCourtRecordAddEvent(lineParts[2], lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "COURT_RECORD_ADD_ANIMATION" then
+                    AddToStack(stack, NewPlaySoundEvent("EvidenceShoop"), lineParts)
                     AddToStack(stack, NewCourtRecordAddEvent(lineParts[2], lineParts[3]), lineParts)
                     AddToStack(stack, NewAddToCourtRecordAnimationEvent(lineParts[4]), lineParts)
                 end

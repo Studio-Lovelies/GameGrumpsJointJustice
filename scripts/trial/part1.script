@@ -150,7 +150,6 @@ JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "W-well, you don't have to be so rude about it! Fine, it's been added to the court record."
 
-SFX EvidenceShoop
 COURT_RECORD_ADD_ANIMATION EVIDENCE LivestreamRecording "Livestream Recording"
 
 SPEAK "Tutorial Boy"
@@ -168,10 +167,8 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "However, when these dinos went missing, they were suspiciously found in the defendant's backpack!"
 
-SFX EvidenceShoop
 COURT_RECORD_ADD_ANIMATION EVIDENCE Jory'sBackpack "Jory's Backpack"
 
-SFX EvidenceShoop
 COURT_RECORD_ADD_ANIMATION EVIDENCE StolenDinos "Stolen Dinos"
 
 SPEAK "Tutorial Boy"
@@ -361,7 +358,6 @@ SCREEN_SHAKE
 SPEAK "Tutorial Boy"
     "THESE?!?!"
 
-SFX EvidenceShoop
 COURT_RECORD_ADD_ANIMATION EVIDENCE BentCoins "Bent Coins"
 
 JUMPCUT COURT_WITNESS
