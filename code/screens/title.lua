@@ -1,11 +1,23 @@
 function DrawTitleScreen()
+    local background = love.graphics.newImage(settings.power_hour_set_path)
+    local backgroundScale = 1.326--3.8
+
+    love.graphics.clear(unpack(colors.black))
+
+    love.graphics.draw(
+        background,
+        GetCenterOffset(background:getWidth() * backgroundScale, false),
+        0,
+        0,
+        backgroundScale,
+        backgroundScale
+    )
+
     local logoImage = love.graphics.newImage(settings.main_logo_path)
     local logoScale = 1
 
-    love.graphics.clear(unpack(colors.black))
     love.graphics.draw(
         logoImage,
-        -- Center the logo in the window regardless of image or window size
         GetCenterOffset(logoImage:getWidth() * logoScale, false),
         0,
         0,
@@ -75,15 +87,17 @@ function DrawTitleScreen()
         textScale
     )
 
-    local scenesText = love.graphics.newText(GameFont, "Browse Scenes")
+    local scenesText = love.graphics.newText(GameFont, "Case Select")
     love.graphics.draw(
         scenesText,
-        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/1.5,
+        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2,
         scenesY + scenesH/2-(loadGameText:getHeight() * textScale)/2,
         0,
         textScale,
         textScale
     )
+
+    return self
 end
 
 function getIndex(table, string)
@@ -96,38 +110,43 @@ end
 
 titleSelections = {}
 titleSelections[0] = "New Game";
-titleSelections[1] = "Browse Scenes";
+titleSelections[1] = "Case Select";
 titleSelections[2] = "Load Game";
+TitleSelection = "New Game";
+SelectionIndex = 0;
 
 TitleScreenConfig = {
     displayed = false;
-    onKeyPressed = function(key)
+    onKeyPressed = function (key)
         if key == controls.start_button then
-            -- Since there's no displayKey, this screen
-            -- is responsible for removing itself
             love.graphics.clear(0,0,0);
-            if TitleSelection == "Browse Scenes" then
+            if TitleSelection == "Case Select" then
                 -- browse scenes screen here
+                Sounds["SELECTBLIP2"]:play()
                 screens.browsescenes.displayed = true;
-                screens.browsescenes.SelectionIndex = SelectionIndex;
-                DrawBrowseScreen()
+                DrawBrowseScreen();
                 screens.title.displayed = false;
+                SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 -- replace this and handle load game logic
+                Sounds["SELECTJINGLE"]:play()
                 Episode:begin()
                 screens.title.displayed = false;
             elseif TitleSelection == "New Game" then
                 -- replace this and handle new game logic
+                Sounds["SELECTJINGLE"]:play()
                 Episode:begin()
                 screens.title.displayed = false;
             end
         elseif key == controls.press_right then
+            Sounds["SELECTBLIP2"]:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
                 SelectionIndex = 0
             end
             TitleSelection = titleSelections[SelectionIndex]
         elseif key == controls.press_left then
+            Sounds["SELECTBLIP2"]:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
                 SelectionIndex = 2
@@ -136,6 +155,11 @@ TitleScreenConfig = {
         end
     end;
     onDisplay = function()
+        screens.browsescenes.displayed = false
+        screens.pause.displayed = false
+        screens.courtRecords.displayed = false
+        screens.jorytrial.displayed = false
+        screens.title.displayed = true
         TitleSelection = "New Game";
         SelectionIndex = 0;
     end;

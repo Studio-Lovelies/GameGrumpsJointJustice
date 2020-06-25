@@ -7,7 +7,11 @@ SET_SCENE_TYPE TRIAL
 CHARACTER_INITIALIZE Arin arin MALE
 CHARACTER_INITIALIZE Dan dan MALE
 CHARACTER_INITIALIZE "Judge Brent" judge MALE
+<<<<<<< HEAD
+CHARACTER_INITIALIZE "Tutorial Boy" tutorialboy MALE
+=======
 CHARACTER_INITIALIZE "Tutorial Boy" payne MALE
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 CHARACTER_INITIALIZE Ross ross MALE
 
 CHARACTER_LOCATION Arin COURT_DEFENSE
@@ -16,6 +20,12 @@ CHARACTER_LOCATION "Judge Brent" COURT_JUDGE
 CHARACTER_LOCATION "Tutorial Boy" COURT_PROSECUTION
 CHARACTER_LOCATION Ross COURT_WITNESS
 
+EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
+COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
+COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
+EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
+COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recrding" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
 COURT_RECORD_ADD EVIDENCE LivestreamRecording
 EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/Jory'sBackpack.png
@@ -24,12 +34,6 @@ EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour
 COURT_RECORD_ADD EVIDENCE StolenDinos
 EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
 COURT_RECORD_ADD EVIDENCE BentCoins
-EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
-COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
-EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
-COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
-EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
-COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 
 DEFINE TRIAL_FAIL
     JUMPCUT BLACK_SCREEN
@@ -44,9 +48,13 @@ END_DEFINE
 
 FADE_TO_BLACK
 JUMPCUT BLACK_SCREEN
+<<<<<<< HEAD
+FADE_IN 1 COURT_WITNESS
+=======
 WAIT 1
 JUMPCUT COURT_WITNESS
 FADE_IN
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 WAIT 1
 
 PLAY_MUSIC QUESTIONING
@@ -54,11 +62,19 @@ PLAY_MUSIC QUESTIONING
 WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "Well I guess you got me. I did lie about what I was doing."
     "I was actually making a special mario maker level for you guys."
+<<<<<<< HEAD
+    "You’ve always been good sports about my troll levels, so I wanted to make you a nice one for a change!"
+    "It was when I was in the middle of making the level when I saw Jory walk by my office"
+    "I got tired of making the level so I wanted to see what he was up to."
+    "That’s when I saw it! He had taken the Dinos and stuffed them into his backpack!"
+    "That’s how I knew where to look for them."
+=======
     "Youâve always been good sports about my troll levels, so I wanted to make you a nice one for a change!"
     "It was when I was in the middle of making the level when I saw Jory walk by my office"
     "I got tired of making the level so I wanted to see what he was up to."
     "Thatâs when I saw it! He had taken the Dinos and stuffed them into his backpack!"
     "Thatâs how I knew where to look for them."
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 STOP_MUSIC
 FADE_TO_BLACK
@@ -119,16 +135,24 @@ SPEAK_FROM COURT_JUDGE
     "If the defense would like to cross examine now...?"
 POSE Arin Point
 SPEAK_FROM COURT_DEFENSE
+<<<<<<< HEAD
+    "You bet I would! I’ve got some questions that need answering!"
+=======
     "You bet I would! Iâve got some questions that need answering!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 SPEAK_FROM COURT_JUDGE
     "Very well. The defense may begin their cross-examination."
 
 FADE_TO_BLACK
+<<<<<<< HEAD
+FADE_IN 1 COURT_WITNESS
+=======
 JUMPCUT BLACK_SCREEN
 WAIT 1
 JUMPCUT COURT_WITNESS
 FADE_IN
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 WAIT 1
 
 PLAY_MUSIC QUESTIONING
@@ -153,7 +177,11 @@ SPEAK_FROM COURT_WITNESS
     "Duh! I was using my switch!, Like, how *else* could I be making it?"
 
 SPEAK_FROM COURT_PROSECUTION
+<<<<<<< HEAD
+    "That’s the best question you can come up with? Laughable!"
+=======
     "Thatâs the best question you can come up with? Laughable!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 POSE Arin DeskSlam
 THINK_FROM COURT_DEFENSE
@@ -195,12 +223,20 @@ POSE "Judge Brent" Surprised
 
 POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
+<<<<<<< HEAD
+    "That’s correct, your honor!"
+=======
     "Thatâs correct, your honor!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 //ANIMATION TUTORIAL BOI [HEADSLAM]
 POSE "Tutorial Boy" Sweating
 SPEAK_FROM COURT_PROSECUTION
+<<<<<<< HEAD
+    "Impossible! There’s no way you can prove such a thing!"
+=======
     "Impossible! Thereâs no way you can prove such a thing!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
@@ -213,11 +249,19 @@ SHOUT Arin takethat
 //show switch icon
 
 SPEAK_FROM COURT_PROSECUTION
+<<<<<<< HEAD
+    "What is this…?"
+
+POSE Arin Confident
+SPEAK_FROM COURT_DEFENSE
+    "Why it’s a Nintendo Switch. But not just any switch"
+=======
     "What is thisâ¦?"
 
 POSE Arin Confident
 SPEAK_FROM COURT_DEFENSE
     "Why itâs a Nintendo Switch. But not just any switch"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 ANIMATION Arin Objection
 POSE Arin Point
@@ -262,10 +306,17 @@ SHOUT "Tutorial Boy" objection
 SPEAK "Tutorial Boy"
     "This has no relevance to this case, your honor!"
 SPEAK "Tutorial Boy"
+<<<<<<< HEAD
+    "Not only is there no proof that this is even Ross’ own console..."
+POSE "Tutorial Boy" Confident
+SPEAK "Tutorial Boy"
+    "I don’t see how it’s possible that they can prove that Ross was or was not using this particular switch!"
+=======
     "Not only is there no proof that this is even Rossâ own console..."
 POSE "Tutorial Boy" Confident
 SPEAK "Tutorial Boy"
     "I donât see how itâs possible that they can prove that Ross was or was not using this particular switch!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 SHOUT Arin objection
 POSE Arin Point
@@ -288,6 +339,20 @@ POSE Arin Paper
 //bring up switch icon
 
 SPEAK Arin
+<<<<<<< HEAD
+    "You’ll see that there clearly in the (correct location on the switch icon art) is a Slimemantha sticker on it!"
+
+POSE "Tutorial Boy" Sweaty
+SPEAK_FROM COURT_PROSECUTION
+    "S-so what? That still doesn’t help your case."
+
+POSE Arin Confident
+SPEAK_FROM COURT_DEFENSE
+    "Well just wait a minute and you’ll see how it helps!"
+
+SPEAK_FROM COURT_ASSISTANT
+    "Are you sure about this, Arin? Everytime you’re this confident you tend to blow it immediately."
+=======
     "Youâll see that there clearly in the (correct location on the switch icon art) is a Slimemantha sticker on it!"
 
 POSE "Tutorial Boy" Sweaty
@@ -300,6 +365,7 @@ SPEAK_FROM COURT_DEFENSE
 
 SPEAK_FROM COURT_ASSISTANT
     "Are you sure about this, Arin? Everytime youâre this confident you tend to blow it immediately."
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 SPEAK Arin
     "Don't worry Dan, check this shit out."
 
@@ -315,12 +381,26 @@ SPEAK Arin
 
 //SFX takethat
 //ARIN [PAPER]
+<<<<<<< HEAD
+//If you’ve ever owned a Switch, you’d know that the last game played always sits on the far left-hand side of the //screen !
+=======
 //If youâve ever owned a Switch, youâd know that the last game played always sits on the far left-hand side of the //screen !
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 //ARIN:  That way you have quick and easy access to the game you were most recently playing.
 
 POSE "Judge Brent" Shocked
 SPEAK_FROM COURT_JUDGE
 SFX lightbulb
+<<<<<<< HEAD
+   "That’s very true! I’ve noticed it on my own switch."
+
+POSE Arin Normal
+SPEAK_FROM COURT_DEFENSE
+    "Exactly! And what do we see when we load Ross’ switch to the home screen?"
+
+SPEAK Arin
+    "Well if the prosecution’s claim that Ross was making a Mario Maker level with his switch is true…"
+=======
    "Thatâs very true! Iâve noticed it on my own switch."
 
 POSE Arin Normal
@@ -329,12 +409,17 @@ SPEAK_FROM COURT_DEFENSE
 
 SPEAK Arin
     "Well if the prosecutionâs claim that Ross was making a Mario Maker level with his switch is trueâ¦"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 SPEAK Arin
     "Then Mario Maker would be the game all the way on the left hand side of the screen!"
 
 ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
+<<<<<<< HEAD
+    "But if you’d take a look at Ross’ switch, your honor, that is NOT the game you’ll find."
+=======
     "But if youâd take a look at Rossâ switch, your honor, that is NOT the game youâll find."
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 SPEAK Arin
     "Your honor, would you do the honors of telling this court what game is actually there?"
@@ -373,7 +458,11 @@ SPEAK_FROM COURT_ASSISTANT
    "Nice dude! That totally has them on the ropes!"
 
 SPEAK Arin
+<<<<<<< HEAD
+    "Yea, I’d like to see them object to that!"
+=======
     "Yea, Iâd like to see them object to that!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 SHOUT "Tutorial Boy" objection
 
@@ -383,7 +472,11 @@ SPEAK Arin
 
 PAN_FROM COURT_DEFENSE COURT_PROSECUTION
 POSE "Tutorial Boy" Objection
+<<<<<<< HEAD
+    "Whatever game was last played doesn’t prove anything!"
+=======
     "Whatever game was last played doesnât prove anything!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 SPEAK "Tutorial Boy" 
     "Ross could have accidentally loaded that game when he put his switch away!"
 SPEAK "Tutorial Boy" 
@@ -391,7 +484,11 @@ SPEAK "Tutorial Boy"
 
 POSE "Judge Brent" Thinking
 SPEAK_FROM COURT_JUDGE
+<<<<<<< HEAD
+    "Well I don’t think it’s baseless, but it’s not as solid proof as I think the defense believes."
+=======
     "Well I donât think itâs baseless, but itâs not as solid proof as I think the defense believes."
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 SPEAK_FROM COURT_DEFENSE
 ANIMATION Arin Shocked
@@ -401,19 +498,31 @@ SPEAK Arin
 
 POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
+<<<<<<< HEAD
+    "I’m afraid I have to side with the prosecution on this."
+=======
     "Iâm afraid I have to side with the prosecution on this."
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 SPEAK "Judge Brent"
     "While that evidence does seem very suspicious, it alone is not enough to support your claim."
 
 POSE Ross Glaring
 SPEAK_FROM COURT_WITNESS
+<<<<<<< HEAD
+    "Y-yeah! You’re reaching real hard with that one Arin!"
+=======
     "Y-yeah! Youâre reaching real hard with that one Arin!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 SPEAK Ross
     "I was working hard to make you guys something, like, super cool for you guys!"
 
 POSE "Tutorial Boy" Normal
 PAN_FROM COURT_WITNESS COURT_PROSECUTION
+<<<<<<< HEAD
+    "I’m going to have agree with the witness here. These two are making a mockery of justice with their tactics!"
+=======
     "Iâm going to have agree with the witness here. These two are making a mockery of justice with their tactics!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 //ANIMATION "Tutorial Boy" HeadSlam
 SPEAK "Tutorial Boy"
     "A mockery I say!"
@@ -429,23 +538,40 @@ ARIN
 Huh?
 
 SPEAK_FROM COURT_ASSISTANT
+<<<<<<< HEAD
+    "I think there’s something else here we’re all overlooking. Something to do with the switch. You know what I mean?"
+=======
     "I think thereâs something else here weâre all overlooking. Something to do with the switch. You know what I mean?"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 //PLAYER CHOICE
 //The milk stains and stickers you mean?
 //What are you talkin about Dan?!
+<<<<<<< HEAD
+//I feel like we’ve seen it before
+=======
 //I feel like weâve seen it before
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 //Player chooses correct answer #3:
 
 POSE Arin Thinking
 SPEAK_FROM COURT_DEFENSE
+<<<<<<< HEAD
+    "Yeah… it does look somewhat familiar…"
+
+…! [sfx realization]
+
+SPEAK Arin
+    "I’ve got it!"
+=======
     "Yeahâ¦ it does look somewhat familiarâ¦"
 
 â¦! [sfx realization]
 
 SPEAK Arin
     "Iâve got it!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 POSE ARIN Point
 SPEAK Arin
@@ -465,12 +591,20 @@ SPEAK Arin
     "But seriously, hold on! I have more proof that the witness is lying."
 POSE Arin Point
 SPEAK Arin
+<<<<<<< HEAD
+    "There’s no way he was working on a Mario Maker level at all."
+=======
     "Thereâs no way he was working on a Mario Maker level at all."
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 //prosecution objection here?
 POSE "Tutorial Boy" Sweaty
 SPEAK_FROM COURT_PROSECUTION
+<<<<<<< HEAD
+    "Preposterous! You can’t prove that!
+=======
     "Preposterous! You canât prove that!
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 SPEAK_FROM COURT_DEFENSE
     "Yes I can! With this!!!"
@@ -485,18 +619,30 @@ SPEAK_FROM COURT_JUDGE
 
 POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
+<<<<<<< HEAD
+    "That’s right, your honor!"
+=======
     "Thatâs right, your honor!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 SPEAK Arin
     "If you recall from earlier, during the livestream our Switch broke and we sent Jory to get a backup."
 POSE Arin Normal
 SPEAK Arin
     "This is when the prosecution claims Jory hid the dinosaurs away."
 SPEAK Arin
+<<<<<<< HEAD
+    "But what they didn’t realize is that the switch Jory brought back was Ross’s switch!"
+
+POSE Arin Point
+SPEAK Arin
+    "Ross couldn’t have been using his switch..."
+=======
     "But what they didnât realize is that the switch Jory brought back was Rossâs switch!"
 
 POSE Arin Point
 SPEAK Arin
     "Ross couldnât have been using his switch..."
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 //CLOSEUP BAR Arin
     "..because we were using it during the livestream!"
@@ -523,7 +669,11 @@ SPEAK_FROM COURT_DEFENSE
 
 POSE Dan SideLean
 SPEAK_FROM COURT_ASSISTANT
+<<<<<<< HEAD
+    "He’s right your honor! I recognize the slime girl stickers and the milk stain on the switch from earlier today."
+=======
     "Heâs right your honor! I recognize the slime girl stickers and the milk stain on the switch from earlier today."
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 SPEAK_FROM COURT_DEFENSE
 ARIN DeskSlam
@@ -547,11 +697,19 @@ ANIMATION Ross Shocked
 SPEAK Ross
     "UURGH!"
 
+<<<<<<< HEAD
+SFX stab
+SCREEN_SHAKE
+SFX stab
+SCREEN_SHAKE
+// ANIMATION Ross ThrowingHelmet
+=======
 SFX [STAB]
 SCREEN_SHAKE
 SFX [STAB]
 SCREEN_SHAKE
 ANIMATION Ross ThrowingHelmet
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 SPEAK Ross
     "A--A-A-AAAHAAAAAA!!!"
 
@@ -562,6 +720,15 @@ PAN COURT_WITNESS COURT_DEFENSE
 SPEAK_FROM COURT_WITNESS
     "You...guys..."
 SPEAK Ross
+<<<<<<< HEAD
+    "Grrr!!! You’re all lying!"
+SPEAK Ross
+    "You just want to protect Jory!"
+SPEAK Ross
+    "He’s the culprit I tell you!"
+SPEAK Ross
+    "I saw him ! He’s the only one who could have taken it!"
+=======
     "Grrr!!! Youâre all lying!"
 SPEAK Ross
     "You just want to protect Jory!"
@@ -569,6 +736,7 @@ SPEAK Ross
     "Heâs the culprit I tell you!"
 SPEAK Ross
     "I saw him ! Heâs the only one who could have taken it!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 PAN_FROM COURT_WITNESS COURT_DEFENSE
 ANIMATION Arin DeskSlam
@@ -594,7 +762,11 @@ SPEAK "Tutorial Boy"
 //ANIMATION "Tutorial Boy" HeadSlam
 
 SPEAK "Tutorial Boy"
+<<<<<<< HEAD
+    "The only hard evidence we have shows the dinosaurs in Jory’s backpack! Who else but him would have done it?!"
+=======
     "The only hard evidence we have shows the dinosaurs in Joryâs backpack! Who else but him would have done it?!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 SPEAK_FROM COURT_WITNESS
     "YEAH MAN! I'm the one looking out for you guys here, I've done nothing wrong!
@@ -614,9 +786,15 @@ SHOUT Arin Objection
 
 POSE Arin Point
 SPEAK_FROM COURT_DEFENSE
+<<<<<<< HEAD
+    "Your honor we’ve just put the witness’ credibility in the furnace!"
+SPEAK Arin
+    "We can’t rely on what he said when many things were just now proven to have glaring contradictions."
+=======
     "Your honor weâve just put the witnessâ credibility in the furnace!"
 SPEAK Arin
     "We canât rely on what he said when many things were just now proven to have glaring contradictions."
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 SPEAK_FROM COURT_JUDGE
     "Be that as it may, unless the defense has more evidence of someone else more likely to have committed the crime      than Jory..."
@@ -629,20 +807,34 @@ ANIMATION Arin DeskSlam
 POSE DeskSlam
 THINK Arin
     "(Damn, how could I let that slip through my fingers?)"
+<<<<<<< HEAD
+    "(Sorry Jory, I did my best…)"
+=======
     "(Sorry Jory, I did my bestâ¦)"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 WAIT 1
 
 SPEAK Dan
+<<<<<<< HEAD
+    "Wait Arin! It’s not over yet!"
+=======
     "Wait Arin! Itâs not over yet!"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 POSE Dan SideNormal
 SPEAK_FROM COURT_ASSISTANT
     "All we have to do is show that someone else could have done it right?"
 SPEAK Dan
+<<<<<<< HEAD
+    "Well there were only two people who weren’t with us during the livestream today."
+SPEAK Dan
+    "One was Jory, and the other…"
+=======
     "Well there were only two people who werenât with us during the livestream today."
 SPEAK Dan
     "One was Jory, and the otherâ¦"
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 JUMPCUT COURT_DEFENSE
 ANIMATION Arin DeskSlam
@@ -670,6 +862,17 @@ SPEAK_FROM COURT_JUDGE
 
 POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
+<<<<<<< HEAD
+    "Why, the only other person who wasn’t at the livestream other than Jory!"
+
+//CLOSEUP [DEFENSE]
+SPEAK Arin
+    "ROSS O’DIDITVAN!"
+
+WIDESHOT
+
+END_SCENE
+=======
     "Why, the only other person who wasnât at the livestream other than Jory!"
 
 //CLOSEUP [DEFENSE]
@@ -677,3 +880,4 @@ SPEAK Arin
     "ROSS OâDIDITVAN!"
 
 WIDESHOT
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678

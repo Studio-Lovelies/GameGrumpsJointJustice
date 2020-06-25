@@ -145,7 +145,7 @@ function LoadScript(scene, scriptPath)
                 end
                 if lineParts[1] == "COURT_RECORD_ADD_ANIMATION" then
                     AddToStack(stack, NewCourtRecordAddEvent(lineParts[2], lineParts[3]), lineParts)
-                    AddToStack(stack, NewAddToCourtRecordAnimationEvent(lineParts[3]), lineParts)
+                    AddToStack(stack, NewAddToCourtRecordAnimationEvent(lineParts[4]), lineParts)
                 end
 
                 if lineParts[1] == "SET_SCENE_TYPE" then
@@ -213,7 +213,13 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "FADE_TO_BLACK" then
                     AddToStack(stack, NewFadeToBlackEvent(), lineParts)
                 end
+                if lineParts[1] == "FADE_TO_WHITE" then
+                    AddToStack(stack, NewFadeToWhiteEvent(), lineParts)
+                end
                 if lineParts[1] == "FADE_IN" then
+                    AddToStack(stack, NewCutToEvent("BLACK_SCREEN"), lineParts)
+                    AddToStack(stack, NewWaitEvent(lineParts[2]), lineParts)
+                    AddToStack(stack, NewCutToEvent(lineParts[3]), lineParts)
                     AddToStack(stack, NewFadeInEvent(), lineParts)
                 end
                 if lineParts[1] == "SCREEN_SHAKE" then
@@ -270,7 +276,6 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "INTERRUPTED_SPEAK" then
                     queuedInterruptedSpeak = {lineParts[2], "literal", lineParts[3]}
                 end
-
             end
         end
     end

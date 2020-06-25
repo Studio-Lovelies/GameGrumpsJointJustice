@@ -103,10 +103,10 @@ function NewEvidenceInitEvent(name, externalName, info, file)
     self.file = file
 
     self.update = function (self, scene, dt)
-        if FileExists(self.externalName:gsub(" ", "")) then
-            mSprite = love.graphics.newImage(self.file)
-        else
+        if Sprites[self.externalName:gsub(" ", "")] == nil then
             mSprite = love.graphics.newImage("sprites/MissingTexture.png")
+        else
+            mSprite = love.graphics.newImage(self.file)
         end
         scene.evidence[self.name] = {
             name = self.name,

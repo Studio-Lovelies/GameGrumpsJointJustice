@@ -16,6 +16,12 @@ CHARACTER_LOCATION "Judge Brent" COURT_JUDGE
 CHARACTER_LOCATION "Tutorial Boy" COURT_PROSECUTION
 CHARACTER_LOCATION Ross COURT_WITNESS
 
+EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
+COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
+COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
+EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
+COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recrding" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
 COURT_RECORD_ADD EVIDENCE LivestreamRecording
 EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/Jory'sBackpack.png
@@ -24,12 +30,6 @@ EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour
 COURT_RECORD_ADD EVIDENCE StolenDinos
 EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
 COURT_RECORD_ADD EVIDENCE BentCoins
-EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
-COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
-EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
-COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
-EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
-COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 
 DEFINE TRIAL_FAIL
     JUMPCUT BLACK_SCREEN
@@ -42,6 +42,27 @@ END_DEFINE
 // START SCRIPT //
 //////////////////
 
+<<<<<<< HEAD
+//ANIMATION "Tutorial Boy" HeadSlam (this is missing animation)
+
+//POSE "Judge Brent" Thinking
+SPEAK_FROM COURT_JUDGE
+    "Hmmm. That’s an interesting possibility you’ve raised, Arin."
+SPEAK "Judge Brent"
+    "But how can that be if Ross was the one to find the dinosaurs? 
+POSE "Judge Brent" Normal
+SPEAK "Judge Brent"
+    "We all saw him find them in Jory’s backpack, why would he find them himself if he was the one who stole them?"
+
+//POSE "Tutorial boy" Confident
+SPEAK_FROM COURT_PROSECUTION 
+    "The answer to that is simple, my fine judge! It’s because he DIDN’T steal them!"
+SPEAK "Tutorial Boy"
+    "The defense is simply grasping at straws!"
+//POSE "Tutorial Boy" Sweaty
+SPEAK "Tutorial Boy
+    "Don’t you sully the name of justice by considering this preposterous position!"
+=======
 //ANIMATION “Tutorial Boy” HeadSlam (this is missing animation)
 
 //POSE ”Judge Brent” Thinking
@@ -61,6 +82,7 @@ SPEAK “Tutorial Boy”
 //POSE “Tutorial Boy” Sweaty
 SPEAK “Tutorial Boy
     “Don’t you sully the name of justice by considering this preposterous position!”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 SHOUT Arin Objection
 
@@ -69,6 +91,22 @@ PAN COURT_DEFENSE
 POSE Arin HeadShake
 POSE Arin Normal
 SPEAK Arin
+<<<<<<< HEAD
+    "We have no decisive evidence that it was either Jory or Ross, your honor!"
+SPEAK Arin
+    "All we have is eyewitness accounts from someone who himself could have been the culprit!"
+
+JUMPCUT COURT_JUDGE
+POSE "Judge Brent" Normal
+SPEAK "Judge Brent"
+    "I agree, but I need something from you showing some kind proof or evidence that suggests that Ross was the culprit."
+
+SPEAK_FROM COURT_PROSECUTION
+//ANIMATION "Tutorial Boy" HeadSlam 3 
+POSE "Tutorial Boy" Normal
+SPEAK "Tutorial Boy" 
+    "HAH! Good luck proving that, video game boy. I’d like to see you try!"
+=======
     “We have no decisive evidence that it was either Jory or Ross, your honor!”
 SPEAK Arin
     “All we have is eyewitness accounts from someone who himself could have been the culprit!”
@@ -83,73 +121,133 @@ SPEAK_FROM COURT_PROSECUTION
 POSE “Tutorial Boy” Normal
 SPEAK “Tutorial Boy” 
     “HAH! Good luck proving that, video game boy. I’d like to see you try!”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 PAN COURT_DEFENSE 
 POSE Arin Confident
 SPEAK Arin
+<<<<<<< HEAD
+    "I’ll do better than that, because I’m the one who wins!"
+=======
     “I’ll do better than that, because I’m the one who wins!”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 JUMPCUT COURT_PROSECUTION
 SCREEN_SHAKE
 SFX stab
+<<<<<<< HEAD
+//ANIMATION "Tutorial Boy" Sweating
+SPEAK "Tutorial Boy"
+    "What did you say?"
+=======
 //ANIMATION “Tutorial Boy” Sweating
 SPEAK “Tutorial Boy”
     “What did you say?”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
 SPEAK Arin
+<<<<<<< HEAD
+    "Check this out!"
+=======
     “Check this out!”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 //PRESENT EVIDENCE [CORRECT] (bent coins)
 
 //MUSIC
 
 SPEAK Arin
+<<<<<<< HEAD
+    "These are the goodboy coins found inside the backpack!"
+SPEAK Arin
+    "Notice how they’re bent and scuffed now? Don’t you realize what that means?"
+=======
     “These are the goodboy coins found inside the backpack!”
 SPEAK Arin
     “Notice how they’re bent and scuffed now? Don’t you realize what that means?”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideNormal
 SPEAK Dan
+<<<<<<< HEAD
+    "That we’re cheap bastards making coins out of cardboard?"
+=======
     “That we’re cheap bastards making coins out of cardboard?”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 JUMPCUT COURT_DEFENSE
 SFX stab
 SCREEN_SHAKE
 SPEAK Arin
+<<<<<<< HEAD
+    "Well--"
+
+JUMPCUT COURT_PROSECUTION 
+POSE "Tutorial Boy" Normal
+SPEAK "Tutorial Boy"
+    "I second that notion"
+=======
     “Well--”
 
 JUMPCUT COURT_PROSECUTION 
 POSE “Tutorial Boy” Normal
 SPEAK “Tutorial Boy”
     “I second that notion”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 JUMPCUT COURT_DEFENSE
 SFX stab
 POSE Arin DeskSlam
 SPEAK Arin
+<<<<<<< HEAD
+    "Now that was uncalled f--"
+
+JUMPCUT COURT_JUDGE
+//POSE "Judge Brent" Thinking
+    "I mean it’s not like real metal coins are that expensive…"
+=======
     “Now that was uncalled f--”
 
 JUMPCUT COURT_JUDGE
 //POSE “Judge Brent” Thinking
     “I mean it’s not like real metal coins are that expensive…”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 //SFX damage1
 PAN COURT_DEFENSE
 POSE Arin DeskSlam
 SPEAK Arin
+<<<<<<< HEAD
+    "OK ! I get it, I’ll get REAL coins after this."
+POSE ARIN NORMAL
+SPEAK Arin
+    "Regardless, Jory would never let his coins be ruined like this!"
+SPEAK Arin
+    "There is no way he would have stuffed the dinosaurs in such a way!"
+=======
     “OK ! I get it, I’ll get REAL coins after this.”
 POSE ARIN NORMAL
 SPEAK Arin
     “Regardless, Jory would never let his coins be ruined like this!”
 SPEAK Arin
     “There is no way he would have stuffed the dinosaurs in such a way!”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 JUMPCUT COURT_WITNESS 
 POSE Ross Sweaty
 SPEAK Ross
+<<<<<<< HEAD
+    "GUH!"
+
+JUMPCUT COURT_PROSECUTION
+//ANIMATION "Tutorial Boy" HeadSlam 3
+// POSE "Tutorial Boy" Normal
+SPEAK "Tutorial Boy"
+    "RIDICULOUS! I don’t believe a word of that! There’s no way someone would be so careful around such pointless coins."
+=======
     “GUH!”
 
 JUMPCUT COURT_PROSECUTION
@@ -157,22 +255,40 @@ JUMPCUT COURT_PROSECUTION
 // POSE “Tutorial Boy” Normal
 SPEAK “Tutorial Boy”
     “RIDICULOUS! I don’t believe a word of that! There’s no way someone would be so careful around such pointless coins.”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 JUMPCUT COURT_DEFENSE
 ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
 SPEAK Arin
+<<<<<<< HEAD
+    "That might be true for most people, but not our Jory!"
+=======
     “That might be true for most people, but not our Jory!”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 ANIMATION Arin Point
 POSE Arin Point
 SPEAK Arin
+<<<<<<< HEAD
+    "We’ve already heard evidence that proves Jory cared about those coins, and I’ve got it right here!"
+=======
     “We’ve already heard evidence that proves Jory cared about those coins, and I’ve got it right here!”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 //PRESENT EVIDENCE [LIVE STREAM RECORDING]
 
 POSE Arin Point
 SPEAK Arin
+<<<<<<< HEAD
+    "Recall this audio conversation? (People) in the livestream commented on how Jory was taking care of those coins carefully!" 
+SPEAK Arin
+    "Now I ask the court to consider, why would Jory take such care only to trash the coins in his backpack minutes later?"
+
+POSE Arin CloseUp
+SPEAK Arin
+    "Because HE DIDN’T PUT THE DINOS IN THERE AT ALL!"
+=======
     “Recall this audio conversation? (People) in the livestream commented on how Jory was taking care of those coins carefully!” 
 SPEAK Arin
     “Now I ask the court to consider, why would Jory take such care only to trash the coins in his backpack minutes later?”
@@ -180,6 +296,7 @@ SPEAK Arin
 POSE Arin CloseUp
 SPEAK Arin
     “Because HE DIDN’T PUT THE DINOS IN THERE AT ALL!”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 JUMPCUT COURT_WITNESS
 POSE Ross Sweaty
@@ -193,6 +310,19 @@ SPEAK Ross
 ARGH!
 
 JUMPCUT COURT_JUDGE
+<<<<<<< HEAD
+//POSE "Judge Brent" Thinking
+SPEAK "Judge Brent"
+    "Hmm… that makes a lot of sense. I personally have seen Jory care for those coins like they were his children." 
+POSE "Judge Brent" Normal
+SPEAK "Judge Brent"
+    "Does the prosecution have anything to say about this?"
+
+JUMPCUT COURT_PROSECUTION
+//POSE "Tutorial Boy" Sweating
+SPEAK "Tutorial Boy"
+    "Well… uh…."
+=======
 //POSE “Judge Brent” Thinking
 SPEAK “Judge Brent”
     “Hmm… that makes a lot of sense. I personally have seen Jory care for those coins like they were his children.” 
@@ -204,12 +334,17 @@ JUMPCUT COURT_PROSECUTION
 //POSE “Tutorial Boy” Sweating
 SPEAK “Tutorial Boy”
     “Well… uh….”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
 THINK_FROM_COURT_DEFENSE
+<<<<<<< HEAD
+    "(Yea, let’s see you sneak your way out of this one dawg!)"
+=======
     “(Yea, let’s see you sneak your way out of this one dawg!)”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 JUMPCUT COURT_PROSECUTION
 //ANIMATION "Tutorial Boy" HeadSlam
@@ -218,7 +353,11 @@ YES! There is an explanation!
 JUMPCUT COURT_DEFENSE
 POSE Arin Sweaty
 THINKING Arin
+<<<<<<< HEAD
+    "(No way!)"
+=======
     “(No way!)”
+>>>>>>> b67468f34d27d11f8b3953d5d89154e70ffa7678
 
 JUMPCUT COURT_PROSECUTION 
 POSE "Tutorial Boy" Normal

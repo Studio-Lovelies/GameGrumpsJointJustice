@@ -105,10 +105,13 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
         elseif love.keyboard.isDown("lshift") then
             scrollSpeed = scrollSpeed*8
         else
-            if currentChar == "."
-            or currentChar == "!"
-            or currentChar == "?"
-            then
+            if currentChar == "." then
+                if string.sub(self.text, math.floor(self.textScroll - 2), math.floor(self.textScroll)):lower() == "mr." then
+                    scrollSpeed = scrollSpeed
+                else
+                    scrollSpeed = scrollSpeed*0.15
+                end
+            elseif currentChar == "!" or currentChar == "?" then
                 scrollSpeed = scrollSpeed*0.15
             elseif currentChar == "," then
                 scrollSpeed = scrollSpeed*0.25
@@ -152,7 +155,7 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
 
         scene.text = string.sub(self.text, 1, math.floor(self.textScroll))
 
-        local pressing = love.keyboard.isDown(controls.next_line)
+        local pressing = love.keyboard.isDown(controls.advance_text)
         -- What to do at the end of dialogue
         if self.textScroll >= #self.text then
             if self.needsPressing == false then
@@ -360,7 +363,7 @@ function NewAddToCourtRecordAnimationEvent(evidenceSpriteName)
 
     self.draw = function (self, scene)
         love.graphics.setColor(1,1,1)
-        if Sprites[self.evidence] == nil then
+        if Sprites[self.evidence:gsub(" ", "")] == nil then
             love.graphics.draw(Sprites["MissingTexture"], 16,16)
         else
             love.graphics.draw(Sprites[self.evidence:gsub(" ", "")], 24,24)
@@ -522,15 +525,40 @@ function NewFadeToBlackEvent()
     return self
 end
 
-function NewFadeInEvent()
+function NewFadeToWhiteEvent()
     local self = {}
-    self.timer = 255
+    self.timer = 0
 
     self.update = function (self, scene, dt)
         scene.textHidden = true
         scene.canShowCourtRecord = false
 
+        local lastTimer = self.timer
+        self.timer = self.timer + dt
+
+        return self.timer <= 1 and lastTimer <= 1
+    end
+
+    self.draw = function (self, scene)
+        love.graphics.setColor(255,255,255, self.timer)
+        love.graphics.rectangle("fill", 0,0, GraphicsWidth,GraphicsHeight)
+    end
+
+    return self
+end
+
+function NewFadeInEvent()
+    local self = {}
+    self.timer = 1
+
+    self.update = function (self, scene, dt)
+        scene.textHidden = true
+        scene.canShowCourtRecord = false
+
+        local lastTimer = self.timer
         self.timer = self.timer - dt
+
+        return self.timer >= 0 and lastTimer >=0
     end
 
     self.draw = function (self, scene)

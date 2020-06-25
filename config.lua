@@ -16,8 +16,16 @@ settings = {
     sfx_directory = "sounds/";
 
     main_logo_path = "main_logo_1024_flipped.png";
+    power_hour_set_path = "backgrounds/POWER_HOUR_SET_HQ.png";
     black_screen_path = "backgrounds/BLACK_SCREEN.png";
-    jory_trial_path = "scripts/jory_trial.meta";
+    lobby_path = "backgrounds/LOBBY.png";
+    court_path = "sprites/WideShot.png";
+    jory_trial_1_path = "scripts/jory_trial_1.meta";
+    jory_trial_2_path = "scripts/jory_trial_2.meta";
+    jory_trial_3_path = "scripts/jory_trial_3.meta";
+    jory_trial_4_path = "scripts/jory_trial_4.meta";
+    jory_trial_5_path = "scripts/jory_trial_5.meta";
+    jory_trial_6_path = "scripts/jory_trial_6.meta";
     episode_path = "scripts/episode1.meta";
 }
 
@@ -25,7 +33,7 @@ settings = {
 controls = {
     start_button = "return";
     pause = "escape";
-    next_line = "x";
+    advance_text = "x";
     pause_nav_up = "up";
     pause_nav_down = "down";
     press_confirm = "return";
@@ -33,7 +41,6 @@ controls = {
     press_right = "right";
     press_left = "left";
     press_toggle_profiles = "down";
-    debug = "end";
 }
 
 dimensions = {

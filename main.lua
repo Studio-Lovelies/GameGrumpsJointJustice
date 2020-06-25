@@ -7,6 +7,7 @@ require "code/episode"
 require "code/scene"
 require "code/scriptloader"
 
+
 function love.load(arg)
     InitGlobalConfigVariables()
     love.window.setMode(WindowWidth, WindowHeight, {resizable=false})
@@ -52,7 +53,6 @@ function love.load(arg)
         end
     elseif arguments.script == nil then
         -- Title screen will take the player to the next scene on keypress
-        --screens.title.displayed = true
         screens.title.displayed = true
         -- This normally is triggered on keypress, but since we're showing
         -- the title manually, call this manually too
@@ -89,7 +89,7 @@ function love.keypressed(key)
             else
                 nextScreenToDisplay = screenConfig
             end
-        elseif screenConfig.displayed and screenConfig.onKeyPressed and nextScreenToDisplay == nil then
+        elseif screenConfig.displayed and screenConfig.onKeyPressed then
             screenConfig.onKeyPressed(key)
         end
 

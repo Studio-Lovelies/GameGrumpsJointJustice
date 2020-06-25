@@ -7,7 +7,7 @@ SET_SCENE_TYPE TRIAL
 CHARACTER_INITIALIZE Arin arin MALE
 CHARACTER_INITIALIZE Dan dan MALE
 CHARACTER_INITIALIZE "Judge Brent" judge MALE
-CHARACTER_INITIALIZE "Tutorial Boy" payne MALE
+CHARACTER_INITIALIZE "Tutorial Boy" tutorialboy MALE
 CHARACTER_INITIALIZE Ross ross MALE
 
 CHARACTER_LOCATION Arin COURT_DEFENSE
@@ -16,14 +16,21 @@ CHARACTER_LOCATION "Judge Brent" COURT_JUDGE
 CHARACTER_LOCATION "Tutorial Boy" COURT_PROSECUTION
 CHARACTER_LOCATION Ross COURT_WITNESS
 
+EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
+COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
+COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
+EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
+COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recrding" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
 COURT_RECORD_ADD EVIDENCE LivestreamRecording
 EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/Jory'sBackpack.png
-COURT_RECORD_ADD EVIDENCE JorysBackpack
+COURT_RECORD_ADD EVIDENCE Jory'sBackpack
 EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." sprites/StolenDinos.png
 COURT_RECORD_ADD EVIDENCE StolenDinos
 EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
 COURT_RECORD_ADD EVIDENCE BentCoins
+
 
 
 DEFINE TRIAL_FAIL
@@ -54,17 +61,18 @@ SPEAK_FROM COURT_PROSECUTION
 
 // SFX [Writer's Note -- One of them slashing sounds, I couldn't find it]
 FADE_TO_BLACK
-JUMPCUT COURT_WITNESS
+FADE_IN 1 COURT_WITNESS
 WAIT 2
 
 SPEAK_FROM COURT_JUDGE
     "Someone actually witnessed the crime?"
  
-TUTORIAL BOI: Precisely, your honor.
+SPEAK_FROM COURT_PROSECUTION
+    "Precisely, your honor."
  
 JUMPCUT COURT_DEFENSE
 ANIMATION Arin Shock
-POSE Arin Normal
+POSE Arin Sweaty
 SPEAK Arin
     "Ross?! They roped you into this as well?"
  
@@ -102,7 +110,8 @@ POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
     "Nothing, Your Honor!"
     "Ross O'Donovan, local animator, Mario Maker enthusiast, apparent sadist, and friend."  // WN -- that last one could be colored differently
- 
+
+POSE Dan SideNormal
 SPEAK_FROM COURT_ASSISTANT
     "Some friend... Testifying against Jory, treating him like a criminal."
  
@@ -114,14 +123,20 @@ SPEAK Dan
  
 SPEAK Arin
     "That a gavel, lubed properly, has many uses?"
- 
+
 SPEAK Dan
-    "No! Well, I mean yeah... That gayliff sure was creative."
+    "No!"
+
+POSE Dan SideLaugh
+SPEAK Dan
+    "Well, I mean yeah... That gayliff sure was creative."\
+
+POSE Dan SideNormal
 SPEAK Dan
     "But more importantly, you should go into it with confidence that your client is innocent."
 SPEAK Dan
     "We don't know if he's guilty, but if his own attorney doesn't believe him, why should the rest of the court?"
- 
+
 SPEAK Arin
     "You're right! We're here to defend our friend, so we should at least assume we're making the right call."
 
@@ -134,10 +149,14 @@ SPEAK_FROM COURT_JUDGE
 POSE Arin Sweaty
 THINK_FROM COURT_DEFENSE
     "Why does he act like he doesn't know anyone here?"
- 
+
+ANIMATION Arin Nodding
+
 POSE Arin Normal
 SPEAK Arin
     "We're ready, Your Honor."
  
 SPEAK_FROM COURT_JUDGE
     "Alright. The witness may begin."
+
+END_SCENE
