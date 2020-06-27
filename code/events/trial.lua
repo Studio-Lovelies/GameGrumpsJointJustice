@@ -73,8 +73,6 @@ function NewWitnessEvent(queue)
             return false
         end
 
-        self.textScroll = math.min(self.textScroll + dt*TextScrollSpeed, #text)
-
         local inTitle = self.textIndex == 3
         if inTitle then  -- Title formatting
             scene.textColor = {1, 0.5, 0}
@@ -112,8 +110,15 @@ function NewWitnessEvent(queue)
         -- Controls handling
         local canAdvance = self.textScroll >= #text and self.timer > self.animationTime
 
+        local scrollSpeed = TextScrollSpeed
+
+        if love.keyboard.isDown("lshift") then
+            scrollSpeed = scrollSpeed*8
+        end
+        self.textScroll = math.min(self.textScroll + dt*scrollSpeed, #text)
+
         -- Advance text
-        local pressing = love.keyboard.isDown("x")
+        local pressing = love.keyboard.isDown(controls.advance_text)
         if pressing
         and not self.wasPressing
         and canAdvance then
@@ -131,12 +136,12 @@ function NewWitnessEvent(queue)
             end
 
             -- Present evidence
-            if love.keyboard.isDown("up")
+            if love.keyboard.isDown(controls.press_confirm)
             and screens.courtRecords.displayed
             and not inTitle then
                 screens.courtRecords.displayed = false
 
-                if Episode.courtRecords[CourtRecordIndex].name == self.queue[self.textIndex+2] then
+                if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex+2] then
                     return false
                 else
                     scene:runDefinition(self.queue[3])
@@ -349,3 +354,9 @@ function NewPanEvent(from, to)
 
     return self
 end
+
+function tablelength(T)
+    local count = 0
+    for _ in pairs(T) do count = count + 1 end
+    return count
+  end
