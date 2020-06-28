@@ -131,8 +131,15 @@ function NewWitnessEvent(queue)
             if love.keyboard.isDown("c")
             and canAdvance
             and not inTitle then
+                print(self.queue[3])
                 scene:runDefinition(self.queue[self.textIndex+1])
                 self:advanceText()
+                if self.queue[self.textIndex+2] ~= "1" then
+                    return false
+                else
+                    scene:runDefinition(self.queue[3])
+                    self.advanceText()
+                end
             end
 
             -- Present evidence

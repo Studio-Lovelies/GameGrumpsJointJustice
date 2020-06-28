@@ -229,7 +229,7 @@ PLAY_MUSIC QUESTIONING
 WITNESS_EVENT CrossExamination Ross "-- Witness's Account --" CrossExamFail
     "I was animating by myself over in my room at the office." PressA1 0
     "But then... I saw someone taking the dinos!!" PressA2 0
-    "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressA3 0  // Advance script
+    "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressA3 1
     "I thought perhaps it was for an art reference or something like that" PressA4 0
     "But now that I know they were stolen, that means the culprit must be Jory!" PressA4 0
 
