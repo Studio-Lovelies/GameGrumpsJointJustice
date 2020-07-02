@@ -138,7 +138,7 @@ function NewWitnessEvent(queue)
                     return false
                 else
                     scene:runDefinition(self.queue[3])
-                    self.advanceText()
+                    self:advanceText()
                 end
             end
 
