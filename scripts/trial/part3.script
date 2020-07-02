@@ -255,12 +255,11 @@ DEFINE PressB4
 END_DEFINE
 
 WITNESS_EVENT CrossExamination Ross "-- Witness's Account --" CrossExamFail
-    "I was animating by myself over in my room at the office." PressB1 0
-    "But then... I saw someone taking the dinos!!" PressB2 0
-    "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressB3 0
-    "The reason I was able to see Jory taking the dinos is because I was just on my way back from the office toilet." PressB4 PlumbingInvoice
-    "I thought perhaps it was for an art reference or something like that..." PressB5 0
-    "But now that I know they were stolen, that means the culprit must be Jory!" PressB5 0
+    "So I saw Jory walk by my office." PressB1 0
+    "But I suddenly had to use the bathroom right away!" PressB2 0
+    "When I was finished, that's when I saw him stashing the dinos away" PressB3 PlumbingInvoice
+    "The reason I was able to see Jory taking the dinos is because I was just on my way back from the office toilet." PressB4 0
+    
 
 
 /////////////////////////

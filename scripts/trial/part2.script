@@ -48,9 +48,12 @@ SPEAK_FROM COURT_DEFENSE
 POSE "Tutorial Boy" Confident
 SPEAK_FROM COURT_PROSECUTION
     "That would be the case... If I didn't have any more proof!"
- 
+
+
+JUMPCUT COURT_DEFENSE
+ANIMATION Arin Shock
 POSE Arin Sweaty
-THINK_FROM COURT_DEFENSE
+THINK Arin
     "He has proof?"
 
 POSE "Tutorial Boy" Normal
