@@ -51,10 +51,11 @@ SPEAK_FROM COURT_PROSECUTION
 
 
 JUMPCUT COURT_DEFENSE
-ANIMATION Arin Shock
-POSE Arin Sweaty
+POSE Arin Objection
 THINK Arin
     "He has proof?"
+SPEAK Arin
+    "I'm putting in a lot of text here just to test how this weird pose animation thing works out"
 
 POSE "Tutorial Boy" Normal
 SPEAK_FROM COURT_PROSECUTION
