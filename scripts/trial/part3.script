@@ -49,8 +49,7 @@ WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "I was animating by myself over in my room at the office."
     "But then... I saw someone taking the dinos!!"
     "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!"
-    "I thought perhaps it was for an art reference or something like that..."
-    "But now that I know they were stolen, that means the culprit must be Jory!"
+    "Now that I know they were stolen, that means the culprit must be Jory!"
 
 STOP_MUSIC
 FADE_TO_BLACK
@@ -226,12 +225,11 @@ FADE_TO_BLACK
 FADE_IN 1 COURT_WITNESS
 PLAY_MUSIC QUESTIONING
 
-WITNESS_EVENT CrossExamination Ross "-- Witness's Account --" CrossExamFail
+WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
     "I was animating by myself over in my room at the office." PressA1 0
     "But then... I saw someone taking the dinos!!" PressA2 0
     "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressA3 1
-    "I thought perhaps it was for an art reference or something like that" PressA4 0
-    "But now that I know they were stolen, that means the culprit must be Jory!" PressA4 0
+    "Now that I know they were stolen, that means the culprit must be Jory!" PressA4 0
 
 
 ///////////////////////
@@ -248,19 +246,19 @@ DEFINE PressB4
 
     SPEAK_FROM COURT_ASSISTANT
         "Something smells fishy, and I'm not talking about Ross's poop."
+    //POSE Dan SideNormalTurned
     SPEAK Dan
         "Don't we have some evidence that contradicts this?"
 
     JUMPCUT COURT_WITNESS
 END_DEFINE
 
-WITNESS_EVENT CrossExamination Ross "-- Witness's Account --" CrossExamFail
-    "I was animating by myself over in my room at the office." PressB1 0
-    "But then... I saw someone taking the dinos!!" PressB2 0
-    "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressB3 0
-    "The reason I was able to see Jory taking the dinos is because I was just on my way back from the office toilet." PressB4 PlumbingInvoice
-    "I thought perhaps it was for an art reference or something like that..." PressB5 0
-    "But now that I know they were stolen, that means the culprit must be Jory!" PressB5 0
+WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
+    "I was animating by myself over in my room at the office." PressA1 0
+    "But then... I saw someone taking the dinos!!" PressA2 0
+    "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressA3 0
+    "The reason I was able to see Jory taking the dinos is because I was just on my way back from the office toilet." PressB4 PlumberInvoice
+    "Now that I know they were stolen, that means the culprit must be Jory!" PressA5 0
 
 
 /////////////////////////

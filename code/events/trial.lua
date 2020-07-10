@@ -48,7 +48,7 @@ function NewWitnessEvent(queue)
             self.wasPressing = true
         else  -- "CrossExamination"
             if self.textIndex == 3 then
-                self.textIndex = 4
+                self.textIndex = self.textIndex + 1
             else
                 self.textIndex = self.textIndex + 3
             end
@@ -62,10 +62,12 @@ function NewWitnessEvent(queue)
         end
     end
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         self.timer = self.timer + dt
 
         -- Text format & behavior
+        if self.queue[self.textIndex] ~= nil then
+        end
         local text = self.queue[self.textIndex]
         local lastScroll = self.textScroll
 
@@ -95,7 +97,7 @@ function NewWitnessEvent(queue)
 
         local currentChar = string.sub(text, math.floor(self.textScroll), math.floor(self.textScroll))
 
-        if self.textScroll > lastScroll
+        if self.textScroll < lastScroll
         and currentChar ~= " "
         and currentChar ~= ","
         and currentChar ~= "-" then
@@ -129,16 +131,11 @@ function NewWitnessEvent(queue)
         if self.eventType == "CrossExamination" then
             -- Press witness
             if love.keyboard.isDown("c")
-            and canAdvance
-            and not inTitle then
-                print(self.queue[3])
-                scene:runDefinition(self.queue[self.textIndex+1])
-                self:advanceText()
-                if self.queue[self.textIndex+2] ~= "1" then
+            and canAdvance then
+                if self.queue[self.textIndex+2] == "1" then
                     return false
                 else
-                    scene:runDefinition(self.queue[3])
-                    self:advanceText()
+                    scene:runDefinition(self.queue[self.textIndex+1])
                 end
             end
 
@@ -148,11 +145,12 @@ function NewWitnessEvent(queue)
             and not inTitle then
                 screens.courtRecords.displayed = false
 
-                if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex+2] then
+                if Episode.courtRecords.evidence[CourtRecordIndex].name == self.queue[self.textIndex+2] then
                     return false
                 else
-                    scene:runDefinition(self.queue[3])
-                    self:advanceText()
+                    if self.queue[self.textIndex+2] ~= "1" then
+                        scene:runDefinition(self.queue[self.textIndex+1])
+                    end
                 end
             end
         end
