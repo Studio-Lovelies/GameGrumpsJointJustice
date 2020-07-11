@@ -57,11 +57,10 @@ WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
 STOP_MUSIC
 FADE_TO_BLACK
 
-// POSE "Judge Brent" Thinking
+JUMPCUT COURT_JUDGE
+POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
     "Hmm. So you were in your office working on a Mario Maker level but needed a break. That's when you saw Jory and saw the dinosaurs.
-
-POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "That seems to make sense."
 
