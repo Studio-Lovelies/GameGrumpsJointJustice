@@ -52,17 +52,20 @@ WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "It was when I was in the middle of making the level when I saw Jory walk by my office"
     "I got tired of making the level so I wanted to see what he was up to."
     "That's when I saw it! He had taken the Dinos and stuffed them into his backpack!"
-    "That's how I knew where to look for them."
 
 STOP_MUSIC
 FADE_TO_BLACK
+POSE "Judge Brent" Thinking
+FADE_IN 1 COURT_JUDGE
 
-JUMPCUT COURT_JUDGE
+
 POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
-    "Hmm. So you were in your office working on a Mario Maker level but needed a break. That's when you saw Jory and saw the dinosaurs.
+    "Hmm. So you were in your office working on a Mario Maker level but needed a break.
 SPEAK "Judge Brent"
-    "That seems to make sense."
+    "That's when you saw Jory and saw the dinosaurs."
+SPEAK "Judge Brent"
+    "That seems reasonable to me."
 
 SPEAK_FROM COURT_PROSECUTION
     "Without a doubt your honor. That is how it really happened."
@@ -73,12 +76,16 @@ SPEAK "Tutorial Boy"
 
 //ANIMATION "Tutorial Boy" HeadSlam
 
+POSE Arin Thinking
 SPEAK_FROM COURT_DEFENSE
     "What do you think Dan?"
 
 POSE Dan SideNormal
 SPEAK_FROM COURT_ASSISTANT
     "Yeah... I can't really see any holes in his claim...
+
+JUMPCUT COURT_DEFENSE
+POSE Arin DeskSlam
 Speak Arin
     "Damn..."
 
@@ -89,9 +96,10 @@ JUMPCUT COURT_DEFENSE
 SPEAK Arin
     "Wait! I've got an idea!"
 
-Speak Dan
+SPEAK Dan
     "What is it?"
 
+ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
 SPEAK Arin
     "I'll just BS my way through by questioning everything he said!"
@@ -99,8 +107,9 @@ SPEAK Arin
 SPEAK Dan
     "I don't know man. Do you really think that will work?"
 
+POSE Arin Embarassed
 SPEAK Arin
-    "Well maybe, but it's worked for everything else I've ever done, so FUCK IT!!!"
+    "Well maybe, but it's worked for everything else I've ever done..."
 
 JUMPCUT COURT_ASSISTANT
 SPEAK Dan
@@ -110,12 +119,15 @@ POSE Dan Angry
 SPEAK Dan
     "Wait, what do you mean every--"
 
+JUMPCUT COURT_DEFENSE
+ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
     "LET'S DO IT!"
 
 SPEAK_FROM COURT_JUDGE
     "If the defense would like to cross examine now...?"
+
 POSE Arin Point
 SPEAK_FROM COURT_DEFENSE
     "You bet I would! I've got some questions that need answering!"
@@ -145,7 +157,7 @@ SPEAK Ross
     "TEST STUFF GOES HERE DONT BREAK LOL"
 
 SHOUT Arin Objection
-PAN_FROM COURT_WITNESS COURT_DEFENSE
+JUMPCUT COURT_DEFENSE
 SPEAK Arin
     "You said you were in the middle of making a level. Exactly how you were making it?"
 
@@ -157,7 +169,7 @@ SPEAK_FROM COURT_PROSECUTION
 
 POSE Arin DeskSlam
 THINK_FROM COURT_DEFENSE
-    "Rrrrr, this guy is so annoying"
+    "(Rrrrr, this guy is so annoying)"
 
 SFX realization
 
@@ -177,14 +189,17 @@ JUMPCUT COURT_WITNESS
 POSE Ross Sweaty
     "W-w-what?"
 
-PAN_FROM COURT_WITNESS COURT_DEFENSE
+//PAN_FROM COURT_WITNESS COURT_DEFENSE
+JUMPCUT COURT_DEFENSE
 POSE Arin Point
+
+JUMPCUT COURT_WITNESS
 SPEAK Arin
     "There's no way you could have been using your switch when you said you were!"
 
-WideShot
+WIDESHOT
 
-//GAVEL X3
+GAVEL
 
 POSE "Judge Brent" Angry
 SPEAK_FROM COURT_JUDGE
