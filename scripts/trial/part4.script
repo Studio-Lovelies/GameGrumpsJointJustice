@@ -70,11 +70,19 @@ SPEAK "Judge Brent"
 SPEAK_FROM COURT_PROSECUTION
     "Without a doubt your honor. That is how it really happened."
 SPEAK "Tutorial Boy"
-    "I apologize for not being forthwith with that at the beginning, but you see we -- er, I mean, my client, wanted      to keep it a surprise.
+    "I apologize for not being forthwith with that at the beginning, but you see...
 SPEAK "Tutorial Boy"
-    "I hope the defense is happy with themselves for ruining Ross' great gesture! We can add that to Jory's crimes!
+    "we -- er, I mean, my client, wanted to keep it a surprise."
+
+//POSE "Tutorial Boy" Angry
+SPEAK "Tutorial Boy"
+    "I hope the defense is happy with themselves for ruining Ross' great gesture!
 
 //ANIMATION "Tutorial Boy" HeadSlam
+
+POSE Arin Sweaty
+SPEAK_FROM COURT_DEFENSE
+    "Ho boy"
 
 POSE Arin Thinking
 SPEAK_FROM COURT_DEFENSE
@@ -82,17 +90,15 @@ SPEAK_FROM COURT_DEFENSE
 
 POSE Dan SideNormal
 SPEAK_FROM COURT_ASSISTANT
-    "Yeah... I can't really see any holes in his claim...
+    "Yeah... I can't really see any holes in his claim..."
 
 JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam
-Speak Arin
+SPEAK Arin
     "Damn..."
 
 SFX lightbulb
-
 POSE Arin Thinking
-JUMPCUT COURT_DEFENSE
 SPEAK Arin
     "Wait! I've got an idea!"
 
@@ -179,21 +185,24 @@ THINK Arin
 POSE Arin Confident
 SPEAK Arin
     "As a matter of fact, it IS the best question!"
-Speak Arin
+
+//ANIMATION Arin Objection
+
+SPEAK Arin
     "And it's the only question I need to see your lies for what they are!"
 
 SFX stab
 SCREEN_SHAKE
 JUMPCUT COURT_WITNESS
-///ANIMATION Ross Shocked (mario maker helm)
+//ANIMATION Ross Shocked (mario maker helm)
 POSE Ross Sweaty
+SPEAK Ross
     "W-w-what?"
 
 //PAN_FROM COURT_WITNESS COURT_DEFENSE
 JUMPCUT COURT_DEFENSE
-POSE Arin Point
 
-JUMPCUT COURT_WITNESS
+POSE Arin Point
 SPEAK Arin
     "There's no way you could have been using your switch when you said you were!"
 
@@ -206,6 +215,7 @@ SPEAK_FROM COURT_JUDGE
     "ORDER! I will have order in this court!"
 
 POSE "Judge Brent" Surprised
+SPEAK_FROM COURT_JUDGE
     "You say that he could not have been using his switch as he claims?"
 
 POSE Arin DeskSlam
@@ -213,7 +223,7 @@ SPEAK_FROM COURT_DEFENSE
     "That's correct, your honor!"
 
 //ANIMATION TUTORIAL BOI [HEADSLAM]
-POSE "Tutorial Boy" Sweating
+POSE "Tutorial Boy" Sweaty
 SPEAK_FROM COURT_PROSECUTION
     "Impossible! There's no way you can prove such a thing!"
 
@@ -291,13 +301,15 @@ ANIMATION Arin DeskSlam
 Pose Arin DeskSlam
     "Your honor, if i may explain"
 
+ANIMATION "Judge Brent" Nodding
+POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
-//ANIMATION "Judge Brent" Nodding
     "Objection sustained. The defense will proceed"
 
 SPEAK_FROM COURT_DEFENSE
     "Thank you, your honor"
 POSE Arin Paper
+SPEAK Arin
     "Look closely on the back of this particular Switch."
 
 //bring up switch icon
@@ -308,10 +320,12 @@ SPEAK Arin
 POSE "Tutorial Boy" Sweaty
 SPEAK_FROM COURT_PROSECUTION
     "S-so what? That still doesn't help your case."
+SPEAK "Tutorial Boy"
+    "Just because that's Ross' original character Slimemantha (tm), doesn't prove that the switch is his!"
 
 POSE Arin Confident
 SPEAK_FROM COURT_DEFENSE
-    "Well just wait a minute and you'll see how it helps!"
+    "Maybe so, but I have more to add!"
 
 SPEAK_FROM COURT_ASSISTANT
     "Are you sure about this, Arin? Everytime you're this confident you tend to blow it immediately."
@@ -328,10 +342,18 @@ SPEAK Arin
 
 //CORRECT CHOICE
 
-//SFX takethat
-//ARIN [PAPER]
-//If you've ever owned a Switch, you'd know that the last game played always sits on the far left-hand side of the //screen !
-//ARIN:  That way you have quick and easy access to the game you were most recently playing.
+SHOUT Arin takeshat
+
+JUMPCUT COURT_DEFENSE
+//POSE Arin PaperSlap
+SPEAK Arin
+    "If you've ever owned a Switch, you'd know that the last game played,"
+SPEAK Arin
+    "always sits on the far left-hand side of the screen!"
+//maybe a visual here?
+
+SPEAK Arin
+    "That way you have quick and easy access to the game you were most recently playing."
 
 POSE "Judge Brent" Shocked
 SPEAK_FROM COURT_JUDGE
