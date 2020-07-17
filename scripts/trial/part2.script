@@ -44,18 +44,22 @@ PLAY_MUSIC TRIAL
 
 SPEAK_FROM COURT_DEFENSE
     "This is all circumstantial evidence! Nothing here categorically proves the defendant is guilty."
- 
+
 POSE "Tutorial Boy" Confident
 SPEAK_FROM COURT_PROSECUTION
     "That would be the case... If I didn't have any more proof!"
 
 
 JUMPCUT COURT_DEFENSE
-POSE Arin Objection
+POSE Arin Sweaty
 THINK Arin
     "He has proof?"
-SPEAK Arin
-    "I'm putting in a lot of text here just to test how this weird pose animation thing works out"
+
+SPEAK_FROM COURT_JUDGE
+    "Someone actually witnessed the crime?"
+
+SPEAK_FROM COURT_PROSECUTION
+    "Precisely, your honor."
 
 POSE "Tutorial Boy" Normal
 SPEAK_FROM COURT_PROSECUTION
@@ -66,33 +70,27 @@ FADE_TO_BLACK
 FADE_IN 1 COURT_WITNESS
 WAIT 2
 
-SPEAK_FROM COURT_JUDGE
-    "Someone actually witnessed the crime?"
- 
-SPEAK_FROM COURT_PROSECUTION
-    "Precisely, your honor."
- 
 JUMPCUT COURT_DEFENSE
-ANIMATION Arin Shock
+//ANIMATION Arin Shock
 POSE Arin Sweaty
 SPEAK Arin
     "Ross?! They roped you into this as well?"
- 
+
 SPEAK_FROM COURT_WITNESS
     "Yeah... It looked important, you know? Plus, I could use the extra money."
- 
+
 // ANIMATION "Judge Brent" Surprised
 SPX lightbulb
 SPEAK_FROM COURT_JUDGE
     "Mr. O'Donovan, being a witness isn't a paying job..."
- 
+
  SPEAK_FROM COURT_PROSECUTION
     "Not that anyone here is getting paid anyway..."
- 
+
 POSE Ross Sweaty
 SPEAK_FROM COURT_WITNESS
     "I-I see..."
- 
+
  JUMPCUT COURT_PROSECUTION
 // ANIMATION "Tutorial Boy" HeadSlam
 SPEAK "Tutorial Boy"
@@ -100,14 +98,14 @@ SPEAK "Tutorial Boy"
 // ANIMATION "Tutorial Boy" HeadSlam
 SPEAK "Tutorial Boy"
     "Ahem... Mr. O'Donovan, please state your name and occupation for the court."
- 
+
 POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
     "Kangaroo court if I ever saw one..."  // WN -- any way to make it obvious it's muttered?
- 
+
 SPEAK_FROM COURT_JUDGE
     "Excuse me?"
- 
+
 POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
     "Nothing, Your Honor!"
@@ -116,13 +114,13 @@ SPEAK_FROM COURT_WITNESS
 POSE Dan SideNormal
 SPEAK_FROM COURT_ASSISTANT
     "Some friend... Testifying against Jory, treating him like a criminal."
- 
+
 SPEAK Arin
     "What do you mean? We don't even know if Jory is innocent!"
 
 SPEAK Dan
     "Arin. Have you learned nothing from the Penix Wright playthrough?"
- 
+
 SPEAK Arin
     "That a gavel, lubed properly, has many uses?"
 
@@ -145,9 +143,9 @@ SPEAK Arin
 SPEAK Dan
     "Also, knowing how these things go, the defendant is always innocent."
 
-SPEAK_FROM COURT_JUDGE 
+SPEAK_FROM COURT_JUDGE
     "If the defense is done sucking each other's toes, shall we begin with Mr. O'Donovan's testimony?"
- 
+
 POSE Arin Sweaty
 THINK_FROM COURT_DEFENSE
     "Why does he act like he doesn't know anyone here?"
@@ -157,7 +155,7 @@ ANIMATION Arin Nodding
 POSE Arin Normal
 SPEAK Arin
     "We're ready, Your Honor."
- 
+
 SPEAK_FROM COURT_JUDGE
     "Alright. The witness may begin."
 
