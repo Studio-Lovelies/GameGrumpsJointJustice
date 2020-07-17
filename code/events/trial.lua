@@ -64,6 +64,7 @@ function NewWitnessEvent(queue)
 
     self.update = function(self, scene, dt)
         self.timer = self.timer + dt
+        scene.textHidden = false
 
         -- Text format & behavior
         if self.queue[self.textIndex] ~= nil then
@@ -224,8 +225,6 @@ function NewWideShotEvent()
                 self.headAnim = 1
             end
         end
-
-        scene.textHidden = true
 
         if not self.hasPlayed then
             --self.sources = love.audio.pause()
