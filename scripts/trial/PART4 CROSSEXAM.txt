@@ -1,0 +1,101 @@
+DEFINE CrossExamFail
+    JUMPCUT BLACK_SCREEN
+    SPEAK "Judge Brent"
+        "The defense loses."
+END_DEFINE
+
+DEFINE PressA1
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "Why did you lie to us in the first place?"
+
+    POSE Ross Sweaty
+    JUMPCUT COURT_WITNESS
+    SPEAK Ross
+        "Well... I didn't want to seem suspicious... That would incriminate me!
+
+    SPEAK_FROM COURT_DEFENSE
+        "Well you made yourself look suspicious when you lied!"
+
+    SPEAK_FROM COURT_WITNESS
+        "Well, I do apologise for that. Seriously-- I do!"
+
+    SPEAK_FROM COURT_ASSISTANT
+        "Are you sure about that?"
+
+    SHOUT "Tutorial Boy" Objection
+    SPEAK_FROM COURT_PROSECUTION
+        "My client already apologized, stop badgering him and let him continue his testimony!"
+
+    SPEAK_FROM COURT_JUDGE
+        "Objection sustained. The witness will continue"
+
+    SPEAK_FROM COURT_WITNESS
+        "Yes, yes of course! ehehe..."
+    
+    POSE Ross Normal
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+DEFINE PressA2
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "I don't like the way you define 'special', Ross"
+    
+    POSE Ross Normal
+    JUMPCUT COURT_WITNESS
+    SPEAK Ross
+        "They were some fun and joyful levels I had planned! Honest!"
+
+    SPEAK_FROM COURT_ASSISTANT
+        "Fun and joyful? With YOUR levels?! I have serious doubts about that."
+
+    POSE Ross Sweaty
+    SPEAK_FROM COURT_WITNESS
+        "I swear! They were going to be fun based on the concepts I drew out!"
+
+    GAVEL
+
+    SPEAK_FROM COURT_JUDGE
+        "The witness will stop lying about the level of fun of these supposed levels and continue with his testimony"
+
+    //ANIMATION Ross Shocked
+    POSE Ross Sweaty
+    SPEAK_FROM COURT_WITNESS
+        "Er, yes your honor. My sincerest apologies!"
+    POSE Ross Normal
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+DEFINE PressA3
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "Good...sport? What do you mean by that?"
+    
+    SPEAK_FROM COURT_ASSISTANT
+        "I think he means your tolerance of the troll levels"
+
+    SPEAK_FROM COURT_WITNESS
+        "Yes, indeed! You all haven't fired me yet, so I take it as you being good sports!"
+    SPEAK Ross
+        "I just wanted to show you my appreciation for your kindness and patience with a nicer level or two!"
+    
+    POSE Arin Thinking
+    THINK_FROM COURT_DEFENSE
+        "(That is a very Ross thing to do)"
+    
+    THINK Arin
+        "(Still...)"
+    SPEAK Arin
+        "I can't see how a couple of nicer levels would make up for all that pain"
+
+    SPEAK_FROM COURT_WITNESS
+        "Well I'd be finishing them right now, if not for Jory!"
+    SPEAK Ross
+        "As a matter of fact..."
+
+END_DEFINE
+
+DEFINE PRESS C4
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
