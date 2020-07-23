@@ -43,7 +43,7 @@ END_DEFINE
 //////////////////
 
 JUMPCUT COURT_WITNESS
-PLAY_MUSIC QUESTIONING
+PLAY_MUSIC 
 
 WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "Well I guess you got me. I did lie about what I was doing."
@@ -58,7 +58,8 @@ FADE_TO_BLACK
 POSE "Judge Brent" Thinking
 FADE_IN 1 COURT_JUDGE
 
-PLAY_MUSIC TRIAL
+PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
+
 POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
     "Hmm. So you were in your office working on a Mario Maker level but needed a break.
@@ -162,6 +163,7 @@ SPEAK Ross
     "TEST STUFF GOES HERE DONT BREAK LOL"
 
 SHOUT Arin HoldIt
+STOP_MUSIC
 JUMPCUT COURT_DEFENSE
 SPEAK Arin
     "You said you were in the middle of making a level. Exactly how you were making it?"
@@ -179,7 +181,7 @@ THINK_FROM COURT_DEFENSE
 SFX realization
 
 THINK Arin
-   "...!"
+   "(...!)"
 
 POSE Arin Confident
 SPEAK Arin
@@ -187,6 +189,7 @@ SPEAK Arin
 
 //ANIMATION Arin Objection
 
+PLAY_MUSIC OBJECTION_DEFENSE_STARLIGHT_BRIGADE
 SPEAK Arin
     "And it's the only question I need to see your lies for what they are!"
 
@@ -474,6 +477,8 @@ SPEAK Arin
     "Yea, I'd like to see them object to that!"
 
 SHOUT "Tutorial Boy" objection
+
+STOP_MUSIC
 
 POSE Arin Sweaty //Joke sweaty with extra chins?
 SPEAK Arin

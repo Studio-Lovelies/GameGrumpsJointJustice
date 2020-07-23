@@ -69,6 +69,7 @@ POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
     "Dude, that testimony was incredible! Stupendous! AMAZING!"
 
+ANIMATION Dan Laughing
 POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
     "Alright already! You can stop jerking him off now I get it."
