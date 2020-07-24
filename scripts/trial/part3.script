@@ -43,7 +43,7 @@ END_DEFINE
 //////////////////
 
 JUMPCUT COURT_WITNESS
-PLAY_MUSIC QUESTIONING
+PLAY_MUSIC CROSSEXAMMODERATO
 
 WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "I was animating by myself over in my room at the office."
@@ -55,6 +55,7 @@ STOP_MUSIC
 FADE_TO_BLACK
 FADE_IN 1 COURT_JUDGE
 
+PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
 // POSE "Judge Brent" Thinking
 SPEAK_FROM COURT_JUDGE
     "Hm..."
@@ -69,7 +70,6 @@ POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
     "Dude, that testimony was incredible! Stupendous! AMAZING!"
 
-ANIMATION Dan Laughing
 POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
     "Alright already! You can stop jerking him off now I get it."
@@ -227,7 +227,7 @@ END_DEFINE
 
 FADE_TO_BLACK
 FADE_IN 1 COURT_WITNESS
-PLAY_MUSIC QUESTIONING
+PLAY_MUSIC CROSSEXAMMODERATO
 
 WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
     "I was animating by myself over in my room at the office." PressA1 0

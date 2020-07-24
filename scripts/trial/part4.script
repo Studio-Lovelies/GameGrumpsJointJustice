@@ -43,7 +43,7 @@ END_DEFINE
 //////////////////
 
 JUMPCUT COURT_WITNESS
-PLAY_MUSIC 
+PLAY_MUSIC CROSSEXAMMODERATO
 
 WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "Well I guess you got me. I did lie about what I was doing."
@@ -146,6 +146,7 @@ SPEAK_FROM COURT_JUDGE
     "Very well. The defense may begin their cross-examination."
 
 FADE_TO_BLACK
+STOP_MUSIC
 FADE_IN 1 COURT_WITNESS
 WAIT 1
 
@@ -154,6 +155,7 @@ WAIT 1
 // Cross Examination //
 ///////////////////////
 
+PLAY_MUSIC CROSSEXAMMODERATO
 
 /////////////////////////
 // Found Contradiction //
@@ -311,6 +313,7 @@ SPEAK Arin
     "If you wouldn't interrupt, I'd show you just how possible it is."
 
 ANIMATION Arin DeskSlam
+SFX deskslam
 Pose Arin DeskSlam
 SPEAK Arin
     "Your honor, if i may explain"
@@ -469,12 +472,20 @@ SPEAK Arin
 
 //ANIMATION Dan AirGuitar
 SPEAK_FROM COURT_ASSISTANT
-   "Nice dude! Well effing done!"
+   "Wow dude, how did you even know about that? That's incredible!"
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
 SPEAK Arin
-    "Yea, I'd like to see them object to that!"
+    "Don't you know Dan? I'm the Video Game Boy..."
+
+//ANIMATION Objection
+POSE Arin Point
+SPEAK Arin
+    "I'm the one who's winning this case!"
+POSE Arin Confident
+SPEAK Arin
+    "Let's see them find an objection now!"
 
 SHOUT "Tutorial Boy" objection
 
@@ -485,7 +496,7 @@ SPEAK Arin
     "Are you buttf*%$ing me dude?"
 
 JUMPCUT COURT_PROSECUTION
-POSE "Tutorial Boy" Objection
+POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
     "Whatever game was last played doesn't prove anything!"
 SPEAK "Tutorial Boy" 
@@ -653,7 +664,7 @@ POSE Arin DeskSlam
 SPEAK Arin
     "That means that the reason that Penix Wright is the last game on the list"
 
-//PAN STILL BROKEN
+
 JUMPCUT COURT_WITNESS
 POSE Ross Glaring
 SPEAK Arin
