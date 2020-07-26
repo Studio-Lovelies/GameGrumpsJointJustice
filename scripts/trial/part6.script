@@ -45,7 +45,7 @@ END_DEFINE
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
 SPEAK_FROM COURT_JUDGE
-    "Something… off?"
+    "Something... off?"
 
 //ANIMATION "Tutorial Boy" HeadSlam
 SPEAK_FROM COURT_PROSECUTION
