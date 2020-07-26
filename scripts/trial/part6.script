@@ -42,7 +42,7 @@ END_DEFINE
 // START SCRIPT //
 //////////////////
 
-
+JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
 SPEAK_FROM COURT_JUDGE
     "Something… off?"
