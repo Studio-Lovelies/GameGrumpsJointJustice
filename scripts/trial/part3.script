@@ -141,7 +141,7 @@ DEFINE PressA2
         "Who did you see?"
 
     SPEAK_FROM COURT_WITNESS
-        "I'm getting to it, just be patient. I'm trying to build suspense for the viewers."
+        "I'm getting to it, just be patient. I'm trying to build suspense for the viewers!"
 
     SPEAK_FROM COURT_DEFENSE
         "But this isn't being broadcasted..."
