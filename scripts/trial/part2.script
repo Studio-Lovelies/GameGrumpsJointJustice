@@ -71,7 +71,7 @@ FADE_IN 1 COURT_WITNESS
 WAIT 2
 
 JUMPCUT COURT_DEFENSE
-//ANIMATION Arin Shock
+ANIMATION Arin Shock 1
 POSE Arin Sweaty
 SPEAK Arin
     "Ross?! They roped you into this as well?"
@@ -79,7 +79,7 @@ SPEAK Arin
 SPEAK_FROM COURT_WITNESS
     "Yeah... It looked important, you know? Plus, I could use the extra money."
 
-// ANIMATION "Judge Brent" Surprised
+//ANIMATION "Judge Brent" Surprised
 SPX lightbulb
 SPEAK_FROM COURT_JUDGE
     "Mr. O'Donovan, being a witness isn't a paying job..."
@@ -150,7 +150,7 @@ POSE Arin Sweaty
 THINK_FROM COURT_DEFENSE
     "Why does he act like he doesn't know anyone here?"
 
-ANIMATION Arin Nodding
+ANIMATION Arin Nodding 2
 
 POSE Arin Normal
 SPEAK Arin
