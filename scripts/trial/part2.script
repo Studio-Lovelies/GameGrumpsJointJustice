@@ -109,6 +109,7 @@ SPEAK_FROM COURT_JUDGE
 POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
     "Nothing, Your Honor!"
+SPEAK Ross Normal
     "Ross O'Donovan, local animator, Mario Maker enthusiast, apparent sadist, and friend."  // WN -- that last one could be colored differently
 
 POSE Dan SideNormal
