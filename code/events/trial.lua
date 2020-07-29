@@ -136,7 +136,7 @@ function NewWitnessEvent(queue)
                 if self.queue[self.textIndex+2] ~= "1" then
                     scene:runDefinition(self.queue[self.textIndex+1])
                 else
-                    scene:runDefinition(self.queue[self.textIndex+1])
+                    scene:runDefinition(self.queue[self.textIndex+1], 2)
                     return false
                 end
             end

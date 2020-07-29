@@ -193,13 +193,13 @@ DEFINE PressA3
     SPEAK_FROM COURT_DEFENSE
         "Um...excuse me?
 
-    SPEAK_FROM COURT_ASSISTANT
     POSE Dan SideLaugh
+    SPEAK_FROM COURT_ASSISTANT
         "Hah hah hah hah!!!"
 
-    THINK_FROM COURT_DEFENSE
     POSE Arin Annoyed
-        ("Goddamnit Ross")
+    THINK_FROM COURT_DEFENSE
+        "Goddamnit Ross"
     POSE Arin Normal
     SPEAK Arin
         "Your Honor, this needs to be added to the witness's testimony."
@@ -207,8 +207,8 @@ DEFINE PressA3
     SPEAK_FROM COURT_JUDGE
         "Agreed. Ross, add your poop story to your testimony."
 
-    SPEAK_FROM COURT_ASSISTANT
     POSE Dan SideNormal
+    SPEAK_FROM COURT_ASSISTANT
         "There's something strange about the way he left this out. Way to go Big Cat!"
 
     JUMPCUT COURT_WITNESS

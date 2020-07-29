@@ -36,9 +36,9 @@ function NewScene(scriptPath)
             loc = 1
         end
 
-        local definition = deepcopy(self.definitions[defName])
-        for i=#definition, 1, -1 do
-            table.insert(self.stack, loc, definition[i])
+        local definitions = deepcopy(self.definitions[defName])
+        for i=#definitions, 1, -1 do
+            table.insert(self.stack, loc, definitions[i])
         end
     end
 
