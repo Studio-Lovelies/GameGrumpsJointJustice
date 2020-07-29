@@ -56,7 +56,7 @@ FADE_TO_BLACK
 FADE_IN 1 COURT_JUDGE
 
 PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
-// POSE "Judge Brent" Thinking
+//POSE "Judge Brent" Thinking
 SPEAK_FROM COURT_JUDGE
     "Hm..."
 POSE "Judge Brent" Normal
