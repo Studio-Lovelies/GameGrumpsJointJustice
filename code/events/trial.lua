@@ -133,10 +133,11 @@ function NewWitnessEvent(queue)
             -- Press witness
             if love.keyboard.isDown("c")
             and canAdvance then
-                if self.queue[self.textIndex+2] == "1" then
-                    return false
+                if self.queue[self.textIndex+2] ~= "1" then
+                    scene:runDefinition(self.queue[self.textIndex+1])
                 else
                     scene:runDefinition(self.queue[self.textIndex+1])
+                    return false
                 end
             end
 
@@ -146,11 +147,12 @@ function NewWitnessEvent(queue)
             and not inTitle then
                 screens.courtRecords.displayed = false
 
-                if Episode.courtRecords.evidence[CourtRecordIndex].name == self.queue[self.textIndex+2] then
-                    return false
+                if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex+2] then
+                    scene:runDefinition(self.queue[self.textIndex+1])
                 else
                     if self.queue[self.textIndex+2] ~= "1" then
                         scene:runDefinition(self.queue[self.textIndex+1])
+                        return false
                     end
                 end
             end
