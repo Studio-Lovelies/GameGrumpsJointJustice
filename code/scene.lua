@@ -31,7 +31,7 @@ function NewScene(scriptPath)
     self.currentEventIndex = 1
 
     -- run a function definition defined in the script
-    self.runDefinition = function (self, defName, loc)
+    self.runDefinition = function(self, defName, loc)
         if loc == nil then
             loc = 1
         end
