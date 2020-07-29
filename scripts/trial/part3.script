@@ -240,7 +240,7 @@ WITNESS_EVENT CrossExamination Ross "-- Witness' Account --"
 // Revised Testimony //
 ///////////////////////
 
-DEFINE PressB4
+DEFINE PressB3
     SHOUT Arin HoldIt
     SPEAK_FROM COURT_DEFENSE
         "What were you doing by the office toilet Ross?"
@@ -260,7 +260,7 @@ END_DEFINE
 WITNESS_EVENT CrossExamination Ross "-- Witness' Account --" CrossExamFail
     "So I saw Jory walk by my office." PressB1 0
     "But I suddenly had to use the bathroom right away!" PressB2 0
-    "When I was finished, that's when I saw him stashing the dinos away" PressB3 PlumbingInvoice
+    "When I was finished, that's when I saw him stashing the dinos away" PressB3 PlumberInvoice
     "The reason I was able to see Jory taking the dinos is because I was just on my way back from the office toilet." PressB4 0
 
 /////////////////////////

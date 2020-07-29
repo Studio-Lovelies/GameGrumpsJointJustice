@@ -98,10 +98,11 @@ function NewWitnessEvent(queue)
 
         local currentChar = string.sub(text, math.floor(self.textScroll), math.floor(self.textScroll))
 
-        if self.textScroll < lastScroll
+        if self.textScroll > lastScroll
         and currentChar ~= " "
         and currentChar ~= ","
         and currentChar ~= "-" then
+            print("yes")
             if scene.characters[scene.textTalker].gender == "MALE" then
                 Sounds.MALETALK:play()
             else
