@@ -45,7 +45,7 @@ END_DEFINE
 JUMPCUT COURT_WITNESS
 PLAY_MUSIC CROSSEXAMMODERATO
 
-WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
+WITNESS_EVENT WitnessTestimony Ross "-- Witness' Account --"
     "I was animating by myself over in my room at the office."
     "But then... I saw someone taking the dinos!!"
     "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!"
@@ -229,7 +229,7 @@ FADE_TO_BLACK
 FADE_IN 1 COURT_WITNESS
 PLAY_MUSIC CROSSEXAMMODERATO
 
-WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
+WITNESS_EVENT CrossExamination Ross "-- Witness' Account --"
     "I was animating by myself over in my room at the office." PressA1 0
     "But then... I saw someone taking the dinos!!" PressA2 0
     "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressA3 1
@@ -257,7 +257,7 @@ DEFINE PressB4
     JUMPCUT COURT_WITNESS
 END_DEFINE
 
-WITNESS_EVENT CrossExamination Ross "-- Witness's Account --" CrossExamFail
+WITNESS_EVENT CrossExamination Ross "-- Witness' Account --" CrossExamFail
     "So I saw Jory walk by my office." PressB1 0
     "But I suddenly had to use the bathroom right away!" PressB2 0
     "When I was finished, that's when I saw him stashing the dinos away" PressB3 PlumbingInvoice
