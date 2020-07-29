@@ -98,19 +98,6 @@ function NewWitnessEvent(queue)
 
         local currentChar = string.sub(text, math.floor(self.textScroll), math.floor(self.textScroll))
 
-        if self.textScroll > lastScroll
-        and currentChar ~= " "
-        and currentChar ~= ","
-        and currentChar ~= "-" then
-            print("yes")
-            if scene.characters[scene.textTalker].gender == "MALE" then
-                Sounds.MALETALK:play()
-            else
-                Sounds.FEMALETALK:play()
-            end
-        end
-        -- End text format & behavior
-
         -- Controls handling
         local canAdvance = self.textScroll >= #text and self.timer > self.animationTime
 
@@ -119,7 +106,20 @@ function NewWitnessEvent(queue)
         if love.keyboard.isDown("lshift") then
             scrollSpeed = scrollSpeed*8
         end
+
         self.textScroll = math.min(self.textScroll + dt*scrollSpeed, #text)
+
+        if self.textScroll > lastScroll
+        and currentChar ~= " "
+        and currentChar ~= ","
+        and currentChar ~= "-" then
+            if scene.characters[scene.textTalker].gender == "MALE" then
+                Sounds.MALETALK:play()
+            else
+                Sounds.FEMALETALK:play()
+            end
+        end
+        -- End text format & behavior
 
         -- Advance text
         local pressing = love.keyboard.isDown(controls.advance_text)
