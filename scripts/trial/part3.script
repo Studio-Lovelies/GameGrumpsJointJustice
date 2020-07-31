@@ -240,6 +240,22 @@ WITNESS_EVENT CrossExamination Ross "-- Witness' Account --"
 // Revised Testimony //
 ///////////////////////
 
+DEFINE PressB1
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "Placeholder text so it doesn't crash"
+
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+DEFINE PressB2
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "Placeholder text so it doesn't crash"
+
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
 DEFINE PressB3
     SHOUT Arin HoldIt
     SPEAK_FROM COURT_DEFENSE
@@ -253,6 +269,14 @@ DEFINE PressB3
     //POSE Dan SideNormalTurned
     SPEAK Dan
         "Don't we have some evidence that contradicts this?"
+
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+DEFINE PressB4
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "Placeholder text so it doesn't crash"
 
     JUMPCUT COURT_WITNESS
 END_DEFINE
