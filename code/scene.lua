@@ -151,7 +151,7 @@ function NewScene(scriptPath)
             love.graphics.setFont(GameFont)
 
             -- draw the current scrolling text
-            love.graphics.setColor(unpack(self.textColor))
+            love.graphics.setColor(unpack({1,1,1}))
 
             if not self.textCentered then
                 local wrapIndices = {}

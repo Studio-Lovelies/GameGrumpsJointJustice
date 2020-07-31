@@ -29,7 +29,7 @@ function NewEpisode(episodePath)
     end
 
     self.stop = function()
-        self.sceneIndex = #self.scenes + 1
+        self.sceneIndex = #self.scenes
         return false
     end
 

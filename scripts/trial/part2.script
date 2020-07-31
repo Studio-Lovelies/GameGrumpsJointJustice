@@ -71,7 +71,7 @@ FADE_IN 1 COURT_WITNESS
 WAIT 2
 
 JUMPCUT COURT_DEFENSE
-ANIMATION Arin Shock 1
+ANIMATION Arin Shock 5
 POSE Arin Sweaty
 SPEAK Arin
     "Ross?! They roped you into this as well?"
