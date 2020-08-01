@@ -137,7 +137,8 @@ BrowseScreenConfig = {
                 screens.jorytrial.displayed = true;
                 DrawJoryTrialScreen();
                 screens.browsescenes.displayed = false;
-                SelectionIndex = 0;
+                SelectionIndexX = 0;
+                SelectionIndexY = 0;
             end
         elseif key == controls.press_right then
             Sounds["SELECTBLIP2"]:play()
