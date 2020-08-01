@@ -134,6 +134,7 @@ function NewWitnessEvent(queue)
             if love.keyboard.isDown("c")
             and canAdvance then
                 if self.queue[self.textIndex+2] == "1" then
+                    scene:runDefinition(self.queue[self.textIndex+1])
                     return false
                 else
                     scene:runDefinition(self.queue[self.textIndex+1])
@@ -147,6 +148,7 @@ function NewWitnessEvent(queue)
                 screens.courtRecords.displayed = false
 
                 if Episode.courtRecords.evidence[CourtRecordIndex].name == self.queue[self.textIndex+2] then
+                    scene:runDefinition(self.queue[self.textIndex+1])
                     return false
                 else
                     if self.queue[self.textIndex+2] ~= "1" then

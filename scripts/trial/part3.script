@@ -55,7 +55,7 @@ STOP_MUSIC
 FADE_TO_BLACK
 FADE_IN 1 COURT_JUDGE
 
-// POSE "Judge Brent" Thinking
+//POSE "Judge Brent" Thinking
 SPEAK_FROM COURT_JUDGE
     "Hm..."
 POSE "Judge Brent" Normal
@@ -190,7 +190,7 @@ DEFINE PressA3
 
     POSE Arin Annoyed
     SPEAK_FROM COURT_DEFENSE
-        "Um...excuse me?
+        "Um...excuse me?"
 
     SPEAK_FROM COURT_ASSISTANT
         "Hah hah hah hah!!!"
