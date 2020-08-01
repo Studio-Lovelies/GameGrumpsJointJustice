@@ -182,7 +182,7 @@ SelectionIndexY = 0;
 
 JoryTrialConfig = {
     displayed = false;
-    onKeyPressed = function (key)
+    onKeyPressed = function(key)
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then

@@ -149,7 +149,7 @@ function NewWitnessEvent(queue)
                 screens.courtRecords.displayed = false
 
                 if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex+2] then
-                    scene:runDefinition(self.queue[self.textIndex+1])
+                    --scene:runDefinition(self.queue[self.textIndex+1])
                 else
                     if self.queue[self.textIndex+2] ~= "1" then
                         scene:runDefinition(self.queue[self.textIndex+1], 2)
@@ -171,6 +171,14 @@ function NewWitnessEvent(queue)
 
             if self.eventType == "WitnessTestimony" then
                 love.graphics.draw(cornerSprite, 0 + 2, 2)  -- TODO: blinking animation
+                if math.floor(love.timer.getTime()) % 2 == 0 then
+                    r, g, b, a = love.graphics.getColor()
+                    if a == 0 then
+                        love.graphics.setColor(r, g, b, 1)
+                    else
+                        love.graphics.setColor(r, g, b, 0)
+                    end
+                end
             else  -- "CrossExamination"
                 for i=1, scene.penalties do
                     love.graphics.draw(cornerSprite, (i-1)*12 +2,2)

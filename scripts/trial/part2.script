@@ -71,7 +71,7 @@ FADE_IN 1 COURT_WITNESS
 WAIT 2
 
 JUMPCUT COURT_DEFENSE
-ANIMATION Arin Shock 1
+ANIMATION Arin Shock 5
 POSE Arin Sweaty
 SPEAK Arin
     "Ross?! They roped you into this as well?"
@@ -101,7 +101,7 @@ SPEAK "Tutorial Boy"
 
 POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
-    "Kangaroo court if I ever saw one..."  // WN -- any way to make it obvious it's muttered?
+    "Kangaroo court if I ever saw one..."  // WN -- any way to make it obvious it's muttered? // IL -- Maybe write it all in lower case?
 
 SPEAK_FROM COURT_JUDGE
     "Excuse me?"
@@ -109,7 +109,8 @@ SPEAK_FROM COURT_JUDGE
 POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
     "Nothing, Your Honor!"
-SPEAK Ross Normal
+
+SPEAK Ross
     "Ross O'Donovan, local animator, Mario Maker enthusiast, apparent sadist, and friend."  // WN -- that last one could be colored differently
 
 POSE Dan SideNormal

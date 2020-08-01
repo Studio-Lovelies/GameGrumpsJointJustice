@@ -197,7 +197,7 @@ DEFINE PressA3
 
     POSE Arin Annoyed
     SPEAK_FROM COURT_DEFENSE
-        "Um...excuse me?
+        "Um...excuse me?"
 
     POSE Dan SideLaugh
     SPEAK_FROM COURT_ASSISTANT
@@ -306,6 +306,22 @@ DEFINE PressB2
     POSE Ross Normal
 END_DEFINE
 
+DEFINE PressB1
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "Placeholder text so it doesn't crash"
+
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
+DEFINE PressB2
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "Placeholder text so it doesn't crash"
+
+    JUMPCUT COURT_WITNESS
+END_DEFINE
+
 DEFINE PressB3
     SHOUT Arin HoldIt
     PAN COURT_WITNESS COURT_DEFENSE
@@ -345,6 +361,14 @@ DEFINE PressB4
 
     JUMPCUT COURT_WITNESS
     POSE Ross Normal
+END_DEFINE
+
+DEFINE PressB4
+    SHOUT Arin HoldIt
+    SPEAK_FROM COURT_DEFENSE
+        "Placeholder text so it doesn't crash"
+
+    JUMPCUT COURT_WITNESS
 END_DEFINE
 
 WITNESS_EVENT CrossExamination Ross "-- Witness' Account --" CrossExamFail

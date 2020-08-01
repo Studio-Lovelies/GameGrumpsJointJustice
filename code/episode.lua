@@ -13,7 +13,7 @@ function NewEpisode(episodePath)
         table.insert(self.scenes, line)
     end
 
-    self.update = function (self, dt)
+    self.update = function(self, dt)
         ScreenShake = math.max(ScreenShake - dt, 0)
         -- TODO: Decide if this applies to all screens that can be displayed
         if screens.title.displayed == false and screens.pause.displayed == false then
@@ -23,12 +23,17 @@ function NewEpisode(episodePath)
         end
     end
 
-    self.begin = function ()
+    self.begin = function()
         self.sceneIndex = 0
         self.nextScene()
     end
 
-    self.nextScene = function ()
+    self.stop = function()
+        self.sceneIndex = #self.scenes
+        return false
+    end
+
+    self.nextScene = function()
         self.sceneIndex = self.sceneIndex + 1
 
        -- print(self.sceneIndex.." = "..self.scenes[self.sceneIndex])
