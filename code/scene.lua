@@ -31,14 +31,14 @@ function NewScene(scriptPath)
     self.currentEventIndex = 1
 
     -- run a function definition defined in the script
-    self.runDefinition = function (self, defName, loc)
+    self.runDefinition = function(self, defName, loc)
         if loc == nil then
             loc = 1
         end
 
-        local definition = deepcopy(self.definitions[defName])
-        for i=#definition, 1, -1 do
-            table.insert(self.stack, loc, definition[i])
+        local definitions = deepcopy(self.definitions[defName])
+        for i=#definitions, 1, -1 do
+            table.insert(self.stack, loc, definitions[i])
         end
     end
 

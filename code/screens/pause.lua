@@ -125,8 +125,15 @@ PauseScreenConfig = {
     end;
     onKeyPressed = function(key)
         if key == "end" then
-            NewStopMusicEvent()
-            love.event.quit("restart")
+            screens.pause.displayed = false
+            for i,v in pairs(Music) do
+                v:stop()
+            end
+            DrawTitleScreen()
+            Episode:stop()
+            screens.title.displayed = true
+            TitleSelection = "New Game";
+            SelectionIndex = 0;
         end
     end;
     draw = function ()
