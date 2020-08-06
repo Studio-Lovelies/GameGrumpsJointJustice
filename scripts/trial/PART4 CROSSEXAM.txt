@@ -6,6 +6,8 @@ END_DEFINE
 
 DEFINE PressA1
     SHOUT Arin HoldIt
+    PAN COURT_WITNESS COURT_DEFENSE
+    POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
         "Why did you lie to us in the first place?"
 
@@ -39,6 +41,8 @@ END_DEFINE
 
 DEFINE PressA2
     SHOUT Arin HoldIt
+    PAN COURT_WITNESS COURT_DEFENSE
+    POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
         "I don't like the way you define 'special', Ross"
     
@@ -69,6 +73,8 @@ END_DEFINE
 
 DEFINE PressA3
     SHOUT Arin HoldIt
+    PAN COURT_WITNESS COURT_DEFENSE
+    POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
         "Good...sport? What do you mean by that?"
     
