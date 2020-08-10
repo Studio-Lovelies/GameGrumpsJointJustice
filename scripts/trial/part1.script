@@ -93,7 +93,7 @@ SPEAK Arin
     "T-trivia boy?!"
 
 PAN COURT_DEFENSE COURT_PROSECUTION
-// ANIMATION "Tutorial Boy" HeadSlam 3
+ANIMATION "Tutorial Boy" HeadSlam
 SFX tutboy_wrong
 SCREEN_SHAKE
 SPEAK_FROM COURT_PROSECUTION
@@ -331,7 +331,7 @@ SPEAK_FROM COURT_JUDGE
     "Perhaps, but I get to make the call, and it's pretty funny to watch him do it."
 
 JUMPCUT COURT_PROSECUTION
-WAIT 2  // ANIMATION "Tutorial Boy" HeadSlam
+ANIMATION "Tutorial Boy" HeadSlam
 
 SPEAK_FROM COURT_JUDGE
     "Very amusing."

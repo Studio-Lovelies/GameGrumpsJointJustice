@@ -62,14 +62,14 @@ SPEAK_FROM COURT_PROSECUTION
     "The answer to that is simple, my fine judge! It's because he DIDN'T steal them!"
 SPEAK "Tutorial Boy"
     "The defense is simply grasping at straws!"
-//POSE "Tutorial Boy" Sweaty
+POSE "Tutorial Boy" Sweaty
 SPEAK "Tutorial Boy
     "Don't you sully the name of justice by considering this preposterous position!"
 
 SHOUT Arin Objection
 
-//PAN COURT_DEFENSE
-JUMPCUT COURT_DEFENSE
+PAN COURT_PROSECUTION COURT_DEFENSE
+
 
 ANIMATION Arin ShakingHead
 POSE Arin Normal
@@ -90,8 +90,7 @@ POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy" 
     "HAH! Good luck proving that, video game boy. I'd like to see you try!"
 
-//PAN COURT_DEFENSE 
-JUMPCUT COURT_DEFENSE
+PAN COURT_PROSECUTION COURT_DEFENSE 
 POSE Arin Confident
 SPEAK Arin
     "I'll do better than that, because I'm the one who wins!"
@@ -109,7 +108,6 @@ SPEAK Arin
     "Check this out!"
 
 //PRESENT EVIDENCE [CORRECT] (bent coins)
-
 
 
 SPEAK Arin
@@ -249,8 +247,7 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "...that he mistook which pocket they were found in."
 
-//PAN_FROM COURT_PROSECUTION COURT_WITNESS
-JUMPCUT COURT_WITNESS
+PAN COURT_PROSECUTION COURT_WITNESS
 SFX realization
 SPEAK Ross
     "...!"
@@ -262,9 +259,8 @@ SPEAK Ross
 
 SHOUT Arin Objection
 
-JUMPCUT COURT_DEFENSE
 POSE Arin Point
-//PAN_FROM COURT_WITNESS COURT_DEFENSE
+PAN COURT_WITNESS COURT_DEFENSE
 SPEAK Arin
     "That's f***ing bul***t, your honor! That's not what he said in his testimony."
 
@@ -350,10 +346,10 @@ PLAY_MUSIC "Cross-Examination_Allegro - FYI I Wanna F your A"
 
 WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "Yeah, so, after I heard the dinos went missing, I , uh, remembered that I saw Jory go back to the recording space."
-    "So I went back there to search his backpack for the dinos."
-    "I first searched the front pocket where I saw the coins in the bag"
-    "But when I saw they weren't there, I turned the backpack on its side to check the left side pocket."
-    "When I opened up the left side pocket, that's where I found the dinosaurs! Yes, that's exactly how it happened."
+    "So I went back there to search his backpack for the dinos." 
+    "I first searched the front pocket where I saw the coins in the bag" 
+    "But when I saw they weren't there, I turned the backpack on its side to check the left side pocket." 
+    "When I opened up the left side pocket, that's where I found the dinosaurs! Yes, that's exactly how it happened." 
 
 
 STOP_MUSIC
@@ -388,15 +384,15 @@ FADE_TO_BLACK
 // Cross Examination //
 ///////////////////////
 
-//DEFINE CrossExamFail
-    //JUMPCUT BLACK_SCREEN
-    //SPEAK "Judge Brent"
-        //"The defense loses."
-//END_DEFINE
+DEFINE CrossExamFail
+    JUMPCUT BLACK_SCREEN
+    SPEAK "Judge Brent"
+        "The defense loses."
+END_DEFINE
 
 
 //********
-//PRESS [#4]
+//PRESS [#5]
 //Arin [hands desk]
 //So... you say you found them in the left pocket of Jory's backpack?
 
@@ -404,6 +400,13 @@ FADE_TO_BLACK
 //ROSS [NERVOUS]
 //Y-yes, that's right! That's where he hid the dinos!
 //************
+
+WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
+    "Yeah, so, after I heard the dinos went missing, I , uh, remembered that I saw Jory go back to the recording space." PressD1 0
+    "So I went back there to search his backpack for the dinos." PressD2 0
+    "I first searched the front pocket where I saw the coins in the bag" PressD3 0
+    "But when I saw they weren't there, I turned the backpack on its side to check the left side pocket." PressD4 0
+    "When I opened up the left side pocket, that's where I found the dinosaurs! Yes, that's exactly how it happened." PressD5 1
 
 //PRESENT EVIDENCE Jory'sBackpack
 
