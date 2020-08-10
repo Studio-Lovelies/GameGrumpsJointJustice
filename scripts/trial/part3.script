@@ -174,7 +174,7 @@ DEFINE PressA3
         "Yet you also say you were in your office animating."
 
     ANIMATION Arin Objection
-    PLAY_MUSIC 
+    PLAY_MUSIC
     POSE Arin Point
     SPEAK Arin
         "Seems very odd to me! How could you see anyone while you were focused on your work!"
@@ -184,7 +184,7 @@ DEFINE PressA3
         "Are you saying that my client is a liar?"
     SPEAK "Tutorial Boy"
         "I'm sure Ross has a very reasonable explanation for all this."
-    
+
     POSE Dan SideNormal
     SPEAK_FROM COURT_ASSISTANT
         "Yeah this outta be real good."
@@ -211,7 +211,7 @@ DEFINE PressA3
 
     SPEAK_FROM COURT_WITNESS
         "W-Well, you see, I had to go out to use the bathroom, which is how I saw Jory!"
-    
+
     SPEAK_FROM COURT_DEFENSE
         "Uh-huh..."
 
@@ -265,13 +265,14 @@ WITNESS_EVENT CrossExamination Ross "-- Witness' Account --"
 ///////////////////////
 // Revised Testimony //
 ///////////////////////
+
 DEFINE PressB1
     SHOUT Arin HoldIt
     PAN COURT_WITNESS COURT_DEFENSE
     POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
         "So you saw Jory while you were busy animating?"
-    
+
     POSE Ross Normal
     SPEAK_FROM COURT_WITNESS
         "Well I saw someone move past my office door out of the corner of my eye."
@@ -291,7 +292,7 @@ DEFINE PressB2
     POSE Ross Glaring
     SPEAK_FROM COURT_WITNESS
         "You're one to talk! You have to suddenly poop all the time!"
-    
+
     SPEAK_FROM COURT_ASSISTANT
         "He's got you there bro."
 
@@ -328,15 +329,15 @@ DEFINE PressB3
     POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
         "What were you doing by the office toilet Ross?"
-    
+
     POSE Ross Normal
     SPEAK_FROM COURT_WITNESS
         "Well obviously I'd just finished taking a massive dump. Because that's the reason the toilet is there."
-    
+
     POSE Dan SideNormal
     SPEAK_FROM COURT_ASSISTANT
         "Something smells fishy, and I'm not talking about Ross's poop."
-    
+
     POSE Dan Normal
     SPEAK Dan
         "Don't we have some evidence that contradicts this?"

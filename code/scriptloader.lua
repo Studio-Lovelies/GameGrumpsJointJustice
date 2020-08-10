@@ -211,6 +211,9 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "GAVEL" then
                     AddToStack(stack, NewGavelEvent(), lineParts)
                 end
+                if lineParts[1] == "SHOW" then
+                    AddToStack(stack, NewShowEvent(lineParts[2], lineParts[3]), lineParts)
+                end
                 if lineParts[1] == "FADE_TO_BLACK" then
                     AddToStack(stack, NewFadeToBlackEvent(), lineParts)
                 end
@@ -223,6 +226,9 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewCutToEvent(lineParts[3]), lineParts)
                     AddToStack(stack, NewFadeInEvent(), lineParts)
                 end
+                --if lineParts[1] == "CROSSFADE" then
+                --    AddToStack(stack, NewCrossFadeEvent(lineParts[2]), lineParts)
+                --end
                 if lineParts[1] == "SCREEN_SHAKE" then
                     AddToStack(stack, NewScreenShakeEvent(), lineParts)
                 end
