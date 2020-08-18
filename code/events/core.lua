@@ -408,6 +408,38 @@ function NewClearExecuteDefinitionEvent(def)
     return self
 end
 
+function NewShowEvent(evidence, side)
+    local self = {}
+    self.evidence = evidence
+    self.side = side
+    self.wasPressing = true
+
+    self.update = function(self, scene, dt)
+        local pressing = love.keyboard.isDown("x")
+        if pressing and not self.wasPressing then
+            return false
+        end
+        self.wasPressing = pressing
+
+        return true
+    end
+
+    self.draw = function(self, scene)
+        love.graphics.setColor(1,1,1)
+        if Sprites[self.evidence:gsub(" ", "")] == nil then
+            love.graphics.draw(Sprites["MissingTexture"], 16,16)
+        else
+            if self.side:lower() == "left" or self.side:lower() == "l" then
+                love.graphics.draw(Sprites[self.evidence], 24, 24)
+            elseif self.side:lower() == "right" or self.side:lower() == "r" then
+                love.graphics.draw(Sprites[self.evidence], 234, 24)
+            end
+        end
+    end
+
+    return self
+end
+
 function NewChoiceEvent(options)
     local self = {}
     self.select = 1
@@ -564,6 +596,32 @@ function NewFadeInEvent()
     self.draw = function (self, scene)
         love.graphics.setColor(0, 0, 0, self.timer)
         love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
+    end
+
+    return self
+end
+
+function NewCrossFadeEvent()
+    local self = {}
+    self.timer1 = 1
+    self.timer2 = 0
+
+    self.update = function (self, scene, dt)
+        scene.textHidden = true
+        scene.canShowCourtRecord = false
+
+        local lastTimer1 = self.timer1
+        self.timer1 = self.timer1 - dt
+        local lastTimer2 = self.timer2
+        self.timer2 = self.timer2 + dt
+
+        return self.timer1 >= 0 and lastTimer1 >=0 and self.timer2 <= 1 and lastTimer2 <= 1
+    end
+
+    self.draw = function (self, scene)
+        love.graphics.setColor(0, 0, 0, self.timer1)
+        love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
+        love.graphics.draw()
     end
 
     return self

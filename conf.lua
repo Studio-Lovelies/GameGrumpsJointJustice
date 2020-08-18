@@ -7,6 +7,6 @@ function love.conf(t)
     t.console = true
     t.window.vsync = -1
     t.window.title = "Game Grumps: Joint Justice"
-    t.window.resizable = false
+    t.window.resizable = true
     t.window.icon = "icon.png"
 end
