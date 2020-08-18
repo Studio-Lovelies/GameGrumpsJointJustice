@@ -316,7 +316,7 @@ PAN COURT_DEFENSE COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "NEVER! It's my only way of objecting!"
 
-//pose should be annoyed. need talking sprites
+POSE Arin Annoyed
 SPEAK_FROM COURT_DEFENSE
     "You can't be serious."
 
@@ -331,7 +331,9 @@ SPEAK_FROM COURT_JUDGE
     "Perhaps, but I get to make the call, and it's pretty funny to watch him do it."
 
 JUMPCUT COURT_PROSECUTION
+SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
+
 
 SPEAK_FROM COURT_JUDGE
     "Very amusing."

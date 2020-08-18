@@ -56,7 +56,7 @@ FADE_TO_BLACK
 FADE_IN 1 COURT_JUDGE
 
 PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
-//POSE "Judge Brent" Thinking
+POSE "Judge Brent" Thinking
 SPEAK_FROM COURT_JUDGE
     "Hm..."
 POSE "Judge Brent" Normal
@@ -149,8 +149,7 @@ DEFINE PressA2
 
     SPEAK_FROM COURT_PROSECUTION
         "Quick! Back to the testimony before we break the fourth wall again!"
-
-ANIMATION Judge Nodding
+    ANIMATION "Judge Brent" Nodding
     SPEAK_FROM COURT_JUDGE
         "Witness, carry on."
 
@@ -306,21 +305,6 @@ DEFINE PressB2
     POSE Ross Normal
 END_DEFINE
 
-DEFINE PressB1
-    SHOUT Arin HoldIt
-    SPEAK_FROM COURT_DEFENSE
-        "Placeholder text so it doesn't crash"
-
-    JUMPCUT COURT_WITNESS
-END_DEFINE
-
-DEFINE PressB2
-    SHOUT Arin HoldIt
-    SPEAK_FROM COURT_DEFENSE
-        "Placeholder text so it doesn't crash"
-
-    JUMPCUT COURT_WITNESS
-END_DEFINE
 
 DEFINE PressB3
     SHOUT Arin HoldIt
@@ -361,14 +345,6 @@ DEFINE PressB4
 
     JUMPCUT COURT_WITNESS
     POSE Ross Normal
-END_DEFINE
-
-DEFINE PressB4
-    SHOUT Arin HoldIt
-    SPEAK_FROM COURT_DEFENSE
-        "Placeholder text so it doesn't crash"
-
-    JUMPCUT COURT_WITNESS
 END_DEFINE
 
 WITNESS_EVENT CrossExamination Ross "-- Witness' Account --" CrossExamFail
