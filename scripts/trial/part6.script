@@ -389,7 +389,7 @@ WAIT 1
 SFX realization
 
 ANIMATION Arin Shock
-
+POSE Arin Shock
 WAIT 1
 
 ANIMATION Arin DeskSlam
@@ -397,7 +397,7 @@ POSE Arin DeskSlam
 SPEAK Arin
     "It proves everything, actually! Not only does this clear our client's name..."
 
-//ANIMATION Arin Objection
+ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin
     "It also proves that Ross was the real culprit!"
@@ -421,6 +421,8 @@ SPEAK_FROM COURT_PROSECUTION
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Annoyed
+SPEAK Arin
+    "..."
 
 WAIT 2
 
@@ -501,7 +503,7 @@ SPEAK "Tutorial Boy"
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
-SPEAK Arin Confident
+SPEAK Arin
     "As if! I have proof of his condition RIGHT HERE!"
 
 //PRESENT EVIDENCE JorySr's Letter
@@ -539,18 +541,18 @@ POSE Arin DeskSlam
 SPEAK Arin
     "No one else likes milk like Ross does, and that makes him our real culprit!"
 
+STOP_MUSIC
 JUMPCUT COURT_WITNESS
-POSE Ross DamageNoHelm
+POSE Ross NoHelm
 
 ANIMATION Ross RossBreakdown
 
 FADE_TO_BLACK
 
-WAIT 2
 JUMPCUT COURT_JUDGE
 
 FADE_IN 1 COURT_JUDGE
-
+PLAY_MUSIC SIMPLEPLOT
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Well, that certainly was quite the turnaround there."
@@ -565,24 +567,31 @@ SPEAK Dan
 SFX airguitar
 ANIMATION Dan AirGuitar
 
+
 WAIT 1
 
 JUMPCUT COURT_JUDGE
 SPEAK "Judge Brent" 
 "Yes... quite."
 
+JUMPCUT COURT_DEFENSE
+POSE Arin Sweaty
+SPEAK Arin
+    "Hey I did a lot too!"
+
+JUMPCUT COURT_JUDGE
 SPEAK "Judge Brent"
 "But with that, I think we can safely say justice is served today"
 
 POSE "Judge Brent" Warning
 SPEAK "Judge Brent"
-"I find the defendant, Jory Griffis..."
+"Therefore, I find the defendant, Jory Griffis..."
 
 //NOT GUILTY
 
 SFX gallerycheer
 WIDESHOT
 
-
+FADE_TO_BLACK
 //CONFETTI
 
