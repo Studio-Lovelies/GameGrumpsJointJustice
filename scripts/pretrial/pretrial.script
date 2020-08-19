@@ -14,7 +14,7 @@ EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
 
-PLAY_MUSIC PRELUDE
+PLAY_MUSIC DLFTS
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // START SCRIPT
@@ -27,6 +27,7 @@ THINK Arin
 THINK Arin
     "(Dan and I were discussing some very important matters...)"
 
+FADE_TO_LOBBY
 JUMPCUT LOBBY
 CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
@@ -34,8 +35,12 @@ SPEAK Dan
     "So that's when I said, $qthat's not mayonnaise!$q"
 SPEAK Dan
     "And everyone immediately and violently threw up."
+SPEAK Dan
+    "It was one hell of a graduation party, dude."
+
 SPEAK Arin
     "What.#Are you talking about, Dan."
+
 SPEAK Dan
     "Weren't you listening? I was telling you a very important story about how I graduated from ninja party school."
 SPEAK Arin
@@ -96,7 +101,7 @@ SPEAK Dan
 SPEAK Arin
     "Well, remember the dunking pool the second night of your graduation party?"
 SPEAK Dan
-    "You mean the whipped cream dunking machine?"
+    "You mean the whipped cream dunking machine I almost drowned in?"
 
 SFX lightbulb
 POSE Dan Lean
@@ -113,6 +118,8 @@ POSE Dan Normal
 SPEAK Dan
     "This is no time for hilarious jokes, Arin, we have some tanks to set up!"
 
+STOP_MUSIC
+
 SFX Dooropens
 POSE Dan Normal
 SPEAK ???
@@ -120,9 +127,11 @@ SPEAK ???
 SPEAK Arin
     "Huh?#Jory?"
 
+PLAY_MUSIC PRELUDE
 CHARACTER_LOCATION Jory LOBBY
 POSE Jory Sweaty
 WAIT 2
+POSE Jory Nervous
 SPEAK Jory
     "Apparently the dinos were missing when we started to set up for the episode."
 
@@ -186,7 +195,7 @@ POSE Jory Nervous
 SPEAK Jory
     "I wish I could, but everyone wants to hold a trial for this, and it's starting in just a few minutes!"
 SPEAK Jory
-    "Everyone is calling for my Good Boy Coins to be taken, even after all the work I put into getting them."
+    "Everyone is calling for my Good Boy Coins(tm) to be taken, even after all the work I put into getting them."
 SPEAK Jory
     "And I've got nobody in my corner!"
 
@@ -248,28 +257,32 @@ SPEAK Dan
 SPEAK Dan
     "We're not lawyers.#The closest thing we've been playing is that Penix Wright(tm) game."
 SPEAK Dan
-    "And that's just a stupid game that everyone likes and is in love with!"
+    "And that's just a stupid game that totally exists and isn't changed for copyright purposes!"
+
 SPEAK Arin
-    "Sorry Jory, but if we could help you we would."
+    "Sorry Jory, but if we were real lawyers, we would help out."
 
 CHARACTER_LOCATION Jory LOBBY
 SPEAK Jory
     "Yeah, I understand guys."
 
 SFX Pageturn
+WAIT 1
+SFX realization
 POSE Jory Normal
 SPEAK Jory
-    "Huh? What's this?"
+    "Hey... someone just slipped a letter under the door"
 SPEAK Arin
-    "A letter?#Who's it from?"
+    "A letter? Who's it from?"
+POSE Jory Thinking
 SPEAK Jory
-    "Huh, it's from...#My dad?"
+    "It's from...#My dad?"
 
 SFX Realization
 CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
 SPEAK Dan
-    "From %1Jory Sr.%0?"
+    "From %1Jory Sr%0? Why doesn't he ever just text..."
 SPEAK Arin
     "Open it up, what does it say?"
 
@@ -285,14 +298,17 @@ SPEAK Arin
 CHARACTER_LOCATION Dan LOBBY
 POSE Dan Hair
 SPEAK Dan
-    "I thought we made that up for our episodes."
+    "I thought we made that bit up for our episodes."
 
 CHARACTER_LOCATION Jory LOBBY
 SPEAK Jory
-    "Well, judging from the handwriting and the way it's written, I think it's the real deal."
+    "Well, judging from the handwriting and the little hearts dotting the I's..."
+SPEAK Jory
+    "It's definitely from Dad."
 SPEAK Arin
     "Let me see that!"
 
+POSE Jory Normal
 SFX Pageturn
 SPEAK Arin
     "...#Wow, he's right! We should hold on to this, I think it might be important later"
@@ -315,6 +331,10 @@ SPEAK Dan
     "You've gotta be kidding me."
 SPEAK Arin GREEN
     "$qI've heard what happened to my son with the dinosaurs.$q"
+SPEAK Dan
+    "What? How... didn't this happen like, 10 minutes ago?"
+SPEAK Arin
+    "Don't think about it too hard Dan. Anyways..."
 SPEAK Arin GREEN
     "$qWhile I know it looks bad, I know my son is a good son who only does good things.$q"
 SPEAK Arin GREEN
@@ -322,13 +342,17 @@ SPEAK Arin GREEN
 SPEAK Arin GREEN
     "$qShow the world he is innocent of such a heinous and despicable crime and find out who the real culprit is.$q"
 
+SPEAK Arin GREEN
+    "$qP.S., remember, the second most important thing to winning this case is love and trust!$q"
+
 POSE Dan Normal
 SPEAK Dan
     "Wow, that was beautiful."
+
 SPEAK Arin GREEN
-    "$qP.S., remember, the second most important thing to winning this case is love and trust!$q"
+    "$qAnd the most important thing is payment!$q"
 SPEAK Arin GREEN
-    "$qAnd the most important thing is I have something for you if you win!$q"
+    "$qI have something for you if you win!$q"
 
 POSE Dan Normal
 SPEAK Dan
@@ -338,7 +362,7 @@ SPEAK Arin
 SPEAK Arin GREEN
     "$qP.S.S., I hope you two have been continuing to provide my boy with wholesome food as well.$q"
 SPEAK Arin GREEN
-    "$qAnd I hope you've been avoiding giving him milk as he's deathly allergic to it.$q"
+    "$qAnd I hope you've been avoiding giving him %1milk%0 as he's %1deathly allergic%0 to it.$q"
 SPEAK Dan
     "Huh..."
 
@@ -354,6 +378,8 @@ SPEAK Dan
     "...#So...?"
 SPEAK Arin
     "Jory, don't worry, we're on it buddy, because we trust you!"
+SPEAK Arin
+    "We'll be in your corner. We got you no matter what!"
 
 CHARACTER_LOCATION Jory LOBBY
 POSE Jory Normal
@@ -370,8 +396,10 @@ SPEAK Arin
 CHARACTER_LOCATION Jory LOBBY
 SPEAK Jory
     "Wow, thanks guys.#I guess I'll head to the, uh, %1$qCourtroom$q%0 then."
+POSE Jory Thinking
 SPEAK Jory
     "They turned the main grumps office space into a makeshift courtroom just for this."
+POSE Jory Normal
 SPEAK Jory
     "So uh, see you there."
 
@@ -409,9 +437,9 @@ POSE Dan Angry
 SPEAK Dan
     "BELIEVEABLE!"
 SPEAK Arin
-    "Ok, ok, let's get ready."
+    "Ok, ok, no need to yell... let's just get ready.#I kind of want to look sharp for this."
 SPEAK Arin
-    "I just got a new suit just for something like this.#You're gonna love it."
+    "And I just got a new suit just for something like this.#You're gonna love it."
 
 WAIT 1
 FADE_TO_BLACK
