@@ -40,7 +40,7 @@ END_DEFINE
 //////////////////
 // START SCRIPT //
 //////////////////
-
+POSE Ross Sweaty
 JUMPCUT COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
@@ -156,7 +156,8 @@ SPEAK Arin
     "There is no way he would have stuffed the dinosaurs in such a way!"
 
 JUMPCUT COURT_WITNESS 
-POSE Ross Sweaty
+ANIMATION Ross DamageNoHelm
+POSE Ross NoHelm
 SPEAK Ross
     "GUH!"
 
@@ -180,6 +181,7 @@ SPEAK Arin
 
 //PRESENT EVIDENCE [LIVE STREAM RECORDING]
 
+//SHOW livestream r
 POSE Arin Point
 SPEAK Arin
     "Recall this audio conversation? (People) in the livestream commented on how Jory was taking care of those coins carefully!" 
@@ -414,7 +416,7 @@ DEFINE PressD1
     
     PAN COURT_WITNESS COURT_DEFENSE
     SPEAK Arin
-        "Hey, that's out of line Ross! My memory is fine"
+        "Hey, that's out of line Ross! My memory is fine."
 	
     JUMPCUT COURT_ASSISTANT
     SPEAK Dan
@@ -676,8 +678,9 @@ DEFINE Choice1
     SPEAK Arin
         "Thank you, your honor! Now let's take a look at this backpack!"
     POSE Arin Normal
-WAIT 2
-
+SHOW Jory'sBackpack r
+WAIT 1
+    SFX dramapound
     ANIMATION Arin Shock
     POSE Arin Sweaty
     SPEAK Arin
@@ -685,8 +688,13 @@ WAIT 2
 
 WAIT 1
 
+ANIMATION Arin Shock
+
+WAIT 1
+
 SFX realization
-    POSE Arin Normal
+ANIMATION Arin DeskSlam
+    POSE Arin DeskSlam
     SPEAK Arin
         "That's it! I got it! I know how he's lying"
 
@@ -716,9 +724,9 @@ DEFINE Choice2
 END_DEFINE
 
 FAKE_CHOICE
-    "Check the backpack" Choice1 
-    "Give the $@$! up, this !@$! is too hard" Choice2
-END_CHOICE
+    "Check the backpack" Choice1
+    "Give the !!!! up, this !!!! is too hard" Choice2
+
 
 
 //PRESENT BACKPACK
@@ -784,8 +792,10 @@ WAIT 2
 
 SFX thump
 
+PLAY_MUSIC OBJECTION_DEFENSE_STARLIGHT_BRIGADE
+
 JUMPCUT COURT_WITNESS
-POSE Ross Glaring
+POSE Ross NoHelm
 SPEAK Ross
     "P... POTATOES???"
 
@@ -831,10 +841,11 @@ SPEAK "Judge Brent"
     "It is as the defense says. This backpack is full of potatoes!"
 
 JUMPCUT COURT_WITNESS
-POSE Ross Glaring
+POSE Ross NoHelm
 SPEAK Ross
     "But, but... why?!?"
 SFX stab
+ANIMATION Ross DamageNoHelm
 SPEAK Ross
     "It doesn't make any sense at all! Why would Jory have all these potatoes in his backpack?"
 
@@ -843,12 +854,9 @@ POSE Arin Thinking
 THINK Arin
     "(that's a good question. Why DOES he have all these potatoes?)"
 
-SPEAK Jory
-    "Uh... I just... really like potatoes..."
-
-POSE Arin Sweaty
-THINK Arin
-    "(That's the reason...? You couldn't come up with anything more believable?)
+JUMPCUT COURT_ASSISTANT
+SPEAK Dan
+    "I think he just really likes potatoes dude. I can't think of any other reason."
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
@@ -860,14 +868,13 @@ POSE Arin Confident
 SPEAK Arin
     "The only help my client needs right now is help being cleared of these charges!"
 
-
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Well you have made a strong case that Jory would not have done this..."
 
 SHOUT "Tutorial Boy" objection
-
+STOP_MUSIC
 JUMPCUT COURT_PROSECUTION
 //POSE "Tutorial Boy" Objecting
 SPEAK "Tutorial Boy"
@@ -977,7 +984,7 @@ WAIT 1
 
 JUMPCUT COURT_WITNESS
 //POSE Ross Shocked
-POSE Ross Sweaty
+POSE Ross NoHelm
 WAIT 1
 
 JUMPCUT COURT_DEFENSE
@@ -986,6 +993,6 @@ SPEAK Arin
     "Dan?"
 
 JUMPCUT COURT_ASSISTANT
-POSE Dan Objecting
+POSE Dan SideObjection
 SPEAK Dan
     "Wait your honor! There's something off about those dinosaurs, and I think I know what it is!"

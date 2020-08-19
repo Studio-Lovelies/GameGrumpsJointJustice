@@ -255,7 +255,7 @@ SPEAK Arin
 
 SHOUT Arin takethat
 
-//Icon appear Jory's Backpack
+SHOW Jory'sBackpack r
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
@@ -276,7 +276,7 @@ SPEAK "Judge Brent"
     "...."
 WAIT 2
 
-
+PLAY_MUSIC HUFFPUFFPURSUIT
 SFX lightbulb
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
@@ -369,8 +369,8 @@ SPEAK Dan
     "It's actually just regular milk! Whole milk, to be exact!"
 
 JUMPCUT COURT_WITNESS
-//ANIMATION Ross Shock (no helm)
-POSE Ross Sweaty
+ANIMATION Ross DamageNoHelm
+POSE Ross NoHelm
 SPEAK Ross
     "ACK!"
 
@@ -501,6 +501,7 @@ SPEAK "Tutorial Boy"
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
+SPEAK Arin Confident
     "As if! I have proof of his condition RIGHT HERE!"
 
 //PRESENT EVIDENCE JorySr's Letter
@@ -520,6 +521,9 @@ SPEAK Arin
 
 JUMPCUT COURT_JUDGE
 ANIMATION "Judge Brent" Nodding
+POSE "Judge Brent" Thinking
+WAIT 1
+
 SFX realization
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
@@ -536,14 +540,14 @@ SPEAK Arin
     "No one else likes milk like Ross does, and that makes him our real culprit!"
 
 JUMPCUT COURT_WITNESS
-POSE Ross Glaring
+POSE Ross DamageNoHelm
 
-//ANIMATION Ross Breakdown
+ANIMATION Ross RossBreakdown
 
 FADE_TO_BLACK
 
 WAIT 2
-
+JUMPCUT COURT_JUDGE
 
 FADE_IN 1 COURT_JUDGE
 
@@ -576,8 +580,9 @@ SPEAK "Judge Brent"
 
 //NOT GUILTY
 
+SFX gallerycheer
 WIDESHOT
 
-//CROWD CHEER
+
 //CONFETTI
 
