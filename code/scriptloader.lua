@@ -172,6 +172,7 @@ function LoadScript(scene, scriptPath)
                 end
                 if lineParts[1] == "PAN" then
                     AddToStack(stack, NewPanEvent(lineParts[2], lineParts[3]), lineParts)
+                    AddToStack(stack, NewCutToEvent(lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "POSE" then
                     AddToStack(stack, NewPoseEvent(lineParts[2], lineParts[3]), lineParts)
