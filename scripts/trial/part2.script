@@ -40,38 +40,20 @@ END_DEFINE
 // START SCRIPT //
 //////////////////
 
-PLAY_MUSIC TRIAL
+PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
 
-SPEAK_FROM COURT_DEFENSE
-    "This is all circumstantial evidence! Nothing here categorically proves the defendant is guilty."
-
-POSE "Tutorial Boy" Confident
-SPEAK_FROM COURT_PROSECUTION
-    "That would be the case... If I didn't have any more proof!"
-
-
-JUMPCUT COURT_DEFENSE
-POSE Arin Sweaty
-THINK Arin
-    "He has proof?"
-
-SPEAK_FROM COURT_JUDGE
-    "Someone actually witnessed the crime?"
-
-SPEAK_FROM COURT_PROSECUTION
-    "Precisely, your honor."
 
 POSE "Tutorial Boy" Normal
 SPEAK_FROM COURT_PROSECUTION
     "I call to the stand a witness to the crime: Ross O'Donovan."
 
-// SFX [Writer's Note -- One of them slashing sounds, I couldn't find it]
 FADE_TO_BLACK
 FADE_IN 1 COURT_WITNESS
 WAIT 2
 
 JUMPCUT COURT_DEFENSE
-ANIMATION Arin Shock 5
+SFX dramapound
+ANIMATION Arin Shock
 POSE Arin Sweaty
 SPEAK Arin
     "Ross?! They roped you into this as well?"
@@ -79,23 +61,27 @@ SPEAK Arin
 SPEAK_FROM COURT_WITNESS
     "Yeah... It looked important, you know? Plus, I could use the extra money."
 
-//ANIMATION "Judge Brent" Surprised
-SPX lightbulb
+POSE "Judge Brent" Surprised
+SFX lightbulb
 SPEAK_FROM COURT_JUDGE
     "Mr. O'Donovan, being a witness isn't a paying job..."
 
- SPEAK_FROM COURT_PROSECUTION
+SPEAK_FROM COURT_PROSECUTION
     "Not that anyone here is getting paid anyway..."
 
-POSE Ross Sweaty
+POSE Ross SweatyHelm
 SPEAK_FROM COURT_WITNESS
     "I-I see..."
 
- JUMPCUT COURT_PROSECUTION
-// ANIMATION "Tutorial Boy" HeadSlam
+JUMPCUT COURT_PROSECUTION
+SFX damage1
+ANIMATION "Tutorial Boy" HeadSlam
+POSE "Tutorial Boy" Confident
 SPEAK "Tutorial Boy"
     "Except if you count being paid in JUSTICE!"
-// ANIMATION "Tutorial Boy" HeadSlam
+SFX damage1
+ANIMATION "Tutorial Boy" HeadSlam
+POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
     "Ahem... Mr. O'Donovan, please state your name and occupation for the court."
 
@@ -106,32 +92,32 @@ SPEAK_FROM COURT_WITNESS
 SPEAK_FROM COURT_JUDGE
     "Excuse me?"
 
-POSE Ross Normal
+POSE Ross SweatyHelm
 SPEAK_FROM COURT_WITNESS
     "Nothing, Your Honor!"
-
+POSE Ross Normal
 SPEAK Ross
-    "Ross O'Donovan, local animator, Mario Maker enthusiast, apparent sadist, and friend."  // WN -- that last one could be colored differently
-
-POSE Dan SideNormal
+    "I am Ross O'Donovan, local animator, Mario Maker enthusiast, apparent sadist, and %1friend to all here!%0"
+POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
-    "Some friend... Testifying against Jory, treating him like a criminal."
+    "Some friend... Testifying against Jory, treating him like a criminal..."
 
 SPEAK Arin
-    "What do you mean? We don't even know if Jory is innocent!"
-
+    "What do you mean? Even WE don't know if Jory is innocent!"
+POSE Dan SideNormal
 SPEAK Dan
     "Arin. Have you learned nothing from the Penix Wright playthrough?"
 
 SPEAK Arin
     "That a gavel, lubed properly, has many uses?"
 
+POSE Dan Fist
 SPEAK Dan
     "No!"
 
 POSE Dan SideLaugh
 SPEAK Dan
-    "Well, I mean yeah... That gayliff sure was creative."\
+    "Well, I mean yeah... The gayliff in that game sure was creative."
 
 POSE Dan SideNormal
 SPEAK Dan
@@ -139,25 +125,36 @@ SPEAK Dan
 SPEAK Dan
     "We don't know if he's guilty, but if his own attorney doesn't believe him, why should the rest of the court?"
 
+JUMPCUT COURT_DEFENSE
+SFX DeskSlam
+SCREEN_SHAKE
+ANIMATION Arin DeskSlam
+POSE Arin DeskSlam
 SPEAK Arin
     "You're right! We're here to defend our friend, so we should at least assume we're making the right call."
 
+JUMPCUT COURT_ASSISTANT
 SPEAK Dan
-    "Also, knowing how these things go, the defendant is always innocent."
+    "Also, knowing how these things go, the defendant is always innocent..."
 
+WAIT 1
+
+SPEAK Dan
+    "...Usually, anyway."
+POSE "Judge Brent" Warning
 SPEAK_FROM COURT_JUDGE
     "If the defense is done sucking each other's toes, shall we begin with Mr. O'Donovan's testimony?"
 
 POSE Arin Sweaty
 THINK_FROM COURT_DEFENSE
-    "Why does he act like he doesn't know anyone here?"
+    "(Why does he act like he doesn't know anyone here?)"
 
-ANIMATION Arin Nodding 2
+ANIMATION Arin Nodding 1
 
 POSE Arin Normal
 SPEAK Arin
     "We're ready, Your Honor."
-
+POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
     "Alright. The witness may begin."
 

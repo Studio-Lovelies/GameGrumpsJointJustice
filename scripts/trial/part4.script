@@ -30,6 +30,7 @@ EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour
 COURT_RECORD_ADD EVIDENCE StolenDinos
 EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
 COURT_RECORD_ADD EVIDENCE BentCoins
+COURT_RECORD_ADD EVIDENCE Switch
 
 DEFINE TRIAL_FAIL
     JUMPCUT BLACK_SCREEN
@@ -173,15 +174,15 @@ DEFINE PressC1
     JUMPCUT COURT_WITNESS
     SPEAK Ross
         "Well... I didn't want to seem suspicious... That would incriminate me!
-
+    POSE Arin Sweaty
     SPEAK_FROM COURT_DEFENSE
         "Well you made yourself look suspicious when you lied!"
 
     SPEAK_FROM COURT_WITNESS
-        "Well, I do apologise for that. Seriously-- I do!"
+        "Well, I'm really sorry for that. Seriously--!"
 
     SPEAK_FROM COURT_ASSISTANT
-        "Are you sure about that?"
+        "Yeah... I dunno. I'm not sure if I'm buying all this."
 
     SHOUT "Tutorial Boy" Objection
     SPEAK_FROM COURT_PROSECUTION
@@ -213,18 +214,19 @@ DEFINE PressC2
     SPEAK_FROM COURT_ASSISTANT
         "Fun and joyful? With YOUR levels?! I have serious doubts about that."
 
-    POSE Ross SweatyHelmHelm
+    POSE Ross SweatyHelm
     SPEAK_FROM COURT_WITNESS
         "I swear! They were going to be fun based on the concepts I drew out!"
 
     GAVEL
 
     SPEAK_FROM COURT_JUDGE
-        "The witness will stop lying about the level of fun of these supposed levels and continue with his testimony."
+        "The witness will stop lying about the level of fun of his mario maker stages and continue with his testimony."
     
     JUMPCUT COURT_WITNESS
+    SFX stab
     ANIMATION Ross Damage
-    POSE Ross SweatyHelmHelm
+    POSE Ross SweatyHelm
     SPEAK Ross
         "Er, yes your honor. My sincerest apologies!"
     POSE Ross Normal
@@ -240,12 +242,12 @@ DEFINE PressC3
    
     POSE Dan SideNormal
     SPEAK_FROM COURT_ASSISTANT
-        "I think he means your tolerance of the troll levels"
+        "I think he means your tolerance his style of levels."
 
     SPEAK_FROM COURT_WITNESS
         "Yes, indeed! You all haven't fired me yet, so I take it as you being good sports!"
     SPEAK Ross
-        "I just wanted to show you my appreciation for your patience with a nicer level or two!"
+        "I just wanted to show you my appreciation for your patience with#a nicer level or two!"
     
     POSE Arin Thinking
     THINK_FROM COURT_DEFENSE
@@ -255,9 +257,10 @@ DEFINE PressC3
         "(Still...)"
     SPEAK Arin
         "I can't see how a couple of nicer levels would make up for all that pain."
-
+    POSE Ross GlaringHelm
     SPEAK_FROM COURT_WITNESS
         "Well I'd be finishing them right now, if not for Jory!"
+    POSE Ross Normal
     SPEAK Ross
         "As a matter of fact..."
 
@@ -293,7 +296,7 @@ DEFINE PressC4
 
     ANIMATION Arin Objection
 
-    PLAY_MUSIC OBJECTION_DEFENSE_STARLIGHT_BRIGADE
+    PLAY_MUSIC DRAGONOBJECTION
     POSE Arin Point
     SPEAK Arin
         "And it's the only question I need to see your lies for what they are!"
@@ -302,7 +305,7 @@ DEFINE PressC4
     SCREEN_SHAKE
     JUMPCUT COURT_WITNESS
     ANIMATION Ross Damage
-    POSE Ross SweatyHelmHelm
+    POSE Ross SweatyHelm
     SPEAK Ross
         "W-W-What?"
 
@@ -326,7 +329,7 @@ DEFINE PressC4
 
     POSE Arin DeskSlam
     SPEAK_FROM COURT_DEFENSE
-        "That's correct, Yyour Hhonor!"
+        "That's correct, your honor!"
 
     JUMPCUT COURT_PROSECUTION
     SCREENSHAKE
@@ -395,7 +398,7 @@ DEFINE PressC6
     ANIMATION Arin Shocked
     POSE Arin Sweaty
     SPEAK Arin
-        "..."
+        "Uhh..."
     SPEAK Arin
         "...Can you repeat that for the idiots in the back?"
 
@@ -414,7 +417,7 @@ END_DEFINE
 WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
     "Well I guess you got me. I did lie about what I was doing." PressC1 0
     "I was actually making a special mario maker level for you guys." PressC2 0
-    "You've always been good sports about my troll levels, so I wanted to make you a nice one for a change!" PressC3 0
+    "You've always been good sports about my levels, so I wanted to make you a nice one for a change!" PressC3 0
     "It was when I was in the middle of making the level when I saw Jory walk by my office." PressC4 1
     "I got tired of making the level so I wanted to see what he was up to." PressC5 0
     "That's when I saw it! He had taken the Dinos and stuffed them into his backpack!" PressC6 0
@@ -496,9 +499,9 @@ SPEAK Arin
 
 ANIMATION Arin DeskSlam
 SFX deskslam
-Pose Arin DeskSlam
+POSE Arin DeskSlam
 SPEAK Arin
-    "Your honor, if i may explain"
+    "Your honor, if i may explain."
 
 JUMPCUT COURT_JUDGE
 ANIMATION "Judge Brent" Nodding
@@ -514,7 +517,7 @@ POSE Arin PaperSlap
 SPEAK Arin
     "Look closely on the back of this particular Switch."
 
-//bring up switch icon
+SHOW Switch r
 
 SPEAK Arin
     "You'll see that there clearly in the (correct location on the switch icon art) is a Slimemantha sticker on it!"
@@ -556,25 +559,113 @@ SPEAK Arin
 //player choice section///
 //////////////////////////
 DEFINE Wrong1
-        "
+    SHOUT Arin takethat
+    SHOW Switch r
+    POSE Arin PaperSlap
+    SPEAK Arin
+        "This is every single game that is downloaded on this Switch!"
+
+    SHOUT "Tutorial Boy" OBJECTION
+
+    PAN COURT_DEFENSE COURT_PROSECUTION
+    POSE "Tutorial Boy" Normal
+    SPEAK Tutorial Boy
+        "What exactly are you trying to prove here?"
+
+    POSE "Tutorial Boy" Confident
+    SPEAK Tutorial Boy
+        "All we know from that is what games are on there! Nothing else!"
+
+    POSE Dan SideLean
+    SPEAK Dan
+        "There's some interesting games on here, though..."
+
+    POSE Dan SideNormal
+    SPEAK Dan
+        "Errr... Ross... what exactly is 'Mew Mew Cutie Girls Club'?"
+
+    POSE Ross SweatyHelm
+    SFX stab
+
+    SPEAK Ross
+        "Th-That's nothing! It's ironic, I-I swear!"
+
+    POSE Arin Annoyed
+    SPEAK Arin
+        "What HAVE you been playing?"
+
+    POSE Ross GlaringTalking
+        "Hey - don't act like you're better than me, with your Pantsu Hunter and your weird anime dating sim crap!"
+
+    SFX stab
+
+    POSE Arin SweatyTalking
+    SPEAK Arin
+        "Th-That's totally irrelevant! Don't judge me!"
+
+    SPEAK_FROM_COURT_JUDGE
+        "Ahem... if we could get back to the case, please... "
+
+    SPEAK_FROM_COURT_JUDGE
+    "This evidence has no relevance to the case. It's dismissed."
+
+    POSE Arin Thinking
+    THINK Arin
+        "Damn... I thought I had the right answer there."
+ 
+END_DEFINE
+
+DEFINE Right1
+    SHOUT Arin takethat
+
+    JUMPCUT COURT_DEFENSE
+    POSE Arin PaperSlap
+    SPEAK Arin
+        "If you've ever owned a Switch, you'd know that the last game played,"
+    SHOW Switch r
+    SPEAK Arin
+        "always sits on the far left-hand side of the screen!"
+
+
+    SPEAK Arin
+        "That way you have quick and easy access to the game you were most recently playing."
+
+END_DEFINE
+DEFINE Wrong3
+    SPEAK Arin
+        "The answer will become clear, when those titties are near!"
+
+    JUMPCUT COURT_JUDGE
+    POSE "Judge Brent" Warning
+    SPEAK "Judge Brent"
+        "...You do realize this is a court of law, right?"
+    SPEAK "Judge Brent"
+        "The titty showing will have to wait until after the trial."
+
+    JUMPCUT COURT_ASSISTANT
+    POSE Dan SideLean
+    SPEAK Dan
+         "Hey, now we've got something to look forward to when you win!"
+
+    POSE Arin Thinking
+    SPEAK Arin
+         "Wait... Will this change the age rating?"
+
+    JUMPCUT COURT_PROSECUTION
+    SPEAK "Tutorial Boy"
+         "LET'S MOVE ON BEFORE WE FIND OUT!"
+
+END_DEFINE
+
+DEFINE Wrong2
+
 FAKE_CHOICE
     "Show them What games are on the switch." Wrong1
     "Show them the last game played on the switch." Right1
     "SHOW EM UR TIIIIITS." Wrong2
 END_CHOICE
 
-SHOUT Arin takethat
 
-JUMPCUT COURT_DEFENSE
-POSE Arin PaperSlap
-SPEAK Arin
-    "If you've ever owned a Switch, you'd know that the last game played,"
-SPEAK Arin
-    "always sits on the far left-hand side of the screen!"
-//maybe a visual here?
-
-SPEAK Arin
-    "That way you have quick and easy access to the game you were most recently playing."
 
 JUMPCUT COURT_JUDGE
 SFX lightbulb

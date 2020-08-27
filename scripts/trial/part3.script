@@ -90,6 +90,8 @@ SPEAK Dan
     "I don't know, dude, just look for things in his testimony that don't add up."
 SPEAK Dan
     "He totally has to have messed up in there somewhere!"
+SPEAK Dan
+    "I'm sure if we keep %1asking questions%0, we'll get some information out of him."
 
 JUMPCUT COURT_DEFENSE
 SFX deskslam
@@ -120,13 +122,16 @@ END_DEFINE
 
 DEFINE PressA1
     SHOUT Arin HoldIt
+    PAN COURT_WITNESS COURT_DEFENSE
+    POSE Arin Point
+    POSE Arin Normal
     SPEAK_FROM COURT_DEFENSE
         "What were you animating?"
 
     SHOUT "Tutorial Boy" Objection
     SPEAK_FROM COURT_PROSECUTION
         "Your Honour, this is clearly irrelevant to the case."
-
+    POSE "Judge Brent" Warning
     SPEAK_FROM COURT_JUDGE
         "I agree. Arin, try being serious about this."
 
@@ -138,17 +143,21 @@ END_DEFINE
 
 DEFINE PressA2
     SHOUT Arin HoldIt
+    PAN COURT_WITNESS COURT_DEFENSE
+    POSE Arin Point
+    POSE Arin Normal
     SPEAK_FROM COURT_DEFENSE
         "Who did you see?"
 
     SPEAK_FROM COURT_WITNESS
         "I'm getting to it, just be patient. I'm trying to build suspense for the viewers!"
-
+    POSE Arin Sweaty
     SPEAK_FROM COURT_DEFENSE
         "But this isn't being broadcasted..."
-
+    POSE "Tutorial Boy" Sweaty
     SPEAK_FROM COURT_PROSECUTION
         "Quick! Back to the testimony before we break the fourth wall again!"
+    
     ANIMATION "Judge Brent" Nodding
     SPEAK_FROM COURT_JUDGE
         "Witness, carry on."
@@ -169,16 +178,19 @@ DEFINE PressA3
         "Yes that's correct!"
 
     JUMPCUT COURT_DEFENSE
+    POSE Arin Thinking
     SPEAK_FROM COURT_DEFENSE
         "Yet you also say you were in your office animating."
 
     ANIMATION Arin Objection
-    PLAY_MUSIC
+    PLAY_MUSIC DRAGONOBJECTION
     POSE Arin Point
     SPEAK Arin
         "Seems very odd to me! How could you see anyone while you were focused on your work!"
 
     SHOUT "Tutorial Boy" Objection
+    PAN COURT_DEFENSE COURT_PROSECUTION
+    POSE "Tutorial Boy" Sweaty
     SPEAK_FROM COURT_PROSECUTION
         "Are you saying that my client is a liar?"
     SPEAK "Tutorial Boy"
@@ -193,7 +205,7 @@ DEFINE PressA3
         "T-that's right! The reason I was able to see Jory was... because I needed to poop!"
     SPEAK Ross
         "Yeah!"
-
+    STOP_MUSIC
     POSE Arin Annoyed
     SPEAK_FROM COURT_DEFENSE
         "Um...excuse me?"
@@ -224,10 +236,11 @@ DEFINE PressA3
     SPEAK_FROM COURT_WITNESS
         "Uh... yes, yes of course your honor, let me go over it again."
 
-    POSE Dan SideNormal
+    POSE Dan SideLean
     SPEAK_FROM COURT_ASSISTANT
         "Way to go Big Cat! Let's see how this changes things."
 
+STOP_MUSIC
 FADE_TO_BLACK
 //FADEMUSIC OUT
 POSE Ross Normal
@@ -239,15 +252,32 @@ END_DEFINE
 
 DEFINE PressA4
     SHOUT Arin HoldIt
+    POSE Arin Point
+    PAN COURT_WITNESS COURT_DEFENSE
+    POSE Arin Normal
     SPEAK_FROM COURT_DEFENSE
-        "What do you mean $qobviously$q? This proves nothing!"
+        "What makes you so sure that the dinos were stolen anyways!?"
+    POSE Ross Sweaty
+    SPEAK_FROM COURT_WITNESS
+        "..."
+    POSE "Judge Brent" Thinking
+    SPEAK_FROM COURT_JUDGE
+        "..."
+    POSE Dan Angry
+    SPEAK_FROM COURT_ASSISTANT
+        "Arin, that's literally the reason we're all here."
 
-    SPEAK_FROM COURT_PROSECUTION
-        "We have concrete evidence and a solid testimony to show that Jory did it, what more do you want?"
+    POSE Arin Sweaty
+    SPEAK_FROM COURT_DEFENSE
+        "..."
+    POSE "Judge Brent" Normal
+    SPEAK_FROM COURT_JUDGE
+        "I'll just pretend that didn't happen."
 
     JUMPCUT COURT_WITNESS
 END_DEFINE
 
+STOP_MUSIC
 FADE_TO_BLACK
 //fademusic out
 POSE Ross Normal
@@ -276,7 +306,7 @@ DEFINE PressB1
     SPEAK_FROM COURT_WITNESS
         "Well I saw someone move past my office door out of the corner of my eye."
     SPEAK_FROM COURT_WITNESS
-        "It was only after I got up and left my office that I realized it was Jory"
+        "It was only after I got up and left my office that I realized it was Jory."
     SPEAK_FROM COURT_PROSECUTION
         "Please tell the court the reason you had to get up and leave your office."
     JUMPCUT COURT_WITNESS
@@ -288,7 +318,7 @@ DEFINE PressB2
     POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
         "You 'suddenly' had to poop? Seems a little convenient don't you think?"
-    POSE Ross Glaring
+    POSE Ross GlaringHelm
     SPEAK_FROM COURT_WITNESS
         "You're one to talk! You have to suddenly poop all the time!"
 
@@ -318,14 +348,25 @@ DEFINE PressB3
     SPEAK_FROM COURT_WITNESS
         "Well obviously I'd just finished taking a massive dump. Because that's the reason the toilet is there."
 
-    POSE Dan SideNormal
-    SPEAK_FROM COURT_ASSISTANT
-        "Something smells fishy, and I'm not talking about Ross's poop."
+    POSE Arin Embarassed
+    SPEAK_FROM COURT_DEFENSE
+        "Hahah... of course. Stupid question I guess.
 
-    POSE Dan Normal
     SPEAK Dan
-        "Don't we have some evidence that contradicts this?"
+        "Hold on Arin."
 
+    POSE Arin Thinking
+        "What's up Dan?"
+
+    JUMPCUT COURT_ASSISTANT
+
+    SPEAK Dan
+        "Something about that doesn't seem right, but... I dunno..."
+
+    SPEAK Dan
+        "Maybe we should look at the evidence, see if there's something about this?"
+
+    JUMPCUT COURT_WITNESS
 END_DEFINE
 
 DEFINE PressB4
@@ -336,7 +377,7 @@ DEFINE PressB4
     SPEAK_FROM COURT_DEFENSE
         "You didn't think pooping was important enough to mention?"
 
-    POSE Ross Glaring
+    POSE Ross GlaringHelm
     SPEAK_FROM COURT_WITNESS
         "No of course not! Not everyone has memorable bathroom trips like you Arin"
 
@@ -370,9 +411,14 @@ POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
     "Of course I am."
 
-PLAY_MUSIC DRAGONOBJECTION
+JUMPCUT COURT_DEFENSE
+POSE Arin PaperSlap
+SHOW PlumberInvoice r
 SPEAK_FROM COURT_DEFENSE
-    "Then why does this plumbing invoice state very clearly that the toilets were undergoing maintenance at that time?"
+    "Then why does this plumbing invoice state very clearly...
+PLAY_MUSIC DRAGONOBJECTION
+SPEAK Arin
+    "..that the toilets were undergoing maintenance at that time?"
 
 JUMPCUT COURT_WITNESS
 SFX stab
@@ -396,12 +442,14 @@ SPEAK Arin
     "That means you couldn't have possibly been using that bathroom. And you couldn't have seen Jory!"
 
 WIDESHOT
-SFX mutter
 JUMPCUT BLACK_SCREEN
 GAVEL
 
+POSE "Judge Brent" Warning
 SPEAK_FROM COURT_JUDGE
-    "Order in the court! Witness, what do you have to say about this?"
+    "Order in the court!"
+SPEAK "Judge Brent"
+    "Witness, what do you have to say about this?"
 
 POSE Ross SweatyHelm
 SPEAK_FROM COURT_WITNESS
@@ -428,10 +476,12 @@ SPEAK "Judge Brent"
 
 POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
-    "Oh I do not like where this is going"
+    "Oh I do not like where this is going."
 
 SPEAK_FROM COURT_WITNESS
     "The... truth?"
+
+PLAY_MUSIC CTTRvSbeta
 
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
@@ -447,7 +497,7 @@ SFX realization
 SPEAK_FROM COURT_WITNESS
     "!"
 
-POSE Ross Normal
+POSE Ross SweatyHelm
 SPEAK_FROM COURT_WITNESS
     "I... guess you're right! Guess I can't hide it any longer."
 
@@ -455,9 +505,11 @@ JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam
 SPEAK Arin
     "What the hey are you even talking about?"
-
+POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
-    "I wasn't actually animating at all. I was actually working on a secret level for you guys."
+    "Well... the truth is I wasn't actually animating at all."
+SPEAK Ross
+    "I was actually working on a secret level for you guys."
 
 JUMPCUT COURT_DEFENSE
 SFX stab
@@ -465,7 +517,7 @@ POSE Arin Sweaty
 SPEAK Arin
     "What...?"
 
-POSE Ross Sad
+POSE Ross SadHelm
 SPEAK_FROM COURT_WITNESS
     "I know I shouldn't have lied about it, but I wanted it to be a surprise!"
 
@@ -493,7 +545,7 @@ SPEAK_FROM COURT_JUDGE
     "Therefore I'm willing to give him another chance. Besides, how could I say no to that face?"
 
 JUMPCUT COURT_WITNESS
-POSE Ross Sad
+POSE Ross SadHelm
 SPEAK Ross
     "(whimper)."
 
