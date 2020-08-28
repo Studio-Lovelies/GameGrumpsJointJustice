@@ -554,61 +554,59 @@ SPEAK Arin
 //////////////////////////
 DEFINE Wrong1
     SHOUT Arin takethat
-    JUMPCUT COURT_DEFENSE
+    SHOW Switch r
     POSE Arin PaperSlap
     SPEAK Arin
-        "This is every single game downloaded on the switch!"
+        "This is every single game downloaded on the switch!"
 
     SHOUT "Tutorial Boy" objection
+
     PAN COURT_DEFENSE COURT_PROSECUTION
     POSE "Tutorial Boy" Normal
-    SPEAK "Tutorial Boy"
+    SPEAK Tutorial Boy
         "What exactly are you trying to prove here?"
+
     POSE "Tutorial Boy" Confident
-    SPEAK "Tutorial Boy" 
+    SPEAK Tutorial Boy
         "All we know from that is what games are on there! Nothing else!"
 
-    JUMPCUT COURT_ASSISTANT
     POSE Dan SideLean
     SPEAK Dan
-        "There are some interesting games on here though..."
+        "There are some interesting games on here, though..."
+
     POSE Dan SideNormal
     SPEAK Dan
-        "Er... Ross... what exactly is 'Mew Mew Cutie Girls Club'?"
+        "Errr... Ross... what exactly is 'Mew Mew Cutie Girls Club'?"
 
-    JUMPCUT COURT_WITNESS
-    SCREEN_SHAKE
-    SFX stab
     POSE Ross SweatyHelm
-    SPEAK Ross
-        "Th-That's nothing! It's ironic, I-I swear!"
+    SFX stab
 
-    JUMPCUT COURT_DEFENSE
+    SPEAK Ross
+        "Th-That's nothing! It's ironic, I-I swear!"
+
     POSE Arin Annoyed
     SPEAK Arin
         "What HAVE you been playing?"
 
-    JUMPCUT COURT_WITNESS
-    POSE Ross GlaringHelm
-    SPEAK Ross
-        "Hey - don't act like you're better me, with your Pantsu Hunter and your weird anime dating sim crap!"
+    POSE Ross GlaringTalking
+        "Hey - don't act like you're better than me, with your Pantsu Hunter and your weird anime dating sim crap"
 
-    JUMPCUT COURT_DEFENSE
-    POSE Arin Sweaty
+    SFX stab
+
+    POSE Arin SweatyTalking
     SPEAK Arin
-        "H-Hey! That's totally irrelevant! You can't judge me!"
+        "Hey that's totally irrelevant! You can't judge me!"
 
-    POSE "Judge Brent" Warning
     SPEAK_FROM COURT_JUDGE
-        "Ahem... if we could get back to the case you two?"
-    POSE "Judge Brent" Normal
-    SPEAK_FROM COURT_JUDGE
-        "What games are on Ross' switch does not have any bearing on this case."
+        "Ahem... if we could get back to the case, please... "
 
-    JUMPCUT COURT_DEFENSE
+    SPEAK_FROM COURT_JUDGE
+        "This evidence has no relevance to the case. It's dismissed."
+
     POSE Arin Thinking
     THINK Arin
-        "(Damn... I thought I had the right answer there.)"    
+        "Damn... I thought I had the right answer there."
+ 
 END_DEFINE
 
 DEFINE Right1
@@ -628,7 +626,6 @@ DEFINE Right1
 
 END_DEFINE
 DEFINE Wrong3
-    JUMPCUT COURT_DEFENSE
     SPEAK Arin
         "The answer will become clear, when those titties are near!"
 
@@ -685,7 +682,6 @@ SPEAK Arin
     "I'm willing to bet that is NOT the game you'll find!"
 
 SHOUT "Tutorial Boy" objection
-POSE "Tutorial Boy" Normal
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "Your honor this is absurd!"
@@ -737,7 +733,6 @@ SPEAK "Judge Brent"
     "Penix Wright: Facial Attorney?!"
 
 JUMPCUT COURT_WITNESS
-SFX stab
 ANIMATION Ross Damage
 
 //POSE "Tutorial Boy" Shocked
@@ -1006,11 +1001,11 @@ SPEAK Arin
 JUMPCUT COURT_WITNESS
 POSE Ross GlaringHelm
 SPEAK Arin
-    "...was because it was the game we were playing on the livestream!"
+    "... was because it was the game we were playing on the livestream!"
 
 SFX stab
-SCREEN_SHAKE
-ANIMATION Ross Damage
+SCREEN_XSHAKE
+ANIMATION ROSS Damage
 POSE Ross GlaringHelm
 SPEAK Ross
     "AUGH..."
@@ -1023,18 +1018,15 @@ SPEAK Ross
 
 SFX stab
 SCREEN_SHAKE
+SFX stab
+SCREEN_SHAKE
+ANIMATION Ross HelmetThrow
 SPEAK Ross
     "A--A-A-AAAHAAAAAA!!!"
-ANIMATION Ross HelmetThrow
-
 
 JUMPCUT COURT_DEFENSE
 
 ANIMATION Arin HelmHit
-
-POSE Arin Sweaty
-SPEAK Arin
-    "OWWW-WUH!"
 
 
 POSE Ross NoHelm
@@ -1063,7 +1055,7 @@ POSE Arin Point
 SPEAK Arin
     "So tell us the truth! What really happened?!"
 
-SHOUT "Tutorial Boy" objection
+SHOUT "Tutorial Boy" Bbjection
 
 
 PAN COURT_DEFENSE COURT_PROSECUTION
