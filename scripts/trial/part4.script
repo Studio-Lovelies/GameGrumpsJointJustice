@@ -193,7 +193,7 @@ DEFINE PressC1
 
     SPEAK_FROM COURT_WITNESS
         "Yes, yes of course! ehehe..."
-    
+
     POSE Ross Normal
     JUMPCUT COURT_WITNESS
 END_DEFINE
@@ -204,12 +204,12 @@ DEFINE PressC2
     POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
         "I don't like the way you define 'special', Ross"
-    
+
     POSE Ross Normal
     JUMPCUT COURT_WITNESS
     SPEAK Ross
         "They were some fun and joyful levels I had planned! Honest!"
-   
+
     POSE Dan Fist
     SPEAK_FROM COURT_ASSISTANT
         "Fun and joyful? With YOUR levels?! I have serious doubts about that."
@@ -222,7 +222,7 @@ DEFINE PressC2
 
     SPEAK_FROM COURT_JUDGE
         "The witness will stop lying about the level of fun of his mario maker stages and continue with his testimony."
-    
+
     JUMPCUT COURT_WITNESS
     SFX stab
     ANIMATION Ross Damage
@@ -239,7 +239,7 @@ DEFINE PressC3
     POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
         "Good...sport? What do you mean by that?"
-   
+
     POSE Dan SideNormal
     SPEAK_FROM COURT_ASSISTANT
         "I think he means your tolerance his style of levels."
@@ -248,11 +248,11 @@ DEFINE PressC3
         "Yes, indeed! You all haven't fired me yet, so I take it as you being good sports!"
     SPEAK Ross
         "I just wanted to show you my appreciation for your patience with#a nicer level or two!"
-    
+
     POSE Arin Thinking
     THINK_FROM COURT_DEFENSE
         "(That is a very Ross thing to do)"
-    
+
     THINK Arin
         "(Still...)"
     SPEAK Arin
@@ -358,15 +358,15 @@ DEFINE PressC5
     POSE Dan SideLean
     SPEAK_FROM COURT_ASSISTANT
         "Yeah, I feel like you have a serious hard-on for making us suffer. Surely you can’t get tired with doing that."
-    
+
     POSE Ross Normal
     SPEAK_FROM COURT_WITNESS
         "Well, I happened to have a glass of warm milk before making them. A fault on my part indeed. Makes me sleepy, you see."
-    
+
     POSE Arin Sweaty
     SPEAK_FROM COURT_DEFENSE
         "Ross... it was the middle of the day. Why are you drinking warm milk at noon?"
-    
+
     POSE Ross GlaringHelm
     SPEAK_FROM COURT_WITNESS
         "Well... I just felt like having a glass of warm milk!"
@@ -385,7 +385,7 @@ DEFINE PressC6
     POSE Arin Normal
     SPEAK Arin
         "Are you SURE you saw the Dinos?"
-    
+
     POSE Ross Normal
     SPEAK_FROM COURT_WITNESS
         "I'm pretty sure, it would be pretty difficult to mistake them for anything else."
@@ -413,7 +413,7 @@ DEFINE PressC6
         "Right... My bad."
 
     JUMPCUT COURT_WITNESS
-    
+
 
 END_DEFINE
 
@@ -497,7 +497,7 @@ SPEAK "Tutorial Boy"
 
 SHOUT Arin objection
 POSE Arin Point
-PAN COURT_PROSECUTION COURT_DEFENSE 
+PAN COURT_PROSECUTION COURT_DEFENSE
 SPEAK Arin
     "If you wouldn't interrupt, I'd show you just how possible it is."
 
@@ -542,7 +542,7 @@ SPEAK_FROM COURT_DEFENSE
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideNormal
 SPEAK Dan
-    "Are you sure about this, Arin?" 
+    "Are you sure about this, Arin?"
 SPEAK Dan
     "Everytime you're this confident you tend to blow it immediately."
 SPEAK Arin
@@ -565,7 +565,7 @@ DEFINE Wrong1
     SPEAK "Tutorial Boy"
         "What exactly are you trying to prove here?"
     POSE "Tutorial Boy" Confident
-    SPEAK "Tutorial Boy" 
+    SPEAK "Tutorial Boy"
         "All we know from that is what games are on there! Nothing else!"
 
     JUMPCUT COURT_ASSISTANT
@@ -608,7 +608,7 @@ DEFINE Wrong1
     JUMPCUT COURT_DEFENSE
     POSE Arin Thinking
     THINK Arin
-        "(Damn... I thought I had the right answer there.)"    
+        "(Damn... I thought I had the right answer there.)"
 END_DEFINE
 
 DEFINE Right1
@@ -627,7 +627,8 @@ DEFINE Right1
         "That way you have quick and easy access to the game you were most recently playing."
 
 END_DEFINE
-DEFINE Wrong3
+
+DEFINE Wrong2
     JUMPCUT COURT_DEFENSE
     SPEAK Arin
         "The answer will become clear, when those titties are near!"
@@ -654,12 +655,11 @@ DEFINE Wrong3
 
 END_DEFINE
 
-FAKE_CHOICE
-    "Show them What games are on the switch." Wrong1
-    "Show them the last game played on the switch." Right1
-    "SHOW EM UR TIIIIITS." Wrong2
-
-
+CHOICE
+    "Show them what games are on the switch." Wrong1 0
+    "Show them the last game played on the switch." Right1 1
+    "SHOW EM UR TIIIIITS." Wrong2 0
+END_CHOICE
 
 JUMPCUT COURT_JUDGE
 SFX lightbulb
@@ -681,7 +681,7 @@ POSE Arin DeskSlam
 SPEAK Arin
     "But if you'd take a look at Ross' switch, your honor..."
 POSE Arin Point
-SPEAK Arin 
+SPEAK Arin
     "I'm willing to bet that is NOT the game you'll find!"
 
 SHOUT "Tutorial Boy" objection
@@ -780,10 +780,10 @@ JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "Whatever game was last played doesn't prove anything!"
-SPEAK "Tutorial Boy" 
+SPEAK "Tutorial Boy"
     "Ross could have accidentally loaded that game when he put his switch away!"
 POSE "Tutorial Boy" Normal
-SPEAK "Tutorial Boy" 
+SPEAK "Tutorial Boy"
     "Your honor this is baseless conjecture."
 
 JUMPCUT COURT_JUDGE
@@ -850,7 +850,7 @@ DEFINE Yep1
     POSE Dan SideNormal
     JUMPCUT COURT_ASSISTANT
     SPEAK Dan
-        "Well now that you menti--"    
+        "Well now that you menti--"
     POSE Dan Angry
     SPEAK Dan
         "Wait... how do you know if that's jizz?"
@@ -1071,7 +1071,7 @@ SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 SPEAK "Tutorial Boy"
     "It's just as the witness said! There's no proof that any of these claims are true!
-SPEAK "Tutorial Boy"    
+SPEAK "Tutorial Boy"
     "There's no conclusive evidence that the switch the used was actually Ross'"
 SPEAK "Tutorial Boy"
     "I request that last bit of evidence be stricken from the record!"
