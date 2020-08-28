@@ -462,7 +462,7 @@ function NewChoiceEvent(options)
             self.select = self.select - 2
 
             if self.select < 1 then
-                self.select = #self.options -1
+                self.select = #self.options - 1
             end
         end
 

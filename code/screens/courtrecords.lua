@@ -57,7 +57,7 @@ function DrawCourtRecords(ui)
         if Episode.courtRecords.profiles[CourtRecordIndex] ~= nil then
             bodySelected = {
                 image = Episode.courtRecords.profiles[CourtRecordIndex].sprite,
-                title = Episode.courtRecords.profiles[CourtRecordIndex].characterName .. " (Age: " .. Episode.courtRecords.profiles[CourtRecordIndex].age .. ")",
+                title = Episode.courtRecords.profiles[CourtRecordIndex].characterName.." (Age: "..Episode.courtRecords.profiles[CourtRecordIndex].age..")",
                 details = Episode.courtRecords.profiles[CourtRecordIndex].info
             }
         end
