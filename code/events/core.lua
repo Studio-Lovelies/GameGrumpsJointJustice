@@ -454,20 +454,20 @@ function NewChoiceEvent(options)
     self.isFake = false
     self.hasDone = false
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         local pressingUp = love.keyboard.isDown("up")
         local pressingDown = love.keyboard.isDown("down")
 
         if not self.wasPressingUp and pressingUp then
-            self.select = self.select - 2
+            self.select = self.select - 3
 
             if self.select < 1 then
-                self.select = #self.options -1
+                self.select = #self.options - 1
             end
         end
 
         if not self.wasPressingDown and pressingDown then
-            self.select = self.select + 2
+            self.select = self.select + 3
 
             if self.select > #self.options -1 then
                 self.select = 1
@@ -481,10 +481,11 @@ function NewChoiceEvent(options)
 
         if not self.hasDone then
             if pressingX and not self.wasPressingX then
-                if self.options[self.select+1] == "0" then
+                if self.options[self.select + 2] == "1" then
+                    scene:runDefinition(self.options[self.select + 1], 2)
                     return false
                 else
-                    scene:runDefinition(self.options[self.select+1])
+                    scene:runDefinition(self.options[self.select + 1])
 
                     if self.isFake then
                         self.hasDone = true
@@ -502,7 +503,7 @@ function NewChoiceEvent(options)
     end
 
     self.draw = function (self, scene)
-        for i=1, #self.options, 2 do
+        for i=1, #self.options, 3 do
             love.graphics.setColor(0.2,0.2,0.2)
             if self.select == i then
                 love.graphics.setColor(0.8,0,0.2)
