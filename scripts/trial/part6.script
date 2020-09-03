@@ -73,7 +73,7 @@ SPEAK Arin
 POSE Dan SideLaugh
     "Roll with me Arin, I got this one."
 
-//ANIMATION Dan SideObjectionIntro
+ANIMATION Dan SideObjectionIntro
 POSE Dan SideObjection
 SPEAK Dan
     "What I mean is this!"
@@ -84,8 +84,8 @@ SPEAK Dan
     "I don't think that's jizz AT ALL!"
 
 JUMPCUT COURT_WITNESS
-//ANIMATION Ross Shocked Bald
-POSE Ross Glaring
+ANIMATION Ross DamageNoHelm
+POSE Ross NoHelm
 SPEAK_FROM COURT_WITNESS
     "Huh?!"
 
@@ -115,76 +115,92 @@ POSE Arin Point
 SPEAK Arin
     "Your honor! I request that Dan..."
 
-//CHOICE
-//[1. Taste them]
-//[2. Smell them]
-//[3. Rub them on his nipples]
+//////////////
+//CHOICE////
+//////////
+DEFINE Taste
+    SPEAK Arin
+        "That Dan be allowed to taste those sexy dinosaurs..."
+    POSE Arin Confident
+    SPEAK Arin
+        "...so we can find out what's really covering them!"
 
-//1. Arin [pointing]
-//That Dan be allowed to taste those sexy dinosaurs, so we can find out what's really covering them!
-	
-//SPEAK_FROM COURT_WITNESS
-//ROSS [SWEATING]
-//GROSS!
+    SPEAK_FROM COURT_WITNESS
+    POSE Ross Glaring
+    SPEAK Ross
+        "GROSS!"
 
-//SPEAK_FROM COURT_PROSECUTION
-//Tutorial boi [sweating]
-//You can't be serious.
+    SPEAK_FROM COURT_PROSECUTION
+    POSE "Tutorial Boy" Sweaty
+    SPEAK "Tutorial Boy"
+        "You can't be serious."
 
-//SPEAK_FROM [DEFENSE]
-//ARIN [serious]
-//I'm deadly serious!
+    SPEAK_FROM COURT_DEFENSE
+    POSE Arin DeskSlam 
+    SPEAK Arin
+        "I'm deadly serious!"
 
-//##END UNIQUE DIALOGUE
+END_DEFINE
 
+DEFINE Smell
+    SPEAK Arin
+        "That Dan be allowed to smell those stain-covered dinosaurs..."
+    POSE Arin Confident
+    SPEAK Arin
+        "...so we can find out what's really covering them!"
 
-//2. Arin [pointing]
-//That Dan be allowed to smell those stain-covered dinosaurs, so we can find out what's really covering them!
+    JUMPCUT COURT_WITNESS
+    ANIMATION Ross DamageNoHelm
+    POSE Ross NoHelm
+    SPEAK Ross
+        "Ack!"
 
-//SPEAK_FROM COURT_WITNESS
-//ROSS [SHOCKED]
-//Oh no!
+    SHOUT "Tutorial Boy" Objection
 
-//OBJECTION COURT_PROSECUTION
+    SPEAK_FROM COURT_PROSECUTION
+    SFX damage1
+    ANIMATION "Tutorial boy" HeadSlam
+    POSE "Tutorial Boy" Angry
+        "That is an absurd request! I object to this!"
+    SPEAK "Tutorial Boy"
+        "No trivial stain is going to change the outcome of this trial!"
 
-//SPEAK_FROM COURT_PROSECUTION
-//Tutorial boi [HEADSLAM]
-//That is an absurd request! I object to this! No trivial stain is going to change the outcome of this trial! 
-//TUTORIAL BOY: You fools probably got it covered in some paint or something and you don't remember
+    SPEAK "Tutorial Boy"
+        "You fools probably got it covered in some paint or something and you don't remember."
 
-//OBJECTION [DEFENSE]
-//Arin [pointing]
-//Then let us find out for sure to put all doubt to rest!
+    JUMPCUT COURT_DEFENSE
+    POSE Arin Point
+    SPEAK Arin
+        "Then let us find out for sure to put all doubt to rest!"
 
-//END UNIQUE DIALOGUE
+END_DEFINE
 
+DEFINE Rub
+  SPEAK Arin
+     "That Dan be allowed to rub the dinos all over his beautiful nude body!"
+  
+  POSE "Judge Brent" Angry
+  SPEAK_FROM COURT_JUDGE
+     "..."
 
+  POSE Dan Angry
+  SPEAK_FROM COURT_ASSISTANT
+    "Arin! That's not at all what I want with those things. Why did you say that?
 
-//3. ARIN [POINTING]
-//That Dan be allowed to rub the dinos all over his beautiful nude body!
+  POSE Arin Embarassed
+  SPEAK_FROM COURT_DEFENSE
+    "Oh, opps. Wishful thinking I guess."
 
-//SPEAK_FROM COURT_JUDGE
-//Brent [serious]
-//...
+  POSE Arin Point
+  SPEAK Arin
+    "What I mean to say is, your honor..."
 
-//SPEAK_FROM COURT_ASSISTANT
-//DAN [angry]
-//Arin! That's not at all what I want with those things. Why did you say that?
+CHOICE
+    "Taste them." Taste 1
+    "Smell them." Smell 1
+    "Rub them on his nipples." Rub 0
 
-//SPEAK_FROM [DEFENSE]
-//POSE Arin Embarassed
-//Oh, oops. Wishful thinking I guess.
-//Arin [pointing]
-//What I mean to say is, your honor... 
-
-//END UNIQUE DIALOGUE
-
-//CHOICE
-//[1. Taste them]
-//[2. Smell them]
-//[3. Rub them on his nipples] THIS CHOICE IN THIS SECTION IS ALREADY USED AND CAN'T BE SELECTED TWICE.
-
-//END CHOICE SECTION
+END_CHOICE
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
@@ -197,9 +213,9 @@ THINK Arin
     "(Come on, Brent...)"
 
 
-
 SHOUT "Tutorial Boy" Objection
 JUMPCUT COURT_PROSECUTION
+POSE "Tutorial Boy" Sweaty
 SPEAK "Tutorial Boy"
     "Your honor, please think about this. This is a trivial matter!"
 SPEAK "Tutorial Boy"
