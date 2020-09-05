@@ -220,9 +220,6 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "GAVEL" then
                     AddToStack(stack, NewGavelEvent(), lineParts)
                 end
-                if lineparts[1] == "GAVEL3" then
-                    AddToStack(stack, NewGavel3Event(), lineParts)
-                end
                 if lineParts[1] == "SHOW" then
                     AddToStack(stack, NewShowEvent(lineParts[2], lineParts[3]), lineParts)
                 end
