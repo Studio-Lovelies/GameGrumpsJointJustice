@@ -7,6 +7,7 @@ function LoadScript(scene, scriptPath)
     local definitions = {}
 
     local queuedSpeak = nil
+    local queuedQuietSpeak = nil
     local queuedInterruptedSpeak = nil
     local queuedThink = nil
     local queuedTypewriter = nil
@@ -92,6 +93,13 @@ function LoadScript(scene, scriptPath)
             if canExecuteLine and queuedSpeak ~= nil then
                 AddToStack(stack, NewSpeakEvent(queuedSpeak[1], lineParts[1], queuedSpeak[2], queuedSpeak[3]), {"SPEAK "..queuedSpeak[1], unpack(lineParts)})
                 queuedSpeak = nil
+
+                canExecuteLine = false
+            end
+
+            if canExecuteLine and queuedQuietSpeak ~= nil then
+                AddToStack(stack, NewQuietSpeakEvent(queuedQuietSpeak[1], lineParts[1], queuedQuietSpeak[2], queuedQuietSpeak[3]), {"SPEAK_QUIET "..queuedQuietSpeak[1], unpack(lineParts)})
+                queuedQuietSpeak = nil
 
                 canExecuteLine = false
             end
@@ -263,6 +271,9 @@ function LoadScript(scene, scriptPath)
 
                 if lineParts[1] == "SPEAK" then
                     queuedSpeak = {lineParts[2], "literal", lineParts[3]}
+                end
+                if lineParts[1] == "SPEAK_QUIET" then
+                    queuedQuietSpeak = {lineParts[2], "literal", lineParts[3]}
                 end
                 if lineParts[1] == "THINK" then
                     queuedThink = {lineParts[2], "literal", nil}

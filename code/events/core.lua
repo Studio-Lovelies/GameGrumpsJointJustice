@@ -83,6 +83,106 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
     self.needsPressing = needsPressing ~= nil and needsPressing or true
     self.wasPressing = true
     self.who = who
+    self.font = "game"
+    self.locorlit = locorlit
+
+    if color == nil then
+        color = "WHITE"
+    end
+    self.color = color
+    self.animates = true
+    self.speaks = true
+
+    self.update = function (self, scene, dt)
+        scene.textHidden = false
+        scene.fullText = self.text
+
+        local lastScroll = self.textScroll
+        local scrollSpeed = TextScrollSpeed
+        local currentChar = string.sub(self.text, math.floor(self.textScroll), math.floor(self.textScroll))
+
+        if controls.debug then
+            scrollSpeed = scrollSpeed*8
+        elseif love.keyboard.isDown("lshift") then
+            scrollSpeed = scrollSpeed*8
+        else
+            if currentChar == "." then
+                if string.sub(self.text, math.floor(self.textScroll - 2), math.floor(self.textScroll)):lower() == "mr." then
+                    scrollSpeed = scrollSpeed
+                else
+                    scrollSpeed = scrollSpeed*0.15
+                end
+            elseif currentChar == "!" or currentChar == "?" then
+                scrollSpeed = scrollSpeed*0.15
+            elseif currentChar == "," then
+                scrollSpeed = scrollSpeed*0.25
+            elseif currentChar == " " then
+                scrollSpeed = scrollSpeed*0.75
+            end
+        end
+        self.textScroll = math.min(self.textScroll + dt*scrollSpeed, #self.text)
+
+        if self.textScroll < #self.text then
+            scene.characterTalking = self.animates
+        end
+
+        if self.locorlit == "literal" then
+            scene.textTalker = self.who
+        else
+            scene.textTalker = scene.characterLocations[self.who].name
+        end
+
+        if self.textScroll > lastScroll
+        and currentChar ~= " "
+        and currentChar ~= ","
+        and currentChar ~= "-"
+        and currentChar ~= "."
+        and currentChar ~= "?"
+        and currentChar ~= "!"
+        and currentChar ~= "'"
+        and currentChar ~= ":"
+        and currentChar ~= ";"
+        and currentChar ~= ")"
+        and currentChar ~= "("
+        and self.speaks then
+            if scene.characters[scene.textTalker].gender == "MALE" then
+                Sounds.MALETALK:play()
+            else
+                Sounds.FEMALETALK:play()
+            end
+        end
+
+        scene.textColor = colors[string.lower(self.color)]
+
+        scene.text = string.sub(self.text, 1, math.floor(self.textScroll))
+
+        local pressing = love.keyboard.isDown(controls.advance_text)
+        -- What to do at the end of dialogue
+        if self.textScroll >= #self.text then
+            if self.needsPressing == false then
+                -- This dialogue doesn't need the button to continue, like a run-on sentence
+                return false
+            elseif pressing and not self.wasPressing then
+                -- This dialogue needs the button, and the button was just pressed
+                return false
+            end
+        end
+
+        self.wasPressing = pressing
+        return true
+    end
+
+    return self
+end
+
+function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
+    local self = {}
+    self.text = text
+    self.textScroll = 1
+    self.needsPressing = needsPressing ~= nil and needsPressing or true
+    self.wasPressing = true
+    self.who = who
+    self.font = "small"
     self.locorlit = locorlit
 
     if color == nil then
