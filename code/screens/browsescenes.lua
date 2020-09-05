@@ -8,50 +8,50 @@ function DrawBrowseScreen()
     local blackImage = love.graphics.newImage(settings.black_screen_path)
     local blackScale = 3
 
-    local pretrialImage = love.graphics.newImage(settings.lobby_path)
-    local pretrialImageScale = 3
+    local jorytrialImage = love.graphics.newImage(settings.court_path)
+    local jorytrialImageScale = 3
 
-    local trialImage = love.graphics.newImage(settings.court_path)
-    local trialImageScale = 3
+    local posttrialImage = love.graphics.newImage(settings.lobby_path)
+    local posttrialImageScale = 3
 
     local backW = (dimensions.window_width * 1/5)
     local backX = (dimensions.window_width * 1/18)
     local backY = blackImage:getHeight()*blackScale + 10
     local backH = 60
 
-    local pretrialW = (dimensions.window_width * 1/3.75)
-    local pretrialX = (dimensions.window_width * 10.75/18) - pretrialW
-    local pretrialY = blackImage:getHeight()*blackScale + 10
-    local pretrialH = 60
-
     local jorytrialW = (dimensions.window_width * 1/3.75)
-    local jorytrialX = (dimensions.window_width * 17/18) - jorytrialW
+    local jorytrialX = (dimensions.window_width * 10.75/18) - jorytrialW
     local jorytrialY = blackImage:getHeight()*blackScale + 10
     local jorytrialH = 60
+
+    local posttrialW = (dimensions.window_width * 1/3.75)
+    local posttrialX = (dimensions.window_width * 17/18) - posttrialW
+    local posttrialY = blackImage:getHeight()*blackScale + 10
+    local posttrialH = 60
 
     local dx = 8
     local dy = 8
 
     love.graphics.setColor(0.44,0.56,0.89)
-    if TitleSelection == "Pre-Trial" then
-        love.graphics.rectangle("fill", pretrialX-dx, pretrialY-dy, pretrialW+2*dx, pretrialH+2*dy)
-        love.graphics.draw(
-            pretrialImage,
-            GetCenterOffset(pretrialImage:getWidth() * pretrialImageScale, false),
-            0,
-            0,
-            pretrialImageScale,
-            pretrialImageScale
-        )
-    elseif TitleSelection == "Jory's Trial" then
+    if TitleSelection == "Jory's Trial" then
         love.graphics.rectangle("fill", jorytrialX-dx, jorytrialY-dy, jorytrialW+2*dx, jorytrialH+2*dy)
         love.graphics.draw(
-            trialImage,
-            GetCenterOffset(trialImage:getWidth() * trialImageScale, false),
+            jorytrialImage,
+            GetCenterOffset(jorytrialImage:getWidth() * jorytrialImageScale, false),
             0,
             0,
-            trialImageScale,
-            trialImageScale
+            jorytrialImageScale,
+            jorytrialImageScale
+        )
+    elseif TitleSelection == "Post-Trial" then
+        love.graphics.rectangle("fill", posttrialX-dx, posttrialY-dy, posttrialW+2*dx, posttrialH+2*dy)
+        love.graphics.draw(
+            posttrialImage,
+            GetCenterOffset(posttrialImage:getWidth() * posttrialImageScale, false),
+            0,
+            0,
+            posttrialImageScale,
+            posttrialImageScale
         )
     else
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
@@ -69,10 +69,10 @@ function DrawBrowseScreen()
     love.graphics.rectangle("fill", backX, backY, backW, backH)
 
     love.graphics.setColor(0.3,0.3,0.3)
-    love.graphics.rectangle("fill", pretrialX, pretrialY, pretrialW, pretrialH)
+    love.graphics.rectangle("fill", jorytrialX, jorytrialY, jorytrialW, jorytrialH)
 
     love.graphics.setColor(0.3,0.3,0.3)
-    love.graphics.rectangle("fill", jorytrialX, jorytrialY, jorytrialW, jorytrialH)
+    love.graphics.rectangle("fill", posttrialX, posttrialY, posttrialW, posttrialH)
 
     love.graphics.setColor(1,1,1)
     local textScale = 3
@@ -86,21 +86,21 @@ function DrawBrowseScreen()
         textScale
     )
 
-    local pretrialText = love.graphics.newText(GameFont, "Pre-Trial")
+    local jorytrialText = love.graphics.newText(GameFont, "Jory's Trial")
     love.graphics.draw(
-        pretrialText,
-        pretrialX + pretrialW/2-(pretrialText:getWidth() * textScale)/1.5,
-        pretrialY + pretrialH/2-(pretrialText:getHeight() * textScale)/2,
+        jorytrialText,
+        jorytrialX + jorytrialW/2-(jorytrialText:getWidth() * textScale)/1.5,
+        jorytrialY + jorytrialH/2-(jorytrialText:getHeight() * textScale)/2,
         0,
         textScale,
         textScale
     )
 
-    local jorytrialText = love.graphics.newText(GameFont, "Jory's Trial")
+    local posttrialText = love.graphics.newText(GameFont, "Post-Trial")
     love.graphics.draw(
-        jorytrialText,
-        jorytrialX + jorytrialW/2-(jorytrialText:getWidth() * textScale)/2,
-        jorytrialY + jorytrialH/2-(jorytrialText:getHeight() * textScale)/2,
+        posttrialText,
+        posttrialX + posttrialW/2-(posttrialText:getWidth() * textScale)/2,
+        posttrialY + posttrialH/2-(posttrialText:getHeight() * textScale)/2,
         0,
         textScale,
         textScale
@@ -111,8 +111,8 @@ end
 
 browseSceneSelections = {}
 browseSceneSelections[0] = "Back";
-browseSceneSelections[1] = "Pre-Trial";
-browseSceneSelections[2] = "Jory's Trial";
+browseSceneSelections[1] = "Jory's Trial";
+browseSceneSelections[2] = "Post-Trial";
 TitleSelection = "Back";
 SelectionIndex = 0;
 
@@ -128,10 +128,6 @@ BrowseScreenConfig = {
                 screens.browsescenes.displayed = false;
                 TitleSelection = "Case Select";
                 SelectionIndex = 1;
-            elseif TitleSelection == "Pre-Trial" then
-                Sounds["SELECTJINGLE"]:play()
-                Episode:begin()
-                screens.browsescenes.displayed = false;
             elseif TitleSelection == "Jory's Trial" then
                 Sounds["SELECTBLIP2"]:play()
                 screens.jorytrial.displayed = true;
@@ -139,6 +135,10 @@ BrowseScreenConfig = {
                 screens.browsescenes.displayed = false;
                 SelectionIndexX = 0;
                 SelectionIndexY = 0;
+            elseif TitleSelection == "Post-Trial" then
+                Sounds["SELECTJINGLE"]:play()
+                NewEpisode(settings.posttrial_path):begin()
+                screens.browsescenes.displayed = false;
             end
         elseif key == controls.press_right then
             Sounds["SELECTBLIP2"]:play()

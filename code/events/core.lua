@@ -540,7 +540,7 @@ function NewShowEvent(evidence, side)
     return self
 end
 
-function NewChoiceEvent(options)
+function NewChoiceEvent(options, isFake)
     local self = {}
     self.select = 1
     self.options = options
@@ -551,26 +551,44 @@ function NewChoiceEvent(options)
 
     -- this is for FakeChoiceEvent polymorphism
     -- if a choice is fake, then whatever option the player chooses still continues the script
-    self.isFake = false
+    self.isFake = isFake
     self.hasDone = false
 
     self.update = function(self, scene, dt)
         local pressingUp = love.keyboard.isDown("up")
         local pressingDown = love.keyboard.isDown("down")
 
-        if not self.wasPressingUp and pressingUp then
-            self.select = self.select - 3
+        if self.isFake then
+            if not self.wasPressingUp and pressingUp then
+                self.select = self.select - 2
 
-            if self.select < 1 then
-                self.select = #self.options - 1
+                if self.select < 1 then
+                    self.select = #self.options - 1
+                end
             end
-        end
 
-        if not self.wasPressingDown and pressingDown then
-            self.select = self.select + 3
+            if not self.wasPressingDown and pressingDown then
+                self.select = self.select + 2
 
-            if self.select > #self.options -1 then
-                self.select = 1
+                if self.select > #self.options -1 then
+                    self.select = 1
+                end
+            end
+        else
+            if not self.wasPressingUp and pressingUp then
+                self.select = self.select - 3
+
+                if self.select < 1 then
+                    self.select = #self.options - 1
+                end
+            end
+
+            if not self.wasPressingDown and pressingDown then
+                self.select = self.select + 3
+
+                if self.select > #self.options -1 then
+                    self.select = 1
+                end
             end
         end
 
@@ -581,15 +599,15 @@ function NewChoiceEvent(options)
 
         if not self.hasDone then
             if pressingX and not self.wasPressingX then
-                if self.options[self.select + 2] == "1" then
-                    scene:runDefinition(self.options[self.select + 1], 2)
+                if self.isFake then
+                    self.hasDone = true
                     return false
                 else
-                    scene:runDefinition(self.options[self.select + 1])
-
-                    if self.isFake then
-                        self.hasDone = true
+                    if self.options[self.select + 2] == "1" then
+                        scene:runDefinition(self.options[self.select + 1], 2)
                         return false
+                    else
+                        scene:runDefinition(self.options[self.select + 1])
                     end
                 end
             end
@@ -603,16 +621,46 @@ function NewChoiceEvent(options)
     end
 
     self.draw = function (self, scene)
-        for i=1, #self.options, 3 do
-            love.graphics.setColor(0.2,0.2,0.2)
-            if self.select == i then
-                love.graphics.setColor(0.8,0,0.2)
+        if self.isFake then
+            for i = 1, #self.options, 2 do
+                love.graphics.setColor(0.2, 0.2, 0.2)
+                if self.select == i then
+                    love.graphics.setColor(0.8, 0, 0.2)
+                end
+                local textHeight = 28
+                if #self.options[i] > 28 then
+                    self.options[i] = stringInsert(self.options[i], [[
+                        ]], 27)
+                    textHeight = textHeight * 2
+                end
+                love.graphics.rectangle("fill", 146, 30 + (i - 1) * 16 -4, GraphicsWidth, textHeight)
+                love.graphics.setColor(1, 1, 1)
+                love.graphics.setFont(SmallFont)
+                love.graphics.print(self.options[i], 150, 30 + (i - 1) * 16)
+                love.graphics.setFont(GameFont)
             end
-            love.graphics.rectangle("fill", 146,30+(i-1)*16 -4, GraphicsWidth,28)
-            love.graphics.setColor(1,1,1)
-            love.graphics.setFont(SmallFont)
-            love.graphics.print(self.options[i], 150,30+(i-1)*16)
-            love.graphics.setFont(GameFont)
+        else
+            for i = 1, #self.options, 3 do
+                love.graphics.setColor(0.2, 0.2, 0.2)
+                if self.select == i then
+                    love.graphics.setColor(0.8, 0, 0.2)
+                end
+                local textHeight = 28
+                if #self.options[i] > 28 then
+                    self.options[i] = stringInsert(self.options[i], "$n", 27)
+                    textHeight = textHeight * 2
+                    love.graphics.setFont(SmallFont)
+                    love.graphics.print(stringSplit(self.options[i], "$n")[1], 150, 30 + (i - 1) * 16)
+                    love.graphics.print(stringSplit(self.options[i], "$n")[2], 150, 20 + (i - 1) * 16)
+                    print(stringSplit(self.options[i], "$n")[2]);
+                else
+                    love.graphics.setFont(SmallFont)
+                    love.graphics.print(self.options[i], 150, 30 + (i - 1) * 16)
+                end
+                love.graphics.rectangle("fill", 146, 30 + (i - 1) * 16 -4, GraphicsWidth, textHeight)
+                love.graphics.setColor(1, 1, 1)
+                love.graphics.setFont(GameFont)
+            end
         end
     end
 
@@ -620,8 +668,7 @@ function NewChoiceEvent(options)
 end
 
 function NewFakeChoiceEvent(options)
-    local self = NewChoiceEvent(options)
-    self.isFake = true
+    local self = NewChoiceEvent(options, true)
     return self
 end
 
@@ -702,10 +749,12 @@ function NewFadeInEvent()
     return self
 end
 
-function NewCrossFadeEvent()
+function NewCrossFadeEvent(scene1, scene2)
     local self = {}
     self.timer1 = 1
     self.timer2 = 0
+    self.scene1 = scene1
+    self.scene2 = scene2
 
     self.update = function (self, scene, dt)
         scene.textHidden = true
@@ -795,4 +844,21 @@ function NewClearLocationEvent(location)
     end
 
     return self
+end
+
+function stringInsert(str1, str2, pos)
+    while str1:sub(pos) ~= " " do
+        pos = pos - 1;
+        print(pos);
+    end
+    return str1:sub(1, pos)..str2..str1:sub(pos + 1)
+end
+
+function stringSplit(s, delimiter)
+    result = {};
+
+    for match in (s..delimiter):gmatch("(.-)"..delimiter) do
+        table.insert(result, match);
+    end
+    return result;
 end

@@ -278,8 +278,6 @@ function NewGavelEvent()
     self.muted = false
     self.sources = {}
 
-    NewCutToEvent("BLACK_SCREEN")
-
     self.update = function (self, scene, dt)
         self.timer = self.timer + dt
         scene.textHidden = true
