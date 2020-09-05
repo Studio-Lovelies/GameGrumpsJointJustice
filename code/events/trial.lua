@@ -152,6 +152,7 @@ function NewWitnessEvent(queue)
                     scene:runDefinition(self.queue[self.textIndex+1])
                 else
                     if self.queue[self.textIndex+2] ~= "1" then
+                        scene:runDefinition(self.queue[self.textIndex+1], 2)
                         return false
                     end
                 end
@@ -169,7 +170,7 @@ function NewWitnessEvent(queue)
             love.graphics.setColor(1,1,1)
 
             if self.eventType == "WitnessTestimony" then
-                love.graphics.draw(cornerSprite, 0 + 2, 2)  -- TODO: blinking animation
+                local sprite love.graphics.draw(cornerSprite, 0 + 2, 2)  -- TODO: blinking animation
                 if math.floor(love.timer.getTime()) % 2 == 0 then
                     r, g, b, a = love.graphics.getColor()
                     if a == 0 then

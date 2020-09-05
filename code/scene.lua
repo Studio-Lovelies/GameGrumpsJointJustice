@@ -148,7 +148,12 @@ function NewScene(scriptPath)
             -- draw who is talking
             love.graphics.setFont(SmallFont)
             love.graphics.print(self.textTalker, 4, GraphicsHeight-self.textBoxSprite:getHeight())
-            love.graphics.setFont(GameFont)
+            print(self.font)
+            if self.font == "small" then
+                love.graphics.setFont(SmallFont)
+            else
+                love.graphics.setFont(GameFont)
+            end
 
             -- draw the current scrolling text
             love.graphics.setColor(unpack(self.textColor))
