@@ -656,9 +656,9 @@ DEFINE Wrong2
 END_DEFINE
 
 CHOICE
-    "Show them what games are on the switch." Wrong1 0
-    "Show them the last game played on the switch." Right1 1
-    "SHOW EM UR TIIIIITS." Wrong2 0
+    "Show them what games are on the switch" Wrong1 0
+    "Show them the last game played on the switch" Right1 1
+    "SHOW EM UR TIIIIITS" Wrong2 0
 END_CHOICE
 
 JUMPCUT COURT_JUDGE
@@ -893,10 +893,10 @@ DEFINE Yep2
 
 END_DEFINE
 
-FAKE_CHOICE
-    "The white stain on the switch?" Yep1
-    "What are you talkin about Dan?!" Nope1
-    "I feel like we've seen it before..." Yep2
+CHOICE
+    "The white stain on the switch?" Yep1 1
+    "What are you talkin about Dan?!" Nope1 0
+    "I feel like we've seen it before..." Yep2 1
 END_CHOICE
 
 JUMPCUT COURT_DEFENSE

@@ -43,7 +43,7 @@ function LoadScript(scene, scriptPath)
                         table.insert(choiceQueue, lineParts[i])
                     end
                 else
-                    AddToStack(stack, NewChoiceEvent(choiceQueue), lineParts)
+                    AddToStack(stack, NewChoiceEvent(choiceQueue, false), lineParts)
                     choiceQueue = nil
                 end
 
@@ -56,7 +56,7 @@ function LoadScript(scene, scriptPath)
                         table.insert(fakeChoiceQueue, lineParts[i])
                     end
                 else
-                    AddToStack(stack, NewFakeChoiceEvent(fakeChoiceQueue), lineParts)
+                    AddToStack(stack, NewFakeChoiceEvent(fakeChoiceQueue, true), lineParts)
                     fakeChoiceQueue = nil
                 end
 
@@ -210,6 +210,7 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewWideShotEvent(), lineParts)
                 end
                 if lineParts[1] == "GAVEL" then
+                    AddToStack(stack, NewCutToEvent("BLACK_SCREEN"), lineParts)
                     AddToStack(stack, NewGavelEvent(), lineParts)
                 end
                 if lineParts[1] == "SHOW" then
