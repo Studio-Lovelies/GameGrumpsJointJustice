@@ -361,7 +361,7 @@ SPEAK Arin
     "Wait, there's one more thing."
 SPEAK Arin GREEN
     "$qP.S.S., I hope you two have been continuing to provide my boy with wholesome food as well.$q"
-SPEAK Arin GREEN
+SPEAK Arin
     "$qAnd I hope you've been avoiding giving him %1milk%0 as he's %1deathly allergic%0 to it.$q"
 SPEAK Dan
     "Huh..."
