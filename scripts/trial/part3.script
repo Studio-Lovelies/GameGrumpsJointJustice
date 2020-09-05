@@ -60,7 +60,7 @@ POSE "Judge Brent" Thinking
 SPEAK_FROM COURT_JUDGE
     "Hm..."
 POSE "Judge Brent" Normal
-SPEAK "Judge Brent"
+SPEAK_FROM "Judge Brent"
     "A remarkably solid testimony here."
 
 SPEAK_FROM COURT_PROSECUTION
@@ -74,7 +74,7 @@ POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
     "Alright already! You can stop jerking him off now I get it."
 
-SPEAK Arin
+SPEAK_QUIET Arin
     "There's absolutely no way we can get Jory off now."
 
 POSE Dan SideNormal
