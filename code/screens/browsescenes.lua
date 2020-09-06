@@ -89,7 +89,7 @@ function DrawBrowseScreen()
     local jorytrialText = love.graphics.newText(GameFont, "Jory's Trial")
     love.graphics.draw(
         jorytrialText,
-        jorytrialX + jorytrialW/2-(jorytrialText:getWidth() * textScale)/1.5,
+        jorytrialX + jorytrialW/2-(jorytrialText:getWidth() * textScale)/2,
         jorytrialY + jorytrialH/2-(jorytrialText:getHeight() * textScale)/2,
         0,
         textScale,
@@ -144,14 +144,14 @@ BrowseScreenConfig = {
             Sounds["SELECTBLIP2"]:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
-                SelectionIndex = 0
+                SelectionIndex = 0;
             end
             TitleSelection = browseSceneSelections[SelectionIndex]
         elseif key == controls.press_left then
             Sounds["SELECTBLIP2"]:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
-                SelectionIndex = 2
+                SelectionIndex = 2;
             end
             TitleSelection = browseSceneSelections[SelectionIndex]
         end
