@@ -1,1 +1,0 @@
-scripts/posttrial/posttrial.script

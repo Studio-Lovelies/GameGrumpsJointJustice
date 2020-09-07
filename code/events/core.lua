@@ -555,6 +555,7 @@ function NewChoiceEvent(options, isFake)
     self.hasDone = false
 
     self.update = function(self, scene, dt)
+        scene.textHidden = true
         local pressingUp = love.keyboard.isDown("up")
         local pressingDown = love.keyboard.isDown("down")
 
@@ -621,6 +622,7 @@ function NewChoiceEvent(options, isFake)
     end
 
     self.draw = function (self, scene)
+        scene.textHidden = true
         if self.isFake then
             for i = 1, #self.options, 2 do
                 love.graphics.setColor(0.2, 0.2, 0.2)
@@ -633,7 +635,7 @@ function NewChoiceEvent(options, isFake)
                         ]], 27)
                     textHeight = textHeight * 2
                 end
-                love.graphics.rectangle("fill", 146, 30 + (i - 1) * 16 -4, GraphicsWidth, textHeight)
+                love.graphics.rectangle("fill", 146, 30 + (i - 1) * 16 - 4, GraphicsWidth, textHeight)
                 love.graphics.setColor(1, 1, 1)
                 love.graphics.setFont(SmallFont)
                 love.graphics.print(self.options[i], 150, 30 + (i - 1) * 16)
@@ -648,18 +650,20 @@ function NewChoiceEvent(options, isFake)
                 local textHeight = 28
                 if #self.options[i] > 28 then
                     self.options[i] = stringInsert(self.options[i], "$n", 27)
-                    textHeight = textHeight * 2
+                    textHeight = textHeight + 12
+                    love.graphics.rectangle("fill", 146, 30 + (i - 1) * 16 - 4, GraphicsWidth, textHeight)
+                    love.graphics.setColor(1, 1, 1)
                     love.graphics.setFont(SmallFont)
                     love.graphics.print(stringSplit(self.options[i], "$n")[1], 150, 30 + (i - 1) * 16)
-                    love.graphics.print(stringSplit(self.options[i], "$n")[2], 150, 20 + (i - 1) * 16)
-                    print(stringSplit(self.options[i], "$n")[2]);
+                    love.graphics.print(stringSplit(self.options[i], "$n")[2], 150, 42 + (i - 1) * 16)
+                    love.graphics.setFont(GameFont)
                 else
+                    love.graphics.rectangle("fill", 146, 30 + (i - 1) * 16 - 4, GraphicsWidth, textHeight)
+                    love.graphics.setColor(1, 1, 1)
                     love.graphics.setFont(SmallFont)
                     love.graphics.print(self.options[i], 150, 30 + (i - 1) * 16)
+                    love.graphics.setFont(GameFont)
                 end
-                love.graphics.rectangle("fill", 146, 30 + (i - 1) * 16 -4, GraphicsWidth, textHeight)
-                love.graphics.setColor(1, 1, 1)
-                love.graphics.setFont(GameFont)
             end
         end
     end
@@ -847,9 +851,13 @@ function NewClearLocationEvent(location)
 end
 
 function stringInsert(str1, str2, pos)
-    while str1:sub(pos) ~= " " do
-        pos = pos - 1;
-        print(pos);
+    print(str1:sub(pos))
+    while string.match(str1:sub(pos), "%s") do
+        pos = pos - 1
+        print(pos)
+    end
+    if string.match(str1:sub(pos + 1, pos + 2), "$n") then
+        return str1
     end
     return str1:sub(1, pos)..str2..str1:sub(pos + 1)
 end
