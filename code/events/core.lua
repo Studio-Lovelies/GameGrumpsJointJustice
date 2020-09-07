@@ -631,15 +631,21 @@ function NewChoiceEvent(options, isFake)
                 end
                 local textHeight = 28
                 if #self.options[i] > 28 then
-                    self.options[i] = stringInsert(self.options[i], [[
-                        ]], 27)
-                    textHeight = textHeight * 2
+                    self.options[i] = stringInsert(self.options[i], "$n", 27)
+                    textHeight = textHeight + 12
+                    love.graphics.rectangle("fill", 146, 30 + (i - 1) * 16 - 4, GraphicsWidth, textHeight)
+                    love.graphics.setColor(1, 1, 1)
+                    love.graphics.setFont(SmallFont)
+                    love.graphics.print(stringSplit(self.options[i], "$n")[1], 150, 30 + (i - 1) * 16)
+                    love.graphics.print(stringSplit(self.options[i], "$n")[2], 150, 42 + (i - 1) * 16)
+                    love.graphics.setFont(GameFont)
+                else
+                    love.graphics.rectangle("fill", 146, 30 + (i - 1) * 16 - 4, GraphicsWidth, textHeight)
+                    love.graphics.setColor(1, 1, 1)
+                    love.graphics.setFont(SmallFont)
+                    love.graphics.print(self.options[i], 150, 30 + (i - 1) * 16)
+                    love.graphics.setFont(GameFont)
                 end
-                love.graphics.rectangle("fill", 146, 30 + (i - 1) * 16 - 4, GraphicsWidth, textHeight)
-                love.graphics.setColor(1, 1, 1)
-                love.graphics.setFont(SmallFont)
-                love.graphics.print(self.options[i], 150, 30 + (i - 1) * 16)
-                love.graphics.setFont(GameFont)
             end
         else
             for i = 1, #self.options, 3 do
@@ -851,15 +857,17 @@ function NewClearLocationEvent(location)
 end
 
 function stringInsert(str1, str2, pos)
-    print(str1:sub(pos))
-    while string.match(str1:sub(pos), "%s") do
-        pos = pos - 1
-        print(pos)
+    charPos = pos
+    while str1:sub(charPos, charPos) ~= " " do
+        charPos = charPos - 1
+        if charPos < 0 then
+            charPos = pos
+        end
     end
-    if string.match(str1:sub(pos + 1, pos + 2), "$n") then
+    if string.match(str1:sub(charPos + 1, charPos + 2), "$n") then
         return str1
     end
-    return str1:sub(1, pos)..str2..str1:sub(pos + 1)
+    return str1:sub(1, charPos)..str2..str1:sub(charPos + 1)
 end
 
 function stringSplit(s, delimiter)
