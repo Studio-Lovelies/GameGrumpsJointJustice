@@ -630,6 +630,7 @@ END_DEFINE
 
 DEFINE Wrong2
     JUMPCUT COURT_DEFENSE
+    POSE Arin Confident
     SPEAK Arin
         "The answer will become clear, when those titties are near!"
 
