@@ -32,6 +32,9 @@ function NewWitnessEvent(queue)
     self.wasPressing = true
     self.who = queue[2]
     self.timer = 0
+    self.timer2 = 0
+    self.sprite = love.graphics.newImage("sprites/Testimony.png")
+    self.cornerSpriteBlink = false
     self.animationTime = 1.5
     local introSprite = Sprites[queue[1]]
     local cornerSprite = nil
@@ -64,6 +67,7 @@ function NewWitnessEvent(queue)
 
     self.update = function(self, scene, dt)
         self.timer = self.timer + dt
+        self.timer2 = self.timer2 + dt
         scene.textHidden = false
 
         -- Text format & behavior
@@ -170,14 +174,18 @@ function NewWitnessEvent(queue)
             love.graphics.setColor(1,1,1)
 
             if self.eventType == "WitnessTestimony" then
-                local sprite love.graphics.draw(cornerSprite, 0 + 2, 2)  -- TODO: blinking animation
-                if math.floor(love.timer.getTime()) % 2 == 0 then
-                    r, g, b, a = love.graphics.getColor()
-                    if a == 0 then
-                        love.graphics.setColor(r, g, b, 1)
+                if self.timer2 > 1 then
+                    if self.cornerSpriteBlink then
+                        self.sprite = love.graphics.newImage("sprites/Testimony.png")
+                        self.cornerSpriteBlink = false
                     else
-                        love.graphics.setColor(r, g, b, 0)
+                        self.sprite = false
+                        self.cornerSpriteBlink = true
                     end
+                  self.timer2 = self.timer2 - 1
+                end
+                if self.sprite then
+                    love.graphics.draw(self.sprite, 0 + 2, 2)
                 end
             else  -- "CrossExamination"
                 for i=1, scene.penalties do
