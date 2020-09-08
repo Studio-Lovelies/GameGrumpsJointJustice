@@ -181,7 +181,7 @@ POSE Arin Point
 SPEAK Arin
     "We've already heard evidence that proves Jory cared about those coins, and I've got it right here!"
 
-PRESENT LiveStreamRecording
+PRESENT LivestreamRecording
 
 POSE Arin Point
 SPEAK Arin

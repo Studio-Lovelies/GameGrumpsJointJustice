@@ -22,7 +22,7 @@ EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumb
 COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
-EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recrding" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
+EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
 COURT_RECORD_ADD EVIDENCE LivestreamRecording
 EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/Jory'sBackpack.png
 COURT_RECORD_ADD EVIDENCE Jory'sBackpack
@@ -157,7 +157,7 @@ DEFINE PressA2
     POSE "Tutorial Boy" Sweaty
     SPEAK_FROM COURT_PROSECUTION
         "Quick! Back to the testimony before we break the fourth wall again!"
-    
+
     ANIMATION "Judge Brent" Nodding
     SPEAK_FROM COURT_JUDGE
         "Witness, carry on."
