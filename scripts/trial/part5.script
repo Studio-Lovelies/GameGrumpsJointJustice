@@ -22,7 +22,7 @@ EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumb
 COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
-EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recrding" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
+EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
 COURT_RECORD_ADD EVIDENCE LivestreamRecording
 EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/Jory'sBackpack.png
 COURT_RECORD_ADD EVIDENCE Jory'sBackpack
@@ -56,7 +56,7 @@ SPEAK "Judge Brent"
     "We saw him find them in Jory's backpack, why would Ross find them himself if he was the one who stole them?"
 
 //POSE "Tutorial boy" Confident
-SPEAK_FROM COURT_PROSECUTION 
+SPEAK_FROM COURT_PROSECUTION
     "The answer to that is simple, my fine judge! It's because he DIDN'T steal them!"
 SPEAK "Tutorial Boy"
     "The defense is simply grasping at straws!"
@@ -86,10 +86,10 @@ JUMPCUT COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 POSE "Tutorial Boy" Normal
-SPEAK "Tutorial Boy" 
+SPEAK "Tutorial Boy"
     "HAH! Good luck proving that, Video Game Boy. I'd like to see you try!"
 
-PAN COURT_PROSECUTION COURT_DEFENSE 
+PAN COURT_PROSECUTION COURT_DEFENSE
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
 SPEAK Arin
@@ -126,7 +126,7 @@ SCREEN_SHAKE
 SPEAK Arin
     "Well--"
 
-JUMPCUT COURT_PROSECUTION 
+JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
     "I second that notion"
@@ -157,7 +157,7 @@ PLAY_MUSIC DRAGONOBJECTION
 SPEAK Arin
     "There is no way he would have stuffed the dinosaurs in such a way either!"
 
-JUMPCUT COURT_WITNESS 
+JUMPCUT COURT_WITNESS
 ANIMATION Ross DamageNoHelm
 POSE Ross NoHelm
 SPEAK Ross
@@ -165,7 +165,7 @@ SPEAK Ross
 
 JUMPCUT COURT_PROSECUTION
 SFX damage1
-ANIMATION "Tutorial Boy" HeadSlam 
+ANIMATION "Tutorial Boy" HeadSlam
 POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
     "RIDICULOUS! I don't believe a word of that! There's no way someone would be so careful around such pointless coins."
@@ -181,12 +181,11 @@ POSE Arin Point
 SPEAK Arin
     "We've already heard evidence that proves Jory cared about those coins, and I've got it right here!"
 
-//PRESENT EVIDENCE [LIVE STREAM RECORDING]
+PRESENT LiveStreamRecording
 
-SHOW livestream r
 POSE Arin Point
 SPEAK Arin
-    "Recall Jory's testimony, how he was noted to be taking care of those coins carefully!" 
+    "Recall Jory's testimony, how he was noted to be taking care of those coins carefully!"
 SPEAK Arin
     "Now I ask the court to consider, why would Jory take such care only to trash the coins in his backpack minutes later?"
 
@@ -199,8 +198,8 @@ POSE Ross NoHelm
 SFX damage1
 ANIMATION Ross DamageNoHelm
 SPEAK Ross
-    "OOF!"  
-SFX stab 
+    "OOF!"
+SFX stab
 ANIMATION Ross DamageNoHelm
 SPEAK Ross
     "ARGH!"
@@ -208,7 +207,7 @@ SPEAK Ross
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
 SPEAK "Judge Brent"
-    "Hmm... that makes a lot of sense. I personally have seen Jory care for those coins like they were his children." 
+    "Hmm... that makes a lot of sense. I personally have seen Jory care for those coins like they were his children."
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Does the prosecution have anything to say about this?"
@@ -240,12 +239,12 @@ THINK Arin
 
 PLAY_MUSIC LOGICANDTRAINS
 
-JUMPCUT COURT_PROSECUTION 
+JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
     "Clearly my client made an error! The dinos were simply found in a different part of the backpack."
 SPEAK "Tutorial Boy"
-    "When he found them, he simply was so shocked that Jory would do such a thing..." 
+    "When he found them, he simply was so shocked that Jory would do such a thing..."
 SPEAK "Tutorial Boy"
     "...that he mistook which pocket they were found in."
 
@@ -320,7 +319,7 @@ SPEAK Arin
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Angry
-SPEAK "Judge Brent" 
+SPEAK "Judge Brent"
     "HOWEVER."
 SPEAK "Judge Brent"
     "I would like the witness to revise his testimony to reflect this change."
@@ -349,10 +348,10 @@ PLAY_MUSIC CROSSEXAMALLEGROFYOURA
 
 WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "Yeah, so, after I heard the dinos went missing, I , uh, remembered that I saw Jory go back to the recording space."
-    "So I went back there to search his backpack for the dinos." 
-    "I first searched the front pocket where I saw the coins in the bag" 
-    "But when I saw they weren't there, I turned the backpack on its side to check the left side pocket." 
-    "When I opened up the left side pocket, that's where I found the dinosaurs! Yes, that's exactly how it happened." 
+    "So I went back there to search his backpack for the dinos."
+    "I first searched the front pocket where I saw the coins in the bag"
+    "But when I saw they weren't there, I turned the backpack on its side to check the left side pocket."
+    "When I opened up the left side pocket, that's where I found the dinosaurs! Yes, that's exactly how it happened."
 
 
 STOP_MUSIC
@@ -361,7 +360,7 @@ FADE_TO_BLACK
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
 FADE IN
-PLAY_MUSIC 
+PLAY_MUSIC
 SPEAK "Judge Brent"
     "So you searched the backpack in more than one place and found the dinos."
 POSE "Judge Brent" Normal
@@ -415,11 +414,11 @@ DEFINE PressD1
         "It happened like an hour after I saw him!"
     SPEAK Ross
         "Not exactly hard to remember that. Not that you would know, Arin"
-    
+
     PAN COURT_WITNESS COURT_DEFENSE
     SPEAK Arin
         "Hey, that's out of line Ross! My memory is fine."
-	
+
     JUMPCUT COURT_ASSISTANT
     SPEAK Dan
         "Dude you literally complain about how bad your memory is every other day."
@@ -440,9 +439,9 @@ DEFINE PressD1
         "Uh, ahaha, right you are judge!"
     POSE "Judge Brent" Normal
     JUMPCUT COURT_JUDGE
-    SPEAK "Judge Brent" 
+    SPEAK "Judge Brent"
         "Good. The witness will continue his testimony."
-    
+
     POSE Ross Sweaty
     JUMPCUT COURT_WITNESS
 END_DEFINE
@@ -478,7 +477,7 @@ DEFINE PressD2
         "..."
     WAIT 1
 
-    SPEAK "Tutorial Boy" 
+    SPEAK "Tutorial Boy"
         "What did you do next Ross?"
 
     POSE Ross Sweaty
@@ -506,7 +505,7 @@ DEFINE PressD3
     POSE Ross Glaring
     SPEAK Ross
         "What do you have biscuits in your ears or something?"
-	
+
     POSE Dan Fist
     JUMPCUT COURT_ASSISTANT
     SPEAK Dan
@@ -540,7 +539,7 @@ DEFINE PressD4
     JUMPCUT COURT_DEFENSE
     SPEAK Arin
         "So you say, but we all know you have trouble with right and left!"
-    
+
     JUMPCUT COURT_ASSISTANT
     SPEAK Dan
         "Actually dude, that's me. I have the trouble with that."
@@ -581,7 +580,7 @@ DEFINE PressD5
 
     JUMPCUT COURT_JUDGE
     POSE "Judge Brent" Warning
-    SPEAK "Judge Brent" 
+    SPEAK "Judge Brent"
         "The prosecution is correct."
     SPEAK "Judge Brent"
         "Unless you have proof otherwise, this court will be taking this testimony as fact."
@@ -702,7 +701,7 @@ ANIMATION Arin DeskSlam
 
     JUMPCUT COURT_ASSISTANT
     POSE Dan Fist
-    SPEAK Dan 
+    SPEAK Dan
         "Well don't just stand there, present the proof so we can get on with our lives!"
 
 END_DEFINE
@@ -839,7 +838,7 @@ POSE "Judge Brent" Thinking
 WAIT 1
 SFX lightbulb
 POSE "Judge Brent" Surprised
-SPEAK "Judge Brent" 
+SPEAK "Judge Brent"
     "It is as the defense says. This backpack is full of potatoes!"
 
 JUMPCUT COURT_WITNESS
@@ -878,7 +877,7 @@ SPEAK "Judge Brent"
 SHOUT "Tutorial Boy" objection
 STOP_MUSIC
 JUMPCUT COURT_PROSECUTION
-//POSE "Tutorial Boy" Objecting
+POSE "Tutorial Boy" Objecting
 SPEAK "Tutorial Boy"
     "He has no case at all!"
     "Sure, it SEEMS like Jory is  innocent, but that's simply what the defense would have you believe!"
@@ -896,8 +895,8 @@ SPEAK "Tutorial Boy"
     "The fact is that the dinos were found in HIS backpack!"
 SPEAK "Tutorial Boy"
     "We also have a motive of avoiding today's 10 minute power hour!"
-SPEAK "Tutorial Boy"    
-    "I don't care how many potatoes are in his backpack, or how much the defense CLAIMS he loves those coins!" 
+SPEAK "Tutorial Boy"
+    "I don't care how many potatoes are in his backpack, or how much the defense CLAIMS he loves those coins!"
 SPEAK "Tutorial Boy"
     "All of those are lies made up by the defense to distract you from the story the hard evidence tells: Jory is guilty!"
 
@@ -998,3 +997,5 @@ JUMPCUT COURT_ASSISTANT
 POSE Dan SideObjection
 SPEAK Dan
     "Wait, Your Honor! There's something off about those dinosaurs, and I think I know what it is!"
+
+END_SCENE

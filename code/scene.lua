@@ -170,8 +170,8 @@ function NewScene(scriptPath)
                 local wrapWidth = self.textBoxSprite:getWidth() - (sidePadding * 2)
 
                 --
-                for i=1, #self.fullText do
-                    local char = string.sub(self.fullText, i,i)
+                for i = 1, #self.fullText do
+                    local char = string.sub(self.fullText, i, i)
 
                     if char == " " or char == "#" then
                         table.insert(spaces, i)
