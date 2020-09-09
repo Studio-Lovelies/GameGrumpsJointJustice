@@ -560,6 +560,7 @@ function NewPresentEvent(evidence)
             self.wasPressingConfirm = pressingConfirm
             return true
         else
+            screens.courtRecords.displayed = true
             return true
         end
     end
