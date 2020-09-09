@@ -125,6 +125,8 @@ TitleScreenConfig = {
                 Sounds["SELECTBLIP2"]:play()
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
+                --screens.options.displayed = true;
+                --DrawOptionsScreen();
                 screens.title.displayed = false;
                 SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
