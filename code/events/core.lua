@@ -583,8 +583,8 @@ function NewChoiceEvent(options, isFake)
 
     self.update = function(self, scene, dt)
         scene.textHidden = true
-        local pressingUp = love.keyboard.isDown(controls.press_nav_up)
-        local pressingDown = love.keyboard.isDown(controls.press_nav_down)
+        local pressingUp = love.keyboard.isDown("up")
+        local pressingDown = love.keyboard.isDown("down")
 
         if self.isFake then
             if not self.wasPressingUp and pressingUp then
