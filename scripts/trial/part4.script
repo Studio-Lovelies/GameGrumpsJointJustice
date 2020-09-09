@@ -524,16 +524,16 @@ SPEAK Arin
 SHOW Switch r
 
 SPEAK Arin
-    "You'll see that on the back there is clearly a Slimemantha sticker on it!"
+    "You'll see that on the back there is clearly a Slimemantha(tm) sticker on it!"
 
 SPEAK Arin
-    "In case you don't know, Slimemantha is an original character made by Ross himself!"
+    "In case you don't know, Slimemantha(tm) is an original character made by Ross himself!"
 
 POSE "Tutorial Boy" Sweaty
 SPEAK_FROM COURT_PROSECUTION
     "S-so what? That still doesn't help your case."
 SPEAK "Tutorial Boy"
-    "Just because that's Ross' original character Slimemantha (tm), doesn't prove that the switch is his!"
+    "Just because that's Ross' original character Slimemantha(tm), doesn't prove that the switch is his!"
 
 POSE Arin Confident
 SPEAK_FROM COURT_DEFENSE

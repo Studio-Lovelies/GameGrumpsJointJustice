@@ -60,7 +60,9 @@ SPEAK_FROM COURT_JUDGE
 SPEAK "Judge Brent"
     "My main job presiding as judge over the Attitude City Courthouse."
 SPEAK "Judge Brent"
-    "After all, what is a judge if not a manager of the law?#So I will preside over this case for you all today."
+    "After all, what is a judge if not a manager of the law?"
+SPEAK "Judge Brent"
+    "So I will preside over this case for you all today."
 
 POSE Dan SideNormal
 SPEAK_FROM COURT_ASSISTANT
@@ -301,7 +303,7 @@ THINK_FROM COURT_DEFENSE
 SPEAK_FROM COURT_PROSECUTION
     "Suspicious behavior indeed!"
 SPEAK "Tutorial Boy"
-    "Especially since, according to the livestream recording here,#you were busy cleaning your GoodBoy Coins."
+    "Especially since, according to the livestream recording here, you were#busy cleaning your GoodBoy Coins."
 SPEAK "Tutorial Boy"
     "Is this correct?"
 
@@ -378,7 +380,7 @@ SPEAK_FROM COURT_DEFENSE
     "Your Honor! That kind of behavior isn't appropriate in this courtroom!"
 
 SPEAK_FROM COURT_JUDGE
-    "Perhaps, but I get to make the call, and it's amusing to watch him do it."
+    "Perhaps, but I get to make the call, and it's funny to watch him do it."
 
 JUMPCUT COURT_PROSECUTION
 SFX damage1
@@ -428,13 +430,13 @@ SPEAK "Tutorial Boy"
 SCREEN_SHAKE
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
-    "CONFESS YOUR CRIMES JORY!"
+    "CONFESS TO YOUR CRIMES JORY!"
 
 SPEAK_FROM COURT_WITNESS
     "I... ER... UH... Oh man, yeah, those are... My coins... B-but that-"
 
-SPEAK_FROM COURT_PROSECUTION
 POSE "Tutorial Boy" Confident
+SPEAK_FROM COURT_PROSECUTION
     "Is that a confession I hear? You admit your guilt!?"
 
 SHOUT Arin objection
