@@ -102,7 +102,7 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
         local currentChar = string.sub(self.text, math.floor(self.textScroll), math.floor(self.textScroll))
 
         if controls.debug then
-            scrollSpeed = scrollSpeed*8
+            scrollSpeed = scrollSpeed
         elseif love.keyboard.isDown("lshift") then
             scrollSpeed = scrollSpeed*8
         else
@@ -201,7 +201,7 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
         local currentChar = string.sub(self.text, math.floor(self.textScroll), math.floor(self.textScroll))
 
         if controls.debug then
-            scrollSpeed = scrollSpeed*8
+            scrollSpeed = scrollSpeed
         elseif love.keyboard.isDown("lshift") then
             scrollSpeed = scrollSpeed*8
         else
@@ -583,8 +583,8 @@ function NewChoiceEvent(options, isFake)
 
     self.update = function(self, scene, dt)
         scene.textHidden = true
-        local pressingUp = love.keyboard.isDown("up")
-        local pressingDown = love.keyboard.isDown("down")
+        local pressingUp = love.keyboard.isDown(controls.pause_nav_up)
+        local pressingDown = love.keyboard.isDown(controls.pause_nav_down)
 
         if self.isFake then
             if not self.wasPressingUp and pressingUp then

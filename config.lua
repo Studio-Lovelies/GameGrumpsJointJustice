@@ -3,9 +3,9 @@ settings = {
         setting this to true speeds up the scrollSpeed without needing to hold down "lshift"
         this can also be set by running the startup command of `love . debug`
     ]]
-    debug = false; -- scriptevents.lua
+    debug = true; -- scriptevents.lua
 
-    master_volume = 0.25;
+    master_volume = 25;
     text_scroll_speed = 30;
 
     background_directory = "backgrounds/";

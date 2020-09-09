@@ -6,7 +6,7 @@ function DrawBrowseScreen()
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 
     local blackImage = love.graphics.newImage(settings.black_screen_path)
-    local blackScale = 3
+    local blackImageScale = 3
 
     local jorytrialImage = love.graphics.newImage(settings.court_path)
     local jorytrialImageScale = 3
@@ -16,17 +16,17 @@ function DrawBrowseScreen()
 
     local backW = (dimensions.window_width * 1/5)
     local backX = (dimensions.window_width * 1/18)
-    local backY = blackImage:getHeight()*blackScale + 10
+    local backY = blackImage:getHeight()*blackImageScale + 10
     local backH = 60
 
     local jorytrialW = (dimensions.window_width * 1/3.75)
     local jorytrialX = (dimensions.window_width * 10.75/18) - jorytrialW
-    local jorytrialY = blackImage:getHeight()*blackScale + 10
+    local jorytrialY = blackImage:getHeight()*blackImageScale + 10
     local jorytrialH = 60
 
     local posttrialW = (dimensions.window_width * 1/3.75)
     local posttrialX = (dimensions.window_width * 17/18) - posttrialW
-    local posttrialY = blackImage:getHeight()*blackScale + 10
+    local posttrialY = blackImage:getHeight()*blackImageScale + 10
     local posttrialH = 60
 
     local dx = 8
@@ -57,7 +57,7 @@ function DrawBrowseScreen()
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
         love.graphics.draw(
             blackImage,
-            GetCenterOffset(blackImage:getWidth() * blackScale, false),
+            GetCenterOffset(blackImage:getWidth() * blackImageScale, false),
             0,
             0,
             blackImageScale,
@@ -115,40 +115,44 @@ browseSceneSelections[1] = "Jory's Trial";
 browseSceneSelections[2] = "Post-Trial";
 TitleSelection = "Back";
 SelectionIndex = 0;
+blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
+jingle = love.audio.newSource("sounds/selectjingle.wav", "static")
+blip2:setVolume(settings.master_volume / 100 / 2);
+jingle:setVolume(settings.master_volume / 100 / 2);
 
 BrowseScreenConfig = {
     displayed = false;
-    onKeyPressed = function (key)
+    onKeyPressed = function(key)
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
-                Sounds["SELECTBLIP2"]:play()
+                blip2:play()
                 screens.title.displayed = true;
                 DrawTitleScreen();
                 screens.browsescenes.displayed = false;
                 TitleSelection = "Case Select";
                 SelectionIndex = 1;
             elseif TitleSelection == "Jory's Trial" then
-                Sounds["SELECTBLIP2"]:play()
+                blip2:play()
                 screens.jorytrial.displayed = true;
                 DrawJoryTrialScreen();
                 screens.browsescenes.displayed = false;
                 SelectionIndexX = 0;
                 SelectionIndexY = 0;
             elseif TitleSelection == "Post-Trial" then
-                Sounds["SELECTJINGLE"]:play()
+                jingle:play()
                 NewEpisode(settings.posttrial_path):begin()
                 screens.browsescenes.displayed = false;
             end
         elseif key == controls.press_right then
-            Sounds["SELECTBLIP2"]:play()
+            blip2:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
                 SelectionIndex = 0;
             end
             TitleSelection = browseSceneSelections[SelectionIndex]
         elseif key == controls.press_left then
-            Sounds["SELECTBLIP2"]:play()
+            blip2:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
                 SelectionIndex = 2;

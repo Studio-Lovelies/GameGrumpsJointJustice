@@ -6,26 +6,26 @@ function DrawOptionsScreen()
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 
     local blackImage = love.graphics.newImage(settings.black_screen_path)
-    local blackScale = 3
+    local blackImageScale = 3
 
     local backW = (dimensions.window_width * 1/5)
-    local backX = (dimensions.window_width * 1/18)
-    local backY = blackImage:getHeight()*blackScale + 10
+    local backX = (dimensions.window_width * 10.75/18) - backW
+    local backY = blackImage:getHeight()*blackImageScale + 10
     local backH = 60
 
     local debugW = (dimensions.window_width * 1/3.75)
-    local debugX = (dimensions.window_width * 10.75/18) - debugW
-    local debugY = blackImage:getHeight()*blackScale + 10
+    local debugX = (dimensions.window_width * 11.25/18) - debugW
+    local debugY = blackImage:getHeight()*blackImageScale - 150
     local debugH = 60
 
     local volumeW = (dimensions.window_width * 1/3.75)
-    local volumeX = (dimensions.window_width * 17/18) - volumeW
-    local volumeY = blackImage:getHeight()*blackScale + 10
+    local volumeX = (dimensions.window_width * 11.25/18) - volumeW
+    local volumeY = blackImage:getHeight()*blackImageScale - 260
     local volumeH = 60
-    
+
     local controlsW = (dimensions.window_width * 1/3.75)
-    local controlsX = (dimensions.window_width * 17/18) - controlsW
-    local controlsY = blackImage:getHeight()*blackScale - 50
+    local controlsX = (dimensions.window_width * 11.25/18) - controlsW
+    local controlsY = blackImage:getHeight()*blackImageScale - 370
     local controlsH = 60
 
     local dx = 8
@@ -34,60 +34,28 @@ function DrawOptionsScreen()
     love.graphics.setColor(0.44,0.56,0.89)
     if TitleSelection == "Debug Mode" then
         love.graphics.rectangle("fill", debugX-dx, debugY-dy, debugW+2*dx, debugH+2*dy)
-        love.graphics.draw(
-            blackImage,
-            GetCenterOffset(blackImage:getWidth() * blackImageScale, false),
-            0,
-            0,
-            blackImageScale,
-            blackImageScale
-        )
     elseif TitleSelection == "Volume" then
         love.graphics.rectangle("fill", volumeX-dx, volumeY-dy, volumeW+2*dx, volumeH+2*dy)
-        love.graphics.draw(
-            blackImage,
-            GetCenterOffset(blackImage:getWidth() * blackImageScale, false),
-            0,
-            0,
-            blackImageScale,
-            blackImageScale
-        )
     elseif TitleSelection == "Controls" then
         love.graphics.rectangle("fill", controlsX-dx, controlsY-dy, controlsW+2*dx, controlsH+2*dy)
-        love.graphics.draw(
-            controlsImage,
-            GetCenterOffset(blackImage:getWidth() * blackImageScale, false),
-            0,
-            0,
-            blackImageScale,
-            blackImageScale
-        )
     else
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
-        love.graphics.draw(
-            blackImage,
-            GetCenterOffset(blackImage:getWidth() * blackScale, false),
-            0,
-            0,
-            blackImageScale,
-            blackImageScale
-        )
     end
 
     love.graphics.setColor(222, 0, 0)
     love.graphics.rectangle("fill", backX, backY, backW, backH)
 
     if settings.debug then
-        love.graphics.setColor(50,205,50)
+        love.graphics.setColor(0,1,0.25)
     else
-        love.graphics.setColor(55,0,0)
+        love.graphics.setColor(1,0,0)
     end
     love.graphics.rectangle("fill", debugX, debugY, debugW, debugH)
 
     love.graphics.setColor(0.3,0.3,0.3)
     love.graphics.rectangle("fill", volumeX, volumeY, volumeW, volumeH)
     love.graphics.setColor(0.25,0.41,0.88)
-    love.graphics.rectangle("fill", volumeX, volumeY, volumeW * settings.master_volume, volumeH)
+    love.graphics.rectangle("fill", volumeX, volumeY, (volumeW / 100) * settings.master_volume, volumeH)
 
     love.graphics.setColor(0.3,0.3,0.3)
     love.graphics.rectangle("fill", controlsX, controlsY, controlsW, controlsH)
@@ -114,7 +82,7 @@ function DrawOptionsScreen()
         textScale
     )
 
-    local volumeText = love.graphics.newText(GameFont, "Volume ("..(settings.master_volume * 100).."%)")
+    local volumeText = love.graphics.newText(GameFont, "Volume ("..settings.master_volume.."%)")
     love.graphics.draw(
         volumeText,
         volumeX + volumeW/2-(volumeText:getWidth() * textScale)/2,
@@ -144,38 +112,72 @@ optionsSelections[2] = "Volume";
 optionsSelections[3] = "Controls";
 TitleSelection = "Back";
 SelectionIndex = 0;
+blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
+jingle = love.audio.newSource("sounds/selectjingle.wav", "static")
+blip2:setVolume(settings.master_volume / 100 / 2)
+jingle:setVolume(settings.master_volume / 100 / 2)
+Music = {}
+Sounds = {}
+
+musicFiles = love.filesystem.getDirectoryItems(settings.music_directory)
+soundFiles = love.filesystem.getDirectoryItems(settings.sfx_directory)
+
+for b, i in ipairs(musicFiles) do
+    if string.match(i,".mp3") then
+        local a = i:gsub(".mp3",""):upper()
+        Music[a] = love.audio.newSource(settings.music_directory..i, "static")
+    elseif string.match(i,".wav") then
+        local a = i:gsub(".wav",""):upper()
+        Music[a] = love.audio.newSource(settings.music_directory..i, "static")
+    end
+end
+for b, i in ipairs(soundFiles) do
+    if string.match(i,".mp3") then
+        local a = i:gsub(".mp3",""):upper()
+        Sounds[a] = love.audio.newSource(settings.sfx_directory..i, "static")
+    elseif string.match(i,".wav") then
+        local a = i:gsub(".wav",""):upper()
+        Sounds[a] = love.audio.newSource(settings.sfx_directory..i, "static")
+    end
+end
 
 OptionsConfig = {
     displayed = false;
-    onKeyPressed = function (key)
+    lastDisplayed = nil;
+    onKeyPressed = function(key)
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
-                Sounds["SELECTBLIP2"]:play()
-                screens.title.displayed = true;
-                DrawTitleScreen();
+                blip2:play()
                 screens.options.displayed = false;
                 TitleSelection = "Options";
-                SelectionIndex = 1;
+                lastDisplayed = true;
+                if lastDisplayed == screens.title.displayed then
+                    TitleSelection = "Case Select";
+                    SelectionIndex = 1;
+                else
+                    TitleSelection = "Options"
+                    SelectionIndex = 1;
+                end
             elseif TitleSelection == "Debug Mode" then
-                Sounds["SELECTBLIP2"]:play()
+                blip2:play()
                 if settings.debug then
                     settings.debug = false
                 else
                     settings.debug = true
                 end
             elseif TitleSelection == "Controls" then
-                Sounds["SELECTBLIP2"]:play()
+                blip2:play()
             end
-        elseif key == controls.press_nav_up then
-            Sounds["SELECTBLIP2"]:play()
+        elseif key == controls.pause_nav_up then
+            blip2:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 3) then
                 SelectionIndex = 0;
             end
             TitleSelection = optionsSelections[SelectionIndex]
-        elseif key == controls.press_nav_down then
-            Sounds["SELECTBLIP2"]:play()
+        elseif key == controls.pause_nav_down then
+            blip2:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
                 SelectionIndex = 3;
@@ -183,15 +185,34 @@ OptionsConfig = {
             TitleSelection = optionsSelections[SelectionIndex]
         elseif key == controls.press_right then
             if TitleSelection == "Volume" then
-                Sounds["SELECTBLIP2"]:play()
-                settings.master_volume = settings.master_volume + 0.01
+                if settings.master_volume < 100 then
+                    blip2:play()
+                    settings.master_volume = settings.master_volume + 5
+                    for i,v in pairs(Music) do
+                        v:setLooping(true)
+                        v:setVolume(settings.master_volume / 100)
+                    end
+                    for i,v in pairs(Sounds) do
+                        v:setVolume(settings.master_volume / 100 / 2)
+                    end
+                end
             end
         elseif key == controls.press_left then
             if TitleSelection == "Volume" then
-                Sounds["SELECTBLIP2"]:play()
-                settings.master_volume = settings.master_volume - 0.01
+                if settings.master_volume > 0 then
+                    blip2:play()
+                    settings.master_volume = settings.master_volume - 5
+                    for i,v in pairs(Music) do
+                        v:setVolume(settings.master_volume / 100)
+                    end
+                    for i,v in pairs(Sounds) do
+                        v:setVolume(settings.master_volume / 100 / 2)
+                    end
+                end
             end
         end
+    end;
+    onKeyReleased = function(key)
     end;
     onDisplay = function()
         screens.options.displayed = true
