@@ -131,7 +131,7 @@ TitleScreenConfig = {
                 DrawBrowseScreen();
                 --screens.options.lastDisplayed = screens.title.displayed
                 --screens.options.displayed = true;
-                DrawOptionsScreen();
+                --DrawOptionsScreen();
                 screens.title.displayed = false;
                 SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
