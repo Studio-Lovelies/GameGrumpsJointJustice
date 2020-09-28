@@ -114,39 +114,45 @@ titleSelections[1] = "Case Select";
 titleSelections[2] = "Load Game";
 TitleSelection = "New Game";
 SelectionIndex = 0;
+blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
+jingle = love.audio.newSource("sounds/selectjingle.wav", "static")
+blip2:setVolume(settings.master_volume / 100 / 2);
+jingle:setVolume(settings.master_volume / 100 / 2);
 
 TitleScreenConfig = {
     displayed = false;
-    onKeyPressed = function (key)
+    onKeyPressed = function(key)
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Case Select" then
                 -- browse scenes screen here
-                Sounds["SELECTBLIP2"]:play()
+                blip2:play()
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
+                --screens.options.lastDisplayed = screens.title.displayed
+                --screens.options.displayed = true;
+                --DrawOptionsScreen();
                 screens.title.displayed = false;
                 SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 -- replace this and handle load game logic
-                Sounds["SELECTJINGLE"]:play()
+                jingle:play()
                 Episode:begin()
                 screens.title.displayed = false;
             elseif TitleSelection == "New Game" then
-                -- replace this and handle new game logic
-                Sounds["SELECTJINGLE"]:play()
+                jingle:play()
                 Episode:begin()
                 screens.title.displayed = false;
             end
         elseif key == controls.press_right then
-            Sounds["SELECTBLIP2"]:play()
+            blip2:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
                 SelectionIndex = 0
             end
             TitleSelection = titleSelections[SelectionIndex]
         elseif key == controls.press_left then
-            Sounds["SELECTBLIP2"]:play()
+            blip2:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
                 SelectionIndex = 2

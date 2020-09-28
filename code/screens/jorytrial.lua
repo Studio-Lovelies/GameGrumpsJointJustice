@@ -3,44 +3,44 @@ function DrawJoryTrialScreen()
     love.graphics.clear(unpack(colors.black))
 
     local blackImage = love.graphics.newImage(settings.black_screen_path)
-    local blackScale = 3
+    local blackImageScale = 3
 
     love.graphics.setColor(0, 0, 0, 100)
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 
     local backW = (dimensions.window_width * 1/1.5)
     local backX = (dimensions.window_width * 1/8)
-    local backY = blackImage:getHeight()*blackScale + 10
+    local backY = blackImage:getHeight()*blackImageScale + 10
     local backH = 60
 
     local part1W = (dimensions.window_width * 1/5)
     local part1X = (dimensions.window_width * 3/12) - part1W
-    local part1Y = blackImage:getHeight()*blackScale - 500
+    local part1Y = blackImage:getHeight()*blackImageScale - 500
     local part1H = 60
 
     local part2W = (dimensions.window_width * 1/5)
     local part2X = (dimensions.window_width * 6.5/12) - part2W
-    local part2Y = blackImage:getHeight()*blackScale - 500
+    local part2Y = blackImage:getHeight()*blackImageScale - 500
     local part2H = 60
 
     local part3W = (dimensions.window_width * 1/5)
     local part3X = (dimensions.window_width * 10/12) - part3W
-    local part3Y = blackImage:getHeight()*blackScale - 500
+    local part3Y = blackImage:getHeight()*blackImageScale - 500
     local part3H = 60
 
     local part4W = (dimensions.window_width * 1/5)
     local part4X = (dimensions.window_width * 3/12) - part4W
-    local part4Y = blackImage:getHeight()*blackScale - 300
+    local part4Y = blackImage:getHeight()*blackImageScale - 300
     local part4H = 60
 
     local part5W = (dimensions.window_width * 1/5)
     local part5X = (dimensions.window_width * 6.5/12) - part5W
-    local part5Y = blackImage:getHeight()*blackScale - 300
+    local part5Y = blackImage:getHeight()*blackImageScale - 300
     local part5H = 60
 
     local part6W = (dimensions.window_width * 1/5)
     local part6X = (dimensions.window_width * 10/12) - part6W
-    local part6Y = blackImage:getHeight()*blackScale - 300
+    local part6Y = blackImage:getHeight()*blackImageScale - 300
     local part6H = 60
 
     local dx = 8
@@ -179,47 +179,50 @@ jorySceneSelections[2][1] = "Part 6"
 TitleSelection = "Back";
 SelectionIndexX = 0;
 SelectionIndexY = 0;
-
+blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
+jingle = love.audio.newSource("sounds/selectjingle.wav", "static")
+blip2:setVolume(settings.master_volume / 100 / 2);
+jingle:setVolume(settings.master_volume / 100 / 2);
 JoryTrialConfig = {
     displayed = false;
     onKeyPressed = function(key)
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
-                Sounds["SELECTBLIP2"]:play()
+                blip2:play()
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
                 screens.jorytrial.displayed = false;
                 TitleSelection = "Jory's Trial";
                 SelectionIndex = 2;
             elseif TitleSelection == "Part 1" then
-                Sounds["SELECTJINGLE"]:play()
+                jingle:play()
                 NewEpisode(settings.jory_trial_1_path):begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 2" then
-                Sounds["SELECTJINGLE"]:play()
+                jingle:play()
                 NewEpisode(settings.jory_trial_2_path):begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 3" then
-                Sounds["SELECTJINGLE"]:play()
+                jingle:play()
                 NewEpisode(settings.jory_trial_3_path):begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 4" then
-                Sounds["SELECTJINGLE"]:play()
+                jingle:play()
                 NewEpisode(settings.jory_trial_4_path):begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 5" then
-                Sounds["SELECTJINGLE"]:play()
+                jingle:play()
                 NewEpisode(settings.jory_trial_5_path):begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 6" then
-                Sounds["SELECTJINGLE"]:play()
+                jingle:play()
                 NewEpisode(settings.jory_trial_6_path):begin()
                 screens.jorytrial.displayed = false;
             end
         elseif key == controls.press_right then
             if SelectionIndexY ~= 0 then
-                Sounds["SELECTBLIP2"]:play()
+                blip2:play()
             end
             SelectionIndexX = SelectionIndexX + 1
             if SelectionIndexY == 0 then
@@ -234,7 +237,7 @@ JoryTrialConfig = {
             TitleSelection = jorySceneSelections[SelectionIndexX][SelectionIndexY]
         elseif key == controls.press_left then
             if SelectionIndexY ~= 0 then
-                Sounds["SELECTBLIP2"]:play()
+                blip2:play()
             end
             SelectionIndexX = SelectionIndexX - 1
             if SelectionIndexY == 0 then
@@ -248,14 +251,14 @@ JoryTrialConfig = {
             end
             TitleSelection = jorySceneSelections[SelectionIndexX][SelectionIndexY]
         elseif key == controls.pause_nav_up then
-            Sounds["SELECTBLIP2"]:play()
+            blip2:play()
             SelectionIndexY = SelectionIndexY + 1
             if (SelectionIndexY > 2) then
                 SelectionIndexY = 0
             end
             TitleSelection = jorySceneSelections[SelectionIndexX][SelectionIndexY]
         elseif key == controls.pause_nav_down then
-            Sounds["SELECTBLIP2"]:play()
+            blip2:play()
             SelectionIndexY = SelectionIndexY - 1
             if (SelectionIndexY < 0) then
                 SelectionIndexY = 2
