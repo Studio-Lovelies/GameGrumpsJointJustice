@@ -48,7 +48,7 @@ ANIMATION "Tutorial Boy" HeadSlam
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
 SPEAK "Judge Brent"
-    "Hmmm. That's an bold accusation you've raised, Arin."
+    "Hmmm. That's a bold accusation you've raised, Arin."
 SPEAK "Judge Brent"
     "But how could this be true? Didn't Ross find them in the first place?"
 POSE "Judge Brent" Normal
@@ -64,7 +64,7 @@ SPEAK "Tutorial Boy"
     "He know's Jory is guilty, so he's throwing out accusations to confuse the Jury!"
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy
-    "How Dare you sully the name of justice by proposing this preposterous position!"
+    "How dare you sully the name of justice by proposing this preposterous position!"
 
 SHOUT Arin Objection
 
@@ -107,7 +107,7 @@ POSE Arin Confident
 SPEAK Arin
     "Check this out!"
 
-//PRESENT EVIDENCE [CORRECT] (bent coins)
+PRESENT_EVIDENCE BentCoins
 
 
 SPEAK Arin
@@ -181,7 +181,7 @@ POSE Arin Point
 SPEAK Arin
     "We've already heard evidence that proves Jory cared about those coins, and I've got it right here!"
 
-PRESENT LivestreamRecording
+PRESENT_EVIDENCE LivestreamRecording
 
 POSE Arin Point
 SPEAK Arin
@@ -730,7 +730,7 @@ FAKE_CHOICE
 
 
 
-//PRESENT BACKPACK
+PRESENT_EVIDENCE Jory'sBackpack
 
 SHOUT Arin takethat
 

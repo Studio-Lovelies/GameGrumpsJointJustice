@@ -74,8 +74,6 @@ SPEAK_FROM COURT_WITNESS
     "I-I see..."
 
 JUMPCUT COURT_PROSECUTION
-SFX damage1
-ANIMATION "Tutorial Boy" HeadSlam
 POSE "Tutorial Boy" Confident
 SPEAK "Tutorial Boy"
     "Except if you count being paid in JUSTICE!"
@@ -86,8 +84,9 @@ SPEAK "Tutorial Boy"
     "Ahem... Mr. O'Donovan, please state your name and occupation for the court."
 
 POSE Ross Normal
-SPEAK_FROM COURT_WITNESS
-    "Kangaroo court if I ever saw one..."  // WN -- any way to make it obvious it's muttered? // IL -- Maybe write it all in lower case?
+JUMPCUT COURT_WITNESS
+SPEAK_QUIET Ross
+    "kangaroo court if i ever saw one..."  // WN -- any way to make it obvious it's muttered? // IL -- Maybe write it all in lower case?
 
 SPEAK_FROM COURT_JUDGE
     "Excuse me?"

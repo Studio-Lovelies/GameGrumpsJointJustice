@@ -431,11 +431,12 @@ WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
 /////////////////////////
 
 
-
-//show switch icon
+SHOW Switch r
 
 SPEAK_FROM COURT_PROSECUTION
     "What is this...?
+
+SHOW Switch r
 
 POSE Arin Confident
 SPEAK_FROM COURT_DEFENSE
@@ -727,10 +728,10 @@ POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
     "Yes, let me see."
 POSE "Judge Brent" Thinking
-
+SHOW Switch r
 WAIT 1
 
-//SWITCH ICON APPEARS AGAIN
+
 
 
 SFX realization
@@ -742,7 +743,7 @@ JUMPCUT COURT_WITNESS
 SFX stab
 ANIMATION Ross Damage
 
-//POSE "Tutorial Boy" Shocked
+POSE "Tutorial Boy" Sweaty
 SPEAK_FROM COURT_PROSECUTION
     "Absurd!"
 
@@ -942,7 +943,7 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK_FROM COURT_DEFENSE
     "Yes I can! With this!!!"
 
-//PRESENT EVIDENCE [LIVESTREAM RECORDING]
+PRESENT_EVIDENCE LivestreamRecording
 
 SHOUT Arin takethat
 
@@ -964,11 +965,11 @@ SPEAK Arin
 SPEAK Arin
     "But what they didn't realize is that the switch Jory brought back was Ross's switch!"
 
-POSE Arin Point
+POSE Arin Confident
 SPEAK Arin
     "Ross couldn't have been using his switch..."
 
-//CLOSEUP BAR Arin
+POSE Arin Point
 SPEAK Arin
     "...because we were using it during the livestream!"
 
@@ -1173,14 +1174,14 @@ SPEAK "Judge Brent"
 SPEAK "Judge Brent"
     "Please point out exactly who you are accusing."
 
-//PRESENT EVIDENCE [ROSS CHARACTER PROFILE]
+//PRESENT Rossprofile
 
 JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam
 SPEAK Arin
     "Why, the only other person who wasn't at the livestream other than Jory!"
 
-//CLOSEUP [DEFENSE]
+POSE Arin Point
 SPEAK Arin
     "ROSS O'DIDITVAN!"
 

@@ -52,15 +52,14 @@ JUMPCUT COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 SPEAK "Tutorial Boy"
-    "It's covered in JIZZ, right? Hah Hah very funny we've heard that joke a million times!
+    "It's covered in JIZZ, right? Hah hah, very funny, we've heard that joke a million times!
 SPEAK "Tutorial Boy"
     "That's no reason to interrupt the verdict."
 
 JUMPCUT COURT_WITNESS
-//POSE Ross Sweaty (bald)
 POSE Ross Sweaty
 SPEAK Ross
-    "Y-yeah..! What does that have to do with anything!?"
+    "Y-Yeah..! What does that have to do with anything!?"
 
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideObjection
@@ -78,7 +77,7 @@ POSE Dan SideObjection
 SPEAK Dan
     "What I mean is this!"
 
-//Dan closeup
+POSE Dan Zoom
 
 SPEAK Dan
     "I don't think that's jizz AT ALL!"
@@ -103,7 +102,7 @@ POSE Dan SideLean
 SPEAK_FROM COURT_ASSISTANT
     "I think I know what it is, and if I can have those dinosaurs..."
 SPEAK Dan
-    "I think I can prove Jory's innocence"
+    "I think I can prove Jory's innocence!"
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Thinking
@@ -113,7 +112,7 @@ THINK Arin
 ANIMATION Arin DeskSlam
 POSE Arin Point
 SPEAK Arin
-    "Your honor! I request that Dan..."
+    "Your Honor! I request that Dan..."
 
 //////////////
 //CHOICE////
@@ -189,11 +188,11 @@ DEFINE Rub
 
   POSE Arin Embarassed
   SPEAK_FROM COURT_DEFENSE
-    "Oh, opps. Wishful thinking I guess."
+    "Oh, oops. Wishful thinking, I guess."
 
   POSE Arin Point
   SPEAK Arin
-    "What I mean to say is, your honor..."
+    "What I mean to say is, Your Honor..."
 
 CHOICE
     "Taste them." Taste 1
@@ -217,9 +216,9 @@ SHOUT "Tutorial Boy" Objection
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Sweaty
 SPEAK "Tutorial Boy"
-    "Your honor, please think about this. This is a trivial matter!"
+    "Your Honor, please think about this. This is a trivial matter!"
 SPEAK "Tutorial Boy"
-    "These... stains have no relation to anything relevant. The defense is stalling."
+    "These... 'stains' have no relation to anything relevant. The defense is stalling!"
 
 
 JUMPCUT COURT_JUDGE
@@ -247,7 +246,7 @@ SPEAK Arin
     "Yeah, we can prove it. With..."
 
 
-//[PRESENT EVIDENCE]
+PRESENT Jory'sBackpack
 
 //Incorrect Evidence
 //SPEAK_FROM COURT_JUDGE
@@ -281,15 +280,15 @@ SPEAK_FROM COURT_JUDGE
 JUMPCUT COURT_DEFENSE
 POSE Arin Point
 SPEAK Arin
-    "Your honor, take a closer look at it."
+    "Your Honor, take a closer look at it."
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "Okay, but this had better be good."
+    "Okay, but this better be relevant."
 POSE "Judge Brent" Thinking
 SPEAK "Judge Brent"
-    "...."
+    "..."
 WAIT 2
 
 PLAY_MUSIC HUFFPUFFPURSUIT
@@ -325,7 +324,7 @@ SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 POSE "Tutorial Boy" Sweaty
 SPEAK "Tutorial Boy"
-    "I... apologize, your honor."
+    "I... apologize, Your Honor."
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Normal
@@ -398,7 +397,7 @@ SPEAK "Tutorial Boy"
 JUMPCUT COURT_DEFENSE
 POSE Arin Thinking
 THINK Arin
-    "(Yea, how does that prove anything?)"
+    "(Yeah, how %1does%0 that prove anything?)"
 
 WAIT 1
 
@@ -430,7 +429,7 @@ SPEAK Arin
 
 POSE Arin Normal
 SPEAK Arin
-    "See what you don't know Mister Tutorial dude"
+    "See... what you don't, know Mister Tutorial dude--"
 
 SPEAK_FROM COURT_PROSECUTION
     "It's Tutorial BOY, thank you very much!"
@@ -444,7 +443,7 @@ WAIT 2
 
 POSE Arin Normal
 SPEAK Arin
-    "What you don't know, is that Jory is deathly allergic to milk and dairy products!"
+    "What you don't know is that Jory is deathly allergic to milk and dairy products!"
 SPEAK Arin
     "He wouldn't have gotten near these dinos if they had milk stains on them when he left the stream."
 
@@ -455,7 +454,7 @@ SPEAK Arin
 //CLOSEUP Arin
 POSE Arin Point
 SPEAK Arin
-    "Ross O Diditvan!"
+    "Ross O' Diditvan!"
 
 WIDESHOT
 
@@ -470,11 +469,11 @@ SPEAK "Judge Brent"
 
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
-    "Er, I mean, ORDER!!!"
+    "Er, I mean- ORDER!!!"
 
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "...ahem..."
+    "... ahem..."
 
 SPEAK "Judge Brent"
     "I sense that you have some kind of idea of what really happened, Arin?"
@@ -488,7 +487,7 @@ SPEAK Arin
 
 POSE Arin Normal
 SPEAK Arin
-    "When Jory left to put his backpack in the 10 minute power hour studio, he passed by Ross' office."
+    "When Jory left to put his backpack in the 10 Minute Power Hour studio, he passed by Ross' office."
 SPEAK Arin
     "Ross, who noticed Jory walk by, decided he would take him down a peg, and set him up to be framed."
 SPEAK Arin
@@ -502,13 +501,13 @@ SPEAK Arin
 //END CUTSCENE
 
 SPEAK Arin
-    "It's clear from the evidence your honor that Jory could not have possible stolen the dinos"
+    "It's clear from the evidence, Your Honor that Jory could not have possibly stolen the dinos!"
 
 SHOUT "Tutorial Boy" Objection
 
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
-    "N-no! That can't be true!"
+    "N-No! That can't be true!"
 
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
@@ -522,7 +521,7 @@ POSE Arin Confident
 SPEAK Arin
     "As if! I have proof of his condition RIGHT HERE!"
 
-//PRESENT EVIDENCE JorySr's Letter
+PRESENT_EVIDENCE JorySr'sLetter
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
@@ -545,7 +544,7 @@ WAIT 1
 SFX realization
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
-    "It's as the defense says! Deathly Allergic to milk"
+    "It's as the defense says! Deathly allergic to milk!"
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Normal
@@ -573,12 +572,12 @@ POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Well, that certainly was quite the turnaround there."
 SPEAK "Judge Brent"
-    "I've presided over quite a few cases in my day, but I've never seen a case resolved quite like that"
+    "I've presided over quite a few cases in my day, but I've never seen a case resolved quite like that!"
 
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideLean
 SPEAK Dan
-    "All in a day's work for Danny Sexbang"
+    "All in a day's work for Danny Sexbang!"
 
 SFX airguitar
 ANIMATION Dan AirGuitar
@@ -597,7 +596,7 @@ SPEAK Arin
 
 JUMPCUT COURT_JUDGE
 SPEAK "Judge Brent"
-"But with that, I think we can safely say justice is served today"
+"But with that, I think we can safely say justice is served today."
 
 POSE "Judge Brent" Warning
 SPEAK "Judge Brent"
