@@ -65,7 +65,7 @@ POSE Dan Angry
 SPEAK Dan
     "NO goddamnit, I'm asking you!"
 SPEAK Dan
-    "You asked me about my graduation party and said it had to do with today's episode"
+    "You asked me about my graduation party and said it had something to do with today's episode"
 
 POSE Dan Lean
 SPEAK Dan
@@ -92,12 +92,12 @@ POSE Dan SideLaugh
 SPEAK Dan
     "Yeah, yeah you do like poopin'."
 
-SFX EvidenceShoop
+SFX evidenceshoop
 COURT_RECORD_ADD_ANIMATION EVIDENCE PlumberInvoice "Plumber Invoice"
 
 POSE Dan Normal
 SPEAK Dan
-    "So what ARE we doing for the Power Hour?"
+    "So what ARE we doing for the Power Hour?" //SFX REALIZATION
 SPEAK Arin
     "Well, remember the dunking pool the second night of your graduation party?"
 SPEAK Dan
@@ -105,7 +105,7 @@ SPEAK Dan
 
 SFX lightbulb
 POSE Dan Lean
-SPEAK Dan
+SPEAK Dan 
     "You don't mean...?"
 SPEAK Arin
     "Yea dude! We're going to give people a glimpse into what it means to be a %1Ninja Sex Party Dude(tm)%0!"

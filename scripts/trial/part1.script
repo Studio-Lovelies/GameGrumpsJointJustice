@@ -235,7 +235,7 @@ SPEAK_FROM COURT_DEFENSE
     "Jory WHAT THE HECK!"
 POSE Jory Nervous
 SPEAK_FROM COURT_WITNESS
-    "Oh, jeez.."
+    "Oh, jeez..."
 
 JUMPCUT COURT_DEFENSE
 SPEAK Arin
@@ -293,6 +293,7 @@ SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 SPEAK_FROM COURT_PROSECUTION
     "AHAH!"
+
 POSE Jory Sweaty
 SPEAK_FROM COURT_WITNESS
     "YIKES!!!"
@@ -315,7 +316,6 @@ SPEAK Dan
     "You should say something, Arin."
 
 DEFINE PlayerObjects
-    WAIT 1  // This is a temporary workaround
     SHOUT Arin objection
     JUMPCUT COURT_DEFENSE
     ANIMATION Arin DeskSlam
@@ -338,7 +338,6 @@ DEFINE PlayerObjects
 END_DEFINE
 
 DEFINE PlayerDoesntObject
-    WAIT 1  // This is a temporary workaround
 
     SPEAK Arin
         "Nah, it's fine. Polishing some coins doesn't prove he's guilty."
@@ -350,9 +349,9 @@ POSE Arin Thinking
 SPEAK Arin
     "Hm..."
 
-FAKE_CHOICE
-    "Object!" PlayerObjects
-    "Nah, we gucci." PlayerDoesntObject
+CHOICE
+    "Object!" PlayerObjects 1
+    "Nah, we gucci." PlayerDoesntObject 1
 END_CHOICE
 
 POSE Arin Annoyed

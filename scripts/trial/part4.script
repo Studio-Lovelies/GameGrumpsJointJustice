@@ -111,6 +111,7 @@ SPEAK Dan
     "What is it?"
 
 ANIMATION Arin DeskSlam
+SFX deskslam
 POSE Arin DeskSlam
 SPEAK Arin
     "I'll just BS my way through by questioning everything he said!"
@@ -175,12 +176,15 @@ DEFINE PressC1
     SPEAK Ross
         "Well... I didn't want to seem suspicious... That would incriminate me!
     POSE Arin Sweaty
+    
+    SFX smack
     SPEAK_FROM COURT_DEFENSE
         "Well you made yourself look suspicious when you lied!"
 
     SPEAK_FROM COURT_WITNESS
         "Well, I'm really sorry for that. Seriously--!"
-
+    
+    POSE Dan SideNormal
     SPEAK_FROM COURT_ASSISTANT
         "Yeah... I dunno. I'm not sure if I'm buying all this."
 
@@ -189,7 +193,7 @@ DEFINE PressC1
         "My client already apologized, stop badgering him and let him continue his testimony!"
 
     SPEAK_FROM COURT_JUDGE
-        "Objection sustained. The witness will continue"
+        "Objection sustained. The witness will continue."
 
     SPEAK_FROM COURT_WITNESS
         "Yes, yes of course! ehehe..."
@@ -357,7 +361,7 @@ DEFINE PressC5
 
     POSE Dan SideLean
     SPEAK_FROM COURT_ASSISTANT
-        "Yeah, I feel like you have a serious hard-on for making us suffer. Surely you can’t get tired with doing that."
+        "Yeah, I feel like you have a serious hard-on for making us suffer. Surely you can't get tired with doing that."
 
     POSE Ross Normal
     SPEAK_FROM COURT_WITNESS
@@ -376,6 +380,8 @@ DEFINE PressC5
          "Can we get back to the trial, please? I don't want more out of place arguing in my courthouse."
    POSE Ross Normal
    JUMPCUT COURT_WITNESS
+   SPEAK Ross
+        "Y-Yes, of course."
 END_DEFINE
 
 DEFINE PressC6
@@ -391,13 +397,14 @@ DEFINE PressC6
         "I'm pretty sure, it would be pretty difficult to mistake them for anything else."
 
     SPEAK_FROM COURT_JUDGE
-        "We've known Ross for quite a while now, and I personally have never been informed of any defects..."
+        "We've known Ross for quite a while now, and I personally have never been informed of any"
     SPEAK "Judge Brent"
-        "...related to his ophthalmologic health."
+        "defects related to his ophthalmologic health."
 
     SPEAK_FROM COURT_JUDGE
         "As I am quite acquainted with his eye doctor, I would be made aware if such a problem existed."
-
+    
+    JUMPCUT COURT_DEFENSE
     ANIMATION Arin Shock
     POSE Arin Sweaty
     SPEAK Arin
@@ -436,8 +443,6 @@ SHOW Switch r
 SPEAK_FROM COURT_PROSECUTION
     "What is this...?
 
-SHOW Switch r
-
 POSE Arin Confident
 SPEAK_FROM COURT_DEFENSE
     "Why it's a Nintendo Switch. But not just any switch."
@@ -448,8 +453,8 @@ SPEAK Arin
     "It's Ross' switch!"
 
 JUMPCUT COURT_WITNESS
-ANIMATION Ross Damage
 SFX stab
+ANIMATION Ross Damage
 SPEAK_FROM COURT_WITNESS
     "GAH!"
 
@@ -474,6 +479,8 @@ Wait 2
 POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
     "..."
+
+STOP_MUSIC
 SPEAK "Tutorial Boy"
     "Wait how is that relevant?"
 
@@ -488,6 +495,7 @@ SHOUT "Tutorial Boy" objection
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 
+
 SPEAK "Tutorial Boy"
     "This has no relevance to this case, your honor!"
 SPEAK "Tutorial Boy"
@@ -499,11 +507,12 @@ SPEAK "Tutorial Boy"
 SHOUT Arin objection
 POSE Arin Point
 PAN COURT_PROSECUTION COURT_DEFENSE
+PLAY_MUSIC SHOWER
 SPEAK Arin
     "If you wouldn't interrupt, I'd show you just how possible it is."
 
-ANIMATION Arin DeskSlam
 SFX deskslam
+ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
 SPEAK Arin
     "Your honor, if i may explain."
@@ -517,7 +526,7 @@ SPEAK "Judge Brent"
 JUMPCUT COURT_DEFENSE
 POSE Arin Normal
 SPEAK Arin
-    "Thank you, your Honor"
+    "Thank you, your Honor."
 POSE Arin PaperSlap
 SPEAK Arin
     "Look closely on the back of this particular Switch."
@@ -679,6 +688,7 @@ SPEAK Arin
 SPEAK Arin
     "Then Mario Maker would be the game you see on the left hand side of the screen!"
 
+SFX deskslam
 ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
 SPEAK Arin
@@ -688,7 +698,7 @@ SPEAK Arin
     "I'm willing to bet that is NOT the game you'll find!"
 
 SHOUT "Tutorial Boy" objection
-POSE "Tutorial Boy" Normal
+POSE "Tutorial Boy" Angry
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "Your honor this is absurd!"
@@ -700,14 +710,14 @@ SPEAK "Tutorial Boy"
 JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam
 SPEAK Arin
-    "Your honor, I promise there is a purpose to this in this case"
+    "Your honor, I promise there is a purpose to this in this case."
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
 Wait 2
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "I will hear the defense's claim. Objection denied"
+    "I will hear the defense's claim. Objection denied."
 
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
@@ -716,10 +726,10 @@ SPEAK "Tutorial Boy"
 JUMPCUT COURT_DEFENSE
 POSE Arin Normal
 SPEAK Arin
-    "Thanks man-- er I mean, your honor"
+    "Thanks man-- er I mean, Your Honor"
 
 SPEAK Arin
-    "If Ross is telling the truth, then Mario Maker should be on the left"
+    "If Ross is telling the truth, then Mario Maker should be on the left."
 SPEAK Arin
     "Your honor, would you please tell this court what game is actually there?"
 
@@ -732,7 +742,7 @@ SHOW Switch r
 WAIT 1
 
 
-
+PLAY_MUSIC HUFFPUFFPURSUIT
 
 SFX realization
 POSE "Judge Brent" Surprised
@@ -750,6 +760,9 @@ SPEAK_FROM COURT_PROSECUTION
 POSE Arin Confident
 SPEAK_FROM COURT_DEFENSE
   "As you can plainly see, the witness is a liar liar and his pants..."
+
+
+ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin
     "surely are on fire!"
