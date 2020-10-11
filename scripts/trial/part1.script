@@ -87,7 +87,7 @@ THINK_FROM COURT_DEFENSE
 SPEAK_FROM COURT_ASSISTANT
     "Wait, doesn't he kind of look like..."
 
-SFX lightbulb
+SFX stab
 JUMPCUT COURT_DEFENSE
 ANIMATION Arin Shock
 POSE Arin Sweaty
@@ -131,15 +131,15 @@ SPEAK_FROM COURT_JUDGE
     "IT WILL BEGIN NOW!"
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "May the prosecution please give their opening statements!"
-
+    "The prosecution will give their opening statements!"
+STOP_MUSIC
 SPEAK_FROM COURT_PROSECUTION
     "Of course. "
 
 SPEAK_FROM COURT_ASSISTANT
     "This is easily the stupidest thing I've ever done."
 
-
+PLAY_MUSIC LOGICANDTRAINS
 SPEAK_FROM COURT_PROSECUTION
     "At about 3 PM, the Game Grumps and crew were partaking in a livestream."
 SPEAK "Tutorial Boy"
@@ -155,6 +155,7 @@ JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "W-well, you don't have to be so rude about it! Fine, it's been added to the court record."
 
+SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE LivestreamRecording "Livestream Recording"
 
 POSE "Tutorial Boy" Normal
@@ -169,18 +170,18 @@ SPEAK "Tutorial Boy"
     "It was at this point that they asked the defendant, Jory Griffis, to obtain a different one."
 SPEAK "Tutorial Boy"
     "At the time the defendant was carrying this backpack, which I will submit to the court record at this time."
-
+SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE Jory'sBackpack "Jory's Backpack"
 
 SPEAK "Tutorial Boy"
     "However, when these dinos went missing, they were suspiciously found in the defendant's backpack!"
-
+SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE StolenDinos "Dinos"
 
 SPEAK "Tutorial Boy"
     "While Mr. Griffis' backpack is fairly unique--"
 SPEAK "Tutorial Boy"
-    "--the prosecution deemed it necessary to prove its owners identity."
+    "--the prosecution deemed it necessary to prove its owner's identity."
 SPEAK "Tutorial Boy"
     "In the very same pocket in which the dinos were found were some Good Boy Coins!"
 SPEAK "Tutorial Boy"
@@ -195,11 +196,12 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "...in order to sabotage the Ten Minute Power Hour!"
 
+STOP_MUSIC
 SPEAK_FROM COURT_JUDGE
     "Hm... Yes, that seems to be a very solid opening statement."
 SPEAK "Judge Brent"
     "You may call your first witness, Mr. Boy."
-
+PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
 SPEAK_FROM COURT_PROSECUTION
     "I would now like to call said defendant, Jory Griffis, to the stand!"
 
@@ -224,6 +226,7 @@ SPEAK_FROM COURT_PROSECUTION
     "So you-"
 
 SCREEN_SHAKE
+SFX supershock
 POSE Jory Sweaty
 SPEAK_FROM COURT_WITNESS
     "I'm sorry! Please forgive me!!!"
@@ -253,6 +256,7 @@ PAN COURT_WITNESS COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 POSE "Tutorial Boy" Angry
+SFX stab
 SPEAK_FROM COURT_PROSECUTION
     "WITNESS!"
 
@@ -295,6 +299,7 @@ SPEAK_FROM COURT_PROSECUTION
     "AHAH!"
 
 POSE Jory Sweaty
+SFX stab
 SPEAK_FROM COURT_WITNESS
     "YIKES!!!"
 
@@ -410,9 +415,10 @@ SPEAK_FROM COURT_PROSECUTION
     "Would those coins happen to look like..."
 SCREEN_SHAKE
 POSE "Tutorial Boy" Angry
+SFX shock
 SPEAK "Tutorial Boy"
     "THESE?!?!"
-
+SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE BentCoins "Bent Coins"
 
 JUMPCUT COURT_WITNESS
@@ -428,8 +434,9 @@ SPEAK "Tutorial Boy"
     "-and they fit the description of the coins the witness just gave! What more proof do you need?!"
 SCREEN_SHAKE
 POSE "Tutorial Boy" Angry
+SFX supershock
 SPEAK "Tutorial Boy"
-    "CONFESS TO YOUR CRIMES JORY!"
+    "CONFESS TO YOUR CRIMES, JORY!"
 
 SPEAK_FROM COURT_WITNESS
     "I... ER... UH... Oh man, yeah, those are... My coins... B-but that-"
@@ -507,6 +514,8 @@ SPEAK "Tutorial Boy"
     "I see right through you, Jory Griffis!"
 
 POSE Jory Sweaty
+SCREENSHAKE
+SFX stab
 SPEAK_FROM COURT_WITNESS
     "N-no! I would never-"
 
@@ -527,14 +536,15 @@ ANIMATION Arin DeskSlam
 SPEAK Arin
     "You're simply pushing a false narrative to make my client look bad."
 
-POSE "Tutorial Boy" Confident  // DOES THIS NEED TO BE REPEATED AFTER ANIMATION?
+POSE "Tutorial Boy" Confident  
 PAN COURT_DEFENSE COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "Oh ho, I assure you, this is no bravado. We have true motivation."
 SPEAK "Tutorial Boy"
     "We have evidence that connects Jory to the crime, and..."
 SCREEN_SHAKE
-SFX stab
+SFX smack
+POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "We have a witness to Jory's Crime!"
 

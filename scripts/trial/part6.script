@@ -291,7 +291,7 @@ SPEAK "Judge Brent"
     "..."
 WAIT 2
 
-PLAY_MUSIC HUFFPUFFPURSUIT
+PLAY_MUSIC 
 SFX lightbulb
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"

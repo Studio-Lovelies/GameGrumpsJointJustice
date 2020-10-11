@@ -281,7 +281,7 @@ DEFINE PressC4
         "You said you were in the middle of making a level. Exactly how you were making it?"
 
     SPEAK_FROM COURT_WITNESS
-        "Duh! I was using my switch!, Like, how ELSE could I be making it?"
+        "Duh! I was using my Switch!, Like, how ELSE could I be making it?"
 
     SPEAK_FROM COURT_PROSECUTION
         "That's the best question you can come up with? Laughable!"
@@ -445,12 +445,12 @@ SPEAK_FROM COURT_PROSECUTION
 
 POSE Arin Confident
 SPEAK_FROM COURT_DEFENSE
-    "Why it's a Nintendo Switch. But not just any switch."
+    "Why it's a Nintendo Switch. But not just any Switch."
 
 ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin
-    "It's Ross' switch!"
+    "It's Ross' Switch!"
 
 JUMPCUT COURT_WITNESS
 SFX stab
@@ -460,7 +460,7 @@ SPEAK_FROM COURT_WITNESS
 
 POSE "Judge Brent" Surprised
 SPEAK_FROM COURT_JUDGE
-    "His switch?"
+    "His Switch?"
 
 JUMPCUT COURT_PROSECUTION
 SCREENSHAKE
@@ -502,7 +502,7 @@ SPEAK "Tutorial Boy"
     "Not only is there no proof that this is even Ross' own console..."
 POSE "Tutorial Boy" Confident
 SPEAK "Tutorial Boy"
-    "I don't see how it's possible that they can prove that Ross was or was not using this particular switch!"
+    "I don't see how it's possible that they can prove that Ross was or was not using this particular Switch!"
 
 SHOUT Arin objection
 POSE Arin Point
@@ -543,7 +543,7 @@ POSE "Tutorial Boy" Sweaty
 SPEAK_FROM COURT_PROSECUTION
     "S-so what? That still doesn't help your case."
 SPEAK "Tutorial Boy"
-    "Just because that's Ross' original character Slimemantha(tm), doesn't prove that the switch is his!"
+    "Just because that's Ross' original character Slimemantha(tm), doesn't prove that the Switch is his!"
 
 POSE Arin Confident
 SPEAK_FROM COURT_DEFENSE
@@ -567,7 +567,7 @@ DEFINE Wrong1
     JUMPCUT COURT_DEFENSE
     POSE Arin PaperSlap
     SPEAK Arin
-        "This is every single game downloaded on the switch!"
+        "This is every single game downloaded on the Switch!"
 
     SHOUT "Tutorial Boy" objection
     PAN COURT_DEFENSE COURT_PROSECUTION
@@ -613,7 +613,7 @@ DEFINE Wrong1
         "Ahem... if we could get back to the case you two?"
     POSE "Judge Brent" Normal
     SPEAK_FROM COURT_JUDGE
-        "What games are on Ross' switch does not have any bearing on this case."
+        "What games are on Ross' Switch does not have any bearing on this case."
 
     JUMPCUT COURT_DEFENSE
     POSE Arin Thinking
@@ -668,8 +668,8 @@ DEFINE Wrong2
 END_DEFINE
 
 CHOICE
-    "Show them what games are on the switch" Wrong1 0
-    "Show them the last game played on the switch" Right1 1
+    "Show them what games are on the Switch" Wrong1 0
+    "Show them the last game played on the Switch" Right1 1
     "SHOW EM UR TIIIIITS" Wrong2 0
 END_CHOICE
 
@@ -677,14 +677,14 @@ JUMPCUT COURT_JUDGE
 SFX lightbulb
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
-   "That's very true! I've noticed it on my own switch."
+   "That's very true! I've noticed it on my own Switch."
 
 POSE Arin Normal
 SPEAK_FROM COURT_DEFENSE
-    "Exactly! And what do we see when we load Ross' switch to the home screen?"
+    "Exactly! And what do we see when we load Ross' Switch to the home screen?"
 
 SPEAK Arin
-    "Well if the prosecution's claim that Ross was making a Mario Maker level with his switch is true..."
+    "Well if the prosecution's claim that Ross was making a Mario Maker level with his Switch is true..."
 SPEAK Arin
     "Then Mario Maker would be the game you see on the left hand side of the screen!"
 
@@ -692,7 +692,7 @@ SFX deskslam
 ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
 SPEAK Arin
-    "But if you'd take a look at Ross' switch, your honor..."
+    "But if you'd take a look at Ross' Switch, your honor..."
 POSE Arin Point
 SPEAK Arin
     "I'm willing to bet that is NOT the game you'll find!"
@@ -797,10 +797,10 @@ POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "Whatever game was last played doesn't prove anything!"
 SPEAK "Tutorial Boy"
-    "Ross could have accidentally loaded that game when he put his switch away!"
+    "Ross could have accidentally loaded that game when he put his Switch away!"
 POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
-    "Your honor this is baseless conjecture."
+    "Your Honor this is baseless conjecture."
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
@@ -851,8 +851,10 @@ POSE Arin Normal
 SPEAK Arin
     "Huh?"
 
+
+PLAY_MUSIC LOGICANDTRAINS
 SPEAK_FROM COURT_ASSISTANT
-    "I think there's something else here we're all overlooking. Something to do with the switch."
+    "I think there's something else here we're all overlooking. Something to do with the Switch."
 SPEAK Dan
     "You know what I mean?"
 /////////////////
@@ -897,7 +899,7 @@ DEFINE Nope1
         "Man we gotta get you a cat scan, your memory is awful."
 
     SPEAK Dan
-        "Doesn't that switch look familiar? Like we've seen it before %1earlier today?%0"
+        "Doesn't that Switch look familiar? Like we've seen it before %1earlier today?%0"
 
 END_DEFINE
 
@@ -910,7 +912,7 @@ DEFINE Yep2
 END_DEFINE
 
 CHOICE
-    "The white stain on the switch?" Yep1 1
+    "The white stain on the Switch?" Yep1 1
     "What are you talkin about Dan?!" Nope1 0
     "I feel like we've seen it before..." Yep2 1
 END_CHOICE
@@ -956,17 +958,19 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK_FROM COURT_DEFENSE
     "Yes I can! With this!!!"
 
+
 PRESENT_EVIDENCE LivestreamRecording
 
 SHOUT Arin takethat
 
+STOP_MUSIC
 POSE "Judge Brent" Surprised
 SPEAK_FROM COURT_JUDGE
     "The livestream?"
 
 POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
-    "That's right, your honor!"
+    "That's right, Your Honor!"
 SPEAK Arin
     "If you recall from earlier, during the livestream our Switch crashed."
 SPEAK Arin
@@ -976,12 +980,13 @@ POSE Arin Normal
 SPEAK Arin
     "This is when the prosecution claims Jory hid the dinosaurs away."
 SPEAK Arin
-    "But what they didn't realize is that the switch Jory brought back was Ross's switch!"
+    "But what they didn't realize is that the Switch Jory brought back was Ross's Switch!"
 
 POSE Arin Confident
 SPEAK Arin
-    "Ross couldn't have been using his switch..."
+    "Ross couldn't have been using his Switch..."
 
+PLAY_MUSIC DRAGONOBJECTION
 POSE Arin Point
 SPEAK Arin
     "...because we were using it during the livestream!"
@@ -1011,7 +1016,7 @@ SPEAK Arin
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideLean
 SPEAK Dan
-    "He's right your honor! I recognize the slime girl stickers and the milk stain on the switch from earlier today."
+    "He's right Your Honor! I recognize the slime girl stickers and the milk stain on the Switch from earlier today."
 
 JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam
@@ -1024,6 +1029,7 @@ POSE Ross GlaringHelm
 SPEAK Arin
     "...was because it was the game we were playing on the livestream!"
 
+STOP_MUSIC
 SFX stab
 SCREEN_SHAKE
 ANIMATION Ross Damage
@@ -1069,6 +1075,7 @@ SPEAK Ross
 
 PAN COURT_WITNESS COURT_DEFENSE
 ANIMATION Arin DeskSlam
+
 POSE Arin DeskSlam
 SPEAK Arin
     "The only one lying here is you Ross!"
@@ -1081,14 +1088,15 @@ SPEAK Arin
 
 SHOUT "Tutorial Boy" objection
 
-
+//PLAY_MUSIC ANNOUNCE
 PAN COURT_DEFENSE COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
+POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "It's just as the witness said! There's no proof that any of these claims are true!
 SPEAK "Tutorial Boy"
-    "There's no conclusive evidence that the switch the used was actually Ross'"
+    "There's no conclusive evidence that the Switch the used was actually Ross'"
 SPEAK "Tutorial Boy"
     "I request that last bit of evidence be stricken from the record!"
 
@@ -1136,7 +1144,6 @@ SPEAK "Judge Brent"
 
 
 JUMPCUT COURT_DEFENSE
-ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
 THINK Arin
     "(Damn, how could I let that slip through my fingers?)"
@@ -1144,6 +1151,7 @@ THINK Arin
 
 WAIT 1
 
+STOP_MUSIC
 SPEAK Dan
     "Wait Arin! It's not over yet!"
 
@@ -1159,22 +1167,27 @@ SPEAK Dan
 SFX realization
 JUMPCUT COURT_DEFENSE
 ANIMATION Arin DeskSlam
+SFX deskslam
 POSE Arin DeskSlam
 SPEAK Arin
     "You're right Dan!"
 
+SFX objectionclean
 ANIMATION Arin Objection
+PLAY_MUSIC HUFFPUFFPURSUIT
 POSE Arin Point
 SPEAK Arin
     "Your honor! There is one other person who could have done the deed!
 
 JUMPCUT COURT_WITNESS
 ANIMATION Ross Damage
+SFX stab
 POSE Ross Glaring
 SPEAK Ross
     "!!!"
 
 JUMPCUT COURT_PROSECUTION
+SFX stab
 POSE "Tutorial Boy" Sweaty
 SPEAK "Tutorial Boy"
     "What?!"
