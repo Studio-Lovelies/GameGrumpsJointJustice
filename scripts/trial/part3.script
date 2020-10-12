@@ -130,7 +130,7 @@ DEFINE PressA1
 
     SHOUT "Tutorial Boy" Objection
     SPEAK_FROM COURT_PROSECUTION
-        "Your Honour, this is clearly irrelevant to the case."
+        "Your Honor, this is clearly irrelevant to the case."
     POSE "Judge Brent" Warning
     SPEAK_FROM COURT_JUDGE
         "I agree. Arin, try being serious about this."
@@ -153,7 +153,7 @@ DEFINE PressA2
         "I'm getting to it, just be patient. I'm trying to build suspense for the viewers!"
     POSE Arin Sweaty
     SPEAK_FROM COURT_DEFENSE
-        "But this isn't being broadcasted..."
+        "But... this isn't being broadcasted..."
     POSE "Tutorial Boy" Sweaty
     
     JUMPCUT COURT_PROSECUTION
@@ -219,7 +219,7 @@ DEFINE PressA3
 
     POSE Arin Annoyed
     THINK_FROM COURT_DEFENSE
-        "(Goddamnit Ross)"
+        "(Goddamnit Ross.)"
     SPEAK Arin
         "What does you needing to poop have to do with seeing Jory?
 
@@ -370,7 +370,7 @@ DEFINE PressB3
         "Something about that doesn't seem right, but... I dunno..."
 
     SPEAK Dan
-        "Maybe we should look at the evidence, see if there's something about this?"
+        "Maybe we should look at the %1evidence%0, see if there's something about this?"
 
     JUMPCUT COURT_WITNESS
 END_DEFINE
@@ -490,7 +490,6 @@ SPEAK_FROM COURT_ASSISTANT
 SPEAK_FROM COURT_WITNESS
     "The... truth?"
 
-PLAY_MUSIC CTTRvSbeta
 
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
@@ -515,7 +514,7 @@ POSE Arin DeskSlam
 SPEAK Arin
     "What the hey are you even talking about?"
 
-PLAY_MUSIC LOGICANDTRAINS
+PLAY_MUSIC GGJJROSS
 POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
     "Well... the truth is I wasn't actually animating at all."
@@ -567,4 +566,3 @@ SPEAK_FROM COURT_JUDGE
     "This time, Ross, I need the honest truth from you. You may begin your testimony."
 
 FADE_TO_BLACK
-END_SCENE

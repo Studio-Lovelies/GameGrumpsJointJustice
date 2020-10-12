@@ -58,7 +58,7 @@ SFX lightbulb
 SPEAK_FROM COURT_JUDGE
     "Yes, being the manager of Game Grumps is just my side hustle."
 SPEAK "Judge Brent"
-    "My main job presiding as judge over the Attitude City Courthouse."
+    "My main job is presiding as judge over the Attitude City Courthouse."
 SPEAK "Judge Brent"
     "After all, what is a judge if not a manager of the law?"
 SPEAK "Judge Brent"
@@ -66,11 +66,11 @@ SPEAK "Judge Brent"
 
 POSE Dan SideNormal
 SPEAK_FROM COURT_ASSISTANT
-    "Well I suppose that's fine. I mean Brent is pretty fair in general"
+    "Well I suppose that's fine. I mean Brent is pretty fair in general."
 
-SFX stab
+SFX smack
 SPEAK_FROM COURT_PROSECUTION
-    "AHEM! The prosecution is also ready, your honor."
+    "AHEM! The prosecution is also ready, Your Honor."
 
 SPEAK_FROM COURT_JUDGE
     "Oh, right! I have a guest prosecutor to help this go over smoothly."
@@ -87,7 +87,7 @@ THINK_FROM COURT_DEFENSE
 SPEAK_FROM COURT_ASSISTANT
     "Wait, doesn't he kind of look like..."
 
-SFX stab
+SFX dramapound
 JUMPCUT COURT_DEFENSE
 ANIMATION Arin Shock
 POSE Arin Sweaty
@@ -126,6 +126,7 @@ SPEAK Arin
     "When the heck is this trial going to start?"
 
 SCREEN_SHAKE
+SFX damage2
 POSE "Judge Brent" Warning
 SPEAK_FROM COURT_JUDGE
     "IT WILL BEGIN NOW!"
@@ -172,6 +173,8 @@ SPEAK "Tutorial Boy"
     "At the time the defendant was carrying this backpack, which I will submit to the court record at this time."
 SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE Jory'sBackpack "Jory's Backpack"
+
+//ADD STUFF ABOUT MILKSTAIN ON BACKPACK
 
 SPEAK "Tutorial Boy"
     "However, when these dinos went missing, they were suspiciously found in the defendant's backpack!"
@@ -256,7 +259,7 @@ PAN COURT_WITNESS COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 POSE "Tutorial Boy" Angry
-SFX stab
+SFX stab2
 SPEAK_FROM COURT_PROSECUTION
     "WITNESS!"
 
@@ -324,6 +327,7 @@ DEFINE PlayerObjects
     SHOUT Arin objection
     JUMPCUT COURT_DEFENSE
     ANIMATION Arin DeskSlam
+    SFX deskslam
     POSE Arin DeskSlam
     SPEAK Arin
         "My client's behavior during the livestream isn't suspicious in the least!"
@@ -377,7 +381,7 @@ SPEAK_FROM COURT_DEFENSE
     "You can't be serious."
 
 SPEAK_FROM COURT_JUDGE
-    "Objection sustained. I'll allow it."
+    "Objection overruled. I'll allow it."
 
 POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
@@ -415,9 +419,10 @@ SPEAK_FROM COURT_PROSECUTION
     "Would those coins happen to look like..."
 SCREEN_SHAKE
 POSE "Tutorial Boy" Angry
-SFX shock
+SFX shock2
 SPEAK "Tutorial Boy"
     "THESE?!?!"
+
 SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE BentCoins "Bent Coins"
 
@@ -477,12 +482,12 @@ SPEAK "Tutorial Boy"
 
 POSE Jory Thinking
 SPEAK_FROM COURT_WITNESS
-    "Well... You see, we were planning on doing the 10 Minute Power Hour right after the livestream"
+    "Well... You see, we were planning on doing the 10 Minute Power Hour right after the livestream."
 SPEAK Jory
     "and I had to help set up since we were planning on doing something..."
 POSE Jory Nervous
 SPEAK Jory
-    "...Different."
+    "...different."
 
 SPEAK_FROM COURT_PROSECUTION
     "And what was this %1something%0 that was so different?"
@@ -494,7 +499,7 @@ SPEAK Jory
     "but instead of water it was going to be Strawberries and Cream."
 POSE Jory Thinking
 SPEAK Jory
-    "Something about Ninja Party School, I don't know, it was Dan and Arin's idea..."
+    "Something about Ninja Party School...? I don't know, it was Dan and Arin's idea..."
 
 POSE Jory Nervous
 SPEAK Jory
@@ -546,7 +551,7 @@ SCREEN_SHAKE
 SFX smack
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
-    "We have a witness to Jory's Crime!"
+    "We have a witness to Jory's crime!"
 
 WIDESHOT
 GAVEL

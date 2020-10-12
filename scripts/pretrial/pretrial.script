@@ -42,7 +42,7 @@ SPEAK Arin
     "What.#Are you talking about, Dan."
 
 SPEAK Dan
-    "Weren't you listening? I was telling you a very important story about how I graduated from ninja party school."
+    "Weren't you listening? I was telling you a very important story about how I graduated from Ninja Party School."
 SPEAK Arin
     "Ninja Party School?#The infamous NPS?"
 
@@ -65,7 +65,7 @@ POSE Dan Angry
 SPEAK Dan
     "NO goddamnit, I'm asking you!"
 SPEAK Dan
-    "You asked me about my graduation party and said it had something to do with today's episode"
+    "You asked me about my graduation party and said it had something to do with today's episode."
 
 POSE Dan Lean
 SPEAK Dan
@@ -97,8 +97,9 @@ COURT_RECORD_ADD_ANIMATION EVIDENCE PlumberInvoice "Plumber Invoice"
 SFX evidenceshoop
 
 POSE Dan Normal
+SFX realization
 SPEAK Dan
-    "So what ARE we doing for the Power Hour?" //SFX REALIZATION
+    "So what ARE we doing for the Power Hour?" 
 SPEAK Arin
     "Well, remember the dunking pool the second night of your graduation party?"
 SPEAK Dan
@@ -111,7 +112,7 @@ SPEAK Dan
 SPEAK Arin
     "Yea dude! We're going to give people a glimpse into what it means to be a %1Ninja Sex Party Dude(tm)%0!"
 SPEAK Dan
-    "You gotta be buttfuckin' me dude, really?"
+    "You gotta be buttf!!!kin' me dude, really?"
 SPEAK Arin
     "Well, if I gotta be doin' it, Dan..."
 
@@ -162,12 +163,13 @@ SPEAK Dan
 
 POSE Jory Sweaty
 
-SCREEN_SHAKE
-SFX Damage1
+
 SPEAK Arin
     "Did you take them?"
     
 CHARACTER_LOCATION Dan LOBBY
+SCREEN_SHAKE
+SFX Damage1
 POSE Dan Angry
 SPEAK Dan
     "ARIN!"
@@ -255,7 +257,7 @@ POSE Dan Sad
 SPEAK Dan
     "Sorry dude, but Arin's right.#We'd probably just screw it up."
 SPEAK Dan
-    "We're not lawyers.#The closest thing we've been playing is that Penix Wright(tm) game."
+    "We're not lawyers.#The closest thing we've been to being lawyers is #playing is that Penix Wright(tm) game."
 SPEAK Dan
     "And that's just a stupid game that totally exists and isn't changed for copyright purposes!"
 
@@ -271,7 +273,7 @@ WAIT 1
 SFX realization
 POSE Jory Normal
 SPEAK Jory
-    "Hey... someone just slipped a letter under the door"
+    "Hey... someone just slipped a letter under the door."
 SPEAK Arin
     "A letter? Who's it from?"
 POSE Jory Thinking
@@ -311,10 +313,11 @@ SPEAK Arin
 POSE Jory Normal
 SFX Pageturn
 SPEAK Arin
-    "...#Wow, he's right! We should hold on to this, I think it might be important later"
+    "...#Wow, he's right! We should hold on to this, I think it might be important later..."
 
-SFX EvidenceShoop
+SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE JorySr'sLetter "Jory Sr's Letter"
+SFX EvidenceShoop
 
 CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
@@ -433,6 +436,7 @@ INTERRUPTED_SPEAK Arin
     "I'm wha---"
 
 SCREEN_SHAKE
+SFX smack
 POSE Dan Angry
 SPEAK Dan
     "BELIEVEABLE!"
