@@ -14,7 +14,7 @@ EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
 
-PLAY_MUSIC OBJECTSOFVICTORY
+PLAY_MUSIC DLFTS
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // START SCRIPT
@@ -22,13 +22,11 @@ PLAY_MUSIC OBJECTSOFVICTORY
 
 
 FADE_TO_LOBBY
-PLAY_MUSIC OBJECTSOFVICTORY
 JUMPCUT LOBBY
 CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
 SPEAK Dan
     "KSST."
-
 SFX chug
 
 SPEAK Dan
@@ -57,7 +55,7 @@ SPEAK Jory
     "You guys really saved my butt out there! I can't thank you enough!"
 
 SPEAK Arin
-    "Anytime, man. We did what any good friend would have done."
+    "Anytime, man. We did that any good friend would have done."
 
 SPEAK Dan
     "You mean pose as lawyers illegally and thus tainting the sanctity of the law and all it stands for?"
@@ -66,7 +64,7 @@ SPEAK Arin
     "EXACTLY!"
 
 SFX dooropens
-WAIT 1
+
 SPEAK Arin
     "Ross!"
 
@@ -79,7 +77,7 @@ SPEAK Arin
     "Come by to sulk, Ross?"
 
 SPEAK Ross
-    "Nah, I just wanted to say sorry to everyone."
+    "Nah, I just wanted to say sorry to everyone"
 
 SPEAK Ross
     "I mean, I knew all this was just for the 10 minute power hour, but even still--"
@@ -99,12 +97,10 @@ POSE Dan Angry
 
 SPEAK Arin
     "Jory did you know about this?"
-CHARACTER_LOCATION Jory Lobby
-POSE Sweaty
+
 SPEAK Jory
     "No way man! Nobody ever tells me anything."
 
-CHARACTER_LOCATION Ross Lobby
 SPEAK Ross
     "Huh... so who's idea was all this? Brent?"
 
@@ -136,9 +132,7 @@ SPEAK Dan
     "Yeah you're probably right... but I'm gonna hold out hope for once."
 
 SFX pageturn
-WAIT 1
-SPEAK Arin
-    "...?"
+
 SFX realization
 
 POSE Dan Surprised

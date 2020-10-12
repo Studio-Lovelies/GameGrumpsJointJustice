@@ -69,7 +69,8 @@ SPEAK Dan
 SPEAK Arin
     "What are you talking about, Dan?"
 
-POSE Dan SideLaugh
+POSE Dan SideNormal
+SPEAK Dan
     "Roll with me Arin, I got this one."
 
 ANIMATION Dan SideObjectionIntro
@@ -78,16 +79,18 @@ SPEAK Dan
     "What I mean is this!"
 
 POSE Dan Zoom
-
+SFX objectionclean
+PLAY_MUSIC HUFFPUFFPURSUIT
 SPEAK Dan
     "I don't think that's jizz AT ALL!"
 
+SFX stab
 JUMPCUT COURT_WITNESS
 ANIMATION Ross DamageNoHelm
 POSE Ross NoHelm
 SPEAK_FROM COURT_WITNESS
     "Huh?!"
-
+SFX stab
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Sweaty
 SPEAK "Tutorial Boy"
@@ -101,6 +104,7 @@ SPEAK "Judge Brent"
 POSE Dan SideLean
 SPEAK_FROM COURT_ASSISTANT
     "I think I know what it is, and if I can have those dinosaurs..."
+POSE Dan SideObjection
 SPEAK Dan
     "I think I can prove Jory's innocence!"
 
@@ -109,6 +113,8 @@ POSE Arin Thinking
 THINK Arin
     "(Wait... I think I know what Dan's getting at.)"
 
+SCREENSHAKE
+SFX deskslam
 ANIMATION Arin DeskSlam
 POSE Arin Point
 SPEAK Arin
@@ -124,17 +130,17 @@ DEFINE Taste
     SPEAK Arin
         "...so we can find out what's really covering them!"
 
-    SPEAK_FROM COURT_WITNESS
+    JUMPCUT COURT_WITNESS
     POSE Ross Glaring
     SPEAK Ross
         "GROSS!"
 
-    SPEAK_FROM COURT_PROSECUTION
+    JUMPCUT COURT_PROSECUTION
     POSE "Tutorial Boy" Sweaty
     SPEAK "Tutorial Boy"
         "You can't be serious."
 
-    SPEAK_FROM COURT_DEFENSE
+    JUMPCUT COURT_DEFENSE
     POSE Arin DeskSlam
     SPEAK Arin
         "I'm deadly serious!"
@@ -147,7 +153,8 @@ DEFINE Smell
     POSE Arin Confident
     SPEAK Arin
         "...so we can find out what's really covering them!"
-
+    
+    SFX stab
     JUMPCUT COURT_WITNESS
     ANIMATION Ross DamageNoHelm
     POSE Ross NoHelm
@@ -156,10 +163,11 @@ DEFINE Smell
 
     SHOUT "Tutorial Boy" Objection
 
-    SPEAK_FROM COURT_PROSECUTION
+    JUMPCUT COURT_PROSECUTION
     SFX damage1
-    ANIMATION "Tutorial boy" HeadSlam
+    ANIMATION "Tutorial Boy" HeadSlam
     POSE "Tutorial Boy" Angry
+    SPEAK "Tutorial Boy"
         "That is an absurd request! I object to this!"
     SPEAK "Tutorial Boy"
         "No trivial stain is going to change the outcome of this trial!"
@@ -170,7 +178,7 @@ DEFINE Smell
     JUMPCUT COURT_DEFENSE
     POSE Arin Point
     SPEAK Arin
-        "Then let us find out for sure to put all doubt to rest!"
+        "Then let's find out for sure!"
 
 END_DEFINE
 
@@ -194,11 +202,12 @@ DEFINE Rub
   SPEAK Arin
     "What I mean to say is, Your Honor..."
 
+END_DEFINE
+
 CHOICE
     "Taste them." Taste 1
     "Smell them." Smell 1
     "Rub them on his nipples." Rub 0
-
 END_CHOICE
 
 JUMPCUT COURT_JUDGE
@@ -246,7 +255,7 @@ SPEAK Arin
     "Yeah, we can prove it. With..."
 
 
-PRESENT Jory'sBackpack
+//PRESENT Jory'sBackpack
 
 //Incorrect Evidence
 //SPEAK_FROM COURT_JUDGE
@@ -271,7 +280,7 @@ PRESENT Jory'sBackpack
 SHOUT Arin takethat
 
 SHOW Jory'sBackpack r
-
+STOP_MUSIC
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
 SPEAK_FROM COURT_JUDGE
@@ -291,7 +300,7 @@ SPEAK "Judge Brent"
     "..."
 WAIT 2
 
-PLAY_MUSIC 
+PLAY_MUSIC OBJECTION_DEFENSE_STARLIGHT_BRIGADE
 SFX lightbulb
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
@@ -349,6 +358,7 @@ SPEAK Dan
     "I KNEW IT!"
 
 JUMPCUT COURT_DEFENSE
+SFX stab2
 ANIMATION Arin Shock
 SPEAK Arin
     "!"
@@ -385,9 +395,10 @@ SPEAK Dan
 
 JUMPCUT COURT_WITNESS
 ANIMATION Ross DamageNoHelm
+SFX stab
 POSE Ross NoHelm
 SPEAK Ross
-    "ACK!"
+    "OH NO!"
 
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Sweaty
@@ -397,7 +408,7 @@ SPEAK "Tutorial Boy"
 JUMPCUT COURT_DEFENSE
 POSE Arin Thinking
 THINK Arin
-    "(Yeah, how %1does%0 that prove anything?)"
+    "(Yeah, how does that prove anything?)"
 
 WAIT 1
 
@@ -429,7 +440,7 @@ SPEAK Arin
 
 POSE Arin Normal
 SPEAK Arin
-    "See... what you don't, know Mister Tutorial dude--"
+    "See... what you don't know, Mister Tutorial dude--"
 
 SPEAK_FROM COURT_PROSECUTION
     "It's Tutorial BOY, thank you very much!"
@@ -552,6 +563,7 @@ SPEAK Arin
     "And since Dan has proven that the stains are in fact milk, that makes it impossible for Jory to go near them!"
 
 ANIMATION Arin DeskSlam
+SFX deskslam
 POSE Arin DeskSlam
 SPEAK Arin
     "No one else likes milk like Ross does, and that makes him our real culprit!"
@@ -559,7 +571,8 @@ SPEAK Arin
 STOP_MUSIC
 JUMPCUT COURT_WITNESS
 POSE Ross NoHelm
-
+SFX shook2
+SCREENSHAKE
 ANIMATION Ross RossBreakdown
 POSE Ross Floor
 FADE_TO_BLACK

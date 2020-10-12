@@ -156,7 +156,9 @@ DEFINE PressA2
         "But this isn't being broadcasted..."
     POSE "Tutorial Boy" Sweaty
     
-    SPEAK_FROM COURT_PROSECUTION
+    JUMPCUT COURT_PROSECUTION
+    SFX morphTimeUp
+    SPEAK Ross
         "Quick! Back to the testimony before we break the fourth wall again!"
     JUMPCUT COURT_JUDGE
     ANIMATION "Judge Brent" Nodding
@@ -506,7 +508,7 @@ SPEAK_FROM COURT_WITNESS
 
 POSE Ross SweatyHelm
 SPEAK_FROM COURT_WITNESS
-    "I... guess you're right! Guess I can't hide it any longer."
+    "I guess... you're right! Guess I can't hide it any longer."
 
 JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam

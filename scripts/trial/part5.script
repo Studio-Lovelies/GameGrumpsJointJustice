@@ -367,7 +367,7 @@ FADE_TO_BLACK
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
 FADE IN
-PLAY_MUSIC
+
 SPEAK "Judge Brent"
     "So you searched the backpack in more than one place and found the dinos."
 POSE "Judge Brent" Normal
@@ -796,7 +796,7 @@ WAIT 2
 
 SFX thump
 
-PLAY_MUSIC HUFFPUFFPURSUIT
+PLAY_MUSIC DRAGONOBJECTION
 
 JUMPCUT COURT_WITNESS
 POSE Ross NoHelm

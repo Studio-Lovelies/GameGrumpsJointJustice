@@ -89,7 +89,7 @@ SPEAK_QUIET Ross
     "kangaroo court if i ever saw one..."  // WN -- any way to make it obvious it's muttered? // IL -- Maybe write it all in lower case?
 
 SPEAK_FROM COURT_JUDGE
-    "Excuse me?"
+    "What was that?"
 
 POSE Ross SweatyHelm
 SPEAK_FROM COURT_WITNESS
@@ -111,6 +111,7 @@ SPEAK Arin
     "That a gavel, lubed properly, has many uses?"
 
 POSE Dan Fist
+SFX smack
 SPEAK Dan
     "No!"
 
@@ -138,6 +139,7 @@ SPEAK Dan
 
 WAIT 1
 
+POSE Dan SideLean
 SPEAK Dan
     "...Usually, anyway."
 POSE "Judge Brent" Warning
