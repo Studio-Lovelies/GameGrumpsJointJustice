@@ -49,19 +49,22 @@ JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
 SPEAK "Judge Brent"
     "Hmmm. That's a bold accusation you've raised, Arin."
+POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
     "But how could this be true? Didn't Ross find them in the first place?"
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "We saw him find them in Jory's backpack, why would Ross find them himself #if he was the one who stole them?"
 
-POSE "Tutorial boy" Confident
-SPEAK_FROM COURT_PROSECUTION
+PLAY_MUSIC ANNOUNCE
+JUMPCUT COURT_PROSECUTION
+POSE "Tutorial Boy" Confident
+SPEAK "Tutorial Boy"
     "The answer to that is simple, my fine judge! It's because he DIDN'T steal them!"
 SPEAK "Tutorial Boy"
     "The defense is simply grasping at straws!"
 SPEAK "Tutorial Boy"
-    "He knows Jory is guilty, so he's throwing out accusations to confuse the Jury!"
+    "He knows Jory is guilty, so he's throwing out accusations to #confuse the jury!"
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy
     "How dare you sully the name of JUSTICE by proposing this preposterous position!"
@@ -80,20 +83,26 @@ SPEAK Arin
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "Regardless of that fact, I some kind proof or evidence that suggests that Ross was the culprit."
+    "Regardless of that fact, I need proof or evidence that suggests that Ross was the culprit."
 
 JUMPCUT COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
-    "HAH! Good luck proving that, Video Game Boy. I'd like to see you try!"
+    "HAH! Good luck proving that, $qVideo Game Boy.$q I'd like to see you try!"
 
+STOP_MUSIC
 PAN COURT_PROSECUTION COURT_DEFENSE
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
 SPEAK Arin
-    "I'll do better than that because I'm the one who wins!"
+    "I'll do better than that..."
+
+PLAY_MUSIC DRAGONOBJECTION
+POSE Arin Point
+SPEAK Arin
+ "...because I'm the one who wins!"
 
 JUMPCUT COURT_PROSECUTION
 SCREEN_SHAKE
@@ -107,9 +116,9 @@ POSE Arin Confident
 SPEAK Arin
     "Check this out!"
 
-PRESENT_EVIDENCE BentCoins
+//PRESENT_EVIDENCE BentCoins
 
-SPEAK Arin takethat
+SHOUT Arin takethat
 
 SPEAK Arin
     "These are the Goodboy Coins found inside the backpack!"
@@ -117,6 +126,7 @@ SPEAK Arin
     "Notice how they're bent and scuffed now? Don't you realize what that means?"
 
 STOP_MUSIC
+SFX recordscratch
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideNormal
 SPEAK Dan
@@ -156,15 +166,17 @@ SPEAK Arin
 
 PLAY_MUSIC DRAGONOBJECTION
 
+POSE Arin Point
 SPEAK Arin
     "There is no way he would have stuffed the dinosaurs in such a way either!"
 
 JUMPCUT COURT_WITNESS
-ANIMATION Ross DamageNoHelm
 SFX stab
+ANIMATION Ross DamageNoHelm
 POSE Ross NoHelm
 SPEAK Ross
     "GUH!"
+
 
 JUMPCUT COURT_PROSECUTION
 SFX damage1
@@ -174,25 +186,28 @@ SPEAK "Tutorial Boy"
     "RIDICULOUS! I don't believe a word of that! There's no way someone would be so careful around such pointless coins."
 
 JUMPCUT COURT_DEFENSE
-ANIMATION Arin DeskSlam
 SFX deskslam
+ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
 SPEAK Arin
     "That might be true for most people, but not our Jory!"
 
-ANIMATION Arin Objection
+
 POSE Arin Point
 SPEAK Arin
     "We've already heard evidence that proves Jory cared about those coins, and I've got it right here!"
 
-PRESENT_EVIDENCE LivestreamRecording
-
-POSE Arin Point
+//PRESENT_EVIDENCE LivestreamRecording
+SHOUT Arin takethat
+POSE Arin PaperSlap
 SPEAK Arin
     "Recall Jory's testimony, how he was noted to be taking care of those coins carefully!"
+POSE Arin Thinking
 SPEAK Arin
     "Now I ask the court to consider, why would Jory take such care only to trash the coins in his backpack minutes later?"
 
+SFX deskslam
+ANIMATION Arin DeskSlam
 POSE Arin CloseUp
 SFX objectionclean
 SPEAK Arin
@@ -200,11 +215,11 @@ SPEAK Arin
 
 JUMPCUT COURT_WITNESS
 POSE Ross NoHelm
-SFX stab
+SFX stab2
 ANIMATION Ross DamageNoHelm
 SPEAK Ross
     "OOF!"
-SFX stab
+SFX stab2
 ANIMATION Ross DamageNoHelm
 SPEAK Ross
     "ARGH!"
@@ -242,7 +257,7 @@ POSE Arin Sweaty
 THINK Arin
     "(No way!)"
 
-PLAY_MUSIC LOGICANDTRAINS
+PLAY_MUSIC LOGICANDTRAINS //should be announce
 
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Normal
@@ -299,27 +314,27 @@ SPEAK "Judge Brent"
 JUMPCUT COURT_DEFENSE
 POSE Arin Sweaty
 THINK Arin
-    "(I think Brent just likes hitting that Gavel...)"
+    "(I think Brent just likes hitting that Gavel and yelling...)"
 
 SPEAK_FROM COURT_PROSECUTION
     "It is as I said, your honor. Ross simply mistook which pocket he found them in."
 SPEAK "Tutorial Boy"
     "The coins were damaged some point between Jory placing them inside the backpack and the dinos being found."
 SPEAK "Tutorial Boy"
-    "Most likely Ross bent them while searching the dinos he had seen Jory put into his backpack!"
+    "Most likely Ross bent them while searching for the dinos #Jory had put into his backpack!"
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
 SPEAK "Judge Brent"
-    "Hmm... I see the logic of that."
+    "Hmm... I could see that happening, certainly."
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "And since there is nobody here that can refute this point, I have to side with the prosecution"
+    "And since there is nobody here that can refute this point, I have to side with the prosecution,"
 
 STOP_MUSIC
 JUMPCUT COURT_DEFENSE
-ANIMATION Arin Shock
 SFX stab2
+ANIMATION Arin Shock
 POSE Arin Sweaty
 SPEAK Arin
     "Are you freaking kidding me?!?"
@@ -344,7 +359,12 @@ SPEAK Ross
 JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam
 THINK Arin
-    "(This is it then. I'll get him for sure this21)"
+    "(This is it then. I have to get him here. For Jory!)"
+
+JUMPCUT COURT_ASSISTANT
+POSE Dan Fist
+SPEAK Dan
+    "You got this dude, we can't give up now!"
 
 FADE_TO_BLACK
 
@@ -410,8 +430,8 @@ DEFINE PressD1
     POSE Arin Normal
     SPEAK Arin
         "So you instantly remembered something like that?"
-    ANIMATION Arin DeskSlam
     SFX deskslam
+    ANIMATION Arin DeskSlam
     POSE Arin DeskSlam
     SPEAK Arin
         "Seems rather convenient to me!"
@@ -421,7 +441,7 @@ DEFINE PressD1
     SPEAK Ross
         "It happened like an hour after I saw him!"
     SPEAK Ross
-        "Not exactly hard to remember that. Not that you would know, Arin"
+        "Not exactly hard to remember that. Not that you would know, Arin..."
 
     PAN COURT_WITNESS COURT_DEFENSE
     SPEAK Arin
@@ -480,7 +500,7 @@ DEFINE PressD2
     SPEAK Arin
         "That YOU knew it!"
 
-    PAN COURT_DEFENSE COURT_PROSECUTION
+    JUMPCUT COURT_PROSECUTION
     SPEAK "Tutorial Boy"
         "..."
     WAIT 1
@@ -506,6 +526,7 @@ DEFINE PressD3
         "Yes...?
 
     JUMPCUT COURT_DEFENSE
+    POSE Arin Embarassed
     SPEAK Arin
         "Uh... Ok good! Just... making sure I heard you correctly."
 
@@ -526,9 +547,13 @@ DEFINE PressD3
     SPEAK Ross
         "I'd like to see you try!"
 
-    SPEAK Ross
-        "Anyways as I was saying..."
+    JUMPCUT COURT_JUDGE
+    POSE "Judge Brent" Angry
+    SPEAK "Judge Brent"
+        "AHEM!"
     POSE Ross Sweaty
+    SPEAK Ross
+        "Yes, anyways, as I was saying..."
 END_DEFINE
 
 DEFINE PressD4
@@ -598,7 +623,7 @@ END_DEFINE
 WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
     "Yeah, so... after I heard the Dinos went missing I remembered that I saw Jory earlier." PressD1 0
     "So I went back there to search his backpack for the dinos." PressD2 0
-    "I first searched the front pocket where I saw the coins in the bag" PressD3 0
+    "I first searched the front pocket where I saw the coins in the bag." PressD3 0
     "But when I saw they weren't there, I turned the backpack on its side to check the left side pocket." PressD4 0
     "When I opened up the left side pocket, that's where I found the dinosaurs! Yes, that's exactly how it happened." PressD5 1
 
@@ -732,24 +757,26 @@ DEFINE Choice2
 
 END_DEFINE
 
-FAKE_CHOICE
-    "Check the backpack" Choice1
-    "Give the !!!! up, this !!!! is too hard" Choice2
+CHOICE
+    "Check the backpack" Choice1 1
+    "Give the !!!! up, this !!!! is too hard" Choice2 0
 
-
-
-PRESENT_EVIDENCE Jory'sBackpack
+END_CHOICE
+//////////////
+//end choice//
+//////////////
+//PRESENT_EVIDENCE Jory'sBackpack
 
 SHOUT Arin takethat
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Point
 SPEAK Arin
-    "Your honor, I'd like you to check the pocket Ross claims to have found our dinos!"
+    "Your honor, I'd like you to inspect the pocket Ross claims to have found our dinos!"
 POSE "Judge Brent" Surprised
 SPEAK_FROM COURT_JUDGE
-    "Check... the backpack?"
-
+    "Inspect the backpack...?"
+SFX realization
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Oh yes. Of course, we can check the back pocket to see if our witness is worth his bacon."
@@ -772,20 +799,20 @@ SPEAK "Judge Brent"
 
 STOP_MUSIC
 
-potatoes2
+SFX potatoes2
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Sweaty
 SPEAK Arin
     "..."
-potatoes2
+SFX potatoes2
 
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Sweaty
 SPEAK "Tutorial Boy"
     "..."
 
-potatoes2
+SFX potatoes2
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
@@ -807,7 +834,13 @@ PAN COURT_WITNESS COURT_DEFENSE
 JUMPCUT COURT_DEFENSE
 POSE Arin Point
 SPEAK Arin
-    "That's right! Potatoes! And his backpack is filled to the brim with them!"
+    "That's right! A nearly endless supply of potatoes!" 
+SFX deskslam
+ANIMATION Arin DeskSlam
+POSE Arin DeskSlam
+SPEAK Arin
+    "And his backpack is filled to the brim with them!"
+
 
 JUMPCUT COURT_PROSECUTION
 SFX damage1
@@ -844,7 +877,7 @@ WAIT 1
 SFX lightbulb
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
-    "It is as the defense says. This backpack is full of potatoes!"
+    "It is as the defense says. This backpack is COMPLETELY filled with potatoes!"
 
 JUMPCUT COURT_WITNESS
 POSE Ross NoHelm
@@ -867,7 +900,7 @@ SPEAK Dan
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
 SPEAK "Judge Brent"
-    "Well you might have a serious problem here Jory. I think we can get you the help that you need"
+    "Well you might have a serious problem here Jory. I think we can get you the help that you need."
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
@@ -893,7 +926,7 @@ JUMPCUT COURT_DEFENSE
 POSE Arin Sweaty
 THINK Arin
     "(It's my job to do that though...)"
-
+//PLA_MUSIC ANNOUNCE
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Objecting
 SPEAK "Tutorial Boy"
@@ -980,7 +1013,7 @@ THINK Arin
     "(I'm sorry Jory... I failed.)"
 
 SPEAK_FROM COURT_JUDGE
-    "This court finds the defendant, Jory Grifis..."
+    "This court finds the defendant, Jory Griffis..."
 
 WAIT 2
 

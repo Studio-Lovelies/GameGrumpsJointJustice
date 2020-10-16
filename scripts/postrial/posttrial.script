@@ -98,15 +98,16 @@ POSE Dan Angry
 SPEAK Arin
     "Jory did you know about this?"
 
+CHARACTER_LOCATION Jory LOBBY
 SPEAK Jory
     "No way man! Nobody ever tells me anything."
-
+CHARACTER_LOCATION Ross LOBBY
 SPEAK Ross
     "Huh... so who's idea was all this? Brent?"
 
 SPEAK Arin
     "No way, he's way too responsible. Maybe it was that tutorial guy. He's the only variable here."
-
+CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
 SPEAK Dan
     "Huh. Yea that's right. He's still here right?"

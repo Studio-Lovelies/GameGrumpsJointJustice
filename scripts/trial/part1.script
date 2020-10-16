@@ -174,10 +174,32 @@ SPEAK "Tutorial Boy"
 SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE Jory'sBackpack "Jory's Backpack"
 
-//ADD STUFF ABOUT MILKSTAIN ON BACKPACK
+JUMPCUT COURT_DEFENSE
+POSE Arin Sweaty
+SPEAK Arin
+    "The heck is that %1white stain%0 there?"
+JUMPCUT COURT_ASSISTANT
+POSE Dan SideLaugh
+SPEAK Dan
+    "Maybe Jory took the NSP song "Objects of Desire" as inspiration. Know what I mean?"
+
+JUMPCUT COURT_PROSECUTION
+SPEAK "Tutorial Boy"
+    "Unfortunately we ALL know what you mean $qMr. Sexbang$q..."
+
+JUMPCUT COURT_ASSISTANT
+POSE Dan SideNormal
+SPEAK Dan
+    "Um, excuse me? That's $Mr. Business$q to you, sir."
+
+JUMPCUT COURT_PROSECUTION
+SPEAK "Tutorial Boy"
+    "Yes... quite."
 
 SPEAK "Tutorial Boy"
-    "However, when these dinos went missing, they were suspiciously found in the defendant's backpack!"
+    "As I was saying..."
+SPEAK "Tutorial Boy"
+    "...when these dinos went missing, they were suspiciously found in the defendant's backpack!"
 SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE StolenDinos "Dinos"
 
