@@ -56,7 +56,7 @@ POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "We saw him find them in Jory's backpack, why would Ross find them himself #if he was the one who stole them?"
 
-PLAY_MUSIC ANNOUNCE
+PLAY_MUSIC ANNOUNCEPATROL
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Confident
 SPEAK "Tutorial Boy"
@@ -257,7 +257,7 @@ POSE Arin Sweaty
 THINK Arin
     "(No way!)"
 
-PLAY_MUSIC LOGICANDTRAINS //should be announce
+PLAY_MUSIC LOGICANDTRAINS
 
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Normal
@@ -926,7 +926,7 @@ JUMPCUT COURT_DEFENSE
 POSE Arin Sweaty
 THINK Arin
     "(It's my job to do that though...)"
-//PLA_MUSIC ANNOUNCE
+PLAY_MUSIC CTTRVS
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Objecting
 SPEAK "Tutorial Boy"

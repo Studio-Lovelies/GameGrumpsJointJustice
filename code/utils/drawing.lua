@@ -9,7 +9,7 @@ function DrawCenteredRectangle(options)
 
     local body = options.body
     local bodyHeight = options.bodyHeight or 380
-    local bodyPadding = options.bodyPadding or 40
+    local bodyPadding = options.bodyPadding or 80
 
     local width = options.width
     local height = options.height

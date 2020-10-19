@@ -146,6 +146,8 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "A recording of the livestream COULD be added to the court record if you riddle m-"
 
+STOP_MUSIC
+SFX recordscratch
 POSE Arin Annoyed
 SPEAK_FROM COURT_DEFENSE
     "Yeah Yeah, I know press 'Z' to see the court record, could you get to the point, please?"
@@ -165,6 +167,7 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "Oh yes. The livestream."
 
+PLAY_MUSIC LOGICANDTRAINS
 SPEAK "Tutorial Boy"
     "During the livestream, the Switch they were using suddenly failed."
 SPEAK "Tutorial Boy"
@@ -181,7 +184,7 @@ SPEAK Arin
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideLaugh
 SPEAK Dan
-    "Maybe Jory took the NSP song "Objects of Desire" as inspiration. Know what I mean?"
+    "Maybe Jory took the NSP song $qObjects of Desire$q as inspiration. Know what I mean?"
 
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
@@ -218,6 +221,7 @@ SPEAK "Tutorial Boy"
     "This clearly suggests that the perpetrator is the defendant!"
 SPEAK "Tutorial Boy"
     "I am here to prove beyond any doubt that Jory Griffis stole the dinosaurs..."
+POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "...in order to sabotage the Ten Minute Power Hour!"
 
