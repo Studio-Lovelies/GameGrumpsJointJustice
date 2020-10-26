@@ -1,0 +1,99 @@
+/////////////////
+//FAKECHOICE/////
+/////////////////
+DEFINE Choice1
+	WAIT 1
+	JUMPCUT COURT_DEFENSE
+	POSE Arin Normal
+	SPEAK Arin
+		"Your honor, I think there is something worth checking out about that backpack."
+	ANIMATION Arin DeskSlam
+	POSE DeskSlam
+	SPEAK Arin
+		"If the court will allow, I'd like to see if my hunch is correct!"
+
+SHOUT "Tutorial Boy" Objection
+	PAN COURT_DEFENSE COURT_PROSECUTION
+	SPEAK "Tutorial Boy"
+		"Absolutely not! Your honor they will tamper with the evidence!"
+	SPEAK "Tutorial Boy"
+		"These two care not for justice, only for their friend to avoid justice!"
+	
+	SFX damage1
+	ANIMATION "Tutorial Boy" HeadSlam
+		
+	JUMPCUT COURT_JUDGE
+	POSE "Judge Brent" Warning
+	SPEAK "Judge Brent"
+		"I've known Arin for years now, and he is one of the most honest people I've met"
+	POSE "Judge Brent" Normal
+	SPEAK "Judge Brent" 
+		"Certainly in a normal court, like in Attitude City, such things are not allowed."
+
+	POSE "Judge Brent" Warning
+	SPEAK "Judge Brent"
+		"But these are hardly normal circumstances. Thus I will allow the defense to examine the backpack."
+
+	SPEAK "Judge Brent"
+		"Do I make myself clear?"
+
+	JUMPCUT COURT_PROSECUTION
+	POSE "Tutorial Boy" Sweaty
+	SPEAK "Tutorial Boy"
+		"Y-Yes! Absolutely crystal your honor."
+
+	JUMPCUT COURT_JUDGE
+	SPEAK "Judge Brent"
+		"Good"
+	POSE "Judge Brent" Normal
+	SPEAK "Judge Brent"
+		"The defense may examine the evidence"
+
+	JUMPCUT COURT_DEFENSE
+	POSE Arin Confident
+	SPEAK Arin	
+		"Thank you, your honor! Now let's take a look at this backpack!"
+
+WAIT 2
+
+	ANIMATION Arin Shocked
+	POSE Arin Sweaty
+	SPEAK Arin
+		"Holy jeeez man what's in this thing? It's so heavy."
+	
+WAIT 1
+
+SFX realization
+	POSE Arin Normal
+	SPEAK Arin
+		"That's it! I got it! I know how he's lying"
+
+	JUMPCUT COURT_ASSISTANT
+	POSE Dan Fist
+	SPEAK Dan 
+		"Well don't just stand there, present the proof so we can get on with our lives!"
+
+END_DEFINE
+
+DEFINE Choice2
+	WAIT 1
+	JUMPCUT COURT_DEFENSE
+	POSE Arin Sweaty
+	SPEAK Arin
+		"Fuck man I don't know fucking fuck I don't know jeez man!"
+
+	JUMPCUT COURT_ASSISTANT
+	POSE Dan Angry
+	SPEAK Dan
+		"Well damn dude no need to freak out! Let's just see if we can look at the backpack."
+
+	JUMPCUT COURT_DEFENSE
+	SPEAK Arin
+		"Alright, I hope you're right about this!"
+
+END_DEFINE
+
+FAKE_CHOICE
+    "Check the backpack" Choice1
+    "Give the fuck up, this shit is too hard" Choice2
+END_CHOICE
