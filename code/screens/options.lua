@@ -13,11 +13,6 @@ function DrawOptionsScreen()
     local backY = blackImage:getHeight()*blackImageScale + 10
     local backH = 60
 
-    local debugW = (dimensions.window_width * 1/3.75)
-    local debugX = (dimensions.window_width * 11.25/18) - debugW
-    local debugY = blackImage:getHeight()*blackImageScale - 150
-    local debugH = 60
-
     local volumeW = (dimensions.window_width * 1/3.75)
     local volumeX = (dimensions.window_width * 11.25/18) - volumeW
     local volumeY = blackImage:getHeight()*blackImageScale - 260
@@ -32,9 +27,7 @@ function DrawOptionsScreen()
     local dy = 8
 
     love.graphics.setColor(0.44,0.56,0.89)
-    if TitleSelection == "Debug Mode" then
-        love.graphics.rectangle("fill", debugX-dx, debugY-dy, debugW+2*dx, debugH+2*dy)
-    elseif TitleSelection == "Volume" then
+    if TitleSelection == "Volume" then
         love.graphics.rectangle("fill", volumeX-dx, volumeY-dy, volumeW+2*dx, volumeH+2*dy)
     elseif TitleSelection == "Controls" then
         love.graphics.rectangle("fill", controlsX-dx, controlsY-dy, controlsW+2*dx, controlsH+2*dy)
@@ -50,7 +43,6 @@ function DrawOptionsScreen()
     else
         love.graphics.setColor(1,0,0)
     end
-    love.graphics.rectangle("fill", debugX, debugY, debugW, debugH)
 
     love.graphics.setColor(0.3,0.3,0.3)
     love.graphics.rectangle("fill", volumeX, volumeY, volumeW, volumeH)
@@ -67,16 +59,6 @@ function DrawOptionsScreen()
         backText,
         backX + backW/2-(backText:getWidth() * textScale)/2,
         backY + backH/2-(backText:getHeight() * textScale)/2,
-        0,
-        textScale,
-        textScale
-    )
-
-    local debugText = love.graphics.newText(GameFont, "Debug Mode")
-    love.graphics.draw(
-        debugText,
-        debugX + debugW/2-(debugText:getWidth() * textScale)/2,
-        debugY + debugH/2-(debugText:getHeight() * textScale)/2,
         0,
         textScale,
         textScale
@@ -107,9 +89,8 @@ end
 
 optionsSelections = {}
 optionsSelections[0] = "Back";
-optionsSelections[1] = "Debug Mode";
-optionsSelections[2] = "Volume";
-optionsSelections[3] = "Controls";
+optionsSelections[1] = "Volume";
+optionsSelections[2] = "Controls";
 TitleSelection = "Back";
 SelectionIndex = 0;
 blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
@@ -159,20 +140,13 @@ OptionsConfig = {
                     TitleSelection = "Options"
                     SelectionIndex = 1;
                 end
-            elseif TitleSelection == "Debug Mode" then
-                blip2:play()
-                if settings.debug then
-                    settings.debug = false
-                else
-                    settings.debug = true
-                end
             elseif TitleSelection == "Controls" then
                 blip2:play()
             end
         elseif key == controls.pause_nav_up then
             blip2:play()
             SelectionIndex = SelectionIndex + 1
-            if (SelectionIndex > 3) then
+            if (SelectionIndex > 2) then
                 SelectionIndex = 0;
             end
             TitleSelection = optionsSelections[SelectionIndex]
@@ -180,7 +154,7 @@ OptionsConfig = {
             blip2:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
-                SelectionIndex = 3;
+                SelectionIndex = 2;
             end
             TitleSelection = optionsSelections[SelectionIndex]
         elseif key == controls.press_right then

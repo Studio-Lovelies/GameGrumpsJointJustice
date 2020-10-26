@@ -42,6 +42,17 @@ function NewScene(scriptPath)
         end
     end
 
+    self.runCutscene = function(self, cutName, loc)
+        if loc == nil then
+            loc = 1
+        end
+
+        local cutscenes = deepcopy(self.cutscenes[cutName])
+        for i=#cutscenes, 1, -1 do
+            table.insert(self.stack, loc, cutscenes[i])
+        end
+    end
+
     self.update = function (self, dt)
         -- update the active event
         self.canShowCharacter = true
@@ -98,16 +109,16 @@ function NewScene(scriptPath)
         end
     end
 
-    self.drawBackgroundTopLayer = function (self, location, x,y)
+    self.drawBackgroundTopLayer = function (self, location, x, y)
         local background = Backgrounds[location]
 
         if background[2] ~= nil then
-            love.graphics.draw(background[2], x,y)
+            love.graphics.draw(background[2], x, y)
         end
     end
 
     self.draw = function (self, dt)
-        love.graphics.setColor(1,1,1)
+        love.graphics.setColor(1, 1, 1)
 
         -- draw the background of the current location
         local background = Backgrounds[self.location]
@@ -117,10 +128,10 @@ function NewScene(scriptPath)
 
         -- draw the character who is at the current location
         if self.canShowCharacter then
-            self:drawCharacterAt(self.location, 0,0)
+            self:drawCharacterAt(self.location, 0, 0)
         end
 
-        love.graphics.setColor(1,1,1)
+        love.graphics.setColor(1, 1, 1)
         if #self.stack >= 1 then
             if self.stack[1].event.characterDraw ~= nil then
                 self.stack[1].event:characterDraw(self)
@@ -129,11 +140,11 @@ function NewScene(scriptPath)
 
         -- draw the top layer of the environment, like desk on top of character
         if self.canShowBgTopLayer then
-            self:drawBackgroundTopLayer(self.location, 0,0)
+            self:drawBackgroundTopLayer(self.location, 0, 0)
         end
 
         -- if the current event has an associated graphic, draw it
-        love.graphics.setColor(1,1,1)
+        love.graphics.setColor(1, 1, 1)
         if #self.stack >= 1 then
             if self.stack[1].event.draw ~= nil then
                 self.stack[1].event:draw(self)
@@ -142,8 +153,8 @@ function NewScene(scriptPath)
 
         -- draw the textbox
         if not self.textHidden then
-            love.graphics.setColor(1,1,1)
-            love.graphics.draw(self.textBoxSprite,0,GraphicsHeight-self.textBoxSprite:getHeight())
+            love.graphics.setColor(1, 1, 1)
+            love.graphics.draw(self.textBoxSprite, 0, GraphicsHeight-self.textBoxSprite:getHeight())
 
             -- draw who is talking
             love.graphics.setFont(SmallFont)

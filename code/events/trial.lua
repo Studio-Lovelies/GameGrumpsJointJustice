@@ -153,12 +153,12 @@ function NewWitnessEvent(queue)
                 screens.courtRecords.displayed = false
 
                 if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex+2] then
-                    scene:runDefinition(self.queue[self.textIndex+1])
-                else
-                    if self.queue[self.textIndex+2] ~= "1" then
-                        scene:runDefinition(self.queue[self.textIndex+1], 2)
-                        return false
+                    if self.queue[self.textIndex+2] ~= "1" and self.queue[self.textIndex+2] ~= "0" then
+                        NewIssuePenaltyEvent(scene);
+                    elseif self.queue[self.textIndex+2] == "1" or self.queue[self.textIndex+2] == "0" then
+                        scene:runDefinition(self.queue[self.textIndex+1])
                     end
+                else return false
                 end
             end
         end
@@ -198,27 +198,20 @@ function NewWitnessEvent(queue)
     return self
 end
 
-function NewIssuePenaltyEvent()
+function NewIssuePenaltyEvent(scene)
     local self = {}
 
-    self.update = function (self, scene, dt)
-        scene.penalties = scene.penalties - 1
+    scene.penalties = scene.penalties - 1;
 
-        if scene.penalties <= 0 then
-            scene:runDefinition("TRIAL_FAIL")
-        end
-
-        return false
+    if scene.penalties <= 0 then
+        table.insert(scene.stack, {"FADE_TO_BLACK", NewFadeToBlackEvent()});
+        NewFadeToBlackEvent();
+        Episode:stop();
+        Episode = NewEpisode(settings.game_over_path);
+        Episode:begin();
     end
 
-    return self
-end
-
-function NewGameOverEvent()
-    local self = {}
-
     self.update = function (self, scene, dt)
-        love.event.push("quit")
         return false
     end
 
@@ -321,32 +314,41 @@ function NewGavelEvent()
     self.draw = function (self, scene)
         local gavelAnimation = Sprites["GavelAnimation"]
         local spr = gavelAnimation[self.index]
-        love.graphics.draw(spr, 0,0, 0, GraphicsWidth/spr:getWidth(),GraphicsHeight/spr:getHeight())
+        love.graphics.draw(spr, 0, 0, 0, GraphicsWidth/spr:getWidth(),GraphicsHeight/spr:getHeight())
     end
     return self
 end
 
-function NewPanEvent(from, to)
+function NewPanEvent(from, to, background)
     local self = {}
-    local courtPanSprite = Sprites["CourtPan"]
-    if from == "COURT_DEFENSE" then
-        self.xStart = 0
-    end
-    if from == "COURT_PROSECUTION" then
-        self.xStart = courtPanSprite:getWidth() - GraphicsWidth
-    end
-    if from == "COURT_WITNESS" then
-        self.xStart = courtPanSprite:getWidth()/2 - GraphicsWidth/2
+    self.background = background
+
+    if self.background == nil then
+        panBackground = Sprites["CourtPan"]
+        backgroundPrefix = "COURT"
+    else
+        panBackground = Sprites[self.background]
+        backgroundPrefix = self.background:upper()
     end
 
-    if to == "COURT_DEFENSE" then
+    if from == backgroundPrefix.."_DEFENSE" or backgroundPrefix.."_LEFT" then
+        self.xStart = 0
+    end
+    if from == backgroundPrefix.."_PROSECUTION" or backgroundPrefix.."_RIGHT" then
+        self.xStart = panBackground:getWidth() - GraphicsWidth
+    end
+    if from == backgroundPrefix.."_WITNESS" or backgroundPrefix.."_CENTER" then
+        self.xStart = panBackground:getWidth()/2 - GraphicsWidth/2
+    end
+
+    if to == backgroundPrefix.."_DEFENSE" or backgroundPrefix.."_LEFT" then
         self.xTo = 0
     end
-    if to == "COURT_PROSECUTION" then
-        self.xTo = courtPanSprite:getWidth() - GraphicsWidth
+    if to == backgroundPrefix.."_PROSECUTION" or backgroundPrefix.."_RIGHT" then
+        self.xTo = panBackground:getWidth() - GraphicsWidth
     end
-    if to == "COURT_WITNESS" then
-        self.xTo = courtPanSprite:getWidth()/2 - GraphicsWidth/2
+    if to == backgroundPrefix.."_WITNESS" or backgroundPrefix.."_CENTER" then
+        self.xTo = panBackground:getWidth()/2 - GraphicsWidth/2
     end
     self.x = self.xStart
 
@@ -363,21 +365,104 @@ function NewPanEvent(from, to)
         return self.x > self.xTo
     end
 
-    self.draw = function (self, scene)
-        love.graphics.draw(courtPanSprite, -1*self.x, 0)
-        scene:drawCharacterAt("COURT_DEFENSE", -1*self.x, 0)
-        scene:drawBackgroundTopLayer("COURT_DEFENSE", -1*self.x, 0)
-        scene:drawCharacterAt("COURT_PROSECUTION", courtPanSprite:getWidth() - GraphicsWidth -1*self.x, 0)
-        scene:drawBackgroundTopLayer("COURT_PROSECUTION", courtPanSprite:getWidth() - GraphicsWidth -1*self.x, 0)
-        scene:drawCharacterAt("COURT_WITNESS", courtPanSprite:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
-        scene:drawBackgroundTopLayer("COURT_WITNESS", courtPanSprite:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
+    self.draw = function(self, scene)
+        love.graphics.draw(panBackground, -1 * self.x, 0)
+        scene:drawCharacterAt(backgroundPrefix.."_DEFENSE", -1*self.x, 0)
+        scene:drawBackgroundTopLayer(backgroundPrefix.."_DEFENSE", -1*self.x, 0)
+        scene:drawCharacterAt(backgroundPrefix.."_PROSECUTION", panBackground:getWidth() - GraphicsWidth -1*self.x, 0)
+        scene:drawBackgroundTopLayer(backgroundPrefix.."_PROSECUTION", panBackground:getWidth() - GraphicsWidth -1*self.x, 0)
+        scene:drawCharacterAt(backgroundPrefix.."_WITNESS", panBackground:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
+        scene:drawBackgroundTopLayer(backgroundPrefix.."_WITNESS", panBackground:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
     end
 
     return self
+end
+
+function NewCutscenePanEvent(coord, from, to, background)
+    local self = {}
+    self.background = background
+    panBackground = Sprites["CourtPan"]
+    self.coord = coord
+    self.from = from
+    self.to = to
+
+    if self.coord == "x" then
+        if isNaN(from) then
+            if from:lower() == "right" or from:lower() == "r" then
+                self.xFrom = panBackground:getWidth() - GraphicsWidth
+            else
+                self.xFrom = 0
+            end
+        else
+            self.xFrom = self.from
+        end
+        if isNaN(to) then
+            if to:lower() == "left" or from:lower() == "l" then
+                self.xTo = 0
+            else
+                self.xTo = panBackground:getWidth() - GraphicsWidth
+            end
+        else
+            self.xTo = self.to
+        end
+    elseif self.coord == "y" then
+        if isNaN(from) then
+            if from:lower() == "top" or from:lower() == "t" then
+                self.xFrom = panBackground:getHeight() - GraphicsHeight
+            else
+                self.xFrom = 0
+            end
+        else
+            self.xFrom = self.from
+        end
+        if isNaN(to) then
+            if to:lower() == "bottom" or from:lower() == "b" then
+                self.xTo = 0
+            else
+                self.xTo = panBackground:getHeight() - GraphicsHeight
+            end
+        else
+            self.xTo = self.to
+        end
+    end
+    self.x = self.xFrom
+
+    self.update = function (self, scene, dt)
+        scene.canShowBgTopLayer = false
+        scene.canShowCharacter = false
+        scene.textHidden = true
+
+        self.x = self.x + 24*dt*60*GetSign(self.xTo-self.xFrom)
+        if self.xFrom < self.xTo then
+            return self.x < self.xTo
+        end
+
+        return self.x > self.xTo
+    end
+
+    self.draw = function(self, scene)
+        love.graphics.draw(panBackground, -1 * self.start, 0)
+    end
 end
 
 function tablelength(T)
     local count = 0
     for _ in pairs(T) do count = count + 1 end
     return count
-  end
+end
+
+function stringSplit(s, delimiter)
+    result = {};
+
+    for match in (s..delimiter):gmatch("(.-)"..delimiter) do
+        table.insert(result, match);
+    end
+    return result;
+end
+
+function isNaN(n)
+    if (tostring(n) == "nan") then
+        return true
+    else return false
+    end
+end

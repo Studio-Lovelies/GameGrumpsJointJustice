@@ -1,10 +1,12 @@
 function LoadScript(scene, scriptPath)
     scene.stack = {}
     scene.definitions = {}
+    scene.cutscenes = {}
     scene.type = ""
 
     local stack = scene.stack
     local definitions = {}
+    local cutscenes = {}
 
     local queuedSpeak = nil
     local queuedQuietSpeak = nil
@@ -164,12 +166,32 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewSceneEndEvent(), lineParts)
                 end
 
+                if lineParts[1] == "GAME_OVER" then
+                    AddToStack(stack, NewGameOverEvent(), lineParts)
+                end
+
                 if lineParts[1] == "DEFINE" then
                     scene.definitions[lineParts[2]] = {}
                     stack = scene.definitions[lineParts[2]]
                 end
                 if lineParts[1] == "END_DEFINE" then
                     stack = scene.stack
+                end
+                if lineParts[1] == "CUTSCENE" then
+                    scene.cutscenes[lineParts[2]] = {}
+                    stack = scene.cutscenes[lineParts[2]]
+                end
+                if lineParts[1] == "END_CUTSCENE" then
+                    stack = scene.stack
+                end
+                if lineParts[1] == "CUTSCENE_PAN" then
+                    AddToStack(stack, NewCutscenePanEvent(lineParts[2], lineParts[3], lineParts[4], lineParts[5]), lineParts)
+                end
+                if lineParts[1] == "PLAY_CUTSCENE" then
+                    AddToStack(stack, NewFadeToBlackEvent(), lineParts)
+                    AddToStack(stack, PlayCutscene(lineParts[2]), lineParts)
+                    AddToStack(stack, NewFadeToBlackEvent(), lineParts)
+                    AddToStack(stack, NewCutToEvent("BLACK_SCREEN"), lineParts)
                 end
                 if lineParts[1] == "JUMP" then
                     AddToStack(stack, NewClearExecuteDefinitionEvent(lineParts[2]), lineParts)
@@ -179,7 +201,11 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewCutToEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "PAN" then
-                    AddToStack(stack, NewPanEvent(lineParts[2], lineParts[3]), lineParts)
+                    if lineParts[4] ~= nil then
+                        AddToStack(stack, NewPanEvent(lineParts[2], lineParts[3], lineParts[4]), lineParts)
+                    else
+                        AddToStack(stack, NewPanEvent(lineParts[2], lineParts[3]), lineParts)
+                    end
                     AddToStack(stack, NewCutToEvent(lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "POSE" then
@@ -225,7 +251,7 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewShowEvent(lineParts[2], lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "PRESENT" then
-                    AddToStack(stack, NewPresentEvent(lineParts[2]), lineParts)
+                    AddToStack(stack, NewPresenEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "FADE_TO_BLACK" then
                     AddToStack(stack, NewFadeToBlackEvent(), lineParts)

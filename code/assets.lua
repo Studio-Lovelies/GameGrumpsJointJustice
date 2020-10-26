@@ -14,7 +14,7 @@ function LoadBackgrounds(directoryName)
             elseif string.match(i,"_2") then
                 local a = i:gsub(".png","")
                 local a = a:gsub("_2","")
-                table.insert(Backgrounds[a],love.graphics.newImage(directoryName..i))
+                table.insert(Backgrounds[a], love.graphics.newImage(directoryName..i))
             else
                 local a = i:gsub(".png","")
                 Backgrounds[a] = {love.graphics.newImage(directoryName..i)}

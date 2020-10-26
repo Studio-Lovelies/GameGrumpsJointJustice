@@ -3,7 +3,7 @@ settings = {
         setting this to true speeds up the scrollSpeed without needing to hold down "lshift"
         this can also be set by running the startup command of `love . debug`
     ]]
-    debug = true; -- scriptevents.lua
+    debug = false; -- scriptevents.lua
 
     master_volume = 25;
     text_scroll_speed = 30;
@@ -20,6 +20,8 @@ settings = {
     black_screen_path = "backgrounds/BLACK_SCREEN.png";
     lobby_path = "backgrounds/LOBBY.png";
     court_path = "sprites/WideShot.png";
+    saves_path = "saves/";
+    game_over_path = "scripts/gameover.meta";
     jory_trial_1_path = "scripts/jory_trial_1.meta";
     jory_trial_2_path = "scripts/jory_trial_2.meta";
     jory_trial_3_path = "scripts/jory_trial_3.meta";
