@@ -928,7 +928,7 @@ THINK Arin
     "(It's my job to do that though...)"
 PLAY_MUSIC CTTRVS
 JUMPCUT COURT_PROSECUTION
-POSE "Tutorial Boy" Objecting
+//POSE "Tutorial Boy" Objecting
 SPEAK "Tutorial Boy"
     "But all he has stated is baseless conjecture! He has no REAL proof that Ross was the real culprit!"
 SPEAK "Tutorial Boy"
@@ -998,7 +998,7 @@ SPEAK Arin
     "WHAT?!? We lost?!"
 
 GAVEL
-
+STOP_MUSIC
 SPEAK_FROM COURT_JUDGE
     "I'm sorry Jory, I like you a lot but given the circumstances it seems I have no choice."
 
