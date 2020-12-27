@@ -316,7 +316,7 @@ function NewTypeWriterEvent(text)
     self.textScroll = 1
     self.wasPressing = true
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.textHidden = false
         local lastScroll = self.textScroll
         self.textScroll = math.min(self.textScroll + dt*TextScrollSpeed, #self.text)
@@ -342,23 +342,79 @@ function NewTypeWriterEvent(text)
     end
 
     self.draw = function (self, scene)
-        love.graphics.setColor(0,0,0)
-        love.graphics.rectangle('fill', 0,0,GraphicsWidth,GraphicsHeight)
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle('fill', 0, 0, GraphicsWidth, GraphicsHeight)
     end
 
     return self
 end
 
-function PlayCutscene(cutName, coord, from, to, background)
-    local self = {}
-    self.cutName = cutName
-    self.hasRun = false
+camerapan = {0, 0}
 
-    self.update = function(self, scene)
-        if not self.hasRun then
-            self.hasRun = true
-            scene:runCutscene(self.cutName)
+function PanImage(a, b, c, d)
+    local self = {}
+    self.a = tonumber(a)
+    self.b = tonumber(b)
+    self.c = tonumber(c)
+    self.d = tonumber(d)
+
+    self.x = self.a
+    self.y = self.b
+
+    self.bool = true
+    self.bool2 = true
+    self.bool3 = true
+
+    self.cpx = self.c - self.a
+    self.cpy = self.d - self.b
+
+    self.update = function(self, scene, dt)
+        scene.canShowBgTopLayer = false
+        scene.canShowCharacter = false
+        scene.textHidden = true
+
+        if self.x ~= self.c then
+            if self.x > self.c then
+                self.x = self.x - (self.cpx / (self.cpx + self.cpy))
+            else
+                self.x = self.x + (self.cpx / (self.cpx + self.cpy))
+            end
         end
+        if self.y ~= self.d then
+            if self.y > self.d then
+                self.y = self.y - (self.cpy / (self.cpx + self.cpy))
+            else
+                self.y = self.y + (self.cpy / (self.cpx + self.cpy))
+            end
+        end
+
+        if self.a < self.c and self.x > self.c then
+            self.x = self.c
+        elseif self.a > self.c and self.x < self.c then
+            self.x = self.c
+        end
+        if self.b < self.d and self.y > self.d then
+            self.y = self.d
+        elseif self.b > self.d and self.y < self.d then
+            self.y = self.d
+        end
+
+        if self.x == self.c then
+            self.bool2 = false
+        end
+        if self.y == self.d then
+            self.bool3 = false
+        end
+
+        if not self.bool2 and not self.bool3 then
+            self.bool = false
+        end
+
+        return self.bool
+    end
+
+    self.draw = function(self, scene)
+        camerapan = {self.x, self.y}
     end
 
     return self

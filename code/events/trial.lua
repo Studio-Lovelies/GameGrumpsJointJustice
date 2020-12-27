@@ -319,36 +319,27 @@ function NewGavelEvent()
     return self
 end
 
-function NewPanEvent(from, to, background)
+function NewPanEvent(from, to)
     local self = {}
-    self.background = background
-
-    if self.background == nil then
-        panBackground = Sprites["CourtPan"]
-        backgroundPrefix = "COURT"
-    else
-        panBackground = Sprites[self.background]
-        backgroundPrefix = self.background:upper()
-    end
-
-    if from == backgroundPrefix.."_DEFENSE" or backgroundPrefix.."_LEFT" then
+    local courtPanSprite = Sprites["CourtPan"]
+    if from == "COURT_DEFENSE" then
         self.xStart = 0
     end
-    if from == backgroundPrefix.."_PROSECUTION" or backgroundPrefix.."_RIGHT" then
-        self.xStart = panBackground:getWidth() - GraphicsWidth
+    if from == "COURT_PROSECUTION" then
+        self.xStart = courtPanSprite:getWidth() - GraphicsWidth
     end
-    if from == backgroundPrefix.."_WITNESS" or backgroundPrefix.."_CENTER" then
-        self.xStart = panBackground:getWidth()/2 - GraphicsWidth/2
+    if from == "COURT_WITNESS" then
+        self.xStart = courtPanSprite:getWidth()/2 - GraphicsWidth/2
     end
 
-    if to == backgroundPrefix.."_DEFENSE" or backgroundPrefix.."_LEFT" then
+    if to == "COURT_DEFENSE" then
         self.xTo = 0
     end
-    if to == backgroundPrefix.."_PROSECUTION" or backgroundPrefix.."_RIGHT" then
-        self.xTo = panBackground:getWidth() - GraphicsWidth
+    if to == "COURT_PROSECUTION" then
+        self.xTo = courtPanSprite:getWidth() - GraphicsWidth
     end
-    if to == backgroundPrefix.."_WITNESS" or backgroundPrefix.."_CENTER" then
-        self.xTo = panBackground:getWidth()/2 - GraphicsWidth/2
+    if to == "COURT_WITNESS" then
+        self.xTo = courtPanSprite:getWidth()/2 - GraphicsWidth/2
     end
     self.x = self.xStart
 
@@ -365,83 +356,14 @@ function NewPanEvent(from, to, background)
         return self.x > self.xTo
     end
 
-    self.draw = function(self, scene)
-        love.graphics.draw(panBackground, -1 * self.x, 0)
-        scene:drawCharacterAt(backgroundPrefix.."_DEFENSE", -1*self.x, 0)
-        scene:drawBackgroundTopLayer(backgroundPrefix.."_DEFENSE", -1*self.x, 0)
-        scene:drawCharacterAt(backgroundPrefix.."_PROSECUTION", panBackground:getWidth() - GraphicsWidth -1*self.x, 0)
-        scene:drawBackgroundTopLayer(backgroundPrefix.."_PROSECUTION", panBackground:getWidth() - GraphicsWidth -1*self.x, 0)
-        scene:drawCharacterAt(backgroundPrefix.."_WITNESS", panBackground:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
-        scene:drawBackgroundTopLayer(backgroundPrefix.."_WITNESS", panBackground:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
-    end
-
-    return self
-end
-
-function NewCutscenePanEvent(coord, from, to, background)
-    local self = {}
-    self.background = background
-    panBackground = Sprites["CourtPan"]
-    self.coord = coord
-    self.from = from
-    self.to = to
-
-    if self.coord == "x" then
-        if isNaN(from) then
-            if from:lower() == "right" or from:lower() == "r" then
-                self.xFrom = panBackground:getWidth() - GraphicsWidth
-            else
-                self.xFrom = 0
-            end
-        else
-            self.xFrom = self.from
-        end
-        if isNaN(to) then
-            if to:lower() == "left" or from:lower() == "l" then
-                self.xTo = 0
-            else
-                self.xTo = panBackground:getWidth() - GraphicsWidth
-            end
-        else
-            self.xTo = self.to
-        end
-    elseif self.coord == "y" then
-        if isNaN(from) then
-            if from:lower() == "top" or from:lower() == "t" then
-                self.xFrom = panBackground:getHeight() - GraphicsHeight
-            else
-                self.xFrom = 0
-            end
-        else
-            self.xFrom = self.from
-        end
-        if isNaN(to) then
-            if to:lower() == "bottom" or from:lower() == "b" then
-                self.xTo = 0
-            else
-                self.xTo = panBackground:getHeight() - GraphicsHeight
-            end
-        else
-            self.xTo = self.to
-        end
-    end
-    self.x = self.xFrom
-
-    self.update = function (self, scene, dt)
-        scene.canShowBgTopLayer = false
-        scene.canShowCharacter = false
-        scene.textHidden = true
-
-        self.x = self.x + 24*dt*60*GetSign(self.xTo-self.xFrom)
-        if self.xFrom < self.xTo then
-            return self.x < self.xTo
-        end
-
-        return self.x > self.xTo
-    end
-
-    self.draw = function(self, scene)
-        love.graphics.draw(panBackground, -1 * self.start, 0)
+    self.draw = function (self, scene)
+        love.graphics.draw(courtPanSprite, -1*self.x, 0)
+        scene:drawCharacterAt("COURT_DEFENSE", -1*self.x, 0)
+        scene:drawBackgroundTopLayer("COURT_DEFENSE", -1*self.x, 0)
+        scene:drawCharacterAt("COURT_PROSECUTION", courtPanSprite:getWidth() - GraphicsWidth -1*self.x, 0)
+        scene:drawBackgroundTopLayer("COURT_PROSECUTION", courtPanSprite:getWidth() - GraphicsWidth -1*self.x, 0)
+        scene:drawCharacterAt("COURT_WITNESS", courtPanSprite:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
+        scene:drawBackgroundTopLayer("COURT_WITNESS", courtPanSprite:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
     end
 end
 

@@ -177,21 +177,8 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "END_DEFINE" then
                     stack = scene.stack
                 end
-                if lineParts[1] == "CUTSCENE" then
-                    scene.cutscenes[lineParts[2]] = {}
-                    stack = scene.cutscenes[lineParts[2]]
-                end
-                if lineParts[1] == "END_CUTSCENE" then
-                    stack = scene.stack
-                end
-                if lineParts[1] == "CUTSCENE_PAN" then
-                    AddToStack(stack, NewCutscenePanEvent(lineParts[2], lineParts[3], lineParts[4], lineParts[5]), lineParts)
-                end
-                if lineParts[1] == "PLAY_CUTSCENE" then
-                    AddToStack(stack, NewFadeToBlackEvent(), lineParts)
-                    AddToStack(stack, PlayCutscene(lineParts[2]), lineParts)
-                    AddToStack(stack, NewFadeToBlackEvent(), lineParts)
-                    AddToStack(stack, NewCutToEvent("BLACK_SCREEN"), lineParts)
+                if lineParts[1] == "PANIMAGE" then
+                    AddToStack(stack, PanImage(lineParts[2], lineParts[3], lineParts[4], lineParts[5]), lineParts)
                 end
                 if lineParts[1] == "JUMP" then
                     AddToStack(stack, NewClearExecuteDefinitionEvent(lineParts[2]), lineParts)

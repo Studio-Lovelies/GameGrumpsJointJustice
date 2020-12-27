@@ -42,17 +42,6 @@ function NewScene(scriptPath)
         end
     end
 
-    self.runCutscene = function(self, cutName, loc)
-        if loc == nil then
-            loc = 1
-        end
-
-        local cutscenes = deepcopy(self.cutscenes[cutName])
-        for i=#cutscenes, 1, -1 do
-            table.insert(self.stack, loc, cutscenes[i])
-        end
-    end
-
     self.update = function (self, dt)
         -- update the active event
         self.canShowCharacter = true
@@ -92,9 +81,10 @@ function NewScene(scriptPath)
                 if self.charAnimIndex >= #pose.anim then
                     self.charAnimIndex = 1
                 end
-                local animIndex = math.max(math.floor(self.charAnimIndex +0.5), 1)
+                local animIndex = math.max(math.floor(self.charAnimIndex + 0.5), 1)
                 local nextPose = pose.anim[animIndex]
                 local curX, curY, width, height = nextPose:getViewport()
+                --print(nextPose:getViewport())
                 -- If x is 0, we expect we wanted to center the image. Right now, not
                 -- every asset has been updated to the correct aspect ratio, so calculate
                 -- the amount we need to move it over by based on the width of the frame

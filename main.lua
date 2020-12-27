@@ -112,9 +112,13 @@ function love.draw()
 
     local dx,dy = 0,0
     if ScreenShake > 0 then
-        dx = love.math.random()*choose{1,-1}*2
-        dy = love.math.random()*choose{1,-1}*2
+        dx = love.math.random() * choose{1, -1} * 2
+        dy = love.math.random() * choose{1, -1} * 2
     end
+
+    dx = camerapan[1]
+    dy = camerapan[2]
+
     love.graphics.setColor(unpack(colors.white))
 
     love.graphics.draw(

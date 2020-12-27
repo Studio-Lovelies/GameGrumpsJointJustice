@@ -59,7 +59,7 @@ PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
 POSE "Judge Brent" Thinking
 SPEAK_FROM COURT_JUDGE
     "Hm..."
-<<<<<<< HEAD
+
 POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
     "A remarkably solid testimony here."
@@ -292,8 +292,6 @@ WITNESS_EVENT CrossExamination Ross "-- Witness' Account --"
     "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!" PressA3 1
     "Now that I know they were stolen, that means the culprit must be Jory!" PressA4 0
 
-=======
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
 
 ///////////////////////
 // Revised Testimony //
@@ -313,7 +311,7 @@ DEFINE PressB1
         "It was only after I got up and left my office that I realized it was Jory."
 <<<<<<< HEAD
 =======
-    
+
     POSE "Tutorial Boy" Normal
 >>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
     SPEAK_FROM COURT_PROSECUTION
