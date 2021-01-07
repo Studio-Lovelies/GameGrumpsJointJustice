@@ -10,14 +10,14 @@ function NewAnimationInit(file, holdFirst)
     -- be able to remove this.
     local smallWidth = 256
     if holdFirst then
-        for i=1, 20 do
-            animation.anim[i] = love.graphics.newQuad(0,0, smallWidth,GraphicsHeight, source:getWidth(), source:getHeight())
+        for i = 1, 20 do
+            animation.anim[i] = love.graphics.newQuad(0, 0, smallWidth, GraphicsHeight, source:getWidth(), source:getHeight())
         end
     end
 
-    for i=1, source:getWidth()/smallWidth do
-        local x = (i-1)*smallWidth
-        animation.anim[#animation.anim+1] = love.graphics.newQuad(x,0, smallWidth,GraphicsHeight, source:getWidth(), source:getHeight())
+    for i = 1, source:getWidth() / smallWidth do
+        local x = (i - 1) * smallWidth
+        animation.anim[#animation.anim + 1] = love.graphics.newQuad(x, 0, smallWidth, GraphicsHeight, source:getWidth(), source:getHeight())
     end
 
     return animation

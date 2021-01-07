@@ -52,6 +52,7 @@ dimensions = {
     window_height = 720;
 }
 
+
 colors = {
     white = {1, 1, 1};
     black = {0, 0, 0};

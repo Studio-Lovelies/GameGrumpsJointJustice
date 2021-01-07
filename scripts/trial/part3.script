@@ -35,6 +35,7 @@ COURT_RECORD_ADD EVIDENCE BentCoins
 //////////////////
 // START SCRIPT //
 //////////////////
+
 SPEAK_FROM COURT_DEFENSE
     "hey"
 ANIMATION Arin Objection
