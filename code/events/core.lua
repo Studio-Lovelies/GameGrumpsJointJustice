@@ -444,6 +444,22 @@ function NewPlayMusicEvent(music)
     return self
 end
 
+function FadeMusic()
+    local self = {}
+    self.timer = 1
+
+    self.update = function (self, scene, dt)
+        local lastTimer = self.timer
+        self.timer = self.timer - dt
+
+        scene.music.setVolume(self.timer)
+
+        return self.timer >= 0 and lastTimer >=0
+    end
+
+    return self
+end
+
 function NewStopMusicEvent()
     local self = {}
 
