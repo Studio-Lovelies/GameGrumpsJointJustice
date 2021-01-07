@@ -178,7 +178,7 @@ function LoadScript(scene, scriptPath)
                     stack = scene.stack
                 end
                 if lineParts[1] == "PANIMAGE" then
-                    AddToStack(stack, PanImage(lineParts[2], lineParts[3], lineParts[4], lineParts[5]), lineParts)
+                    AddToStack(stack, NewPanImageEvent(lineParts[2], lineParts[3], lineParts[4], lineParts[5]), lineParts)
                 end
                 if lineParts[1] == "JUMP" then
                     AddToStack(stack, NewClearExecuteDefinitionEvent(lineParts[2]), lineParts)
@@ -212,7 +212,7 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewPlayMusicEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "FADE_MUSIC" then
-                    AddToStack(stack, FadeMusic(), lineParts)
+                    AddToStack(stack, NewFadeMusicEvent(), lineParts)
                 end
                 if lineParts[1] == "STOP_MUSIC" then
                     AddToStack(stack, NewStopMusicEvent(), lineParts)
@@ -255,9 +255,6 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewCutToEvent(lineParts[3]), lineParts)
                     AddToStack(stack, NewFadeInEvent(), lineParts)
                 end
-                --if lineParts[1] == "CROSSFADE" then
-                --    AddToStack(stack, NewCrossFadeEvent(lineParts[2], lineParts[3]]), lineParts)
-                --end
                 if lineParts[1] == "SCREEN_SHAKE" then
                     AddToStack(stack, NewScreenShakeEvent(), lineParts)
                 end

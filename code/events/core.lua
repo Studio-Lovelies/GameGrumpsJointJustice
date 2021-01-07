@@ -351,7 +351,7 @@ end
 
 camerapan = {0, 0}
 
-function PanImage(a, b, c, d)
+function NewPanImageEvent(a, b, c, d)
     local self = {}
     self.a = tonumber(a)
     self.b = tonumber(b)
@@ -432,8 +432,8 @@ function NewPlayMusicEvent(music)
             -- play it. This allows us to have consequtive scripts
             -- play the same music without the track restarting
             if i == self.music then
-                v:play()
                 v:setVolume(MasterVolume/100)
+                v:play()
             else
                 v:stop()
             end
@@ -445,13 +445,13 @@ function NewPlayMusicEvent(music)
     return self
 end
 
-function FadeMusic()
+function NewFadeMusicEvent()
     local self = {}
     self.timer = MasterVolume/100
 
     self.update = function (self, scene, dt)
         local lastTimer = self.timer
-        self.timer = self.timer - dt
+        self.timer = self.timer - (dt / 2)
 
         for i,v in pairs(Music) do
             v:setVolume(self.timer)
