@@ -433,6 +433,7 @@ function NewPlayMusicEvent(music)
             -- play the same music without the track restarting
             if i == self.music then
                 v:play()
+                v:setVolume(MasterVolume/100)
             else
                 v:stop()
             end
