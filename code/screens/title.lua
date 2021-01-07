@@ -1,12 +1,12 @@
 function DrawTitleScreen()
     local background = love.graphics.newImage(settings.power_hour_set_path)
-    local backgroundScale = 1.326--3.8
+    local backgroundScale = 2
 
     love.graphics.clear(unpack(colors.black))
 
     love.graphics.draw(
         background,
-        GetCenterOffset(background:getWidth() * backgroundScale, false),
+        20,
         0,
         0,
         backgroundScale,
@@ -14,11 +14,11 @@ function DrawTitleScreen()
     )
 
     local logoImage = love.graphics.newImage(settings.main_logo_path)
-    local logoScale = 1
+    local logoScale = 1.25
 
     love.graphics.draw(
         logoImage,
-        GetCenterOffset(logoImage:getWidth() * logoScale, false),
+        350,
         0,
         0,
         logoScale,
@@ -27,18 +27,18 @@ function DrawTitleScreen()
 
     -- get dimensions for New Game and Load Game buttons
     local newW = (dimensions.window_width * 1/5)
-    local newX = (dimensions.window_width * 1/18)
-    local newY = logoImage:getHeight()*logoScale
+    local newX = (dimensions.window_width * 6.75/18)
+    local newY = logoImage:getHeight()*logoScale + 15
     local newH = 60
 
     local scenesW = (dimensions.window_width * 1/3.75)
-    local scenesX = (dimensions.window_width * 10.75/18) - scenesW
-    local scenesY = logoImage:getHeight()*logoScale
+    local scenesX = (dimensions.window_width * 10.65/18)
+    local scenesY = logoImage:getHeight()*logoScale + 15
     local scenesH = 60
 
     local loadW = (dimensions.window_width * 1/3.75)
-    local loadX = (dimensions.window_width * 17/18) - loadW
-    local loadY = logoImage:getHeight()*logoScale
+    local loadX = (dimensions.window_width * 15.75/18)
+    local loadY = logoImage:getHeight()*logoScale + 15
     local loadH = 60
 
     -- blue bounding box offset
