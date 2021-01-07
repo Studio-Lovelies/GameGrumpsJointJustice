@@ -452,7 +452,9 @@ function FadeMusic()
         local lastTimer = self.timer
         self.timer = self.timer - dt
 
-        scene.music.setVolume(self.timer)
+        for i,v in pairs(Music) do
+            v:setVolume(self.timer)
+        end
 
         return self.timer >= 0 and lastTimer >=0
     end
