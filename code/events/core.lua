@@ -457,7 +457,7 @@ function NewFadeMusicEvent()
             v:setVolume(self.timer)
         end
 
-        return self.timer >= 0 and lastTimer >=0
+        return self.timer >= 0 and lastTimer >= 0
     end
 
     return self
@@ -824,15 +824,18 @@ end
 function NewFadeToBlackEvent()
     local self = {}
     self.timer = 0
+    self.musicTimer = MasterVolume/100
 
     self.update = function (self, scene, dt)
         scene.textHidden = true
         scene.canShowCourtRecord = false
 
         local lastTimer = self.timer
+        local lastMusicTimer = self.musicTimer
         self.timer = self.timer + (dt / 2)
+        self.musicTimer = self.musicTimer - (dt / 2)
 
-        return self.timer <= 1 and lastTimer <= 1
+        return self.timer <= 1 and lastTimer <= 1 and self.musicTimer >= 0 and lastMusicTimer >= 0
     end
 
     self.draw = function (self, scene)

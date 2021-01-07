@@ -245,7 +245,6 @@ function LoadScript(scene, scriptPath)
                 end
                 if lineParts[1] == "FADE_TO_BLACK" then
                     AddToStack(stack, NewFadeToBlackEvent(), lineParts)
-                    AddToStack(stack, NewFadeMusicEvent(), lineParts)
                 end
                 if lineParts[1] == "FADE_TO_WHITE" then
                     AddToStack(stack, NewFadeToWhiteEvent(), lineParts)
