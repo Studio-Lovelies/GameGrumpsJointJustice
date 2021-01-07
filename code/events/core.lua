@@ -451,7 +451,7 @@ function NewFadeMusicEvent()
 
     self.update = function (self, scene, dt)
         local lastTimer = self.timer
-        self.timer = self.timer - (dt / 2)
+        self.timer = self.timer - (dt / (1 / (MasterVolume / 100)))
 
         for i,v in pairs(Music) do
             v:setVolume(self.timer)
@@ -830,7 +830,7 @@ function NewFadeToBlackEvent()
         scene.canShowCourtRecord = false
 
         local lastTimer = self.timer
-        self.timer = self.timer + dt
+        self.timer = self.timer + (dt / 2)
 
         return self.timer <= 1 and lastTimer <= 1
     end
