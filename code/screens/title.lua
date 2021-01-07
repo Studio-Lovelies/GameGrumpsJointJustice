@@ -6,7 +6,7 @@ function DrawTitleScreen()
 
     love.graphics.draw(
         background,
-        GetCenterOffset(background:getWidth() * backgroundScale, false),
+        20,
         0,
         0,
         backgroundScale,
@@ -14,11 +14,11 @@ function DrawTitleScreen()
     )
 
     local logoImage = love.graphics.newImage(settings.main_logo_path)
-    local logoScale = 1
+    local logoScale = 1.25
 
     love.graphics.draw(
         logoImage,
-        GetCenterOffset(logoImage:getWidth() * logoScale, false),
+        150,
         0,
         0,
         logoScale,
@@ -27,7 +27,7 @@ function DrawTitleScreen()
 
     -- get dimensions for New Game and Load Game buttons
     local newW = (dimensions.window_width * 1/5)
-    local newX = (dimensions.window_width * 1/18)
+    local newX = logoImage:getWidth()*logoScale
     local newY = logoImage:getHeight()*logoScale
     local newH = 60
 
