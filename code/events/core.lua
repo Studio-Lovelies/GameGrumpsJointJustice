@@ -454,7 +454,7 @@ function NewFadeMusicEvent()
         self.timer = self.timer - (dt / (1 / (MasterVolume / 100)))
 
         for i,v in pairs(Music) do
-            v:setVolume(self.musicTimer)
+            v:setVolume(self.timer)
         end
 
         return self.timer >= 0 and lastTimer >= 0
@@ -834,6 +834,10 @@ function NewFadeToBlackEvent()
         local lastMusicTimer = self.musicTimer
         self.timer = self.timer + (dt / 2)
         self.musicTimer = self.musicTimer - (dt / 2)
+
+        for i,v in pairs(Music) do
+            v:setVolume(self.musicTimer)
+        end
 
         return self.timer <= 1 and lastTimer <= 1 and self.musicTimer >= 0 and lastMusicTimer >= 0
     end
