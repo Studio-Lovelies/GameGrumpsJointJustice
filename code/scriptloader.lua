@@ -211,6 +211,9 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "PLAY_MUSIC" then
                     AddToStack(stack, NewPlayMusicEvent(lineParts[2]), lineParts)
                 end
+                if lineParts[1] == "FADE_MUSIC" then
+                    AddToStack(stack, FadeMusic(), lineParts)
+                end
                 if lineParts[1] == "STOP_MUSIC" then
                     AddToStack(stack, NewStopMusicEvent(), lineParts)
                 end
