@@ -446,7 +446,7 @@ end
 
 function FadeMusic()
     local self = {}
-    self.timer = 1
+    self.timer = 0.25
 
     self.update = function (self, scene, dt)
         local lastTimer = self.timer
