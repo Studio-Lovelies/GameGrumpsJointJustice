@@ -188,11 +188,7 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewCutToEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "PAN" then
-                    if lineParts[4] ~= nil then
-                        AddToStack(stack, NewPanEvent(lineParts[2], lineParts[3], lineParts[4]), lineParts)
-                    else
-                        AddToStack(stack, NewPanEvent(lineParts[2], lineParts[3]), lineParts)
-                    end
+                    AddToStack(stack, NewPanEvent(lineParts[2], lineParts[3]), lineParts)
                     AddToStack(stack, NewCutToEvent(lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "POSE" then
@@ -231,6 +227,7 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewShoutEvent(lineParts[2], lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "WIDESHOT" then
+                    AddToStack(stack, NewCutToEvent("BLACK_SCREEN"), lineParts)
                     AddToStack(stack, NewWideShotEvent(), lineParts)
                 end
                 if lineParts[1] == "GAVEL" then
@@ -238,7 +235,10 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewGavelEvent(), lineParts)
                 end
                 if lineParts[1] == "SHOW" then
-                    AddToStack(stack, NewShowEvent(lineParts[2], lineParts[3]), lineParts)
+                    AddToStack(stack, NewShowEvent(lineParts[2], lineParts[3], scene), lineParts)
+                end
+                if lineParts[1] == "STOP_SHOWING" then
+                    AddToStack(stack, NewStopShowingEvent(scene), lineParts)
                 end
                 if lineParts[1] == "PRESENT" then
                     AddToStack(stack, NewPresenEvent(lineParts[2]), lineParts)

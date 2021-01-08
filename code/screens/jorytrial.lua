@@ -197,27 +197,33 @@ JoryTrialConfig = {
                 SelectionIndex = 2;
             elseif TitleSelection == "Part 1" then
                 jingle:play()
-                NewEpisode(settings.jory_trial_1_path):begin()
+                Episode = NewEpisode(settings.jory_trial_1_path)
+                Episode:begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 2" then
                 jingle:play()
-                NewEpisode(settings.jory_trial_2_path):begin()
+                Episode = NewEpisode(settings.jory_trial_2_path)
+                Episode:begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 3" then
                 jingle:play()
-                NewEpisode(settings.jory_trial_3_path):begin()
+                Episode = NewEpisode(settings.jory_trial_3_path)
+                Episode:begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 4" then
                 jingle:play()
-                NewEpisode(settings.jory_trial_4_path):begin()
+                Episode = NewEpisode(settings.jory_trial_4_path)
+                Episode:begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 5" then
                 jingle:play()
-                NewEpisode(settings.jory_trial_5_path):begin()
+                Episode = NewEpisode(settings.jory_trial_5_path)
+                Episode:begin()
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 6" then
                 jingle:play()
-                NewEpisode(settings.jory_trial_6_path):begin()
+                Episode = NewEpisode(settings.jory_trial_6_path)
+                Episode:begin()
                 screens.jorytrial.displayed = false;
             end
         elseif key == controls.press_right then

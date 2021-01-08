@@ -185,7 +185,7 @@ SPEAK Arin
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideLaugh
 SPEAK Dan
-    "Maybe Jory took the NSP song $qObjects of Desire$q as inspiration. Know what I mean?"
+    "Maybe Jory took the NSP song $qObjects of Desire$q as inspiration.#Know what I mean?"
 
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
@@ -194,7 +194,7 @@ SPEAK "Tutorial Boy"
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideNormal
 SPEAK Dan
-    "Um, excuse me? That's $Mr. Business$q to you, sir."
+    "Um, excuse me? That's $qMr. Business$q to you, sir."
 
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
@@ -216,7 +216,7 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "These were the very same coins Jory was polishing during the livestream."
 SPEAK "Tutorial Boy"
-    "This was confirmed by other members of the grump team present at the time the dinos were discovered."
+    "This was confirmed by other members of the Grump team present at the time the dinos were discovered."
 
 SPEAK "Tutorial Boy"
     "This clearly suggests that the perpetrator is the defendant!"
@@ -565,6 +565,7 @@ SPEAK_FROM COURT_DEFENSE
     "There is no proof that Jory is lying!"
 SFX DeskSlam
 ANIMATION Arin DeskSlam
+POSE Arin DeskSlam
 SPEAK Arin
     "You're simply pushing a false narrative to make my client look bad."
 

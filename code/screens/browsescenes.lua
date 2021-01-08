@@ -141,7 +141,8 @@ BrowseScreenConfig = {
                 SelectionIndexY = 0;
             elseif TitleSelection == "Post-Trial" then
                 jingle:play()
-                NewEpisode(settings.posttrial_path):begin()
+                Episode = NewEpisode(settings.posttrial_path)
+                Episode:begin()
                 screens.browsescenes.displayed = false;
             end
         elseif key == controls.press_right then

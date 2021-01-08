@@ -257,7 +257,10 @@ POSE Dan Sad
 SPEAK Dan
     "Sorry dude, but Arin's right.#We'd probably just screw it up."
 SPEAK Dan
-    "We're not lawyers.#The closest thing we've been to being lawyers is #playing is that Penix Wright(tm) game."
+    "We're not lawyers."
+    
+SPEAK Dan
+    "The closest thing we've been to being lawyers is playing is that Penix Wright(tm)#game."
 SPEAK Dan
     "And that's just a stupid game that totally exists and isn't changed for copyright purposes!"
 
@@ -346,7 +349,7 @@ SPEAK Arin GREEN
     "$qShow the world he is innocent of such a heinous and despicable crime and find out who the real culprit is.$q"
 
 SPEAK Arin GREEN
-    "$qP.S., remember, the second most important thing to winning this case is love and trust!$q"
+    "$qP.S. remember, the second most important thing to winning this case is love and trust!$q"
 
 POSE Dan Normal
 SPEAK Dan
@@ -363,9 +366,9 @@ SPEAK Dan
 SPEAK Arin
     "Wait, there's one more thing."
 SPEAK Arin GREEN
-    "$qP.S.S., I hope you two have been continuing to provide my boy with wholesome food as well.$q"
+    "$qP.S.S. I hope you two have been continuing to provide my boy with wholesome food as well.$q"
 SPEAK Arin
-    "$qAnd I hope you've been avoiding giving him %1milk%0 as he's %1deathly allergic%0 to it.$q"
+    "%2$qAnd I hope you've been avoiding giving him %0%1milk%0%2 as he's %0%1deathly allergic%0%2 to it.$q"
 SPEAK Dan
     "Huh..."
 

@@ -184,8 +184,8 @@ DEFINE PressA3
     SPEAK_FROM COURT_DEFENSE
         "Yet you also say you were in your office animating."
 
-    ANIMATION Arin Objection
     PLAY_MUSIC DRAGONOBJECTION
+    ANIMATION Arin Objection
     POSE Arin Point
     SPEAK Arin
         "Seems very odd to me! How could you see anyone while you were focused on your work!"
@@ -309,11 +309,6 @@ DEFINE PressB1
         "Well I saw someone move past my office door out of the corner of my eye."
     SPEAK_FROM COURT_WITNESS
         "It was only after I got up and left my office that I realized it was Jory."
-<<<<<<< HEAD
-=======
-
-    POSE "Tutorial Boy" Normal
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
     SPEAK_FROM COURT_PROSECUTION
         "Please tell the court the reason you had to get up and leave your office."
     JUMPCUT COURT_WITNESS
@@ -371,11 +366,7 @@ DEFINE PressB3
         "Something about that doesn't seem right, but... I dunno..."
 
     SPEAK Dan
-<<<<<<< HEAD
-        "Maybe we should look at the evidence, see if there's something about this?"
-=======
         "Maybe we should look at the %1evidence%0, see if there's something about this?"
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
 
     JUMPCUT COURT_WITNESS
 END_DEFINE
@@ -390,11 +381,7 @@ DEFINE PressB4
 
     POSE Ross GlaringHelm
     SPEAK_FROM COURT_WITNESS
-<<<<<<< HEAD
         "No of course not! Not everyone has memorable bathroom trips like you Arin"
-=======
-        "No of course not! Not everyone has memorable bathroom trips like you Arin."
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
 
     POSE Arin Sweaty
     SPEAK_FROM COURT_DEFENSE
@@ -407,11 +394,7 @@ END_DEFINE
 WITNESS_EVENT CrossExamination Ross "-- Witness' Account --" CrossExamFail
     "So I saw Jory walk by my office." PressB1 0
     "But I suddenly had to use the bathroom right away!" PressB2 0
-<<<<<<< HEAD
     "So I ran to use the nearby bathroom. On my way back I saw Jory stashing the dinos away" PressB3 PlumberInvoice
-=======
-    "So I ran to use the nearby bathroom. On my way back I saw Jory stashing the dinos away." PressB3 PlumberInvoice
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
     "I didn't think anything of it, that's why I forgot to mention it earlier!" PressB4 0
 
 /////////////////////////
@@ -426,19 +409,20 @@ SPEAK_FROM COURT_DEFENSE
 SPEAK Arin
     "Are you absolutely certain that you had just used the office toilet?"
 
-<<<<<<< HEAD
 POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
     "Of course I am."
 
 JUMPCUT COURT_DEFENSE
 POSE Arin PaperSlap
-SHOW PlumberInvoice r
+SHOW PlumberInvoice l
 SPEAK_FROM COURT_DEFENSE
     "Then why does this plumbing invoice state very clearly...
 PLAY_MUSIC DRAGONOBJECTION
 SPEAK Arin
     "..that the toilets were undergoing maintenance at that time?"
+
+STOP_SHOWING
 
 JUMPCUT COURT_WITNESS
 SFX stab
@@ -577,5 +561,3 @@ SPEAK_FROM COURT_JUDGE
 
 FADE_TO_BLACK
 END_SCENE
-=======
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
