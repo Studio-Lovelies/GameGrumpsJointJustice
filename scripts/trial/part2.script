@@ -117,7 +117,7 @@ SPEAK Dan
 
 POSE Dan SideLaugh
 SPEAK Dan
-    "Well, I mean yeah... %qThe gay-liff%q in that game sure was creative."
+    "Well, I mean yeah... $qThe gay-liff$q in that game sure was creative."
 
 POSE Dan SideNormal
 SPEAK Dan
@@ -158,3 +158,5 @@ SPEAK Arin
 POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
     "Alright. The witness may begin."
+
+END_SCENE

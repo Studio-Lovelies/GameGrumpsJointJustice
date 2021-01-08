@@ -8,6 +8,7 @@ function NewScene(scriptPath)
     self.evidence = {}
     self.profiles = {}
     self.flags = {}
+    self.showing = nil
 
     self.penalties = 5
     self.textHidden = false
@@ -42,7 +43,7 @@ function NewScene(scriptPath)
         end
     end
 
-    self.update = function (self, dt)
+    self.update = function(self, dt)
         -- update the active event
         self.canShowCharacter = true
         self.textCentered = false
@@ -58,7 +59,7 @@ function NewScene(scriptPath)
         self.charAnimIndex = self.charAnimIndex + dt*5
     end
 
-    self.drawCharacterAt = function (self, characterLocation, x,y)
+    self.drawCharacterAt = function(self, characterLocation, x,y)
         local character = self.characterLocations[characterLocation]
         if character ~= nil then
             if self.characters[character.name].poses[character.frame] ~= nil then
@@ -84,7 +85,6 @@ function NewScene(scriptPath)
                 local animIndex = math.max(math.floor(self.charAnimIndex + 0.5), 1)
                 local nextPose = pose.anim[animIndex]
                 local curX, curY, width, height = nextPose:getViewport()
-                --print(nextPose:getViewport())
                 -- If x is 0, we expect we wanted to center the image. Right now, not
                 -- every asset has been updated to the correct aspect ratio, so calculate
                 -- the amount we need to move it over by based on the width of the frame
@@ -99,7 +99,7 @@ function NewScene(scriptPath)
         end
     end
 
-    self.drawBackgroundTopLayer = function (self, location, x, y)
+    self.drawBackgroundTopLayer = function(self, location, x, y)
         local background = Backgrounds[location]
 
         if background[2] ~= nil then
@@ -107,7 +107,7 @@ function NewScene(scriptPath)
         end
     end
 
-    self.draw = function (self, dt)
+    self.draw = function(self, dt)
         love.graphics.setColor(1, 1, 1)
 
         -- draw the background of the current location
@@ -155,6 +155,20 @@ function NewScene(scriptPath)
                 love.graphics.setFont(GameFont)
             end
 
+
+            if self.showing ~= nil then
+                love.graphics.setColor(1,1,1)
+                if Sprites[self.showing[1]:gsub(" ", "")] == nil then
+                    love.graphics.draw(Sprites["MissingTexture"], 16,16)
+                else
+                    if self.showing[2]:lower() == "left" or self.showing[2]:lower() == "l" then
+                        love.graphics.draw(Sprites[self.showing[1]], 24, 24)
+                    elseif self.showing[2]:lower() == "right" or self.showing[2]:lower() == "r" then
+                        love.graphics.draw(Sprites[self.showing[1]], 234, 24)
+                    end
+                end
+            end
+            
             -- draw the current scrolling text
             love.graphics.setColor(unpack(self.textColor))
 

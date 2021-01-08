@@ -9,24 +9,24 @@ function DrawBrowseScreen()
     local blackImageScale = 3
 
     local jorytrialImage = love.graphics.newImage(settings.court_path)
-    local jorytrialImageScale = 6
+    local jorytrialImageScale = 3
 
     local posttrialImage = love.graphics.newImage(settings.lobby_path)
-    local posttrialImageScale = 6
+    local posttrialImageScale = 3
 
     local backW = (dimensions.window_width * 1/5)
-    local backX = (dimensions.window_width * 6.75/18)
-    local backY = blackImage:getHeight()*blackImageScale + 150
+    local backX = (dimensions.window_width * 1/18)
+    local backY = blackImage:getHeight()*blackImageScale + 10
     local backH = 60
 
     local jorytrialW = (dimensions.window_width * 1/3.75)
-    local jorytrialX = (dimensions.window_width * 10.65/18)
-    local jorytrialY = blackImage:getHeight()*blackImageScale + 150
+    local jorytrialX = (dimensions.window_width * 10.75/18) - jorytrialW
+    local jorytrialY = blackImage:getHeight()*blackImageScale + 10
     local jorytrialH = 60
 
     local posttrialW = (dimensions.window_width * 1/3.75)
-    local posttrialX = (dimensions.window_width * 15.75/18)
-    local posttrialY = blackImage:getHeight()*blackImageScale + 150
+    local posttrialX = (dimensions.window_width * 17/18) - posttrialW
+    local posttrialY = blackImage:getHeight()*blackImageScale + 10
     local posttrialH = 60
 
     local dx = 8
@@ -37,7 +37,7 @@ function DrawBrowseScreen()
         love.graphics.rectangle("fill", jorytrialX-dx, jorytrialY-dy, jorytrialW+2*dx, jorytrialH+2*dy)
         love.graphics.draw(
             jorytrialImage,
-            0,
+            GetCenterOffset(jorytrialImage:getWidth() * jorytrialImageScale, false),
             0,
             0,
             jorytrialImageScale,
@@ -47,7 +47,7 @@ function DrawBrowseScreen()
         love.graphics.rectangle("fill", posttrialX-dx, posttrialY-dy, posttrialW+2*dx, posttrialH+2*dy)
         love.graphics.draw(
             posttrialImage,
-            0,
+            GetCenterOffset(posttrialImage:getWidth() * posttrialImageScale, false),
             0,
             0,
             posttrialImageScale,
@@ -57,7 +57,7 @@ function DrawBrowseScreen()
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
         love.graphics.draw(
             blackImage,
-            0,
+            GetCenterOffset(blackImage:getWidth() * blackImageScale, false),
             0,
             0,
             blackImageScale,
@@ -141,7 +141,8 @@ BrowseScreenConfig = {
                 SelectionIndexY = 0;
             elseif TitleSelection == "Post-Trial" then
                 jingle:play()
-                NewEpisode(settings.posttrial_path):begin()
+                Episode = NewEpisode(settings.posttrial_path)
+                Episode:begin()
                 screens.browsescenes.displayed = false;
             end
         elseif key == controls.press_right then

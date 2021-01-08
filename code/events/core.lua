@@ -1,11 +1,13 @@
 require "config"
 
+camerapan = {0, 0}
+
 function NewCharLocationEvent(name, location)
     local self = {}
     self.name = name
     self.location = location
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.characterLocations[self.location] = scene.characters[self.name]
 
         return false
@@ -18,7 +20,7 @@ function NewPoseEvent(name, pose)
     local self = {}
     self.name = name
     self.pose = pose
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.characters[self.name].frame = self.pose
 
         return false
@@ -39,7 +41,7 @@ function NewAnimationEvent(name, animation, speed)
     end
     self.speed = speed
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.canShowCharacter = false
         scene.canShowCourtRecord = false
         scene.textHidden = true
@@ -56,7 +58,7 @@ function NewAnimationEvent(name, animation, speed)
         return false
     end
 
-    self.characterDraw = function (self, scene)
+    self.characterDraw = function(self, scene)
         local animation = scene.characters[self.name].animations[self.animation]
         love.graphics.draw(animation.source, animation.anim[self.animIndex])
     end
@@ -68,7 +70,7 @@ function NewCutToEvent(cutTo)
     local self = {}
     self.cutTo = cutTo
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.location = self.cutTo
         return false
     end
@@ -93,7 +95,7 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
     self.animates = true
     self.speaks = true
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.textHidden = false
         scene.fullText = self.text
 
@@ -178,7 +180,7 @@ end
 function NewGameOverEvent()
     local self = {}
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         love.event.push("quit")
         return false
     end
@@ -203,7 +205,7 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
     self.animates = true
     self.speaks = true
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.textHidden = false
         scene.fullText = self.text
 
@@ -302,7 +304,7 @@ end
 
 function NewHideTextEvent()
     local self = {}
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.textHidden = true;
         return false;
     end
@@ -341,7 +343,7 @@ function NewTypeWriterEvent(text)
         return true
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         love.graphics.setColor(0, 0, 0)
         love.graphics.rectangle('fill', 0, 0, GraphicsWidth, GraphicsHeight)
     end
@@ -349,10 +351,9 @@ function NewTypeWriterEvent(text)
     return self
 end
 
-camerapan = {0, 0}
-
 function NewPanImageEvent(a, b, c, d)
     local self = {}
+    camerapan = {0, 0}
     self.a = tonumber(a)
     self.b = tonumber(b)
     self.c = tonumber(c)
@@ -424,7 +425,7 @@ function NewPlayMusicEvent(music)
     local self = {}
     self.music = music
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.music = music
 
         for i,v in pairs(Music) do
@@ -449,7 +450,9 @@ function NewFadeMusicEvent()
     local self = {}
     self.timer = MasterVolume/100
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
+        scene.music = nil
+
         local lastTimer = self.timer
         self.timer = self.timer - (dt / (1 / (MasterVolume / 100)))
 
@@ -466,7 +469,7 @@ end
 function NewStopMusicEvent()
     local self = {}
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.music = nil
 
         for i,v in pairs(Music) do
@@ -483,7 +486,7 @@ function NewPlaySoundEvent(sound)
     local self = {}
     self.sound = sound:upper()
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         Sounds[self.sound]:play()
 
         return false
@@ -497,7 +500,7 @@ function NewCourtRecordAddEvent(itemType, name)
     self.itemType = itemType
     self.name = name
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         -- Returns whether item table, as identified by given item name,
         -- exists in given container table
         function ItemExistsInTable(item_name, container_name)
@@ -542,7 +545,7 @@ function NewAddToCourtRecordAnimationEvent(evidenceSpriteName)
     self.evidence = evidenceSpriteName
     self.wasPressing = true
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         self.text = self.evidence.." added to#the Court Record."
         self.textScroll = math.min(self.textScroll + dt*TextScrollSpeed, #self.text)
         scene.fullText = self.text
@@ -562,7 +565,7 @@ function NewAddToCourtRecordAnimationEvent(evidenceSpriteName)
         return true
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         love.graphics.setColor(1,1,1)
         if Sprites[self.evidence:gsub(" ", "")] == nil then
             love.graphics.draw(Sprites["MissingTexture"], 16,16)
@@ -579,7 +582,7 @@ function NewExecuteDefinitionEvent(def)
     self.def = def
     self.hasRun = false
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         if not self.hasRun then
             self.hasRun = true
             scene:runDefinition(self.def)
@@ -596,7 +599,7 @@ function NewClearExecuteDefinitionEvent(def)
     self.def = def
     self.hasRun = false
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         if not self.hasRun then
             self.hasRun = true
             scene.stack = {}
@@ -609,33 +612,29 @@ function NewClearExecuteDefinitionEvent(def)
     return self
 end
 
-function NewShowEvent(evidence, side)
+function NewShowEvent(evidence, side, scene)
     local self = {}
     self.evidence = evidence
     self.side = side
-    self.wasPressing = true
 
     self.update = function(self, scene, dt)
-        local pressing = love.keyboard.isDown("x")
-        if pressing and not self.wasPressing then
-            return false
+        if scene.showing == nil then
+            scene.showing = {self.evidence, self.side}
         end
-        self.wasPressing = pressing
-
-        return true
+        return false
     end
 
-    self.draw = function(self, scene)
-        love.graphics.setColor(1,1,1)
-        if Sprites[self.evidence:gsub(" ", "")] == nil then
-            love.graphics.draw(Sprites["MissingTexture"], 16,16)
-        else
-            if self.side:lower() == "left" or self.side:lower() == "l" then
-                love.graphics.draw(Sprites[self.evidence], 24, 24)
-            elseif self.side:lower() == "right" or self.side:lower() == "r" then
-                love.graphics.draw(Sprites[self.evidence], 234, 24)
-            end
+    return self
+end
+
+function NewStopShowingEvent(scene)
+    local self = {}
+
+    self.update = function(self, scene, dt)
+        if scene.showing ~= nil then
+            scene.showing = nil
         end
+        return false
     end
 
     return self
@@ -749,7 +748,7 @@ function NewChoiceEvent(options, isFake)
         end
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         scene.textHidden = true
         if self.isFake then
             for i = 1, #self.options, 2 do
@@ -813,7 +812,7 @@ end
 function NewSceneEndEvent()
     local self = {}
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         Episode:nextScene()
         return false
     end
@@ -826,7 +825,7 @@ function NewFadeToBlackEvent()
     self.timer = 0
     self.musicTimer = MasterVolume/100
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.textHidden = true
         scene.canShowCourtRecord = false
 
@@ -842,7 +841,7 @@ function NewFadeToBlackEvent()
         return self.timer <= 1 and lastTimer <= 1
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         love.graphics.setColor(0,0,0, self.timer)
         love.graphics.rectangle("fill", 0,0, GraphicsWidth,GraphicsHeight)
     end
@@ -854,7 +853,7 @@ function NewFadeToWhiteEvent()
     local self = {}
     self.timer = 0
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.textHidden = true
         scene.canShowCourtRecord = false
 
@@ -864,7 +863,7 @@ function NewFadeToWhiteEvent()
         return self.timer <= 1 and lastTimer <= 1
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         love.graphics.setColor(255,255,255, self.timer)
         love.graphics.rectangle("fill", 0,0, GraphicsWidth,GraphicsHeight)
     end
@@ -876,7 +875,7 @@ function NewFadeInEvent()
     local self = {}
     self.timer = 1
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.textHidden = true
         scene.canShowCourtRecord = false
 
@@ -886,7 +885,7 @@ function NewFadeInEvent()
         return self.timer >= 0 and lastTimer >=0
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         love.graphics.setColor(0, 0, 0, self.timer)
         love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
     end
@@ -901,7 +900,7 @@ function NewCrossFadeEvent(scene1, scene2)
     self.scene1 = scene1
     self.scene2 = scene2
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.textHidden = true
         scene.canShowCourtRecord = false
 
@@ -913,7 +912,7 @@ function NewCrossFadeEvent(scene1, scene2)
         return self.timer1 >= 0 and lastTimer1 >=0 and self.timer2 <= 1 and lastTimer2 <= 1
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         love.graphics.setColor(0, 0, 0, self.timer1)
         love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
         love.graphics.draw()
@@ -925,7 +924,7 @@ end
 function NewScreenShakeEvent()
     local self = {}
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         ScreenShake = 0.15
         return false
     end
@@ -938,7 +937,7 @@ function NewSetFlagEvent(flag, set)
     self.flag = flag
     self.set = set
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.flags[self.flag] = self.set
         print("set "..self.flag.." to "..self.set)
         return false
@@ -953,7 +952,7 @@ function NewIfEvent(flag, test, def)
     self.test = test
     self.def = def
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         if scene.flags[self.flag] == self.test then
             scene:runDefinition(self.def, 2)
         end
@@ -969,7 +968,7 @@ function NewWaitEvent(seconds)
     self.timer = 0
     self.seconds = tonumber(seconds)
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         self.timer = self.timer + dt
 
         return self.timer < self.seconds
@@ -982,7 +981,7 @@ function NewClearLocationEvent(location)
     local self = {}
     self.location = location
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.characterLocations[self.location] = nil
 
         return false

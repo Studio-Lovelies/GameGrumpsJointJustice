@@ -8,6 +8,7 @@ function NewEpisode(episodePath)
             profiles = {}
         }
     }
+    self.creditLines = {}
 
     for line in love.filesystem.lines(episodePath) do
         table.insert(self.scenes, line)
@@ -36,18 +37,27 @@ function NewEpisode(episodePath)
     self.nextScene = function()
         self.sceneIndex = self.sceneIndex + 1
 
-       -- print(self.sceneIndex.." = "..self.scenes[self.sceneIndex])
-       -- print((self.sceneIndex + 1).." = "..self.scenes[self.sceneIndex + 1])
-
         if self.sceneIndex <= #self.scenes then
             CurrentScene = NewScene(self.scenes[self.sceneIndex])
             CurrentScene:update(0)
             DtReset = true
         else
-            love.event.push("quit")
+            startCredits(self)
         end
     end
 
     self.loaded = true
     return self
+end
+
+function startCredits(scene)
+    love.graphics.clear(1, 1, 1, 1)
+    love.graphics.setColor(255, 255, 255)
+    love.graphics.setFont(SmallFont)
+
+    for line in love.filesystem.lines(settings.credits_path) do
+        table.insert(scene.creditLines, line)
+        love.graphics.print(line)
+        print(line)
+    end
 end
