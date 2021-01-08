@@ -35,10 +35,7 @@ function NewEpisode(episodePath)
 
     self.nextScene = function()
         self.sceneIndex = self.sceneIndex + 1
-
-       -- print(self.sceneIndex.." = "..self.scenes[self.sceneIndex])
-       -- print((self.sceneIndex + 1).." = "..self.scenes[self.sceneIndex + 1])
-
+        
         if self.sceneIndex <= #self.scenes then
             CurrentScene = NewScene(self.scenes[self.sceneIndex])
             CurrentScene:update(0)
