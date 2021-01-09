@@ -51,8 +51,8 @@ WITNESS_EVENT WitnessTestimony Ross "-- Witness' Account --"
     "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!"
     "Now that I know they were stolen, that means the culprit must be Jory!"
 
-STOP_MUSIC
 FADE_TO_BLACK
+
 FADE_IN 1 COURT_JUDGE
 
 PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
