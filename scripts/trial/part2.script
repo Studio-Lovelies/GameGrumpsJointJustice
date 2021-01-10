@@ -40,16 +40,10 @@ END_DEFINE
 // START SCRIPT //
 //////////////////
 
-PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
-
-
-POSE "Tutorial Boy" Normal
-SPEAK_FROM COURT_PROSECUTION
-    "I call to the stand a witness to the crime: Ross O'Donovan."
-
 FADE_TO_BLACK
+PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
 FADE_IN 1 COURT_WITNESS
-WAIT 2
+WAIT 1
 
 JUMPCUT COURT_DEFENSE
 SFX dramapound

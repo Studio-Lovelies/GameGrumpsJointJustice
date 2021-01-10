@@ -19,6 +19,9 @@ function NewScene(scriptPath)
     self.textColor = {1,1,1}
     self.textCentered = false
 
+    self.credits = nil
+    self.creditLines = {}
+
     self.charAnimIndex = 1
 
     self.wasPressingRight = false
@@ -57,6 +60,15 @@ function NewScene(scriptPath)
         end
 
         self.charAnimIndex = self.charAnimIndex + dt*5
+
+        if self.credits ~= nil and #self.creditLines > 1 then
+            for i = 1, #self.creditLines do
+                if self.creditLines[#self.creditLines][3] > 70 then
+                    self.creditLines[i][3] = self.creditLines[i][3] - 0.3
+                end
+            end
+        end
+
     end
 
     self.drawCharacterAt = function(self, characterLocation, x,y)
@@ -342,6 +354,59 @@ function NewScene(scriptPath)
                     local xText = GraphicsWidth/2 - GameFont:getWidth(lineTableFull[i])/2
                     love.graphics.print(lineTable[i], xText, GraphicsHeight-60 + (i-1)*16)
                 end
+            end
+        end
+
+        if self.credits ~= nil then
+            love.graphics.clear(0, 0, 0, 0)
+            love.graphics.setColor(255, 255, 255)
+
+            if self.creditLines ~= nil then
+                for i = 1, #self.creditLines do
+                    if self.creditLines[i] ~= nil then
+                        if self.creditLines[i][1] == "text" then
+                            local xText = self.creditLines[i][2]
+                            local yText = self.creditLines[i][3]
+                            if string.find(self.credits[i], "SMALL$", 1, true) then
+                                love.graphics.setFont(CreditsSmallFont)
+                                xText = GraphicsWidth/2 - CreditsSmallFont:getWidth(self.credits[i])/2 + 20
+                            else
+                                love.graphics.setFont(CreditsFont)
+                            end
+                            love.graphics.print(string.gsub(self.credits[i], "SMALL", ""), xText, yText)
+                        else
+                            love.graphics.draw(self.creditLines[i][1], self.creditLines[i][2], self.creditLines[i][3], 0, 0.8, 0.8)
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    self.startCredits = function()
+
+        self.credits = {}
+        
+        for line in love.filesystem.lines(settings.credits_path) do
+            table.insert(self.credits, line)
+        end
+
+        for i,v in pairs(Music) do
+            if i == "AKISSFROMAROSE" then
+                v:setVolume(MasterVolume/100)
+                v:play()
+            else
+                v:stop()
+            end
+        end
+
+        for i = 1, #self.credits do
+            if string.find(self.credits[i], "IMAGE$", 1, true) then
+                imgSrc = string.sub(self.credits[i], 7)
+                img = love.graphics.newImage(imgSrc)
+                self.creditLines[i] = {img, 60, GraphicsHeight + (i-1)*16 - 50}
+            else
+                self.creditLines[i] = {"text", GraphicsWidth/2 - CreditsFont:getWidth(self.credits[i])/2, GraphicsHeight + (i-1)*16}
             end
         end
     end

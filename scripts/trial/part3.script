@@ -415,7 +415,7 @@ SPEAK_FROM COURT_WITNESS
 
 JUMPCUT COURT_DEFENSE
 POSE Arin PaperSlap
-SHOW PlumberInvoice l
+SHOW PlumberInvoice r
 SPEAK_FROM COURT_DEFENSE
     "Then why does this plumbing invoice state very clearly...
 PLAY_MUSIC DRAGONOBJECTION

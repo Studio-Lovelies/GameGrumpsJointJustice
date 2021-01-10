@@ -90,7 +90,7 @@ SPEAK "Judge Brent"
     "He just happened to be visiting this week."
 
 SPEAK_FROM COURT_PROSECUTION
-    "Mr. Hansen and Mr. Avidan... So we meet at last!"
+    "Mr. Hanson and Mr. Avidan... So we meet at last!"
 
 POSE Arin Normal
 THINK_FROM COURT_DEFENSE
@@ -104,7 +104,7 @@ JUMPCUT COURT_DEFENSE
 ANIMATION Arin Shock
 POSE Arin Sweaty
 SPEAK Arin
-    "T-trivia boy?!"
+    "T-Trivia Boy?!"
 JUMPCUT COURT_PROSECUTION
 SCREEN_SHAKE
 SFX damage1
@@ -261,6 +261,7 @@ SPEAK_FROM COURT_JUDGE
 
 FADE_TO_BLACK
 FADE_IN 1 COURT_WITNESS
+PLAY_MUSIC LOGICANDTRAINS
 
 PAN COURT_WITNESS COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
@@ -609,5 +610,8 @@ SPEAK "Tutorial Boy"
     "Members of the court, you will see that Jory knows he is guilty, and his behavior is proof of that!"
 SPEAK "Tutorial Boy"
     "But now you will see that with my next witness there can be no doubt of Mr. Griffis's guilt!"
+
+SPEAK_FROM COURT_PROSECUTION
+    "I call to the stand a witness to the crime: Ross O'Donovan."
 
 END_SCENE

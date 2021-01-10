@@ -89,21 +89,23 @@ SPEAK Arin
 
 SPEAK Ross
     "Yeah of course! Why else would we all go along with that ridiculous crap?"
+
 POSE Ross Sweaty
 SPEAK Ross
     "You mean you guys didn't know? I thought you were in on it."
 
-CHARACTER_LOCATION Dan LOBBY
 POSE Dan Angry
+SPEAK Dan
     "Are you kidding? We thought that was for real!"
 
 SPEAK Arin
     "Jory did you know about this?"
 
+POSE Jory Nervous
 SPEAK Jory
     "No way man! Nobody ever tells me anything."
 
-CHARACTER_LOCATION Ross Lobby
+POSE Ross Normal
 SPEAK Ross
     "Huh... so who's idea was all this? Brent?"
 
@@ -172,5 +174,7 @@ SPEAK Arin
     "He also says a lot of words." 
 SPEAK Arin
     "Let's just go talk with this Tutorial guy and figure out what the heck is goin on around here."
+
+FADE_TO_BLACK
 
 END_SCENE

@@ -21,9 +21,9 @@ PLAY_MUSIC DLFTS
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 THINK Arin
-    "(It started out just like every time after our livestream)"
+    "(It started out just like every time after our livestream.)"
 THINK Arin
-    "(We had just finished a session playing Penix Wright: Facial Attorney)"
+    "(We had just finished a session playing Penix Wright: Facial Attorney.)"
 THINK Arin
     "(Dan and I were discussing some very important matters...)"
 
@@ -260,7 +260,7 @@ SPEAK Dan
     "We're not lawyers."
     
 SPEAK Dan
-    "The closest thing we've been to being lawyers is playing is that Penix Wright(tm)#game."
+    "The closest thing we've been to being lawyers is playing that Penix Wright(tm)#game."
 SPEAK Dan
     "And that's just a stupid game that totally exists and isn't changed for copyright purposes!"
 
@@ -404,7 +404,7 @@ SPEAK Jory
     "Wow, thanks guys.#I guess I'll head to the, uh, %1$qCourtroom$q%0 then."
 POSE Jory Thinking
 SPEAK Jory
-    "They turned the main grumps office space into a makeshift courtroom just for this."
+    "They turned the main Grumps office space into a makeshift courtroom just for this."
 POSE Jory Normal
 SPEAK Jory
     "So uh, see you there."
