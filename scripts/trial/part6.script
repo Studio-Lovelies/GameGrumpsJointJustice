@@ -53,26 +53,6 @@ POSE "Judge Brent" Surprised
 SPEAK_FROM COURT_JUDGE
     "Something... off?"
 
-CUTSCENE GRASS_LEFT test
-
-    SPEAK Arin
-        "Wassup"
-
-    PAN GRASS_LEFT GRASS_RIGHT Grass
-
-    SFX damage1
-    ANIMATION "Tutorial Boy" HeadSlam
-    SPEAK_FROM GRASS_RIGHT
-        "Heyyoo"
-
-    PAN GRASS_RIGHT GRASS_CENTER Grass
-    SPEAK_FROM GRASS_CENTER
-        "hum, ok"
-
-END_CUTSCENE
-
-PLAY_CUTSCENE test COURT_DEFENSE
-
 JUMPCUT COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam

@@ -63,7 +63,9 @@ function NewScene(scriptPath)
 
         if self.credits ~= nil and #self.creditLines > 1 then
             for i = 1, #self.creditLines do
-                self.creditLines[i][3] = self.creditLines[i][3] - 0.3
+                if self.creditLines[#self.creditLines][3] > 50 then
+                    self.creditLines[i][3] = self.creditLines[i][3] - 0.3
+                end
             end
         end
 
@@ -383,9 +385,14 @@ function NewScene(scriptPath)
             table.insert(self.credits, line)
         end
 
-        local creditsMusic = Music["AKissFromARose"]
-        creditsMusic:setVolume(MasterVolume/100)
-        creditsMusic:play()
+        for i,v in pairs(Music) do
+            if i == "AKISSFROMAROSE" then
+                v:setVolume(MasterVolume/100)
+                v:play()
+            else
+                v:stop()
+            end
+        end
 
         for i = 1, #self.credits do
             if string.find(self.credits[i], "IMAGE$", 1, true) then
