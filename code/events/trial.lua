@@ -154,7 +154,7 @@ function NewWitnessEvent(queue)
 
                 if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex+2] then
                     if self.queue[self.textIndex+2] ~= "1" and self.queue[self.textIndex+2] ~= "0" then
-                        NewIssuePenaltyEvent(scene);
+                        AddToStack(stack, NewIssuePenaltyEvent(scene), lineParts);
                     elseif self.queue[self.textIndex+2] == "1" or self.queue[self.textIndex+2] == "0" then
                         scene:runDefinition(self.queue[self.textIndex+1])
                     end
@@ -203,15 +203,16 @@ function NewIssuePenaltyEvent(scene)
 
     scene.penalties = scene.penalties - 1;
 
-    if scene.penalties <= 0 then
-        table.insert(scene.stack, {"FADE_TO_BLACK", NewFadeToBlackEvent()});
-        Episode:stop();
-        Episode = NewEpisode(settings.game_over_path);
-        Episode:begin();
-    end
-
     self.update = function(self, scene, dt)
-        return false
+        if scene.penalties <= 0 then
+            table.insert(scene.stack, {"FADE_TO_BLACK", NewFadeToBlackEvent()});
+            Episode:stop();
+            local episodePath = Episode.episodePath
+            Episode = NewEpisode(settings.game_over_path)
+            Episode.nextEpisode = NewEpisode(episodePath)
+            Episode:begin();
+        end
+        return true
     end
 
     return self

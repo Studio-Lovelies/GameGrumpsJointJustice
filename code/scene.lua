@@ -63,7 +63,7 @@ function NewScene(scriptPath)
 
         if self.credits ~= nil and #self.creditLines > 1 then
             for i = 1, #self.creditLines do
-                if self.creditLines[#self.creditLines][3] > 50 then
+                if self.creditLines[#self.creditLines][3] > 70 then
                     self.creditLines[i][3] = self.creditLines[i][3] - 0.3
                 end
             end
@@ -359,17 +359,23 @@ function NewScene(scriptPath)
 
         if self.credits ~= nil then
             love.graphics.clear(0, 0, 0, 0)
-            love.graphics.setFont(CreditsFont)
             love.graphics.setColor(255, 255, 255)
 
             if self.creditLines ~= nil then
                 for i = 1, #self.creditLines do
                     if self.creditLines[i] ~= nil then
                         if self.creditLines[i][1] == "text" then
-                            love.graphics.print(self.credits[i], self.creditLines[i][2], self.creditLines[i][3])
+                            local xText = self.creditLines[i][2]
+                            local yText = self.creditLines[i][3]
+                            if string.find(self.credits[i], "SMALL$", 1, true) then
+                                love.graphics.setFont(CreditsSmallFont)
+                                xText = GraphicsWidth/2 - CreditsSmallFont:getWidth(self.credits[i])/2 + 20
+                            else
+                                love.graphics.setFont(CreditsFont)
+                            end
+                            love.graphics.print(string.gsub(self.credits[i], "SMALL", ""), xText, yText)
                         else
-                            love.graphics.draw(self.creditLines[i][1], 24, 24)--, GraphicsHeight/2)--self.creditLines[i][2] - 50, self.creditLines[i][3])
-                            print("image at "..self.creditLines[i][2]..", "..self.creditLines[i][3])
+                            love.graphics.draw(self.creditLines[i][1], self.creditLines[i][2], self.creditLines[i][3], 0, 0.8, 0.8)
                         end
                     end
                 end
@@ -398,7 +404,7 @@ function NewScene(scriptPath)
             if string.find(self.credits[i], "IMAGE$", 1, true) then
                 imgSrc = string.sub(self.credits[i], 7)
                 img = love.graphics.newImage(imgSrc)
-                self.creditLines[i] = {img, GraphicsWidth/2 - CreditsFont:getWidth(self.credits[i])/2, GraphicsHeight + (i-1)*16}
+                self.creditLines[i] = {img, 60, GraphicsHeight + (i-1)*16 - 50}
             else
                 self.creditLines[i] = {"text", GraphicsWidth/2 - CreditsFont:getWidth(self.credits[i])/2, GraphicsHeight + (i-1)*16}
             end

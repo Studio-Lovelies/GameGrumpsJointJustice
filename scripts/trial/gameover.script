@@ -28,6 +28,5 @@ FADE_TO_BLACK
 JUMPCUT BLACK_SCREEN
 SPEAK "Judge Brent"
     "The defense loses."
-GAME_OVER
 
 END_SCENE

@@ -752,6 +752,8 @@ POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
     "Penix Wright: Facial Attorney?!"
 
+STOP_SHOWING
+
 JUMPCUT COURT_WITNESS
 SFX stab
 ANIMATION Ross Damage
@@ -971,6 +973,8 @@ STOP_MUSIC
 POSE "Judge Brent" Surprised
 SPEAK_FROM COURT_JUDGE
     "The livestream?"
+
+STOP_SHOWING
 
 POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE

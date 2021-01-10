@@ -132,6 +132,7 @@ function LoadMisc()
     GameFontBold = love.graphics.newImageFont("sprites/GameFontBold.png", " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!?~():,-'*" .. '`"', 2)
     SmallFontBold = love.graphics.newImageFont("sprites/SmallFontBold.png", " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!?~():", 1)
     CreditsFont = love.graphics.newImageFont("sprites/CreditsFont.png", " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!?~():,-'*" .. '`"/#@', 2)
+    CreditsSmallFont = love.graphics.newImageFont("sprites/CreditsSmallFont.png", " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!?~:(),-'*" .. '"``/#@', 1)
     love.graphics.setFont(GameFont)
 end
 

@@ -277,7 +277,7 @@ SPEAK Arin
     "Yeah, we can prove it. With..."
 
 
-//PRESENT Jory'sBackpack
+PRESENT Jory'sBackpack
 
 //Incorrect Evidence
 //SPEAK_FROM COURT_JUDGE
@@ -327,6 +327,8 @@ SFX lightbulb
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
     "There's a stain here too!"
+
+STOP_SHOWING
 
 SPEAK_FROM COURT_ASSISTANT
     "Exactly. On one item, a stain may be trivial..."

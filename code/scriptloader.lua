@@ -217,7 +217,7 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewPlaySoundEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "ISSUE_PENALTY" then
-                    AddToStack(stack, NewIssuePenaltyEvent(), lineParts)
+                    AddToStack(stack, NewIssuePenaltyEvent(scene), lineParts)
                 end
                 if lineParts[1] == "GAME_OVER" then
                     AddToStack(stack, NewGameOverEvent(), lineParts)

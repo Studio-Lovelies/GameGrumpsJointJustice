@@ -8,6 +8,8 @@ function NewEpisode(episodePath)
             profiles = {}
         }
     }
+    self.episodePath = episodePath
+    self.nextEpisode = nil
 
     for line in love.filesystem.lines(episodePath) do
         table.insert(self.scenes, line)
@@ -41,7 +43,11 @@ function NewEpisode(episodePath)
             CurrentScene:update(0)
             DtReset = true
         else
-            CurrentScene:startCredits(self.creditLines)
+            if episodePath ~= settings.game_over_path then
+                CurrentScene:startCredits(self.creditLines)
+            else
+                self.nextEpisode:begin()
+            end
         end
     end
 
