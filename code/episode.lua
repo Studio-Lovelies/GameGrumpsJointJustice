@@ -41,23 +41,10 @@ function NewEpisode(episodePath)
             CurrentScene:update(0)
             DtReset = true
         else
-            startCredits(self)
+            CurrentScene:startCredits(self.creditLines)
         end
     end
 
     self.loaded = true
     return self
-end
-
-function startCredits(scene)
-    love.graphics.clear(1, 1, 1, 1)
-    love.graphics.setColor(255, 255, 255)
-    love.graphics.setFont(SmallFont)
-
-    for line in love.filesystem.lines(settings.credits_path) do
-        table.insert(scene.creditLines, line)
-        love.graphics.print(line)
-        print(line)
-    end
-end
 end

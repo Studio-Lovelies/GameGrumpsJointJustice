@@ -51,7 +51,6 @@ WITNESS_EVENT WitnessTestimony Ross "-- Witness' Account --"
     "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!"
     "Now that I know they were stolen, that means the culprit must be Jory!"
 
-STOP_MUSIC
 FADE_TO_BLACK
 FADE_IN 1 COURT_JUDGE
 
@@ -415,7 +414,7 @@ SPEAK_FROM COURT_WITNESS
 
 JUMPCUT COURT_DEFENSE
 POSE Arin PaperSlap
-SHOW PlumberInvoice l
+SHOW PlumberInvoice r
 SPEAK_FROM COURT_DEFENSE
     "Then why does this plumbing invoice state very clearly...
 PLAY_MUSIC DRAGONOBJECTION

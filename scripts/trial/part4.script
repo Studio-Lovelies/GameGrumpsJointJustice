@@ -349,7 +349,7 @@ DEFINE PressC4
     SPEAK_FROM COURT_DEFENSE
         "I CAN prove it... with THIS!"
 
-//PRESENT Switch
+SHOW Switch r
 
 END_DEFINE
 
@@ -430,7 +430,7 @@ END_DEFINE
 WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
     "Well I guess you got me. I did lie about what I was doing." PressC1 0
     "I was actually making a special Mario Maker level for you guys." PressC2 0
-    "You've always been good sports about my levels, so I wanted to make you a nice one for a change!" PressC3 0
+    "You've always been good sports about my troll levels, so I wanted to make you a nice one for a change!" PressC3 0
     "It was when I was in the middle of making the level when I saw Jory walk by my office." PressC4 1
     "I got tired of making the level so I wanted to see what he was up to." PressC5 0
     "That's when I saw it! He had taken the Dinos and stuffed them into his backpack!" PressC6 0
@@ -439,15 +439,14 @@ WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
 // Found Contradiction //
 /////////////////////////
 
-
-SHOW Switch r
-
 SPEAK_FROM COURT_PROSECUTION
     "What is this...?
 
 POSE Arin Confident
 SPEAK_FROM COURT_DEFENSE
     "Why it's a Nintendo Switch. But not just any Switch."
+
+STOP_SHOWING
 
 
 POSE Arin Point
@@ -541,6 +540,8 @@ SPEAK Arin
 SPEAK Arin
     "In case you don't know, Slimemantha(tm) is an original character made #by Ross himself!"
 
+STOP_SHOWING
+
 POSE "Tutorial Boy" Sweaty
 SPEAK_FROM COURT_PROSECUTION
     "S-so what? That still doesn't help your case."
@@ -603,7 +604,7 @@ DEFINE Wrong1
     JUMPCUT COURT_WITNESS
     POSE Ross GlaringHelm
     SPEAK Ross
-        "Hey - don't act like you're better me, with your Pantsu Hunter and your weird anime dating sim crap!"
+        "Hey - don't act like you're better than me, with your Pantsu Hunter and your weird anime dating sim crap!"
 
     JUMPCUT COURT_DEFENSE
     POSE Arin Sweaty
@@ -630,7 +631,6 @@ DEFINE Right1
     POSE Arin PaperSlap
     SPEAK Arin
         "If you've ever owned a Switch, you'd know that the last game played,"
-    SHOW Switch r
     SPEAK Arin
         "always sits on the far left-hand side of the screen!"
 
@@ -963,7 +963,7 @@ SPEAK_FROM COURT_DEFENSE
     "Yes I can! With this!!!"
 
 
-PRESENT_EVIDENCE LivestreamRecording
+SHOW LivestreamRecording r
 
 SHOUT Arin takethat
 
@@ -1142,7 +1142,7 @@ SPEAK Arin
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "Be that as it may, unless the defense has more evidence of someone else more likely to have committed the crime than Jory..."
+    "Be that as it may, unless the defense has evidence of someone else more likely to have committed the crime than Jory..."
 SPEAK "Judge Brent"
     "I have no choice but to overrule your objection."
 
@@ -1214,3 +1214,5 @@ SPEAK Arin
     "ROSS O'DIDITVAN!"
 
 WIDESHOT
+
+END_SCENE

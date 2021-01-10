@@ -19,6 +19,9 @@ function NewScene(scriptPath)
     self.textColor = {1,1,1}
     self.textCentered = false
 
+    self.credits = nil
+    self.creditLines = {}
+
     self.charAnimIndex = 1
 
     self.wasPressingRight = false
@@ -57,6 +60,13 @@ function NewScene(scriptPath)
         end
 
         self.charAnimIndex = self.charAnimIndex + dt*5
+
+        if self.credits ~= nil and #self.creditLines > 1 then
+            for i = 1, #self.creditLines do
+                self.creditLines[i][3] = self.creditLines[i][3] - 0.3
+            end
+        end
+
     end
 
     self.drawCharacterAt = function(self, characterLocation, x,y)
@@ -342,6 +352,48 @@ function NewScene(scriptPath)
                     local xText = GraphicsWidth/2 - GameFont:getWidth(lineTableFull[i])/2
                     love.graphics.print(lineTable[i], xText, GraphicsHeight-60 + (i-1)*16)
                 end
+            end
+        end
+
+        if self.credits ~= nil then
+            love.graphics.clear(0, 0, 0, 0)
+            love.graphics.setFont(CreditsFont)
+            love.graphics.setColor(255, 255, 255)
+
+            if self.creditLines ~= nil then
+                for i = 1, #self.creditLines do
+                    if self.creditLines[i] ~= nil then
+                        if self.creditLines[i][1] == "text" then
+                            love.graphics.print(self.credits[i], self.creditLines[i][2], self.creditLines[i][3])
+                        else
+                            love.graphics.draw(self.creditLines[i][1], 24, 24)--, GraphicsHeight/2)--self.creditLines[i][2] - 50, self.creditLines[i][3])
+                            print("image at "..self.creditLines[i][2]..", "..self.creditLines[i][3])
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    self.startCredits = function()
+
+        self.credits = {}
+        
+        for line in love.filesystem.lines(settings.credits_path) do
+            table.insert(self.credits, line)
+        end
+
+        local creditsMusic = Music["AKissFromARose"]
+        creditsMusic:setVolume(MasterVolume/100)
+        creditsMusic:play()
+
+        for i = 1, #self.credits do
+            if string.find(self.credits[i], "IMAGE$", 1, true) then
+                imgSrc = string.sub(self.credits[i], 7)
+                img = love.graphics.newImage(imgSrc)
+                self.creditLines[i] = {img, GraphicsWidth/2 - CreditsFont:getWidth(self.credits[i])/2, GraphicsHeight + (i-1)*16}
+            else
+                self.creditLines[i] = {"text", GraphicsWidth/2 - CreditsFont:getWidth(self.credits[i])/2, GraphicsHeight + (i-1)*16}
             end
         end
     end
