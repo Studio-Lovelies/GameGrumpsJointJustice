@@ -136,30 +136,21 @@ DEFINE Taste
     SPEAK Arin
         "...so we can find out what's really covering them!"
 
-<<<<<<< HEAD
-=======
     JUMPCUT COURT_WITNESS
     SFX stab2
     SCREEN_SHAKE
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
     POSE Ross Glaring
     SPEAK_FROM COURT_WITNESS
     SPEAK Ross
         "EW SICK!"
 
-<<<<<<< HEAD
-=======
     JUMPCUT COURT_PROSECUTION
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
     POSE "Tutorial Boy" Sweaty
     SPEAK_FROM COURT_PROSECUTION
     SPEAK "Tutorial Boy"
         "You can't be serious."
 
-<<<<<<< HEAD
-=======
     JUMPCUT COURT_DEFENSE
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
     POSE Arin DeskSlam
     SPEAK_FROM COURT_DEFENSE
     SPEAK Arin
