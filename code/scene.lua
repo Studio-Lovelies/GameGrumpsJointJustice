@@ -55,12 +55,12 @@ function NewScene(scriptPath)
         self.canShowBgTopLayer = true
         self.removes = 0
 
-        if self.stack[1].event.sync == nil or self.stack[1].event.sync ~= true then
+        if self.stack[1].event.sync == nil or self.stack[1].event.sync ~= "true" then
             while #self.stack >= 1 and not self.stack[1].event:update(self, dt) do
                 table.remove(self.stack, 1)
                 self.currentEventIndex = self.currentEventIndex + 1
             end
-        elseif self.stack[1].event.sync then
+        elseif self.stack[1].event.sync == "true" then
             for i = 1, 2 do
                 if not self.stack[i].event:update(self, dt) then
                     table.remove(self.stack, i)
