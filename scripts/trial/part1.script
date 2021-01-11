@@ -8,6 +8,7 @@ CHARACTER_INITIALIZE Arin arin MALE
 CHARACTER_INITIALIZE Dan dan MALE
 CHARACTER_INITIALIZE "Judge Brent" judge MALE
 CHARACTER_INITIALIZE "Tutorial Boy" tutorialboy MALE
+CHARACTER_INITIALIZE ??? tutorialboy MALE
 CHARACTER_INITIALIZE Jory jory MALE
 
 CHARACTER_LOCATION Arin COURT_DEFENSE
@@ -18,7 +19,7 @@ CHARACTER_LOCATION Jory COURT_WITNESS
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
-EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
@@ -37,7 +38,7 @@ END_DEFINE
 //////////////////
 
 TYPEWRITER
-    "Some Undisclosed Date, 10:00AM#Attitude City Courthouse"
+    "Some Undisclosed Date, 3:30AM#Attitude City Courthouse"
 
 WIDESHOT
 GAVEL
@@ -70,6 +71,7 @@ SPEAK_FROM COURT_ASSISTANT
     "Well I suppose that's fine. I mean Brent is pretty fair in general."
 
 SFX smack
+CHARACTER_LOCATION ??? COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "AHEM! The prosecution is also ready, Your Honor."
 
@@ -97,10 +99,11 @@ SPEAK Arin
 JUMPCUT COURT_PROSECUTION
 SCREEN_SHAKE
 SFX damage1
-ANIMATION "Tutorial Boy" HeadSlam
+ANIMATION ??? HeadSlam
 SFX tutboy_wrong
 SPEAK_FROM COURT_PROSECUTION
     "WRONG!"
+CHARACTER_LOCATION "Tutorial Boy" COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "I am Tutorial Boy! Trivia Boy is my brother...
 SPEAK "Tutorial Boy"

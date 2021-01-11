@@ -18,7 +18,7 @@ CHARACTER_LOCATION Ross COURT_WITNESS
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
-EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
@@ -197,7 +197,7 @@ POSE Arin Point
 SPEAK Arin
     "We've already heard evidence that proves Jory cared about those coins, and I've got it right here!"
 
-//PRESENT_EVIDENCE LivestreamRecording
+PRESENT LivestreamRecording
 SHOUT Arin takethat
 POSE Arin PaperSlap
 SPEAK Arin
@@ -766,7 +766,7 @@ END_CHOICE
 //////////////
 //end choice//
 //////////////
-//PRESENT_EVIDENCE Jory'sBackpack
+PRESENT Jory'sBackpack
 
 SHOUT Arin takethat
 

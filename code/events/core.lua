@@ -671,33 +671,6 @@ function NewStopShowingEvent(scene)
     return self
 end
 
-function NewPresentEvent(evidence)
-    local self = {}
-    self.evidence = evidence
-    self.wasPressingConfirm = false
-
-    self.update = function(self, scene, dt)
-        scene.textHidden = false
-        local pressingConfirm = love.keyboard.isDown(controls.press_confirm)
-        if screens.courtRecords.displayed then
-            if not self.wasPressingConfirm and pressingConfirm then
-                if Episode.courtRecords.evidence[CourtRecordIndex].externalName:gsub("%s+", ""):lower() == self.evidence:lower() then
-                    screens.courtRecords.displayed = false
-                    return false
-                else
-                    return true
-                end
-            end
-            self.wasPressingConfirm = pressingConfirm
-            return true
-        else
-            screens.courtRecords.displayed = true
-            return true
-        end
-    end
-    return self
-end
-
 function NewChoiceEvent(options, isFake)
     local self = {}
     self.select = 1
