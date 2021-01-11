@@ -363,7 +363,7 @@ SPEAK Dan
 SPEAK Arin
     "*ahem*"
 SPEAK Arin GREEN
-    "$qHello Grumps, #First of all I want to thank you for all the hard work you've done taking care of Jory Jr.$q"
+    "$qHello Grumps, first of all I want to thank you for all the hard work you've done taking care of Jory Jr.$q"
 
 // Should be shocked
 POSE Dan Hair
@@ -416,6 +416,8 @@ SPEAK Arin
 CHARACTER_LOCATION Dan LOBBY
 SPEAK Dan
     "...#So...?"
+    
+POSE Jory Normal
 SPEAK Arin
     "Jory, don't worry. We're on it buddy, because we trust you!"
 SPEAK Arin

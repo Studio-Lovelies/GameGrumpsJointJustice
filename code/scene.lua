@@ -128,9 +128,6 @@ function NewScene(scriptPath)
     self.drawBackgroundTopLayer = function(self, location, x, y)
         local background = Backgrounds[location]
 
-        x = camerapan[1]
-        y = camerapan[2]
-
         if background[2] ~= nil then
             love.graphics.draw(background[2], x, y)
         end
