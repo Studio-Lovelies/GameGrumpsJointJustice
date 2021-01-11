@@ -974,8 +974,6 @@ POSE "Judge Brent" Surprised
 SPEAK_FROM COURT_JUDGE
     "The livestream?"
 
-STOP_SHOWING
-
 POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
     "That's right, Your Honor!"
@@ -998,6 +996,8 @@ PLAY_MUSIC HUFFPUFFPURSUIT
 POSE Arin Point
 SPEAK Arin
     "...because we were using it during the livestream!"
+
+STOP_SHOWING
 
 WIDESHOT
 
@@ -1105,7 +1105,7 @@ POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "It's just as the witness said! There's no proof that any of these claims are true!
 SPEAK "Tutorial Boy"
-    "There's no conclusive evidence that the Switch the used was actually Ross'."
+    "There's no conclusive evidence that the Switch he used was actually Ross'."
 SPEAK "Tutorial Boy"
     "I request that last bit of evidence be stricken from the record!"
 

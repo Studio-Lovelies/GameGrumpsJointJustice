@@ -55,29 +55,31 @@ function NewScene(scriptPath)
         self.canShowBgTopLayer = true
         self.removes = 0
 
-        if self.stack[1].event.sync == nil or self.stack[1].event.sync ~= "true" then
-            while #self.stack >= 1 and not self.stack[1].event:update(self, dt) do
-                table.remove(self.stack, 1)
-                self.currentEventIndex = self.currentEventIndex + 1
-            end
-        elseif self.stack[1].event.sync == "true" then
-            for i = 1, 2 do
-                if not self.stack[i].event:update(self, dt) then
-                    table.remove(self.stack, i)
-                    self.removes = self.removes + 1
-                    if i == 1 then
-                        break
+        if #self.stack > 0 then
+            if self.stack[1].event.sync == nil or self.stack[1].event.sync ~= "true" then
+                while #self.stack >= 1 and not self.stack[1].event:update(self, dt) do
+                    table.remove(self.stack, 1)
+                    self.currentEventIndex = self.currentEventIndex + 1
+                end
+            elseif self.stack[1].event.sync == "true" then
+                for i = 1, 2 do
+                    if not self.stack[i].event:update(self, dt) then
+                        table.remove(self.stack, i)
+                        self.removes = self.removes + 1
+                        if i == 1 then
+                            break
+                        end
                     end
                 end
+                self.currentEventIndex = self.currentEventIndex + self.removes
             end
-            self.currentEventIndex = self.currentEventIndex + self.removes
         end
 
         self.charAnimIndex = self.charAnimIndex + dt*5
 
         if self.credits ~= nil and #self.creditLines > 1 then
             for i = 1, #self.creditLines do
-                if self.creditLines[#self.creditLines][3] > 70 then
+                if self.creditLines[#self.creditLines][3] > 75 then
                     self.creditLines[i][3] = self.creditLines[i][3] - 0.3
                 end
             end
