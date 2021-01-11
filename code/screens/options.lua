@@ -130,16 +130,8 @@ OptionsConfig = {
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
                 blip2:play()
-                screens.options.displayed = false;
-                TitleSelection = "Options";
                 lastDisplayed = true;
-                if lastDisplayed == screens.title.displayed then
-                    TitleSelection = "Case Select";
-                    SelectionIndex = 1;
-                else
-                    TitleSelection = "Options"
-                    SelectionIndex = 1;
-                end
+                screens.options.displayed = false;
             elseif TitleSelection == "Controls" then
                 blip2:play()
             end
@@ -189,8 +181,14 @@ OptionsConfig = {
     onKeyReleased = function(key)
     end;
     onDisplay = function()
+        screens.browsescenes.displayed = false
+        screens.pause.displayed = false
+        screens.courtRecords.displayed = false
+        screens.jorytrial.displayed = false
         screens.options.displayed = true
         screens.title.displayed = false
+        TitleSelection = "Back";
+        SelectionIndex = 0;
     end;
     draw = function()
         if screens.options.displayed == true then

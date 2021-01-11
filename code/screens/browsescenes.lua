@@ -163,7 +163,13 @@ BrowseScreenConfig = {
     end;
     onDisplay = function()
         screens.browsescenes.displayed = true
+        screens.pause.displayed = false
+        screens.courtRecords.displayed = false
+        screens.jorytrial.displayed = false
+        screens.options.displayed = false
         screens.title.displayed = false
+        TitleSelection = "Back";
+        SelectionIndex = 0;
     end;
     draw = function()
         if screens.browsescenes.displayed == true then

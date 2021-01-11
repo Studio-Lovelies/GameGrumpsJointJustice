@@ -77,7 +77,7 @@ function DrawTitleScreen()
         textScale
     )
 
-    local loadGameText = love.graphics.newText(GameFont, "Load Game")
+    local loadGameText = love.graphics.newText(GameFont, "Settings ")--"Load Game")
     love.graphics.draw(
         loadGameText,
         loadX + loadW/2-(loadGameText:getWidth() * textScale)/2,
@@ -129,16 +129,16 @@ TitleScreenConfig = {
                 blip2:play()
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
-                --screens.options.lastDisplayed = screens.title.displayed
-                --screens.options.displayed = true;
-                --DrawOptionsScreen();
-                screens.title.displayed = false;
                 SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 -- replace this and handle load game logic
-                jingle:play()
-                Episode:begin()
-                screens.title.displayed = false;
+                --jingle:play()
+                --Episode:begin()
+                blip2:play()
+                screens.options.lastDisplayed = screens.title.displayed
+                screens.options.displayed = true
+                DrawOptionsScreen()
+                SelectionIndex = 2;
             elseif TitleSelection == "New Game" then
                 jingle:play()
                 Episode:begin()
@@ -165,6 +165,7 @@ TitleScreenConfig = {
         screens.pause.displayed = false
         screens.courtRecords.displayed = false
         screens.jorytrial.displayed = false
+        screens.options.displayed = false
         screens.title.displayed = true
         TitleSelection = "New Game";
         SelectionIndex = 0;
