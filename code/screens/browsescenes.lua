@@ -173,6 +173,8 @@ BrowseScreenConfig = {
     draw = function()
         if screens.browsescenes.displayed == true then
             DrawBrowseScreen()
+            blip2:setVolume(settings.master_volume / 100 / 2)
+            jingle:setVolume(settings.master_volume / 100 / 2)
         end
     end;
 }

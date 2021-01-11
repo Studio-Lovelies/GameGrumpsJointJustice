@@ -124,16 +124,15 @@ end
 
 OptionsConfig = {
     displayed = false;
-    lastDisplayed = nil;
     onKeyPressed = function(key)
         if key == controls.start_button then
             love.graphics.clear(0, 0, 0);
             if TitleSelection == "Back" then
                 blip2:play()
-                lastDisplayed = true;
-                print(lastDisplayed)
+                screens.title.displayed = true;
+                DrawTitleScreen();
                 screens.options.displayed = false;
-                SelectionIndex = 2;
+                SelectionIndex = 3;
             elseif TitleSelection == "Controls" then
                 blip2:play()
             end
@@ -144,7 +143,6 @@ OptionsConfig = {
                 SelectionIndex = 0;
             end
             TitleSelection = optionsSelections[SelectionIndex]
-            print(TitleSelection)
         elseif key == controls.pause_nav_down then
             blip2:play()
             SelectionIndex = SelectionIndex - 1
@@ -152,34 +150,32 @@ OptionsConfig = {
                 SelectionIndex = 2;
             end
             TitleSelection = optionsSelections[SelectionIndex]
-            print(TitleSelection)
         elseif key == controls.press_right then
-            print(TitleSelection)
             if TitleSelection == "Volume" then
                 if settings.master_volume < 100 then
-                    blip2:play()
                     settings.master_volume = settings.master_volume + 5
+                    MasterVolume = settings.master_volume
                     for i,v in pairs(Music) do
-                        v:setLooping(true)
                         v:setVolume(settings.master_volume / 100)
                     end
                     for i,v in pairs(Sounds) do
                         v:setVolume(settings.master_volume / 100 / 2)
                     end
+                    blip2:play()
                 end
             end
         elseif key == controls.press_left then
-            print(TitleSelection)
             if TitleSelection == "Volume" then
                 if settings.master_volume > 0 then
-                    blip2:play()
                     settings.master_volume = settings.master_volume - 5
+                    MasterVolume = settings.master_volume
                     for i,v in pairs(Music) do
                         v:setVolume(settings.master_volume / 100)
                     end
                     for i,v in pairs(Sounds) do
                         v:setVolume(settings.master_volume / 100 / 2)
                     end
+                    blip2:play()
                 end
             end
         end
@@ -187,18 +183,20 @@ OptionsConfig = {
     onKeyReleased = function(key)
     end;
     onDisplay = function()
+        screens.browsescenes.displayed = false
+        screens.pause.displayed = false
+        screens.courtRecords.displayed = false
+        screens.jorytrial.displayed = false
+        screens.options.displayed = true
+        screens.title.displayed = false
         TitleSelection = "Back";
         SelectionIndex = 0;
     end;
     draw = function()
         if screens.options.displayed == true then
             DrawOptionsScreen()
-            screens.browsescenes.displayed = false
-            screens.pause.displayed = false
-            screens.courtRecords.displayed = false
-            screens.jorytrial.displayed = false
-            screens.options.displayed = true
-            screens.title.displayed = false
+            blip2:setVolume(settings.master_volume / 100 / 2)
+            jingle:setVolume(settings.master_volume / 100 / 2)
         end
     end;
 }

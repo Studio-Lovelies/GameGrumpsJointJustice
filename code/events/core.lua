@@ -440,6 +440,8 @@ function NewPlayMusicEvent(music)
             end
         end
 
+        print(MasterVolume)
+
         return false
     end
 

@@ -77,7 +77,7 @@ function DrawTitleScreen()
         textScale
     )
 
-    local loadGameText = love.graphics.newText(GameFont, "Settings ")--"Load Game")
+    local loadGameText = love.graphics.newText(GameFont, "Settings")--"Load Game")
     love.graphics.draw(
         loadGameText,
         loadX + loadW/2-(loadGameText:getWidth() * textScale)/2,
@@ -90,7 +90,7 @@ function DrawTitleScreen()
     local scenesText = love.graphics.newText(GameFont, "Case Select")
     love.graphics.draw(
         scenesText,
-        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2,
+        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2 - 30,
         scenesY + scenesH/2-(loadGameText:getHeight() * textScale)/2,
         0,
         textScale,
@@ -128,6 +128,7 @@ TitleScreenConfig = {
                 blip2:play()
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
+                screens.title.displayed = false;
                 SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 -- replace this and handle load game logic
@@ -137,6 +138,7 @@ TitleScreenConfig = {
                 screens.options.lastDisplayed = screens.title.displayed
                 screens.options.displayed = true
                 DrawOptionsScreen()
+                screens.title.displayed = false;
                 SelectionIndex = 0;
             elseif TitleSelection == "New Game" then
                 jingle:play()
@@ -172,6 +174,8 @@ TitleScreenConfig = {
     draw = function()
         if screens.title.displayed == true then
             DrawTitleScreen()
+            blip2:setVolume(settings.master_volume / 100 / 2)
+            jingle:setVolume(settings.master_volume / 100 / 2)
         end
     end
 }
