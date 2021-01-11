@@ -844,6 +844,7 @@ function NewSceneEndEvent()
     local self = {}
 
     self.update = function(self, scene, dt)
+        Episode.sceneIndex = Episode.sceneIndex + 1
         Episode:nextScene()
         return false
     end

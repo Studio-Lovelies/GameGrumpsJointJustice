@@ -2,7 +2,7 @@ function NewEpisode(episodePath)
     local self = {
         loaded = false,
         scenes = {},
-        sceneIndex = 0,
+        sceneIndex = 1,
         courtRecords = {
             evidence = {},
             profiles = {}
@@ -26,7 +26,7 @@ function NewEpisode(episodePath)
     end
 
     self.begin = function()
-        self.sceneIndex = 0
+        self.sceneIndex = 1
         self.nextScene()
     end
 
@@ -36,8 +36,7 @@ function NewEpisode(episodePath)
     end
 
     self.nextScene = function()
-        self.sceneIndex = self.sceneIndex + 1
-        
+
         if self.sceneIndex <= #self.scenes then
             CurrentScene = NewScene(self.scenes[self.sceneIndex])
             CurrentScene:update(0)
