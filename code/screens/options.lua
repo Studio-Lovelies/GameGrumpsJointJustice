@@ -127,11 +127,13 @@ OptionsConfig = {
     lastDisplayed = nil;
     onKeyPressed = function(key)
         if key == controls.start_button then
-            love.graphics.clear(0,0,0);
+            love.graphics.clear(0, 0, 0);
             if TitleSelection == "Back" then
                 blip2:play()
                 lastDisplayed = true;
+                print(lastDisplayed)
                 screens.options.displayed = false;
+                SelectionIndex = 2;
             elseif TitleSelection == "Controls" then
                 blip2:play()
             end
@@ -150,6 +152,7 @@ OptionsConfig = {
             end
             TitleSelection = optionsSelections[SelectionIndex]
         elseif key == controls.press_right then
+            print(TitleSelection)
             if TitleSelection == "Volume" then
                 if settings.master_volume < 100 then
                     blip2:play()
@@ -164,6 +167,7 @@ OptionsConfig = {
                 end
             end
         elseif key == controls.press_left then
+            print(TitleSelection)
             if TitleSelection == "Volume" then
                 if settings.master_volume > 0 then
                     blip2:play()
