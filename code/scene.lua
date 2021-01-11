@@ -53,10 +53,24 @@ function NewScene(scriptPath)
         self.textBoxSprite = Sprites["TextBox"]
         self.characterTalking = false
         self.canShowBgTopLayer = true
+        self.removes = 0
 
-        while #self.stack >= 1 and not self.stack[1].event:update(self, dt) do
-            table.remove(self.stack, 1)
-            self.currentEventIndex = self.currentEventIndex + 1
+        if self.stack[1].event.sync == nil or self.stack[1].event.sync == false then
+            while #self.stack >= 1 and not self.stack[1].event:update(self, dt) do
+                table.remove(self.stack, 1)
+                self.currentEventIndex = self.currentEventIndex + 1
+            end
+        elseif self.stack[1].event.sync then
+            for i = 1, 2 do
+                if not self.stack[i].event:update(self, dt) then
+                    table.remove(self.stack, i)
+                    self.removes = self.removes + 1
+                    if i == 1 then
+                        break
+                    end
+                end
+            end
+            self.currentEventIndex = self.currentEventIndex + self.removes
         end
 
         self.charAnimIndex = self.charAnimIndex + dt*5
@@ -114,6 +128,9 @@ function NewScene(scriptPath)
     self.drawBackgroundTopLayer = function(self, location, x, y)
         local background = Backgrounds[location]
 
+        x = camerapan[1]
+        y = camerapan[2]
+
         if background[2] ~= nil then
             love.graphics.draw(background[2], x, y)
         end
@@ -125,7 +142,11 @@ function NewScene(scriptPath)
         -- draw the background of the current location
         local background = Backgrounds[self.location]
         if background[1] ~= nil then
-            love.graphics.draw(background[1])
+
+            x = camerapan[1]
+            y = camerapan[2]
+
+            love.graphics.draw(background[1], x, y)
         end
 
         -- draw the character who is at the current location

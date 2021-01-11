@@ -116,8 +116,8 @@ function love.draw()
         dy = love.math.random() * choose{1, -1} * 2
     end
 
-    dx = camerapan[1]
-    dy = camerapan[2]
+    --dx = camerapan[1]
+    --dy = camerapan[2]
 
     love.graphics.setColor(unpack(colors.white))
 

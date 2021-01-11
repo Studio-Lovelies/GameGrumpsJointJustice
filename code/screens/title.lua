@@ -142,7 +142,7 @@ TitleScreenConfig = {
                 SelectionIndex = 0;
             elseif TitleSelection == "New Game" then
                 jingle:play()
-                Episode:begin()
+                NewEpisode(settings.episode_path):begin()
                 screens.title.displayed = false;
             end
         elseif key == controls.press_right then
