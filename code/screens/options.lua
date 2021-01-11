@@ -144,6 +144,7 @@ OptionsConfig = {
                 SelectionIndex = 0;
             end
             TitleSelection = optionsSelections[SelectionIndex]
+            print(TitleSelection)
         elseif key == controls.pause_nav_down then
             blip2:play()
             SelectionIndex = SelectionIndex - 1
@@ -151,6 +152,7 @@ OptionsConfig = {
                 SelectionIndex = 2;
             end
             TitleSelection = optionsSelections[SelectionIndex]
+            print(TitleSelection)
         elseif key == controls.press_right then
             print(TitleSelection)
             if TitleSelection == "Volume" then
@@ -185,18 +187,18 @@ OptionsConfig = {
     onKeyReleased = function(key)
     end;
     onDisplay = function()
-        screens.browsescenes.displayed = false
-        screens.pause.displayed = false
-        screens.courtRecords.displayed = false
-        screens.jorytrial.displayed = false
-        screens.options.displayed = true
-        screens.title.displayed = false
         TitleSelection = "Back";
         SelectionIndex = 0;
     end;
     draw = function()
         if screens.options.displayed == true then
             DrawOptionsScreen()
+            screens.browsescenes.displayed = false
+            screens.pause.displayed = false
+            screens.courtRecords.displayed = false
+            screens.jorytrial.displayed = false
+            screens.options.displayed = true
+            screens.title.displayed = false
         end
     end;
 }
