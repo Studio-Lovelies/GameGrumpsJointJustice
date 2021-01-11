@@ -47,17 +47,6 @@ PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
 SPEAK_FROM COURT_JUDGE
     "Court is now in session for the trial of Jory Griffis."
 
-JUMPCUT COURT_DEFENSE
-ANIMATION Arin Shock
-SPEAK Arin
-    "Test"
-
-ANIMATION Arin Objection
-
-JUMPCUT COURT_ASSISTANT
-ANIMATION Dan AirGuitar
-
-
 SPEAK_FROM COURT_DEFENSE
     "The defense is ready Your H-"
 
