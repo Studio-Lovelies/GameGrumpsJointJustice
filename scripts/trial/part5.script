@@ -116,7 +116,7 @@ POSE Arin Confident
 SPEAK Arin
     "Check this out!"
 
-//PRESENT_EVIDENCE BentCoins
+PRESENT BentCoins
 
 SHOUT Arin takethat
 
@@ -304,7 +304,7 @@ SPEAK "Tutorial Boy"
 
 WIDESHOT
 
-//GAVEL 3X ANIMATION
+GAVEL
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Angry
@@ -329,7 +329,7 @@ SPEAK "Judge Brent"
     "Hmm... I could see that happening, certainly."
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "And since there is nobody here that can refute this point, I have to side with the prosecution,"
+    "And since there is nobody here that can refute this point, I have to side with the prosecution."
 
 STOP_MUSIC
 JUMPCUT COURT_DEFENSE
@@ -551,6 +551,9 @@ DEFINE PressD3
     POSE "Judge Brent" Angry
     SPEAK "Judge Brent"
         "AHEM!"
+
+    JUMPCUT COURT_WITNESS
+
     POSE Ross Sweaty
     SPEAK Ross
         "Yes, anyways, as I was saying..."
@@ -690,7 +693,7 @@ DEFINE Choice1
 
     POSE "Judge Brent" Warning
     SPEAK "Judge Brent"
-        "But these are hardly normal circumstances. Thus I will allow the defense to examine the backpack."
+        "But these are hardly normal circumstances. Thus I will allow the defense#to examine the backpack."
 
     SPEAK "Judge Brent"
         "Do I make myself clear?"
@@ -712,25 +715,23 @@ DEFINE Choice1
     SPEAK Arin
         "Thank you, your honor! Now let's take a look at this backpack!"
     POSE Arin Normal
-SHOW Jory'sBackpack r
-WAIT 1
+    SHOW Jory'sBackpack l
+    WAIT 1
     SFX dramapound
     ANIMATION Arin Shock
     POSE Arin Sweaty
     SPEAK Arin
       "Holy jeeez man what's in this thing? It's so heavy."
 
-WAIT 1
+    WAIT 1
 
-ANIMATION Arin Shock
-
-WAIT 1
-
-SFX realization
-ANIMATION Arin DeskSlam
+    SFX realization
+    ANIMATION Arin DeskSlam
     POSE Arin DeskSlam
     SPEAK Arin
         "That's it! I got it! I know how he's lying"
+
+    STOP_SHOWING
 
     JUMPCUT COURT_ASSISTANT
     POSE Dan Fist
@@ -799,6 +800,8 @@ SPEAK "Judge Brent"
 
 STOP_MUSIC
 
+SHOW Jory'sBackpack l
+
 SFX potatoes2
 
 JUMPCUT COURT_DEFENSE
@@ -840,6 +843,8 @@ ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
 SPEAK Arin
     "And his backpack is filled to the brim with them!"
+
+STOP_SHOWING
 
 
 JUMPCUT COURT_PROSECUTION
@@ -938,11 +943,11 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "I don't care how many potatoes are in his backpack, or how much the defense CLAIMS he loves those coins!"
 SPEAK "Tutorial Boy"
-    "All of those are lies made up by the defense to distract you from the story the hard evidence tells: Jory is guilty!"
+    "All of those are lies made up by the defense to distract you from the story. The hard evidence tells: Jory is guilty!"
 
 WIDESHOT
 
-//GAVEL x3
+GAVEL
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Angry

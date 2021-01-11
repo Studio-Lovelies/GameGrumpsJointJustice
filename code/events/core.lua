@@ -351,9 +351,26 @@ function NewTypeWriterEvent(text)
     return self
 end
 
+function NewSetSyncEvent(sync)
+    local self = {}
+    self.sync = sync:lower()
+
+    self.update = function(self, scene, dt)
+
+        scene.stack[2].event.sync = self.sync
+
+        return false
+    end
+
+    return self
+
+end
+
 function NewPanImageEvent(a, b, c, d)
     local self = {}
+
     camerapan = {0, 0}
+
     self.a = tonumber(a)
     self.b = tonumber(b)
     self.c = tonumber(c)
@@ -372,7 +389,6 @@ function NewPanImageEvent(a, b, c, d)
     self.update = function(self, scene, dt)
         scene.canShowBgTopLayer = false
         scene.canShowCharacter = false
-        scene.textHidden = true
 
         if self.x ~= self.c then
             if self.x > self.c then
@@ -418,6 +434,21 @@ function NewPanImageEvent(a, b, c, d)
         camerapan = {self.x, self.y}
     end
 
+    return self
+end
+
+function NewCameraEvent(x, y)
+    local self = {}
+    self.x = x
+    self.y = y
+
+    self.update = function(self, scene, dt)
+
+        camerapan = {self.x, self.y}
+
+        return false
+    end
+    
     return self
 end
 
@@ -842,8 +873,8 @@ function NewFadeToBlackEvent()
     end
 
     self.draw = function(self, scene)
-        love.graphics.setColor(0,0,0, self.timer)
-        love.graphics.rectangle("fill", 0,0, GraphicsWidth,GraphicsHeight)
+        love.graphics.setColor(0, 0, 0, self.timer)
+        love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
     end
 
     return self

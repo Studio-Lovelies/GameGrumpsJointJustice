@@ -177,8 +177,14 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "END_DEFINE" then
                     stack = scene.stack
                 end
+                if lineParts[1] == "SET_SYNC" then
+                    AddToStack(stack, NewSetSyncEvent(lineParts[2]), lineParts)
+                end
                 if lineParts[1] == "PANIMAGE" then
                     AddToStack(stack, NewPanImageEvent(lineParts[2], lineParts[3], lineParts[4], lineParts[5]), lineParts)
+                end
+                if lineParts[1] == "CAMERA" then
+                    AddToStack(stack, NewCameraEvent(lineParts[2], lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "JUMP" then
                     AddToStack(stack, NewClearExecuteDefinitionEvent(lineParts[2]), lineParts)

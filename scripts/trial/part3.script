@@ -42,8 +42,9 @@ END_DEFINE
 // START SCRIPT //
 //////////////////
 
-JUMPCUT COURT_WITNESS
+FADE_TO_BLACK
 PLAY_MUSIC CROSSEXAMMODERATO
+FADE_IN 1 COURT_WITNESS
 
 WITNESS_EVENT WitnessTestimony Ross "-- Witness' Account --"
     "I was animating by myself over in my room at the office."
@@ -508,7 +509,7 @@ SPEAK_FROM COURT_WITNESS
 JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam
 SPEAK Arin
-    "What the hey are you even talking about?"
+    "What the hell are you even talking about?"
 POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
     "Well... the truth is I wasn't actually animating at all."

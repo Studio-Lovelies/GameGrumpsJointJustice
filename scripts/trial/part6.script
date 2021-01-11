@@ -141,19 +141,16 @@ DEFINE Taste
     SCREEN_SHAKE
     POSE Ross Glaring
     SPEAK_FROM COURT_WITNESS
-    SPEAK Ross
         "EW SICK!"
 
     JUMPCUT COURT_PROSECUTION
     POSE "Tutorial Boy" Sweaty
     SPEAK_FROM COURT_PROSECUTION
-    SPEAK "Tutorial Boy"
         "You can't be serious."
 
     JUMPCUT COURT_DEFENSE
     POSE Arin DeskSlam
     SPEAK_FROM COURT_DEFENSE
-    SPEAK Arin
         "I'm deadly serious!"
 
 END_DEFINE
@@ -491,8 +488,6 @@ SPEAK Arin
 
 WIDESHOT
 
-//GAVEL X3
-
 GAVEL
 
 JUMPCUT COURT_JUDGE
@@ -550,7 +545,7 @@ POSE Arin Confident
 SPEAK Arin
     "As if! I have proof of his condition RIGHT HERE!"
 
-PRESENT_EVIDENCE JorySr'sLetter
+PRESENT JorySr'sLetter
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
