@@ -76,12 +76,12 @@ SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
-    "Ahem... Mr. O'Donovan, please state your name and occupation for the court."
+    "Ahem... Witness, please state your name and occupation for the court."
 
 POSE Ross Normal
 JUMPCUT COURT_WITNESS
 SPEAK_QUIET Ross
-    "kangaroo court if i ever saw one..."  // WN -- any way to make it obvious it's muttered? // IL -- Maybe write it all in lower case?
+    "...Kangaroo court if I ever saw one..."  // WN -- any way to make it obvious it's muttered? // IL -- Maybe write it all in lower case?
 
 SPEAK_FROM COURT_JUDGE
     "What was that?"
@@ -91,7 +91,7 @@ SPEAK_FROM COURT_WITNESS
     "Nothing, Your Honor!"
 POSE Ross Normal
 SPEAK Ross
-    "I am Ross O'Donovan, local animator, Mario Maker enthusiast, apparent sadist, and %1friend to all here!%0"
+    "I am Ross O'Donovan: local animator, Mario Maker enthusiast, apparent sadist, and %1friend to all here!%0"
 POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
     "Some friend... Testifying against Jory, treating him like a criminal..."
@@ -100,7 +100,7 @@ SPEAK Arin
     "What do you mean? Even WE don't know if Jory is innocent!"
 POSE Dan SideNormal
 SPEAK Dan
-    "Arin. Have you learned nothing from the Penix Wright playthrough?"
+    "Arin, have you learned nothing from the Penix Wright(tm) playthrough?"
 
 SPEAK Arin
     "That a gavel, lubed properly, has many uses?"
@@ -116,7 +116,7 @@ SPEAK Dan
 
 POSE Dan SideNormal
 SPEAK Dan
-    "But more importantly, you should go into it with confidence that your client is innocent."
+    "But more importantly, you should go into every case with confidence that your client is innocent."
 SPEAK Dan
     "We don't know if he's guilty, but if his own attorney doesn't believe him, why should the rest of the court?"
 
@@ -139,7 +139,7 @@ SPEAK Dan
     "...Usually, anyway."
 POSE "Judge Brent" Warning
 SPEAK_FROM COURT_JUDGE
-    "If the defense is done sucking each other's toes, shall we begin with Mr. O'Donovan's testimony?"
+    "If the defense is done sucking each other's toes, may we begin with Mr. O'Donovan's testimony?"
 
 POSE Arin Sweaty
 THINK_FROM COURT_DEFENSE
@@ -152,6 +152,6 @@ SPEAK Arin
     "We're ready, Your Honor."
 POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
-    "Alright. The witness may begin."
+    "Alright. The witness may begin his testimony."
 
 END_SCENE
