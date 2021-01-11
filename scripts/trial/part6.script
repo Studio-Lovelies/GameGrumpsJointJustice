@@ -58,7 +58,7 @@ SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 //POSE "Tutorial Boy" Objecting
 SPEAK "Tutorial Boy"
-    "It's covered in JIZZ, right? Hah hah, very funny, we've heard that joke a million times!
+    "It's covered in JIZZ, right? Hah hah, very funny. We've heard that joke a million times!
 SPEAK "Tutorial Boy"
     "That's no reason to interrupt the verdict."
 
@@ -77,7 +77,7 @@ SPEAK Arin
 
 POSE Dan SideNormal
 SPEAK Dan
-    "Roll with me Arin, I got this one."
+    "Roll with me, Arin, I got this one."
 
 ANIMATION Dan SideObjectionIntro
 POSE Dan SideObjection
@@ -100,7 +100,7 @@ SFX stab
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Sweaty
 SPEAK "Tutorial Boy"
-    "Not... Jizz?"
+    "Not... jizz?"
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
@@ -141,16 +141,19 @@ DEFINE Taste
     SCREEN_SHAKE
     POSE Ross Glaring
     SPEAK_FROM COURT_WITNESS
-        "EW SICK!"
+    SPEAK Ross
+        "EW, SICK!"
 
     JUMPCUT COURT_PROSECUTION
     POSE "Tutorial Boy" Sweaty
     SPEAK_FROM COURT_PROSECUTION
+    SPEAK "Tutorial Boy"
         "You can't be serious."
 
     JUMPCUT COURT_DEFENSE
     POSE Arin DeskSlam
     SPEAK_FROM COURT_DEFENSE
+    SPEAK Arin
         "I'm deadly serious!"
 
 END_DEFINE
@@ -395,12 +398,12 @@ POSE "Tutorial Boy" Sweaty
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideObjection
 SPEAK Dan
-    "The white stain on those dinos, it's still fresh, and it's not what you think it is!"
+    "The white stain on those dinos... It's still fresh, and it's not what you think it is!"
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
-    "Then what exactly is covering the dinosaurs if it's not dick milk?"
+    "Then, what exactly is covering the dinosaurs if it's not dick milk?"
 
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideObjection
@@ -488,6 +491,8 @@ SPEAK Arin
 
 WIDESHOT
 
+//GAVEL X3
+
 GAVEL
 
 JUMPCUT COURT_JUDGE
@@ -505,7 +510,7 @@ SPEAK "Judge Brent"
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
 SPEAK Arin
-    "You bet I do!"
+    "You bet I do, Your Honor!"
 
 //CUTSCENE (?)
 
@@ -525,7 +530,7 @@ SPEAK Arin
 //END CUTSCENE
 
 SPEAK Arin
-    "It's clear from the evidence, Your Honor that Jory could not have possibly stolen the dinos!"
+    "It's clear from the evidence, Your Honor, that Jory could not have possibly stolen the dinos!"
 
 SHOUT "Tutorial Boy" Objection
 
@@ -545,7 +550,7 @@ POSE Arin Confident
 SPEAK Arin
     "As if! I have proof of his condition RIGHT HERE!"
 
-PRESENT JorySr'sLetter
+PRESENT_EVIDENCE JorySr'sLetter
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
@@ -614,12 +619,12 @@ POSE Dan SideNormal
 
 JUMPCUT COURT_JUDGE
 SPEAK "Judge Brent"
-"Yes... quite."
+"Yes... Well done, Mr. Avidan."
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Sweaty
 SPEAK Arin
-    "Hey I did a lot too!"
+    "Hey, I did a lot too!"
 
 JUMPCUT COURT_JUDGE
 SPEAK "Judge Brent"
