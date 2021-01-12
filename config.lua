@@ -9,6 +9,8 @@ settings = {
     text_scroll_speed = 30;
     fullscreen_scale = 2;
     windowed_scale = 1.326;
+    displayModeIndex = 0;
+    displayModes = {"Windowed", "Fullscreen", "Windowed-Fullscreen"}
 
     background_directory = "backgrounds/";
     character_directory = "characters/";
