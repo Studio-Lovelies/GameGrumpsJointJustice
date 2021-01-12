@@ -10,7 +10,8 @@ require "code/scriptloader"
 
 function love.load(arg)
     InitGlobalConfigVariables()
-    love.window.setMode(dimensions.window_width, dimensions.window_height, {fullscreen = true})
+    love.window.setMode(dimensions.window_width, dimensions.window_height, {fullscreen = true, resizable = true})
+    love.window.setFullscreen(true, "desktop")
     love.graphics.setDefaultFilter("nearest")
     love.graphics.setLineStyle("rough")
     Renderable = love.graphics.newCanvas(GraphicsWidth, GraphicsHeight)
