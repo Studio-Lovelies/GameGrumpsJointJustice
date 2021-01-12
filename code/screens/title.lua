@@ -77,7 +77,7 @@ function DrawTitleScreen()
         textScale
     )
 
-    local loadGameText = love.graphics.newText(GameFont, "Load Game")
+    local loadGameText = love.graphics.newText(GameFont, "Settings")--"Load Game")
     love.graphics.draw(
         loadGameText,
         loadX + loadW/2-(loadGameText:getWidth() * textScale)/2,
