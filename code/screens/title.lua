@@ -90,7 +90,7 @@ function DrawTitleScreen()
     local scenesText = love.graphics.newText(GameFont, "Case Select")
     love.graphics.draw(
         scenesText,
-        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2,
+        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2 - 25,
         scenesY + scenesH/2-(loadGameText:getHeight() * textScale)/2,
         0,
         textScale,
