@@ -24,6 +24,7 @@ EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumb
 COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
+
 EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
 EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy Coins in. The dinos were found inside." evidence/Jory'sBackpack.png
 EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." sprites/StolenDinos.png
@@ -39,7 +40,7 @@ END_DEFINE
 //////////////////
 
 TYPEWRITER
-    "Some Undisclosed Date, 3:30PM#Attitude City Courthouse"
+    "Some Undisclosed Date, 3:30PM#10 Minute Power Hour Courthouse"
 
 WIDESHOT
 GAVEL
@@ -107,13 +108,13 @@ SPEAK ???
 SPEAK "Tutorial Boy"
     "I am Tutorial Boy! Trivia Boy is my brother...
 SPEAK "Tutorial Boy"
-    "And after what you did to him and his reputation as a Trivia Boy..."
+    "And after what you did to him and his reputation for trivia..."
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "I will BRING YOU ALL to JUSTICE, Grumps!"
 POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
-    "But first, I will regale you a tale about my tragic past.#One gruesome night in 1984, my dog--"
+    "But first, I will regale you a tale about my tragic past.#One gruesome night in 1984, my d--"
 
 POSE Arin Annoyed
 SPEAK_FROM COURT_DEFENSE
@@ -177,7 +178,7 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "It was at this point that they asked the defendant, Jory Griffis, to obtain a different one."
 SPEAK "Tutorial Boy"
-    "At the time, the defendant was carrying this backpack, which I will submit to the court record at this time."
+    "At the time, the defendant was carrying this backpack, which I will now submit to the court record."
 SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE Jory'sBackpack "Jory's Backpack"
 
@@ -197,11 +198,11 @@ SPEAK "Tutorial Boy"
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideNormal
 SPEAK Dan
-    "Um, excuse me? That's $qMr. Business$q to you, sir. Are we clear?"
+    "Um, excuse me? That's $qMr. Business$q to you, sir."
 
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
-    "Yes... crystal."
+    "Yes.#Quite.#Indeed."
 
 SPEAK "Tutorial Boy"
     "As I was saying..."

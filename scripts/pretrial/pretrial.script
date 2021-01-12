@@ -400,7 +400,7 @@ SPEAK Dan
 SPEAK Arin
     "Wait, there's one more thing."
 SPEAK Arin GREEN
-    "$qP.S.S. I hope you two have been continuing to provide my boy with #wholesome food as well.$q"
+    "$qP.P.S. I hope you two have been continuing to provide my boy with #wholesome food as well.$q"
 SPEAK Arin
     "%2$qAnd I hope you've been avoiding giving him %0%1milk%0%2 as he's %0%1deathly allergic%0%2 to it.$q"
 SPEAK Dan
@@ -440,7 +440,7 @@ SPEAK Jory
     "Wow, thanks guys!#I guess I'll head to the, uh, %1$qCourtroom$q%0 then."
 POSE Jory Thinking
 SPEAK Jory
-    "They turned the main Grumps office space into a makeshift courtroom just for this."
+    "They turned the Power Hour room into a makeshift courtroom just for this."
 POSE Jory Normal
 SPEAK Jory
     "So uh, see you there."
@@ -482,7 +482,7 @@ SPEAK Dan
 SPEAK Arin
     "Ok, ok, no need to yell... Let's just get ready.#I kind of want to look sharp for this."
 SPEAK Arin
-    "And I just got a new suit that's perfect for something like this.#You're gonna love it."
+    "And I just got a new suit that I think will be perfect.#You're gonna love it."
 
 WAIT 1
 FADE_TO_BLACK
