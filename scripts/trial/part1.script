@@ -225,10 +225,10 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "This clearly suggests that the perpetrator is the defendant!"
 SPEAK "Tutorial Boy"
-    "I am here to prove beyond any doubt that Jory Griffis stole the dinosaurs..."
+    "I am here to prove beyond any doubt that Jory Griffis stole the dinosaur0s in order to..."
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
-    "...in order to sabotage the Ten Minute Power Hour!"
+    "...sabotage the Ten Minute Power Hour!"
 
 STOP_MUSIC
 SPEAK_FROM COURT_JUDGE
@@ -331,7 +331,7 @@ SCREEN_SHAKE
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 SPEAK_FROM COURT_PROSECUTION
-    "AHAH!"
+    "AH-HAH!"
 
 POSE Jory Sweaty
 SFX stab
@@ -339,12 +339,12 @@ SPEAK_FROM COURT_WITNESS
     "YIKES!!!"
 
 THINK_FROM COURT_DEFENSE
-    "(Jeez! This guy is intense!)"
+    "(Dang! This guy is intense!)"
 
 SPEAK_FROM COURT_PROSECUTION
     "Suspicious behavior indeed!"
 SPEAK "Tutorial Boy"
-    "Especially since, according to the livestream recording here, you were#busy cleaning your GoodBoy Coins."
+    "Especially since, according to the livestream recording here, you were#busy cleaning your Good Boy Coins."
 SPEAK "Tutorial Boy"
     "Is this correct?"
 
@@ -403,7 +403,7 @@ SPEAK Arin
 
 SHOUT "Tutorial Boy" objection
 PAN COURT_DEFENSE COURT_PROSECUTION
-ANIMATION "Tutorial Boy" Objecting
+ANIMATION "Tutorial Boy" HeadSlam
 POSE "Tutorial Boy" Angry
 SPEAK_FROM COURT_PROSECUTION
     "NEVER! It's my only way of objecting!"
@@ -413,22 +413,21 @@ SPEAK_FROM COURT_DEFENSE
     "You can't be serious."
 
 SPEAK_FROM COURT_JUDGE
-    "Objection overruled. I'll allow it."
+    "Objection sustained. I'll allow it."
 
 POSE Arin DeskSlam
 SPEAK_FROM COURT_DEFENSE
     "Your Honor! That kind of behavior isn't appropriate in this courtroom!"
 
 SPEAK_FROM COURT_JUDGE
-    "Perhaps, but I get to make the call, and it's funny to watch him do it."
+    "Perhaps, but I get to make the call, and it's amusing to watch him do it."
 
 JUMPCUT COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 
-
 SPEAK_FROM COURT_JUDGE
-    "Very amusing."
+    "...Very amusing."
 SPEAK "Judge Brent"
     "The prosecution may continue with the witness' testimony."
 
@@ -436,7 +435,7 @@ POSE "Tutorial Boy" Normal
 SPEAK_FROM COURT_PROSECUTION
     "Thank you, Your Honor."
 SPEAK "Tutorial Boy"
-    "So, you were cleaning your coins during the livestream, which we have on record here."
+    "So, you were cleaning your coins during the livestream, which we have on record."
 SPEAK "Tutorial Boy"
     "When you were asked to go get a replacement Switch, what did you do with those coins?"
 
@@ -493,7 +492,7 @@ SPEAK Arin
 POSE "Tutorial Boy" Sweaty
 PAN COURT_DEFENSE COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
-    "What? Just look at the witness! His sweat and nervous behavior is that of a criminal!"
+    "What? Just look at the witness! His sweatiness and nervous behavior is that of a criminal!"
 
 POSE "Judge Brent" Thinking
 SPEAK_FROM COURT_JUDGE
@@ -522,11 +521,11 @@ SPEAK Jory
     "...different."
 
 SPEAK_FROM COURT_PROSECUTION
-    "And what was this %1something%0 that was so different?"
+    "And what was this something that was so different?"
 
 POSE Jory Normal
 SPEAK_FROM COURT_WITNESS
-    "Well, to put it simply, we were going to do a dunk tank contest."
+    "Well, to put it simply, we were going to do a dunk tank contest,"
 SPEAK Jory
     "but instead of water it was going to be Strawberries and Cream."
 POSE Jory Thinking
@@ -610,7 +609,6 @@ SPEAK_FROM COURT_PROSECUTION
 WAIT 1
 FADE_TO_BLACK
 JUMPCUT BLACK_SCREEN
-WAIT 2
 
 STOP_MUSIC
 END_SCENE

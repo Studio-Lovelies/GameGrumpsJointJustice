@@ -231,7 +231,7 @@ POSE Jory Nervous
 SPEAK Jory
     "I wish I could, but everyone wants to hold a trial for this, and it's starting in just a few minutes!"
 SPEAK Jory
-    "Everyone is calling for my %3Good Boy Coins(tm)%0 to be revoked, even after all the work I put into getting them."
+    "Everyone is calling for my %1Good Boy Coins(tm)%0 to be revoked, even after all the work I put into getting them."
 SPEAK Jory
     "And I've got nobody in my corner!"
 
