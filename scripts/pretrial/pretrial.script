@@ -34,11 +34,11 @@ FADE_TO_BLACK
 FADE_IN 1 CourtPan
 //FADE_IN 1 ROSS_WITH_DINOS
 
-SET_SYNC TRUE
-PANIMAGE 0 0 -250 0
-
 SPEAK Ross
     "Finally..."
+
+SET_SYNC TRUE
+PANIMAGE 0 0 -250 0
 
 SPEAK Ross
     "Hehe, now this is a galaxy-brain move right here!"
