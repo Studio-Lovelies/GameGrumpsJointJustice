@@ -1,9 +1,11 @@
 function DrawOptionsScreen()
 
-    local FullscreenWindowed = "Windowed"
+    local FullscreenWindowed = "Fullscreen"
+    local FullscreenWindowedSelection = "Windowed"
 
-    if settings.background_scale == settings.windowed_scale then
-        FullscreenWindowed = "Fullscreen"
+    if dimensions.background_scale == settings.fullscreen_scale then
+        FullscreenWindowed = "Windowed"
+        FullscreenWindowedSelection = "Fullscreen"
     end
 
 
@@ -36,7 +38,7 @@ function DrawOptionsScreen()
     love.graphics.setColor(0.44,0.56,0.89)
     if TitleSelection == "Volume" then
         love.graphics.rectangle("fill", volumeX-dx, volumeY-dy, volumeW+2*dx, volumeH+2*dy)
-    elseif TitleSelection == "displaymode" then
+    elseif TitleSelection == FullscreenWindowedSelection then
         love.graphics.rectangle("fill", displaymodeX-dx, displaymodeY-dy, displaymodeW+2*dx, displaymodeH+2*dy)
     else
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
@@ -71,7 +73,7 @@ function DrawOptionsScreen()
         textScale
     )
 
-    local volumeText = love.graphics.newText(GameFont, "Volume ("..settings.master_volume.."%)")
+    local volumeText = love.graphics.newText(GameFont, "Volume ("..settings.master_volume..")")
     love.graphics.draw(
         volumeText,
         volumeX + volumeW/2-(volumeText:getWidth() * textScale)/2,
@@ -97,7 +99,10 @@ end
 optionsSelections = {}
 optionsSelections[0] = "Back";
 optionsSelections[1] = "Volume";
-optionsSelections[2] = FullscreenWindowed;
+optionsSelections[2] = "Fullscreen";
+if dimensions.background_scale == settings.windowed_scale then
+    optionsSelections[2] = "Windowed";
+end
 TitleSelection = "Back";
 SelectionIndex = 0;
 blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
@@ -132,7 +137,8 @@ end
 OptionsConfig = {
     displayed = false;
     onKeyPressed = function(key)
-        if key == displaymode.start_button then
+        if key == controls.start_button then
+            print(TitleSelection)
             love.graphics.clear(0, 0, 0);
             if TitleSelection == "Back" then
                 blip2:play()
@@ -140,29 +146,34 @@ OptionsConfig = {
                 DrawTitleScreen();
                 screens.options.displayed = false;
                 SelectionIndex = 3;
-            elseif TitleSelection == FullscreenWindowed then
+            elseif TitleSelection == optionsSelections[2] then
                 blip2:play()
-                if FullscreenWindowed == "Windowed" then
-                    settings.background_scale = settings.fullscreen_scale
-                elseif FullscreenWindowed == "Fullscreen" then
-                    settings.background_scale = settings.windowed_scale
+                if optionsSelections[2] == "Windowed" then
+                    dimensions.background_scale = settings.fullscreen_scale
+                    love.window.setFullscreen(true)
+                    optionsSelections[2] = "Fullscreen"
+                elseif optionsSelections[2] == "Fullscreen" then
+                    dimensions.background_scale = settings.windowed_scale
+                    love.window.setFullscreen(false)
+                    optionsSelections[2] = "Windowed"
                 end
+                TitleSelection = optionsSelections[2]
             end
-        elseif key == displaymode.pause_nav_up then
+        elseif key == controls.pause_nav_up then
             blip2:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
-                SelectionIndex = 0;
+                SelectionIndex = 0
             end
             TitleSelection = optionsSelections[SelectionIndex]
-        elseif key == displaymode.pause_nav_down then
+        elseif key == controls.pause_nav_down then
             blip2:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then
                 SelectionIndex = 2;
             end
             TitleSelection = optionsSelections[SelectionIndex]
-        elseif key == displaymode.press_right then
+        elseif key == controls.press_right then
             if TitleSelection == "Volume" then
                 if settings.master_volume < 100 then
                     settings.master_volume = settings.master_volume + 5
@@ -176,7 +187,7 @@ OptionsConfig = {
                     blip2:play()
                 end
             end
-        elseif key == displaymode.press_left then
+        elseif key == controls.press_left then
             if TitleSelection == "Volume" then
                 if settings.master_volume > 0 then
                     settings.master_volume = settings.master_volume - 5

@@ -1,6 +1,6 @@
 function DrawTitleScreen()
     local background = love.graphics.newImage(settings.power_hour_set_path)
-    local backgroundScale = settings.background_scale
+    local backgroundScale = dimensions.background_scale
 
     love.graphics.clear(unpack(colors.black))
 
