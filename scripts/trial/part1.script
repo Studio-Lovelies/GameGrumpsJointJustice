@@ -273,7 +273,7 @@ SPEAK_FROM COURT_DEFENSE
     "Jory, WHAT THE HECK!"
 POSE Jory Nervous
 SPEAK_FROM COURT_WITNESS
-    "Oh, jeez..."
+    "Ah, jeez..."
 
 JUMPCUT COURT_DEFENSE
 SPEAK Arin
