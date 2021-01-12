@@ -7,6 +7,9 @@ settings = {
 
     master_volume = 25;
     text_scroll_speed = 30;
+    fullscreen_scale = 2;
+    windowed_scale = 1.326;
+    background_scale = fullscreen_scale;
 
     background_directory = "backgrounds/";
     character_directory = "characters/";
