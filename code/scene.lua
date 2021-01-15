@@ -10,6 +10,9 @@ function NewScene(scriptPath)
     self.flags = {}
     self.showing = nil
 
+    self.index = 1
+    self.canAdvance = false
+
     self.penalties = 5
     self.textHidden = false
     self.text = "empty"
@@ -83,6 +86,11 @@ function NewScene(scriptPath)
                     self.creditLines[i][3] = self.creditLines[i][3] - 0.3
                 end
             end
+        end
+
+        self.index = self.index + 0.2
+        if self.index > 4 then
+            self.index = 1
         end
 
     end
@@ -338,7 +346,9 @@ function NewScene(scriptPath)
 
                 -- Prints
                 for i=1, #lineTable do
-                    love.graphics.print(coloredLineTable[i], 8, GraphicsHeight-60 + (i-1)*16)
+                    love.graphics.print(coloredLineTable[i], 4, GraphicsHeight-60 + (i-1)*16)
+                    if i == #lineTable then
+                    end
                 end
             -- Centered Text, untouched by inline colored text
             else
@@ -373,8 +383,17 @@ function NewScene(scriptPath)
                 for i=1, #lineTable do
                     local xText = GraphicsWidth/2 - GameFont:getWidth(lineTableFull[i])/2
                     love.graphics.print(lineTable[i], xText, GraphicsHeight-60 + (i-1)*16)
+                    if i == #lineTable then
+                    end
                 end
             end
+        end
+
+        if self.canAdvance then
+            local pointerAnimation = Sprites["PointerAnimation"]
+            local spr = pointerAnimation[math.floor(self.index)]
+            love.graphics.setColor(1,1,1)
+            love.graphics.draw(spr, Sprites["TextBox"]:getWidth() - 20, Sprites["TextBox"]:getHeight() + 75)
         end
 
         if self.credits ~= nil then

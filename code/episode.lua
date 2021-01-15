@@ -45,7 +45,8 @@ function NewEpisode(episodePath)
             if episodePath ~= settings.game_over_path then
                 CurrentScene:startCredits(self.creditLines)
             else
-                self.nextEpisode:begin()
+                Episode = self.nextEpisode
+                Episode:begin()
             end
         end
     end

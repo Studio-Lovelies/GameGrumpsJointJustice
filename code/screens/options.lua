@@ -1,12 +1,12 @@
 function DrawOptionsScreen()
 
-    local FullscreenWindowed = "Fullscreen"
-    local FullscreenWindowedSelection = "Windowed"
+    local FullscreenWindowed = settings.displayModes[settings.displayModesIndex]
+    local FullscreenWindowedSelection = settings.displayModes[settings.displayModesIndex + 1]
 
-    if dimensions.background_scale == settings.fullscreen_scale then
-        FullscreenWindowed = "Windowed"
-        FullscreenWindowedSelection = "Fullscreen"
-    end
+    --if dimensions.background_scale == settings.fullscreen_scale then
+    --    FullscreenWindowed = "Windowed"
+    --    FullscreenWindowedSelection = "Fullscreen"
+    --end
 
 
     love.graphics.clear(unpack(colors.black))
@@ -27,7 +27,7 @@ function DrawOptionsScreen()
     local volumeY = blackImage:getHeight()*blackImageScale - 260
     local volumeH = 60
 
-    local displaymodeW = (dimensions.window_width * 1/3.75)
+    local displaymodeW = (dimensions.window_width * 1/3.75 + (love.graphics.newText(GameFont, FullscreenWindowed):getWidth() / 4))
     local displaymodeX = (dimensions.window_width * 11.25/18) - displaymodeW
     local displaymodeY = blackImage:getHeight()*blackImageScale - 370
     local displaymodeH = 60
@@ -99,10 +99,10 @@ end
 optionsSelections = {}
 optionsSelections[0] = "Back";
 optionsSelections[1] = "Volume";
-optionsSelections[2] = "Fullscreen";
-if dimensions.background_scale == settings.windowed_scale then
-    optionsSelections[2] = "Windowed";
-end
+optionsSelections[2] = settings.displayModes[settings.displayModesIndex + 1];
+--if dimensions.background_scale == settings.windowed_scale then
+--    optionsSelections[2] = "Windowed";
+--end
 TitleSelection = "Back";
 SelectionIndex = 0;
 blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
@@ -138,22 +138,28 @@ OptionsConfig = {
     displayed = false;
     onKeyPressed = function(key)
         if key == controls.start_button then
-            print(TitleSelection)
             love.graphics.clear(0, 0, 0);
             if TitleSelection == "Back" then
                 blip2:play()
                 screens.title.displayed = true;
                 DrawTitleScreen();
                 screens.options.displayed = false;
-                SelectionIndex = 3;
+                SelectionIndex = 0;
             elseif TitleSelection == optionsSelections[2] then
                 blip2:play()
                 if optionsSelections[2] == "Windowed" then
                     dimensions.background_scale = settings.fullscreen_scale
+                    settings.displayModesIndex = settings.displayModesIndex + 1
                     love.window.setFullscreen(true)
                     optionsSelections[2] = "Fullscreen"
                 elseif optionsSelections[2] == "Fullscreen" then
+                    dimensions.background_scale = settings.fullscreen_scale
+                    settings.displayModesIndex = settings.displayModesIndex + 1
+                    love.window.setFullscreen(true, "desktop")
+                    optionsSelections[2] = "Windowed-Fullscreen"
+                elseif optionsSelections[2] == "Windowed-Fullscreen" then
                     dimensions.background_scale = settings.windowed_scale
+                    settings.displayModesIndex = settings.displayModesIndex + 1
                     love.window.setFullscreen(false)
                     optionsSelections[2] = "Windowed"
                 end
