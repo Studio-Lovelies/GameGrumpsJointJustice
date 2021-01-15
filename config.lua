@@ -9,6 +9,8 @@ settings = {
     text_scroll_speed = 30;
     fullscreen_scale = 2;
     windowed_scale = 1.326;
+    displayModesIndex = 1;
+    displayModes = {"Windowed", "Fullscreen", "Windowed-Fullscreen"};
 
     background_directory = "backgrounds/";
     character_directory = "characters/";
@@ -53,7 +55,7 @@ dimensions = {
     graphics_scale = 4;
     window_width = 1280;
     window_height = 720;
-    background_scale = fullscreen_scale;
+    background_scale = settings.fullscreen_scale;
 }
 
 

@@ -1,5 +1,14 @@
 function DrawOptionsScreen()
 
+    local FullscreenWindowed = settings.displayModes[settings.displayModesIndex]
+    local FullscreenWindowedSelection = settings.displayModes[settings.displayModesIndex + 1]
+
+    --if dimensions.background_scale == settings.fullscreen_scale then
+    --    FullscreenWindowed = "Windowed"
+    --    FullscreenWindowedSelection = "Fullscreen"
+    --end
+
+
     love.graphics.clear(unpack(colors.black))
 
     love.graphics.setColor(0, 0, 0, 100)
@@ -18,10 +27,10 @@ function DrawOptionsScreen()
     local volumeY = blackImage:getHeight()*blackImageScale - 260
     local volumeH = 60
 
-    local controlsW = (dimensions.window_width * 1/3.75)
-    local controlsX = (dimensions.window_width * 11.25/18) - controlsW
-    local controlsY = blackImage:getHeight()*blackImageScale - 370
-    local controlsH = 60
+    local displaymodeW = (dimensions.window_width * 1/3.75 + (love.graphics.newText(GameFont, FullscreenWindowed):getWidth() / 4))
+    local displaymodeX = (dimensions.window_width * 11.25/18) - displaymodeW
+    local displaymodeY = blackImage:getHeight()*blackImageScale - 370
+    local displaymodeH = 60
 
     local dx = 8
     local dy = 8
@@ -29,8 +38,8 @@ function DrawOptionsScreen()
     love.graphics.setColor(0.44,0.56,0.89)
     if TitleSelection == "Volume" then
         love.graphics.rectangle("fill", volumeX-dx, volumeY-dy, volumeW+2*dx, volumeH+2*dy)
-    elseif TitleSelection == "Controls" then
-        love.graphics.rectangle("fill", controlsX-dx, controlsY-dy, controlsW+2*dx, controlsH+2*dy)
+    elseif TitleSelection == FullscreenWindowedSelection then
+        love.graphics.rectangle("fill", displaymodeX-dx, displaymodeY-dy, displaymodeW+2*dx, displaymodeH+2*dy)
     else
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
     end
@@ -50,7 +59,7 @@ function DrawOptionsScreen()
     love.graphics.rectangle("fill", volumeX, volumeY, (volumeW / 100) * settings.master_volume, volumeH)
 
     love.graphics.setColor(0.3,0.3,0.3)
-    love.graphics.rectangle("fill", controlsX, controlsY, controlsW, controlsH)
+    love.graphics.rectangle("fill", displaymodeX, displaymodeY, displaymodeW, displaymodeH)
 
     love.graphics.setColor(1,1,1)
     local textScale = 3
@@ -64,7 +73,7 @@ function DrawOptionsScreen()
         textScale
     )
 
-    local volumeText = love.graphics.newText(GameFont, "Volume ("..settings.master_volume.."%)")
+    local volumeText = love.graphics.newText(GameFont, "Volume ("..settings.master_volume..")")
     love.graphics.draw(
         volumeText,
         volumeX + volumeW/2-(volumeText:getWidth() * textScale)/2,
@@ -74,11 +83,11 @@ function DrawOptionsScreen()
         textScale
     )
 
-    local controlsText = love.graphics.newText(GameFont, "Controls")
+    local displaymodeText = love.graphics.newText(GameFont, FullscreenWindowed)
     love.graphics.draw(
-        controlsText,
-        controlsX + controlsW/2-(controlsText:getWidth() * textScale)/2,
-        controlsY + controlsH/2-(controlsText:getHeight() * textScale)/2,
+        displaymodeText,
+        displaymodeX + displaymodeW/2-(displaymodeText:getWidth() * textScale)/2,
+        displaymodeY + displaymodeH/2-(displaymodeText:getHeight() * textScale)/2,
         0,
         textScale,
         textScale
@@ -90,7 +99,10 @@ end
 optionsSelections = {}
 optionsSelections[0] = "Back";
 optionsSelections[1] = "Volume";
-optionsSelections[2] = "Controls";
+optionsSelections[2] = settings.displayModes[settings.displayModesIndex + 1];
+--if dimensions.background_scale == settings.windowed_scale then
+--    optionsSelections[2] = "Windowed";
+--end
 TitleSelection = "Back";
 SelectionIndex = 0;
 blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
@@ -132,15 +144,32 @@ OptionsConfig = {
                 screens.title.displayed = true;
                 DrawTitleScreen();
                 screens.options.displayed = false;
-                SelectionIndex = 3;
-            elseif TitleSelection == "Controls" then
+                SelectionIndex = 0;
+            elseif TitleSelection == optionsSelections[2] then
                 blip2:play()
+                if optionsSelections[2] == "Windowed" then
+                    dimensions.background_scale = settings.fullscreen_scale
+                    settings.displayModesIndex = settings.displayModesIndex + 1
+                    love.window.setFullscreen(true)
+                    optionsSelections[2] = "Fullscreen"
+                elseif optionsSelections[2] == "Fullscreen" then
+                    dimensions.background_scale = settings.fullscreen_scale
+                    settings.displayModesIndex = settings.displayModesIndex + 1
+                    love.window.setFullscreen(true, "desktop")
+                    optionsSelections[2] = "Windowed-Fullscreen"
+                elseif optionsSelections[2] == "Windowed-Fullscreen" then
+                    dimensions.background_scale = settings.windowed_scale
+                    settings.displayModesIndex = settings.displayModesIndex + 1
+                    love.window.setFullscreen(false)
+                    optionsSelections[2] = "Windowed"
+                end
+                TitleSelection = optionsSelections[2]
             end
         elseif key == controls.pause_nav_up then
             blip2:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
-                SelectionIndex = 0;
+                SelectionIndex = 0
             end
             TitleSelection = optionsSelections[SelectionIndex]
         elseif key == controls.pause_nav_down then

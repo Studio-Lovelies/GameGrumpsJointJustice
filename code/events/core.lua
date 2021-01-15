@@ -87,6 +87,7 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
     self.who = who
     self.font = "game"
     self.locorlit = locorlit
+    self.xTimer = 0
 
     if color == nil then
         color = "WHITE"
@@ -105,8 +106,10 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
 
         if controls.debug then
             scrollSpeed = scrollSpeed
-        elseif love.keyboard.isDown("lshift") then
-            scrollSpeed = scrollSpeed*8
+        elseif love.keyboard.isDown("x") then
+            if startTimer(self, dt) >= 1 then
+                scrollSpeed = scrollSpeed*8
+            end
         else
             if currentChar == "." then
                 if string.sub(self.text, math.floor(self.textScroll - 2), math.floor(self.textScroll)):lower() == "mr." then
@@ -161,13 +164,18 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
         local pressing = love.keyboard.isDown(controls.advance_text)
         -- What to do at the end of dialogue
         if self.textScroll >= #self.text then
+            scene.canAdvance = true
             if self.needsPressing == false then
                 -- This dialogue doesn't need the button to continue, like a run-on sentence
+                scene.canAdvance = false
                 return false
             elseif pressing and not self.wasPressing then
                 -- This dialogue needs the button, and the button was just pressed
+                scene.canAdvance = false
                 return false
             end
+        else
+            scene.canAdvance = false
         end
 
         self.wasPressing = pressing
@@ -197,6 +205,7 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
     self.who = who
     self.font = "small"
     self.locorlit = locorlit
+    self.xTimer = 0
 
     if color == nil then
         color = "WHITE"
@@ -215,8 +224,10 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
 
         if controls.debug then
             scrollSpeed = scrollSpeed
-        elseif love.keyboard.isDown("lshift") then
-            scrollSpeed = scrollSpeed*8
+        elseif love.keyboard.isDown("x") then
+            if startTimer(self, dt) >= 1 then
+                scrollSpeed = scrollSpeed*8
+            end
         else
             if currentChar == "." then
                 if string.sub(self.text, math.floor(self.textScroll - 2), math.floor(self.textScroll)):lower() == "mr." then
@@ -256,6 +267,7 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
         and currentChar ~= ";"
         and currentChar ~= ")"
         and currentChar ~= "("
+        and currentChar ~= "#"
         and self.speaks then
             if scene.characters[scene.textTalker].gender == "MALE" then
                 Sounds.MALETALK:play()
@@ -271,13 +283,18 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
         local pressing = love.keyboard.isDown(controls.advance_text)
         -- What to do at the end of dialogue
         if self.textScroll >= #self.text then
+            scene.canAdvance = true
             if self.needsPressing == false then
                 -- This dialogue doesn't need the button to continue, like a run-on sentence
+                scene.canAdvance = false
                 return false
             elseif pressing and not self.wasPressing then
                 -- This dialogue needs the button, and the button was just pressed
+                scene.canAdvance = false
                 return false
             end
+        else
+            scene.canAdvance = false
         end
 
         self.wasPressing = pressing
@@ -1023,4 +1040,11 @@ function isNaN(n)
         return true
     else return false
     end
+end
+
+function startTimer(event, dt)
+    
+    event.xTimer = event.xTimer + dt*2
+
+    return event.xTimer
 end

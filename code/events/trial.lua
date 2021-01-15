@@ -33,6 +33,8 @@ function NewWitnessEvent(queue)
     self.who = queue[2]
     self.timer = 0
     self.timer2 = 0
+    self.xTimer = 0
+    self.index = 1
     self.sprite = love.graphics.newImage("sprites/Testimony.png")
     self.cornerSpriteBlink = false
     self.animationTime = 1.5
@@ -107,8 +109,10 @@ function NewWitnessEvent(queue)
 
         local scrollSpeed = TextScrollSpeed
 
-        if love.keyboard.isDown("lshift") then
-            scrollSpeed = scrollSpeed*8
+        if love.keyboard.isDown("x") then
+            if startTimer(self, dt) >= 1 then
+                scrollSpeed = scrollSpeed*8
+            end
         end
 
         self.textScroll = math.min(self.textScroll + dt*scrollSpeed, #text)
@@ -127,9 +131,17 @@ function NewWitnessEvent(queue)
 
         -- Advance text
         local pressing = love.keyboard.isDown(controls.advance_text)
+
+        if canAdvance then
+            scene.canAdvance = true
+        else
+            scene.canAdvance = false
+        end
+
         if pressing
         and not self.wasPressing
         and canAdvance then
+            scene.canAdvance = false
             self:advanceText()
         end
         self.wasPressing = pressing
@@ -152,12 +164,8 @@ function NewWitnessEvent(queue)
             and not inTitle then
                 screens.courtRecords.displayed = false
 
-                if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex+2] then
-                    if self.queue[self.textIndex+2] ~= "1" and self.queue[self.textIndex+2] ~= "0" then
-                        AddToStack(stack, NewIssuePenaltyEvent(scene), lineParts);
-                    elseif self.queue[self.textIndex+2] == "1" or self.queue[self.textIndex+2] == "0" then
-                        scene:runDefinition(self.queue[self.textIndex+1])
-                    end
+                if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex + 2] then
+                        AddToStack(scene.stack, NewIssuePenaltyEvent(scene), lineParts);
                 else return false
                 end
             end
@@ -229,16 +237,18 @@ function NewIssuePenaltyEvent(scene)
     local self = {}
 
     scene.penalties = scene.penalties - 1;
+    if scene.penalties <= 0 then
+        scene.stack[2] = { lineParts = lineParts, event = NewFadeToBlackEvent() };
+        table.remove(scene.stack, 1)
+        scene.currentEventIndex = scene.currentEventIndex + 1
+        Episode:stop();
+        local episodePath = Episode.episodePath
+        Episode = NewEpisode(settings.game_over_path)
+        Episode.nextEpisode = NewEpisode(episodePath)
+        Episode:begin();
+    end
 
     self.update = function(self, scene, dt)
-        if scene.penalties <= 0 then
-            table.insert(scene.stack, {"FADE_TO_BLACK", NewFadeToBlackEvent()});
-            Episode:stop();
-            local episodePath = Episode.episodePath
-            Episode = NewEpisode(settings.game_over_path)
-            Episode.nextEpisode = NewEpisode(episodePath)
-            Episode:begin();
-        end
         return true
     end
 
@@ -416,4 +426,11 @@ function isNaN(n)
         return true
     else return false
     end
+end
+
+function startTimer(event, dt)
+    
+    event.xTimer = event.xTimer + dt*2
+
+    return event.xTimer
 end
