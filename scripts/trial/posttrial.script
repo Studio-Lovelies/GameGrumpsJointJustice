@@ -129,6 +129,7 @@ SFX dooropens
 WAIT 1
 
 CHARACTER_LOCATION Dan Lobby
+POSE Dan Normal
 SPEAK Dan
     "I hope to God those levels are actually fun to play."
 
@@ -152,7 +153,7 @@ SPEAK Arin
     "Oh god, what now?"
 
 SFX pageturn
-
+WAIT 1
 SPEAK Arin GREEN
     "$qHello again Grumps, #I've already heard tale of your valiant defense of my boy Jory.$q"
 SPEAK Arin GREEN
@@ -162,7 +163,9 @@ SPEAK Arin GREEN
 SPEAK Arin GREEN
     "$qAfter defending that albino whale from that crazy peg-legged stalker, #I guess I felt the call of the ocean$q."
 SPEAK Arin GREEN
-    "$qBut I still have contacts at the Attitude City courthouse if you ever decide to have a career change of your own!$q
+    "$qBut I still have contacts at the Attitude City courthouse --$q"
+SPEAK Arin GREEN
+    "--so as a reward for your work, if you ever decide to have a career change I'll hook you up!$q
 SPEAK Arin GREEN
     "$qThank you again for saving my beloved Jory Jr. #Sincerely, Jory Sr.$q"
 
@@ -171,7 +174,9 @@ SPEAK Dan
     "Wow, Jory's dad has done a lot of things."
 
 SPEAK Arin
-    "He also says a lot of words." 
+    "He also says a lot of words. Pretty cool reward though, I gotta say."
+SPEAK Dan
+    "I wonder if that will be an incredibly convenient plot device in the future?" 
 SPEAK Arin
     "Let's just go talk with this Tutorial guy and figure out what the heck is goin on around here."
 
