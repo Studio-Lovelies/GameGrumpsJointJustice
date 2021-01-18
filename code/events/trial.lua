@@ -406,8 +406,9 @@ function NewPanEvent(from, to)
     return self
 end
 
-function NewCinematicShowEvent(evidence)
+function NewBigImageEvent(evidence)
     local self = {}
+    self.evidence = evidence
 
     self.update = function(self, scene, dt)
 
