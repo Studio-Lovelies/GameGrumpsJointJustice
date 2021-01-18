@@ -13,6 +13,10 @@ function NewScene(scriptPath)
     self.index = 1
     self.canAdvance = false
 
+    self.timerStarted = false
+    self.konamiTimer = 2
+    self.sequence = {}
+
     self.penalties = 5
     self.textHidden = false
     self.text = "empty"
@@ -82,8 +86,8 @@ function NewScene(scriptPath)
 
         if self.credits ~= nil and #self.creditLines > 1 then
             for i = 1, #self.creditLines do
-                if self.creditLines[#self.creditLines][3] > 75 then
-                    self.creditLines[i][3] = self.creditLines[i][3] - 0.3
+                if self.creditLines[#self.creditLines][3] > 68 then
+                    self.creditLines[i][3] = self.creditLines[i][3] - 30--0.3
                 end
             end
         end
@@ -93,6 +97,12 @@ function NewScene(scriptPath)
             self.index = 1
         end
 
+        if self.timerStarted then
+            self.konamiTimer = self.konamiTimer - dt*2
+            if self.konamitTimer <= 0 then
+                self.konamiTimer = 2
+            end
+        end
     end
 
     self.drawCharacterAt = function(self, characterLocation, x,y)
@@ -142,6 +152,16 @@ function NewScene(scriptPath)
             love.graphics.draw(background[2], x, y)
         end
     end
+
+    --[[function love.keypressed(key)
+        if self.credits ~= nil then
+            startKonamiTimer(self)
+            table.insert(self.sequence, key)
+            if checkKonami(self.sequence) then
+                print("YES KONAMI")
+            end
+        end
+    end]]
 
     self.draw = function(self, dt)
         love.graphics.setColor(1, 1, 1)
@@ -451,4 +471,27 @@ function NewScene(scriptPath)
     end
 
     return self
+end
+
+function checkKonami(sequence)
+    local equals = true
+    local konamiSequence = {"up", "up", "down", "down", "left", "right", "left", "right", "b", "a"}
+
+    for i=1, #konamiSequence do
+        if konamiSequence[i] ~= sequence[i] then
+            equals = false
+            break
+        end
+    end
+
+    return equals
+end
+
+function startKonamiTimer(scene)
+    scene.timerStarted = true
+
+    if scene.konamiTimer <= 0 then
+        scene.timerStarted = false
+        scene.sequence = {}
+    end
 end

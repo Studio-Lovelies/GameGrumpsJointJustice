@@ -97,6 +97,7 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
     self.speaks = true
 
     self.update = function(self, scene, dt)
+        scene.font = self.font
         scene.textHidden = false
         scene.fullText = self.text
 
@@ -107,7 +108,7 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
         if controls.debug then
             scrollSpeed = scrollSpeed
         elseif love.keyboard.isDown("x") then
-            if startTimer(self, dt) >= 1 then
+            if startTimer(self, dt) >= 0.6 then
                 scrollSpeed = scrollSpeed*8
             end
         else
@@ -215,6 +216,7 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
     self.speaks = true
 
     self.update = function(self, scene, dt)
+        scene.font = self.font
         scene.textHidden = false
         scene.fullText = self.text
 
@@ -225,7 +227,7 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
         if controls.debug then
             scrollSpeed = scrollSpeed
         elseif love.keyboard.isDown("x") then
-            if startTimer(self, dt) >= 1 then
+            if startTimer(self, dt) >= 0.6 then
                 scrollSpeed = scrollSpeed*8
             end
         else

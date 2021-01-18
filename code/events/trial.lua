@@ -406,6 +406,20 @@ function NewPanEvent(from, to)
     return self
 end
 
+function NewCinematicShowEvent(evidence)
+    local self = {}
+
+    self.update = function(self, scene, dt)
+
+        return false
+    end
+
+    self.draw = function(self, scene)
+    end
+
+    return self
+end
+
 function tablelength(T)
     local count = 0
     for _ in pairs(T) do count = count + 1 end
