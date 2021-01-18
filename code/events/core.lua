@@ -60,7 +60,7 @@ function NewAnimationEvent(name, animation, speed)
 
     self.characterDraw = function(self, scene)
         local animation = scene.characters[self.name].animations[self.animation]
-        love.graphics.draw(animation.source, animation.anim[self.animIndex] + 50)
+        love.graphics.draw(animation.source, animation.anim[self.animIndex], 50)
     end
 
     return self
