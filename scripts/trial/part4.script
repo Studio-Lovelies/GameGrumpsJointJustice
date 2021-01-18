@@ -189,7 +189,9 @@ DEFINE PressC1
         "Yeah... I dunno. I'm not sure if I'm buying all this."
 
     SHOUT "Tutorial Boy" Objection
-    SPEAK_FROM COURT_PROSECUTION
+    JUMPCUT COURT_PROSECUTION
+    POSE "Tutorial Boy" Angry
+    SPEAK "Tutorial Boy"
         "My witness already apologized, stop hectoring him and let him continue his testimony!"
 
     SPEAK_FROM COURT_JUDGE
@@ -399,24 +401,27 @@ DEFINE PressC6
         "I'm pretty sure, it would be pretty difficult to mistake them for anything else."
 
     SPEAK_FROM COURT_JUDGE
-        "We've known Ross for quite a while now, and I personally have never been informed of any--"
+        "We've known Ross for quite a while now, and I personally have never been made aware--"
     SPEAK "Judge Brent"
-        "defects related to his ophthalmologic health."
+        "-- of any defects related to his ophthalmologic health."
 
     SPEAK_FROM COURT_JUDGE
-        "As I am quite acquainted with his eye doctor, I would be made aware if such a problem existed."
+        "Since I am acquainted with his eye doctor and also observant, I would know if such a problem existed."
     
     JUMPCUT COURT_DEFENSE
+    SFX dramapound
     ANIMATION Arin Shock
     POSE Arin Sweaty
     SPEAK Arin
         "Uhh..."
     SPEAK Arin
-        "...Can you repeat that for the idiots in the back?"
+        "...what?"
 
     POSE "Judge Brent" Warning
     SPEAK_FROM COURT_JUDGE
-        "Eyesight good. Point void."
+        "..."
+    SPEAK "Judge Brent"
+        "Eyesight good. Point void. Moving on."
 
     SPEAK_FROM COURT_DEFENSE
         "Right... My bad."
@@ -508,7 +513,6 @@ SPEAK "Tutorial Boy"
 SHOUT Arin objection
 POSE Arin Point
 PAN COURT_PROSECUTION COURT_DEFENSE
-PLAY_MUSIC CTTRVS
 SPEAK Arin
     "If you wouldn't interrupt, I'd show you just how possible it is."
 
@@ -528,6 +532,8 @@ JUMPCUT COURT_DEFENSE
 POSE Arin Normal
 SPEAK Arin
     "Thank you, Your Honor."
+
+PLAY_MUSIC LOGICANDTRAINS
 POSE Arin PaperSlap
 SPEAK Arin
     "Look closely on the back of this particular Switch."
@@ -646,13 +652,16 @@ DEFINE Wrong2
     POSE Arin Confident
     SPEAK Arin
         "The answer will become clear, when those titties are near!"
-
+    SFX recordscratch
+    STOP_MUSIC
     JUMPCUT COURT_JUDGE
     POSE "Judge Brent" Warning
     SPEAK "Judge Brent"
         "...You do realize this is a court of law, right?"
+
+    PLAY_MUSIC LOGICANDTRAINS
     SPEAK "Judge Brent"
-        "The titty showing will have to wait until after the trial."
+        "The titty showing will have to wait until AFTER the trial."
 
     JUMPCUT COURT_ASSISTANT
     POSE Dan SideLean
@@ -698,6 +707,9 @@ SPEAK Arin
 POSE Arin Point
 SPEAK Arin
     "I'm willing to bet that is NOT the game you'll find!"
+
+
+STOP_MUSIC
 
 SHOUT "Tutorial Boy" objection
 POSE "Tutorial Boy" Angry
@@ -943,9 +955,12 @@ POSE "Judge Brent" Angry
 SPEAK_FROM COURT_JUDGE
     "Hey, no saying things in all capital letters in this courtroom!"
 
+SPEAK "Judge Brent"
+    "Only the Judge is allowed to speak like that! It's in the rules you know!"
+
 POSE Arin Embarassed
 SPEAK_FROM COURT_DEFENSE
-    "Oh, my bad!"
+    "Oh... my bad then!"
 
 SFX deskslam
 ANIMATION Arin DeskSlam
@@ -1097,7 +1112,7 @@ SPEAK Arin
 
 SHOUT "Tutorial Boy" objection
 
-PLAY_MUSIC ANNOUNCEPATROL
+PLAY_MUSIC GGJJInvestigationCore
 PAN COURT_DEFENSE COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
@@ -1127,6 +1142,7 @@ JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
 SPEAK "Judge Brent"
     "Hmmm... the prosecution does bring up a point."
+STOP_MUSIC
 HIDE_TEXT
 WAIT 2
 
@@ -1159,6 +1175,7 @@ THINK Arin
 
 WAIT 1
 
+SFX lightbulb
 SPEAK Dan
     "Wait, Arin! It's not over yet!"
 

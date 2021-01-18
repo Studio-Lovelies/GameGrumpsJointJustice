@@ -50,7 +50,6 @@ PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
 SPEAK_FROM COURT_JUDGE
     "Court is now in session for the trial of Jory Griffis."
 
-
 SPEAK_FROM COURT_DEFENSE
     "The defense is ready, Your H-"
 
@@ -113,9 +112,13 @@ POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "I will BRING YOU ALL to JUSTICE, Grumps!"
 POSE "Tutorial Boy" Normal
+STOP_MUSIC
+PLAY_MUSIC triviaboytest
 SPEAK "Tutorial Boy"
     "But first, I will regale you a tale about my tragic past.#One gruesome night in 1984, my d--"
 
+SFX recordscratch
+STOP_MUSIC
 POSE Arin Annoyed
 SPEAK_FROM COURT_DEFENSE
     "Yeap, uh-huh, got it, tragic backstory tutorial blah blah blah. Can we get this show on the road?"
@@ -130,6 +133,7 @@ POSE Arin Normal
 SPEAK Arin
     "When the heck is this trial going to start?"
 
+PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
 SCREEN_SHAKE
 SFX damage2
 POSE "Judge Brent" Warning
@@ -151,8 +155,6 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK "Tutorial Boy"
     "A recording of the livestream COULD be added to the court record, if you riddle m-"
 
-STOP_MUSIC
-SFX recordscratch
 POSE Arin Annoyed
 SPEAK_FROM COURT_DEFENSE
     "Yeah, yeah, I know. Press 'Z' to see the court record. Could you get to the point, please?"
@@ -174,11 +176,24 @@ SPEAK "Tutorial Boy"
 
 PLAY_MUSIC LOGICANDTRAINS
 SPEAK "Tutorial Boy"
-    "During the livestream, the Switch they were using suddenly failed."
+    "During the livestream, according to the transcript here, the Switch they were using suddenly failed."
 SPEAK "Tutorial Boy"
-    "It was at this point that they asked the defendant, Jory Griffis, to obtain a different one."
+    "It was at this point that the defendent, Jory Griffis, volunteered to go get a replacement one."
 SPEAK "Tutorial Boy"
-    "At the time, the defendant was carrying this backpack, which I will now submit to the court record."
+    "The Switch they found was located in the 10 minute power hour room, which I have here.
+
+SFX evidenceding
+COURT_RECORD_ADD_ANIMATION EVIDENCE Switch "Nintendo Switch"
+
+
+SPEAK "Tutorial Boy"
+    "When the livestream was over, the crew went to prepare for a 10 MPH episode."
+SPEAK "Tutorial Boy"
+    "However. #When they arrived and started preparing, they noticed the Dinos were missing!"
+
+SPEAK "Tutorial Boy"
+    "A quick search and a few minutes later, they were suspiciously found in THIS backpack!"
+
 SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE Jory'sBackpack "Jory's Backpack"
 
@@ -192,27 +207,31 @@ SPEAK Dan
     "Maybe Jory took the NSP song $qObjects of Desire$q as inspiration.#Know what I mean?"
 
 JUMPCUT COURT_PROSECUTION
+POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "Unfortunately, we ALL know what you mean $qMr. Sexbang$q..."
 
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideNormal
 SPEAK Dan
-    "Um, excuse me? That's $qMr. Business$q to you, sir."
+    "That's $qMr. Business$q to you, sir."
 
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
-    "Yes.#Quite.#Indeed."
+    "Yes...#Quite...#Indeed."
 
 SPEAK "Tutorial Boy"
     "As I was saying..."
 SPEAK "Tutorial Boy"
-    "...when these dinos went missing, they were suspiciously found in the defendant's backpack!"
+    "The missing dinos, while quickly found, put a big delay on setting up for the power hour."
+SPEAK "Tutorial Boy"
+    "I have been informed that recording cannot beging without them. As such they are critical pieces of evidence!"
+
 SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE StolenDinos "Dinos"
 
 SPEAK "Tutorial Boy"
-    "While Mr. Griffis' backpack is fairly unique--"
+    "While Mr. Griffis' backpack is somewhat unique--"
 SPEAK "Tutorial Boy"
     "--the prosecution deemed it necessary to prove its owner's identity."
 SPEAK "Tutorial Boy"
@@ -225,14 +244,16 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "This clearly suggests that the perpetrator is the defendant!"
 SPEAK "Tutorial Boy"
-    "I am here to prove beyond any doubt that Jory Griffis stole the dinosaur0s in order to..."
+    "I am here to prove beyond any doubt that Jory Griffis stole the dinosaurs..."
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
-    "...sabotage the Ten Minute Power Hour!"
+    "...in order to sabotage the Ten Minute Power Hour!"
 
 STOP_MUSIC
+POSE "Judge Brent" Thinking
 SPEAK_FROM COURT_JUDGE
     "Hm... Yes, that seems to be a very solid opening statement."
+POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "You may call your first witness, Mr. Boy."
 PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
@@ -403,6 +424,7 @@ SPEAK Arin
 
 SHOUT "Tutorial Boy" objection
 PAN COURT_DEFENSE COURT_PROSECUTION
+SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 POSE "Tutorial Boy" Angry
 SPEAK_FROM COURT_PROSECUTION
@@ -447,7 +469,7 @@ SPEAK Jory
     "and leave it in the 10 Minute Power Hour recording room since I knew I had to do setup for that right after..."
 
 SPEAK_FROM COURT_PROSECUTION
-    "Would those coins happen to look like..."
+    "Would those coins happen to be..."
 SCREEN_SHAKE
 POSE "Tutorial Boy" Angry
 SFX shock2
@@ -489,7 +511,7 @@ SPEAK_FROM COURT_DEFENSE
 SPEAK Arin
     "The coins being in the pocket with the dinos doesn't directly prove he put them both there!"
 
-POSE "Tutorial Boy" Sweaty
+POSE "Tutorial Boy" Angry
 PAN COURT_DEFENSE COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "What? Just look at the witness! His sweatiness and nervous behavior is that of a criminal!"
@@ -606,7 +628,6 @@ SPEAK "Tutorial Boy"
 SPEAK_FROM COURT_PROSECUTION
     "I call to the stand a witness to the crime: Ross O'Donovan."
 
-WAIT 1
 FADE_TO_BLACK
 JUMPCUT BLACK_SCREEN
 

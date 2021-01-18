@@ -43,7 +43,6 @@ END_DEFINE
 FADE_TO_BLACK
 PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
 FADE_IN 1 COURT_WITNESS
-WAIT 1
 
 JUMPCUT COURT_DEFENSE
 SFX dramapound
@@ -81,7 +80,7 @@ SPEAK "Tutorial Boy"
 POSE Ross Normal
 JUMPCUT COURT_WITNESS
 SPEAK_QUIET Ross
-    "...Kangaroo court if I ever saw one..."  // WN -- any way to make it obvious it's muttered? // IL -- Maybe write it all in lower case?
+    "...Kangaroo court if I ever saw one..." 
 
 SPEAK_FROM COURT_JUDGE
     "What was that?"
@@ -94,7 +93,7 @@ SPEAK Ross
     "I am Ross O'Donovan: local animator, Mario Maker enthusiast, apparent sadist, and %1friend to all here!%0"
 POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
-    "Some friend... Testifying against Jory, treating him like a criminal..."
+    "Some friend... testifying against Jory, treating him like a criminal..."
 
 SPEAK Arin
     "What do you mean? Even WE don't know if Jory is innocent!"
@@ -153,5 +152,8 @@ SPEAK Arin
 POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
     "Alright. The witness may begin his testimony."
+
+FADE_TO_BLACK
+JUMPCUT BLACK_SCREEN
 
 END_SCENE

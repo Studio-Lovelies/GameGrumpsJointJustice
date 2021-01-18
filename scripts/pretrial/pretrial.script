@@ -143,7 +143,7 @@ POSE Dan Lean
 SPEAK Dan 
     "You don't mean...?"
 SPEAK Arin
-    "Yeah, dude! We're going to give people a glimpse into what it means to be a %1Ninja Sex Party Dude(tm)%0!"
+    "Yeah, dude! We're going to give people a glimpse into what it means to be a Ninja Sex Party Dude(tm)!"
 SPEAK Dan
     "You gotta be butt-fuckin' me dude, really?"
 SPEAK Arin
@@ -231,7 +231,7 @@ POSE Jory Nervous
 SPEAK Jory
     "I wish I could, but everyone wants to hold a trial for this, and it's starting in just a few minutes!"
 SPEAK Jory
-    "Everyone is calling for my %1Good Boy Coins(tm)%0 to be revoked, even after all the work I put into getting them."
+    "Everyone is calling for my %1Good Boy Coins%1 to be revoked, even after all the work I put into getting them."
 SPEAK Jory
     "And I've got nobody in my corner!"
 
@@ -280,7 +280,7 @@ POSE Jory Nervous
 SPEAK Arin
     "I'm sorry, Jory, but we don't know anything about criminal defense!"
 SPEAK Arin
-    "We're just idiots who say stupid things and play videogames on the internet.#How are we supposed to help?"
+    "We're just idiots who play games while saying stupid thing for money on the internet.#How are we supposed to help?"
 SPEAK Jory
     "Yeah... I don't know, I didn't really have a plan or anything."
 SPEAK Jory
@@ -401,10 +401,16 @@ SPEAK Arin
     "Wait, there's one more thing."
 SPEAK Arin GREEN
     "$qP.P.S. I hope you two have been continuing to provide my boy with #wholesome food as well.$q"
-SPEAK Arin
+SPEAK Arin 
     "%2$qAnd I hope you've been avoiding giving him %0%1milk%0%2 as he's %0%1deathly allergic%0%2 to it.$q"
+SPEAK Arin
+    "Well that was oddly specific."
+SPEAK Arin GREEN
+    "P.P.P.S., don't tell Jory this, but I hope he can be on your show again soon!"
 SPEAK Dan
     "Huh..."
+SPEAK Dan
+    "That's a lot of p."
 
 HIDE_TEXT
 CHARACTER_LOCATION Jory LOBBY

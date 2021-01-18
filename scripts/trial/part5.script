@@ -41,11 +41,14 @@ END_DEFINE
 // START SCRIPT //
 //////////////////
 POSE Ross Sweaty
-JUMPCUT COURT_PROSECUTION
-SFX damage1
-ANIMATION "Tutorial Boy" HeadSlam
+SPEAK Ross
+    "That's...not my name Arin."
 
+GAVEL
 JUMPCUT COURT_JUDGE
+POSE "Judge Brent" Warning
+SPEAK "Judge Brent"
+    "Order in this courtroom!"
 POSE "Judge Brent" Thinking
 SPEAK "Judge Brent"
     "Hmmm. That's a bold accusation you've raised, Arin."
@@ -56,7 +59,7 @@ POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "We saw him find them in Jory's backpack. Why would Ross find them himself #if he was the one who stole them?"
 
-PLAY_MUSIC ANNOUNCEPATROL
+
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Confident
 SPEAK "Tutorial Boy"
@@ -109,12 +112,12 @@ SCREEN_SHAKE
 SFX stab
 POSE "Tutorial Boy" Sweaty
 SPEAK "Tutorial Boy"
-    "What did you say?"
+    "Not that joke again..."
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
 SPEAK Arin
-    "Check this shit out!"
+    "Hell yea dude, check this shit out!"
 
 //PRESENT_EVIDENCE BentCoins
 
@@ -279,7 +282,7 @@ POSE Ross Sweaty
 SPEAK Ross
     "Oh yeah, I remember now! I looked in the front pocket first and saw the coins."
 SPEAK Ross
-    "I realized that there was no room, so I checked the back pocket and that's where I found the dinos!"
+    "I realized that there was no room, so I checked the side pocket and that's where I found the dinos!"
 
 SHOUT Arin Objection
 
@@ -377,10 +380,10 @@ PLAY_MUSIC CROSSEXAMALLEGROFYOURA
 
 WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "Yeah, so... After I heard the dinos went missing, I remembered that I saw Jory go back to the recording space."
-    "So I went back there to search his backpack for the dinos."
+    "S-so I went back there to search his backpack for the dinos."
     "I first searched the front pocket, where I saw the coins in the bag"
-    "But when I saw they weren't there, I turned the backpack to check the side pocket."
-    "When I opened up the left side pocket, that's where I found the dinosaurs! Yes, that's exactly how it happened."
+    "But when I saw they weren't there, I, uh... I turned the backpack to check the side pocket! Yeah!"
+    "When I opened up the left side pocket, that's where I found the dinosaurs! Y-yes, that's exactly how it happened!"
 
 
 STOP_MUSIC
@@ -677,7 +680,7 @@ DEFINE Choice1
     SHOUT "Tutorial Boy" Objection
     PAN COURT_DEFENSE COURT_PROSECUTION
     SPEAK "Tutorial Boy"
-    	"Absolutely not! Your Honor, they will tamper with the evidence!"
+        "Absolutely not! Your Honor, they will tamper with the evidence!"
     SPEAK "Tutorial Boy"
         "These two care not for justice, only for their friend to AVOID JUSTICE!"
 
@@ -748,7 +751,7 @@ DEFINE Choice2
     JUMPCUT COURT_DEFENSE
     POSE Arin Sweaty
     SPEAK Arin
-        "Fuck, man. I don't fucking know. Aw shit, dude. Aw jeez. Aw man!"
+        "Fuck, man I dunno! Fucking fuck! I don't know!!! Shit!"
 
     JUMPCUT COURT_ASSISTANT
     POSE Dan Angry
@@ -827,6 +830,7 @@ WAIT 2
 
 SFX thump
 
+STOP_SHOWING
 PLAY_MUSIC DRAGONOBJECTION
 
 JUMPCUT COURT_WITNESS
@@ -838,12 +842,12 @@ PAN COURT_WITNESS COURT_DEFENSE
 JUMPCUT COURT_DEFENSE
 POSE Arin Point
 SPEAK Arin
-    "That's right! A nearly endless supply of delicious potatoes!" 
+    "That's right! A nearly endless supply of potatoes...!" 
 SFX deskslam
 ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
 SPEAK Arin
-    "And his backpack is filled to the brim with them!"
+    "...and his backpack is filled to the brim with them!"
 
 
 JUMPCUT COURT_PROSECUTION
@@ -881,7 +885,7 @@ WAIT 1
 SFX lightbulb
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
-    "It is as the defense says. #This backpack is COMPLETELY filled with delectable potatoes!"
+    "It is as the defense says. #This backpack is COMPLETELY filled with what feels like a million potatoes!"
 
 JUMPCUT COURT_WITNESS
 POSE Ross NoHelm
@@ -890,16 +894,16 @@ SPEAK Ross
 SFX stab
 ANIMATION Ross DamageNoHelm
 SPEAK Ross
-    "It doesn't make any sense at all! #Why would Jory have all these succulent potatoes in his backpack?"
+    "It doesn't make any sense at all! #Why would Jory have such an endless supply potatoes in his backpack?"
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Thinking
 THINK Arin
-    "(That's a good question. Why DOES he have all these scrumptious potatoes?)"
+    "(That's a good question. Why DOES he seem to have infinite potatoes all inside one backpack?)"
 
 JUMPCUT COURT_ASSISTANT
 SPEAK Dan
-    "I think he just really likes potatoes, dude. I can't think of any other reason."
+    "I think he just really likes potatoes, dude."
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
@@ -915,7 +919,7 @@ JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Well, you have made a strong case that Jory would not have done this..."
-
+ 	
 SHOUT "Tutorial Boy" objection
 STOP_MUSIC
 JUMPCUT COURT_PROSECUTION

@@ -131,7 +131,7 @@ SPEAK Arin
 //////////
 DEFINE Taste
     SPEAK Arin
-        "That Dan be allowed to taste those sexy dinosaurs..."
+        "That Dan be allowed to taste those dinosaurs..."
     POSE Arin Confident
     SPEAK Arin
         "...so we can find out what's really covering them!"
@@ -408,7 +408,9 @@ SPEAK "Judge Brent"
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideObjection
 SPEAK Dan
-    "Funny you should say that!"
+    "Gross."
+SPEAK Dan
+    "But funny you should say that!"
 
 SPEAK Dan
     "It's actually just regular milk! Whole milk, to be exact!"
@@ -458,7 +460,7 @@ SPEAK "Tutorial Boy"
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
 SPEAK Arin
-    "Yes way, and I'll explain it!"
+    "Yes way, and I can back it up!"
 
 POSE Arin Normal
 SPEAK Arin
@@ -517,14 +519,17 @@ SPEAK Arin
 POSE Arin Normal
 SPEAK Arin
     "When Jory left to put his backpack in the 10 Minute Power Hour studio, he passed by Ross' office."
+
+//BIGIMAGE PROLOGUE1
 SPEAK Arin
     "Ross, who noticed Jory walk by, decided he would take him down a peg, and set him up to be framed."
+//BIGIMAGE PROLOGUE 2
 SPEAK Arin
     "Right after Jory left, Ross snuck into the room and stashed the dinos in Jory's backpack."
 SPEAK Arin
     "He was obviously jealous of all the positive recognition Jory had gotten."
 SPEAK Arin
-    "In his rush, he clearly spilt milk he always is drinking over the dinos as he was hiding them."
+    "In his rush, he clearly spilt milk he always seems to have over the dinos as he was hiding them."
 
 
 //END CUTSCENE
@@ -541,7 +546,7 @@ SPEAK "Tutorial Boy"
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
 
-POSE "Tutorial Boy" Sweaty
+POSE "Tutorial Boy" Sweaty //POINTING
 SPEAK "Tutorial Boy"
     "You must be lying! It's way too convenient for Jory to be allergic to milk!"
 
