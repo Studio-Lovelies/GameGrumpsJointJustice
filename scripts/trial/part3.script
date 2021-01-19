@@ -262,7 +262,7 @@ DEFINE PressA4
     POSE Arin Normal
     SPEAK_FROM COURT_DEFENSE
         "What makes you so sure that the dinos were stolen, anyways!?"
-    POSE Ross Sweaty
+    POSE Ross SweatyHelm
     SPEAK_FROM COURT_WITNESS
         "..."
     POSE "Judge Brent" Thinking
@@ -278,7 +278,7 @@ DEFINE PressA4
     POSE "Judge Brent" Normal
     SPEAK_FROM COURT_JUDGE
         "I'll just pretend that didn't happen."
-
+    POSE Ross Normal
     JUMPCUT COURT_WITNESS
 END_DEFINE
 
