@@ -61,6 +61,13 @@ FADE_IN 1 COURT_JUDGE
 
 PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
 
+
+JUMPCUT COURT_DEFENSE
+SET_SYNC TRUE
+ANIMATION Arin Objection
+POSE Arin Point
+SPEAK Arin
+    "TESTING THIS SHIT OUT"
 POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
     "Hmm. So you were in your office working on a Mario Maker level but needed a break.
@@ -251,7 +258,7 @@ DEFINE PressC3
         "I think he means your tolerance of his style of levels."
 
     SPEAK_FROM COURT_WITNESS
-        "Yes, indeed! You all haven't fired me yet, so I take it as you being good sports!"
+        "Yeah totally! You all haven't fired me yet, so I take that as you guys being good sports!"
     SPEAK Ross
         "I just wanted to show you my appreciation for your patience with#a nicer level or two!"
 
@@ -347,12 +354,6 @@ DEFINE PressC4
     SPEAK "Tutorial Boy"
         "Impossible! There's no way you can prove such a thing!"
 
-    POSE Arin DeskSlam
-    SPEAK_FROM COURT_DEFENSE
-        "I CAN prove it... with THIS!"
-
-SHOW Switch r
-
 END_DEFINE
 
 DEFINE PressC5
@@ -444,6 +445,15 @@ WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
 // Found Contradiction //
 /////////////////////////
 
+
+POSE Arin DeskSlam
+SPEAK_FROM COURT_DEFENSE
+    "I CAN prove it... with THIS!"
+
+PRESENT Switch
+
+SHOW Switch
+
 SPEAK_FROM COURT_PROSECUTION
     "What is this...?
 
@@ -453,7 +463,9 @@ SPEAK_FROM COURT_DEFENSE
 
 STOP_SHOWING
 
+SET_SYNC TRUE
 
+ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin
     "It's Ross' Switch!"
