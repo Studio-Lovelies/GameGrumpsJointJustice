@@ -35,6 +35,7 @@ DEFINE TRIAL_FAIL
     JUMPCUT BLACK_SCREEN
 END_DEFINE
 
+HIDE_TEXT
 
 //////////////////
 // START SCRIPT //
@@ -154,6 +155,5 @@ SPEAK_FROM COURT_JUDGE
     "Alright. The witness may begin his testimony."
 
 FADE_TO_BLACK
-JUMPCUT BLACK_SCREEN
 
 END_SCENE

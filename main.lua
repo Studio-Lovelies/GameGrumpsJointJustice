@@ -9,12 +9,9 @@ require "code/scriptloader"
 
 
 function love.load(arg)
-    love.window.setMode(0, 0)
     InitGlobalConfigVariables()
-    dimensions.window_width = love.graphics.getWidth()
-    dimensions.window_height = love.graphics.getHeight()
-    BackgroundScale = dimensions.window_width / 1280
-    love.window.setMode(dimensions.window_width, dimensions.window_height, {fullscreen = true})
+    love.window.setMode(dimensions.window_width, dimensions.window_height, {fullscreen = true, resizable = true})
+    love.window.setFullscreen(true, "desktop")
     love.graphics.setDefaultFilter("nearest")
     love.graphics.setLineStyle("rough")
     Renderable = love.graphics.newCanvas(GraphicsWidth, GraphicsHeight)

@@ -11,62 +11,62 @@ CHARACTER_INITIALIZE Ross ross MALE
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
-EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
 
-PLAY_MUSIC OBJECTSOFVICTORY
+HIDE_TEXT
+
+JUMPCUT BLACK_SCREEN
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // START SCRIPT
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+PLAY_MUSIC DLFTS
 
 FADE_IN 1 LOBBY
-PLAY_MUSIC OBJECTSOFVICTORY
-JUMPCUT LOBBY
 CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
 SPEAK Dan
-    "*KSST*."
-
-SET_SYNC TRUE
+    "KSST."
 SFX chug
+
 SPEAK Dan
     "*glug...glug...*"
 
 SPEAK Dan
-    "Ah... this can of La Croix(tm) is as refreshing as that victory..."
+    "Ah... this can of La Croix is as refreshing as that victory"
 
 POSE Dan Happy
 SPEAK Dan
-    "You did it, Arin! I can't believe you won that!"
+    "You did it Arin! I can't believe you won that!"
 
 SPEAK Arin
-    "Well, technicaly WE won the case together. Teamwork, bro!"
+    "Well, technicaly WE won the case together. Teamwork bro!"
 
 SPEAK Dan
-    "Hell yeah, dude. I'm still in shock, though. That was intense as hell!"
+    "Hell yea dude. I'm still in shock though, that was intense as hell!"
 
 SPEAK Jory
     "Well, so am I. Shocked with joy, that is!"
 SPEAK Dan
-    "Oh, hey, Jory!"
+    "Oh hey Jory!"
 
 CHARACTER_LOCATION Jory LOBBY
 SPEAK Jory
     "You guys really saved my butt out there! I can't thank you enough!"
 
 SPEAK Arin
-    "Anytime, man. We did what any good friend would have done."
+    "Anytime, man. We did that any good friend would have done."
 
 SPEAK Dan
-    "You mean pose as lawyers illegally, thus tainting the sanctity of the law and all it stands for?"
+    "You mean pose as lawyers illegally and thus tainting the sanctity of the law and all it stands for?"
 
 SPEAK Arin
     "EXACTLY!"
 
 SFX dooropens
-WAIT 1
+
 SPEAK Arin
     "Ross!"
 
@@ -79,73 +79,64 @@ SPEAK Arin
     "Come by to sulk, Ross?"
 
 SPEAK Ross
-    "Nah, I just wanted to say sorry to everyone."
+    "Nah, I just wanted to say sorry to everyone"
 
 SPEAK Ross
-    "I mean, I knew all this was just for the 10 Minute Power Hour, but even still--"
+    "I mean, I knew all this was just for the 10 minute power hour, but even still--"
 
 SPEAK Arin
-    "Wait, 10 Minute Power Hour? What the hell do you mean?"
+    "Wait, 10 minute power hour? What the hell do you mean?"
 
-POSE Ross NoHelm
 SPEAK Ross
-    "Yeah, of course! Why else would we all go along with that ridiculous crap?"
-
+    "Yeah of course! Why else would we all go along with that ridiculous crap?"
 POSE Ross Sweaty
 SPEAK Ross
     "You mean you guys didn't know? I thought you were in on it."
 
+CHARACTER_LOCATION Dan LOBBY
 POSE Dan Angry
-SPEAK Dan
     "Are you kidding? We thought that was for real!"
 
 SPEAK Arin
-    "Jory, did you know about this?"
+    "Jory did you know about this?"
 
 CHARACTER_LOCATION Jory LOBBY
-POSE Jory Nervous
 SPEAK Jory
-    "No way, man! Nobody ever tells me anything."
+    "No way man! Nobody ever tells me anything."
 CHARACTER_LOCATION Ross LOBBY
-POSE Ross Normal
+POSE Ross Sweaty
 SPEAK Ross
-    "Huh... So who's idea was all this? Brent?"
+    "Huh... so who's idea was all this? Brent?"
 
 SPEAK Arin
     "No way, he's way too responsible. Maybe it was that tutorial guy. He's the only variable here."
-
 CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
 SPEAK Dan
-    "Huh. Yeah that's right. He's still here right?"
+    "Huh. Yea that's right. He's still here right?"
 
 SPEAK Arin
     "I think so. We should go find out what all this was about."
 
-CHARACTER_LOCATION Ross LOBBY
-POSE Ross SweatyNoHelm
+CHARACTER_LOCATION Ross Lobby
+POSE Ross Sweaty
 SPEAK Ross
-    "Well, looks like there's no hard feelings! I'm going to go work on those levels now..."
-HIDE_TEXT
+    "Well looks like there's no hard feelings! I'm going to go work on those levels now..."
+
 SFX dooropens
-WAIT 1
 
-CHARACTER_LOCATION Dan LOBBY
-POSE Dan Normal
+CHARACTER_LOCATION Dan Lobby
 SPEAK Dan
-    "I hope to God those levels are actually fun to play."
+    "I hope to God those levels are gonna actually be fun to play."
 
 SPEAK Arin
-    "Dude, it's Ross. I don't think that's gonna happen."
+    "Dude it's Ross. I don't think that's gonna happen."
 
 SPEAK Dan
-    "Yeah, you're probably right... but I'm gonna hold out hope for once."
+    "Yeah you're probably right... but I'm gonna hold out hope for once."
 
-HIDE_TEXT
 SFX pageturn
-WAIT 1
-SPEAK Arin
-    "...?"
+
 SFX realization
 
 POSE Dan Surprised
@@ -153,12 +144,12 @@ SPEAK Dan
     "Wha...? Another letter?"
 
 SPEAK Arin
-    "Oh god, what now?"
+    "Oh god what now?"
 
 SFX pageturn
-WAIT 1
+
 SPEAK Arin GREEN
-    "$qHello again Grumps, #I've already heard tale of your valiant defense of my boy Jory.$q"
+    "$qHello again Grumps, I've already heard tale of your valiant defense of my boy Jory.$q"
 SPEAK Arin GREEN
     "$qAs a matter of fact, I think you two are naturals at this lawyer business.$q"
 SPEAK Arin GREEN
@@ -166,9 +157,7 @@ SPEAK Arin GREEN
 SPEAK Arin GREEN
     "$qAfter defending that albino whale from that crazy peg-legged stalker, #I guess I felt the call of the ocean$q."
 SPEAK Arin GREEN
-    "$qBut I still have contacts at the Attitude City courthouse --$q"
-SPEAK Arin GREEN
-    "--so as a reward for your work, if you ever decide to have a career change I'll hook you up!$q
+    "$qBut I still have contacts at the Attitude City courthouse if you ever decide to have a career change of your own!$q
 SPEAK Arin GREEN
     "$qThank you again for saving my beloved Jory Jr. #Sincerely, Jory Sr.$q"
 
@@ -177,9 +166,7 @@ SPEAK Dan
     "Wow, Jory's dad has done a lot of things."
 
 SPEAK Arin
-    "He also says a lot of words. Pretty cool reward though, I gotta say."
-SPEAK Dan
-    "I wonder if that will be an incredibly convenient plot device in the future?" 
+    "He also says a lot of words."
 SPEAK Arin
     "Let's just go talk with this Tutorial guy and figure out what the heck is goin on around here."
 

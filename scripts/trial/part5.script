@@ -37,6 +37,8 @@ DEFINE TRIAL_FAIL
         "The defense loses."
 END_DEFINE
 
+HIDE_TEXT
+
 //////////////////
 // START SCRIPT //
 //////////////////

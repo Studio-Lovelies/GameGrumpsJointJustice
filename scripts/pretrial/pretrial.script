@@ -15,6 +15,8 @@ EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
 
+HIDE_TEXT
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // START SCRIPT
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -44,7 +46,6 @@ SPEAK Ross
     "Hehe, now this is a galaxy-brain move right here!"
 
 FADE_TO_BLACK
-JUMPCUT BLACK_SCREEN
 //SFX ROSSLAUGH
 
 CAMERA 0 0
@@ -60,8 +61,7 @@ THINK Arin
 THINK Arin
     "(Dan and I were discussing some very important matters...)"
 
-FADE_TO_LOBBY
-JUMPCUT LOBBY
+FADE_IN 1 LOBBY
 CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
 SPEAK Dan

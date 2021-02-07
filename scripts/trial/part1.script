@@ -34,6 +34,7 @@ DEFINE TRIAL_FAIL
     JUMPCUT BLACK_SCREEN
 END_DEFINE
 
+HIDE_TEXT
 
 //////////////////
 // START SCRIPT //
@@ -629,7 +630,6 @@ SPEAK_FROM COURT_PROSECUTION
     "I call to the stand a witness to the crime: Ross O'Donovan."
 
 FADE_TO_BLACK
-JUMPCUT BLACK_SCREEN
 
 STOP_MUSIC
 END_SCENE

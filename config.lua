@@ -8,6 +8,8 @@ settings = {
     master_volume = 25;
     text_scroll_speed = 30;
     displayModesIndex = 1;
+    fullscreen_scale = 2;
+    windowed_scale = 1.326;
     displayModes = {"Windowed", "Fullscreen", "Windowed-Fullscreen"};
 
     background_directory = "backgrounds/";
@@ -53,6 +55,7 @@ dimensions = {
     graphics_scale = 4;
     window_width = 1280;
     window_height = 720;
+    background_scale = settings.fullscreen_scale;
 }
 
 
@@ -81,7 +84,6 @@ function InitGlobalConfigVariables()
     GraphicsHeight = dimensions.window_height / dimensions.graphics_scale
     WindowWidth = dimensions.window_width
     WindowHeight = dimensions.window_height
-    BackgroundScale = 1
 
     MasterVolume = settings.master_volume
     TextScrollSpeed = settings.text_scroll_speed
