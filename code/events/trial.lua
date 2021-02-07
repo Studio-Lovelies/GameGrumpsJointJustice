@@ -356,6 +356,57 @@ function NewGavelEvent()
     return self
 end
 
+function NewGavel3Event()
+    local self = {}
+    self.timer = 0
+    self.loopIndex = 0
+    self.index = 1
+    self.sources = {}
+
+    self.update = function(self, scene, dt)
+        self.timer = self.timer + dt
+        scene.textHidden = true
+        scene.canShowCourtRecord = false
+
+        if self.loopIndex <= 1.2 then
+
+            if self.timer > 0.19 then
+                self.index = 2
+            end
+
+            if self.timer > 0.24 then
+                self.index = 3
+
+                Sounds.GAVEL:play()
+            end
+
+            if self.timer > 0.29 then
+                self.index = 2
+            end
+
+            if self.timer > 0.34 then
+                self.index = 1
+
+                self.timer = 0
+            end
+
+            self.loopIndex = self.loopIndex + dt
+            return true
+        else
+            return false
+        end
+    end
+
+    self.draw = function(self, scene)
+        local gavelAnimation = Sprites["GavelAnimation"]
+        local spr = gavelAnimation[self.index]
+        if self.loopIndex <= 1.2 then
+            love.graphics.draw(spr, 0, 0, 0, GraphicsWidth/spr:getWidth(),GraphicsHeight/spr:getHeight())
+        end
+    end
+    return self
+end
+
 function NewPanEvent(from, to)
     local self = {}
     local courtPanSprite = Sprites["CourtPan"]
