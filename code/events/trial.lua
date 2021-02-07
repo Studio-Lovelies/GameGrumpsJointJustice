@@ -457,16 +457,24 @@ function NewPanEvent(from, to)
     return self
 end
 
-function NewBigImageEvent(evidence)
+function NewBigImageEvent(sprite)
     local self = {}
-    self.evidence = evidence
+    self.sprite = sprite
 
     self.update = function(self, scene, dt)
-
+        scene.bigimage = self.sprite
         return false
     end
 
-    self.draw = function(self, scene)
+    return self
+end
+
+function NewStopBigImageEvent()
+    local self = {}
+
+    self.update = function(self, scene, dt)
+        scene.bigimage = nil
+        return false
     end
 
     return self

@@ -253,6 +253,9 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "BIGIMAGE" then
                     AddToStack(stack, NewBigImageEvent(lineParts[2], lineParts))
                 end
+                if lineParts[1] == "STOP_BIGIMAGE" then
+                    AddToStack(stack, NewStopBigImageEvent(), lineParts)
+                end
                 if lineParts[1] == "PRESENT" then
                     AddToStack(stack, NewPresentEvent(lineParts[2]), lineParts)
                 end

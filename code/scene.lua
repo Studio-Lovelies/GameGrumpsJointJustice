@@ -9,6 +9,7 @@ function NewScene(scriptPath)
     self.profiles = {}
     self.flags = {}
     self.showing = nil
+    self.bigimage = nil
 
     self.index = 1
     self.canAdvance = false
@@ -226,6 +227,15 @@ function NewScene(scriptPath)
                     elseif self.showing[2]:lower() == "right" or self.showing[2]:lower() == "r" then
                         love.graphics.draw(Sprites[self.showing[1]], 234, 24)
                     end
+                end
+            end
+
+            if self.bigimage ~= nil then
+                love.graphics.setColor(1, 1, 1)
+                if Sprites[self.bigimage:gsub(" ", "")] == nil then
+                    love.graphics.draw(Sprites["MissingTexture"], 16, 16)
+                else
+                    love.graphics.draw(Sprites[self.bigimage], 0, 0, 0, dimensions.background_scale, dimensions.background_scale)
                 end
             end
 
