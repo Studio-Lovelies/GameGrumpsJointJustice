@@ -252,10 +252,10 @@ function NewScene(scriptPath)
                         table.insert(spaces, i)
                     end
 
-                    local wtest = working .. char
+                    local currentSentence = working .. char
                     if lineTableIndex < 3 then
-                        if GameFont:getWidth(wtest) >= wrapWidth or char == "#" then
-                            wrapIndices[lineTableIndex] = spaces[#spaces] +1
+                        if GameFont:getWidth(currentSentence) >= wrapWidth or char == "#" then
+                            wrapIndices[lineTableIndex] = spaces[#spaces] + 1
                             lineTableIndex = lineTableIndex + 1
                             working = ""
                             fullwords = ""
