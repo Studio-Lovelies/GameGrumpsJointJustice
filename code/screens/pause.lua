@@ -62,7 +62,7 @@ PauseScreenConfig = {
             SelectionIndex = 0;
         end
     end;
-    draw = function ()
+    draw = function()
         DrawPauseScreen()
     end
 }

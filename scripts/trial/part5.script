@@ -24,7 +24,7 @@ EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
 COURT_RECORD_ADD EVIDENCE LivestreamRecording
-EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/Jory'sBackpack.png
+EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. Seems unusually full of...something." evidence/Jory'sBackpack.png
 COURT_RECORD_ADD EVIDENCE Jory'sBackpack
 EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." sprites/StolenDinos.png
 COURT_RECORD_ADD EVIDENCE StolenDinos
@@ -40,7 +40,8 @@ END_DEFINE
 //////////////////
 // START SCRIPT //
 //////////////////
-POSE Ross Sweaty
+JUMPCUT COURT_WITNESS
+POSE Ross MadMilk
 SPEAK Ross
     "That's...not my name Arin."
 
@@ -102,7 +103,11 @@ POSE Arin Confident
 SPEAK Arin
     "I'll do better than that..."
 
+
+SFX objectionclean
 PLAY_MUSIC DRAGONOBJECTION
+SET_SYNC TRUE
+ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin
  "...because I'm the one who wins!"
@@ -119,7 +124,7 @@ POSE Arin Confident
 SPEAK Arin
     "Hell yea dude, check this shit out!"
 
-//PRESENT_EVIDENCE BentCoins
+PRESENT BentCoins
 
 SHOUT Arin takethat
 
@@ -171,12 +176,12 @@ PLAY_MUSIC DRAGONOBJECTION
 
 POSE Arin Point
 SPEAK Arin
-    "There is no way he would have stuffed the dinosaurs in such a way either!"
+    "There is no way he would have stuffed the dinosaurs so carelessly with those coins there!"
 
 JUMPCUT COURT_WITNESS
 SFX stab
 ANIMATION Ross DamageNoHelm
-POSE Ross NoHelm
+POSE Ross MadMilk
 SPEAK Ross
     "GUH!"
 
@@ -200,8 +205,10 @@ POSE Arin Point
 SPEAK Arin
     "We've already heard evidence that proves Jory cared about those coins, and I've got it right here!"
 
-//PRESENT_EVIDENCE LivestreamRecording
+PRESENT LivestreamRecording
+
 SHOUT Arin takethat
+
 POSE Arin PaperSlap
 SPEAK Arin
     "Recall Jory's testimony, how he was noted to be taking care of those coins carefully!"
@@ -211,15 +218,18 @@ SPEAK Arin
 SPEAK Arin
     "-only to trash them in his backpack minutes later?"
 
+BIGIMAGE ANIME
+
 SFX deskslam
 ANIMATION Arin DeskSlam
 POSE Arin CloseUp
+
 SFX objectionclean
 SPEAK Arin
     "The answer is simple: HE DIDN'T PUT THE DINOS IN THERE AT ALL!"
 
 JUMPCUT COURT_WITNESS
-POSE Ross NoHelm
+POSE Ross MadMilk
 SFX stab2
 ANIMATION Ross DamageNoHelm
 SPEAK Ross
@@ -234,6 +244,8 @@ POSE "Judge Brent" Thinking
 SPEAK "Judge Brent"
     "Hmm... that makes a lot of sense. I, personally, have seen Jory care for those coins like they were his children."
 POSE "Judge Brent" Normal
+SPEAK "Judge Brent"
+    "I'm not sure how you polish cardboard... but regardless, Jory's care of those coins cannot be denied."
 SPEAK "Judge Brent"
     "Does the prosecution have anything to say about this?"
 
@@ -260,7 +272,7 @@ SPEAK "Tutorial Boy"
 JUMPCUT COURT_DEFENSE
 POSE Arin Sweaty
 THINK Arin
-    "(No way!)"
+    "(Come ON dude!)"
 
 PLAY_MUSIC LOGICANDTRAINS
 
@@ -337,6 +349,7 @@ SPEAK "Judge Brent"
     "And since there is nobody here that can refute this point, I have to side with the prosecution,"
 
 STOP_MUSIC
+SCREEN_SHAKE
 JUMPCUT COURT_DEFENSE
 SFX stab2
 ANIMATION Arin Shock
@@ -381,7 +394,7 @@ PLAY_MUSIC CROSSEXAMALLEGROFYOURA
 WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "Yeah, so... After I heard the dinos went missing, I remembered that I saw Jory go back to the recording space."
     "S-so I went back there to search his backpack for the dinos."
-    "I first searched the front pocket, where I saw the coins in the bag"
+    "I first searched the front pocket, where I saw the coins in the bag."
     "But when I saw they weren't there, I, uh... I turned the backpack to check the side pocket! Yeah!"
     "When I opened up the left side pocket, that's where I found the dinosaurs! Y-yes, that's exactly how it happened!"
 
@@ -408,7 +421,7 @@ SPEAK_FROM COURT_ASSISTANT
 SPEAK Arin
     "I'm not sure, but there's something fishy about this whole thing, and I'm gonna change his tun-a!"
 
-POSE Dan SideLean
+POSE Dan SideLean //mayasprite
 SPEAK Dan
     "Glad you're bringing your A-game, Arin."
 
@@ -649,7 +662,7 @@ POSE Arin DeskSlam
 SPEAK Arin
     "I don't know. If only there was some way to prove he's lying."
 
-JUMPCUT COURT_ASSISTANT
+JUMPCUT COURT_ASSISTANT //MAYASPRITE
 SPEAK Dan
     "If there is, it has to have something to do with that backpack."
 
@@ -681,6 +694,7 @@ DEFINE Choice1
     PAN COURT_DEFENSE COURT_PROSECUTION
     SPEAK "Tutorial Boy"
         "Absolutely not! Your Honor, they will tamper with the evidence!"
+    POSE "Tutorial Boy" Angry
     SPEAK "Tutorial Boy"
         "These two care not for justice, only for their friend to AVOID JUSTICE!"
 
@@ -754,14 +768,14 @@ DEFINE Choice2
         "Fuck, man I dunno! Fucking fuck! I don't know!!! Shit!"
 
     JUMPCUT COURT_ASSISTANT
-    POSE Dan Angry
+    POSE Dan Angry //MAYASPRITE
     SPEAK Dan
         "Damn, dude, no need to freak out! Let's just see if we can look at the backpack."
 
     JUMPCUT COURT_DEFENSE
     SPEAK Arin
         "Alright, I hope you're right about this!"
-
+    
 END_DEFINE
 
 CHOICE
@@ -772,7 +786,9 @@ END_CHOICE
 //////////////
 //end choice//
 //////////////
-//PRESENT_EVIDENCE Jory'sBackpack
+
+PRESENT Jory'sBackpack
+STOP_SHOWING
 
 SHOUT Arin takethat
 
@@ -804,6 +820,8 @@ POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Very well. Let's not delay any further, open 'er up!"
 
+SHOW Jory'sBackpack R
+//ADD BLIP
 STOP_MUSIC
 
 SFX potatoes2
@@ -812,13 +830,17 @@ JUMPCUT COURT_DEFENSE
 POSE Arin Sweaty
 SPEAK Arin
     "..."
+
+SET_SYNC TRUE
+SFX potatoes
 SFX potatoes2
 
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Sweaty
 SPEAK "Tutorial Boy"
     "..."
-
+SET_SYNC TRUE
+SFX potatoes
 SFX potatoes2
 
 JUMPCUT COURT_JUDGE
@@ -826,15 +848,14 @@ POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
     "..."
 
-WAIT 2
+Wait 1
+SFX thud4
 
-SFX thump
 
-STOP_SHOWING
-PLAY_MUSIC DRAGONOBJECTION
+PLAY_MUSIC NSPTHEME
 
 JUMPCUT COURT_WITNESS
-POSE Ross NoHelm
+POSE Ross MadMilk
 SPEAK Ross
     "P... POTATOES???"
 
@@ -842,7 +863,7 @@ PAN COURT_WITNESS COURT_DEFENSE
 JUMPCUT COURT_DEFENSE
 POSE Arin Point
 SPEAK Arin
-    "That's right! A nearly endless supply of potatoes...!" 
+    "That's right! A nearly endless supply of potatoes..." 
 SFX deskslam
 ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
@@ -865,14 +886,15 @@ SPEAK "Tutorial Boy"
     "LUDICROUS!"
 
 JUMPCUT COURT_DEFENSE
-ANIMATION Arin DeskSlam
 SFX deskslam
+ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
 SPEAK Arin
     "I assure you it's not!"
 SPEAK Arin
     "Your Honor, if you would: #Please confirm for the court that, other than the front pocket here..."
 
+SET_SYNC TRUE
 SFX objectionclean
 ANIMATION Arin Objection
 POSE Arin Point
@@ -887,8 +909,10 @@ POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
     "It is as the defense says. #This backpack is COMPLETELY filled with what feels like a million potatoes!"
 
+STOP_SHOWING
+
 JUMPCUT COURT_WITNESS
-POSE Ross NoHelm
+POSE Ross MadMilk
 SPEAK Ross
     "But, but... why?!?"
 SFX stab
@@ -902,6 +926,7 @@ THINK Arin
     "(That's a good question. Why DOES he seem to have infinite potatoes all inside one backpack?)"
 
 JUMPCUT COURT_ASSISTANT
+POSE Dan Normal //MAYASPRITE
 SPEAK Dan
     "I think he just really likes potatoes, dude."
 
@@ -924,7 +949,7 @@ SHOUT "Tutorial Boy" objection
 STOP_MUSIC
 JUMPCUT COURT_PROSECUTION
 ANIMATION "Tutorial Boy" Objecting
-POSE "Tutorial Boy" Angry
+POSE "Tutorial Boy" Objecting
 SPEAK "Tutorial Boy"
     "He has no case at all!"
 SPEAK "Tutorial Boy"
@@ -934,9 +959,9 @@ JUMPCUT COURT_DEFENSE
 POSE Arin Sweaty
 THINK Arin
     "(It's my job to do that, though...)"
-PLAY_MUSIC CTTRVS
+PLAY_MUSIC CTTRVS 
 JUMPCUT COURT_PROSECUTION
-//POSE "Tutorial Boy" Objecting
+POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "But all he has stated is baseless conjecture! He has no REAL proof that #Ross is the real culprit!"
 SPEAK "Tutorial Boy"
@@ -944,7 +969,7 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "We also have a motive of avoiding today's 10 Minute Power Hour!"
 SPEAK "Tutorial Boy"
-    "I don't care how many mouth-watering potatoes are in his backpack-"
+    "I don't care how many potatoes were stuffed in his backpack-"
 SPEAK "Tutorial Boy"
     "-or how much the defense CLAIMS he loves those coins!"
 SPEAK "Tutorial Boy"
@@ -1000,6 +1025,8 @@ POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Yes, I think I have to agree with the prosecution on this matter."
 
+STOP_MUSIC
+
 JUMPCUT COURT_DEFENSE
 SFX stab2
 ANIMATION Arin Shock
@@ -1008,14 +1035,14 @@ SPEAK Arin
     "WHAT?!? We lost?!"
 
 GAVEL
-STOP_MUSIC
+
 SPEAK_FROM COURT_JUDGE
     "I'm sorry, Jory. I like you a lot but given the circumstances it seems I have no choice."
 
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Confident
 SPEAK "Tutorial Boy"
-    "Yes, that's right!"
+    "Looks like you lose this time, 'Video Game Boy'!"
 
 JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam
@@ -1025,20 +1052,23 @@ THINK Arin
 SPEAK_FROM COURT_JUDGE
     "This court finds the defendant, Jory Griffis..."
 
-WAIT 2
+WAIT 1
 
 //SHOUT Dan Objection
 
+SFX shock2
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Sweaty
 
 WAIT 1
 
+SET_SYNC TRUE
+SFX shock2
 JUMPCUT COURT_WITNESS
-//POSE Ross Shocked
-POSE Ross NoHelm
+POSE Ross MadMilk
 WAIT 1
 
+SFX shock2
 JUMPCUT COURT_DEFENSE
 POSE Arin SweatyBlinking
 SPEAK Arin

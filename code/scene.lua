@@ -228,7 +228,7 @@ function NewScene(scriptPath)
                     end
                 end
             end
-            
+
             -- draw the current scrolling text
             love.graphics.setColor(unpack(self.textColor))
 
@@ -445,7 +445,7 @@ function NewScene(scriptPath)
     self.startCredits = function()
 
         self.credits = {}
-        
+
         for line in love.filesystem.lines(settings.credits_path) do
             table.insert(self.credits, line)
         end

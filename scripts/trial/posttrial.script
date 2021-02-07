@@ -21,16 +21,16 @@ PLAY_MUSIC OBJECTSOFVICTORY
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-FADE_TO_LOBBY
+FADE_IN 1 LOBBY
 PLAY_MUSIC OBJECTSOFVICTORY
 JUMPCUT LOBBY
 CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
 SPEAK Dan
-    "KSST."
+    "*KSST*."
 
+SET_SYNC TRUE
 SFX chug
-
 SPEAK Dan
     "*glug...glug...*"
 
@@ -87,6 +87,7 @@ SPEAK Ross
 SPEAK Arin
     "Wait, 10 Minute Power Hour? What the hell do you mean?"
 
+POSE Ross NoHelm
 SPEAK Ross
     "Yeah, of course! Why else would we all go along with that ridiculous crap?"
 
@@ -101,10 +102,11 @@ SPEAK Dan
 SPEAK Arin
     "Jory, did you know about this?"
 
+CHARACTER_LOCATION Jory LOBBY
 POSE Jory Nervous
 SPEAK Jory
     "No way, man! Nobody ever tells me anything."
-
+CHARACTER_LOCATION Ross LOBBY
 POSE Ross Normal
 SPEAK Ross
     "Huh... So who's idea was all this? Brent?"
@@ -128,7 +130,7 @@ HIDE_TEXT
 SFX dooropens
 WAIT 1
 
-CHARACTER_LOCATION Dan Lobby
+CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
 SPEAK Dan
     "I hope to God those levels are actually fun to play."
@@ -139,6 +141,7 @@ SPEAK Arin
 SPEAK Dan
     "Yeah, you're probably right... but I'm gonna hold out hope for once."
 
+HIDE_TEXT
 SFX pageturn
 WAIT 1
 SPEAK Arin

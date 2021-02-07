@@ -139,7 +139,7 @@ SPEAK Dan
     "You mean the whipped cream dunking machine I almost drowned in?"
 
 SFX lightbulb
-POSE Dan Lean
+POSE Dan Surprised
 SPEAK Dan 
     "You don't mean...?"
 SPEAK Arin
@@ -149,7 +149,7 @@ SPEAK Dan
 SPEAK Arin
     "Well, if I gotta be doin' it, Dan..."
 
-POSE Dan Normal
+POSE Dan Happy
 SPEAK Dan
     "This is no time for hilarious jokes, Arin, we have some tanks to set up!"
 
@@ -189,7 +189,9 @@ POSE Jory Sweaty
 
 SCREEN_SHAKE
 SFX Damage1
-POSE Dan Surprise
+SET_SYNC TRUE
+ANIMATION Dan Shocked
+POSE Dan Surprised
 CHARACTER_LOCATION Dan LOBBY
 SPEAK Dan
     "What?"
@@ -292,7 +294,8 @@ SPEAK Dan
     "Sorry dude, but Arin's right.#We'd probably just screw it up."
 SPEAK Dan
     "We're not lawyers."
-    
+
+POSE Dan Normal
 SPEAK Dan
     "The closest thing we've been to being lawyers is playing that Penix Wright(tm)#game."
 SPEAK Dan
@@ -319,7 +322,7 @@ SPEAK Jory
 
 SFX Realization
 CHARACTER_LOCATION Dan LOBBY
-POSE Dan Normal
+POSE Dan Surprised
 SPEAK Dan
     "From %1Jory Sr%0? Why doesn't he just text..."
 SPEAK Arin
@@ -365,8 +368,8 @@ SPEAK Arin
 SPEAK Arin GREEN
     "$qHello Grumps, first of all I want to thank you for all the hard work you've done taking care of Jory Jr.$q"
 
-// Should be shocked
-POSE Dan Hair
+
+POSE Dan Surprised
 SPEAK Dan
     "You've gotta be kidding me."
 SPEAK Arin GREEN
@@ -394,7 +397,7 @@ SPEAK Arin GREEN
 SPEAK Arin GREEN
     "$qI have something for you if you win!$q"
 
-POSE Dan Normal
+POSE Dan Surprised
 SPEAK Dan
     "Wow... that was... beautiful?"
 SPEAK Arin
@@ -409,6 +412,7 @@ SPEAK Arin GREEN
     "P.P.P.S., don't tell Jory this, but I hope he can be on your show again soon!"
 SPEAK Dan
     "Huh..."
+POSE Dan Normal
 SPEAK Dan
     "That's a lot of p."
 
@@ -435,7 +439,7 @@ SPEAK Jory
     "Oh! Uh, ok!"
 
 CHARACTER_LOCATION Dan LOBBY
-POSE Dan Hair
+POSE Dan Happy
 SPEAK Dan
     "Really, Arin?"
 SPEAK Arin
@@ -457,6 +461,7 @@ SFX Dooropens
 WAIT 2
 
 CHARACTER_LOCATION Dan LOBBY
+POSE Dan Surprised
 SPEAK Dan
     "Wow, I didn't expect you to change your mind so quickly like that."
 

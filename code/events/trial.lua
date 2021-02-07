@@ -444,7 +444,7 @@ function isNaN(n)
 end
 
 function startTimer(event, dt)
-    
+
     event.xTimer = event.xTimer + dt*2
 
     return event.xTimer

@@ -76,7 +76,7 @@ function NewCharInitEvent(name, location, gender)
         end
     end
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.characters[self.name] = {
             poses = self.poses,
             animations = self.animations,
@@ -102,7 +102,7 @@ function NewEvidenceInitEvent(name, externalName, info, file)
     self.info = info
     self.file = file
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         if Sprites[self.externalName:gsub(" ", "")] == nil then
             mSprite = love.graphics.newImage("sprites/MissingTexture.png")
         else
@@ -130,7 +130,7 @@ function NewProfileInitEvent(name, characterName, age, info, file)
     self.info = info
     self.file = file
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.profiles[self.name] = {
             name = self.name,
             characterName = self.characterName,

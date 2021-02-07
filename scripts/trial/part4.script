@@ -24,12 +24,13 @@ EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
 COURT_RECORD_ADD EVIDENCE LivestreamRecording
-EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. The dinos were found inside." evidence/Jory'sBackpack.png
+EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. Seems unusually full of...something." evidence/Jory'sBackpack.png
 COURT_RECORD_ADD EVIDENCE Jory'sBackpack
 EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." sprites/StolenDinos.png
 COURT_RECORD_ADD EVIDENCE StolenDinos
 EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
 COURT_RECORD_ADD EVIDENCE BentCoins
+EVIDENCE_INITIALIZE Switch "Switch" "The replacement switch used during the livestream. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
 COURT_RECORD_ADD EVIDENCE Switch
 
 DEFINE TRIAL_FAIL
@@ -60,6 +61,8 @@ POSE "Judge Brent" Thinking
 FADE_IN 1 COURT_JUDGE
 
 PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
+
+
 
 POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
@@ -251,7 +254,7 @@ DEFINE PressC3
         "I think he means your tolerance of his style of levels."
 
     SPEAK_FROM COURT_WITNESS
-        "Yes, indeed! You all haven't fired me yet, so I take it as you being good sports!"
+        "Yeah totally! You all haven't fired me yet, so I take that as you guys being good sports!"
     SPEAK Ross
         "I just wanted to show you my appreciation for your patience with#a nicer level or two!"
 
@@ -347,12 +350,6 @@ DEFINE PressC4
     SPEAK "Tutorial Boy"
         "Impossible! There's no way you can prove such a thing!"
 
-    POSE Arin DeskSlam
-    SPEAK_FROM COURT_DEFENSE
-        "I CAN prove it... with THIS!"
-
-SHOW Switch r
-
 END_DEFINE
 
 DEFINE PressC5
@@ -444,6 +441,15 @@ WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
 // Found Contradiction //
 /////////////////////////
 
+
+POSE Arin DeskSlam
+SPEAK_FROM COURT_DEFENSE
+    "I CAN prove it... with THIS!"
+
+PRESENT Switch
+
+SHOW Switch r
+
 SPEAK_FROM COURT_PROSECUTION
     "What is this...?
 
@@ -453,7 +459,9 @@ SPEAK_FROM COURT_DEFENSE
 
 STOP_SHOWING
 
+SET_SYNC TRUE
 
+ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin
     "It's Ross' Switch!"
@@ -778,7 +786,7 @@ POSE Arin Confident
 SPEAK_FROM COURT_DEFENSE
   "As you can plainly see, the witness is a liar liar and his pants..."
 
-
+SET_SYNC TRUE
 ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin
@@ -793,10 +801,12 @@ POSE Arin Confident
 SPEAK Arin
     "Don't you know, Dan? I'm the Video Game Boy..."
 
+SET_SYNC TRUE
 ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin
     "I'm the one who's winning this case!"
+
 POSE Arin Confident
 SPEAK Arin
     "Let's see them find an objection now!"
@@ -979,7 +989,7 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK_FROM COURT_DEFENSE
     "Yes I can! With this!!!"
 
-
+PRESENT LivestreamRecording
 SHOW LivestreamRecording r
 
 SHOUT Arin takethat
@@ -1009,7 +1019,7 @@ POSE Arin Confident
 SPEAK Arin
     "Ross couldn't have been using his Switch..."
 
-PLAY_MUSIC HUFFPUFFPURSUIT
+PLAY_MUSIC NSPTHEME
 POSE Arin Point
 SPEAK Arin
     "...because we were using it during the livestream!"
@@ -1034,7 +1044,7 @@ SPEAK "Judge Brent"
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
 SPEAK Arin
-    "You better gosh dang do believe I am, partner. And both Dan and Jory can back me up on this one."
+    "You better gosh dang do believe I am, Your Honor. And both Dan and Jory can back me up on this one."
 
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideLean
@@ -1082,7 +1092,7 @@ SPEAK Arin
     "OWWW-WUH!"
 
 
-POSE Ross NoHelm
+POSE Ross MadMilk
 SPEAK_FROM COURT_WITNESS
     "You...guys..."
 SFX stab
@@ -1104,6 +1114,7 @@ POSE Arin DeskSlam
 SPEAK Arin
     "The only one lying here is you, Ross!"
 
+SYNC_SET TRUE
 SFX objectionclean
 ANIMATION Arin Objection
 POSE Arin Point
@@ -1112,7 +1123,7 @@ SPEAK Arin
 
 SHOUT "Tutorial Boy" objection
 
-PLAY_MUSIC GGJJInvestigationCore
+PLAY_MUSIC GGJJ_Confession_Patrol
 PAN COURT_DEFENSE COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
@@ -1196,6 +1207,7 @@ POSE Arin DeskSlam
 SPEAK Arin
     "You're right, Dan!"
 
+SET_SYNC TRUE
 SFX objectionclean
 ANIMATION Arin Objection
 POSE Arin Point
@@ -1205,7 +1217,7 @@ SPEAK Arin
 JUMPCUT COURT_WITNESS
 SFX stab
 ANIMATION Ross Damage
-POSE Ross Glaring
+POSE Ross MadMilk
 SPEAK Ross
     "!!!"
 
