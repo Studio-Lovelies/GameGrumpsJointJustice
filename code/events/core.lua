@@ -671,7 +671,7 @@ function NewShowEvent(evidence, side, scene)
         if scene.showing == nil then
             scene.showing = {self.evidence, self.side}
         end
-        Sounds["selectblip2"]:play()
+        Sounds["bleep"]:play()
         return false
     end
 
@@ -685,7 +685,6 @@ function NewStopShowingEvent(scene)
         if scene.showing ~= nil then
             scene.showing = nil
         end
-        Sounds["bleep"]:play()
         return false
     end
 
