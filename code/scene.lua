@@ -8,6 +8,14 @@ function NewScene(scriptPath)
     self.evidence = {}
     self.profiles = {}
     self.flags = {}
+    self.showing = nil
+
+    self.index = 1
+    self.canAdvance = false
+
+    self.timerStarted = false
+    self.konamiTimer = 2
+    self.sequence = {}
 
     self.penalties = 5
     self.textHidden = false
@@ -17,6 +25,9 @@ function NewScene(scriptPath)
     self.textBoxSprite = Sprites["TextBox"]
     self.textColor = {1,1,1}
     self.textCentered = false
+
+    self.credits = nil
+    self.creditLines = {}
 
     self.charAnimIndex = 1
 
@@ -49,13 +60,49 @@ function NewScene(scriptPath)
         self.textBoxSprite = Sprites["TextBox"]
         self.characterTalking = false
         self.canShowBgTopLayer = true
+        self.removes = 0
 
-        while #self.stack >= 1 and not self.stack[1].event:update(self, dt) do
-            table.remove(self.stack, 1)
-            self.currentEventIndex = self.currentEventIndex + 1
+        if #self.stack > 0 then
+            if self.stack[1].event.sync == nil or self.stack[1].event.sync ~= "true" then
+                while #self.stack >= 1 and not self.stack[1].event:update(self, dt) do
+                    table.remove(self.stack, 1)
+                    self.currentEventIndex = self.currentEventIndex + 1
+                end
+            elseif self.stack[1].event.sync == "true" then
+                for i = 1, 2 do
+                    if not self.stack[i].event:update(self, dt) then
+                        table.remove(self.stack, i)
+                        self.removes = self.removes + 1
+                        if i == 1 then
+                            break
+                        end
+                    end
+                end
+                self.currentEventIndex = self.currentEventIndex + self.removes
+            end
         end
 
         self.charAnimIndex = self.charAnimIndex + dt*5
+
+        if self.credits ~= nil and #self.creditLines > 1 then
+            for i = 1, #self.creditLines do
+                if self.creditLines[#self.creditLines][3] > 68 then
+                    self.creditLines[i][3] = self.creditLines[i][3] - 30--0.3
+                end
+            end
+        end
+
+        self.index = self.index + 0.2
+        if self.index > 4 then
+            self.index = 1
+        end
+
+        if self.timerStarted then
+            self.konamiTimer = self.konamiTimer - dt*2
+            if self.konamitTimer <= 0 then
+                self.konamiTimer = 2
+            end
+        end
     end
 
     self.drawCharacterAt = function(self, characterLocation, x,y)
@@ -84,7 +131,6 @@ function NewScene(scriptPath)
                 local animIndex = math.max(math.floor(self.charAnimIndex + 0.5), 1)
                 local nextPose = pose.anim[animIndex]
                 local curX, curY, width, height = nextPose:getViewport()
-                --print(nextPose:getViewport())
                 -- If x is 0, we expect we wanted to center the image. Right now, not
                 -- every asset has been updated to the correct aspect ratio, so calculate
                 -- the amount we need to move it over by based on the width of the frame
@@ -107,13 +153,27 @@ function NewScene(scriptPath)
         end
     end
 
+    --[[function love.keypressed(key)
+        if self.credits ~= nil then
+            startKonamiTimer(self)
+            table.insert(self.sequence, key)
+            if checkKonami(self.sequence) then
+                print("YES KONAMI")
+            end
+        end
+    end]]
+
     self.draw = function(self, dt)
         love.graphics.setColor(1, 1, 1)
 
         -- draw the background of the current location
         local background = Backgrounds[self.location]
         if background[1] ~= nil then
-            love.graphics.draw(background[1])
+
+            x = camerapan[1]
+            y = camerapan[2]
+
+            love.graphics.draw(background[1], x, y)
         end
 
         -- draw the character who is at the current location
@@ -153,6 +213,20 @@ function NewScene(scriptPath)
                 love.graphics.setFont(SmallFont)
             else
                 love.graphics.setFont(GameFont)
+            end
+
+
+            if self.showing ~= nil then
+                love.graphics.setColor(1,1,1)
+                if Sprites[self.showing[1]:gsub(" ", "")] == nil then
+                    love.graphics.draw(Sprites["MissingTexture"], 16,16)
+                else
+                    if self.showing[2]:lower() == "left" or self.showing[2]:lower() == "l" then
+                        love.graphics.draw(Sprites[self.showing[1]], 24, 24)
+                    elseif self.showing[2]:lower() == "right" or self.showing[2]:lower() == "r" then
+                        love.graphics.draw(Sprites[self.showing[1]], 234, 24)
+                    end
+                end
             end
 
             -- draw the current scrolling text
@@ -292,7 +366,9 @@ function NewScene(scriptPath)
 
                 -- Prints
                 for i=1, #lineTable do
-                    love.graphics.print(coloredLineTable[i], 8, GraphicsHeight-60 + (i-1)*16)
+                    love.graphics.print(coloredLineTable[i], 4, GraphicsHeight-60 + (i-1)*16)
+                    if i == #lineTable then
+                    end
                 end
             -- Centered Text, untouched by inline colored text
             else
@@ -327,10 +403,95 @@ function NewScene(scriptPath)
                 for i=1, #lineTable do
                     local xText = GraphicsWidth/2 - GameFont:getWidth(lineTableFull[i])/2
                     love.graphics.print(lineTable[i], xText, GraphicsHeight-60 + (i-1)*16)
+                    if i == #lineTable then
+                    end
+                end
+            end
+        end
+
+        if self.canAdvance then
+            local pointerAnimation = Sprites["PointerAnimation"]
+            local spr = pointerAnimation[math.floor(self.index)]
+            love.graphics.setColor(1,1,1)
+            love.graphics.draw(spr, Sprites["TextBox"]:getWidth() - 20, Sprites["TextBox"]:getHeight() + 75)
+        end
+
+        if self.credits ~= nil then
+            love.graphics.clear(0, 0, 0, 0)
+            love.graphics.setColor(255, 255, 255)
+
+            if self.creditLines ~= nil then
+                for i = 1, #self.creditLines do
+                    if self.creditLines[i] ~= nil then
+                        if self.creditLines[i][1] == "text" then
+                            local xText = self.creditLines[i][2]
+                            local yText = self.creditLines[i][3]
+                            if string.find(self.credits[i], "SMALL$", 1, true) then
+                                love.graphics.setFont(CreditsSmallFont)
+                                xText = GraphicsWidth/2 - CreditsSmallFont:getWidth(self.credits[i])/2 + 20
+                            else
+                                love.graphics.setFont(CreditsFont)
+                            end
+                            love.graphics.print(string.gsub(self.credits[i], "SMALL", ""), xText, yText)
+                        else
+                            love.graphics.draw(self.creditLines[i][1], self.creditLines[i][2], self.creditLines[i][3], 0, 0.8, 0.8)
+                        end
+                    end
                 end
             end
         end
     end
 
+    self.startCredits = function()
+
+        self.credits = {}
+
+        for line in love.filesystem.lines(settings.credits_path) do
+            table.insert(self.credits, line)
+        end
+
+        for i,v in pairs(Music) do
+            if i == "AKISSFROMAROSE" then
+                v:setVolume(MasterVolume/100)
+                v:play()
+            else
+                v:stop()
+            end
+        end
+
+        for i = 1, #self.credits do
+            if string.find(self.credits[i], "IMAGE$", 1, true) then
+                imgSrc = string.sub(self.credits[i], 7)
+                img = love.graphics.newImage(imgSrc)
+                self.creditLines[i] = {img, 60, GraphicsHeight + (i-1)*16 - 50}
+            else
+                self.creditLines[i] = {"text", GraphicsWidth/2 - CreditsFont:getWidth(self.credits[i])/2, GraphicsHeight + (i-1)*16}
+            end
+        end
+    end
+
     return self
+end
+
+function checkKonami(sequence)
+    local equals = true
+    local konamiSequence = {"up", "up", "down", "down", "left", "right", "left", "right", "b", "a"}
+
+    for i=1, #konamiSequence do
+        if konamiSequence[i] ~= sequence[i] then
+            equals = false
+            break
+        end
+    end
+
+    return equals
+end
+
+function startKonamiTimer(scene)
+    scene.timerStarted = true
+
+    if scene.konamiTimer <= 0 then
+        scene.timerStarted = false
+        scene.sequence = {}
+    end
 end

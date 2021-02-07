@@ -18,7 +18,7 @@ CHARACTER_LOCATION Ross COURT_WITNESS
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
-EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building." sprites/PlumberInvoice.png
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
@@ -41,8 +41,11 @@ END_DEFINE
 //////////////////
 // START SCRIPT //
 //////////////////
-
+FADE_TO_BLACK
+FADE_IN 1 COURT_WITNESS
 JUMPCUT COURT_WITNESS
+
+//INSERT WITNESS TESTIMONY ANIMATION HERE
 PLAY_MUSIC CROSSEXAMMODERATO
 
 WITNESS_EVENT WitnessTestimony Ross "-- Witness' Account --"
@@ -51,8 +54,8 @@ WITNESS_EVENT WitnessTestimony Ross "-- Witness' Account --"
     "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!"
     "Now that I know they were stolen, that means the culprit must be Jory!"
 
-STOP_MUSIC
 FADE_TO_BLACK
+
 FADE_IN 1 COURT_JUDGE
 
 PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
@@ -62,7 +65,7 @@ SPEAK_FROM COURT_JUDGE
 
 POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
-    "A remarkably solid testimony here."
+    "A remarkably solid testimony here. Great witness, Mr. Boy."
 
 SPEAK_FROM COURT_PROSECUTION
     "Of course, Your Honor. You can only expect the BEST from me."
@@ -73,7 +76,7 @@ SPEAK_FROM COURT_DEFENSE
 
 POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
-    "Alright already! You can stop jerking him off now I get it."
+    "Alright, already! You can stop jerking him off now, I get it."
 
 SPEAK_QUIET Arin
     "There's absolutely no way we can get Jory off now."
@@ -85,10 +88,10 @@ SPEAK Dan
     "But we have to try don't we? I mean, no matter how bulletproof that testimony may seem, we have to take the shot, right?"
 
 SPEAK Arin
-    "You're right Dan, of course. But what the heck should I do next?"
+    "You're right, Dan. But what the heck should I do next?"
 
 SPEAK Dan
-    "I don't know, dude, just look for things in his testimony that don't add up."
+    "I don't know, dude. Just look for things in his testimony that don't add up."
 SPEAK Dan
     "He totally has to have messed up in there somewhere!"
 SPEAK Dan
@@ -131,7 +134,7 @@ DEFINE PressA1
 
     SHOUT "Tutorial Boy" Objection
     SPEAK_FROM COURT_PROSECUTION
-        "Your Honour, this is clearly irrelevant to the case."
+        "Your Honor, this is clearly irrelevant to the case."
     POSE "Judge Brent" Warning
     SPEAK_FROM COURT_JUDGE
         "I agree. Arin, try being serious about this."
@@ -177,15 +180,15 @@ DEFINE PressA3
         "You said you saw Jory in the 10 Minute Power Hour room, correct?"
 
     SPEAK_FROM COURT_WITNESS
-        "Yes that's correct!"
+        "Yes, that's correct!"
 
     JUMPCUT COURT_DEFENSE
     POSE Arin Thinking
     SPEAK_FROM COURT_DEFENSE
         "Yet you also say you were in your office animating."
 
-    ANIMATION Arin Objection
     PLAY_MUSIC DRAGONOBJECTION
+    ANIMATION Arin Objection
     POSE Arin Point
     SPEAK Arin
         "Seems very odd to me! How could you see anyone while you were focused on your work!"
@@ -194,23 +197,23 @@ DEFINE PressA3
     PAN COURT_DEFENSE COURT_PROSECUTION
     POSE "Tutorial Boy" Sweaty
     SPEAK_FROM COURT_PROSECUTION
-        "Are you saying that my client is a liar?"
+        "Are you saying that my witness is a liar?"
     SPEAK "Tutorial Boy"
         "I'm sure Ross has a very reasonable explanation for all this."
 
     POSE Dan SideNormal
     SPEAK_FROM COURT_ASSISTANT
-        "Yeah this outta be real good."
+        "He oughta have a real good reason for this."
 
     POSE Ross SweatyHelm
     SPEAK_FROM COURT_WITNESS
-        "T-that's right! The reason I was able to see Jory was... because I needed to poop!"
+        "T-That's right! The reason I was able to see Jory was... because I needed to poop!"
     SPEAK Ross
         "Yeah!"
     STOP_MUSIC
     POSE Arin Annoyed
     SPEAK_FROM COURT_DEFENSE
-        "Um...excuse me?"
+        "Um... excuse me?"
 
     POSE Dan SideLaugh
     SPEAK_FROM COURT_ASSISTANT
@@ -218,7 +221,7 @@ DEFINE PressA3
 
     POSE Arin Annoyed
     THINK_FROM COURT_DEFENSE
-        "(Goddamnit Ross)"
+        "(Goddamnit, Ross.)"
     SPEAK Arin
         "What does you needing to poop have to do with seeing Jory?
 
@@ -233,14 +236,14 @@ DEFINE PressA3
         "Your Honor, I believe this needs to be added to the witness's testimony."
 
     SPEAK_FROM COURT_JUDGE
-        "Agreed. Ross, add your poop story to your testimony."
+        "Agreed. Witness, add your poop story to your testimony."
 
     SPEAK_FROM COURT_WITNESS
-        "Uh... yes, yes of course your honor, let me go over it again."
+        "Uh... Yes, why of course, Your Honor. Let me go over it again."
 
     POSE Dan SideLean
     SPEAK_FROM COURT_ASSISTANT
-        "Way to go Big Cat! Let's see how this changes things."
+        "Way to go, Big Cat! Let's see how this changes things."
 
 STOP_MUSIC
 FADE_TO_BLACK
@@ -258,8 +261,8 @@ DEFINE PressA4
     PAN COURT_WITNESS COURT_DEFENSE
     POSE Arin Normal
     SPEAK_FROM COURT_DEFENSE
-        "What makes you so sure that the dinos were stolen anyways!?"
-    POSE Ross Sweaty
+        "What makes you so sure that the dinos were stolen, anyways!?"
+    POSE Ross SweatyHelm
     SPEAK_FROM COURT_WITNESS
         "..."
     POSE "Judge Brent" Thinking
@@ -275,7 +278,7 @@ DEFINE PressA4
     POSE "Judge Brent" Normal
     SPEAK_FROM COURT_JUDGE
         "I'll just pretend that didn't happen."
-
+    POSE Ross Normal
     JUMPCUT COURT_WITNESS
 END_DEFINE
 
@@ -306,14 +309,9 @@ DEFINE PressB1
 
     POSE Ross Normal
     SPEAK_FROM COURT_WITNESS
-        "Well I saw someone move past my office door out of the corner of my eye."
+        "Well, I saw someone move past my office door out of the corner of my eye."
     SPEAK_FROM COURT_WITNESS
         "It was only after I got up and left my office that I realized it was Jory."
-<<<<<<< HEAD
-=======
-
-    POSE "Tutorial Boy" Normal
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
     SPEAK_FROM COURT_PROSECUTION
         "Please tell the court the reason you had to get up and leave your office."
     JUMPCUT COURT_WITNESS
@@ -324,16 +322,16 @@ DEFINE PressB2
     PAN COURT_WITNESS COURT_DEFENSE
     POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
-        "You 'suddenly' had to poop? Seems a little convenient don't you think?"
+        "You 'suddenly' had to poop? Seems a little convenient, don't you think?"
     POSE Ross GlaringHelm
     SPEAK_FROM COURT_WITNESS
-        "You're one to talk! You have to suddenly poop all the time!"
+        "You're one to talk! YOU have to suddenly poop all the time!"
 
     SPEAK_FROM COURT_ASSISTANT
-        "He's got you there bro."
+        "He's got you there, bro."
 
     SPEAK_FROM COURT_JUDGE
-        "You have quite a reputation with going number 2 Arin. I think you should let this one go."
+        "You have quite a reputation with 'making bears', Arin. I think you should let this one go."
 
     POSE Arin Sweaty
     SPEAK_FROM COURT_DEFENSE
@@ -349,7 +347,7 @@ DEFINE PressB3
     PAN COURT_WITNESS COURT_DEFENSE
     POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
-        "What were you doing by the office toilet Ross?"
+        "What were you doing by the office toilet, Ross?"
 
     POSE Ross Normal
     SPEAK_FROM COURT_WITNESS
@@ -357,13 +355,13 @@ DEFINE PressB3
 
     POSE Arin Embarassed
     SPEAK_FROM COURT_DEFENSE
-        "Hahah... of course. Stupid question I guess.
+        "Hahah... of course. Stupid question, I guess.
 
     SPEAK Dan
-        "Hold on Arin."
+        "Hold on, Arin."
 
     POSE Arin Thinking
-        "What's up Dan?"
+        "What's up, Dan?"
 
     JUMPCUT COURT_ASSISTANT
 
@@ -371,11 +369,7 @@ DEFINE PressB3
         "Something about that doesn't seem right, but... I dunno..."
 
     SPEAK Dan
-<<<<<<< HEAD
-        "Maybe we should look at the evidence, see if there's something about this?"
-=======
         "Maybe we should look at the %1evidence%0, see if there's something about this?"
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
 
     JUMPCUT COURT_WITNESS
 END_DEFINE
@@ -390,28 +384,20 @@ DEFINE PressB4
 
     POSE Ross GlaringHelm
     SPEAK_FROM COURT_WITNESS
-<<<<<<< HEAD
-        "No of course not! Not everyone has memorable bathroom trips like you Arin"
-=======
-        "No of course not! Not everyone has memorable bathroom trips like you Arin."
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
+        "No, of course not! Not everyone has memorable bathroom trips like you, Arin."
 
     POSE Arin Sweaty
     SPEAK_FROM COURT_DEFENSE
-        "Point taken."
+        "Yeah, my shits are pretty legendary. Point taken."
 
     JUMPCUT COURT_WITNESS
     POSE Ross Normal
 END_DEFINE
 
 WITNESS_EVENT CrossExamination Ross "-- Witness' Account --" CrossExamFail
-    "So I saw Jory walk by my office." PressB1 0
+    "So, I saw Jory walk by my office." PressB1 0
     "But I suddenly had to use the bathroom right away!" PressB2 0
-<<<<<<< HEAD
-    "So I ran to use the nearby bathroom. On my way back I saw Jory stashing the dinos away" PressB3 PlumberInvoice
-=======
-    "So I ran to use the nearby bathroom. On my way back I saw Jory stashing the dinos away." PressB3 PlumberInvoice
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d
+    "I ran to use the nearby bathroom. On my way back, I saw Jory stashing the dinos away." PressB3 PlumberInvoice
     "I didn't think anything of it, that's why I forgot to mention it earlier!" PressB4 0
 
 /////////////////////////
@@ -422,11 +408,10 @@ SHOUT Arin Objection
 STOP_MUSIC
 POSE Arin Point
 SPEAK_FROM COURT_DEFENSE
-    "Not so fast Ross!"
+    "Not so fast, Jafar! I-I mean, Ross!"
 SPEAK Arin
     "Are you absolutely certain that you had just used the office toilet?"
 
-<<<<<<< HEAD
 POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
     "Of course I am."
@@ -440,12 +425,14 @@ PLAY_MUSIC DRAGONOBJECTION
 SPEAK Arin
     "..that the toilets were undergoing maintenance at that time?"
 
+STOP_SHOWING
+
 JUMPCUT COURT_WITNESS
 SFX stab
 ANIMATION Ross Damage
 POSE Ross SweatyHelm
 SPEAK Ross
-    "W-what's that now?"
+    "W-What's that now?"
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Point
@@ -496,12 +483,12 @@ SPEAK "Judge Brent"
 
 POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
-    "Oh I do not like where this is going."
+    "Oh, I do not like where this is going."
 
 SPEAK_FROM COURT_WITNESS
     "The... truth?"
 
-PLAY_MUSIC CTTRvSbeta
+PLAY_MUSIC GGJJROSS
 
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
@@ -527,7 +514,7 @@ SPEAK Arin
     "What the hey are you even talking about?"
 POSE Ross Normal
 SPEAK_FROM COURT_WITNESS
-    "Well... the truth is I wasn't actually animating at all."
+    "Well... the truth is, I wasn't animating anything at all."
 SPEAK Ross
     "I was actually working on a secret level for you guys."
 
@@ -539,18 +526,18 @@ SPEAK Arin
 
 POSE Ross SadHelm
 SPEAK_FROM COURT_WITNESS
-    "I know I shouldn't have lied about it, but I wanted it to be a surprise!"
+    "I know, I shouldn't have lied about it, but I wanted it to be a surprise!"
 
 
 SPEAK_FROM COURT_JUDGE
-    "This changes quite a bit you know."
+    "This changes things quite a bit, you know."
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Tutorial Boy, I think we need to redo your witness' testimony again in light of this new information."
 
 JUMPCUT COURT_PROSECUTION
 SPEAK "Tutorial Boy"
-    "Yes of course your honor."
+    "Yes, of course, Your Honor."
 
 JUMPCUT COURT_DEFENSE
 SFX stab
@@ -562,13 +549,14 @@ SPEAK Arin
 SPEAK_FROM COURT_JUDGE
     "I know it's unprofessional, but Ross tends to have good intentions."
 SPEAK_FROM COURT_JUDGE
-    "Therefore I'm willing to give him another chance. Besides, how could I say no to that face?"
+    "Therefore, I'm willing to give him another chance. Besides, how could I say no to that face?"
 
 JUMPCUT COURT_WITNESS
 POSE Ross SadHelm
 SPEAK Ross
-    "(whimper)."
+    "*whimper*."
 
+STOP_MUSIC
 THINK_FROM COURT_DEFENSE
     "(Lord spare me this crap.)"
 
@@ -577,5 +565,3 @@ SPEAK_FROM COURT_JUDGE
 
 FADE_TO_BLACK
 END_SCENE
-=======
->>>>>>> 16365cd02964b6115e9107df4869b05299a8488d

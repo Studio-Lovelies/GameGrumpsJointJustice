@@ -7,6 +7,10 @@ settings = {
 
     master_volume = 25;
     text_scroll_speed = 30;
+    fullscreen_scale = 2;
+    windowed_scale = 1.326;
+    displayModesIndex = 1;
+    displayModes = {"Windowed", "Fullscreen", "Windowed-Fullscreen"};
 
     background_directory = "backgrounds/";
     character_directory = "characters/";
@@ -30,6 +34,7 @@ settings = {
     jory_trial_6_path = "scripts/jory_trial_6.meta";
     posttrial_path = "scripts/posttrial.meta";
     episode_path = "scripts/episode1.meta";
+    credits_path = "scripts/credits.script";
 }
 
 -- Keybindings used by the onKeyPresseds in screens/index
@@ -50,6 +55,7 @@ dimensions = {
     graphics_scale = 4;
     window_width = 1280;
     window_height = 720;
+    background_scale = settings.fullscreen_scale;
 }
 
 

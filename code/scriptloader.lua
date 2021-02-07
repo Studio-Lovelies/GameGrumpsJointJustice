@@ -177,8 +177,14 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "END_DEFINE" then
                     stack = scene.stack
                 end
+                if lineParts[1] == "SET_SYNC" then
+                    AddToStack(stack, NewSetSyncEvent(lineParts[2]), lineParts)
+                end
                 if lineParts[1] == "PANIMAGE" then
                     AddToStack(stack, NewPanImageEvent(lineParts[2], lineParts[3], lineParts[4], lineParts[5]), lineParts)
+                end
+                if lineParts[1] == "CAMERA" then
+                    AddToStack(stack, NewCameraEvent(lineParts[2], lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "JUMP" then
                     AddToStack(stack, NewClearExecuteDefinitionEvent(lineParts[2]), lineParts)
@@ -188,11 +194,7 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewCutToEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "PAN" then
-                    if lineParts[4] ~= nil then
-                        AddToStack(stack, NewPanEvent(lineParts[2], lineParts[3], lineParts[4]), lineParts)
-                    else
-                        AddToStack(stack, NewPanEvent(lineParts[2], lineParts[3]), lineParts)
-                    end
+                    AddToStack(stack, NewPanEvent(lineParts[2], lineParts[3]), lineParts)
                     AddToStack(stack, NewCutToEvent(lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "POSE" then
@@ -221,7 +223,7 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewPlaySoundEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "ISSUE_PENALTY" then
-                    AddToStack(stack, NewIssuePenaltyEvent(), lineParts)
+                    AddToStack(stack, NewIssuePenaltyEvent(scene), lineParts)
                 end
                 if lineParts[1] == "GAME_OVER" then
                     AddToStack(stack, NewGameOverEvent(), lineParts)
@@ -231,6 +233,7 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewShoutEvent(lineParts[2], lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "WIDESHOT" then
+                    AddToStack(stack, NewCutToEvent("BLACK_SCREEN"), lineParts)
                     AddToStack(stack, NewWideShotEvent(), lineParts)
                 end
                 if lineParts[1] == "GAVEL" then
@@ -238,10 +241,16 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewGavelEvent(), lineParts)
                 end
                 if lineParts[1] == "SHOW" then
-                    AddToStack(stack, NewShowEvent(lineParts[2], lineParts[3]), lineParts)
+                    AddToStack(stack, NewShowEvent(lineParts[2], lineParts[3], scene), lineParts)
+                end
+                if lineParts[1] == "STOP_SHOWING" then
+                    AddToStack(stack, NewStopShowingEvent(scene), lineParts)
+                end
+                if lineParts[1] == "BIGIMAGE" then
+                    AddToStack(stack, NewBigImageEvent(lineParts[2], lineParts))
                 end
                 if lineParts[1] == "PRESENT" then
-                    AddToStack(stack, NewPresenEvent(lineParts[2]), lineParts)
+                    AddToStack(stack, NewPresentEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "FADE_TO_BLACK" then
                     AddToStack(stack, NewFadeToBlackEvent(), lineParts)

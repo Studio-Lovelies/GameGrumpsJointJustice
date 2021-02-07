@@ -1,5 +1,7 @@
 require "config"
 
+camerapan = {0, 0}
+
 function NewCharLocationEvent(name, location)
     local self = {}
     self.name = name
@@ -58,7 +60,7 @@ function NewAnimationEvent(name, animation, speed)
 
     self.characterDraw = function(self, scene)
         local animation = scene.characters[self.name].animations[self.animation]
-        love.graphics.draw(animation.source, animation.anim[self.animIndex])
+        love.graphics.draw(animation.source, animation.anim[self.animIndex], 32)
     end
 
     return self
@@ -85,6 +87,7 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
     self.who = who
     self.font = "game"
     self.locorlit = locorlit
+    self.xTimer = 0
 
     if color == nil then
         color = "WHITE"
@@ -94,6 +97,7 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
     self.speaks = true
 
     self.update = function(self, scene, dt)
+        scene.font = self.font
         scene.textHidden = false
         scene.fullText = self.text
 
@@ -103,8 +107,10 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
 
         if controls.debug then
             scrollSpeed = scrollSpeed
-        elseif love.keyboard.isDown("lshift") then
-            scrollSpeed = scrollSpeed*8
+        elseif love.keyboard.isDown("x") then
+            if startTimer(self, dt) >= 0.6 then
+                scrollSpeed = scrollSpeed*8
+            end
         else
             if currentChar == "." then
                 if string.sub(self.text, math.floor(self.textScroll - 2), math.floor(self.textScroll)):lower() == "mr." then
@@ -159,13 +165,18 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
         local pressing = love.keyboard.isDown(controls.advance_text)
         -- What to do at the end of dialogue
         if self.textScroll >= #self.text then
+            scene.canAdvance = true
             if self.needsPressing == false then
                 -- This dialogue doesn't need the button to continue, like a run-on sentence
+                scene.canAdvance = false
                 return false
             elseif pressing and not self.wasPressing then
                 -- This dialogue needs the button, and the button was just pressed
+                scene.canAdvance = false
                 return false
             end
+        else
+            scene.canAdvance = false
         end
 
         self.wasPressing = pressing
@@ -195,6 +206,7 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
     self.who = who
     self.font = "small"
     self.locorlit = locorlit
+    self.xTimer = 0
 
     if color == nil then
         color = "WHITE"
@@ -204,6 +216,7 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
     self.speaks = true
 
     self.update = function(self, scene, dt)
+        scene.font = self.font
         scene.textHidden = false
         scene.fullText = self.text
 
@@ -213,8 +226,10 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
 
         if controls.debug then
             scrollSpeed = scrollSpeed
-        elseif love.keyboard.isDown("lshift") then
-            scrollSpeed = scrollSpeed*8
+        elseif love.keyboard.isDown("x") then
+            if startTimer(self, dt) >= 0.6 then
+                scrollSpeed = scrollSpeed*8
+            end
         else
             if currentChar == "." then
                 if string.sub(self.text, math.floor(self.textScroll - 2), math.floor(self.textScroll)):lower() == "mr." then
@@ -254,6 +269,7 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
         and currentChar ~= ";"
         and currentChar ~= ")"
         and currentChar ~= "("
+        and currentChar ~= "#"
         and self.speaks then
             if scene.characters[scene.textTalker].gender == "MALE" then
                 Sounds.MALETALK:play()
@@ -269,13 +285,18 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
         local pressing = love.keyboard.isDown(controls.advance_text)
         -- What to do at the end of dialogue
         if self.textScroll >= #self.text then
+            scene.canAdvance = true
             if self.needsPressing == false then
                 -- This dialogue doesn't need the button to continue, like a run-on sentence
+                scene.canAdvance = false
                 return false
             elseif pressing and not self.wasPressing then
                 -- This dialogue needs the button, and the button was just pressed
+                scene.canAdvance = false
                 return false
             end
+        else
+            scene.canAdvance = false
         end
 
         self.wasPressing = pressing
@@ -349,10 +370,26 @@ function NewTypeWriterEvent(text)
     return self
 end
 
-camerapan = {0, 0}
+function NewSetSyncEvent(sync)
+    local self = {}
+    self.sync = sync:lower()
+
+    self.update = function(self, scene, dt)
+
+        scene.stack[2].event.sync = self.sync
+
+        return false
+    end
+
+    return self
+
+end
 
 function NewPanImageEvent(a, b, c, d)
     local self = {}
+
+    camerapan = {0, 0}
+
     self.a = tonumber(a)
     self.b = tonumber(b)
     self.c = tonumber(c)
@@ -371,7 +408,6 @@ function NewPanImageEvent(a, b, c, d)
     self.update = function(self, scene, dt)
         scene.canShowBgTopLayer = false
         scene.canShowCharacter = false
-        scene.textHidden = true
 
         if self.x ~= self.c then
             if self.x > self.c then
@@ -420,6 +456,21 @@ function NewPanImageEvent(a, b, c, d)
     return self
 end
 
+function NewCameraEvent(x, y)
+    local self = {}
+    self.x = x
+    self.y = y
+
+    self.update = function(self, scene, dt)
+
+        camerapan = {self.x, self.y}
+
+        return false
+    end
+
+    return self
+end
+
 function NewPlayMusicEvent(music)
     local self = {}
     self.music = music
@@ -450,6 +501,8 @@ function NewFadeMusicEvent()
     self.timer = MasterVolume/100
 
     self.update = function(self, scene, dt)
+        scene.music = nil
+
         local lastTimer = self.timer
         self.timer = self.timer - (dt / (1 / (MasterVolume / 100)))
 
@@ -609,62 +662,31 @@ function NewClearExecuteDefinitionEvent(def)
     return self
 end
 
-function NewShowEvent(evidence, side)
+function NewShowEvent(evidence, side, scene)
     local self = {}
     self.evidence = evidence
     self.side = side
-    self.wasPressing = true
 
     self.update = function(self, scene, dt)
-        local pressing = love.keyboard.isDown("x")
-        if pressing and not self.wasPressing then
-            return false
+        if scene.showing == nil then
+            scene.showing = {self.evidence, self.side}
         end
-        self.wasPressing = pressing
-
-        return true
-    end
-
-    self.draw = function(self, scene)
-        love.graphics.setColor(1,1,1)
-        if Sprites[self.evidence:gsub(" ", "")] == nil then
-            love.graphics.draw(Sprites["MissingTexture"], 16,16)
-        else
-            if self.side:lower() == "left" or self.side:lower() == "l" then
-                love.graphics.draw(Sprites[self.evidence], 24, 24)
-            elseif self.side:lower() == "right" or self.side:lower() == "r" then
-                love.graphics.draw(Sprites[self.evidence], 234, 24)
-            end
-        end
+        return false
     end
 
     return self
 end
 
-function NewPresentEvent(evidence)
+function NewStopShowingEvent(scene)
     local self = {}
-    self.evidence = evidence
-    self.wasPressingConfirm = false
 
     self.update = function(self, scene, dt)
-        scene.textHidden = false
-        local pressingConfirm = love.keyboard.isDown(controls.press_confirm)
-        if screens.courtRecords.displayed then
-            if not self.wasPressingConfirm and pressingConfirm then
-                if Episode.courtRecords.evidence[CourtRecordIndex].externalName:gsub("%s+", ""):lower() == self.evidence:lower() then
-                    screens.courtRecords.displayed = false
-                    return false
-                else
-                    return true
-                end
-            end
-            self.wasPressingConfirm = pressingConfirm
-            return true
-        else
-            screens.courtRecords.displayed = true
-            return true
+        if scene.showing ~= nil then
+            scene.showing = nil
         end
+        return false
     end
+
     return self
 end
 
@@ -814,6 +836,7 @@ function NewSceneEndEvent()
     local self = {}
 
     self.update = function(self, scene, dt)
+        Episode.sceneIndex = Episode.sceneIndex + 1
         Episode:nextScene()
         return false
     end
@@ -843,7 +866,7 @@ function NewFadeToBlackEvent()
     end
 
     self.draw = function(self, scene)
-        love.graphics.setColor(0,0,0, self.timer)
+        love.graphics.setColor(0, 0, 0, self.timer)
         love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
     end
 
@@ -1019,4 +1042,11 @@ function isNaN(n)
         return true
     else return false
     end
+end
+
+function startTimer(event, dt)
+
+    event.xTimer = event.xTimer + dt*2
+
+    return event.xTimer
 end

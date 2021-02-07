@@ -130,7 +130,6 @@ BrowseScreenConfig = {
                 screens.title.displayed = true;
                 DrawTitleScreen();
                 screens.browsescenes.displayed = false;
-                TitleSelection = "Case Select";
                 SelectionIndex = 1;
             elseif TitleSelection == "Jory's Trial" then
                 blip2:play()
@@ -141,7 +140,8 @@ BrowseScreenConfig = {
                 SelectionIndexY = 0;
             elseif TitleSelection == "Post-Trial" then
                 jingle:play()
-                NewEpisode(settings.posttrial_path):begin()
+                Episode = NewEpisode(settings.posttrial_path)
+                Episode:begin()
                 screens.browsescenes.displayed = false;
             end
         elseif key == controls.press_right then
@@ -162,11 +162,19 @@ BrowseScreenConfig = {
     end;
     onDisplay = function()
         screens.browsescenes.displayed = true
+        screens.pause.displayed = false
+        screens.courtRecords.displayed = false
+        screens.jorytrial.displayed = false
+        screens.options.displayed = false
         screens.title.displayed = false
+        TitleSelection = "Back";
+        SelectionIndex = 0;
     end;
     draw = function()
         if screens.browsescenes.displayed == true then
             DrawBrowseScreen()
+            blip2:setVolume(settings.master_volume / 100 / 2)
+            jingle:setVolume(settings.master_volume / 100 / 2)
         end
     end;
 }

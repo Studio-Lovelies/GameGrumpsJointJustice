@@ -1,6 +1,6 @@
 function DrawTitleScreen()
     local background = love.graphics.newImage(settings.power_hour_set_path)
-    local backgroundScale = 2
+    local backgroundScale = dimensions.background_scale
 
     love.graphics.clear(unpack(colors.black))
 
@@ -77,7 +77,7 @@ function DrawTitleScreen()
         textScale
     )
 
-    local loadGameText = love.graphics.newText(GameFont, "Load Game")
+    local loadGameText = love.graphics.newText(GameFont, "Settings")--"Load Game")
     love.graphics.draw(
         loadGameText,
         loadX + loadW/2-(loadGameText:getWidth() * textScale)/2,
@@ -90,7 +90,7 @@ function DrawTitleScreen()
     local scenesText = love.graphics.newText(GameFont, "Case Select")
     love.graphics.draw(
         scenesText,
-        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2,
+        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2 - 25,
         scenesY + scenesH/2-(loadGameText:getHeight() * textScale)/2,
         0,
         textScale,
@@ -125,23 +125,24 @@ TitleScreenConfig = {
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Case Select" then
-                -- browse scenes screen here
                 blip2:play()
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
-                --screens.options.lastDisplayed = screens.title.displayed
-                --screens.options.displayed = true;
-                --DrawOptionsScreen();
                 screens.title.displayed = false;
                 SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 -- replace this and handle load game logic
-                jingle:play()
-                Episode:begin()
+                --jingle:play()
+                --Episode:begin()
+                blip2:play()
+                screens.options.lastDisplayed = screens.title.displayed
+                screens.options.displayed = true
+                DrawOptionsScreen()
                 screens.title.displayed = false;
+                SelectionIndex = 0;
             elseif TitleSelection == "New Game" then
                 jingle:play()
-                Episode:begin()
+                NewEpisode(settings.episode_path):begin()
                 screens.title.displayed = false;
             end
         elseif key == controls.press_right then
@@ -165,6 +166,7 @@ TitleScreenConfig = {
         screens.pause.displayed = false
         screens.courtRecords.displayed = false
         screens.jorytrial.displayed = false
+        screens.options.displayed = false
         screens.title.displayed = true
         TitleSelection = "New Game";
         SelectionIndex = 0;
@@ -172,6 +174,8 @@ TitleScreenConfig = {
     draw = function()
         if screens.title.displayed == true then
             DrawTitleScreen()
+            blip2:setVolume(settings.master_volume / 100 / 2)
+            jingle:setVolume(settings.master_volume / 100 / 2)
         end
     end
 }
