@@ -11,8 +11,9 @@ function DrawCourtRecords(ui)
         -- TODO: Can you present a profile?
         {
             title = "Present",
+
             key = controls.press_confirm
-        },
+        },uhhjch
     }
     local menuTitle
 
@@ -68,7 +69,7 @@ function DrawCourtRecords(ui)
         height = love.graphics.getHeight() - 120,
         buttons = menuButtons,
         title = menuTitle,
-        body= {
+        body = {
             selected = bodySelected,
             options = bodyOptions
         }

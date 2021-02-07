@@ -88,7 +88,7 @@ function NewScene(scriptPath)
         if self.credits ~= nil and #self.creditLines > 1 then
             for i = 1, #self.creditLines do
                 if self.creditLines[#self.creditLines][3] > 68 then
-                    self.creditLines[i][3] = self.creditLines[i][3] - 30--0.3
+                    self.creditLines[i][3] = self.creditLines[i][3] - 0.3
                 end
             end
         end
@@ -262,10 +262,10 @@ function NewScene(scriptPath)
                         table.insert(spaces, i)
                     end
 
-                    local wtest = working .. char
+                    local currentSentence = working .. char
                     if lineTableIndex < 3 then
-                        if GameFont:getWidth(wtest) >= wrapWidth or char == "#" then
-                            wrapIndices[lineTableIndex] = spaces[#spaces] +1
+                        if GameFont:getWidth(currentSentence) >= wrapWidth or char == "#" then
+                            wrapIndices[lineTableIndex] = spaces[#spaces] + 1
                             lineTableIndex = lineTableIndex + 1
                             working = ""
                             fullwords = ""
