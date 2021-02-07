@@ -87,7 +87,7 @@ function NewScene(scriptPath)
         if self.credits ~= nil and #self.creditLines > 1 then
             for i = 1, #self.creditLines do
                 if self.creditLines[#self.creditLines][3] > 68 then
-                    self.creditLines[i][3] = self.creditLines[i][3] - 30--0.3
+                    self.creditLines[i][3] = self.creditLines[i][3] - 0.3
                 end
             end
         end
