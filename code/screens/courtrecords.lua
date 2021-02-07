@@ -78,15 +78,15 @@ end
 CourtRecordsConfig = {
     displayed = false;
     displayKey = controls.press_court_record;
-    displayCondition = function ()
+    displayCondition = function()
         -- You can only view your court records
         return true;
     end;
-    onDisplay = function ()
+    onDisplay = function()
         CourtRecordIndex = 1
         menu_type = "evidence"
     end;
-    onKeyPressed = function (key)
+    onKeyPressed = function(key)
         if key == controls.press_left and CourtRecordIndex > 1 then
             CourtRecordIndex = CourtRecordIndex - 1
         elseif key == controls.press_right then
@@ -108,7 +108,7 @@ CourtRecordsConfig = {
             end
         end
     end;
-    draw = function ()
+    draw = function()
         DrawCourtRecords(menu_type)
     end
 }

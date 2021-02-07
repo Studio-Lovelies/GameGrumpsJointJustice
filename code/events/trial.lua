@@ -6,7 +6,7 @@ function NewShoutEvent(who, what)
     self.what = what:lower()
     local shout = Shouts[self.what]
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.textHidden = true
         scene.characters[self.who].sounds[self.what]:play()
         self.timer = self.timer + dt
@@ -16,7 +16,7 @@ function NewShoutEvent(who, what)
         return self.timer < 0.5
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         love.graphics.draw(shout, self.x,self.y)
     end
 
@@ -44,7 +44,7 @@ function NewWitnessEvent(queue)
         cornerSprite = Sprites["Penalty"]
     end
 
-    self.advanceText = function (self)
+    self.advanceText = function(self)
         if self.eventType == "WitnessTestimony" then
             self.textIndex = self.textIndex + 1
             self.textScroll = 1
@@ -167,7 +167,7 @@ function NewWitnessEvent(queue)
         return true
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         if self.timer < self.animationTime then
             love.graphics.draw(introSprite, GraphicsWidth/2, GraphicsHeight/2 - 24, 0, 1, 1, introSprite:getWidth()/2, introSprite:getHeight()/2)
         else
@@ -211,7 +211,7 @@ function NewIssuePenaltyEvent(scene)
         Episode:begin();
     end
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         return false
     end
 
@@ -226,7 +226,7 @@ function NewWideShotEvent()
     self.headAnim = 1
     self.frameCounter = 0
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         self.timer = self.timer + dt
         self.frameCounter = self.frameCounter + dt
 
@@ -258,7 +258,7 @@ function NewWideShotEvent()
         return true
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         local talkingHeadAnimation = Sprites["TalkingHeadAnimation"]
         love.graphics.draw(Sprites["WideShot"])
         love.graphics.draw(talkingHeadAnimation[self.headAnim])
@@ -279,7 +279,7 @@ function NewGavelEvent()
     self.muted = false
     self.sources = {}
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         self.timer = self.timer + dt
         scene.textHidden = true
         scene.canShowCourtRecord = false
@@ -311,7 +311,7 @@ function NewGavelEvent()
         return true
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         local gavelAnimation = Sprites["GavelAnimation"]
         local spr = gavelAnimation[self.index]
         love.graphics.draw(spr, 0, 0, 0, GraphicsWidth/spr:getWidth(),GraphicsHeight/spr:getHeight())
@@ -343,7 +343,7 @@ function NewPanEvent(from, to)
     end
     self.x = self.xStart
 
-    self.update = function (self, scene, dt)
+    self.update = function(self, scene, dt)
         scene.canShowBgTopLayer = false
         scene.canShowCharacter = false
         scene.textHidden = true
@@ -356,7 +356,7 @@ function NewPanEvent(from, to)
         return self.x > self.xTo
     end
 
-    self.draw = function (self, scene)
+    self.draw = function(self, scene)
         love.graphics.draw(courtPanSprite, -1*self.x, 0)
         scene:drawCharacterAt("COURT_DEFENSE", -1*self.x, 0)
         scene:drawBackgroundTopLayer("COURT_DEFENSE", -1*self.x, 0)

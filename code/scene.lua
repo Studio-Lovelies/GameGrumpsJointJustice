@@ -42,7 +42,7 @@ function NewScene(scriptPath)
         end
     end
 
-    self.update = function (self, dt)
+    self.update = function(self, dt)
         -- update the active event
         self.canShowCharacter = true
         self.textCentered = false
@@ -58,7 +58,7 @@ function NewScene(scriptPath)
         self.charAnimIndex = self.charAnimIndex + dt*5
     end
 
-    self.drawCharacterAt = function (self, characterLocation, x,y)
+    self.drawCharacterAt = function(self, characterLocation, x,y)
         local character = self.characterLocations[characterLocation]
         if character ~= nil then
             if self.characters[character.name].poses[character.frame] ~= nil then
@@ -99,7 +99,7 @@ function NewScene(scriptPath)
         end
     end
 
-    self.drawBackgroundTopLayer = function (self, location, x, y)
+    self.drawBackgroundTopLayer = function(self, location, x, y)
         local background = Backgrounds[location]
 
         if background[2] ~= nil then
@@ -107,7 +107,7 @@ function NewScene(scriptPath)
         end
     end
 
-    self.draw = function (self, dt)
+    self.draw = function(self, dt)
         love.graphics.setColor(1, 1, 1)
 
         -- draw the background of the current location
