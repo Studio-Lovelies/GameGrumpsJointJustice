@@ -10,6 +10,7 @@ function NewScene(scriptPath)
     self.flags = {}
     self.showing = nil
     self.bigimage = nil
+    self.closeUp = false
 
     self.index = 1
     self.canAdvance = false
@@ -125,6 +126,12 @@ function NewScene(scriptPath)
                 end
             end
 
+            if pose == Sprites["CloseUp"] or pose == Sprites["CloseUpTalking"] then
+                self.closeUp = true
+            else
+                self.closeUp = false
+            end
+
             if self.characters[character.name].poses[character.frame] ~= nil then
                 if self.charAnimIndex >= #pose.anim then
                     self.charAnimIndex = 1
@@ -147,6 +154,11 @@ function NewScene(scriptPath)
     end
 
     self.drawBackgroundTopLayer = function(self, location, x, y)
+        self.location = location
+
+        if self.closeUp then
+            self.location = "SPEEDLINE"
+        end
         local background = Backgrounds[location]
 
         if background[2] ~= nil then
@@ -168,6 +180,9 @@ function NewScene(scriptPath)
         love.graphics.setColor(1, 1, 1)
 
         -- draw the background of the current location
+        if self.closeUp then
+            self.location = "SPEEDLINE"
+        end
         local background = Backgrounds[self.location]
         if background[1] ~= nil then
 
