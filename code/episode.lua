@@ -42,7 +42,7 @@ function NewEpisode(episodePath)
             CurrentScene:update(0)
             DtReset = true
         else
-            if episodePath ~= settings.game_over_path then
+            if episodePath ~= settings.game_over_path and episodePath ~= settings.episode_path then
                 CurrentScene:startCredits(self.creditLines)
             else
                 Episode = self.nextEpisode
@@ -63,6 +63,5 @@ function startCredits(scene)
     for line in love.filesystem.lines(settings.credits_path) do
         table.insert(scene.creditLines, line)
         love.graphics.print(line)
-        print(line)
     end
 end
