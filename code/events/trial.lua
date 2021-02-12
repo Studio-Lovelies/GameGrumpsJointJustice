@@ -165,7 +165,7 @@ function NewWitnessEvent(queue)
                 screens.courtRecords.displayed = false
 
                 if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex + 2] then
-                        AddToStack(scene.stack, NewIssuePenaltyEvent(scene), lineParts);
+                        AddToStack(scene.stack, NewIssuePenaltyEvent(scene), lineParts)
                 else return false
                 end
             end
@@ -220,6 +220,7 @@ function NewPresentEvent(evidence)
                     screens.courtRecords.displayed = false
                     return false
                 else
+                    AddToStack(scene.stack, NewIssuePenaltyEvent(scene), lineParts)
                     return true
                 end
             end
