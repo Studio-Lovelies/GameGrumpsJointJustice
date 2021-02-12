@@ -199,7 +199,6 @@ function NewScene(scriptPath)
                     self.backgroundCloseUpIndex = 1
                 end
                 x = self.backgroundCloseUpX[self.backgroundCloseUpIndex]
-                print(x)
             end
 
             love.graphics.draw(background[1], x, y)
