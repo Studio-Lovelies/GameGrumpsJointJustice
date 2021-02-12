@@ -201,7 +201,10 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewPoseEvent(lineParts[2], lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "WAIT" then
-                    AddToStack(stack, NewWaitEvent(lineParts[2]))
+                    AddToStack(stack, NewWaitEvent(lineParts[2]), lineParts)
+                end
+                if lineParts[1] == "ADVANCE" then
+                    AddToStack(stack, NewAdvanceEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "ANIMATION" then
                     if #lineParts == 4 then
