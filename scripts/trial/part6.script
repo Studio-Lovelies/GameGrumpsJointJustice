@@ -87,7 +87,7 @@ SPEAK Dan
     "What I mean is this!"
 
 
-BIGIMAGE ANIME
+
 POSE Dan Zoom
 SFX objectionclean
 PLAY_MUSIC NSPTHEME

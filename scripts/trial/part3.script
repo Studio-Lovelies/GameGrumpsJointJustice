@@ -189,6 +189,7 @@ DEFINE PressA3
         "Yet you also say you were in your office animating."
 
     PLAY_MUSIC DRAGONOBJECTION
+    SET_SYNC TRUE
     ANIMATION Arin Objection
     POSE Arin Point
     SPEAK Arin
