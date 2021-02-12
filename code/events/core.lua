@@ -72,6 +72,7 @@ function NewCutToEvent(cutTo)
 
     self.update = function(self, scene, dt)
         scene.location = self.cutTo
+        scene.closeUp = false
         return false
     end
 

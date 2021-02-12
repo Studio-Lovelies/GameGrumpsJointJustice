@@ -11,6 +11,10 @@ function NewScene(scriptPath)
     self.showing = nil
     self.bigimage = nil
     self.closeUp = false
+    self.temp = nil
+    self.backgroundCloseUpX = {0, -320, -640, -960, -1280, -1600, -1920, -2240}
+    self.backgroundCloseUpIndex = 1
+    self.skipIncrement = false
 
     self.index = 1
     self.canAdvance = false
@@ -126,7 +130,7 @@ function NewScene(scriptPath)
                 end
             end
 
-            if pose == Sprites["CloseUp"] or pose == Sprites["CloseUpTalking"] then
+            if string.find(character.frame, "CloseUp") or string.find(character.frame, "CloseUpTalking") then
                 self.closeUp = true
             else
                 self.closeUp = false
@@ -154,12 +158,11 @@ function NewScene(scriptPath)
     end
 
     self.drawBackgroundTopLayer = function(self, location, x, y)
-        self.location = location
+        local background = Backgrounds[location]
 
         if self.closeUp then
-            self.location = "SPEEDLINE"
+            local background = Backgrounds["SPEEDLINE"]
         end
-        local background = Backgrounds[location]
 
         if background[2] ~= nil then
             love.graphics.draw(background[2], x, y)
@@ -180,16 +183,34 @@ function NewScene(scriptPath)
         love.graphics.setColor(1, 1, 1)
 
         -- draw the background of the current location
-        if self.closeUp then
-            self.location = "SPEEDLINE"
-        end
+        
         local background = Backgrounds[self.location]
+
+        if self.closeUp then
+            background = Backgrounds["SPEEDLINE"]
+        end
+
         if background[1] ~= nil then
 
             x = camerapan[1]
             y = camerapan[2]
 
+            if self.closeUp then  
+                if self.backgroundCloseUpIndex > 8 then
+                    self.backgroundCloseUpIndex = 1
+                end
+                x = self.backgroundCloseUpX[self.backgroundCloseUpIndex]
+                print(x)
+            end
+
             love.graphics.draw(background[1], x, y)
+            if self.closeUp then
+                if not self.skipIncrement then
+                    self.backgroundCloseUpIndex = self.backgroundCloseUpIndex + 1
+                    self.skipIncrement = true
+                else self.skipIncrement = false
+                end
+            end
         end
 
         -- draw the character who is at the current location

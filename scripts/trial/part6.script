@@ -88,7 +88,7 @@ SPEAK Dan
 
 
 
-POSE Dan Zoom
+POSE Dan CloseUp
 SFX objectionclean
 PLAY_MUSIC NSPTHEME
 SPEAK Dan
