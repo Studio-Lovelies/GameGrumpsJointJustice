@@ -220,6 +220,7 @@ function NewPresentEvent(evidence)
                     screens.courtRecords.displayed = false
                     return false
                 else
+                    screens.courtRecords.displayed = false
                     AddToStack(scene.stack, NewIssuePenaltyEvent(scene), lineParts)
                     return true
                 end
@@ -229,6 +230,12 @@ function NewPresentEvent(evidence)
         else
             screens.courtRecords.displayed = true
             return true
+        end
+    end
+
+    self.draw = function(self, scene)
+        for i=1, scene.penalties do
+            love.graphics.draw(Sprites["Penalty"], (i-1)*12 +2,2)
         end
     end
     return self
