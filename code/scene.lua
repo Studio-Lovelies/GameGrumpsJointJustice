@@ -238,6 +238,9 @@ function NewScene(scriptPath)
 
         -- draw the textbox
         if not self.textHidden then
+            if self.textTalker ~= nil and self.textTalker ~= "" and self.textTalker ~= "???" then
+                self.textBoxSprite = Sprites["TextBox"..self.textTalker:gsub(" ", "")]
+            end
             love.graphics.setColor(1, 1, 1)
             love.graphics.draw(self.textBoxSprite, 0, GraphicsHeight-self.textBoxSprite:getHeight())
 
