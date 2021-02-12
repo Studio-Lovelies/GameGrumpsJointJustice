@@ -222,7 +222,6 @@ function NewPresentEvent(evidence)
                 else
                     screens.courtRecords.displayed = false
                     AddToStack(scene.stack, NewIssuePenaltyEvent(scene), lineParts)
-                    return true
                 end
             end
             self.wasPressingConfirm = pressingConfirm

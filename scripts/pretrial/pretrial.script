@@ -238,7 +238,7 @@ POSE Jory Nervous
 SPEAK Jory
     "I wish I could, but everyone wants to hold a trial for this, and it's starting in just a few minutes!"
 SPEAK Jory
-    "Everyone is calling for my %1Good Boy Coins%1 to be revoked, even after all the work I put into getting them."
+    "Everyone is calling for my %1Good Boy Coins%0 to be revoked, even after all the work I put into getting them."
 SPEAK Jory
     "And I've got nobody in my corner!"
 
@@ -287,7 +287,7 @@ POSE Jory Nervous
 SPEAK Arin
     "I'm sorry, Jory, but we don't know anything about criminal defense!"
 SPEAK Arin
-    "We're just idiots who play games while saying stupid thing for money on the internet.#How are we supposed to help?"
+    "We're just idiots who play games while saying stupid thing for money on the internet. How are we supposed to help?"
 SPEAK Jory
     "Yeah... I don't know, I didn't really have a plan or anything."
 SPEAK Jory

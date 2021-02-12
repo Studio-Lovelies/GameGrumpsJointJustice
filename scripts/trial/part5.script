@@ -323,7 +323,7 @@ SPEAK "Tutorial Boy"
 
 WIDESHOT
 
-//GAVEL 3X ANIMATION
+GAVEL3
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Angry
@@ -979,7 +979,7 @@ SPEAK "Tutorial Boy"
 
 WIDESHOT
 
-//GAVEL x3
+GAVEL3
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Angry

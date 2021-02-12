@@ -672,7 +672,7 @@ function NewShowEvent(evidence, side, scene)
         if scene.showing == nil then
             scene.showing = {self.evidence, self.side}
         end
-        Sounds["bleep"]:play()
+        Sounds.BLEEP:play()
         return false
     end
 
