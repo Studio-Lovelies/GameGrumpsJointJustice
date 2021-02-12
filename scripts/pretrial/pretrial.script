@@ -10,10 +10,15 @@ CHARACTER_INITIALIZE ??? jory MALE
 CHARACTER_INITIALIZE Jory jory MALE
 CHARACTER_INITIALIZE Ross ross MALE
 
+PROFILE_INITIALIZE arin Arin 34 "Arin Hanson I guess" profiles/Arin.png
+PROFILE_INITIALIZE dan Dan 41 "Oh and Dan too" profiles/Dan.png
+
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
-COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
+COURT_RECORD_ADD EVIDENCE Badge
+COURT_RECORD_ADD PROFILE arin
+COURT_RECORD_ADD PROFILE dan
 
 HIDE_TEXT
 

@@ -13,7 +13,7 @@ function DrawCourtRecords(ui)
             title = "Present",
 
             key = controls.press_confirm
-        },uhhjch
+        }
     }
     local menuTitle
 
