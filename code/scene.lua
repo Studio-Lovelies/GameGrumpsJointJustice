@@ -11,7 +11,6 @@ function NewScene(scriptPath)
     self.showing = nil
     self.bigimage = nil
     self.closeUp = false
-    self.temp = nil
     self.backgroundCloseUpX = {0, -320, -640, -960, -1280, -1600, -1920, -2240}
     self.backgroundCloseUpIndex = 1
     self.skipIncrement = false
