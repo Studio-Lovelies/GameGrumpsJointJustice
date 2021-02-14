@@ -58,7 +58,7 @@ function DrawTitleScreen()
     love.graphics.setColor(0.96,0.53,0.23) -- roughly GG orange
     love.graphics.rectangle("fill", newX, newY, newW, newH)
 
-    love.graphics.setColor(0.3,0.3,0.3) -- greyed out
+    love.graphics.setColor(222, 0, 0)--love.graphics.setColor(0.3,0.3,0.3) -- greyed out
     love.graphics.rectangle("fill", loadX, loadY, loadW, loadH)
 
 
@@ -77,7 +77,7 @@ function DrawTitleScreen()
         textScale
     )
 
-    local loadGameText = love.graphics.newText(GameFont, "Settings")--"Load Game")
+    local loadGameText = love.graphics.newText(GameFont, "Quit Game")--"Load Game")
     love.graphics.draw(
         loadGameText,
         loadX + loadW/2-(loadGameText:getWidth() * textScale)/2,
@@ -87,7 +87,7 @@ function DrawTitleScreen()
         textScale
     )
 
-    local scenesText = love.graphics.newText(GameFont, "Case Select")
+    local scenesText = love.graphics.newText(GameFont, "Case Select")--"Settings")
     love.graphics.draw(
         scenesText,
         scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2 - 25,
@@ -130,16 +130,16 @@ TitleScreenConfig = {
                 DrawBrowseScreen();
                 screens.title.displayed = false;
                 SelectionIndex = 0;
-            elseif TitleSelection == "Load Game" then
-                -- replace this and handle load game logic
-                --jingle:play()
-                --Episode:begin()
+                --[[
                 blip2:play()
                 screens.options.lastDisplayed = screens.title.displayed
                 screens.options.displayed = true
                 DrawOptionsScreen()
                 screens.title.displayed = false;
-                SelectionIndex = 0;
+                SelectionIndex = 0;]]
+            elseif TitleSelection == "Load Game" then
+                blip2:play()
+                love.event.push("quit")
             elseif TitleSelection == "New Game" then
                 jingle:play()
                 NewEpisode(settings.episode_path):begin()

@@ -204,7 +204,11 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewWaitEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "ADVANCE" then
-                    AddToStack(stack, NewAdvanceEvent(lineParts[2]), lineParts)
+                    if (lineParts[2] ~= nil) then
+                        AddToStack(stack, NewAdvanceEvent(lineParts[2]), lineParts)
+                    else
+                        AddToStack(stack, NewAdvanceEvent(), lineParts)
+                    end
                 end
                 if lineParts[1] == "ANIMATION" then
                     if #lineParts == 4 then

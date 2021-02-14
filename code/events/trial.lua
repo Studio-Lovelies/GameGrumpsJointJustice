@@ -35,6 +35,7 @@ function NewWitnessEvent(queue)
     self.timer2 = 0
     self.xTimer = 0
     self.index = 1
+    self.animIndex = 1
     self.sprite = love.graphics.newImage("sprites/Testimony.png")
     self.cornerSpriteBlink = false
     self.animationTime = 1.5
@@ -70,7 +71,7 @@ function NewWitnessEvent(queue)
     self.update = function(self, scene, dt)
         self.timer = self.timer + dt
         self.timer2 = self.timer2 + dt
-        scene.textHidden = false
+        scene.textHidden = true
 
         -- Text format & behavior
         if self.queue[self.textIndex] ~= nil then
@@ -86,9 +87,13 @@ function NewWitnessEvent(queue)
         if inTitle then  -- Title formatting
             scene.textColor = {1, 0.5, 0}
             scene.textCentered = true
+            scene.textBoxSprite = Sprites["AnonTextBox"]
+            scene.characterTalking = false
+            scene.textTalker = ""
         else  -- Dialogue formatting
             if self.textScroll < #text then
                 scene.characterTalking = true
+                scene.textTalker = self.who
             end
 
             if self.eventType == "WitnessTestimony" then
@@ -100,7 +105,6 @@ function NewWitnessEvent(queue)
 
         scene.text = string.sub(text, 1, math.floor(self.textScroll))
         scene.fullText = text
-        scene.textTalker = self.who
 
         local currentChar = string.sub(text, math.floor(self.textScroll), math.floor(self.textScroll))
 
@@ -117,14 +121,16 @@ function NewWitnessEvent(queue)
 
         self.textScroll = math.min(self.textScroll + dt*scrollSpeed, #text)
 
-        if self.textScroll > lastScroll
-        and currentChar ~= " "
-        and currentChar ~= ","
-        and currentChar ~= "-" then
-            if scene.characters[scene.textTalker].gender == "MALE" then
-                Sounds.MALETALK:play()
-            else
-                Sounds.FEMALETALK:play()
+        if not inTitle then
+            if self.textScroll > lastScroll
+            and currentChar ~= " "
+            and currentChar ~= ","
+            and currentChar ~= "-" then
+                if scene.characters[scene.textTalker].gender == "MALE" then
+                    Sounds.MALETALK:play()
+                else
+                    Sounds.FEMALETALK:play()
+                end
             end
         end
         -- End text format & behavior
@@ -165,19 +171,31 @@ function NewWitnessEvent(queue)
                 screens.courtRecords.displayed = false
 
                 if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex + 2] then
-                        AddToStack(scene.stack, NewIssuePenaltyEvent(scene), lineParts)
+                    table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
                 else return false
                 end
             end
         end
         -- End controls handling
 
+
+        if self.timer > self.animIndex * 0.075 then
+            if self.animIndex < 20 then
+                self.animIndex = self.animIndex + 1
+            else
+                scene.textHidden = false
+            end
+        end
+
+        if self.timer < 0.1 then
+            Sounds.LONGWOOSH:play()
+        end
         return true
     end
 
     self.draw = function(self, scene)
         if self.timer < self.animationTime then
-            love.graphics.draw(introSprite, GraphicsWidth/2, GraphicsHeight/2 - 24, 0, 1, 1, introSprite:getWidth()/2, introSprite:getHeight()/2)
+            love.graphics.draw(Sprites[self.eventType..self.animIndex], GraphicsWidth/2, GraphicsHeight/2 - 20, 0, 1, 1, Sprites[self.eventType..self.animIndex]:getWidth()/2, Sprites[self.eventType..self.animIndex]:getHeight()/2)
         else
             love.graphics.setColor(1,1,1)
 
@@ -197,7 +215,7 @@ function NewWitnessEvent(queue)
                 end
             else  -- "CrossExamination"
                 for i=1, scene.penalties do
-                    love.graphics.draw(cornerSprite, (i-1)*12 +2,2)
+                    love.graphics.draw(cornerSprite, (i - 1) * 12 + 2, 2)
                 end
             end
         end
@@ -221,7 +239,7 @@ function NewPresentEvent(evidence)
                     return false
                 else
                     screens.courtRecords.displayed = false
-                    AddToStack(scene.stack, NewIssuePenaltyEvent(scene), lineParts)
+                    table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
                 end
             end
             self.wasPressingConfirm = pressingConfirm
@@ -234,7 +252,7 @@ function NewPresentEvent(evidence)
 
     self.draw = function(self, scene)
         for i=1, scene.penalties do
-            love.graphics.draw(Sprites["Penalty"], (i-1)*12 +2,2)
+            love.graphics.draw(Sprites["Penalty"], (i - 1) * 12 + 2, 2)
         end
     end
     return self
@@ -242,21 +260,56 @@ end
 
 function NewIssuePenaltyEvent(scene)
     local self = {}
+    self.timer = 0
+    self.animIndex = 1
+
+    --self.scriptLines = self.scripts[math.random(1, 4)]
+
+    --table.insert(scene.stack, 1, {lineParts = "null", event = NewPlayEvent(self.scriptLines)})
 
     scene.penalties = scene.penalties - 1;
-    if scene.penalties <= 0 then
-        scene.stack[2] = { lineParts = lineParts, event = NewFadeToBlackEvent() };
-        table.remove(scene.stack, 1)
-        scene.currentEventIndex = scene.currentEventIndex + 1
-        Episode:stop();
-        local episodePath = Episode.episodePath
-        Episode = NewEpisode(settings.game_over_path)
-        Episode.nextEpisode = NewEpisode(episodePath)
-        Episode:begin();
-    end
 
     self.update = function(self, scene, dt)
-        return true
+        self.timer = self.timer + dt
+
+        if self.timer > self.animIndex * 0.1 then
+            self.animIndex = self.animIndex + 1
+        end
+
+        if self.timer < 0.2 then
+            Sounds.DAMAGE2:play()
+        end
+
+        if self.animIndex > 3 then
+            if scene.penalties <= 0 then
+                table.insert(scene.stack, 2, {lineParts = "fadeToBlackEvent", event = NewFadeToBlackEvent()})
+                table.insert(scene.stack, 3, {lineParts = "gameOverEvent", event = NewGameOverEvent()})
+                table.remove(scene.stack, 1)
+                scene.currentEventIndex = scene.currentEventIndex + 1
+            end
+        end
+
+        return self.animIndex < 4
+    end
+
+    self.draw = function(self, scene)
+        if self.animIndex < 4 then
+            for i=1, scene.penalties do
+                love.graphics.draw(Sprites["Penalty"], (i - 1) * 12 + 2, 2)
+            end
+            love.graphics.draw(Sprites["Explosion"..self.animIndex], scene.penalties * 12 + 1, 1, 0, 0.2, 0.2)
+        end
+    end
+
+    return self
+end
+
+function NewPlayEvent(scriptLines)
+    local self = {}
+
+    self.update = function(self, scene, dt)
+
+        return false
     end
 
     return self
