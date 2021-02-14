@@ -42,6 +42,82 @@ HIDE_TEXT
 //////////////////
 // START SCRIPT //
 //////////////////
+FADE_TO_BLACK
+FADE_IN 1 COURT_WITNESS
+JUMPCUT COURT_WITNESS
+
+//INSERT WITNESS TESTIMONY ANIMATION HERE
+PLAY_MUSIC CROSSEXAMMODERATO
+
+WITNESS_EVENT WitnessTestimony Ross "-- Witness' Account --"
+    "I was animating by myself over in my room at the office."
+    "But then... I saw someone taking the dinos!!"
+    "It was Jory! He was on the 10 Minute Power Hour set taking the dinos!"
+    "Now that I know they were stolen, that means the culprit must be Jory!"
+
+FADE_TO_BLACK
+
+FADE_IN 1 COURT_JUDGE
+
+PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
+POSE "Judge Brent" Thinking
+SPEAK_FROM COURT_JUDGE
+    "Hm..."
+
+POSE "Judge Brent" Normal
+SPEAK_FROM COURT_JUDGE
+    "A remarkably solid testimony here. Great witness, Mr. Boy."
+
+SPEAK_FROM COURT_PROSECUTION
+    "Of course, Your Honor. You can only expect the BEST from me."
+
+POSE Arin DeskSlam
+SPEAK_FROM COURT_DEFENSE
+    "Dude, that testimony was incredible! Stupendous! AMAZING!"
+
+POSE Dan Fist
+SPEAK_FROM COURT_ASSISTANT
+    "Alright, already! You can stop jerking him off now, I get it."
+
+SPEAK_QUIET Arin
+    "There's absolutely no way we can get Jory off now."
+
+POSE Dan SideNormal
+SPEAK Dan
+    "Phrasing, Arin."
+SPEAK Dan
+    "But we have to try don't we? I mean, no matter how bulletproof that testimony may seem, we have to take the shot, right?"
+
+SPEAK Arin
+    "You're right, Dan. But what the heck should I do next?"
+
+SPEAK Dan
+    "I don't know, dude. Just look for things in his testimony that don't add up."
+SPEAK Dan
+    "He totally has to have messed up in there somewhere!"
+SPEAK Dan
+    "I'm sure if we keep %1asking questions%0, we'll get some information out of him."
+
+JUMPCUT COURT_DEFENSE
+SFX deskslam
+ANIMATION Arin DeskSlam
+POSE Arin DeskSlam
+SPEAK Arin
+    "Alright, let's do it then."
+
+SPEAK_FROM COURT_JUDGE
+    "Is the defense ready for the CROSS-EXAMINATION?"
+
+POSE Arin Normal
+SPEAK_FROM COURT_DEFENSE
+    "Yes, Your Honor."
+
+SPEAK_FROM COURT_JUDGE
+    "Good. Then you may begin."
+
+///////////////////////
+// Cross Examination //
+///////////////////////
 
 DEFINE CrossExamFail
     JUMPCUT BLACK_SCREEN
@@ -171,13 +247,15 @@ DEFINE PressA3
     SPEAK_FROM COURT_ASSISTANT
         "Way to go, Big Cat! Let's see how this changes things."
 
-    POSE Ross Normal
-    FADE_IN 1 COURT_WITNESS
-    PLAY_MUSIC CROSSEXAMMODERATO
+STOP_MUSIC
+FADE_TO_BLACK
+//FADEMUSIC OUT
+POSE Ross Normal
+FADE_IN 1 COURT_WITNESS
+PLAY_MUSIC CROSSEXAMMODERATO
+
 
 END_DEFINE
-
-
 
 DEFINE PressA4
     SHOUT Arin HoldIt
@@ -206,6 +284,9 @@ DEFINE PressA4
     JUMPCUT COURT_WITNESS
 END_DEFINE
 
+STOP_MUSIC
+FADE_TO_BLACK
+//fademusic out
 POSE Ross Normal
 FADE_IN 1 COURT_WITNESS
 PLAY_MUSIC CROSSEXAMMODERATO

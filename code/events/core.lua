@@ -1003,6 +1003,25 @@ function NewWaitEvent(seconds)
     return self
 end
 
+function NewAdvanceEvent(seconds)
+    local self = {}
+    self.timer = 0
+    self.seconds = tonumber(seconds)
+
+    self.update = function(self, scene, dt)
+        self.timer = self.timer + dt
+
+        if self.timer >= self.seconds then
+            love.event.push("keypressed", "escape")
+            return false
+        else
+            return true
+        end
+    end
+
+    return self
+end
+
 function NewClearLocationEvent(location)
     local self = {}
     self.location = location
@@ -1010,6 +1029,22 @@ function NewClearLocationEvent(location)
     self.update = function(self, scene, dt)
         scene.characterLocations[self.location] = nil
 
+        return false
+    end
+
+    return self
+end
+
+function NewGameOverEvent()
+    local self = {}
+
+    self.update = function(self, scene, dt)
+        Episode:stop();
+        local episodePath = Episode.episodePath
+        Episode = NewEpisode(settings.game_over_path)
+        Episode.nextEpisode = NewEpisode(episodePath)
+        Episode:begin();
+        
         return false
     end
 
