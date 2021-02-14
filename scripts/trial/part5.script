@@ -423,7 +423,7 @@ SPEAK_FROM COURT_ASSISTANT
 SPEAK Arin
     "I'm not sure, but there's something fishy about this whole thing, and I'm gonna change his tun-a!"
 
-POSE Dan SideLean //mayasprite
+POSE Dan SideNormalTurned
 SPEAK Dan
     "Glad you're bringing your A-game, Arin."
 
@@ -664,7 +664,8 @@ POSE Arin DeskSlam
 SPEAK Arin
     "I don't know. If only there was some way to prove he's lying."
 
-JUMPCUT COURT_ASSISTANT //MAYASPRITE
+JUMPCUT COURT_ASSISTANT
+POSE Dan SideNormalTurned
 SPEAK Dan
     "If there is, it has to have something to do with that backpack."
 
@@ -770,7 +771,7 @@ DEFINE Choice2
         "Fuck, man I dunno! Fucking fuck! I don't know!!! Shit!"
 
     JUMPCUT COURT_ASSISTANT
-    POSE Dan Angry //MAYASPRITE
+    POSE Dan SideNormalTurned
     SPEAK Dan
         "Damn, dude, no need to freak out! Let's just see if we can look at the backpack."
 
@@ -823,7 +824,7 @@ SPEAK "Judge Brent"
     "Very well. Let's not delay any further, open 'er up!"
 
 SHOW Jory'sBackpack R
-//ADD BLIP
+SFX shoomp
 STOP_MUSIC
 
 SFX potatoes2
@@ -928,7 +929,7 @@ THINK Arin
     "(That's a good question. Why DOES he seem to have infinite potatoes all inside one backpack?)"
 
 JUMPCUT COURT_ASSISTANT
-POSE Dan Normal //MAYASPRITE
+POSE Dan Normal SideNormalTurned
 SPEAK Dan
     "I think he just really likes potatoes, dude."
 
@@ -1056,7 +1057,7 @@ SPEAK_FROM COURT_JUDGE
 
 WAIT 1
 
-//SHOUT Dan Objection
+SHOUT Dan Objection
 
 SFX shock2
 JUMPCUT COURT_PROSECUTION

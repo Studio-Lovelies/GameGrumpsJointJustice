@@ -76,7 +76,7 @@ SPEAK Dan
 SPEAK Arin
     "What are you talking about, Dan?"
 
-POSE Dan SideNormal //mayasprite
+POSE Dan SideNormal 
 SPEAK Dan
     "Roll with me, Arin, I got this one."
 
@@ -111,7 +111,7 @@ POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
     "If it's not jizz, then what is it? And what does that have to do with this case?"
 
-POSE Dan SideLean //mayasprite
+POSE Dan SideLean 
 SPEAK_FROM COURT_ASSISTANT
     "I think I know what it is, and if I can have those dinosaurs..."
 
@@ -273,25 +273,6 @@ SPEAK Arin
 
 
 PRESENT Jory'sBackpack
-
-//Incorrect Evidence
-//SPEAK_FROM COURT_JUDGE
-//BRENT [confused]
-//I don't understand what you're trying to prove with this evidence.
-
-//SPEAK_FROM [DEFENSE]
-//DANNY [annoyed]
-//Arin...
-//ARIN [flustered]
-//Heh, well, haha... whoops?
-
-//SPEAK_FROM COURT_JUDGE
-//BRENT [shaking head]
-//BRENT [serious]
-//Mr. Hanson, Mr. Avidan, I'm afraid that's a penalty.
-//I'll let you try again, though, because I'm that cool.
-
-//Correct Evidence (backpack)
 
 
 SHOUT Arin takethat
