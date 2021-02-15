@@ -538,7 +538,9 @@ function NewPlaySoundEvent(sound)
     self.sound = sound:upper()
 
     self.update = function(self, scene, dt)
-        Sounds[self.sound]:play()
+        if Sounds[self.sound] ~= nil then
+            Sounds[self.sound]:play()
+        end
 
         return false
     end

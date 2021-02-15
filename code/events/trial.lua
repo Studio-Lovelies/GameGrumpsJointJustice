@@ -1,3 +1,8 @@
+math.randomseed(os.time())
+math.random()
+math.random()
+math.random()
+
 function NewShoutEvent(who, what)
     local self = {}
     self.timer = 0
@@ -260,16 +265,100 @@ end
 
 function NewIssuePenaltyEvent(scene)
     local self = {}
-    self.timer = 0
-    self.animIndex = 1
+    scene.drawPenalties = true
 
-    --self.scriptLines = self.scripts[math.random(1, 4)]
+    self.scripts = {
+        {
+            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Thinking"}, {"SPEAK", "Judge Brent", "..."}, {"SPEAK", "Judge Brent", "You can't be serious with this, right?"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Uhhhh..."}, {"POSE", "Arin", "Embarassed"}, {"SPEAK", "Arin", "Maybe?"}, {"JUMPCUT", "COURT_JUDGE"}, {"SPEAK", "Judge Brent", "..."}, {"POSE", "Judge Brent", "Warning"}, {"SPEAK", "Judge Brent", "You need to take this more seriously Arin. Hopefully this Penalty will help you focus."}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Y-yes, Your Honor. My bad."}, {"JUMPCUT", "COURT_WITNESS"}
+        },
+        {
+            {"JUMPCUT", "COURT_ASSISTANT"}, {"POSE", "Dan", "Angry"}, {"SPEAK", "Dan", "Arin."}, {"SPEAK", "Arin", "What? It's the right answer, right?"}, {"POSE", "Dan", "Sad"}, {"SPEAK", "Dan", "..."}, {"POSE", "Dan", "SideAngryTurned"}, {"SPEAK", "Dan", "No arin, we're getting a penalty for that one."}, {"SPEAK", "Arin", "Wait, really?"}, {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Warning"}, {"SPEAK", "Judge Brent", "Yes!"}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"SFX", "damage1"}, {"SET_SYNC", "TRUE"}, {"ANIMATION", "Arin", "Shock"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "OOF."}, {"THINK", "Arin", "(I need to be more thoughtful and pay more attention I guess.)"}, {"JUMPCUT", "COURT_WITNESS"}
+        },
+        {
+            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Surprised"}, {"SPEAK", "Judge Brent", "WHAM BAM BAZAAAM, THAT'S THE WRONG ANSWER MA'AM!"}, {"GAVEL"}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_ASSISTANT"}, {"POSE", "Dan", "SideNormalTurned"}, {"SPEAK", "Dan", "... I think you should try a different answer Arin."}, {"SPEAK", "Arin", "Gee ya THINK SO, DAN?"}, {"POSE", "Dan", "SideNormal"}, {"SPEAK", "Dan", "Yes. Yes I do Arin. I do."}, {"SPEAK", "Arin", "..."}, {"SPEAK", "Arin", "Yeah I guess so..."}, {"JUMPCUT", "COURT_WITNESS"}
+        },
+        {
+            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Normal"}, {"SPEAK", "Judge Brent", "I don't see how this could be the right answer..."}, {"SPEAK", "Judge Brent", "But I'm in a good mood, so I think I won't penalize you this time."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Embarassed"}, {"SPEAK", "Arin", "Dang, thanks Brent. This is a lot harder than it looks!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Confident"}, {"SPEAK", "Tutorial Boy", "Yes, accept his freebie. It won't help you in the long run, Mr. $qVideo game BABY!$q"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "DeskSlam"}, {"SFX", "damage1"}, {"SCREEN_SHAKE"}, {"SPEAK", "Arin", "You shut your goddamn pie hole-"}, {"SFX", "obectionclean"}, {"POSE", "Arin", "CloseUp"}, {"SPEAK", "Arin", "-you FUCKING CLOD!!!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Sweaty"}, {"SPEAK", "Tutorial Boy", "..."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "..."}, {"POSE", "Arin", "Embarassed"}, {"INTERRUPTED_SPEAK", "Arin", "Er... What I meant to say was--"}, {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Warning"}, {"SCREEN_SHAKE"}, {"SFX", "stab2"}, {"SPEAK", "Judge Brent", "Changed my mind. Penalty given."}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Aw man..."}, {"JUMPCUT", "COURT_WITNESS"}
+        }
+    }
 
-    --table.insert(scene.stack, 1, {lineParts = "null", event = NewPlayEvent(self.scriptLines)})
+    self.scriptLines = self.scripts[math.random(1, #self.scripts)]
 
-    scene.penalties = scene.penalties - 1;
+    for i,v in pairs(self.scriptLines) do
+        if v[1] == "SPEAK" then
+            table.insert(scene.stack, i, {lineParts = v, event = NewSpeakEvent(v[2], v[3], "literal")})
+        end
+        if v[1] == "INTERRUPTED_SPEAK" then
+            table.insert(scene.stack, i, {lineParts = v, event = NewInterruptedSpeakEvent(v[2], v[3], "literal")})
+        end
+        if v[1] == "THINK" then
+            table.insert(scene.stack, i, {lineParts = v, event = NewThinkEvent(v[2], v[3], "literal")})
+        end
+        if v[1] == "POSE" then
+            table.insert(scene.stack, i, {lineParts = v, event = NewPoseEvent(v[2], v[3])})
+        end
+        if v[1] == "ANIMATION" then
+            if #v == 4 then
+                table.insert(scene.stack, i, {lineParts = v, event = NewAnimationEvent(v[2], v[3], v[4])})
+            else
+                table.insert(scene.stack, i, {lineParts = v, event = NewAnimationEvent(v[2], v[3])})
+            end
+        end
+        if v[1] == "JUMPCUT" then
+            table.insert(scene.stack, i, {lineParts = v, event = NewCutToEvent(v[2])})
+        end
+        if v[1] == "SCREEN_SHAKE" then
+            table.insert(scene.stack, i, {lineParts = v, event = NewScreenShakeEvent()})
+        end
+        if v[1] == "GAVEL" then
+            table.insert(scene.stack, i, {lineParts = v, event = NewCutToEvent("BLACK_SCREEN")})
+            table.insert(scene.stack, i+1, {lineParts = v, event = NewGavelEvent()})
+        end
+        if v[1] == "SFX" then
+            table.insert(scene.stack, i, {lineParts = v, event = NewPlaySoundEvent(v[2])})
+        end
+        if v[1] == "SET_SYNC" then
+            table.insert(scene.stack, i, {lineParts = v, event = NewSetSyncEvent(v[2])})
+        end
+
+        if v[1] == "ISSUE_PENALTY" then
+            table.insert(scene.stack, i, {lineParts = v, event = NewStartPenaltyAnimationEvent(scene, self)})
+        end
+    end
 
     self.update = function(self, scene, dt)
+        if scene.penalties <= 0 then
+            table.insert(scene.stack, 2, {lineParts = "fadeToBlackEvent", event = NewFadeToBlackEvent()})
+            table.insert(scene.stack, 3, {lineParts = "gameOverEvent", event = NewGameOverEvent()})
+            table.remove(scene.stack, 1)
+            scene.currentEventIndex = scene.currentEventIndex + 1
+        end
+        
+        return false
+    end
+
+    self.draw = function(self, scene)
+        for i=1, scene.penalties do
+            love.graphics.draw(Sprites["Penalty"], (i - 1) * 12 + 2, 2)
+        end
+    end
+
+    return self
+end
+
+function NewStartPenaltyAnimationEvent(scene, event)
+    local self = {}
+    self.timer = 0
+    self.animIndex = 1
+    self.removedPenalty = false
+
+    self.update = function(self, scene, dt)
+
+        if not self.removedPenalty then
+            self.removedPenalty = true
+            scene.penalties = scene.penalties - 1
+        end
+            
         self.timer = self.timer + dt
 
         if self.timer > self.animIndex * 0.1 then
@@ -280,36 +369,16 @@ function NewIssuePenaltyEvent(scene)
             Sounds.DAMAGE2:play()
         end
 
-        if self.animIndex > 3 then
-            if scene.penalties <= 0 then
-                table.insert(scene.stack, 2, {lineParts = "fadeToBlackEvent", event = NewFadeToBlackEvent()})
-                table.insert(scene.stack, 3, {lineParts = "gameOverEvent", event = NewGameOverEvent()})
-                table.remove(scene.stack, 1)
-                scene.currentEventIndex = scene.currentEventIndex + 1
-            end
-        end
-
         return self.animIndex < 4
     end
 
     self.draw = function(self, scene)
+        for i=1, scene.penalties do
+            love.graphics.draw(Sprites["Penalty"], (i - 1) * 12 + 2, 2)
+        end
         if self.animIndex < 4 then
-            for i=1, scene.penalties do
-                love.graphics.draw(Sprites["Penalty"], (i - 1) * 12 + 2, 2)
-            end
             love.graphics.draw(Sprites["Explosion"..self.animIndex], scene.penalties * 12 + 1, 1, 0, 0.2, 0.2)
         end
-    end
-
-    return self
-end
-
-function NewPlayEvent(scriptLines)
-    local self = {}
-
-    self.update = function(self, scene, dt)
-
-        return false
     end
 
     return self

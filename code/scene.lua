@@ -14,6 +14,7 @@ function NewScene(scriptPath)
     self.backgroundCloseUpX = {0, -320, -640, -960, -1280, -1600, -1920, -2240}
     self.backgroundCloseUpIndex = 1
     self.skipIncrement = false
+    self.drawPenalties = false
 
     self.index = 1
     self.canAdvance = false
@@ -450,6 +451,13 @@ function NewScene(scriptPath)
                     if i == #lineTable then
                     end
                 end
+            end
+        end
+
+        if self.drawPenalties then
+            love.graphics.setColor(1,1,1)
+            for i=1, self.penalties do
+                love.graphics.draw(Sprites["Penalty"], (i - 1) * 12 + 2, 2)
             end
         end
 
