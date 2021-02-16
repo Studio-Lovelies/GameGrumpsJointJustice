@@ -76,6 +76,12 @@ function NewWitnessEvent(queue)
     end
 
     self.update = function(self, scene, dt)
+        if self.animIndex < 20 then
+            for i,v in pairs(Music) do
+                v:stop()
+            end
+        end
+        
         self.timer = self.timer + dt
         self.timer2 = self.timer2 + dt
         scene.textHidden = true
@@ -192,6 +198,7 @@ function NewWitnessEvent(queue)
             if self.animIndex < 20 then
                 self.animIndex = self.animIndex + 1
             else
+                Music[scene.music]:play()
                 scene.textHidden = false
             end
         end
@@ -630,7 +637,7 @@ function NewVerdictEvent(verdict)
     self.update = function(self, scene, dt)
         scene.textHidden = true
         scene.canShowCourtRecord = false
-        
+
         self.timer = self.timer + dt
 
         if self.verdict == "NotGuilty" then
