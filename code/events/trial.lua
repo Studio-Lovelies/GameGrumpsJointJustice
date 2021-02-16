@@ -619,6 +619,57 @@ function NewStopBigImageEvent()
     return self
 end
 
+function NewVerdictEvent(verdict)
+    local self = {}
+    self.verdict = verdict
+    self.verdictAnimFrames = nil
+    self.timer = 0
+    self.animIndex = 1
+    self.animTime = 2.2
+
+    self.update = function(self, scene, dt)
+        scene.textHidden = true
+        scene.canShowCourtRecord = false
+        
+        self.timer = self.timer + dt
+
+        if self.verdict == "NotGuilty" then
+            self.verdictAnimFrames = 22
+            if self.timer > self.animIndex * 0.05 then
+                if self.animIndex ~= self.verdictAnimFrames then
+                    self.animIndex = self.animIndex + 1
+                end
+            end
+            if self.animIndex == 10 or self.animIndex == 21 then
+                for i,v in pairs(Sounds) do
+                    v:stop()
+                end
+                Sounds["DRAMAPOUND"]:play()
+            end
+        elseif self.verdict == "Guilty" then
+            if self.timer > self.animIndex * 0.05 then
+                if self.animIndex ~= self.verdictAnimFrames then
+                    self.animIndex = self.animIndex + 1
+                end
+                if self.animIndex == 123 or self.animIndex == 456 then
+                    for i,v in pairs(Sounds) do
+                        v:stop()
+                    end
+                    Sounds["DRAMAPOUND"]:play()
+                end
+            end
+        end
+
+        return self.timer < self.animTime
+    end
+
+    self.draw = function(self, scene)
+        love.graphics.draw(Sprites[self.verdict..self.animIndex], GraphicsWidth/2 - 125, 0)
+    end
+
+    return self
+end
+
 function tablelength(T)
     local count = 0
     for _ in pairs(T) do count = count + 1 end

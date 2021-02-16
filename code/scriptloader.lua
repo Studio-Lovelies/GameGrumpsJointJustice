@@ -280,6 +280,11 @@ function LoadScript(scene, scriptPath)
                 if lineParts[1] == "SCREEN_SHAKE" then
                     AddToStack(stack, NewScreenShakeEvent(), lineParts)
                 end
+                if lineParts[1] == "VERDICT" then
+                    if lineParts[2] == "NotGuilty" or lineParts[2] == "Guilty" then
+                        AddToStack(stack, NewVerdictEvent(lineParts[2], lineParts))
+                    end
+                end
                 if lineParts[1] == "WITNESS_EVENT" then
                     witnessQueue = {lineParts[2], lineParts[3], lineParts[4]}
                 end

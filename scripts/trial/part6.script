@@ -625,7 +625,7 @@ POSE "Judge Brent" Warning
 SPEAK "Judge Brent"
 "Therefore, I find the defendant, Jory Griffis..."
 
-//NOT GUILTY
+VERDICT NOT_GUILTY
 
 SFX gallerycheer
 WIDESHOT
