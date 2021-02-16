@@ -523,7 +523,7 @@ function NewGavel3Event()
         scene.textHidden = true
         scene.canShowCourtRecord = false
 
-        if self.loopIndex <= 1.2 then
+        if self.loopIndex <= 1.45 then
 
             if self.timer > 0.19 then
                 self.index = 2
@@ -532,14 +532,16 @@ function NewGavel3Event()
             if self.timer > 0.24 then
                 self.index = 3
 
-                Sounds.GAVEL:play()
+                if self.loopIndex < 1 then
+                    Sounds.GAVEL:play()
+                end
             end
 
-            if self.timer > 0.29 then
+            if self.timer > 0.29 and self.loopIndex < 0.7 then
                 self.index = 2
             end
 
-            if self.timer > 0.34 then
+            if self.timer > 0.34 and self.loopIndex < 0.7 then
                 self.index = 1
 
                 self.timer = 0
@@ -558,7 +560,7 @@ function NewGavel3Event()
         love.graphics.setColor(1,1,1)
         local gavelAnimation = Sprites["GavelAnimation"]
         local spr = gavelAnimation[self.index]
-        if self.loopIndex <= 1.2 then
+        if self.loopIndex <= 1.5 then
             love.graphics.draw(spr, 0, 0, 0, GraphicsWidth/spr:getWidth(),GraphicsHeight/spr:getHeight())
         end
     end

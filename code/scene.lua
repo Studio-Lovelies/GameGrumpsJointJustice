@@ -19,9 +19,12 @@ function NewScene(scriptPath)
     self.index = 1
     self.canAdvance = false
 
+    self.credits = nil
+    self.creditLines = {}
     self.timerStarted = false
     self.konamiTimer = 2
     self.sequence = {}
+    self.konamiEntered = false
 
     self.penalties = 5
     self.textHidden = false
@@ -31,9 +34,6 @@ function NewScene(scriptPath)
     self.textBoxSprite = Sprites["TextBox"]
     self.textColor = {1,1,1}
     self.textCentered = false
-
-    self.credits = nil
-    self.creditLines = {}
 
     self.charAnimIndex = 1
 
@@ -103,9 +103,30 @@ function NewScene(scriptPath)
             self.index = 1
         end
 
+        if not self.konamiEntered then
+            if self.credits ~= nil and self.creditLines ~= {} then
+                function love.keypressed(key)
+                    startKonamiTimer(self)
+                    table.insert(self.sequence, key)
+                    if checkKonami(self.sequence) then
+                        self.konamiEntered = true
+                        for i,v in pairs(Music) do
+                            if i == "WHATISLOVE8BIT" then
+                                v:setVolume(MasterVolume/100)
+                                v:play()
+                            else
+                                v:stop()
+                            end
+                        end
+                        return false
+                    end
+                end
+            end
+        end
+
         if self.timerStarted then
             self.konamiTimer = self.konamiTimer - dt*2
-            if self.konamitTimer <= 0 then
+            if self.konamiTimer <= 0 then
                 self.konamiTimer = 2
             end
         end
@@ -168,16 +189,6 @@ function NewScene(scriptPath)
             love.graphics.draw(background[2], x, y)
         end
     end
-
-    --[[function love.keypressed(key)
-        if self.credits ~= nil then
-            startKonamiTimer(self)
-            table.insert(self.sequence, key)
-            if checkKonami(self.sequence) then
-                print("YES KONAMI")
-            end
-        end
-    end]]
 
     self.draw = function(self, dt)
         love.graphics.setColor(1, 1, 1)

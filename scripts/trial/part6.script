@@ -38,6 +38,8 @@ EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
 COURT_RECORD_ADD EVIDENCE LivestreamRecording
+EVIDENCE_INITIALIZE Switch "Switch" "The replacement switch used during the livestream. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
+COURT_RECORD_ADD EVIDENCE Switch
 EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. Seems unusually full of...something." evidence/Jory'sBackpack.png
 COURT_RECORD_ADD EVIDENCE Jory'sBackpack
 EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." sprites/StolenDinos.png
@@ -84,7 +86,7 @@ SPEAK Dan
 SPEAK Arin
     "What are you talking about, Dan?"
 
-POSE Dan SideNormal 
+POSE Dan SideNormalTurned
 SPEAK Dan
     "Roll with me, Arin, I got this one."
 
@@ -139,14 +141,14 @@ SFX deskslam
 ANIMATION Arin DeskSlam
 POSE Arin Point
 SPEAK Arin
-    "Your Honor! I request that Dan..."
+    "Your Honor! I request for Dan..."
 
 //////////////
 //CHOICE////
 //////////
 DEFINE Taste
     SPEAK Arin
-        "That Dan be allowed to taste those dinosaurs..."
+        "be allowed to taste those dinosaurs..."
     POSE Arin Confident
     SPEAK Arin
         "...so we can find out what's really covering them!"
@@ -172,7 +174,7 @@ END_DEFINE
 
 DEFINE Smell
     SPEAK Arin
-        "That Dan be allowed to smell those stain-covered dinosaurs..."
+        "be allowed to smell those stain-covered dinosaurs..."
     POSE Arin Confident
     SPEAK Arin
         "...so we can find out what's really covering them!"
@@ -207,7 +209,7 @@ END_DEFINE
 
 DEFINE Rub
   SPEAK Arin
-     "That Dan be allowed to rub the dinos all over his beautiful nude body!"
+     "be allowed to rub the dinos all over his beautiful nude body!"
 
   POSE "Judge Brent" Angry
   SPEAK_FROM COURT_JUDGE
@@ -224,9 +226,6 @@ DEFINE Rub
   POSE Arin Point
   SPEAK Arin
     "What I mean to say is, Your Honor..."
-
-END_DEFINE
-
 END_DEFINE
 
 CHOICE
@@ -633,7 +632,7 @@ POSE "Judge Brent" Warning
 SPEAK "Judge Brent"
 "Therefore, I find the defendant, Jory Griffis..."
 
-VERDICT NOT_GUILTY
+VERDICT NotGuilty
 
 SFX gallerycheer
 WIDESHOT
