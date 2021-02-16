@@ -13,7 +13,9 @@ function NewShoutEvent(who, what)
 
     self.update = function(self, scene, dt)
         scene.textHidden = true
-        scene.characters[self.who].sounds[self.what]:play()
+        if scene.characters[self.who].sounds[self.what] ~= nil then
+            scene.characters[self.who].sounds[self.what]:play()
+        end
         self.timer = self.timer + dt
         self.x = self.x + love.math.random()*choose{1,-1}*2
         self.y = self.y + love.math.random()*choose{1,-1}*2
@@ -177,7 +179,9 @@ function NewWitnessEvent(queue)
 
                 if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex + 2] then
                     table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
-                else return false
+                else
+                    scene.drawPenalties = false
+                    return false
                 end
             end
         end
@@ -241,6 +245,7 @@ function NewPresentEvent(evidence)
             if not self.wasPressingConfirm and pressingConfirm then
                 if Episode.courtRecords.evidence[CourtRecordIndex].externalName:gsub("%s+", ""):lower() == self.evidence:lower() then
                     screens.courtRecords.displayed = false
+                    scene.drawPenalties = false
                     return false
                 else
                     screens.courtRecords.displayed = false
@@ -275,10 +280,10 @@ function NewIssuePenaltyEvent(scene)
             {"JUMPCUT", "COURT_ASSISTANT"}, {"POSE", "Dan", "Angry"}, {"SPEAK", "Dan", "Arin."}, {"SPEAK", "Arin", "What? It's the right answer, right?"}, {"POSE", "Dan", "Sad"}, {"SPEAK", "Dan", "..."}, {"POSE", "Dan", "SideAngryTurned"}, {"SPEAK", "Dan", "No arin, we're getting a penalty for that one."}, {"SPEAK", "Arin", "Wait, really?"}, {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Warning"}, {"SPEAK", "Judge Brent", "Yes!"}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"SFX", "damage1"}, {"SET_SYNC", "TRUE"}, {"ANIMATION", "Arin", "Shock"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "OOF."}, {"THINK", "Arin", "(I need to be more thoughtful and pay more attention I guess.)"}, {"JUMPCUT", "COURT_WITNESS"}
         },
         {
-            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Surprised"}, {"SPEAK", "Judge Brent", "WHAM BAM BAZAAAM, THAT'S THE WRONG ANSWER MA'AM!"}, {"GAVEL"}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_ASSISTANT"}, {"POSE", "Dan", "SideNormalTurned"}, {"SPEAK", "Dan", "... I think you should try a different answer Arin."}, {"SPEAK", "Arin", "Gee ya THINK SO, DAN?"}, {"POSE", "Dan", "SideNormal"}, {"SPEAK", "Dan", "Yes. Yes I do Arin. I do."}, {"SPEAK", "Arin", "..."}, {"SPEAK", "Arin", "Yeah I guess so..."}, {"JUMPCUT", "COURT_WITNESS"}
+            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Surprised"}, {"SPEAK", "Judge Brent", "WHAM BAM BAZAAAM, THAT'S THE WRONG ANSWER MA'AM!"}, {"SET_SYNC", "TRUE"}, {"ISSUE_PENALTY"}, {"GAVEL"}, {"JUMPCUT", "COURT_ASSISTANT"}, {"POSE", "Dan", "SideNormalTurned"}, {"SPEAK", "Dan", "... I think you should try a different answer Arin."}, {"SPEAK", "Arin", "Gee ya THINK SO, DAN?"}, {"POSE", "Dan", "SideNormal"}, {"SPEAK", "Dan", "Yes. Yes I do Arin. I do."}, {"SPEAK", "Arin", "..."}, {"SPEAK", "Arin", "Yeah I guess so..."}, {"JUMPCUT", "COURT_WITNESS"}
         },
         {
-            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Normal"}, {"SPEAK", "Judge Brent", "I don't see how this could be the right answer..."}, {"SPEAK", "Judge Brent", "But I'm in a good mood, so I think I won't penalize you this time."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Embarassed"}, {"SPEAK", "Arin", "Dang, thanks Brent. This is a lot harder than it looks!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Confident"}, {"SPEAK", "Tutorial Boy", "Yes, accept his freebie. It won't help you in the long run, Mr. $qVideo game BABY!$q"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "DeskSlam"}, {"SFX", "damage1"}, {"SCREEN_SHAKE"}, {"SPEAK", "Arin", "You shut your goddamn pie hole-"}, {"SFX", "obectionclean"}, {"POSE", "Arin", "CloseUp"}, {"SPEAK", "Arin", "-you FUCKING CLOD!!!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Sweaty"}, {"SPEAK", "Tutorial Boy", "..."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "..."}, {"POSE", "Arin", "Embarassed"}, {"INTERRUPTED_SPEAK", "Arin", "Er... What I meant to say was--"}, {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Warning"}, {"SCREEN_SHAKE"}, {"SFX", "stab2"}, {"SPEAK", "Judge Brent", "Changed my mind. Penalty given."}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Aw man..."}, {"JUMPCUT", "COURT_WITNESS"}
+            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Normal"}, {"SPEAK", "Judge Brent", "I don't see how this could be the right answer..."}, {"SPEAK", "Judge Brent", "But I'm in a good mood, so I think I won't penalize you this time."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Embarassed"}, {"SPEAK", "Arin", "Dang, thanks Brent. This is a lot harder than it looks!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Confident"}, {"SPEAK", "Tutorial Boy", "Yes, accept his freebie. It won't help you in the long run, Mr. 'Video game BABY!'"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "DeskSlam"}, {"SFX", "damage1"}, {"SCREEN_SHAKE"}, {"SPEAK", "Arin", "You shut your goddamn pie hole-"}, {"SFX", "objectionclean"}, {"POSE", "Arin", "CloseUp"}, {"SPEAK", "Arin", "-you FUCKING CLOD!!!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Sweaty"}, {"SPEAK", "Tutorial Boy", "..."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "..."}, {"POSE", "Arin", "Embarassed"}, {"INTERRUPTED_SPEAK", "Arin", "Er... What I meant to say was--"}, {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Warning"}, {"SCREEN_SHAKE"}, {"SFX", "stab2"}, {"SPEAK", "Judge Brent", "Changed my mind. Penalty given."}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Aw man..."}, {"JUMPCUT", "COURT_WITNESS"}
         }
     }
 
@@ -311,8 +316,7 @@ function NewIssuePenaltyEvent(scene)
             table.insert(scene.stack, i, {lineParts = v, event = NewScreenShakeEvent()})
         end
         if v[1] == "GAVEL" then
-            table.insert(scene.stack, i, {lineParts = v, event = NewCutToEvent("BLACK_SCREEN")})
-            table.insert(scene.stack, i+1, {lineParts = v, event = NewGavelEvent()})
+            table.insert(scene.stack, i, {lineParts = v, event = NewGavelEvent()})
         end
         if v[1] == "SFX" then
             table.insert(scene.stack, i, {lineParts = v, event = NewPlaySoundEvent(v[2])})
@@ -478,6 +482,9 @@ function NewGavelEvent()
     end
 
     self.draw = function(self, scene)
+        love.graphics.setColor(0,0,0)
+        love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
+        love.graphics.setColor(1,1,1)
         local gavelAnimation = Sprites["GavelAnimation"]
         local spr = gavelAnimation[self.index]
         love.graphics.draw(spr, 0, 0, 0, GraphicsWidth/spr:getWidth(),GraphicsHeight/spr:getHeight())
@@ -527,6 +534,9 @@ function NewGavel3Event()
     end
 
     self.draw = function(self, scene)
+        love.graphics.setColor(0,0,0)
+        love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
+        love.graphics.setColor(1,1,1)
         local gavelAnimation = Sprites["GavelAnimation"]
         local spr = gavelAnimation[self.index]
         if self.loopIndex <= 1.2 then

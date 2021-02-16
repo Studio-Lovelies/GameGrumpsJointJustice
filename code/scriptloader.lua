@@ -244,11 +244,10 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewWideShotEvent(), lineParts)
                 end
                 if lineParts[1] == "GAVEL" then
-                    AddToStack(stack, NewCutToEvent("BLACK_SCREEN"), lineParts)
+                    --AddToStack(stack, NewCutToEvent("BLACK_SCREEN"), lineParts)
                     AddToStack(stack, NewGavelEvent(), lineParts)
                 end
                 if lineParts[1] == "GAVEL3" then
-                    AddToStack(stack, NewCutToEvent("BLACK_SCREEN"), lineParts)
                     AddToStack(stack, NewGavel3Event(), lineParts)
                 end
                 if lineParts[1] == "SHOW" then

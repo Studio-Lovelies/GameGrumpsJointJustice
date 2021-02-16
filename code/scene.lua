@@ -164,7 +164,7 @@ function NewScene(scriptPath)
             local background = Backgrounds["SPEEDLINE"]
         end
 
-        if background[2] ~= nil then
+        if background[2] ~= nil and not self.closeUp then
             love.graphics.draw(background[2], x, y)
         end
     end
