@@ -10,8 +10,9 @@ CHARACTER_INITIALIZE ??? jory MALE
 CHARACTER_INITIALIZE Jory jory MALE
 CHARACTER_INITIALIZE Ross ross MALE
 
-PROFILE_INITIALIZE arin Arin 34 "Arin Hanson I guess" profiles/Arin.png
-PROFILE_INITIALIZE dan Dan 41 "Oh and Dan too" profiles/Dan.png
+PROFILE_INITIALIZE arin Arin 34 "Half of the Game Grumps Duo. Definitely the same height as Dan." profiles/Arin.png
+PROFILE_INITIALIZE dan Dan 41 "The other half of Game Grumps. Known aliases: 'Danny Sexbang', 'Mr. Business.'" profiles/Dan.png
+PROFILE_INITIALIZE jory Jory "Maybe 30?" "Game Developer for Dream Daddy. Previous job: P.P.I.S.S machine." profiles/Jory.png
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
@@ -169,6 +170,8 @@ SPEAK ???
     "Actually, guys, we've got a problem..."
 SPEAK Arin
     "Huh?#Jory?"
+
+COURT_RECORD_ADD PROFILE jory
 
 PLAY_MUSIC PRELUDE
 CHARACTER_LOCATION Jory LOBBY

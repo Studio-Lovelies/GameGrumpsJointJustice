@@ -12,15 +12,23 @@ CHARACTER_INITIALIZE Ross ross MALE
 
 
 CHARACTER_LOCATION Arin COURT_DEFENSE
-CHARACTER_LOCATION Arin GRASS_LEFT
 CHARACTER_LOCATION Dan COURT_ASSISTANT
-CHARACTER_LOCATION Dan GRASS_ASSISTANT
 CHARACTER_LOCATION "Judge Brent" COURT_JUDGE
-CHARACTER_LOCATION "Judge Brent" GRASS_JUDGE
 CHARACTER_LOCATION "Tutorial Boy" COURT_PROSECUTION
-CHARACTER_LOCATION "Tutorial Boy" GRASS_RIGHT
 CHARACTER_LOCATION Ross COURT_WITNESS
-CHARACTER_LOCATION Ross GRASS_CENTER
+
+PROFILE_INITIALIZE arin Arin 34 "Half of the Game Grumps Duo. Definitely the same height as Dan." profiles/Arin.png
+COURT_RECORD_ADD PROFILE arin
+PROFILE_INITIALIZE dan Dan 41 "The other half of Game Grumps. Known aliases: 'Danny Sexbang', 'Mr. Business.'" profiles/Dan.png
+COURT_RECORD_ADD PROFILE dan
+PROFILE_INITIALIZE jory Jory "Maybe 30?" "Game Developer for Dream Daddy. Previous job: P.P.I.S.S machine." profiles/Jory.png
+COURT_RECORD_ADD PROFILE jory
+PROFILE_INITIALIZE judge "Judge Brent" "Maybe 30?" "Manages the Grumps business. Also a Judge in the totally real Attitude City." profiles/JudgeBrent.png
+COURT_RECORD_ADD PROFILE judge
+PROFILE_INITIALIZE tutorialboy "Tutorial Boy" 33 "The first prosecutor. Has an extremely predictable name." profiles/TutorialBoy.png
+COURT_RECORD_ADD PROFILE tutorialboy
+PROFILE_INITIALIZE ross Ross 33 "Animator and self-described sadist. Also really loves milk for some reason." profiles/Ross.png
+COURT_RECORD_ADD PROFILE ross
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
@@ -272,7 +280,7 @@ SPEAK Arin
     "Yeah, we can prove it. With..."
 
 
-PRESENT Jory'sBackpack
+PRESENT EVIDENCE Jory'sBackpack
 
 
 SHOUT Arin takethat
@@ -541,7 +549,7 @@ POSE Arin Confident
 SPEAK Arin
     "As if! I have proof of his condition RIGHT HERE!"
 
-PRESENT JorySr'sLetter
+PRESENT EVIDENCE JorySr'sLetter
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised

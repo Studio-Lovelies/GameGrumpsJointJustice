@@ -81,7 +81,7 @@ function NewWitnessEvent(queue)
                 v:stop()
             end
         end
-        
+
         self.timer = self.timer + dt
         self.timer2 = self.timer2 + dt
         scene.textHidden = true
@@ -240,9 +240,10 @@ function NewWitnessEvent(queue)
     return self
 end
 
-function NewPresentEvent(evidence)
+function NewPresentEvent(type, evidence)
     local self = {}
     self.evidence = evidence
+    self.type = type
     self.wasPressingConfirm = false
 
     self.update = function(self, scene, dt)
@@ -250,13 +251,24 @@ function NewPresentEvent(evidence)
         local pressingConfirm = love.keyboard.isDown(controls.press_confirm)
         if screens.courtRecords.displayed then
             if not self.wasPressingConfirm and pressingConfirm then
-                if Episode.courtRecords.evidence[CourtRecordIndex].externalName:gsub("%s+", ""):lower() == self.evidence:lower() then
-                    screens.courtRecords.displayed = false
-                    scene.drawPenalties = false
-                    return false
-                else
-                    screens.courtRecords.displayed = false
-                    table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
+                if self.type == "EVIDENCE" then
+                    if Episode.courtRecords.evidence[CourtRecordIndex].externalName:gsub("%s+", ""):lower() == self.evidence:lower() then
+                        screens.courtRecords.displayed = false
+                        scene.drawPenalties = false
+                        return false
+                    else
+                        screens.courtRecords.displayed = false
+                        table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
+                    end
+                elseif self.type == "PROFILE" then
+                    if Episode.courtRecords.profiles[CourtRecordIndex].characterName:gsub("%s+", ""):lower() == self.evidence:gsub("%s+", ""):lower() then
+                        screens.courtRecords.displayed = false
+                        scene.drawPenalties = false
+                        return false
+                    else
+                        screens.courtRecords.displayed = false
+                        table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
+                    end
                 end
             end
             self.wasPressingConfirm = pressingConfirm
