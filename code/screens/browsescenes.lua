@@ -34,7 +34,6 @@ function DrawBrowseScreen()
 
     if TitleSelection == "Jory's Trial" then
         love.graphics.setColor(0.44,0.56,0.89)
-        love.graphics.rectangle("fill", jorytrialX-dx, jorytrialY-dy, jorytrialW+2*dx, jorytrialH+2*dy)
         love.graphics.draw(
             jorytrialImage,
             dimensions.window_width/2 - (jorytrialImage:getWidth() * jorytrialImageScale)/2 + 20,
@@ -43,9 +42,9 @@ function DrawBrowseScreen()
             jorytrialImageScale,
             jorytrialImageScale
         )
+        love.graphics.rectangle("fill", jorytrialX-dx, jorytrialY-dy, jorytrialW+2*dx, jorytrialH+2*dy)
     elseif TitleSelection == "Post-Trial" then
         love.graphics.setColor(0.44,0.56,0.89)
-        love.graphics.rectangle("fill", posttrialX-dx, posttrialY-dy, posttrialW+2*dx, posttrialH+2*dy)
         love.graphics.draw(
             posttrialImage,
             dimensions.window_width/2 - (posttrialImage:getWidth() * posttrialImageScale)/2 + 20,
@@ -54,9 +53,9 @@ function DrawBrowseScreen()
             posttrialImageScale,
             posttrialImageScale
         )
+        love.graphics.rectangle("fill", posttrialX-dx, posttrialY-dy, posttrialW+2*dx, posttrialH+2*dy)
     else
         love.graphics.setColor(0.44,0.56,0.89)
-        love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
         love.graphics.draw(
             blackImage,
             dimensions.window_width/2 - (blackImage:getWidth() * blackImageScale)/2 + 20,
@@ -65,6 +64,7 @@ function DrawBrowseScreen()
             blackImageScale,
             blackImageScale
         )
+        love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
     end
 
     love.graphics.setColor(222, 0, 0)

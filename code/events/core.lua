@@ -153,8 +153,10 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
         and currentChar ~= "("
         and self.speaks then
             if scene.characters[scene.textTalker].gender == "MALE" then
+                Sounds.MALETALK:setVolume(TextVolume/100)
                 Sounds.MALETALK:play()
             else
+                Sounds.FEMALETALK:setVolume(TextVolume/100)
                 Sounds.FEMALETALK:play()
             end
         end
@@ -273,8 +275,10 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
         and currentChar ~= "#"
         and self.speaks then
             if scene.characters[scene.textTalker].gender == "MALE" then
+                Sounds.MALETALK:setVolume(TextVolume/100)
                 Sounds.MALETALK:play()
             else
+                Sounds.FEMALETALK:setVolume(TextVolume/100)
                 Sounds.FEMALETALK:play()
             end
         end

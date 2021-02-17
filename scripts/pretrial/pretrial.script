@@ -419,7 +419,7 @@ SPEAK Arin
 SPEAK Arin
     "Well that was oddly specific."
 SPEAK Arin GREEN
-    "P.P.P.S., don't tell Jory this, but I hope he can be on your show again soon!"
+    "$qP.P.P.S. don't tell Jory this, but I hope he can be on your show again soon!$q"
 SPEAK Dan
     "Huh..."
 POSE Dan Normal
