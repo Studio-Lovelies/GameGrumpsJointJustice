@@ -333,9 +333,9 @@ end
 function GetCenterOffset(elementWidth, isScaled)
     isScaled = isScaled == nil and true or isScaled
     if isScaled then
-        return ((dimensions.window_width / dimensions.graphics_scale) - elementWidth) / 2
+        return ((dimensions.window_width / dimensions.graphics_scale) - elementWidth/2)
     else
-        return (dimensions.window_width - elementWidth) / 2
+        return (dimensions.window_width - elementWidth/2)
     end
 end
 
