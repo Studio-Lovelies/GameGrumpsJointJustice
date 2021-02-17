@@ -1,12 +1,12 @@
 function DrawTitleScreen()
     local background = love.graphics.newImage(settings.power_hour_set_path)
-    local backgroundScale = dimensions.background_scale
+    local backgroundScale = 2*dimensions.window_width/1920
 
     love.graphics.clear(unpack(colors.black))
 
     love.graphics.draw(
         background,
-        20,
+        backgroundScale*9,
         0,
         0,
         backgroundScale,
@@ -14,30 +14,30 @@ function DrawTitleScreen()
     )
 
     local logoImage = love.graphics.newImage(settings.main_logo_path)
-    local logoScale = 1.25
+    local logoScale = backgroundScale * 0.75
 
     love.graphics.draw(
         logoImage,
-        350,
-        0,
+        dimensions.window_width/2 - logoImage:getWidth()/2,
+        -1 * logoScale * 5,
         0,
         logoScale,
         logoScale
     )
 
     -- get dimensions for New Game and Load Game buttons
-    local newW = (dimensions.window_width * 1/5)
-    local newX = (dimensions.window_width * 6.75/18)
+    local newW = (dimensions.window_width * 1/4)
+    local newX = (dimensions.window_width * 1/6 - newW/2)
     local newY = logoImage:getHeight()*logoScale + 15
     local newH = 60
 
-    local scenesW = (dimensions.window_width * 1/3.75)
-    local scenesX = (dimensions.window_width * 10.65/18)
+    local scenesW = (dimensions.window_width * 1/3.8)
+    local scenesX = (dimensions.window_width * 3/6 - scenesW/2)
     local scenesY = logoImage:getHeight()*logoScale + 15
     local scenesH = 60
 
     local loadW = (dimensions.window_width * 1/3.75)
-    local loadX = (dimensions.window_width * 15.75/18)
+    local loadX = (dimensions.window_width * 5/6 - loadW/2)
     local loadY = logoImage:getHeight()*logoScale + 15
     local loadH = 60
 
@@ -90,7 +90,7 @@ function DrawTitleScreen()
     local scenesText = love.graphics.newText(GameFont, "Case Select")--"Settings")
     love.graphics.draw(
         scenesText,
-        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2 - 25,
+        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2 - 10,
         scenesY + scenesH/2-(loadGameText:getHeight() * textScale)/2,
         0,
         textScale,

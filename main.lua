@@ -14,8 +14,10 @@ local logoTimer = 0
 
 function love.load(arg)
     InitGlobalConfigVariables()
-    love.window.setMode(dimensions.window_width, dimensions.window_height, {fullscreen = true, resizable = true})
     love.window.setFullscreen(true, "desktop")
+    dimensions.window_width = love.graphics.getWidth()
+    dimensions.window_height = love.graphics.getHeight()
+    love.window.setMode(dimensions.window_width, dimensions.window_height, {fullscreen = true, resizable = true})
     love.graphics.setDefaultFilter("nearest")
     love.graphics.setLineStyle("rough")
     Renderable = love.graphics.newCanvas(GraphicsWidth, GraphicsHeight)

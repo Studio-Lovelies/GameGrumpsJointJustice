@@ -3,43 +3,43 @@ function DrawJoryTrialScreen()
     love.graphics.clear(unpack(colors.black))
 
     local blackImage = love.graphics.newImage(settings.black_screen_path)
-    local blackImageScale = 3
+    local blackImageScale = 2*dimensions.window_width/1920 * 2
 
     love.graphics.setColor(0, 0, 0, 100)
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 
-    local backW = (dimensions.window_width * 1/1.5)
-    local backX = (dimensions.window_width * 1/8)
+    local backW = (dimensions.window_width * 1/2)
+    local backX = (dimensions.window_width/2 - backW/2)
     local backY = blackImage:getHeight()*blackImageScale + 10
     local backH = 60
 
     local part1W = (dimensions.window_width * 1/5)
-    local part1X = (dimensions.window_width * 3/12) - part1W
+    local part1X = (dimensions.window_width * 1/6 - part1W/2)
     local part1Y = blackImage:getHeight()*blackImageScale - 500
     local part1H = 60
 
     local part2W = (dimensions.window_width * 1/5)
-    local part2X = (dimensions.window_width * 6.5/12) - part2W
+    local part2X = (dimensions.window_width * 3/6 - part2W/2)
     local part2Y = blackImage:getHeight()*blackImageScale - 500
     local part2H = 60
 
     local part3W = (dimensions.window_width * 1/5)
-    local part3X = (dimensions.window_width * 10/12) - part3W
+    local part3X = (dimensions.window_width * 5/6 - part3W/2)
     local part3Y = blackImage:getHeight()*blackImageScale - 500
     local part3H = 60
 
     local part4W = (dimensions.window_width * 1/5)
-    local part4X = (dimensions.window_width * 3/12) - part4W
+    local part4X = (dimensions.window_width * 1/6 - part3W/2)
     local part4Y = blackImage:getHeight()*blackImageScale - 300
     local part4H = 60
 
     local part5W = (dimensions.window_width * 1/5)
-    local part5X = (dimensions.window_width * 6.5/12) - part5W
+    local part5X = (dimensions.window_width * 3/6 - part5W/2)
     local part5Y = blackImage:getHeight()*blackImageScale - 300
     local part5H = 60
 
     local part6W = (dimensions.window_width * 1/5)
-    local part6X = (dimensions.window_width * 10/12) - part6W
+    local part6X = (dimensions.window_width * 5/6 - part6W/2)
     local part6Y = blackImage:getHeight()*blackImageScale - 300
     local part6H = 60
 

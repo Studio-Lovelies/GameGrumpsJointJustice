@@ -6,58 +6,60 @@ function DrawBrowseScreen()
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 
     local blackImage = love.graphics.newImage(settings.black_screen_path)
-    local blackImageScale = 3
+    local blackImageScale = 2*dimensions.window_width/1920 * 2
 
     local jorytrialImage = love.graphics.newImage(settings.court_path)
-    local jorytrialImageScale = 6
+    local jorytrialImageScale = 2*dimensions.window_width/1920 * 2.5
 
     local posttrialImage = love.graphics.newImage(settings.lobby_path)
-    local posttrialImageScale = 6
+    local posttrialImageScale = 2*dimensions.window_width/1920 * 2.5
 
     local backW = (dimensions.window_width * 1/5)
-    local backX = (dimensions.window_width * 6.75/18)
+    local backX = (dimensions.window_width * 1/6 - backW/2)
     local backY = blackImage:getHeight()*blackImageScale + 150
     local backH = 60
 
     local jorytrialW = (dimensions.window_width * 1/3.75)
-    local jorytrialX = (dimensions.window_width * 10.65/18)
+    local jorytrialX = (dimensions.window_width * 3/6 - jorytrialW/2)
     local jorytrialY = blackImage:getHeight()*blackImageScale + 150
     local jorytrialH = 60
 
     local posttrialW = (dimensions.window_width * 1/3.75)
-    local posttrialX = (dimensions.window_width * 15.75/18)
+    local posttrialX = (dimensions.window_width * 5/6 - posttrialW/2)
     local posttrialY = blackImage:getHeight()*blackImageScale + 150
     local posttrialH = 60
 
     local dx = 8
     local dy = 8
 
-    love.graphics.setColor(0.44,0.56,0.89)
     if TitleSelection == "Jory's Trial" then
+        love.graphics.setColor(0.44,0.56,0.89)
         love.graphics.rectangle("fill", jorytrialX-dx, jorytrialY-dy, jorytrialW+2*dx, jorytrialH+2*dy)
         love.graphics.draw(
             jorytrialImage,
-            0,
+            WindowWidth/2 - jorytrialImage:getWidth() * jorytrialImageScale/2 + 20,
             0,
             0,
             jorytrialImageScale,
             jorytrialImageScale
         )
     elseif TitleSelection == "Post-Trial" then
+        love.graphics.setColor(0.44,0.56,0.89)
         love.graphics.rectangle("fill", posttrialX-dx, posttrialY-dy, posttrialW+2*dx, posttrialH+2*dy)
         love.graphics.draw(
             posttrialImage,
-            0,
+            WindowWidth/2 - posttrialImage:getWidth() * posttrialImageScale/2 + 20,
             0,
             0,
             posttrialImageScale,
             posttrialImageScale
         )
     else
+        love.graphics.setColor(0.44,0.56,0.89)
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
         love.graphics.draw(
             blackImage,
-            0,
+            WindowWidth/2 - blackImage:getWidth() * blackImageScale/2 + 20,
             0,
             0,
             blackImageScale,
