@@ -18,7 +18,7 @@ function DrawTitleScreen()
 
     love.graphics.draw(
         logoImage,
-        dimensions.window_width/2 - logoImage:getWidth()/2,
+        dimensions.window_width/2 - (logoImage:getWidth() * logoScale)/2,
         -1 * logoScale * 5,
         0,
         logoScale,
