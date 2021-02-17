@@ -475,6 +475,7 @@ STOP_MUSIC
 JUMPCUT COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
+POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
     "I think it's time to reveal the truth, Ross."
 

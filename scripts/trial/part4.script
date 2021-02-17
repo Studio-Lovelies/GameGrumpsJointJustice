@@ -52,7 +52,7 @@ WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "I guess you got me. I did lie about what I was doing."
     "I was actually making a special Mario Maker level for you guys."
     "You've always been good sports about my troll levels, so I wanted to make you a nice one for a change!"
-    "I was in the middle of making the level when I saw Jory walk by my office."
+    "I was thinking about what to make next when I saw Jory walk by my office."
     "I got tired of making the level, so I wanted to see what he was up to."
     "That's when I saw it! He had taken the dinos and stuffed them into his backpack!"
 
@@ -69,7 +69,7 @@ POSE "Judge Brent" Normal
 SPEAK_FROM COURT_JUDGE
     "Hmm. So you were in your office working on a Mario Maker level but needed a break.
 SPEAK "Judge Brent"
-    "That's when you saw Jory and saw the dinosaurs being taken."
+    "That's when you saw Jory, followed him, and saw the dinosaurs being taken."
 SPEAK "Judge Brent"
     "That seems reasonable to me."
 
@@ -449,6 +449,7 @@ SPEAK_FROM COURT_DEFENSE
 
 PRESENT Switch
 
+SHOUT Arin TakeThat
 SHOW Switch r
 
 SPEAK_FROM COURT_PROSECUTION
@@ -467,6 +468,7 @@ POSE Arin Point
 SPEAK Arin
     "It's Ross' Switch!"
 
+SCREEN_SHAKE
 JUMPCUT COURT_WITNESS
 SFX stab
 ANIMATION Ross Damage
@@ -568,7 +570,7 @@ SPEAK_FROM COURT_DEFENSE
     "Maybe so, but I have more to add!"
 
 JUMPCUT COURT_ASSISTANT
-POSE Dan SideNormal
+POSE Dan SideNormalTurned
 SPEAK Dan
     "Are you sure about this, Arin?"
 SPEAK Dan
@@ -802,6 +804,7 @@ POSE Arin Confident
 SPEAK Arin
     "Don't you know, Dan? I'm the Video Game Boy..."
 
+SFX objectionclean
 SET_SYNC TRUE
 ANIMATION Arin Objection
 POSE Arin Point
@@ -949,7 +952,7 @@ END_CHOICE
 JUMPCUT COURT_DEFENSE
 POSE Arin Thinking
 SPEAK Arin
-    "Yeah... it does look somewhat familiar..."
+    "Yeah... it does look somewhat familiar... like we've seen it just recently..."
 
 SFX realization
 
@@ -957,6 +960,7 @@ POSE Arin Confident
 SPEAK Arin
     "I've got it!"
 
+SET_SYNC TRUE
 ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin
@@ -971,7 +975,21 @@ SPEAK "Judge Brent"
 
 POSE Arin Embarassed
 SPEAK_FROM COURT_DEFENSE
-    "Oh... my bad then!"
+    "Oh... my b--!"
+
+POSE Arin Sweaty
+SPEAK Arin
+    "Wait really? That's a rule?"
+
+JUMPCUT COURT_JUDGE
+POSE "Judge Brent" Warning
+SPEAK "Judge Brent"
+    "...Yes."
+
+JUMPCUT COURT_DEFENSE
+POSE Arin Embarassed
+SPEAK Arin
+    "Uhhhh just kidding, Your Honor!
 
 SFX deskslam
 ANIMATION Arin DeskSlam
@@ -1086,6 +1104,7 @@ ANIMATION Ross HelmetThrow
 
 JUMPCUT COURT_DEFENSE
 
+SFX smack
 ANIMATION Arin HelmHit
 
 POSE Arin Sweaty
@@ -1097,7 +1116,7 @@ POSE Ross MadMilk
 SPEAK_FROM COURT_WITNESS
     "You...guys..."
 SFX stab
-PLAY_MUSIC HUFFPUFFPURSUIT
+PLAY_MUSIC NSPTHEME
 SPEAK Ross
     "Grrr!!! You're all lying!"
 SPEAK Ross
@@ -1115,8 +1134,8 @@ POSE Arin DeskSlam
 SPEAK Arin
     "The only one lying here is you, Ross!"
 
-SYNC_SET TRUE
 SFX objectionclean
+SYNC_SET TRUE
 ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin
@@ -1208,8 +1227,8 @@ POSE Arin DeskSlam
 SPEAK Arin
     "You're right, Dan!"
 
-SET_SYNC TRUE
 SFX objectionclean
+SET_SYNC TRUE
 ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin
