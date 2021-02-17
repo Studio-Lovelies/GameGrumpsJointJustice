@@ -163,9 +163,9 @@ function love.draw()
 
     if drawLogo then
         love.graphics.setColor(0, 0, 0)
-        love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+        love.graphics.rectangle("fill", 0, 0, dimensions.window_width, dimensions.window_height)
         love.graphics.setColor(1, 1, 1, logoOpacity)
         logo = love.graphics.newImage("studioloveliesbig.png")
-        love.graphics.draw(logo, WindowWidth/2 - logo:getWidth()/2, WindowHeight/2 - logo:getHeight()/2)
+        love.graphics.draw(logo, dimensions.window_width/2 - logo:getWidth()/2, dimensions.window_height/2 - logo:getHeight()/2)
     end
 end

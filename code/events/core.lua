@@ -1014,7 +1014,7 @@ function NewAdvanceEvent(seconds)
         self.timer = self.timer + dt
 
         if self.timer >= self.seconds then
-            love.event.push("keypressed", "escape")
+            love.event.push("keypressed", "x")
             return false
         else
             return true
