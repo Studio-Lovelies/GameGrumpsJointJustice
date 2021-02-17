@@ -37,7 +37,7 @@ function DrawBrowseScreen()
         love.graphics.rectangle("fill", jorytrialX-dx, jorytrialY-dy, jorytrialW+2*dx, jorytrialH+2*dy)
         love.graphics.draw(
             jorytrialImage,
-            WindowWidth/2 - jorytrialImage:getWidth() * jorytrialImageScale/2 + 20,
+            dimensions.window_width/2 - (jorytrialImage:getWidth() * jorytrialImageScale)/2 + 20,
             0,
             0,
             jorytrialImageScale,
@@ -48,7 +48,7 @@ function DrawBrowseScreen()
         love.graphics.rectangle("fill", posttrialX-dx, posttrialY-dy, posttrialW+2*dx, posttrialH+2*dy)
         love.graphics.draw(
             posttrialImage,
-            WindowWidth/2 - posttrialImage:getWidth() * posttrialImageScale/2 + 20,
+            dimensions.window_width/2 - (posttrialImage:getWidth() * posttrialImageScale)/2 + 20,
             0,
             0,
             posttrialImageScale,
@@ -59,7 +59,7 @@ function DrawBrowseScreen()
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
         love.graphics.draw(
             blackImage,
-            WindowWidth/2 - blackImage:getWidth() * blackImageScale/2 + 20,
+            dimensions.window_width/2 - (blackImage:getWidth() * blackImageScale)/2 + 20,
             0,
             0,
             blackImageScale,
