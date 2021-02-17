@@ -262,7 +262,7 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewStopBigImageEvent(), lineParts)
                 end
                 if lineParts[1] == "PRESENT" then
-                    AddToStack(stack, NewPresentEvent(lineParts[2]), lineParts)
+                    AddToStack(stack, NewPresentEvent(lineParts[2], lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "FADE_TO_BLACK" then
                     AddToStack(stack, NewFadeToBlackEvent(), lineParts)

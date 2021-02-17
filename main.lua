@@ -7,6 +7,10 @@ require "code/episode"
 require "code/scene"
 require "code/scriptloader"
 
+local logoOpacity = 1
+local drawLogo = true
+local logoTimer = 0
+
 
 function love.load(arg)
     InitGlobalConfigVariables()
@@ -69,6 +73,17 @@ function love.update(dt)
         DtReset = false
     end
 
+    if logoOpacity <= 0 then
+        if logoTimer >= 4 then
+            drawLogo = false
+        else
+            logoTimer = logoTimer + dt
+        end
+    else
+        logoOpacity = logoOpacity - dt/3
+        logoTimer = logoTimer + dt
+    end
+
     Episode:update(dt)
 end
 
@@ -105,6 +120,7 @@ function love.keypressed(key)
 end
 
 function love.draw()
+    
     love.graphics.setColor(unpack(colors.white))
     love.graphics.setCanvas(Renderable)
     love.graphics.clear(unpack(colors.black))
@@ -141,5 +157,13 @@ function love.draw()
         love.graphics.setColor(unpack(colors.red))
         love.graphics.print(tostring(love.timer.getFPS( )), 10, 10)
         love.graphics.setColor(unpack(colors.white))
+    end
+
+    if drawLogo then
+        love.graphics.setColor(0, 0, 0)
+        love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
+        love.graphics.setColor(1, 1, 1, logoOpacity)
+        logo = love.graphics.newImage("studioloveliesbig.png")
+        love.graphics.draw(logo, GraphicsWidth/2, GraphicsHeight/2 - 50, 0, 1, 1)
     end
 end

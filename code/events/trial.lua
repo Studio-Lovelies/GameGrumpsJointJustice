@@ -76,6 +76,12 @@ function NewWitnessEvent(queue)
     end
 
     self.update = function(self, scene, dt)
+        if self.animIndex < 20 then
+            for i,v in pairs(Music) do
+                v:stop()
+            end
+        end
+
         self.timer = self.timer + dt
         self.timer2 = self.timer2 + dt
         scene.textHidden = true
@@ -192,6 +198,7 @@ function NewWitnessEvent(queue)
             if self.animIndex < 20 then
                 self.animIndex = self.animIndex + 1
             else
+                Music[scene.music]:play()
                 scene.textHidden = false
             end
         end
@@ -233,9 +240,10 @@ function NewWitnessEvent(queue)
     return self
 end
 
-function NewPresentEvent(evidence)
+function NewPresentEvent(type, evidence)
     local self = {}
     self.evidence = evidence
+    self.type = type
     self.wasPressingConfirm = false
 
     self.update = function(self, scene, dt)
@@ -243,13 +251,24 @@ function NewPresentEvent(evidence)
         local pressingConfirm = love.keyboard.isDown(controls.press_confirm)
         if screens.courtRecords.displayed then
             if not self.wasPressingConfirm and pressingConfirm then
-                if Episode.courtRecords.evidence[CourtRecordIndex].externalName:gsub("%s+", ""):lower() == self.evidence:lower() then
-                    screens.courtRecords.displayed = false
-                    scene.drawPenalties = false
-                    return false
-                else
-                    screens.courtRecords.displayed = false
-                    table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
+                if self.type == "EVIDENCE" then
+                    if Episode.courtRecords.evidence[CourtRecordIndex].externalName:gsub("%s+", ""):lower() == self.evidence:lower() then
+                        screens.courtRecords.displayed = false
+                        scene.drawPenalties = false
+                        return false
+                    else
+                        screens.courtRecords.displayed = false
+                        table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
+                    end
+                elseif self.type == "PROFILE" then
+                    if Episode.courtRecords.profiles[CourtRecordIndex].characterName:gsub("%s+", ""):lower() == self.evidence:gsub("%s+", ""):lower() then
+                        screens.courtRecords.displayed = false
+                        scene.drawPenalties = false
+                        return false
+                    else
+                        screens.courtRecords.displayed = false
+                        table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
+                    end
                 end
             end
             self.wasPressingConfirm = pressingConfirm
@@ -504,7 +523,7 @@ function NewGavel3Event()
         scene.textHidden = true
         scene.canShowCourtRecord = false
 
-        if self.loopIndex <= 1.2 then
+        if self.loopIndex <= 1.45 then
 
             if self.timer > 0.19 then
                 self.index = 2
@@ -513,14 +532,16 @@ function NewGavel3Event()
             if self.timer > 0.24 then
                 self.index = 3
 
-                Sounds.GAVEL:play()
+                if self.loopIndex < 1 then
+                    Sounds.GAVEL:play()
+                end
             end
 
-            if self.timer > 0.29 then
+            if self.timer > 0.29 and self.loopIndex < 0.7 then
                 self.index = 2
             end
 
-            if self.timer > 0.34 then
+            if self.timer > 0.34 and self.loopIndex < 0.7 then
                 self.index = 1
 
                 self.timer = 0
@@ -539,7 +560,7 @@ function NewGavel3Event()
         love.graphics.setColor(1,1,1)
         local gavelAnimation = Sprites["GavelAnimation"]
         local spr = gavelAnimation[self.index]
-        if self.loopIndex <= 1.2 then
+        if self.loopIndex <= 1.5 then
             love.graphics.draw(spr, 0, 0, 0, GraphicsWidth/spr:getWidth(),GraphicsHeight/spr:getHeight())
         end
     end
@@ -630,7 +651,7 @@ function NewVerdictEvent(verdict)
     self.update = function(self, scene, dt)
         scene.textHidden = true
         scene.canShowCourtRecord = false
-        
+
         self.timer = self.timer + dt
 
         if self.verdict == "NotGuilty" then
