@@ -181,8 +181,8 @@ SelectionIndexX = 0;
 SelectionIndexY = 0;
 blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
 jingle = love.audio.newSource("sounds/selectjingle.wav", "static")
-blip2:setVolume(settings.master_volume / 100 / 2);
-jingle:setVolume(settings.master_volume / 100 / 2);
+blip2:setVolume(settings.sfx_volume / 100 / 2);
+jingle:setVolume(settings.sfx_volume / 100 / 2);
 JoryTrialConfig = {
     displayed = false;
     onKeyPressed = function(key)
@@ -273,12 +273,19 @@ JoryTrialConfig = {
         end
     end;
     onDisplay = function()
-        screens.jorytrial.displayed = true
         screens.browsescenes.displayed = false
+        screens.pause.displayed = false
+        screens.courtRecords.displayed = false
+        screens.jorytrial.displayed = true
+        screens.options.displayed = false
+        screens.title.displayed = false
+        screens.volume.displayed = true
     end;
     draw = function()
         if screens.jorytrial.displayed == true then
             DrawJoryTrialScreen()
+            blip2:setVolume(settings.sfx_volume / 100 / 2)
+            jingle:setVolume(settings.sfx_volume / 100 / 2)
         end
     end;
 }

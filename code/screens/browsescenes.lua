@@ -119,8 +119,8 @@ TitleSelection = "Back";
 SelectionIndex = 0;
 blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
 jingle = love.audio.newSource("sounds/selectjingle.wav", "static")
-blip2:setVolume(settings.master_volume / 100 / 2);
-jingle:setVolume(settings.master_volume / 100 / 2);
+blip2:setVolume(settings.sfx_volume / 100 / 2);
+jingle:setVolume(settings.sfx_volume / 100 / 2);
 
 BrowseScreenConfig = {
     displayed = false;
@@ -169,14 +169,15 @@ BrowseScreenConfig = {
         screens.jorytrial.displayed = false
         screens.options.displayed = false
         screens.title.displayed = false
+        screens.volume.displayed = false
         TitleSelection = "Back";
         SelectionIndex = 0;
     end;
     draw = function()
         if screens.browsescenes.displayed == true then
             DrawBrowseScreen()
-            blip2:setVolume(settings.master_volume / 100 / 2)
-            jingle:setVolume(settings.master_volume / 100 / 2)
+            blip2:setVolume(settings.sfx_volume / 100 / 2)
+            jingle:setVolume(settings.sfx_volume / 100 / 2)
         end
-    end;
+    end
 }

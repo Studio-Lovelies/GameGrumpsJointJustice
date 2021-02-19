@@ -1,13 +1,11 @@
+
+local optionsSelections = {}
+
+optionsSelections[0] = "Back";
+optionsSelections[1] = "Volume";
+optionsSelections[2] = settings.displayModes[settings.displayModesIndex];
+
 function DrawOptionsScreen()
-
-    local FullscreenWindowed = settings.displayModes[settings.displayModesIndex]
-    local FullscreenWindowedSelection = settings.displayModes[settings.displayModesIndex + 1]
-
-    --if dimensions.background_scale == settings.fullscreen_scale then
-    --    FullscreenWindowed = "Windowed"
-    --    FullscreenWindowedSelection = "Fullscreen"
-    --end
-
 
     love.graphics.clear(unpack(colors.black))
 
@@ -18,17 +16,17 @@ function DrawOptionsScreen()
     local blackImageScale = 3
 
     local backW = (dimensions.window_width * 1/5)
-    local backX = (dimensions.window_width * 10.75/18) - backW
+    local backX = (dimensions.window_width/2 - backW/2)
     local backY = blackImage:getHeight()*blackImageScale + 10
     local backH = 60
 
     local volumeW = (dimensions.window_width * 1/3.75)
-    local volumeX = (dimensions.window_width * 11.25/18) - volumeW
+    local volumeX = (dimensions.window_width/2 - volumeW/2)
     local volumeY = blackImage:getHeight()*blackImageScale - 260
     local volumeH = 60
 
-    local displaymodeW = (dimensions.window_width * 1/3.75 + (love.graphics.newText(GameFont, FullscreenWindowed):getWidth() / 4))
-    local displaymodeX = (dimensions.window_width * 11.25/18) - displaymodeW
+    local displaymodeW = (dimensions.window_width * 1/3.75 + love.graphics.newText(GameFont, optionsSelections[2]):getWidth())
+    local displaymodeX = (dimensions.window_width/2 - displaymodeW/2)
     local displaymodeY = blackImage:getHeight()*blackImageScale - 370
     local displaymodeH = 60
 
@@ -38,7 +36,7 @@ function DrawOptionsScreen()
     love.graphics.setColor(0.44,0.56,0.89)
     if TitleSelection == "Volume" then
         love.graphics.rectangle("fill", volumeX-dx, volumeY-dy, volumeW+2*dx, volumeH+2*dy)
-    elseif TitleSelection == FullscreenWindowedSelection then
+    elseif TitleSelection == optionsSelections[2] then
         love.graphics.rectangle("fill", displaymodeX-dx, displaymodeY-dy, displaymodeW+2*dx, displaymodeH+2*dy)
     else
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
@@ -55,8 +53,6 @@ function DrawOptionsScreen()
 
     love.graphics.setColor(0.3,0.3,0.3)
     love.graphics.rectangle("fill", volumeX, volumeY, volumeW, volumeH)
-    love.graphics.setColor(0.25,0.41,0.88)
-    love.graphics.rectangle("fill", volumeX, volumeY, (volumeW / 100) * settings.master_volume, volumeH)
 
     love.graphics.setColor(0.3,0.3,0.3)
     love.graphics.rectangle("fill", displaymodeX, displaymodeY, displaymodeW, displaymodeH)
@@ -73,7 +69,7 @@ function DrawOptionsScreen()
         textScale
     )
 
-    local volumeText = love.graphics.newText(GameFont, "Volume ("..settings.master_volume..")")
+    local volumeText = love.graphics.newText(GameFont, "Volume Settings")
     love.graphics.draw(
         volumeText,
         volumeX + volumeW/2-(volumeText:getWidth() * textScale)/2,
@@ -83,7 +79,7 @@ function DrawOptionsScreen()
         textScale
     )
 
-    local displaymodeText = love.graphics.newText(GameFont, FullscreenWindowed)
+    local displaymodeText = love.graphics.newText(GameFont, optionsSelections[2])
     love.graphics.draw(
         displaymodeText,
         displaymodeX + displaymodeW/2-(displaymodeText:getWidth() * textScale)/2,
@@ -96,19 +92,12 @@ function DrawOptionsScreen()
     return self
 end
 
-optionsSelections = {}
-optionsSelections[0] = "Back";
-optionsSelections[1] = "Volume";
-optionsSelections[2] = settings.displayModes[settings.displayModesIndex + 1];
---if dimensions.background_scale == settings.windowed_scale then
---    optionsSelections[2] = "Windowed";
---end
 TitleSelection = "Back";
 SelectionIndex = 0;
 blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
 jingle = love.audio.newSource("sounds/selectjingle.wav", "static")
-blip2:setVolume(settings.master_volume / 100 / 2)
-jingle:setVolume(settings.master_volume / 100 / 2)
+blip2:setVolume(settings.sfx_volume / 100 / 2)
+jingle:setVolume(settings.sfx_volume / 100 / 2)
 Music = {}
 Sounds = {}
 
@@ -136,6 +125,7 @@ end
 
 OptionsConfig = {
     displayed = false;
+    lastDisplayed = nil;
     onKeyPressed = function(key)
         if key == controls.start_button then
             love.graphics.clear(0, 0, 0);
@@ -145,21 +135,24 @@ OptionsConfig = {
                 DrawTitleScreen();
                 screens.options.displayed = false;
                 SelectionIndex = 0;
+            elseif TitleSelection == "Volume" then
+                blip2:play()
+                screens.volume.displayed = true;
+                DrawVolumeScreen();
+                screens.options.displayed = false;
+                SelectionIndex = 0;
             elseif TitleSelection == optionsSelections[2] then
                 blip2:play()
                 if optionsSelections[2] == "Windowed" then
-                    dimensions.background_scale = settings.fullscreen_scale
                     settings.displayModesIndex = settings.displayModesIndex + 1
                     love.window.setFullscreen(true)
                     optionsSelections[2] = "Fullscreen"
                 elseif optionsSelections[2] == "Fullscreen" then
-                    dimensions.background_scale = settings.fullscreen_scale
                     settings.displayModesIndex = settings.displayModesIndex + 1
                     love.window.setFullscreen(true, "desktop")
                     optionsSelections[2] = "Windowed-Fullscreen"
                 elseif optionsSelections[2] == "Windowed-Fullscreen" then
-                    dimensions.background_scale = settings.windowed_scale
-                    settings.displayModesIndex = settings.displayModesIndex + 1
+                    settings.displayModesIndex = 1
                     love.window.setFullscreen(false)
                     optionsSelections[2] = "Windowed"
                 end
@@ -179,34 +172,6 @@ OptionsConfig = {
                 SelectionIndex = 2;
             end
             TitleSelection = optionsSelections[SelectionIndex]
-        elseif key == controls.press_right then
-            if TitleSelection == "Volume" then
-                if settings.master_volume < 100 then
-                    settings.master_volume = settings.master_volume + 5
-                    MasterVolume = settings.master_volume
-                    for i,v in pairs(Music) do
-                        v:setVolume(settings.master_volume / 100)
-                    end
-                    for i,v in pairs(Sounds) do
-                        v:setVolume(settings.master_volume / 100 / 2)
-                    end
-                    blip2:play()
-                end
-            end
-        elseif key == controls.press_left then
-            if TitleSelection == "Volume" then
-                if settings.master_volume > 0 then
-                    settings.master_volume = settings.master_volume - 5
-                    MasterVolume = settings.master_volume
-                    for i,v in pairs(Music) do
-                        v:setVolume(settings.master_volume / 100)
-                    end
-                    for i,v in pairs(Sounds) do
-                        v:setVolume(settings.master_volume / 100 / 2)
-                    end
-                    blip2:play()
-                end
-            end
         end
     end;
     onKeyReleased = function(key)
@@ -218,14 +183,15 @@ OptionsConfig = {
         screens.jorytrial.displayed = false
         screens.options.displayed = true
         screens.title.displayed = false
+        screens.volume.displayed = false
         TitleSelection = "Back";
         SelectionIndex = 0;
     end;
     draw = function()
         if screens.options.displayed == true then
             DrawOptionsScreen()
-            blip2:setVolume(settings.master_volume / 100 / 2)
-            jingle:setVolume(settings.master_volume / 100 / 2)
+            blip2:setVolume(settings.sfx_volume / 100 / 2)
+            jingle:setVolume(settings.sfx_volume / 100 / 2)
         end
     end;
 }

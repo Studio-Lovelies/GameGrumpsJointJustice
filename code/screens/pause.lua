@@ -24,7 +24,7 @@ function DrawPauseScreen(self)
     -- Temporary text where the settings should go
     local pauseHeader = love.graphics.newText(GameFont, "PAUSED")
     love.graphics.setColor(unpack(colors.white))
-    love.graphics.draw(pauseHeader, GetCenterOffset(pauseHeader:getWidth() * 2), 120, 0, 2, 2)
+    love.graphics.draw(pauseHeader, WindowWidth/2 - pauseHeader:getWidth()/2, 120, 0, 2, 2)
 
     -- Temporary(?) tools for easier developing/testing
     local boxWidth = love.graphics.getWidth() * 3/5 - 70
@@ -52,11 +52,8 @@ PauseScreenConfig = {
     onKeyPressed = function(key)
         if key == "end" then
             screens.pause.displayed = false
-            for i,v in pairs(Music) do
-                v:stop()
-            end
-            DrawTitleScreen()
             Episode:stop()
+            DrawTitleScreen()
             screens.title.displayed = true
             TitleSelection = "New Game";
             SelectionIndex = 0;

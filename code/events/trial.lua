@@ -140,8 +140,10 @@ function NewWitnessEvent(queue)
             and currentChar ~= ","
             and currentChar ~= "-" then
                 if scene.characters[scene.textTalker].gender == "MALE" then
+                    Sounds.MALETALK:setVolume(SpeechVolume/100)
                     Sounds.MALETALK:play()
                 else
+                    Sounds.FEMALETALK:setVolume(SpeechVolume/100)
                     Sounds.FEMALETALK:play()
                 end
             end

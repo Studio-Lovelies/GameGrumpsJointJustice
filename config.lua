@@ -5,7 +5,9 @@ settings = {
     ]]
     debug = false; -- scriptevents.lua
 
-    master_volume = 25;
+    music_volume = 25;
+    sfx_volume = 25;
+    speech_volume = 5;
     text_scroll_speed = 30;
     displayModesIndex = 1;
     fullscreen_scale = 2;
@@ -85,6 +87,8 @@ function InitGlobalConfigVariables()
     WindowWidth = dimensions.window_width
     WindowHeight = dimensions.window_height
 
-    MasterVolume = settings.master_volume
+    MusicVolume = settings.music_volume
+    SFXVolume = settings.sfx_volume
+    SpeechVolume = settings.speech_volume
     TextScrollSpeed = settings.text_scroll_speed
 end

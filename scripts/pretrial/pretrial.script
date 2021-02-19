@@ -48,8 +48,6 @@ SPEAK Ross
 SET_SYNC TRUE
 PANIMAGE 0 0 -250 0
 
-SET_SYNC TRUE
-ADVANCE 5
 SPEAK Ross
     "Hehe, now this is a galaxy-brain move right here!"
 

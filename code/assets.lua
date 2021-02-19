@@ -40,7 +40,7 @@ function LoadMusic(directoryName)
 
     for i,v in pairs(Music) do
         v:setLooping(true)
-        v:setVolume(MasterVolume / 100)
+        v:setVolume(MusicVolume / 100)
     end
 end
 
@@ -122,7 +122,7 @@ function LoadSFX(directoryName)
     end
 
     for i,v in pairs(Sounds) do
-        v:setVolume(MasterVolume / 100 / 2)
+        v:setVolume(SFXVolume / 100 / 2)
     end
 end
 

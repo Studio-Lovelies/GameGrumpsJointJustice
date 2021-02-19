@@ -13,8 +13,8 @@ function DrawCenteredRectangle(options)
 
     local width = options.width
     local height = options.height
-    local topLeftX = (love.graphics.getWidth() - width)/2
-    local topLeftY = (love.graphics.getHeight() - height)/2
+    local topLeftX = (love.graphics.getWidth()/2 - width/2)
+    local topLeftY = (love.graphics.getHeight()/2 - height/2)
 
     -- Shift the box down a little to account for the tab
     if title then

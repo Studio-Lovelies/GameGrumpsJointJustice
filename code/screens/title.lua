@@ -66,35 +66,37 @@ function DrawTitleScreen()
     love.graphics.rectangle("fill", scenesX, scenesY, scenesW, scenesH)
 
     love.graphics.setColor(1,1,1)
-    local textScale = 3
+
+
+
     local newGameText = love.graphics.newText(GameFont, "New Game")
     love.graphics.draw(
         newGameText,
-        newX + newW/2-(newGameText:getWidth() * textScale)/2,
-        newY + newH/2-(newGameText:getHeight() * textScale)/2,
+        newX + newW/2 - newGameText:getWidth() * 3/2,
+        newY + newH/2 - newGameText:getHeight() * 3/2,
         0,
-        textScale,
-        textScale
+        3,
+        3
     )
 
     local loadGameText = love.graphics.newText(GameFont, "Quit Game")--"Load Game")
     love.graphics.draw(
         loadGameText,
-        loadX + loadW/2-(loadGameText:getWidth() * textScale)/2,
-        loadY + loadH/2-(loadGameText:getHeight() * textScale)/2,
+        loadX + loadW/2 - loadGameText:getWidth() * 3/2,
+        loadY + loadH/2 - loadGameText:getHeight() * 3/2,
         0,
-        textScale,
-        textScale
+        3,
+        3
     )
 
     local scenesText = love.graphics.newText(GameFont, "Case Select")--"Settings")
     love.graphics.draw(
         scenesText,
-        scenesX + scenesW/2-(loadGameText:getWidth() * textScale)/2 - 10,
-        scenesY + scenesH/2-(loadGameText:getHeight() * textScale)/2,
+        scenesX + scenesW/2 - loadGameText:getWidth() * 3/2 - 10,
+        scenesY + scenesH/2 - loadGameText:getHeight() * 3/2,
         0,
-        textScale,
-        textScale
+        3,
+        3
     )
 
     return self
@@ -116,8 +118,8 @@ TitleSelection = "New Game";
 SelectionIndex = 0;
 blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
 jingle = love.audio.newSource("sounds/selectjingle.wav", "static")
-blip2:setVolume(settings.master_volume / 100 / 2);
-jingle:setVolume(settings.master_volume / 100 / 2);
+blip2:setVolume(settings.sfx_volume / 100 / 2);
+jingle:setVolume(settings.sfx_volume / 100 / 2);
 
 TitleScreenConfig = {
     displayed = false;
@@ -129,14 +131,10 @@ TitleScreenConfig = {
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
                 screens.title.displayed = false;
-                SelectionIndex = 0;
-                --[[
-                blip2:play()
-                screens.options.lastDisplayed = screens.title.displayed
-                screens.options.displayed = true
+                --[[screens.options.displayed = true
                 DrawOptionsScreen()
-                screens.title.displayed = false;
-                SelectionIndex = 0;]]
+                screens.title.displayed = false;]]
+                SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 blip2:play()
                 love.event.push("quit")
@@ -168,14 +166,15 @@ TitleScreenConfig = {
         screens.jorytrial.displayed = false
         screens.options.displayed = false
         screens.title.displayed = true
+        screens.volume.displayed = false
         TitleSelection = "New Game";
         SelectionIndex = 0;
     end;
     draw = function()
         if screens.title.displayed == true then
             DrawTitleScreen()
-            blip2:setVolume(settings.master_volume / 100 / 2)
-            jingle:setVolume(settings.master_volume / 100 / 2)
+            blip2:setVolume(settings.sfx_volume / 100 / 2)
+            jingle:setVolume(settings.sfx_volume / 100 / 2)
         end
     end
 }

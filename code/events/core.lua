@@ -153,10 +153,10 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
         and currentChar ~= "("
         and self.speaks then
             if scene.characters[scene.textTalker].gender == "MALE" then
-                Sounds.MALETALK:setVolume(TextVolume/100)
+                Sounds.MALETALK:setVolume(SpeechVolume/100)
                 Sounds.MALETALK:play()
             else
-                Sounds.FEMALETALK:setVolume(TextVolume/100)
+                Sounds.FEMALETALK:setVolume(SpeechVolume/100)
                 Sounds.FEMALETALK:play()
             end
         end
@@ -275,10 +275,10 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
         and currentChar ~= "#"
         and self.speaks then
             if scene.characters[scene.textTalker].gender == "MALE" then
-                Sounds.MALETALK:setVolume(TextVolume/100)
+                Sounds.MALETALK:setVolume(SpeechVolume/100)
                 Sounds.MALETALK:play()
             else
-                Sounds.FEMALETALK:setVolume(TextVolume/100)
+                Sounds.FEMALETALK:setVolume(SpeechVolume/100)
                 Sounds.FEMALETALK:play()
             end
         end
@@ -488,7 +488,7 @@ function NewPlayMusicEvent(music)
             -- play it. This allows us to have consequtive scripts
             -- play the same music without the track restarting
             if i == self.music then
-                v:setVolume(MasterVolume/100)
+                v:setVolume(MusicVolume/100)
                 v:play()
             else
                 v:stop()
@@ -503,13 +503,13 @@ end
 
 function NewFadeMusicEvent()
     local self = {}
-    self.timer = MasterVolume/100
+    self.timer = MusicVolume/100
 
     self.update = function(self, scene, dt)
         scene.music = nil
 
         local lastTimer = self.timer
-        self.timer = self.timer - (dt / (1 / (MasterVolume / 100)))
+        self.timer = self.timer - (dt / (1 / (MusicVolume / 100)))
 
         for i,v in pairs(Music) do
             v:setVolume(self.timer)
@@ -855,7 +855,7 @@ end
 function NewFadeToBlackEvent()
     local self = {}
     self.timer = 0
-    self.musicTimer = MasterVolume/100
+    self.musicTimer = MusicVolume/100
 
     self.update = function(self, scene, dt)
         scene.textHidden = true
@@ -864,7 +864,7 @@ function NewFadeToBlackEvent()
         local lastTimer = self.timer
         local lastMusicTimer = self.musicTimer
         self.timer = self.timer + (dt / 2)
-        self.musicTimer = self.musicTimer - (dt / (1 / (MasterVolume/100)))
+        self.musicTimer = self.musicTimer - (dt / (1 / (MusicVolume/100)))
 
         for i,v in pairs(Music) do
             v:setVolume(self.musicTimer)
