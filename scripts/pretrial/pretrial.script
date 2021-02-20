@@ -17,6 +17,7 @@ PROFILE_INITIALIZE jory Jory "Maybe 30?" "Game Developer for Dream Daddy. Previo
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
+EVIDENCE_INITIALIZE Switch "Switch" "A borrowed switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
 COURT_RECORD_ADD EVIDENCE Badge
 COURT_RECORD_ADD PROFILE arin
 COURT_RECORD_ADD PROFILE dan
@@ -158,6 +159,16 @@ SPEAK Arin
 POSE Dan Happy
 SPEAK Dan
     "This is no time for hilarious jokes, Arin, we have some tanks to set up!"
+
+SPEAK Arin
+   "Hell yeah, dude. Let me just grab the %1backup switch%0 we borrowed so we can put it back where Jory got it."
+
+SFX evidenceding
+COURT_RECORD_ADD_ANIMATION EVIDENCE Switch "Nintendo Switch"
+
+POSE Dan Normal
+SPEAK Dan
+    "Good thinking. Let's get going then!"
 
 STOP_MUSIC
 
