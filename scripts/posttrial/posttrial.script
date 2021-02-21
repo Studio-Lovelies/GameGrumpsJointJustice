@@ -168,7 +168,57 @@ SPEAK Dan
 SPEAK Arin
     "He also says a lot of words."
 SPEAK Arin
-    "Let's just go talk with this Tutorial guy and figure out what the heck is goin on around here."
+    "Hey Dan, by the way..."
+
+SPEAK Dan 
+    "Hm? What's up?"
+SPEAK Arin
+    "Thanks for having my back out there, dude."
+
+SPEAK Arin
+    "The end of that trial was tough. I really thought that we actually lost for a second there."
+SPEAK Arin
+    "Thanks to you, we managed to save Jory from a life behind bars!"
+
+SPEAK Arin
+    "... or losing fake coins, I guess."
+
+SPEAK Dan "Like I said - teamwork, man. Guess you could say we served..."
+
+POSE Dan SideNormalTurned
+SPEAK Dan
+    "...Some sweet JOINT JUSTICE!"
+
+SPEAK Arin
+    "..."
+
+SPEAK Dan 
+    "..."
+
+SPEAK Arin 
+    "... did you really just-?"
+
+POSE Dan Happy
+SPEAK Dan
+    "Yeah, I went there. Couldn't help myself. Anyways..."
+POSE Dan Normal
+SPEAK Dan
+    "Let's go look for that Tutorial Boy and find out what's going on here."
+
+SPEAK Arin
+    "Right. I don't know about you, but there might be more to this than just being 'a bit'."
+
+INTERRUPTED_SPEAK Dan 
+    "Guess we'll have to find out --"
+
+SPEAK Arin 
+    "With some sweet Joint Justice?"
+POSE Dan Angry
+SPEAK Dan
+   "..."
+POSE Dan Normal
+SPEAK Dan 
+    "Arin, you're a man after my heart."
 
 FADE_TO_BLACK
 
