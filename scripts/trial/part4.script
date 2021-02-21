@@ -628,6 +628,7 @@ POSE "Tutorial Boy" Sweaty
 SPEAK "Tutorial Boy"
     "Urp...!"
 
+STOP_MUSIC
 JUMPCUT COURT_JUDGE
 SPEAK "Judge Brent"
     "That being said, while I'm certain this switch does belong to Ross, I can't simply take the defense at their word."
@@ -824,7 +825,7 @@ SPEAK_FROM COURT_PROSECUTION
 JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam
 SPEAK Arin
-    "That's right! If Ross was truly making a Mario Maker level, it would be Mario Maker there."
+    "That's right! If Ross was truly making a Mario Maker level, it would be Mario Maker there!"
 
 SPEAK Arin
     "That means the fact that Penix Wright is there..."

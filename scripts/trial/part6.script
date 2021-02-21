@@ -356,6 +356,8 @@ SET_SYNC TRUE
 SFX slurp
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideLean
+SPEAK Dan
+    "..."
 
 
 WAIT 2
@@ -481,10 +483,17 @@ POSE Arin Confident
 SPEAK Arin
     "There is one person, however, who is obsessed with dairy products, here in this courtroom!"
 
-//CLOSEUP Arin
+CLOSEUP Arin
 POSE Arin Point
 SPEAK Arin
     "Ross!!!"
+
+JUMPCUT COURT_WITNESS
+SFX stab2
+ANIMATION Ross DamageNoHelm
+POSE Ross MadMilk
+SPEAK Ross
+    "OOF!"
 
 WIDESHOT
 
@@ -507,7 +516,7 @@ POSE Arin Confident
 SPEAK Arin
     "You bet I do, Your Honor!"
 
-//CUTSCENE (?)
+
 
 POSE Arin Normal
 SPEAK Arin

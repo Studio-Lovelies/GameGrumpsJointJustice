@@ -59,11 +59,6 @@ HIDE_TEXT
 //////////////////
 SFX mutter
 
-JUMPCUT COURT_WITNESS
-POSE Ross MadMilk
-SPEAK Ross
-    "That's...not my name Arin."
-
 GAVEL
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Warning
@@ -71,7 +66,7 @@ SPEAK "Judge Brent"
     "Order in this courtroom!"
 POSE "Judge Brent" Thinking
 SPEAK "Judge Brent"
-    "Hmmm. That's a bold accusation you've raised, Arin."
+    "Hmmm. That's a bold accusation you've raised, Arin. As well as a terrible pun on Ross' name."
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
     "But how could this be true? Didn't Ross find them in the first place?"
@@ -179,7 +174,7 @@ SPEAK Arin
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
 SPEAK "Judge Brent"
-    "I mean, it's not like real metal coins are that expensive..."
+    "I mean, just use some quarters and paint them up. Clearly we don't care about being fancy."
 
 SFX damage2
 JUMPCUT COURT_DEFENSE
@@ -292,7 +287,7 @@ POSE Arin Sweaty
 THINK Arin
     "(Come ON dude!)"
 
-PLAY_MUSIC LOGICANDTRAINS
+PLAY_MUSIC GGJJInvestigationCore
 
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Normal
@@ -378,7 +373,7 @@ SPEAK Arin
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Angry
 SPEAK "Judge Brent"
-    "HOWEVER..."
+    "HOWEVER."
 SPEAK "Judge Brent"
     "I would like the witness to revise his testimony to reflect this change."
 SPEAK "Judge Brent"
