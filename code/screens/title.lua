@@ -132,8 +132,7 @@ TitleScreenConfig = {
                 DrawBrowseScreen();
                 screens.title.displayed = false;
                 --[[screens.options.displayed = true
-                DrawOptionsScreen()
-                screens.title.displayed = false;]]
+                DrawOptionsScreen()]]
                 SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 blip2:play()

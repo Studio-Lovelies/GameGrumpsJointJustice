@@ -122,7 +122,11 @@ function LoadSFX(directoryName)
     end
 
     for i,v in pairs(Sounds) do
-        v:setVolume(SFXVolume / 100 / 2)
+        if i ~= "maletalk" and i ~= "femaletalk" then
+            v:setVolume(SFXVolume / 100 / 2)
+        else
+            v:setVolume(SpeechVolume / 100 / 2)
+        end
     end
 end
 
