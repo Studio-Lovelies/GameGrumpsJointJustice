@@ -1,6 +1,7 @@
 function DrawTitleScreen()
     local background = love.graphics.newImage(settings.power_hour_set_path)
     local backgroundScale = 2*dimensions.window_width/1920
+    GameFont:setLineHeight(1)
 
     love.graphics.clear(unpack(colors.black))
 
