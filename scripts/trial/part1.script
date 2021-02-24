@@ -30,15 +30,20 @@ PROFILE_INITIALIZE ross Ross 33 "Animator and self-described sadist. Also really
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
+EVIDENCE_INITIALIZE Switch "Switch" "A borrowed switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
+COURT_RECORD_ADD EVIDENCE Switch
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
-EVIDENCE_INITIALIZE Switch "Switch" "A borrowed switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
+COURT_RECORD_ADD EVIDENCE LivestreamRecording
 EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. Seems unusually full of...something." evidence/Jory'sBackpack.png
+COURT_RECORD_ADD EVIDENCE Jory'sBackpack
 EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." sprites/StolenDinos.png
+COURT_RECORD_ADD EVIDENCE StolenDinos
 EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
+COURT_RECORD_ADD EVIDENCE BentCoins
 
 DEFINE TRIAL_FAIL
     JUMPCUT BLACK_SCREEN
