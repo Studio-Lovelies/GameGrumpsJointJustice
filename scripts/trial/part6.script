@@ -382,7 +382,6 @@ SFX shock2
 WAIT 2
 
 JUMPCUT COURT_WITNESS
-//POSE Ross Shock
 POSE Ross MadMilk
 SFX shock2
 WAIT 2
@@ -534,7 +533,7 @@ SPEAK Arin
     "In his rush, he clearly spilt milk he always seems to have over the dinos as he was hiding them."
 
 
-//END CUTSCENE
+
 
 SPEAK Arin
     "It's clear from the evidence, Your Honor, that Jory could not have possibly stolen the dinos!"
