@@ -145,7 +145,7 @@ SPEAK Dan
     "If you say so..."
 
 POSE Dan Angry
-SPEAK Dan
+INTERRUPTED_SPEAK Dan
     "Wait, what do you mean every--"
 
 JUMPCUT COURT_DEFENSE
