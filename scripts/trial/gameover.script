@@ -21,10 +21,9 @@ SPEAK Dan
     "Bruh, wtf was that Arin?"
 SPEAK_FROM COURT_JUDGE
     "Regarding the lack of evidence in the favor of the accused, Mr. Jory Griffis, I must find him..."
-SPEAK_FROM COURT_JUDGE
-    "GUILTY lmao we don't have the fancy effects like Penix Wright does"
-SPEAK_FROM COURT_JUDGE
-    "Anyway..."
+
+VERDICT Guilty
+
 FADE_TO_BLACK
 JUMPCUT BLACK_SCREEN
 SPEAK "Judge Brent"
