@@ -670,11 +670,12 @@ function NewVerdictEvent(verdict)
                 Sounds["DRAMAPOUND"]:play()
             end
         elseif self.verdict == "Guilty" then
-            if self.timer > self.animIndex * 0.05 then
+            self.verdictAnimFrames = 18
+            if self.timer > self.animIndex * 0.1 then
                 if self.animIndex ~= self.verdictAnimFrames then
                     self.animIndex = self.animIndex + 1
                 end
-                if self.animIndex == 123 or self.animIndex == 456 then
+                if (self.animIndex % 3 == 0 and self.animIndex ~= 18) or self.animIndex == 17 then
                     for i,v in pairs(Sounds) do
                         v:stop()
                     end
