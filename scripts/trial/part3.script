@@ -129,6 +129,7 @@ SPEAK_FROM COURT_DEFENSE
 SPEAK_FROM COURT_JUDGE
     "Good. Then you may begin."
 
+
 ///////////////////////
 // Cross Examination //
 ///////////////////////
@@ -298,9 +299,9 @@ DEFINE PressA4
     JUMPCUT COURT_WITNESS
 END_DEFINE
 
-STOP_MUSIC
+
 FADE_TO_BLACK
-//fademusic out
+
 POSE Ross Normal
 FADE_IN 1 COURT_WITNESS
 PLAY_MUSIC CROSSEXAMMODERATO
@@ -478,7 +479,6 @@ POSE Ross SweatyHelm
 SPEAK_FROM COURT_WITNESS
     "Uh, I.. er..."
 
-//ANIMATION Ross MilkDrink
 
 SPEAK_FROM COURT_WITNESS
     "Well, you see... the thing is..."
@@ -573,12 +573,13 @@ POSE Ross SadHelm
 SPEAK Ross
     "*whimper*."
 
-STOP_MUSIC
+
 THINK_FROM COURT_DEFENSE
     "(Lord spare me this crap.)"
 
 SPEAK_FROM COURT_JUDGE
     "This time, Ross, I need the honest truth from you. You may begin your testimony."
-
+SET_SYNC TRUE
+FADE_MUSIC
 FADE_TO_BLACK
 END_SCENE

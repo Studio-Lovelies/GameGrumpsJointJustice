@@ -65,6 +65,7 @@ SPEAK_FROM COURT_JUDGE
 SPEAK_FROM COURT_DEFENSE
     "The defense is ready, Your H-"
 
+ANIMATION Arin Shock
 SFX realization
 POSE Arin Sweaty
 SPEAK Arin
@@ -203,7 +204,7 @@ SPEAK "Tutorial Boy"
 SPEAK "Tutorial Boy"
     "When the livestream was over, the crew went to prepare for a 10 MPH episode."
 SPEAK "Tutorial Boy"
-    "However. #When they arrived and started preparing, they noticed the Dinos were missing!"
+    "However, when they arrived and started preparing, #they noticed the Dinos were missing!"
 
 SPEAK "Tutorial Boy"
     "A quick search and a few minutes later, they were suspiciously found in THIS backpack!"
