@@ -38,7 +38,7 @@ FADE_IN 1 CourtPan
 //FADE_IN 1 ROSS_TMPH_ROOM
 
 SPEAK Ross
-    "... We'll see who the real good boy is now, won't we Jory?"
+    "...We'll see who the real good boy is now, won't we Jory?"
 
 FADE_TO_BLACK
 FADE_IN 1 CourtPan
