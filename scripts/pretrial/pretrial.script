@@ -34,11 +34,13 @@ JUMPCUT BLACK_SCREEN
 SPEAK Ross
     "After all the work I put into those levels..."
 
-FADE_IN 1 CourtPan
-//FADE_IN 1 ROSS_TMPH_ROOM
+FADE_IN 1 ROSS_TMPH_ROOM
+
+SET_SYNC TRUE
+PANIMAGE 0 0 0 124
 
 SPEAK Ross
-    "... We'll see who the real good boy is now, won't we Jory?"
+    "...We'll see who the real good boy is now, won't we Jory?"
 
 FADE_TO_BLACK
 FADE_IN 1 CourtPan
