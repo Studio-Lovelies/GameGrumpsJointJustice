@@ -579,7 +579,6 @@ THINK_FROM COURT_DEFENSE
 
 SPEAK_FROM COURT_JUDGE
     "This time, Ross, I need the honest truth from you. You may begin your testimony."
-SET_SYNC TRUE
-FADE_MUSIC
+
 FADE_TO_BLACK
 END_SCENE
