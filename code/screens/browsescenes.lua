@@ -128,12 +128,14 @@ BrowseScreenConfig = {
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
+                blip2:stop()
                 blip2:play()
                 screens.title.displayed = true;
                 DrawTitleScreen();
                 screens.browsescenes.displayed = false;
                 SelectionIndex = 1;
             elseif TitleSelection == "Jory's Trial" then
+                blip2:stop()
                 blip2:play()
                 screens.jorytrial.displayed = true;
                 DrawJoryTrialScreen();
@@ -147,6 +149,7 @@ BrowseScreenConfig = {
                 screens.browsescenes.displayed = false;
             end
         elseif key == controls.press_right then
+            blip2:stop()
             blip2:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
@@ -154,6 +157,7 @@ BrowseScreenConfig = {
             end
             TitleSelection = browseSceneSelections[SelectionIndex]
         elseif key == controls.press_left then
+            blip2:stop()
             blip2:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then

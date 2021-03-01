@@ -72,8 +72,8 @@ THINK Arin
 THINK Arin
     "(Dan and I were discussing some very important matters...)"
 
-FADE_IN 1 LOBBY
 CHARACTER_LOCATION Dan LOBBY
+FADE_IN 1 LOBBY
 POSE Dan Normal
 SPEAK Dan
     "So that's when I said, $qthat's not mayonnaise!$q"
