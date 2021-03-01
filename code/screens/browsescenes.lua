@@ -16,18 +16,18 @@ function DrawBrowseScreen()
 
     local backW = (dimensions.window_width * 1/5)
     local backX = (dimensions.window_width * 1/6 - backW/2)
-    local backY = blackImage:getHeight()*blackImageScale + 150
     local backH = 60
+    local backY = dimensions.window_height - (backH + 20)
 
     local jorytrialW = (dimensions.window_width * 1/3.75)
     local jorytrialX = (dimensions.window_width * 3/6 - jorytrialW/2)
-    local jorytrialY = blackImage:getHeight()*blackImageScale + 150
     local jorytrialH = 60
+    local jorytrialY = dimensions.window_height - (jorytrialH + 20)
 
     local posttrialW = (dimensions.window_width * 1/3.75)
     local posttrialX = (dimensions.window_width * 5/6 - posttrialW/2)
-    local posttrialY = blackImage:getHeight()*blackImageScale + 150
     local posttrialH = 60
+    local posttrialY = dimensions.window_height - (posttrialH + 20)
 
     local dx = 8
     local dy = 8
