@@ -76,6 +76,8 @@ function DrawCourtRecords(ui)
     })
 end
 
+CourtRecordIndex = 0
+
 CourtRecordsConfig = {
     displayed = false;
     displayKey = controls.press_court_record;
