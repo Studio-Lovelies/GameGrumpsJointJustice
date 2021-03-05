@@ -76,9 +76,7 @@ function DrawCourtRecords(ui)
     })
 end
 
-CourtRecordIndex = 1
 CourtRecordsConfig = {
-    CourtRecordIndex = 1
     displayed = false;
     displayKey = controls.press_court_record;
     displayCondition = function()
@@ -97,6 +95,9 @@ CourtRecordsConfig = {
         menu_type = "evidence"
     end;
     onKeyPressed = function(key)
+        if CourtRecordIndex == nil then
+            CourtRecordIndex = 1
+        end
         if key == controls.press_left and CourtRecordIndex > 1 then
             CourtRecordIndex = CourtRecordIndex - 1
         elseif key == controls.press_right then
