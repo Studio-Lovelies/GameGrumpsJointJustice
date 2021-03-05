@@ -128,6 +128,7 @@ TitleScreenConfig = {
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Case Select" then
+                blip2:stop()
                 blip2:play()
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
@@ -136,6 +137,7 @@ TitleScreenConfig = {
                 DrawOptionsScreen()]]
                 SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
+                blip2:stop()
                 blip2:play()
                 love.event.push("quit")
             elseif TitleSelection == "New Game" then
@@ -144,6 +146,7 @@ TitleScreenConfig = {
                 screens.title.displayed = false;
             end
         elseif key == controls.press_right then
+            blip2:stop()
             blip2:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
@@ -151,6 +154,7 @@ TitleScreenConfig = {
             end
             TitleSelection = titleSelections[SelectionIndex]
         elseif key == controls.press_left then
+            blip2:stop()
             blip2:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then

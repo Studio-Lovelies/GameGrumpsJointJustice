@@ -147,6 +147,7 @@ VolumeConfig = {
         if key == controls.start_button then
             love.graphics.clear(0, 0, 0);
             if TitleSelection == "Back" then
+                blip2:stop()
                 blip2:play();
                 screens.options.displayed = true;
                 DrawOptionsScreen();
@@ -154,6 +155,7 @@ VolumeConfig = {
                 SelectionIndex = 0;
             end
         elseif key == controls.pause_nav_up then
+            blip2:stop()
             blip2:play()
             SelectionIndex = SelectionIndex + 1;
             if (SelectionIndex > 3) then
@@ -161,6 +163,7 @@ VolumeConfig = {
             end
             TitleSelection = volumeSelections[SelectionIndex]
         elseif key == controls.pause_nav_down then
+            blip2:stop()
             blip2:play()
             SelectionIndex = SelectionIndex - 1;
             if (SelectionIndex < 0) then
@@ -175,6 +178,7 @@ VolumeConfig = {
                     for i,v in pairs(Music) do
                         v:setVolume(settings.music_volume / 100);
                     end
+                    blip2:stop();
                     blip2:play();
                 end
             elseif TitleSelection == "SFX Volume" then
@@ -186,12 +190,14 @@ VolumeConfig = {
                             v:setVolume(settings.sfx_volume / 100);
                         end
                     end
+                    blip2:stop();
                     blip2:play();
                 end
             elseif TitleSelection == "Speech Volume" then
                 if settings.speech_volume < 100 then
                     settings.speech_volume = settings.speech_volume + 5;
                     SFXVolume = settings.speech_volume;
+                    blip2:stop();
                     blip2:play();
                 end
             end
@@ -203,6 +209,7 @@ VolumeConfig = {
                     for i,v in pairs(Music) do
                         v:setVolume(settings.music_volume / 100);
                     end
+                    blip2:stop();
                     blip2:play();
                 end
             elseif TitleSelection == "SFX Volume" then
@@ -214,12 +221,14 @@ VolumeConfig = {
                             v:setVolume(settings.sfx_volume / 100);
                         end
                     end
+                    blip2:stop();
                     blip2:play();
                 end
             elseif TitleSelection == "Speech Volume" then
                 if settings.speech_volume > 0 then
                     settings.speech_volume = settings.speech_volume - 5;
                     SFXVolume = settings.speech_volume;
+                    blip2:stop();
                     blip2:play();
                 end
             end

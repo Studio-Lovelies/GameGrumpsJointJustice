@@ -16,18 +16,18 @@ function DrawBrowseScreen()
 
     local backW = (dimensions.window_width * 1/5)
     local backX = (dimensions.window_width * 1/6 - backW/2)
-    local backY = blackImage:getHeight()*blackImageScale + 150
     local backH = 60
+    local backY = dimensions.window_height - (backH + 20)
 
     local jorytrialW = (dimensions.window_width * 1/3.75)
     local jorytrialX = (dimensions.window_width * 3/6 - jorytrialW/2)
-    local jorytrialY = blackImage:getHeight()*blackImageScale + 150
     local jorytrialH = 60
+    local jorytrialY = dimensions.window_height - (jorytrialH + 20)
 
     local posttrialW = (dimensions.window_width * 1/3.75)
     local posttrialX = (dimensions.window_width * 5/6 - posttrialW/2)
-    local posttrialY = blackImage:getHeight()*blackImageScale + 150
     local posttrialH = 60
+    local posttrialY = dimensions.window_height - (posttrialH + 20)
 
     local dx = 8
     local dy = 8
@@ -128,12 +128,14 @@ BrowseScreenConfig = {
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
+                blip2:stop()
                 blip2:play()
                 screens.title.displayed = true;
                 DrawTitleScreen();
                 screens.browsescenes.displayed = false;
                 SelectionIndex = 1;
             elseif TitleSelection == "Jory's Trial" then
+                blip2:stop()
                 blip2:play()
                 screens.jorytrial.displayed = true;
                 DrawJoryTrialScreen();
@@ -147,6 +149,7 @@ BrowseScreenConfig = {
                 screens.browsescenes.displayed = false;
             end
         elseif key == controls.press_right then
+            blip2:stop()
             blip2:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
@@ -154,6 +157,7 @@ BrowseScreenConfig = {
             end
             TitleSelection = browseSceneSelections[SelectionIndex]
         elseif key == controls.press_left then
+            blip2:stop()
             blip2:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then

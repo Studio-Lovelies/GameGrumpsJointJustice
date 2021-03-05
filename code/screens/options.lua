@@ -130,18 +130,21 @@ OptionsConfig = {
         if key == controls.start_button then
             love.graphics.clear(0, 0, 0);
             if TitleSelection == "Back" then
+                blip2:stop()
                 blip2:play()
                 screens.title.displayed = true;
                 DrawTitleScreen();
                 screens.options.displayed = false;
                 SelectionIndex = 0;
             elseif TitleSelection == "Volume" then
+                blip2:stop()
                 blip2:play()
                 screens.volume.displayed = true;
                 DrawVolumeScreen();
                 screens.options.displayed = false;
                 SelectionIndex = 0;
             elseif TitleSelection == optionsSelections[2] then
+                blip2:stop()
                 blip2:play()
                 if optionsSelections[2] == "Windowed" then
                     settings.displayModesIndex = settings.displayModesIndex + 1
@@ -159,6 +162,7 @@ OptionsConfig = {
                 TitleSelection = optionsSelections[2]
             end
         elseif key == controls.pause_nav_up then
+            blip2:stop()
             blip2:play()
             SelectionIndex = SelectionIndex + 1
             if (SelectionIndex > 2) then
@@ -166,6 +170,7 @@ OptionsConfig = {
             end
             TitleSelection = optionsSelections[SelectionIndex]
         elseif key == controls.pause_nav_down then
+            blip2:stop()
             blip2:play()
             SelectionIndex = SelectionIndex - 1
             if (SelectionIndex < 0) then

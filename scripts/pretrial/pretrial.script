@@ -34,8 +34,11 @@ JUMPCUT BLACK_SCREEN
 SPEAK Ross
     "After all the work I put into those levels..."
 
-FADE_IN 1 CourtPan
-//FADE_IN 1 ROSS_TMPH_ROOM
+CAMERA 0 -204
+FADE_IN 1 ROSS_TMPH_ROOM
+
+SET_SYNC TRUE
+PANIMAGE 0 -204 0 0
 
 SPEAK Ross
     "...We'll see who the real good boy is now, won't we Jory?"
@@ -69,8 +72,8 @@ THINK Arin
 THINK Arin
     "(Dan and I were discussing some very important matters...)"
 
-FADE_IN 1 LOBBY
 CHARACTER_LOCATION Dan LOBBY
+FADE_IN 1 LOBBY
 POSE Dan Normal
 SPEAK Dan
     "So that's when I said, $qthat's not mayonnaise!$q"

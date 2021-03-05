@@ -189,6 +189,7 @@ JoryTrialConfig = {
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
             if TitleSelection == "Back" then
+                blip2:stop()
                 blip2:play()
                 screens.browsescenes.displayed = true;
                 DrawBrowseScreen();
@@ -228,6 +229,7 @@ JoryTrialConfig = {
             end
         elseif key == controls.press_right then
             if SelectionIndexY ~= 0 then
+                blip2:stop()
                 blip2:play()
             end
             SelectionIndexX = SelectionIndexX + 1
@@ -243,6 +245,7 @@ JoryTrialConfig = {
             TitleSelection = jorySceneSelections[SelectionIndexX][SelectionIndexY]
         elseif key == controls.press_left then
             if SelectionIndexY ~= 0 then
+                blip2:stop()
                 blip2:play()
             end
             SelectionIndexX = SelectionIndexX - 1
@@ -257,6 +260,7 @@ JoryTrialConfig = {
             end
             TitleSelection = jorySceneSelections[SelectionIndexX][SelectionIndexY]
         elseif key == controls.pause_nav_up then
+            blip2:stop()
             blip2:play()
             SelectionIndexY = SelectionIndexY + 1
             if (SelectionIndexY > 2) then
@@ -264,6 +268,7 @@ JoryTrialConfig = {
             end
             TitleSelection = jorySceneSelections[SelectionIndexX][SelectionIndexY]
         elseif key == controls.pause_nav_down then
+            blip2:stop()
             blip2:play()
             SelectionIndexY = SelectionIndexY - 1
             if (SelectionIndexY < 0) then
