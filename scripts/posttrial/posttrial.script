@@ -22,7 +22,7 @@ JUMPCUT BLACK_SCREEN
 // START SCRIPT
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-PLAY_MUSIC DLFTS
+PLAY_MUSIC WONTHECASE
 
 CHARACTER_LOCATION Dan LOBBY
 FADE_IN 1 LOBBY
@@ -161,7 +161,7 @@ SPEAK Arin GREEN
 SPEAK Arin GREEN
     "$qThank you again for saving my beloved Jory Jr. #Sincerely, Jory Sr.$q"
 
-POSE Dan Thinking
+POSE Dan Normal
 SPEAK Dan
     "Wow, Jory's dad has done a lot of things."
 
@@ -183,9 +183,10 @@ SPEAK Arin
 SPEAK Arin
     "... or losing fake coins, I guess."
 
-SPEAK Dan "Like I said - teamwork, man. Guess you could say we served..."
+SPEAK Dan 
+    "Like I said - teamwork, man. Guess you could say we served..."
 
-POSE Dan SideNormalTurned
+POSE Dan SideLean
 SPEAK Dan
     "...Some sweet JOINT JUSTICE!"
 
@@ -218,7 +219,9 @@ SPEAK Dan
    "..."
 POSE Dan Normal
 SPEAK Dan 
-    "Arin, you're a man after my heart."
+    "Arin, you're a man after my own heart."
+
+POSE Dan SideLaugh
 
 FADE_TO_BLACK
 
