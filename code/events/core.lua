@@ -100,11 +100,10 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
     self.update = function(self, scene, dt)
         scene.font = self.font
         scene.textHidden = false
-        if self.text ~= nil then
-            scene.fullText = self.text
-        else
-            scene.fullText = ""
+        if self.text == nil then
+            self.text = ""
         end
+        scene.fullText = self.text
 
         local lastScroll = self.textScroll
         local scrollSpeed = TextScrollSpeed
