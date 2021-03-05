@@ -169,7 +169,6 @@ SPEAK_FROM COURT_PROSECUTION
 SPEAK_FROM COURT_ASSISTANT
     "This is easily the stupidest thing I've ever done."
 
-PLAY_MUSIC LOGICANDTRAINS
 SPEAK_FROM COURT_PROSECUTION
     "At about 12:00 PM, the Game Grumps and crew were partaking in a livestream."
 SPEAK "Tutorial Boy"

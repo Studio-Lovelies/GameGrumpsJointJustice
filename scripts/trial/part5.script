@@ -1,3 +1,4 @@
+
 //////////////////////
 // INITIALIZE SCENE //
 //////////////////////
@@ -287,7 +288,8 @@ POSE Arin Sweaty
 THINK Arin
     "(Come ON dude!)"
 
-PLAY_MUSIC GGJJInvestigationCore
+PLAY_MUSIC GGJJINVESTIGATIONCORE
+
 
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Normal
@@ -973,7 +975,7 @@ JUMPCUT COURT_DEFENSE
 POSE Arin Sweaty
 THINK Arin
     "(It's my job to do that, though...)"
-PLAY_MUSIC CTTRVS 
+PLAY_MUSIC GGJJINVESTIGATIONCORE
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"

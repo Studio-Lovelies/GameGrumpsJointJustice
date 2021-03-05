@@ -69,7 +69,8 @@ WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
     "I felt it was a good time to take a break, so I went to see what he was up to."
     "That's when I saw it! He had taken the dinos and stuffed them into his backpack!"
 
-STOP_MUSIC
+SET_SYNC TRUE
+FADE_MUSIC
 FADE_TO_BLACK
 POSE "Judge Brent" Thinking
 FADE_IN 1 COURT_JUDGE
@@ -165,8 +166,9 @@ SPEAK_FROM COURT_DEFENSE
 SPEAK_FROM COURT_JUDGE
     "Very well. The defense may begin their cross-examination."
 
+SET_SYNC TRUE
 FADE_TO_BLACK
-STOP_MUSIC
+FADE_MUSIC
 FADE_IN 1 COURT_WITNESS
 PLAY_MUSIC CROSSEXAMMODERATO
 WAIT 1
