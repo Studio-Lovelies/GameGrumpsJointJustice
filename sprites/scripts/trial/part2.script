@@ -1,0 +1,174 @@
+//////////////////////
+// INITIALIZE SCENE //
+//////////////////////
+
+SET_SCENE_TYPE TRIAL
+
+CHARACTER_INITIALIZE Arin arin MALE
+CHARACTER_INITIALIZE Dan dan MALE
+CHARACTER_INITIALIZE "Judge Brent" judge MALE
+CHARACTER_INITIALIZE "Tutorial Boy" tutorialboy MALE
+CHARACTER_INITIALIZE Ross ross MALE
+
+CHARACTER_LOCATION Arin COURT_DEFENSE
+CHARACTER_LOCATION Dan COURT_ASSISTANT
+CHARACTER_LOCATION "Judge Brent" COURT_JUDGE
+CHARACTER_LOCATION "Tutorial Boy" COURT_PROSECUTION
+CHARACTER_LOCATION Ross COURT_WITNESS
+
+PROFILE_INITIALIZE arin Arin 34 "Half of the Game Grumps Duo. Definitely the same height as Dan." profiles/Arin.png
+COURT_RECORD_ADD PROFILE arin
+PROFILE_INITIALIZE dan Dan 41 "The other half of Game Grumps. Known aliases: 'Danny Sexbang', 'Mr. Business.'" profiles/Dan.png
+COURT_RECORD_ADD PROFILE dan
+PROFILE_INITIALIZE jory Jory "Maybe 30?" "Game Developer for Dream Daddy. Previous job: P.P.I.S.S machine." profiles/Jory.png
+COURT_RECORD_ADD PROFILE jory
+PROFILE_INITIALIZE judge "Judge Brent" "Maybe 30?" "Manages the Grumps business. Also a Judge in the totally real Attitude City." profiles/JudgeBrent.png
+COURT_RECORD_ADD PROFILE judge
+PROFILE_INITIALIZE tutorialboy "Tutorial Boy" 33 "The first prosecutor. Has an extremely predictable name." profiles/TutorialBoy.png
+COURT_RECORD_ADD PROFILE tutorialboy
+PROFILE_INITIALIZE ross Ross 33 "Animator and self-described sadist. Also really loves milk for some reason." profiles/Ross.png
+COURT_RECORD_ADD PROFILE ross
+
+EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
+COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
+EVIDENCE_INITIALIZE Switch "Switch" "A borrowed Switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
+COURT_RECORD_ADD EVIDENCE Switch
+EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
+COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
+EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
+COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
+EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
+COURT_RECORD_ADD EVIDENCE LivestreamRecording
+EVIDENCE_INITIALIZE Jory'sBackpack "Jory's Backpack" "The backpack that Jory keeps his Good Boy coins in. Seems unusually full of...something." evidence/Jory'sBackpack.png
+COURT_RECORD_ADD EVIDENCE Jory'sBackpack
+EVIDENCE_INITIALIZE StolenDinos "Stolen Dinos" "The classic 10 Minute Power Hour dinos. They have a mysterious white stain covering them." sprites/StolenDinos.png
+COURT_RECORD_ADD EVIDENCE StolenDinos
+EVIDENCE_INITIALIZE BentCoins "Bent Coins" "Jory's Good Boy Coins. They're scuffed and bent out of shape." sprites/BentCoins.png
+COURT_RECORD_ADD EVIDENCE BentCoins
+
+DEFINE TRIAL_FAIL
+    JUMPCUT BLACK_SCREEN
+END_DEFINE
+
+HIDE_TEXT
+
+//////////////////
+// START SCRIPT //
+//////////////////
+
+FADE_TO_BLACK
+PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
+FADE_IN 1 COURT_WITNESS
+
+JUMPCUT COURT_DEFENSE
+SFX dramapound
+ANIMATION Arin Shock
+POSE Arin Sweaty
+SPEAK Arin
+    "Ross?! They roped you into this as well?"
+
+
+SPEAK_FROM COURT_WITNESS
+    "Yeah... It looked important, you know? Plus, I could use the extra money."
+
+POSE "Judge Brent" Surprised
+SFX lightbulb
+SPEAK_FROM COURT_JUDGE
+    "Mr. O'Donovan, being a witness isn't a paying job..."
+
+SPEAK_FROM COURT_PROSECUTION
+    "Not that anyone here is getting paid anyway..."
+
+POSE Ross SweatyHelm
+SPEAK_FROM COURT_WITNESS
+    "I-I see..."
+
+JUMPCUT COURT_PROSECUTION
+POSE "Tutorial Boy" Confident
+SPEAK "Tutorial Boy"
+    "Except if you count being paid in JUSTICE!"
+SFX damage1
+ANIMATION "Tutorial Boy" HeadSlam
+POSE "Tutorial Boy" Normal
+SPEAK "Tutorial Boy"
+    "Ahem... Witness, please state your name and occupation for the court."
+
+POSE Ross Normal
+JUMPCUT COURT_WITNESS
+SPEAK_QUIET Ross
+    "...Kangaroo court if I ever saw one..." 
+
+SPEAK_FROM COURT_JUDGE
+    "What was that?"
+
+POSE Ross SweatyHelm
+SPEAK_FROM COURT_WITNESS
+    "Nothing, Your Honor!"
+POSE Ross Normal
+SPEAK Ross
+    "I am Ross O'Donovan: local animator, Mario Maker enthusiast, apparent sadist, and %1friend to all here!%0"
+POSE Dan Fist
+SPEAK_FROM COURT_ASSISTANT
+    "Some friend... testifying against Jory, treating him like a criminal..."
+
+SPEAK Arin
+    "What do you mean? Even WE don't know if Jory is innocent!"
+POSE Dan SideNormal
+SPEAK Dan
+    "Arin, have you learned nothing from the Penix Wright(tm) playthrough?"
+
+SPEAK Arin
+    "That a gavel, lubed properly, has many uses?"
+
+POSE Dan Fist
+SFX smack
+SPEAK Dan
+    "No!"
+
+POSE Dan SideLaugh
+SPEAK Dan
+    "Well, I mean yeah... $qThe gay-liff$q in that game sure was creative."
+
+POSE Dan SideNormal
+SPEAK Dan
+    "But more importantly, you should go into every case with confidence that your client is innocent."
+SPEAK Dan
+    "We don't know if he's guilty, but if his own attorney doesn't believe him, why should the rest of the court?"
+
+JUMPCUT COURT_DEFENSE
+SFX DeskSlam
+SCREEN_SHAKE
+ANIMATION Arin DeskSlam
+POSE Arin DeskSlam
+SPEAK Arin
+    "You're right! We're here to defend our friend, so we should at least assume we're making the right call."
+
+JUMPCUT COURT_ASSISTANT
+SPEAK Dan
+    "Also, knowing how these things go, the defendant is always innocent..."
+
+WAIT 1
+
+POSE Dan SideLean
+SPEAK Dan
+    "...Usually, anyway."
+POSE "Judge Brent" Warning
+SPEAK_FROM COURT_JUDGE
+    "If the defense is done sucking each other's toes, may we begin with Mr. O'Donovan's testimony?"
+
+POSE Arin Sweaty
+THINK_FROM COURT_DEFENSE
+    "(Why does he act like he doesn't know anyone here?)"
+
+ANIMATION Arin Nodding 
+
+POSE Arin Normal
+SPEAK Arin
+    "We're ready, Your Honor."
+POSE "Judge Brent" Normal
+SPEAK_FROM COURT_JUDGE
+    "Alright. The witness may begin his testimony."
+
+FADE_TO_BLACK
+
+END_SCENE
