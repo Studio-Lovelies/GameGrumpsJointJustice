@@ -31,7 +31,7 @@ COURT_RECORD_ADD PROFILE ross
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
-EVIDENCE_INITIALIZE Switch "Switch" "A borrowed switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
+EVIDENCE_INITIALIZE Switch "Switch" "A borrowed Switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
 COURT_RECORD_ADD EVIDENCE Switch
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
@@ -57,8 +57,9 @@ HIDE_TEXT
 //////////////////
 // START SCRIPT //
 //////////////////
-
+FADE_IN 1 COURT_WITNESS
 JUMPCUT COURT_WITNESS
+
 PLAY_MUSIC CROSSEXAMMODERATO
 
 WITNESS_EVENT WitnessTestimony Ross "-- Witness's Account --"
@@ -169,9 +170,7 @@ SPEAK_FROM COURT_JUDGE
 SET_SYNC TRUE
 FADE_TO_BLACK
 FADE_MUSIC
-FADE_IN 1 COURT_WITNESS
-PLAY_MUSIC CROSSEXAMMODERATO
-WAIT 1
+
 
 
 ///////////////////////
@@ -416,7 +415,7 @@ DEFINE PressC6
     SPEAK_FROM COURT_JUDGE
         "We've known Ross for quite a while now, and I personally have never been made aware--"
     SPEAK "Judge Brent"
-        "-- of any defects related to his ophthalmologic health."
+        "--of any defects related to his ophthalmologic health."
 
     SPEAK_FROM COURT_JUDGE
         "Since I am acquainted with his eye doctor and also observant, I would know if such a problem existed."
@@ -445,6 +444,12 @@ DEFINE PressC6
 END_DEFINE
 
 
+FADE_TO_BLACK
+
+POSE Ross Normal
+FADE_IN 1 COURT_WITNESS
+PLAY_MUSIC CROSSEXAMMODERATO
+
 WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
     "I guess you got me. I did lie about what I was doing." PressC1 0
     "I was actually making a special Mario Maker level for you guys." PressC2 0
@@ -472,10 +477,10 @@ SPEAK_FROM COURT_PROSECUTION
 
 POSE Arin Confident
 SPEAK_FROM COURT_DEFENSE
-    "That's right. Remember how you told everyone that Jory went to get us a switch when ours broke?"
+    "That's right. Remember how you told everyone that Jory went to get us a Switch when ours broke?"
 
 SPEAK Arin
-    "Well it just so happens that I have this switch... RIGHT HERE!"
+    "Well it just so happens that I have this Switch... RIGHT HERE!"
 
 STOP_SHOWING
 
@@ -522,9 +527,9 @@ POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "This is a complete waste of time, Your Honor!"
 SPEAK "Tutorial Boy"
-    "Not only is there no proof that switch belongs to Ross..."
+    "Not only is there no proof that Switch belongs to Ross..."
 SPEAK "Tutorial Boy"
-    "... but there's no proof this is even the switch Jory brought back!"
+    "...but there's no proof this is even the Switch Jory brought back!"
 
 SHOUT Arin objection
 POSE Arin Point
@@ -542,7 +547,7 @@ JUMPCUT COURT_JUDGE
 ANIMATION "Judge Brent" Nodding
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "Objection Overruled. The defense will proceed. I want to hear their explanation on this new piece of evidence."
+    "Objection overruled. The defense will proceed. I want to hear their explanation on this new piece of evidence."
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Normal
@@ -575,7 +580,7 @@ SPEAK Arin
     "Easy. I've been helping produce merch for Ross. Isn't that right?
 
 JUMPCUT COURT_WITNESS
-POSE Ross Sweaty
+POSE Ross SweatyHelm
 SPEAK Ross
     "Well... I..."
 
@@ -584,15 +589,15 @@ POSE Arin Normal
 SPEAK Arin
     "That's what I thought!"
 
-PLAY_MUSIC DRAGONOBJECTION
+
 POSE Arin Point
 SPEAK Arin
-    "Since this is clearly Ross' switch, his claim that he was making levels earlier today is a bunch of garbage!
+    "Since this is clearly Ross' Switch, his claim that he was making levels earlier today is a bunch of garbage!
 
 JUMPCUT COURT_ASSISTANT
 POSE Dan SideNormal
 SPEAK Dan
-    "Damn dude your deduction skills are incredible today!
+    "Damn dude! Your deduction skills are incredible today!
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Confident
@@ -610,9 +615,9 @@ SHOUT "Tutorial Boy" Objection
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
-    "Preposterous! It's too early to celebrate! That simply isn't enough proof on it's own."
+    "Preposterous! It's too early to celebrate!#That simply isn't enough proof on it's own."
 SPEAK "Tutorial Boy"
-    "Anyone could have put those stickers on their switch, not just Ross."
+    "Anyone could have put those stickers on their Switch, not just Ross."
 POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
     "Your Honor, this is baseless conjecture."
@@ -620,7 +625,7 @@ SPEAK "Tutorial Boy"
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "Well I do happen to recognize that switch as Ross' being that I work with him every day."
+    "Well I do happen to recognize that Switch as Ross' being that I work with him every day."
 
 SPEAK "Judge Brent"
     "And, being the manager, I know that these stickers aren't available to anyone but the Grumps."
@@ -633,9 +638,9 @@ SPEAK "Tutorial Boy"
 STOP_MUSIC
 JUMPCUT COURT_JUDGE
 SPEAK "Judge Brent"
-    "That being said, while I'm certain this switch does belong to Ross, I can't simply take the defense at their word."
+    "That being said, while I'm certain this Switch does belong to Ross, I can't simply take the defense at their word."
 SPEAK "Judge Brent"
-    "I need further proof that this was indeed the switch Jory obtained for the livestream."
+    "I need further proof that this was indeed the Switch Jory obtained for the livestream."
 SPEAK "Judge Brent"
     "Mr. Hanson, Mr. Avidan, do you think you can provide that proof?"
 
@@ -646,7 +651,7 @@ SPEAK Dan
     "Damn, I have no idea dude. How can we prove that?"
 
 SPEAK Arin
-    "Don't worry Dan, I've got this. And you know when I say I got it, I mean I GOT IT ;)"
+    "Don't worry Dan, I've got this. And you know when I say I got it, I mean I GOT IT!"
 
 POSE Dan SideNormalTurned
 SPEAK Dan
@@ -870,7 +875,7 @@ SPEAK Arin
 
 POSE Ross MadMilk
 SPEAK_FROM COURT_WITNESS
-    "You...guys..."
+    "You... guys..."
 SFX stab
 PLAY_MUSIC NSPTHEME
 SPEAK Ross
@@ -915,7 +920,7 @@ SCREEN_SHAKE
 SFX damage2
 ANIMATION "Tutorial Boy" HeadSlam
 
-POSE "Tutorial Boy" Normal
+POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "The only hard evidence we have shows the dinosaurs in Jory's backpack! Who else but him would have done it?!"
 
@@ -923,7 +928,7 @@ JUMPCUT COURT_WITNESS
 SPEAK Ross
     "YEAH, MAN! I'm the one looking out for you guys here, I've done nothing wrong!
 SPEAK Ross
-    "I just was mistaken about a few things! That's no way to treat one of your oldest friends!"
+    "I was just mistaken about a few things! That's no way to treat one of your oldest friends!"
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Thinking
@@ -1012,6 +1017,8 @@ SPEAK "Judge Brent"
     "Please point out exactly who you are accusing."
 
 PRESENT PROFILE Ross
+
+SHOUT takethat
 
 JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam

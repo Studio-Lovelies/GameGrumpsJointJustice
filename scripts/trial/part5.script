@@ -32,7 +32,7 @@ COURT_RECORD_ADD PROFILE ross
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
-EVIDENCE_INITIALIZE Switch "Switch" "A borrowed switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
+EVIDENCE_INITIALIZE Switch "Switch" "A borrowed Switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
 COURT_RECORD_ADD EVIDENCE Switch
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
@@ -58,7 +58,7 @@ HIDE_TEXT
 //////////////////
 // START SCRIPT //
 //////////////////
-SFX mutter
+
 
 GAVEL
 JUMPCUT COURT_JUDGE
@@ -89,7 +89,7 @@ SPEAK "Tutorial Boy
     "How dare you sully the name of JUSTICE by proposing this preposterous position!"
 
 SHOUT Arin Objection
-
+POSE Ross MadMilk
 PAN COURT_PROSECUTION COURT_DEFENSE
 JUMPCUT COURT_DEFENSE
 ANIMATION Arin ShakingHead
@@ -144,7 +144,7 @@ PRESENT EVIDENCE BentCoins
 SHOUT Arin takethat
 
 SPEAK Arin
-    "These are the Goodboy Coins found inside the backpack!"
+    "These are the Good Boy Coins found inside the backpack!"
 SPEAK Arin
     "Notice how they're bent and scuffed now? Don't you realize what that means?"
 
@@ -286,7 +286,7 @@ SPEAK "Tutorial Boy"
 JUMPCUT COURT_DEFENSE
 POSE Arin Sweaty
 THINK Arin
-    "(Come ON dude!)"
+    "(Come.#ON, dude!)"
 
 PLAY_MUSIC GGJJINVESTIGATIONCORE
 
@@ -325,7 +325,7 @@ SPEAK "Judge Brent"
     "Hmm... That does seem like a reach."
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "There were a lot of people in the area at the time. Someone must have seen where the dinos were found in the backpack."
+    "There were a lot of people in the area at the time.#Someone must have seen where the dinos were found in the backpack."
 
 SPEAK_FROM COURT_PROSECUTION
     "Well, why don't we ask them?"
@@ -361,7 +361,7 @@ SPEAK "Judge Brent"
     "Hmm... I could see that happening, certainly."
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "And since there is nobody here that can refute this point, I have to side with the prosecution,"
+    "And since there is nobody here that can refute this point, I have to side with the prosecution."
 
 STOP_MUSIC
 SCREEN_SHAKE
@@ -441,9 +441,7 @@ SPEAK Dan
     "Glad you're bringing your A-game, Arin."
 
 FADE_TO_BLACK
-POSE Ross Sweaty
-FADE_IN 1 COURT_WITNESS
-PLAY_MUSIC CROSSEXAMALLEGROFYOURA
+
 
 ///////////////////////
 // Cross Examination //
@@ -610,12 +608,12 @@ DEFINE PressD4
 
     JUMPCUT COURT_ASSISTANT
     SPEAK Dan
-        "Actually, dude, that's me. I have the trouble with that."
+        "Actually, dude, that's me. I'm the one who has trouble with that."
 
     JUMPCUT COURT_DEFENSE
     POSE Arin Embarassed
     SPEAK Arin
-        "Oh...Right. I knew that."
+        "Oh... right. I knew that."
 
     JUMPCUT COURT_JUDGE
     POSE "Judge Brent" Warning
@@ -655,6 +653,10 @@ DEFINE PressD5
     FADE_MUSIC
 END_DEFINE
 
+POSE Ross Sweaty
+FADE_IN 1 COURT_WITNESS
+PLAY_MUSIC CROSSEXAMALLEGROFYOURA
+
 WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
     "Yeah, so... After I heard the dinos went missing, I remembered that I saw Jory earlier." PressD1 0
     "So I went back there to search his backpack for the dinos." PressD2 0
@@ -667,7 +669,7 @@ WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
 //END CROSS EXAM//
 //////////////////
 
-
+FADE_IN 1 COURT_ASSISTANT
 JUMPCUT COURT_ASSISTANT
 SPEAK Dan
     "This isn't good, man. Isn't there something we can do?"
@@ -908,7 +910,7 @@ POSE Arin DeskSlam
 SPEAK Arin
     "I assure you it's not!"
 SPEAK Arin
-    "Your Honor, if you would: #Please confirm for the court that, other than the front pocket here..."
+    "Your Honor, if you would please confirm for the court that, other than the front pocket here..."
 
 SET_SYNC TRUE
 SFX objectionclean
@@ -934,7 +936,7 @@ SPEAK Ross
 SFX stab
 ANIMATION Ross DamageNoHelm
 SPEAK Ross
-    "It doesn't make any sense at all! #Why would Jory have such an endless supply potatoes in his backpack?"
+    "It doesn't make any sense at all! #Why would Jory have such an endless supply of potatoes in his backpack?"
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Thinking

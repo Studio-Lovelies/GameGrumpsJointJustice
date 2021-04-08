@@ -32,7 +32,7 @@ COURT_RECORD_ADD PROFILE ross
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
-EVIDENCE_INITIALIZE Switch "Switch" "A borrowed switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
+EVIDENCE_INITIALIZE Switch "Switch" "A borrowed Switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
 COURT_RECORD_ADD EVIDENCE Switch
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
@@ -623,6 +623,7 @@ SFX airguitar
 ANIMATION Dan AirGuitar
 POSE Dan SideNormal
 
+WAIT 2
 JUMPCUT COURT_JUDGE
 SPEAK "Judge Brent"
 "Yes... Well done, Mr. Avidan."

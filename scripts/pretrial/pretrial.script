@@ -17,7 +17,7 @@ PROFILE_INITIALIZE jory Jory "Maybe 30?" "Game Developer for Dream Daddy. Previo
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
-EVIDENCE_INITIALIZE Switch "Switch" "A borrowed switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
+EVIDENCE_INITIALIZE Switch "Switch" "A borrowed Switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
 COURT_RECORD_ADD EVIDENCE Badge
 COURT_RECORD_ADD EVIDENCE Switch
 COURT_RECORD_ADD PROFILE arin
@@ -31,6 +31,8 @@ HIDE_TEXT
 
 JUMPCUT BLACK_SCREEN
 
+
+PLAY_MUSIC PROLOGUETUTORIAL
 SPEAK Ross
     "After all the work I put into those levels..."
 
@@ -44,26 +46,43 @@ SPEAK Ross
     "...We'll see who the real good boy is now, won't we Jory?"
 
 FADE_TO_BLACK
-FADE_IN 1 CourtPan
-//FADE_IN 1 ROSS_WITH_DINOS
+FADE_IN 1 ROSS_WITH_DINOS
 
 SPEAK Ross
-    "Finally..."
+    "Just as planned..."
 
 SET_SYNC TRUE
 PANIMAGE 0 0 -250 0
+SPEAK Ross
+    "Soon, I'll have all the coins!"
+
+SET_SYNC TRUE
+BIGIMAGE WHITE
+WAIT .33
+BIGIMAGE ROSS1
+WAIT .33
+BIGIMAGE WHITE
+WAIT .33
+BIGIMAGE ROSS2
+WAIT .33
+BIGIMAGE WHITE
+WAIT.33
+BIGIMAGE ROSS3
+
+WAIT.33
 
 SPEAK Ross
-    "Hehe, now this is a galaxy-brain move right here!"
+    "Now this is a galaxy-brain move right here!"
 
+SET_SYNC TRUE
 FADE_TO_BLACK
-//SFX ROSSLAUGH
+SFX fart
 
 WAIT 2
 
 CAMERA 0 0
 
-PLAY_MUSIC DLFTS
+
 
 THINK Arin
     "(It started out just like every time after our livestream.)"
@@ -71,6 +90,8 @@ THINK Arin
     "(We had just finished a session playing Penix Wright: Facial Attorney(tm).)"
 THINK Arin
     "(Dan and I were discussing some very important matters...)"
+
+PLAY_MUSIC DLFTS
 
 CHARACTER_LOCATION Dan LOBBY
 FADE_IN 1 LOBBY
@@ -165,7 +186,7 @@ SPEAK Dan
     "This is no time for hilarious jokes, Arin, we have some tanks to set up!"
 
 SPEAK Arin
-   "Hell yeah, dude. Let me just grab the %1backup switch%0 we borrowed so we can put it back where Jory got it."
+   "Hell yeah, dude. Let me just grab the %1backup Switch%0 we borrowed so we can put it back where Jory got it."
 
 SFX evidenceding
 COURT_RECORD_ADD_ANIMATION EVIDENCE Switch "Nintendo Switch"

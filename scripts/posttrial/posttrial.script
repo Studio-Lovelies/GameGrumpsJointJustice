@@ -35,7 +35,7 @@ SPEAK Dan
     "*glug...glug...*"
 
 SPEAK Dan
-    "Ah... this can of La Croix is as refreshing as that victory"
+    "Ah... this can of La Croix is as refreshing as that victory...!"
 
 POSE Dan Happy
 SPEAK Dan
@@ -57,7 +57,7 @@ SPEAK Jory
     "You guys really saved my butt out there! I can't thank you enough!"
 
 SPEAK Arin
-    "Anytime, man. We did that any good friend would have done."
+    "Anytime, man. We did what any good friend would have done."
 
 SPEAK Dan
     "You mean pose as lawyers illegally and thus tainting the sanctity of the law and all it stands for?"
@@ -79,16 +79,16 @@ SPEAK Arin
     "Come by to sulk, Ross?"
 
 SPEAK Ross
-    "Nah, I just wanted to say sorry to everyone"
+    "Nah, I just wanted to say sorry to everyone."
 
 SPEAK Ross
-    "I mean, I knew all this was just for the 10 minute power hour, but even still--"
+    "I mean, I knew all this was just for the 10 Minute Power Hour, but even still--"
 
 SPEAK Arin
     "Wait, 10 minute power hour? What the hell do you mean?"
 
 SPEAK Ross
-    "Yeah of course! Why else would we all go along with that ridiculous crap?"
+    "Yeah, of course! Why else would we all go along with that ridiculous crap?"
 POSE Ross Sweaty
 SPEAK Ross
     "You mean you guys didn't know? I thought you were in on it."
@@ -98,7 +98,7 @@ POSE Dan Angry
     "Are you kidding? We thought that was for real!"
 
 SPEAK Arin
-    "Jory did you know about this?"
+    "Jory, did you know about this?"
 
 CHARACTER_LOCATION Jory LOBBY
 SPEAK Jory
@@ -113,7 +113,7 @@ SPEAK Arin
 CHARACTER_LOCATION Dan LOBBY
 POSE Dan Normal
 SPEAK Dan
-    "Huh. Yea that's right. He's still here right?"
+    "Huh. Yeah, that's right. He's still here right?"
 
 SPEAK Arin
     "I think so. We should go find out what all this was about."
@@ -153,7 +153,7 @@ SPEAK Arin GREEN
 SPEAK Arin GREEN
     "$qAs a matter of fact, I think you two are naturals at this lawyer business.$q"
 SPEAK Arin GREEN
-    "$qI was a hot shot lawyer in Attitude city before I changed to a career with the Merchant Marines.$q"
+    "$qI was a hot shot lawyer in Attitude City before I changed to a career with the Merchant Marines.$q"
 SPEAK Arin GREEN
     "$qAfter defending that albino whale from that crazy peg-legged stalker, #I guess I felt the call of the ocean$q."
 SPEAK Arin GREEN
@@ -181,7 +181,7 @@ SPEAK Arin
     "Thanks to you, we managed to save Jory from a life behind bars!"
 
 SPEAK Arin
-    "... or losing fake coins, I guess."
+    "...or losing fake coins, I guess."
 
 SPEAK Dan 
     "Like I said - teamwork, man. Guess you could say we served..."
