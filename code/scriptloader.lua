@@ -256,10 +256,13 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewStopShowingEvent(scene), lineParts)
                 end
                 if lineParts[1] == "BIGIMAGE" then
-                    AddToStack(stack, NewBigImageEvent(lineParts[2], lineParts))
+                    AddToStack(stack, NewBigImageEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "STOP_BIGIMAGE" then
                     AddToStack(stack, NewStopBigImageEvent(), lineParts)
+                end
+                if lineParts[1] == "TIMED_IMAGE" then
+                    AddToStack(stack, NewTimedImageEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "PRESENT" then
                     AddToStack(stack, NewPresentEvent(lineParts[2], lineParts[3]), lineParts)

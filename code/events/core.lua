@@ -956,6 +956,39 @@ function NewCrossFadeEvent(scene1, scene2)
     return self
 end
 
+function NewBigImageEvent(sprite)
+    local self = {}
+    self.sprite = sprite
+
+    self.update = function(self, scene, dt)
+        scene.bigimage = self.sprite
+        return false
+    end
+
+    return self
+end
+
+function NewStopBigImageEvent()
+    local self = {}
+
+    self.update = function(self, scene, dt)
+        scene.bigimage = nil
+        return false
+    end
+
+    return self
+end
+
+function NewTimedImageEvent()
+    local self = {}
+
+    self.update = function(self, scene, dt)
+        return false
+    end
+
+    return self
+end
+
 function NewScreenShakeEvent()
     local self = {}
 
@@ -1053,7 +1086,7 @@ function NewGameOverEvent()
         Episode = NewEpisode(settings.game_over_path)
         Episode.nextEpisode = NewEpisode(episodePath)
         Episode:begin();
-        
+
         return false
     end
 

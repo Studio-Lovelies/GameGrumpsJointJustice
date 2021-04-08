@@ -358,7 +358,7 @@ function NewIssuePenaltyEvent(scene)
             table.remove(scene.stack, 1)
             scene.currentEventIndex = scene.currentEventIndex + 1
         end
-        
+
         return false
     end
 
@@ -383,7 +383,7 @@ function NewStartPenaltyAnimationEvent(scene, event)
             self.removedPenalty = true
             scene.penalties = scene.penalties - 1
         end
-            
+
         self.timer = self.timer + dt
 
         if self.timer > self.animIndex * 0.1 then
@@ -614,29 +614,6 @@ function NewPanEvent(from, to)
         scene:drawBackgroundTopLayer("COURT_PROSECUTION", courtPanSprite:getWidth() - GraphicsWidth -1*self.x, 0)
         scene:drawCharacterAt("COURT_WITNESS", courtPanSprite:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
         scene:drawBackgroundTopLayer("COURT_WITNESS", courtPanSprite:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
-    end
-
-    return self
-end
-
-function NewBigImageEvent(sprite)
-    local self = {}
-    self.sprite = sprite
-
-    self.update = function(self, scene, dt)
-        scene.bigimage = self.sprite
-        return false
-    end
-
-    return self
-end
-
-function NewStopBigImageEvent()
-    local self = {}
-
-    self.update = function(self, scene, dt)
-        scene.bigimage = nil
-        return false
     end
 
     return self

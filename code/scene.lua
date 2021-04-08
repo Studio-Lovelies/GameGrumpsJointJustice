@@ -116,7 +116,7 @@ function NewScene(scriptPath)
                             if screenConfig.displayed then
                                 currentDisplayedScreen = screenName
                             end
-                    
+
                             if screenConfig.displayKey and key == screenConfig.displayKey and
                                 (screenConfig.displayCondition == nil or screenConfig.displayCondition()) then
                                 if screenName == currentDisplayedScreen then
@@ -127,9 +127,9 @@ function NewScene(scriptPath)
                             elseif screenConfig.displayed and screenConfig.onKeyPressed then
                                 screenConfig.onKeyPressed(key)
                             end
-                    
+
                         end
-                    
+
                         if nextScreenToDisplay and currentDisplayedScreen == nil then
                             nextScreenToDisplay.displayed = true
                             if nextScreenToDisplay.onDisplay then
@@ -226,7 +226,7 @@ function NewScene(scriptPath)
         love.graphics.setColor(1, 1, 1)
 
         -- draw the background of the current location
-        
+
         local background = Backgrounds[self.location]
 
         if self.closeUp then
@@ -238,7 +238,7 @@ function NewScene(scriptPath)
             x = camerapan[1]
             y = camerapan[2]
 
-            if self.closeUp then  
+            if self.closeUp then
                 if self.backgroundCloseUpIndex > 8 then
                     self.backgroundCloseUpIndex = 1
                 end
