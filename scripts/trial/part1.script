@@ -236,6 +236,7 @@ SPEAK "Tutorial Boy"
 
 SPEAK "Tutorial Boy"
     "As I was saying..."
+POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
     "The missing dinos, while quickly found, put a big delay on setting up for the power hour."
 SPEAK "Tutorial Boy"
@@ -295,6 +296,8 @@ PAN COURT_WITNESS COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "Witness, state y-"
 
+
+STOP_MUSIC
 SCREEN_SHAKE
 SFX supershock
 POSE Jory Sweaty
@@ -322,6 +325,7 @@ JUMPCUT COURT_DEFENSE
 THINK Arin
     "(This is gonna be rough, I can already tell...)
 
+PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT
 PAN COURT_WITNESS COURT_PROSECUTION
 SFX damage1
 ANIMATION "Tutorial Boy" HeadSlam
@@ -332,6 +336,8 @@ SPEAK_FROM COURT_PROSECUTION
 
 JUMPCUT COURT_WITNESS
 POSE Jory Sweaty
+SFX shoomp
+SCREEN_SHAKE
 SPEAK Jory
     "AHHH!"
 
@@ -354,6 +360,7 @@ SPEAK_FROM COURT_WITNESS
 PAN COURT_WITNESS COURT_PROSECUTION
 SPEAK_FROM COURT_PROSECUTION
     "So you ADMIT that you jumped on the opportunity to be the one to do the grunt work for the Grumps?"
+POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "How suspicious! Surely there were other, less busy people who could have gotten it, but you didn't hesitate!"
 
@@ -378,6 +385,7 @@ THINK_FROM COURT_DEFENSE
 
 SPEAK_FROM COURT_PROSECUTION
     "Suspicious behavior indeed!"
+POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
     "Especially since, according to the livestream recording here, you were#busy cleaning your Good Boy Coins."
 SPEAK "Tutorial Boy"
@@ -393,6 +401,7 @@ SPEAK Dan
 DEFINE PlayerObjects
     SHOUT Arin objection
     JUMPCUT COURT_DEFENSE
+    SET_SYNC TRUE
     ANIMATION Arin DeskSlam
     SFX deskslam
     POSE Arin DeskSlam

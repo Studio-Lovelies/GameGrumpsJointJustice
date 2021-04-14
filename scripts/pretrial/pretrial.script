@@ -93,9 +93,11 @@ THINK Arin
 THINK Arin
     "(Dan and I were discussing some very important matters...)"
 
-PLAY_MUSIC DLFTS
+
 
 CHARACTER_LOCATION Dan LOBBY
+SET_SYNC TRUE
+PLAY_MUSIC DLFTS
 FADE_IN 1 LOBBY
 POSE Dan Normal
 SPEAK Dan
@@ -191,7 +193,8 @@ SPEAK Arin
    "Hell yeah, dude. Let me just grab the %1backup Switch%0 we borrowed so we can put it back where Jory got it."
 
 SFX evidenceding
-COURT_RECORD_ADD_ANIMATION EVIDENCE Switch "Nintendo Switch"
+COURT_RECORD_ADD_ANIMATION EVIDENCE Switch "Switch"
+SFX evidenceshoop
 
 POSE Dan Normal
 SPEAK Dan
@@ -234,7 +237,7 @@ SPEAK Jory
 POSE Jory Sweaty
 
 SCREEN_SHAKE
-SFX Damage1
+SFX stab
 SET_SYNC TRUE
 ANIMATION Dan Shocked
 POSE Dan Surprised
@@ -251,14 +254,14 @@ SPEAK Arin
 
 CHARACTER_LOCATION Dan LOBBY
 SCREEN_SHAKE
-SFX Damage1
+SFX damage2
 POSE Dan Angry
 SPEAK Dan
     "ARIN!"
 SPEAK Arin
     "What? It's a legitimate question!"
 SPEAK Dan
-    "Obviously he didn't do it, look at his face!#Is that the face of someone who is guilty?"
+    "Obviously he didn't do it, look at his face!#Is that the face of someone who's guilty?"
 
 CHARACTER_LOCATION Jory LOBBY
 POSE Jory ThumbsUp
@@ -269,6 +272,7 @@ WAIT 1
 SPEAK Arin
     "Yes...?"
 
+SCREEN_SHAKE
 SFX Stab
 CHARACTER_LOCATION Dan LOBBY
 SPEAK Dan
@@ -301,11 +305,11 @@ CHARACTER_LOCATION Jory LOBBY
 
 SCREEN_SHAKE
 SCREEN_SHAKE
-SFX Damage1
+SFX dramapound
 SPEAK Arin
     "Whaaaat?!"
 
-WAIT 1
+WAIT 0.5
 POSE Jory Normal
 SPEAK Jory
     "Well, I guess so."
@@ -325,6 +329,9 @@ SPEAK Dan
 
 CHARACTER_LOCATION Jory LOBBY
 POSE Jory Nervous
+
+SPEAK Arin
+    "..."
 SPEAK Arin
     "I'm sorry, Jory, but we don't know anything about criminal defense!"
 SPEAK Arin
@@ -341,9 +348,10 @@ SPEAK Dan
 SPEAK Dan
     "We're not lawyers."
 
-POSE Dan Normal
+POSE Dan Sad
 SPEAK Dan
     "The closest thing we've been to being lawyers is playing that Penix Wright(tm)#game."
+POSE Dan Normal
 SPEAK Dan
     "And that's just a stupid game that totally exists and isn't changed for copyright purposes!"
 
@@ -354,7 +362,7 @@ CHARACTER_LOCATION Jory LOBBY
 SPEAK Jory
     "Yeah, I understand guys."
 
-SFX Pageturn
+SFX pageturn
 WAIT 1
 SFX realization
 POSE Jory Normal
