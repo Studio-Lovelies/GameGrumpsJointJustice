@@ -64,6 +64,11 @@ SPEAK Dan
 
 SPEAK Arin
     "EXACTLY!"
+POSE Dan SideLaugh
+SPEAK Dan
+    "hahahahaha!"
+
+wait 1
 
 SFX dooropens
 
