@@ -256,19 +256,24 @@ function LoadScript(scene, scriptPath)
                     AddToStack(stack, NewStopShowingEvent(scene), lineParts)
                 end
                 if lineParts[1] == "BIGIMAGE" then
-                    AddToStack(stack, NewBigImageEvent(lineParts[2]), lineParts)
+                    if lineParts[3] ~= nil then
+                        AddToStack(stack, NewBigImageEvent(lineParts[2], lineParts[3]), lineParts)
+                    else
+                        AddToStack(stack, NewBigImageEvent(lineParts[2]), lineParts)
+                    end
                 end
                 if lineParts[1] == "STOP_BIGIMAGE" then
                     AddToStack(stack, NewStopBigImageEvent(), lineParts)
-                end
-                if lineParts[1] == "TIMED_IMAGE" then
-                    AddToStack(stack, NewTimedImageEvent(lineParts[2]), lineParts)
                 end
                 if lineParts[1] == "PRESENT" then
                     AddToStack(stack, NewPresentEvent(lineParts[2], lineParts[3]), lineParts)
                 end
                 if lineParts[1] == "FADE_TO_BLACK" then
-                    AddToStack(stack, NewFadeToBlackEvent(), lineParts)
+                    if lineParts[2] ~= nil and lineParts[2] == false then
+                        AddToStack(stack, NewFadeToBlackEvent(true), lineParts)
+                    else
+                        AddToStack(stack, NewFadeToBlackEvent(false), lineParts)
+                    end
                     AddToStack(stack, NewCutToEvent("BLACK_SCREEN"), lineParts)
                 end
                 if lineParts[1] == "FADE_TO_WHITE" then

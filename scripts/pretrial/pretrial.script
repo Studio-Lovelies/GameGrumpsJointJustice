@@ -45,7 +45,7 @@ PANIMAGE 0 -204 0 0
 SPEAK Ross
     "...We'll see who the real good boy is now, won't we Jory?"
 
-FADE_TO_BLACK
+FADE_TO_BLACK false
 FADE_IN 1 ROSS_WITH_DINOS
 
 SPEAK Ross
@@ -53,28 +53,23 @@ SPEAK Ross
 
 SET_SYNC TRUE
 PANIMAGE 0 0 -250 0
+
 SPEAK Ross
     "Soon, I'll have all the coins!"
 
 
-BIGIMAGE WHITE
-WAIT 0.33
-SET_SYNC TRUE
-BIGIMAGE ROSS1
-WAIT 0.33
-SET_SYNC TRUE
-BIGIMAGE WHITE
-WAIT 0.33
-SET_SYNC TRUE
-BIGIMAGE ROSS2
-WAIT 0.33
-SET_SYNC TRUE
-BIGIMAGE WHITE
-WAIT 0.33
-SET_SYNC TRUE
-BIGIMAGE ROSS3
-WAIT 0.33
- 
+BIGIMAGE WHITE 1
+WAIT 0.1
+BIGIMAGE ROSS1 1
+WAIT 0.45
+BIGIMAGE WHITE 1
+WAIT 0.1
+BIGIMAGE ROSS2 1
+WAIT 0.45
+BIGIMAGE WHITE 1
+WAIT 0.1
+BIGIMAGE ROSS3 1
+
 
 SPEAK Ross
     "Now this is a galaxy-brain move right here!"
@@ -84,6 +79,7 @@ FADE_TO_BLACK
 SFX fart
 SET_SYNC TRUE
 STOP_BIGIMAGE
+FADE_MUSIC
 WAIT 2
 
 CAMERA 0 0
@@ -170,7 +166,7 @@ SFX evidenceshoop
 POSE Dan Normal
 SFX realization
 SPEAK Dan
-    "So, what ARE we doing for the Power Hour?" 
+    "So, what ARE we doing for the Power Hour?"
 SPEAK Arin
     "Well, remember the dunking pool the second night of your graduation party?"
 SPEAK Dan
@@ -178,7 +174,7 @@ SPEAK Dan
 
 SFX lightbulb
 POSE Dan Surprised
-SPEAK Dan 
+SPEAK Dan
     "You don't mean...?"
 SPEAK Arin
     "Yeah, dude! We're going to give people a glimpse into what it means to be a Ninja Sex Party Dude(tm)!"
@@ -252,7 +248,7 @@ POSE Jory Sweaty
 
 SPEAK Arin
     "Did you take them?"
-    
+
 CHARACTER_LOCATION Dan LOBBY
 SCREEN_SHAKE
 SFX Damage1
@@ -454,7 +450,7 @@ SPEAK Arin
     "Wait, there's one more thing."
 SPEAK Arin GREEN
     "$qP.P.S. I hope you two have been continuing to provide my boy with #wholesome food as well.$q"
-SPEAK Arin 
+SPEAK Arin
     "%2$qAnd I hope you've been avoiding giving him %0%1milk%0%2 as he's %0%1deathly allergic%0%2 to it.$q"
 SPEAK Arin
     "Well that was oddly specific."
@@ -476,7 +472,7 @@ SPEAK Arin
 CHARACTER_LOCATION Dan LOBBY
 SPEAK Dan
     "...#So...?"
-    
+
 POSE Jory Normal
 SPEAK Arin
     "Jory, don't worry. We're on it buddy, because we trust you!"

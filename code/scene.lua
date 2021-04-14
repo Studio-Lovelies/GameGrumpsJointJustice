@@ -10,6 +10,7 @@ function NewScene(scriptPath)
     self.flags = {}
     self.showing = nil
     self.bigimage = nil
+    self.bigimageScale = nil
     self.closeUp = false
     self.backgroundCloseUpX = {0, -320, -640, -960, -1280, -1600, -1920, -2240}
     self.backgroundCloseUpIndex = 1
@@ -21,10 +22,6 @@ function NewScene(scriptPath)
 
     self.credits = nil
     self.creditLines = {}
-    self.timerStarted = false
-    self.konamiTimer = 2
-    self.sequence = {}
-    self.konamiEntered = false
 
     self.penalties = 5
     self.textHidden = false
@@ -101,66 +98,6 @@ function NewScene(scriptPath)
         self.index = self.index + 0.2
         if self.index > 4 then
             self.index = 1
-        end
-
-        if not self.konamiEntered then
-            if self.credits ~= nil and self.creditLines ~= {} then
-                function love.keypressed(key)
-                    if key == "escape" or key == "end" then
-                        local currentDisplayedScreen
-                        local nextScreenToDisplay
-                        for screenName, screenConfig in pairs(screens) do
-                            -- See if another screen is currently showing so we know whether
-                            -- or other screens can be displayed
-                            -- TODO: Is there a case where screens need to stack?
-                            if screenConfig.displayed then
-                                currentDisplayedScreen = screenName
-                            end
-
-                            if screenConfig.displayKey and key == screenConfig.displayKey and
-                                (screenConfig.displayCondition == nil or screenConfig.displayCondition()) then
-                                if screenName == currentDisplayedScreen then
-                                    screenConfig.displayed = false
-                                else
-                                    nextScreenToDisplay = screenConfig
-                                end
-                            elseif screenConfig.displayed and screenConfig.onKeyPressed then
-                                screenConfig.onKeyPressed(key)
-                            end
-
-                        end
-
-                        if nextScreenToDisplay and currentDisplayedScreen == nil then
-                            nextScreenToDisplay.displayed = true
-                            if nextScreenToDisplay.onDisplay then
-                                nextScreenToDisplay.onDisplay()
-                            end
-                        end
-                    else
-                        startKonamiTimer(self)
-                        table.insert(self.sequence, key)
-                        if checkKonami(self.sequence) then
-                            self.konamiEntered = true
-                            for i,v in pairs(Music) do
-                                if i == "WHATISLOVE8BIT" then
-                                    v:setVolume(MasterVolume/100)
-                                    v:play()
-                                else
-                                    v:stop()
-                                end
-                            end
-                            love.event.clear()
-                        end
-                    end
-                end
-            end
-        end
-
-        if self.timerStarted then
-            self.konamiTimer = self.konamiTimer - dt*2
-            if self.konamiTimer <= 0 then
-                self.konamiTimer = 2
-            end
         end
     end
 
@@ -280,6 +217,18 @@ function NewScene(scriptPath)
             end
         end
 
+        if self.bigimage ~= nil then
+            love.graphics.setColor(1, 1, 1)
+            if Sprites[self.bigimage:gsub(" ", "")] == nil then
+                love.graphics.draw(Sprites["MissingTexture"], 16, 16)
+            else
+                if self.bigimageScale == nil then
+                    self.bigimageScale = dimensions.background_scale
+                end
+                love.graphics.draw(Sprites[self.bigimage], 0, 0, 0, self.bigimageScale, self.bigimageScale)
+            end
+        end
+
         -- draw the textbox
         if not self.textHidden then
             if self.textTalker ~= nil and self.textTalker ~= "" and self.textTalker ~= "???" then
@@ -308,15 +257,6 @@ function NewScene(scriptPath)
                     elseif self.showing[2]:lower() == "right" or self.showing[2]:lower() == "r" then
                         love.graphics.draw(Sprites[self.showing[1]], 234, 24)
                     end
-                end
-            end
-
-            if self.bigimage ~= nil then
-                love.graphics.setColor(1, 1, 1)
-                if Sprites[self.bigimage:gsub(" ", "")] == nil then
-                    love.graphics.draw(Sprites["MissingTexture"], 16, 16)
-                else
-                    love.graphics.draw(Sprites[self.bigimage], 0, 0, 0, dimensions.background_scale, dimensions.background_scale)
                 end
             end
 
@@ -551,7 +491,7 @@ function NewScene(scriptPath)
 
         for i,v in pairs(Music) do
             if i == "AKISSFROMAROSE" then
-                v:setVolume(MasterVolume/100)
+                v:setVolume(MusicVolume/100)
                 v:play()
             else
                 v:stop()
@@ -570,27 +510,4 @@ function NewScene(scriptPath)
     end
 
     return self
-end
-
-function checkKonami(sequence)
-    local equals = true
-    local konamiSequence = {"up", "up", "down", "down", "left", "right", "left", "right", "b", "a"}
-
-    for i=1, #konamiSequence do
-        if konamiSequence[i] ~= sequence[i] then
-            equals = false
-            break
-        end
-    end
-
-    return equals
-end
-
-function startKonamiTimer(scene)
-    scene.timerStarted = true
-
-    if scene.konamiTimer <= 0 then
-        scene.timerStarted = false
-        scene.sequence = {}
-    end
 end

@@ -855,10 +855,11 @@ function NewSceneEndEvent()
     return self
 end
 
-function NewFadeToBlackEvent()
+function NewFadeToBlackEvent(fadeMusic)
     local self = {}
     self.timer = 0
     self.musicTimer = MusicVolume/100
+    self.fadeMusic = fadeMusic
 
     self.update = function(self, scene, dt)
         scene.textHidden = true
@@ -870,7 +871,9 @@ function NewFadeToBlackEvent()
         self.musicTimer = self.musicTimer - (dt / (1 / (MusicVolume/100)))
 
         for i,v in pairs(Music) do
-            v:setVolume(self.musicTimer)
+            if self.fadeMusic then
+                v:setVolume(self.musicTimer)
+            end
         end
 
         return self.timer <= 1 and lastTimer <= 1
@@ -956,12 +959,16 @@ function NewCrossFadeEvent(scene1, scene2)
     return self
 end
 
-function NewBigImageEvent(sprite)
+function NewBigImageEvent(sprite, scale)
     local self = {}
     self.sprite = sprite
+    self.scale = scale
 
     self.update = function(self, scene, dt)
         scene.bigimage = self.sprite
+        if self.scale ~= nil then
+            scene.bigimageScale = self.scale
+        end
         return false
     end
 
