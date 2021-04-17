@@ -1018,7 +1018,7 @@ SPEAK "Judge Brent"
 
 PRESENT PROFILE Ross
 
-SHOUT takethat
+SHOUT Arin takethat
 
 JUMPCUT COURT_DEFENSE
 POSE Arin DeskSlam
