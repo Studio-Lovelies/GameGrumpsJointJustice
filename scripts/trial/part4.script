@@ -183,7 +183,7 @@ DEFINE CrossExamFail
 END_DEFINE
 
 DEFINE PressC1
-    SHOUT Arin HoldIt
+    SHOUT Arin holdit
     PAN COURT_WITNESS COURT_DEFENSE
     POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
@@ -206,7 +206,7 @@ DEFINE PressC1
     SPEAK_FROM COURT_ASSISTANT
         "Yeah... I dunno. I'm not sure if I'm buying all this."
 
-    SHOUT "Tutorial Boy" Objection
+    SHOUT "Tutorial Boy" objection
     JUMPCUT COURT_PROSECUTION
     POSE "Tutorial Boy" Angry
     SPEAK "Tutorial Boy"
@@ -223,7 +223,7 @@ DEFINE PressC1
 END_DEFINE
 
 DEFINE PressC2
-    SHOUT Arin HoldIt
+    SHOUT Arin holdit
     PAN COURT_WITNESS COURT_DEFENSE
     POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
@@ -258,7 +258,7 @@ DEFINE PressC2
 END_DEFINE
 
 DEFINE PressC3
-    SHOUT Arin HoldIt
+    SHOUT Arin holdit
     PAN COURT_WITNESS COURT_DEFENSE
     POSE Arin Point
     SPEAK_FROM COURT_DEFENSE
@@ -291,7 +291,7 @@ DEFINE PressC3
 END_DEFINE
 
 DEFINE PressC4
-    SHOUT Arin HoldIt
+    SHOUT Arin holdit
     STOP_MUSIC
     POSE Arin Point
     PAN COURT_WITNESS COURT_DEFENSE
@@ -368,7 +368,7 @@ DEFINE PressC4
 END_DEFINE
 
 DEFINE PressC5
-    SHOUT Arin HoldIt
+    SHOUT Arin holdit
     POSE Arin Point
     PAN COURT_WITNESS COURT_DEFENSE
     POSE Arin Normal
@@ -401,7 +401,7 @@ DEFINE PressC5
 END_DEFINE
 
 DEFINE PressC6
-    SHOUT Arin HoldIt
+    SHOUT Arin holdit
     POSE Arin Point
     PAN COURT_WITNESS COURT_DEFENSE
     POSE Arin Normal
@@ -469,7 +469,7 @@ SPEAK_FROM COURT_DEFENSE
 
 PRESENT EVIDENCE Switch
 
-SHOUT Arin TakeThat
+SHOUT Arin takethat
 SHOW Switch r
 
 SPEAK_FROM COURT_PROSECUTION
@@ -611,7 +611,7 @@ POSE Arin Point
 SPEAK Arin
     "I'm the one who's winning this case!"
 
-SHOUT "Tutorial Boy" Objection
+SHOUT "Tutorial Boy" objection
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
@@ -942,7 +942,7 @@ POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Under these circumstances I cannot refute what the prosecution says. Objection sustained."
 
-SHOUT Arin Objection
+SHOUT Arin objection
 
 JUMPCUT COURT_DEFENSE
 POSE Arin Point
