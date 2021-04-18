@@ -122,7 +122,7 @@ function love.keypressed(key)
 end
 
 function love.draw()
-    
+
     love.graphics.setColor(unpack(colors.white))
     love.graphics.setCanvas(Renderable)
     love.graphics.clear(unpack(colors.black))
@@ -165,7 +165,7 @@ function love.draw()
         love.graphics.setColor(0, 0, 0)
         love.graphics.rectangle("fill", 0, 0, dimensions.window_width, dimensions.window_height)
         love.graphics.setColor(1, 1, 1, logoOpacity)
-        logo = love.graphics.newImage("studioloveliesbig.png")
-        love.graphics.draw(logo, dimensions.window_width/2 - logo:getWidth()/2, dimensions.window_height/2 - logo:getHeight()/2)
+        logo = love.graphics.newImage("studioloveliesfinal.png")
+        love.graphics.draw(logo, dimensions.window_width/2 - logo:getWidth()/5.71, dimensions.window_height/2 - logo:getHeight()/5.71, 0, 0.35, 0.35)
     end
 end
