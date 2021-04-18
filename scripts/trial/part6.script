@@ -558,6 +558,8 @@ SPEAK Arin
 
 PRESENT EVIDENCE JorySr'sLetter
 
+SHOUT Arin takethat
+
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"

@@ -325,7 +325,7 @@ SPEAK "Judge Brent"
     "Hmm... That does seem like a reach."
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "There were a lot of people in the area at the time.#Someone must have seen where the dinos were found in the backpack."
+    "There were a lot of people in the area at the time.Someone must have seen #where the dinos were found in the backpack."
 
 SPEAK_FROM COURT_PROSECUTION
     "Well, why don't we ask them?"
@@ -427,7 +427,7 @@ POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Alright, I'll accept this."
 SPEAK "Judge Brent"
-    "Arin, you may cross examine the witness now."
+    "Arin, you may cross-examine the witness now."
 
 POSE Dan Fist
 SPEAK_FROM COURT_ASSISTANT
