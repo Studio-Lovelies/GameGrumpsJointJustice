@@ -121,7 +121,7 @@ POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
     "If it's not jizz, then what is it? And what does that have to do with this case?"
 
-POSE Dan SideLean 
+POSE Dan SideLean
 SPEAK_FROM COURT_ASSISTANT
     "I think I know what it is, and if I can have those dinosaurs..."
 
@@ -178,7 +178,7 @@ DEFINE Smell
     POSE Arin Confident
     SPEAK Arin
         "...so we can find out what's really covering them!"
-    
+
     SFX stab
     JUMPCUT COURT_WITNESS
     ANIMATION Ross DamageNoHelm
@@ -557,6 +557,8 @@ SPEAK Arin
     "As if! I have proof of his condition RIGHT HERE!"
 
 PRESENT EVIDENCE JorySr'sLetter
+
+//SHOUT Arin takethat
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
