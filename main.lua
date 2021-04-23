@@ -12,7 +12,7 @@ local drawLogo = true
 local logoTimer = 0
 
 
-function love.load(arg)
+function love.load()
     InitGlobalConfigVariables()
     love.window.setFullscreen(true, "desktop")
     dimensions.window_width = love.graphics.getWidth()
@@ -27,44 +27,14 @@ function love.load(arg)
     LoadAssets()
     Episode = NewEpisode(settings.episode_path)
 
-    local arguments = {}
-    local argIndex = 1
-    -- First pass through the arguments to see what we're requesting
-    while argIndex <= #arg do
-        if arg[argIndex] == "debug" then
-            arguments.debug = true
-            argIndex = argIndex + 1
-        else
-            arguments[arg[argIndex]] = arg[argIndex + 1]
-            argIndex = argIndex + 2
-        end
-    end
+    -- Select the first scene in the loaded episode
+    CurrentScene = NewScene(Episode.scenes[1])
 
-    -- Initialize the game based on our arguments
-    if arguments.debug then
-        controls.debug = arguments.debug
-    end
-
-    if arguments.script ~= nil then
-        CurrentScene = NewScene(arguments.script)
-        CurrentScene:update(0)
-    else
-        -- Select the first scene in the loaded episode
-        CurrentScene = NewScene(Episode.scenes[1])
-    end
-
-    if arguments.skip ~= nil then
-        for i=1, tonumber(arguments.skip) do
-            table.remove(CurrentScene.stack, 1)
-            CurrentScene.currentEventIndex = CurrentScene.currentEventIndex + 1
-        end
-    elseif arguments.script == nil then
-        -- Title screen will take the player to the next scene on keypress
-        screens.title.displayed = true
-        -- This normally is triggered on keypress, but since we're showing
-        -- the title manually, call this manually too
-        screens.title.onDisplay()
-    end
+    -- Title screen will take the player to the next scene on keypress
+    screens.title.displayed = true
+    -- This normally is triggered on keypress, but since we're showing
+    -- the title manually, call this manually too
+    screens.title.onDisplay()
 end
 
 -- love.update and love.draw get called 60 times per second
@@ -153,12 +123,6 @@ function love.draw()
         if screenConfig.displayed then
             screenConfig.draw()
         end
-    end
-
-    if controls.debug then
-        love.graphics.setColor(unpack(colors.red))
-        love.graphics.print(tostring(love.timer.getFPS( )), 10, 10)
-        love.graphics.setColor(unpack(colors.white))
     end
 
     if drawLogo then

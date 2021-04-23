@@ -109,9 +109,7 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
         local scrollSpeed = TextScrollSpeed
         local currentChar = string.sub(self.text, math.floor(self.textScroll), math.floor(self.textScroll))
 
-        if controls.debug then
-            scrollSpeed = scrollSpeed
-        elseif love.keyboard.isDown("x") then
+        if love.keyboard.isDown("x") then
             if startTimer(self, dt) >= 0.6 then
                 scrollSpeed = scrollSpeed*8
             end
@@ -230,9 +228,7 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
         local scrollSpeed = TextScrollSpeed
         local currentChar = string.sub(self.text, math.floor(self.textScroll), math.floor(self.textScroll))
 
-        if controls.debug then
-            scrollSpeed = scrollSpeed
-        elseif love.keyboard.isDown("x") then
+        if love.keyboard.isDown("x") then
             if startTimer(self, dt) >= 0.6 then
                 scrollSpeed = scrollSpeed*8
             end

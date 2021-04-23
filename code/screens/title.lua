@@ -90,7 +90,7 @@ function DrawTitleScreen()
         3
     )
 
-    local scenesText = love.graphics.newText(GameFont, "Case Select")--"Settings")
+    local scenesText = love.graphics.newText(GameFont, "Settings")
     love.graphics.draw(
         scenesText,
         scenesX + scenesW/2 - loadGameText:getWidth() * 3/2 - 10,
@@ -113,7 +113,7 @@ end
 
 titleSelections = {}
 titleSelections[0] = "New Game";
-titleSelections[1] = "Case Select";
+titleSelections[1] = "Settings";
 titleSelections[2] = "Load Game";
 TitleSelection = "New Game";
 SelectionIndex = 0;
@@ -127,14 +127,12 @@ TitleScreenConfig = {
     onKeyPressed = function(key)
         if key == controls.start_button then
             love.graphics.clear(0,0,0);
-            if TitleSelection == "Case Select" then
+            if TitleSelection == "Settings" then
                 blip2:stop()
                 blip2:play()
-                screens.browsescenes.displayed = true;
-                DrawBrowseScreen();
+                screens.options.displayed = true;
+                DrawOptionsScreen()
                 screens.title.displayed = false;
-                --[[screens.options.displayed = true
-                DrawOptionsScreen()]]
                 SelectionIndex = 0;
             elseif TitleSelection == "Load Game" then
                 blip2:stop()
@@ -164,10 +162,8 @@ TitleScreenConfig = {
         end
     end;
     onDisplay = function()
-        screens.browsescenes.displayed = false
         screens.pause.displayed = false
         screens.courtRecords.displayed = false
-        screens.jorytrial.displayed = false
         screens.options.displayed = false
         screens.title.displayed = true
         screens.volume.displayed = false

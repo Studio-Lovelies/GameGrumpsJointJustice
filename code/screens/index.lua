@@ -40,8 +40,6 @@
 require "code/screens/title"
 require "code/screens/pause"
 require "code/screens/courtrecords"
-require "code/screens/browsescenes"
-require "code/screens/jorytrial"
 require "code/screens/options"
 require "code/screens/volume"
 
@@ -49,8 +47,6 @@ screens = {
     title = TitleScreenConfig,
     pause = PauseScreenConfig,
     courtRecords = CourtRecordsConfig,
-    browsescenes = BrowseScreenConfig,
-    jorytrial = JoryTrialConfig,
     options = OptionsConfig,
     volume = VolumeConfig
 }

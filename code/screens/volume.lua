@@ -22,7 +22,7 @@ function DrawVolumeScreen()
     local sfxVolumeX = (dimensions.window_width/2 - sfxVolumeW/2)
     local sfxVolumeY = blackImage:getHeight()*blackImageScale - 370
     local sfxVolumeH = 60
-    
+
     local speechVolumeW = (dimensions.window_width * 1/3.75 + (love.graphics.newText(GameFont, "Speech Volume ("..settings.speech_volume..")"):getWidth() / 4))
     local speechVolumeX = (dimensions.window_width/2 - speechVolumeW/2)
     local speechVolumeY = blackImage:getHeight()*blackImageScale - 260
@@ -49,12 +49,12 @@ function DrawVolumeScreen()
     love.graphics.rectangle("fill", musicVolumeX, musicVolumeY, musicVolumeW, musicVolumeH)
     love.graphics.setColor(0.25,0.41,0.88)
     love.graphics.rectangle("fill", musicVolumeX, musicVolumeY, (musicVolumeW / 100) * settings.music_volume, musicVolumeH)
-    
+
     love.graphics.setColor(0.3,0.3,0.3)
     love.graphics.rectangle("fill", sfxVolumeX, sfxVolumeY, sfxVolumeW, sfxVolumeH)
     love.graphics.setColor(0.25,0.41,0.88)
     love.graphics.rectangle("fill", sfxVolumeX, sfxVolumeY, (sfxVolumeW / 100) * settings.sfx_volume, sfxVolumeH)
-    
+
     love.graphics.setColor(0.3,0.3,0.3)
     love.graphics.rectangle("fill", speechVolumeX, speechVolumeY, speechVolumeW, speechVolumeH)
     love.graphics.setColor(0.25,0.41,0.88)
@@ -91,7 +91,7 @@ function DrawVolumeScreen()
         textScale,
         textScale
     )
-    
+
     local speechVolumeText = love.graphics.newText(GameFont, "Speech Volume ("..settings.speech_volume..")")
     love.graphics.draw(
         speechVolumeText,
@@ -237,10 +237,8 @@ VolumeConfig = {
     onKeyReleased = function(key)
     end;
     onDisplay = function()
-        screens.browsescenes.displayed = false
         screens.pause.displayed = false
         screens.courtRecords.displayed = false
-        screens.jorytrial.displayed = false
         screens.options.displayed = false
         screens.title.displayed = false
         screens.volume.displayed = true

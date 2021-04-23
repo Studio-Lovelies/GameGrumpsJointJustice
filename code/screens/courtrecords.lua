@@ -84,10 +84,8 @@ CourtRecordsConfig = {
         return true;
     end;
     onDisplay = function()
-        screens.browsescenes.displayed = false
         screens.pause.displayed = false
         screens.courtRecords.displayed = true
-        screens.jorytrial.displayed = false
         screens.options.displayed = false
         screens.title.displayed = false
         screens.volume.displayed = false

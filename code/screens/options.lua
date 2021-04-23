@@ -45,12 +45,6 @@ function DrawOptionsScreen()
     love.graphics.setColor(222, 0, 0)
     love.graphics.rectangle("fill", backX, backY, backW, backH)
 
-    if settings.debug then
-        love.graphics.setColor(0,1,0.25)
-    else
-        love.graphics.setColor(1,0,0)
-    end
-
     love.graphics.setColor(0.3,0.3,0.3)
     love.graphics.rectangle("fill", volumeX, volumeY, volumeW, volumeH)
 
@@ -146,18 +140,14 @@ OptionsConfig = {
             elseif TitleSelection == optionsSelections[2] then
                 blip2:stop()
                 blip2:play()
-                if optionsSelections[2] == "Windowed" then
+                if optionsSelections[2] == "Fullscreen" then
                     settings.displayModesIndex = settings.displayModesIndex + 1
-                    love.window.setFullscreen(true)
-                    optionsSelections[2] = "Fullscreen"
-                elseif optionsSelections[2] == "Fullscreen" then
-                    settings.displayModesIndex = settings.displayModesIndex + 1
-                    love.window.setFullscreen(true, "desktop")
-                    optionsSelections[2] = "Windowed-Fullscreen"
+                    love.window.setFullscreen(true);
+                    optionsSelections[2] = "Windowed-Fullscreen";
                 elseif optionsSelections[2] == "Windowed-Fullscreen" then
-                    settings.displayModesIndex = 1
-                    love.window.setFullscreen(false)
-                    optionsSelections[2] = "Windowed"
+                    settings.displayModesIndex = settings.displayModesIndex - 1;
+                    love.window.setFullscreen(true, "desktop")
+                    optionsSelections[2] = "Fullscreen";
                 end
                 TitleSelection = optionsSelections[2]
             end
@@ -182,10 +172,8 @@ OptionsConfig = {
     onKeyReleased = function(key)
     end;
     onDisplay = function()
-        screens.browsescenes.displayed = false
         screens.pause.displayed = false
         screens.courtRecords.displayed = false
-        screens.jorytrial.displayed = false
         screens.options.displayed = true
         screens.title.displayed = false
         screens.volume.displayed = false

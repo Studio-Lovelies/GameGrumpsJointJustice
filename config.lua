@@ -3,7 +3,7 @@ settings = {
         setting this to true speeds up the scrollSpeed without needing to hold down "lshift"
         this can also be set by running the startup command of `love . debug`
     ]]
-    debug = false; -- scriptevents.lua
+    debug = false;
 
     music_volume = 25;
     sfx_volume = 25;
@@ -11,8 +11,7 @@ settings = {
     text_scroll_speed = 30;
     displayModesIndex = 1;
     fullscreen_scale = 2;
-    windowed_scale = 1.326;
-    displayModes = {"Windowed", "Fullscreen", "Windowed-Fullscreen"};
+    displayModes = {"Fullscreen", "Windowed-Fullscreen"};
 
     background_directory = "backgrounds/";
     character_directory = "characters/";
