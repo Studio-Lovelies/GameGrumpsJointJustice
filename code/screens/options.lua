@@ -8,6 +8,7 @@ optionsSelections[2] = settings.displayModes[settings.displayModesIndex];
 function DrawOptionsScreen()
 
     love.graphics.clear(unpack(colors.black))
+    GameFont:setLineHeight(1)
 
     love.graphics.setColor(0, 0, 0, 100)
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
@@ -119,17 +120,20 @@ end
 
 OptionsConfig = {
     displayed = false;
-    lastDisplayed = nil;
     onKeyPressed = function(key)
         if key == controls.start_button then
             love.graphics.clear(0, 0, 0);
             if TitleSelection == "Back" then
                 blip2:stop()
                 blip2:play()
-                screens.title.displayed = true;
-                DrawTitleScreen();
-                screens.options.displayed = false;
-                SelectionIndex = 0;
+                if Episode.started then
+                    screens.options.displayed = false;
+                else
+                    screens.title.displayed = true;
+                    DrawTitleScreen()
+                    screens.options.displayed = false;
+                    SelectionIndex = 1;
+                end
             elseif TitleSelection == "Volume" then
                 blip2:stop()
                 blip2:play()

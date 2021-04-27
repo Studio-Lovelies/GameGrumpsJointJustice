@@ -5,6 +5,7 @@ function DrawTitleScreen()
 
     love.graphics.clear(unpack(colors.black))
 
+    love.graphics.setColor(1, 1, 1, 0.7)
     love.graphics.draw(
         background,
         backgroundScale*9,
@@ -13,6 +14,8 @@ function DrawTitleScreen()
         backgroundScale,
         backgroundScale
     )
+
+    love.graphics.setColor(1, 1, 1, 1)
 
     local logoImage = love.graphics.newImage(settings.main_logo_path)
     local logoScale = backgroundScale * 0.75
@@ -32,10 +35,10 @@ function DrawTitleScreen()
     local newY = logoImage:getHeight()*logoScale + 15
     local newH = 60
 
-    local scenesW = (dimensions.window_width * 1/3.8)
-    local scenesX = (dimensions.window_width * 3/6 - scenesW/2)
-    local scenesY = logoImage:getHeight()*logoScale + 15
-    local scenesH = 60
+    local settingsW = (dimensions.window_width * 1/3.8)
+    local settingsX = (dimensions.window_width * 3/6 - settingsW/2)
+    local settingsY = logoImage:getHeight()*logoScale + 15
+    local settingsH = 60
 
     local loadW = (dimensions.window_width * 1/3.75)
     local loadX = (dimensions.window_width * 5/6 - loadW/2)
@@ -52,7 +55,7 @@ function DrawTitleScreen()
     elseif TitleSelection == "Load Game" then
         love.graphics.rectangle("fill", loadX-dx, loadY-dy, loadW+2*dx, loadH+2*dy)
     else
-        love.graphics.rectangle("fill", scenesX-dx, scenesY-dy, scenesW+2*dx, scenesH+2*dy)
+        love.graphics.rectangle("fill", settingsX-dx, settingsY-dy, settingsW+2*dx, settingsH+2*dy)
     end
 
     -- draw New Game, Load Game, Browse Scenes, and text
@@ -64,7 +67,7 @@ function DrawTitleScreen()
 
 
     love.graphics.setColor(0.3,0.3,0.3) -- greyed out
-    love.graphics.rectangle("fill", scenesX, scenesY, scenesW, scenesH)
+    love.graphics.rectangle("fill", settingsX, settingsY, settingsW, settingsH)
 
     love.graphics.setColor(1,1,1)
 
@@ -90,11 +93,11 @@ function DrawTitleScreen()
         3
     )
 
-    local scenesText = love.graphics.newText(GameFont, "Settings")
+    local settingsText = love.graphics.newText(GameFont, "Settings")
     love.graphics.draw(
-        scenesText,
-        scenesX + scenesW/2 - loadGameText:getWidth() * 3/2 - 10,
-        scenesY + scenesH/2 - loadGameText:getHeight() * 3/2,
+        settingsText,
+        settingsX + settingsW/2 - loadGameText:getWidth() * 3/2 + 25,
+        settingsY + settingsH/2 - loadGameText:getHeight() * 3/2,
         0,
         3,
         3
@@ -140,7 +143,8 @@ TitleScreenConfig = {
                 love.event.push("quit")
             elseif TitleSelection == "New Game" then
                 jingle:play()
-                NewEpisode(settings.episode_path):begin()
+                Episode = NewEpisode(settings.episode_path);
+                Episode:begin();
                 screens.title.displayed = false;
             end
         elseif key == controls.press_right then

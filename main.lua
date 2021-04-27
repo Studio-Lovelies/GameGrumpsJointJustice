@@ -46,15 +46,19 @@ function love.update(dt)
     end
 
     if logoOpacity <= 0 then
-        if logoTimer >= 4 then
+        if logoTimer >= 8 then
             drawLogo = false
         else
             logoTimer = logoTimer + dt
         end
     else
-        logoOpacity = logoOpacity - dt/3
+        if logoTimer >= 3 then
+            logoOpacity = logoOpacity - 0.01
+        end
         logoTimer = logoTimer + dt
     end
+
+    --print(screens.options.lastDisplayed)
 
     Episode:update(dt)
 end
@@ -91,45 +95,46 @@ function love.keypressed(key)
     end
 end
 
+logo = love.graphics.newImage("studioloveliesfinal.png")
+
 function love.draw()
-
-    love.graphics.setColor(unpack(colors.white))
-    love.graphics.setCanvas(Renderable)
-    love.graphics.clear(unpack(colors.black))
-    CurrentScene:draw()
-    love.graphics.setCanvas()
-
-    local dx,dy = 0,0
-    if ScreenShake > 0 then
-        dx = love.math.random() * choose{1, -1} * 2
-        dy = love.math.random() * choose{1, -1} * 2
-    end
-
-    --dx = camerapan[1]
-    --dy = camerapan[2]
-
-    love.graphics.setColor(unpack(colors.white))
-
-    love.graphics.draw(
-        Renderable,
-        dx*love.graphics.getWidth()/GraphicsWidth,
-        dy*love.graphics.getHeight()/GraphicsHeight,
-        0,
-        love.graphics.getWidth()/GraphicsWidth,
-        love.graphics.getHeight()/GraphicsHeight
-    )
-
-    for screenName, screenConfig in pairs(screens) do
-        if screenConfig.displayed then
-            screenConfig.draw()
-        end
-    end
 
     if drawLogo then
         love.graphics.setColor(0, 0, 0)
         love.graphics.rectangle("fill", 0, 0, dimensions.window_width, dimensions.window_height)
         love.graphics.setColor(1, 1, 1, logoOpacity)
-        logo = love.graphics.newImage("studioloveliesfinal.png")
         love.graphics.draw(logo, dimensions.window_width/2 - logo:getWidth()/5.71, dimensions.window_height/2 - logo:getHeight()/5.71, 0, 0.35, 0.35)
+    else
+        love.graphics.setColor(unpack(colors.white))
+        love.graphics.setCanvas(Renderable)
+        love.graphics.clear(unpack(colors.black))
+        CurrentScene:draw()
+        love.graphics.setCanvas()
+
+        local dx,dy = 0,0
+        if ScreenShake > 0 then
+            dx = love.math.random() * choose{1, -1} * 2
+            dy = love.math.random() * choose{1, -1} * 2
+        end
+
+        --dx = camerapan[1]
+        --dy = camerapan[2]
+
+        love.graphics.setColor(unpack(colors.white))
+
+        love.graphics.draw(
+            Renderable,
+            dx*love.graphics.getWidth()/GraphicsWidth,
+            dy*love.graphics.getHeight()/GraphicsHeight,
+            0,
+            love.graphics.getWidth()/GraphicsWidth,
+            love.graphics.getHeight()/GraphicsHeight
+        )
+
+        for screenName, screenConfig in pairs(screens) do
+            if screenConfig.displayed then
+                screenConfig.draw()
+            end
+        end
     end
 end

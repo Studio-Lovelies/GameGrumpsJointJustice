@@ -1,6 +1,7 @@
 function NewEpisode(episodePath)
     local self = {
         loaded = false,
+        started = false,
         scenes = {},
         sceneIndex = 1,
         courtRecords = {
@@ -18,7 +19,7 @@ function NewEpisode(episodePath)
     self.update = function(self, dt)
         ScreenShake = math.max(ScreenShake - dt, 0)
         -- TODO: Decide if this applies to all screens that can be displayed
-        if screens.title.displayed == false and screens.options.displayed == false and screens.volume.displayed == false then
+        if screens.title.displayed == false and screens.options.displayed == false and screens.volume.displayed == false and screens.pause.displayed == false then
             CurrentScene:update(dt)
         end
     end
@@ -26,6 +27,7 @@ function NewEpisode(episodePath)
     self.begin = function()
         self.sceneIndex = 1
         self.nextScene()
+        self.started = true
     end
 
     self.stop = function()
@@ -35,7 +37,7 @@ function NewEpisode(episodePath)
         for i,v in pairs(Sounds) do
             v:stop()
         end
-        --self.loaded = false
+        self.started = false
         return false
     end
 

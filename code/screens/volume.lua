@@ -1,6 +1,7 @@
 function DrawVolumeScreen()
 
     love.graphics.clear(unpack(colors.black))
+    GameFont:setLineHeight(1)
 
     love.graphics.setColor(0, 0, 0, 100)
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
@@ -152,7 +153,8 @@ VolumeConfig = {
                 screens.options.displayed = true;
                 DrawOptionsScreen();
                 screens.volume.displayed = false;
-                SelectionIndex = 0;
+                SelectionIndex = 1;
+                TitleSelection = "Volume";
             end
         elseif key == controls.pause_nav_up then
             blip2:stop()
