@@ -48,7 +48,7 @@ function NewEpisode(episodePath)
             CurrentScene:update(0)
             DtReset = true
         else
-            if episodePath ~= settings.game_over_path and episodePath ~= settings.episode_path then
+            if episodePath ~= settings.game_over_path then
                 CurrentScene:startCredits(self.creditLines)
             else
                 Episode = self.nextEpisode

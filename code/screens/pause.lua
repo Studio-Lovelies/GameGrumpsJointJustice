@@ -20,11 +20,6 @@ function DrawPauseScreen(self)
         },
     })
 
-    -- Temporary text where the settings should go
-    local pauseHeader = love.graphics.newText(GameFont, "PAUSED")
-    love.graphics.setColor(unpack(colors.white))
-    love.graphics.draw(pauseHeader, WindowWidth/2 + pauseHeader:getWidth() * 5 , WindowHeight/4, 0, 2, 2)
-
     local resumeW = (dimensions.window_width * 1/3.75 + (love.graphics.newText(GameFont, "Resume"):getWidth() / 4))
     local resumeX = (dimensions.window_width/2 - resumeW/2)
     local resumeY = blackImage:getHeight()*blackImageScale - 480

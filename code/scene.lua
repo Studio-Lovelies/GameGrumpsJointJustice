@@ -490,7 +490,7 @@ function NewScene(scriptPath)
         end
 
         for i,v in pairs(Music) do
-            if i == "AKISSFROMAROSE" then
+            if i == "SHOWER" then
                 v:setVolume(MusicVolume/100)
                 v:play()
             else
