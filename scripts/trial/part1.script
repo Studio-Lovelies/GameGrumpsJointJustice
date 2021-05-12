@@ -76,8 +76,10 @@ SPEAK_FROM COURT_JUDGE
     "Yes, being the manager of Game Grumps is just my side hustle."
 SPEAK "Judge Brent"
     "My main job is presiding as judge over the Attitude City Courthouse."
+POSE "Judge Brent" Surprised
 SPEAK "Judge Brent"
     "After all, what is a judge if not a manager of the law?"
+POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "So I will preside over this case for you all today."
 
@@ -129,9 +131,11 @@ SPEAK "Tutorial Boy"
 POSE "Tutorial Boy" Angry
 SPEAK "Tutorial Boy"
     "I will BRING YOU ALL to JUSTICE, Grumps!"
-POSE "Tutorial Boy" Normal
+
 FADE_MUSIC
+
 PLAY_MUSIC TRIVIABOYTEST
+POSE "Tutorial Boy" Normal
 SPEAK "Tutorial Boy"
     "But first, I will regale you a tale about my tragic past.#One gruesome night in 1984, my d--"
 
@@ -142,6 +146,7 @@ SPEAK_FROM COURT_DEFENSE
     "Yeap, uh-huh, got it, tragic backstory tutorial blah blah blah. Can we get this show on the road?"
 
 JUMPCUT COURT_PROSECUTION
+POSE "Tutorial Boy" Angry
 SPEAK_FROM COURT_PROSECUTION
     "Don't you dare skip me! I'm the-"
 
@@ -289,6 +294,7 @@ SPEAK_FROM COURT_JUDGE
     "Keep your pants on. I make up the rules in this courthouse. I will allow the testifying of the defendant."
 
 FADE_TO_BLACK
+FADE_MUSIC
 FADE_IN 1 COURT_WITNESS
 PLAY_MUSIC LOGICANDTRAINS
 
@@ -654,6 +660,6 @@ SPEAK_FROM COURT_PROSECUTION
 COURT_RECORD_ADD PROFILE ross
 
 FADE_TO_BLACK
+FADE_MUSIC
 
-STOP_MUSIC
 END_SCENE

@@ -572,6 +572,8 @@ POSE Arin Point
 SPEAK Arin
     "...meaning only Ross himself could have them!"
 
+STOP_SHOWING
+
 SPEAK_FROM COURT_ASSISTANT
    "Wow, dude. How did you even know about that?"
 
@@ -889,14 +891,15 @@ SPEAK Ross
 
 
 PAN COURT_WITNESS COURT_DEFENSE
+SET_SYNC TRUE
 ANIMATION Arin DeskSlam
 SFX deskslam
 POSE Arin DeskSlam
 SPEAK Arin
     "The only one lying here is you, Ross!"
 
-SFX objectionclean
 SYNC_SET TRUE
+SFX objectionclean
 ANIMATION Arin Objection
 POSE Arin Point
 SPEAK Arin

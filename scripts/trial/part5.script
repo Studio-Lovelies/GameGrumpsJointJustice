@@ -669,7 +669,7 @@ WITNESS_EVENT CrossExamination Ross "-- Witness's Account --"
 //END CROSS EXAM//
 //////////////////
 
-FADE_IN 1 COURT_ASSISTANT
+
 JUMPCUT COURT_ASSISTANT
 SPEAK Dan
     "This isn't good, man. Isn't there something we can do?"
