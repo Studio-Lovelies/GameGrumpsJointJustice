@@ -70,7 +70,7 @@ WITNESS_EVENT WitnessTestimony Ross "-- Witness' Account --"
     "Now that I know they were stolen, that means the culprit must be Jory!"
 
 FADE_TO_BLACK
-
+FADE_MUSIC
 FADE_IN 1 COURT_JUDGE
 
 PLAY_MUSIC TRIAL_A_BOY_AND_HIS_BOAT

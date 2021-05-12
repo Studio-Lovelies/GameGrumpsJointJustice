@@ -185,7 +185,7 @@ function NewWitnessEvent(queue)
             and not inTitle then
                 screens.courtRecords.displayed = false
 
-                if Episode.courtRecords.evidence[CourtRecordIndex].name ~= self.queue[self.textIndex + 2] then
+                if Episode.courtRecords.evidence[CourtRecordIndexE].name ~= self.queue[self.textIndex + 2] then
                     table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
                 else
                     scene.drawPenalties = false

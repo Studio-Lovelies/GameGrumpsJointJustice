@@ -170,5 +170,5 @@ SPEAK_FROM COURT_JUDGE
     "Alright. The witness may begin his testimony."
 
 FADE_TO_BLACK
-
+FADE_MUSIC
 END_SCENE
