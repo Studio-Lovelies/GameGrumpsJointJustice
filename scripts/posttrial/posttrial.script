@@ -226,7 +226,7 @@ POSE Dan Normal
 SPEAK Dan 
     "Arin, you're a man after my own heart."
 
-POSE Dan SideLaugh
+POSE Dan Laugh
 
 FADE_TO_BLACK
 
