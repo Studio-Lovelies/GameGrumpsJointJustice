@@ -254,7 +254,7 @@ function NewPresentEvent(type, evidence)
         if screens.courtRecords.displayed then
             if not self.wasPressingConfirm and pressingConfirm then
                 if self.type == "EVIDENCE" then
-                    if Episode.courtRecords.evidence[CourtRecordIndex].externalName:gsub("%s+", ""):lower() == self.evidence:lower() then
+                    if Episode.courtRecords.evidence[CourtRecordIndexE].externalName:gsub("%s+", ""):lower() == self.evidence:lower() and Episode.courtRecords.evidence[CourtRecordIndexP].externalName:gsub("%s+", ""):lower() ~= self.evidence:lower() then
                         screens.courtRecords.displayed = false
                         scene.drawPenalties = false
                         return false
@@ -263,7 +263,7 @@ function NewPresentEvent(type, evidence)
                         table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
                     end
                 elseif self.type == "PROFILE" then
-                    if Episode.courtRecords.profiles[CourtRecordIndex].characterName:gsub("%s+", ""):lower() == self.evidence:gsub("%s+", ""):lower() then
+                    if Episode.courtRecords.profiles[CourtRecordIndexP].characterName:gsub("%s+", ""):lower() == self.evidence:lower() and Episode.courtRecords.profiles[CourtRecordIndexE].characterName:gsub("%s+", ""):lower() ~= self.evidence:lower() then
                         screens.courtRecords.displayed = false
                         scene.drawPenalties = false
                         return false

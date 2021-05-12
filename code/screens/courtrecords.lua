@@ -33,11 +33,11 @@ function DrawCourtRecords(ui)
             }
         )
 
-        if Episode.courtRecords.evidence[CourtRecordIndex] ~= nil then
+        if Episode.courtRecords.evidence[CourtRecordIndexE] ~= nil then
             bodySelected = {
-                image = Episode.courtRecords.evidence[CourtRecordIndex].sprite,
-                title = Episode.courtRecords.evidence[CourtRecordIndex].externalName,
-                details = Episode.courtRecords.evidence[CourtRecordIndex].info
+                image = Episode.courtRecords.evidence[CourtRecordIndexE].sprite,
+                title = Episode.courtRecords.evidence[CourtRecordIndexE].externalName,
+                details = Episode.courtRecords.evidence[CourtRecordIndexE].info
             }
         end
     else
@@ -55,11 +55,11 @@ function DrawCourtRecords(ui)
             }
         )
 
-        if Episode.courtRecords.profiles[CourtRecordIndex] ~= nil then
+        if Episode.courtRecords.profiles[CourtRecordIndexP] ~= nil then
             bodySelected = {
-                image = Episode.courtRecords.profiles[CourtRecordIndex].sprite,
-                title = Episode.courtRecords.profiles[CourtRecordIndex].characterName.." (Age: "..Episode.courtRecords.profiles[CourtRecordIndex].age..")",
-                details = Episode.courtRecords.profiles[CourtRecordIndex].info
+                image = Episode.courtRecords.profiles[CourtRecordIndexP].sprite,
+                title = Episode.courtRecords.profiles[CourtRecordIndexP].characterName.." (Age: "..Episode.courtRecords.profiles[CourtRecordIndexP].age..")",
+                details = Episode.courtRecords.profiles[CourtRecordIndexP].info
             }
         end
     end
@@ -76,6 +76,9 @@ function DrawCourtRecords(ui)
     })
 end
 
+bleep = love.audio.newSource("sounds/bleep.wav", "static")
+bleep:setVolume(settings.sfx_volume / 100 / 2)
+
 CourtRecordsConfig = {
     displayed = false;
     displayKey = controls.press_court_record;
@@ -89,31 +92,62 @@ CourtRecordsConfig = {
         screens.options.displayed = false
         screens.title.displayed = false
         screens.volume.displayed = false
-        CourtRecordIndex = 1
+        CourtRecordIndexE = 1
+        CourtRecordIndexP = 1
         menu_type = "evidence"
     end;
     onKeyPressed = function(key)
-        if CourtRecordIndex == nil then
-            CourtRecordIndex = 1
+        if CourtRecordIndexE == nil then
+            CourtRecordIndexE = 1
         end
-        if key == controls.press_left and CourtRecordIndex > 1 then
-            CourtRecordIndex = CourtRecordIndex - 1
-        elseif key == controls.press_right then
-            if menu_type == "evidence" and CourtRecordIndex < #Episode.courtRecords.evidence then
-                CourtRecordIndex = CourtRecordIndex + 1
-            elseif menu_type == "profiles" and CourtRecordIndex < #Episode.courtRecords.profiles then
-                CourtRecordIndex = CourtRecordIndex + 1
+        if CourtRecordIndexP == nil then
+            CourtRecordIndexP = 1
+        end
+        if menu_type == "evidence" then
+            if key == controls.press_left and CourtRecordIndexE > 1 then
+                bleep:stop()
+                bleep:play()
+                CourtRecordIndexE = CourtRecordIndexE - 1
+            elseif key == controls.press_right then
+                bleep:stop()
+                bleep:play()
+                if menu_type == "evidence" and CourtRecordIndexE < #Episode.courtRecords.evidence then
+                    CourtRecordIndexE = CourtRecordIndexE + 1
+                end
+            elseif key == controls.press_confirm then
+                -- TODO: Implement what happens when you confirm?
+            elseif key == controls.press_toggle_profiles then
+                CourtRecordIndexP = 1
+                if menu_type == "evidence" then
+                    -- Toggle on profiles UI
+                    menu_type = "profiles"
+                else
+                    -- Toggle off profiles UI
+                    menu_type = "evidence"
+                end
             end
-        elseif key == controls.press_confirm then
-            -- TODO: Implement what happens when you confirm?
-        elseif key == controls.press_toggle_profiles then
-            CourtRecordIndex = 1
-            if menu_type == "evidence" then
-                -- Toggle on profiles UI
-                menu_type = "profiles"
-            else
-                -- Toggle off profiles UI
-                menu_type = "evidence"
+        else
+            if key == controls.press_left and CourtRecordIndexP > 1 then
+                bleep:stop()
+                bleep:play()
+                CourtRecordIndexP = CourtRecordIndexP - 1
+            elseif key == controls.press_right then
+                bleep:stop()
+                bleep:play()
+                if menu_type == "profiles" and CourtRecordIndexP < #Episode.courtRecords.profiles then
+                    CourtRecordIndexP = CourtRecordIndexP + 1
+                end
+            elseif key == controls.press_confirm then
+                -- TODO: Implement what happens when you confirm?
+            elseif key == controls.press_toggle_profiles then
+                CourtRecordIndexE = 1
+                if menu_type == "evidence" then
+                    -- Toggle on profiles UI
+                    menu_type = "profiles"
+                else
+                    -- Toggle off profiles UI
+                    menu_type = "evidence"
+                end
             end
         end
     end;

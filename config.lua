@@ -35,7 +35,7 @@ settings = {
     jory_trial_6_path = "scripts/jory_trial_6.meta";
     posttrial_path = "scripts/posttrial.meta";
     credits_path = "scripts/credits.script";
-    episode_path = "scripts/jory_trial_4.meta"--"scripts/episode1.meta";
+    episode_path = "scripts/episode1.meta";
 }
 
 -- Keybindings used by the onKeyPresseds in screens/index
