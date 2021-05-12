@@ -37,4 +37,3 @@ Controls are work in progress - mouse and controller support yet to be implement
 - C to press on cross examinations
 - Press Enter while in the Court Record to present evidence
 - Press Escape to pause and unpause the game
-- Press End when the game is paused to go back to the title menu
