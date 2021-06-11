@@ -352,9 +352,8 @@ POSE Arin DeskSlam
 THINK Arin
     "(Okay, now we're getting somewhere. It's all on you Dan...)"
 
-SET_SYNC TRUE
-SFX slurp
 JUMPCUT COURT_ASSISTANT
+SFX slurp
 POSE Dan SideLean
 SPEAK Dan
     "..."
@@ -374,17 +373,17 @@ HIDE_TEXT
 JUMPCUT COURT_DEFENSE
 SFX shock2
 ANIMATION Arin Shock
-WAIT 2
+WAIT 1.5
 
 JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Surprised
 SFX shock2
-WAIT 2
+WAIT 1.5
 
 JUMPCUT COURT_WITNESS
 POSE Ross MadMilk
 SFX shock2
-WAIT 2
+WAIT 1.5
 
 JUMPCUT COURT_PROSECUTION
 SFX shock2
