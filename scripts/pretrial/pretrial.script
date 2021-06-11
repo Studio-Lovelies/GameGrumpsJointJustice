@@ -157,6 +157,7 @@ SPEAK Dan
 SPEAK Arin
     "Well, you know how much I like poopin'!"
 
+SET_SYNC TRUE
 POSE Dan Laugh
 SPEAK Dan
     "Yeah, yeah, you do like poopin'."
