@@ -103,6 +103,9 @@ CourtRecordsConfig = {
         if CourtRecordIndexP == nil then
             CourtRecordIndexP = 1
         end
+        if key == controls.advance_text then
+            return
+        end
         if menu_type == "evidence" then
             if key == controls.press_left and CourtRecordIndexE > 1 then
                 bleep:stop()
