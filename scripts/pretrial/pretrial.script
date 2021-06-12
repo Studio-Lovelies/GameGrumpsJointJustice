@@ -543,7 +543,7 @@ SCREEN_SHAKE
 SFX smack
 POSE Dan Angry
 SPEAK Dan
-    "BELIEVEABLE!"
+    "BELIEVABLE!"
 SPEAK Arin
     "Ok, ok, no need to yell... Let's just get ready.#I kind of want to look sharp for this."
 SPEAK Arin
