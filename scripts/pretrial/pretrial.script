@@ -19,7 +19,6 @@ EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
 EVIDENCE_INITIALIZE Switch "Switch" "A borrowed Switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
 COURT_RECORD_ADD EVIDENCE Badge
-COURT_RECORD_ADD EVIDENCE Switch
 COURT_RECORD_ADD PROFILE arin
 COURT_RECORD_ADD PROFILE dan
 

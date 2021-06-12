@@ -24,8 +24,12 @@ function NewEpisode(episodePath)
         end
     end
 
-    self.begin = function()
-        self.sceneIndex = 1
+    self.begin = function(self, index)
+        if index ~= nil then
+            self.sceneIndex = index;
+        else
+            self.sceneIndex = 1;
+        end
         self.nextScene()
         self.started = true
     end
@@ -44,15 +48,20 @@ function NewEpisode(episodePath)
     self.nextScene = function()
 
         if self.sceneIndex <= #self.scenes then
-            CurrentScene = NewScene(self.scenes[self.sceneIndex])
-            CurrentScene:update(0)
-            DtReset = true
+            local lastPenalties = CurrentScene.penalties;
+            if lastPenalties == nil then
+                lastPenalties = 5;
+            end
+            CurrentScene = NewScene(self.scenes[self.sceneIndex]);
+            CurrentScene.penalties = lastPenalties;
+            CurrentScene:update(0);
+            DtReset = true;
         else
             if episodePath ~= settings.game_over_path then
-                CurrentScene:startCredits(self.creditLines)
+                CurrentScene:startCredits(self.creditLines);
             else
-                Episode = self.nextEpisode
-                Episode:begin()
+                Episode = self.nextEpisode;
+                Episode:begin(self.sceneIndex);
             end
         end
     end
