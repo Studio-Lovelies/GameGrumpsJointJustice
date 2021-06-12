@@ -199,31 +199,37 @@ JoryTrialConfig = {
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_1_path)
                 Episode:begin()
+                CurrentScene.penalties = 5;
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 2" then
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_2_path)
                 Episode:begin()
+                CurrentScene.penalties = 5;
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 3" then
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_3_path)
                 Episode:begin()
+                CurrentScene.penalties = 5;
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 4" then
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_4_path)
                 Episode:begin()
+                CurrentScene.penalties = 5;
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 5" then
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_5_path)
                 Episode:begin()
+                CurrentScene.penalties = 5;
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 6" then
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_6_path)
                 Episode:begin()
+                CurrentScene.penalties = 5;
                 screens.jorytrial.displayed = false;
             end
         elseif key == controls.press_right then

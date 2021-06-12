@@ -145,6 +145,7 @@ BrowseScreenConfig = {
                 jingle:play()
                 Episode = NewEpisode(settings.posttrial_path)
                 Episode:begin()
+                CurrentScene.penalties = 5;
                 screens.browsescenes.displayed = false;
             end
         elseif key == controls.press_right then

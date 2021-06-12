@@ -172,6 +172,7 @@ TitleScreenConfig = {
                 jingle:play()
                 Episode = NewEpisode(settings.episode_path);
                 Episode:begin();
+                CurrentScene.penalties = 5;
                 screens.title.displayed = false;
             end
         elseif key == controls.press_right then
