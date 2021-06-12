@@ -150,7 +150,7 @@ OptionsConfig = {
                     optionsSelections[2] = "Windowed-Fullscreen";
                 elseif optionsSelections[2] == "Windowed-Fullscreen" then
                     settings.displayModesIndex = settings.displayModesIndex - 1;
-                    love.window.setFullscreen(true, "desktop")
+                    love.window.setFullscreen(true, "desktop");
                     optionsSelections[2] = "Fullscreen";
                 end
                 TitleSelection = optionsSelections[2]

@@ -4,7 +4,7 @@
 
 function love.conf(t)
     -- Support console logging
-    t.console = true--false
+    t.console = false
     t.window.vsync = -1
     t.window.title = "Game Grumps: Joint Justice"
     t.window.icon = "icon.png"
