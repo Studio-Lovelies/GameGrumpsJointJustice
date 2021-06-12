@@ -132,7 +132,8 @@ OptionsConfig = {
                     screens.title.displayed = true;
                     DrawTitleScreen()
                     screens.options.displayed = false;
-                    SelectionIndex = 1;
+                    SelectionIndex = 2;
+                    TitleSelection = "Settings"
                 end
             elseif TitleSelection == "Volume" then
                 blip2:stop()

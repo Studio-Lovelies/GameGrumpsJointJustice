@@ -133,6 +133,7 @@ BrowseScreenConfig = {
                 DrawTitleScreen();
                 screens.browsescenes.displayed = false;
                 SelectionIndex = 1;
+                TitleSelection = "Case Select";
             elseif TitleSelection == "Jory's Trial" then
                 blip2:play()
                 screens.jorytrial.displayed = true;
