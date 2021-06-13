@@ -170,6 +170,9 @@ function NewWitnessEvent(queue)
         if self.eventType == "CrossExamination" then
             -- Press witness
             if love.keyboard.isDown("c")
+            and self.queue[self.textIndex+1] ~= "Witness' Account"
+            and self.queue[self.textIndex+1] ~= "CrossExamFail"
+            and not self.queue[self.textIndex+1]:match("%s")
             and canAdvance then
                 if self.queue[self.textIndex+2] ~= "1" then
                     scene:runDefinition(self.queue[self.textIndex+1])
