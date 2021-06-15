@@ -5,7 +5,7 @@ settings = {
     ]]
     debug = false;
 
-    music_volume = 25;
+    music_volume = 20;
     sfx_volume = 25;
     speech_volume = 5;
     text_scroll_speed = 30;
