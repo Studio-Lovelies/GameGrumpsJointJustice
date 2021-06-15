@@ -30,6 +30,7 @@ function NewEpisode(episodePath)
         else
             self.sceneIndex = 1;
         end
+        print("Episode started with scene index "..self.sceneIndex);
         self.nextScene()
         self.started = true
     end
@@ -53,6 +54,7 @@ function NewEpisode(episodePath)
                 lastPenalties = 5;
             end
             CurrentScene = NewScene(self.scenes[self.sceneIndex]);
+            print("Starting scene with index "..self.sceneIndex);
             CurrentScene.penalties = lastPenalties;
             CurrentScene:update(0);
             DtReset = true;
@@ -61,7 +63,8 @@ function NewEpisode(episodePath)
                 CurrentScene:startCredits(self.creditLines);
             else
                 Episode = self.nextEpisode;
-                Episode:begin(self.sceneIndex);
+                print("Starting episode with scene index "..self.restartSceneIndex)
+                Episode:begin(self.restartSceneIndex);
             end
         end
     end
