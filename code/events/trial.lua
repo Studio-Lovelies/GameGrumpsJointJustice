@@ -14,7 +14,7 @@ function NewShoutEvent(who, what)
     self.update = function(self, scene, dt)
         scene.textHidden = true
         if scene.characters[self.who].sounds[self.what] ~= nil then
-            scene.characters[self.who].sounds[self.what]:setVolume(settings.speech_volume / 100 * 3)
+            scene.characters[self.who].sounds[self.what]:setVolume(settings.speech_volume / 100 * 5)
             scene.characters[self.who].sounds[self.what]:play()
         end
         self.timer = self.timer + dt
