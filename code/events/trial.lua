@@ -301,22 +301,22 @@ function NewIssuePenaltyEvent(scene)
 
     self.scripts = {
         {
-            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Thinking"}, {"SPEAK", "Judge Brent", "..."}, {"SPEAK", "Judge Brent", "You can't be serious with this, right?"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Uhhhh..."}, {"POSE", "Arin", "Embarassed"}, {"SPEAK", "Arin", "Maybe?"}, {"JUMPCUT", "COURT_JUDGE"}, {"SPEAK", "Judge Brent", "..."}, {"POSE", "Judge Brent", "Warning"}, {"SPEAK", "Judge Brent", "You need to take this more seriously Arin. Hopefully this Penalty will help you focus."}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Y-yes, Your Honor. My bad."}, {"JUMPCUT", "COURT_WITNESS"}
+            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Thinking"}, {"SPEAK", "Judge Brent", "..."}, {"SPEAK", "Judge Brent", "You can't be serious with this, right?"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Uhhhh..."}, {"POSE", "Arin", "Embarassed"}, {"SPEAK", "Arin", "Maybe?"}, {"JUMPCUT", "COURT_JUDGE"}, {"SPEAK", "Judge Brent", "..."}, {"POSE", "Judge Brent", "Warning"}, {"SPEAK", "Judge Brent", "You need to take this more seriously Arin. Hopefully this Penalty will help you focus."}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Y-yes, Your Honor. My bad."}, {"JUMPCUT", "COURT_WITNESS"}, {"CHECK_PENALTIES"}
         },
         {
-            {"JUMPCUT", "COURT_ASSISTANT"}, {"POSE", "Dan", "Angry"}, {"SPEAK", "Dan", "Arin."}, {"SPEAK", "Arin", "What? It's the right answer, right?"}, {"POSE", "Dan", "Sad"}, {"SPEAK", "Dan", "..."}, {"POSE", "Dan", "SideAngryTurned"}, {"SPEAK", "Dan", "No arin, we're getting a penalty for that one."}, {"SPEAK", "Arin", "Wait, really?"}, {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Warning"}, {"SPEAK", "Judge Brent", "Yes!"}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"SFX", "damage1"}, {"SET_SYNC", "TRUE"}, {"ANIMATION", "Arin", "Shock"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "OOF."}, {"THINK", "Arin", "(I need to be more thoughtful and pay more attention I guess.)"}, {"JUMPCUT", "COURT_WITNESS"}
+            {"JUMPCUT", "COURT_ASSISTANT"}, {"POSE", "Dan", "Angry"}, {"SPEAK", "Dan", "Arin."}, {"SPEAK", "Arin", "What? It's the right answer, right?"}, {"POSE", "Dan", "Sad"}, {"SPEAK", "Dan", "..."}, {"POSE", "Dan", "SideAngryTurned"}, {"SPEAK", "Dan", "No arin, we're getting a penalty for that one."}, {"SPEAK", "Arin", "Wait, really?"}, {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Warning"}, {"SPEAK", "Judge Brent", "Yes!"}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"SFX", "damage1"}, {"SET_SYNC", "TRUE"}, {"ANIMATION", "Arin", "Shock"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "OOF."}, {"THINK", "Arin", "(I need to be more thoughtful and pay more attention I guess.)"}, {"JUMPCUT", "COURT_WITNESS"}, {"CHECK_PENALTIES"}
         },
         {
-            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Surprised"}, {"SPEAK", "Judge Brent", "WHAM BAM BAZAAAM, THAT'S THE WRONG ANSWER MA'AM!"}, {"SET_SYNC", "TRUE"}, {"ISSUE_PENALTY"}, {"GAVEL"}, {"JUMPCUT", "COURT_ASSISTANT"}, {"POSE", "Dan", "SideNormalTurned"}, {"SPEAK", "Dan", "... I think you should try a different answer Arin."}, {"SPEAK", "Arin", "Gee ya THINK SO, DAN?"}, {"POSE", "Dan", "SideNormal"}, {"SPEAK", "Dan", "Yes. Yes I do Arin. I do."}, {"SPEAK", "Arin", "..."}, {"SPEAK", "Arin", "Yeah I guess so..."}, {"JUMPCUT", "COURT_WITNESS"}
+            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Surprised"}, {"SPEAK", "Judge Brent", "WHAM BAM BAZAAAM, THAT'S THE WRONG ANSWER MA'AM!"}, {"SET_SYNC", "TRUE"}, {"ISSUE_PENALTY"}, {"GAVEL"}, {"JUMPCUT", "COURT_ASSISTANT"}, {"POSE", "Dan", "SideNormalTurned"}, {"SPEAK", "Dan", "... I think you should try a different answer Arin."}, {"SPEAK", "Arin", "Gee ya THINK SO, DAN?"}, {"POSE", "Dan", "SideNormal"}, {"SPEAK", "Dan", "Yes. Yes I do Arin. I do."}, {"SPEAK", "Arin", "..."}, {"SPEAK", "Arin", "Yeah I guess so..."}, {"JUMPCUT", "COURT_WITNESS"}, {"CHECK_PENALTIES"}
         },
         {
-            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Normal"}, {"SPEAK", "Judge Brent", "I don't see how this could be the right answer..."}, {"SPEAK", "Judge Brent", "But I'm in a good mood, so I think I won't penalize you this time."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Embarassed"}, {"SPEAK", "Arin", "Dang, thanks Brent. This is a lot harder than it looks!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Confident"}, {"SPEAK", "Tutorial Boy", "Yes, accept his freebie. It won't help you in the long run, Mr. 'Video game BABY!'"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "DeskSlam"}, {"SFX", "damage1"}, {"SCREEN_SHAKE"}, {"SPEAK", "Arin", "You shut your goddamn pie hole-"}, {"SFX", "objectionclean"}, {"POSE", "Arin", "CloseUp"}, {"SPEAK", "Arin", "-you FUCKING CLOD!!!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Sweaty"}, {"SPEAK", "Tutorial Boy", "..."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "..."}, {"POSE", "Arin", "Embarassed"}, {"INTERRUPTED_SPEAK", "Arin", "Er... What I meant to say was--"}, {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Warning"}, {"SCREEN_SHAKE"}, {"SFX", "stab2"}, {"SPEAK", "Judge Brent", "Changed my mind. Penalty given."}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Aw man..."}, {"JUMPCUT", "COURT_WITNESS"}
+            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Normal"}, {"SPEAK", "Judge Brent", "I don't see how this could be the right answer..."}, {"SPEAK", "Judge Brent", "But I'm in a good mood, so I think I won't penalize you this time."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Embarassed"}, {"SPEAK", "Arin", "Dang, thanks Brent. This is a lot harder than it looks!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Confident"}, {"SPEAK", "Tutorial Boy", "Yes, accept his freebie. It won't help you in the long run, Mr. 'Video game BABY!'"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "DeskSlam"}, {"SFX", "damage1"}, {"SCREEN_SHAKE"}, {"SPEAK", "Arin", "You shut your goddamn pie hole-"}, {"SFX", "objectionclean"}, {"POSE", "Arin", "CloseUp"}, {"SPEAK", "Arin", "-you FUCKING CLOD!!!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Sweaty"}, {"SPEAK", "Tutorial Boy", "..."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "..."}, {"POSE", "Arin", "Embarassed"}, {"INTERRUPTED_SPEAK", "Arin", "Er... What I meant to say was--"}, {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Warning"}, {"SCREEN_SHAKE"}, {"SFX", "stab2"}, {"SPEAK", "Judge Brent", "Changed my mind. Penalty given."}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Aw man..."}, {"JUMPCUT", "COURT_WITNESS"}, {"CHECK_PENALTIES"}
         }
     }
-
     self.scriptLines = self.scripts[math.random(1, #self.scripts)]
 
     for i,v in pairs(self.scriptLines) do
+
         if v[1] == "SPEAK" then
             table.insert(scene.stack, i, {lineParts = v, event = NewSpeakEvent(v[2], v[3], "literal")})
         end
@@ -355,16 +355,16 @@ function NewIssuePenaltyEvent(scene)
         if v[1] == "ISSUE_PENALTY" then
             table.insert(scene.stack, i, {lineParts = v, event = NewStartPenaltyAnimationEvent(scene, self)})
         end
+
+        if v[1] == "CHECK_PENALTIES" then
+            if scene.penalties <= 1 then
+                table.insert(scene.stack, i, { lineParts = "fadeToBlackEvent", event = NewFadeToBlackEvent(true) })
+                table.insert(scene.stack, i+1, {lineParts = "gameOverEvent", event = NewGameOverEvent()})
+            end
+        end
     end
 
     self.update = function(self, scene, dt)
-        if scene.penalties <= 0 then
-            table.insert(scene.stack, 2, {lineParts = "fadeToBlackEvent", event = NewFadeToBlackEvent()})
-            table.insert(scene.stack, 3, {lineParts = "gameOverEvent", event = NewGameOverEvent()})
-            table.remove(scene.stack, 1)
-            scene.currentEventIndex = scene.currentEventIndex + 1
-        end
-
         return false
     end
 
