@@ -793,7 +793,7 @@ DEFINE Choice2
     JUMPCUT COURT_DEFENSE
     SPEAK Arin
         "Alright, I hope you're right about this!"
-    
+
 END_DEFINE
 
 CHOICE
@@ -881,7 +881,7 @@ PAN COURT_WITNESS COURT_DEFENSE
 JUMPCUT COURT_DEFENSE
 POSE Arin Point
 SPEAK Arin
-    "That's right! A nearly endless supply of potatoes..." 
+    "That's right! A nearly endless supply of potatoes..."
 SFX deskslam
 ANIMATION Arin DeskSlam
 POSE Arin DeskSlam
@@ -962,7 +962,7 @@ JUMPCUT COURT_JUDGE
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
     "Well, you have made a strong case that Jory would not have done this..."
- 	
+
 SHOUT "Tutorial Boy" objection
 STOP_MUSIC
 JUMPCUT COURT_PROSECUTION

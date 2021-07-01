@@ -277,6 +277,8 @@ function NewPresentEvent(type, evidence)
             return true
         else
             screens.courtRecords.displayed = true
+            screens.courtRecords.menu_type = "evidence";
+            CourtRecordIndexE = 1;
             return true
         end
     end
