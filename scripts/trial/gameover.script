@@ -17,16 +17,17 @@ HIDE_TEXT
 //////////////////
 
 JUMPCUT COURT_ASSISTANT
-SPEAK Dan
-    "Bruh, wtf was that Arin?"
 SPEAK_FROM COURT_JUDGE
-    "Regarding the lack of evidence in the favor of the accused, Mr. Jory Griffis, I must find him..."
+    "I see no further reason to continue this trial.#I declare the defendant, Mr Jory Griffis,"
 
 VERDICT Guilty
 
+SPEAK "Judge Brent"
+    "Take the Defendant away and strip him of all his GoodBoy coins!"
+
+GAVEL
+
 FADE_TO_BLACK
 JUMPCUT BLACK_SCREEN
-SPEAK "Judge Brent"
-    "The defense loses."
 
 END_SCENE

@@ -19,7 +19,6 @@ EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
 EVIDENCE_INITIALIZE Switch "Switch" "A borrowed Switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
 COURT_RECORD_ADD EVIDENCE Badge
-COURT_RECORD_ADD EVIDENCE Switch
 COURT_RECORD_ADD PROFILE arin
 COURT_RECORD_ADD PROFILE dan
 
@@ -77,9 +76,8 @@ SPEAK Ross
 SET_SYNC TRUE
 FADE_TO_BLACK
 SFX RossEvilLaugh
-SET_SYNC TRUE
-STOP_BIGIMAGE
 FADE_MUSIC
+STOP_BIGIMAGE
 WAIT 2
 
 CAMERA 0 0
@@ -157,6 +155,7 @@ SPEAK Dan
 SPEAK Arin
     "Well, you know how much I like poopin'!"
 
+SET_SYNC TRUE
 POSE Dan Laugh
 SPEAK Dan
     "Yeah, yeah, you do like poopin'."
@@ -543,7 +542,7 @@ SCREEN_SHAKE
 SFX smack
 POSE Dan Angry
 SPEAK Dan
-    "BELIEVEABLE!"
+    "BELIEVABLE!"
 SPEAK Arin
     "Ok, ok, no need to yell... Let's just get ready.#I kind of want to look sharp for this."
 SPEAK Arin

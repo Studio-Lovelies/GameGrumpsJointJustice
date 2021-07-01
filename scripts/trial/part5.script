@@ -32,10 +32,10 @@ COURT_RECORD_ADD PROFILE ross
 
 EVIDENCE_INITIALIZE Badge "Attorney's Badge" "My prized possession." sprites/Attorney'sBadge.png
 COURT_RECORD_ADD EVIDENCE Badge "Attorney's Badge"
-EVIDENCE_INITIALIZE Switch "Switch" "A borrowed Switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
-COURT_RECORD_ADD EVIDENCE Switch
 EVIDENCE_INITIALIZE PlumberInvoice "Plumber Invoice" "The invoice from the plumber for repairing the toilets in the north end of the building, dated '2:30PM' today." sprites/PlumberInvoice.png
 COURT_RECORD_ADD EVIDENCE PlumberInvoice "Plumber Invoice"
+EVIDENCE_INITIALIZE Switch "Switch" "A borrowed Switch. It has a sticker of some kind of slime-girl on it." sprites/Switch.png
+COURT_RECORD_ADD EVIDENCE Switch
 EVIDENCE_INITIALIZE JorySr'sLetter "Jory Sr's Letter" "Letter from the real Jory Sr." sprites/JorySr'sLetter.png
 COURT_RECORD_ADD EVIDENCE JorySr'sLetter "Jory Sr's Letter"
 EVIDENCE_INITIALIZE LivestreamRecording "Livestream Recording" "A record of major events during the livestream on the day of the crime." sprites/LivestreamRecording.png
@@ -325,7 +325,7 @@ SPEAK "Judge Brent"
     "Hmm... That does seem like a reach."
 POSE "Judge Brent" Normal
 SPEAK "Judge Brent"
-    "There were a lot of people in the area at the time.#Someone must have seen where the dinos were found in the backpack."
+    "There were a lot of people at the time.#Someone must have seen where the dinos were found in the backpack."
 
 SPEAK_FROM COURT_PROSECUTION
     "Well, why don't we ask them?"
@@ -806,7 +806,6 @@ END_CHOICE
 //////////////
 
 PRESENT EVIDENCE Jory'sBackpack
-STOP_SHOWING
 
 SHOUT Arin takethat
 
@@ -1074,6 +1073,8 @@ WAIT 1
 
 SHOUT Dan Objection
 
+WAIT .5
+
 SFX shock2
 JUMPCUT COURT_PROSECUTION
 POSE "Tutorial Boy" Sweaty
@@ -1086,6 +1087,7 @@ JUMPCUT COURT_WITNESS
 POSE Ross MadMilk
 WAIT 1
 
+SET_SYNC TRUE
 SFX shock2
 JUMPCUT COURT_DEFENSE
 POSE Arin SweatyBlinking

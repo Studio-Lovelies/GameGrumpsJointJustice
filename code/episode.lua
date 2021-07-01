@@ -19,13 +19,22 @@ function NewEpisode(episodePath)
     self.update = function(self, dt)
         ScreenShake = math.max(ScreenShake - dt, 0)
         -- TODO: Decide if this applies to all screens that can be displayed
+<<<<<<< HEAD
         if screens.title.displayed == false and screens.browsescenes.displayed == false and screens.jorytrial.displayed == false and screens.options.displayed == false and screens.volume.displayed == false and screens.pause.displayed == false then
+=======
+        if screens.title.displayed == false and screens.options.displayed == false and screens.volume.displayed == false and screens.pause.displayed == false and screens.browsescenes.displayed == false and screens.jorytrial.displayed == false then
+>>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
             CurrentScene:update(dt)
         end
     end
 
-    self.begin = function()
-        self.sceneIndex = 1
+    self.begin = function(self, index)
+        if index ~= nil then
+            self.sceneIndex = index;
+        else
+            self.sceneIndex = 1;
+        end
+        print("Episode started with scene index "..self.sceneIndex);
         self.nextScene()
         self.started = true
     end
@@ -44,15 +53,22 @@ function NewEpisode(episodePath)
     self.nextScene = function()
 
         if self.sceneIndex <= #self.scenes then
-            CurrentScene = NewScene(self.scenes[self.sceneIndex])
-            CurrentScene:update(0)
-            DtReset = true
+            local lastPenalties = CurrentScene.penalties;
+            if lastPenalties == nil then
+                lastPenalties = 5;
+            end
+            CurrentScene = NewScene(self.scenes[self.sceneIndex]);
+            print("Starting scene with index "..self.sceneIndex);
+            CurrentScene.penalties = lastPenalties;
+            CurrentScene:update(0);
+            DtReset = true;
         else
             if episodePath ~= settings.game_over_path then
-                CurrentScene:startCredits(self.creditLines)
+                CurrentScene:startCredits(self.creditLines);
             else
-                Episode = self.nextEpisode
-                Episode:begin()
+                Episode = self.nextEpisode;
+                print("Starting episode with scene index "..self.restartSceneIndex)
+                Episode:begin(self.restartSceneIndex);
             end
         end
     end

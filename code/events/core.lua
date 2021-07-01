@@ -190,17 +190,6 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
     return self
 end
 
-function NewGameOverEvent()
-    local self = {}
-
-    self.update = function(self, scene, dt)
-        love.event.push("quit")
-        return false
-    end
-
-    return self
-end
-
 function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
     local self = {}
     self.text = text
@@ -1085,9 +1074,11 @@ function NewGameOverEvent()
 
     self.update = function(self, scene, dt)
         Episode:stop();
-        local episodePath = Episode.episodePath
-        Episode = NewEpisode(settings.game_over_path)
-        Episode.nextEpisode = NewEpisode(episodePath)
+        local episodePath = Episode.episodePath;
+        local sceneIndex = Episode.sceneIndex;
+        Episode = NewEpisode(settings.game_over_path);
+        Episode.nextEpisode = NewEpisode(episodePath);
+        Episode.restartSceneIndex = sceneIndex;
         Episode:begin();
 
         return false

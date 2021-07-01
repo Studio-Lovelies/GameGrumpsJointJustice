@@ -58,12 +58,13 @@ function love.update(dt)
         logoTimer = logoTimer + dt
     end
 
-    --print(screens.options.lastDisplayed)
-
     Episode:update(dt)
 end
 
 function love.keypressed(key)
+    if drawLogo then
+        return;
+    end
     local currentDisplayedScreen
     local nextScreenToDisplay
     for screenName, screenConfig in pairs(screens) do

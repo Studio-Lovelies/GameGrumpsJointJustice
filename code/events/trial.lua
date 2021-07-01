@@ -14,6 +14,7 @@ function NewShoutEvent(who, what)
     self.update = function(self, scene, dt)
         scene.textHidden = true
         if scene.characters[self.who].sounds[self.what] ~= nil then
+            scene.characters[self.who].sounds[self.what]:setVolume(settings.speech_volume / 100 * 5)
             scene.characters[self.who].sounds[self.what]:play()
         end
         self.timer = self.timer + dt
@@ -170,6 +171,9 @@ function NewWitnessEvent(queue)
         if self.eventType == "CrossExamination" then
             -- Press witness
             if love.keyboard.isDown("c")
+            and self.queue[self.textIndex+1] ~= "Witness' Account"
+            and self.queue[self.textIndex+1] ~= "CrossExamFail"
+            and not self.queue[self.textIndex+1]:match("%s")
             and canAdvance then
                 if self.queue[self.textIndex+2] ~= "1" then
                     scene:runDefinition(self.queue[self.textIndex+1])
