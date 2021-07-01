@@ -19,11 +19,7 @@ function NewEpisode(episodePath)
     self.update = function(self, dt)
         ScreenShake = math.max(ScreenShake - dt, 0)
         -- TODO: Decide if this applies to all screens that can be displayed
-<<<<<<< HEAD
-        if screens.title.displayed == false and screens.browsescenes.displayed == false and screens.jorytrial.displayed == false and screens.options.displayed == false and screens.volume.displayed == false and screens.pause.displayed == false then
-=======
         if screens.title.displayed == false and screens.options.displayed == false and screens.volume.displayed == false and screens.pause.displayed == false and screens.browsescenes.displayed == false and screens.jorytrial.displayed == false then
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
             CurrentScene:update(dt)
         end
     end

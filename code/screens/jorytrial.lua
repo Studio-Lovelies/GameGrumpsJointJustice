@@ -3,76 +3,43 @@ function DrawJoryTrialScreen()
     love.graphics.clear(unpack(colors.black))
 
     local blackImage = love.graphics.newImage(settings.black_screen_path)
-<<<<<<< HEAD
-    local blackImageScale = 3
-=======
     local blackImageScale = 2*dimensions.window_width/1920 * 2
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
 
     love.graphics.setColor(0, 0, 0, 100)
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 
-<<<<<<< HEAD
-    local backW = (dimensions.window_width * 1/1.5)
-    local backX = (dimensions.window_width * 1/8)
-=======
     local backW = (dimensions.window_width * 1/2)
     local backX = (dimensions.window_width/2 - backW/2)
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     local backY = blackImage:getHeight()*blackImageScale + 10
     local backH = 60
 
     local part1W = (dimensions.window_width * 1/5)
-<<<<<<< HEAD
-    local part1X = (dimensions.window_width * 3/12) - part1W
-=======
     local part1X = (dimensions.window_width * 1/6 - part1W/2)
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     local part1Y = blackImage:getHeight()*blackImageScale - 500
     local part1H = 60
 
     local part2W = (dimensions.window_width * 1/5)
-<<<<<<< HEAD
-    local part2X = (dimensions.window_width * 6.5/12) - part2W
-=======
     local part2X = (dimensions.window_width * 3/6 - part2W/2)
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     local part2Y = blackImage:getHeight()*blackImageScale - 500
     local part2H = 60
 
     local part3W = (dimensions.window_width * 1/5)
-<<<<<<< HEAD
-    local part3X = (dimensions.window_width * 10/12) - part3W
-=======
     local part3X = (dimensions.window_width * 5/6 - part3W/2)
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     local part3Y = blackImage:getHeight()*blackImageScale - 500
     local part3H = 60
 
     local part4W = (dimensions.window_width * 1/5)
-<<<<<<< HEAD
-    local part4X = (dimensions.window_width * 3/12) - part4W
-=======
     local part4X = (dimensions.window_width * 1/6 - part3W/2)
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     local part4Y = blackImage:getHeight()*blackImageScale - 300
     local part4H = 60
 
     local part5W = (dimensions.window_width * 1/5)
-<<<<<<< HEAD
-    local part5X = (dimensions.window_width * 6.5/12) - part5W
-=======
     local part5X = (dimensions.window_width * 3/6 - part5W/2)
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     local part5Y = blackImage:getHeight()*blackImageScale - 300
     local part5H = 60
 
     local part6W = (dimensions.window_width * 1/5)
-<<<<<<< HEAD
-    local part6X = (dimensions.window_width * 10/12) - part6W
-=======
     local part6X = (dimensions.window_width * 5/6 - part6W/2)
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     local part6Y = blackImage:getHeight()*blackImageScale - 300
     local part6H = 60
 
@@ -232,55 +199,37 @@ JoryTrialConfig = {
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_1_path)
                 Episode:begin()
-<<<<<<< HEAD
-=======
                 CurrentScene.penalties = 5;
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 2" then
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_2_path)
                 Episode:begin()
-<<<<<<< HEAD
-=======
                 CurrentScene.penalties = 5;
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 3" then
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_3_path)
                 Episode:begin()
-<<<<<<< HEAD
-=======
                 CurrentScene.penalties = 5;
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 4" then
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_4_path)
                 Episode:begin()
-<<<<<<< HEAD
-=======
                 CurrentScene.penalties = 5;
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 5" then
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_5_path)
                 Episode:begin()
-<<<<<<< HEAD
-=======
                 CurrentScene.penalties = 5;
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
                 screens.jorytrial.displayed = false;
             elseif TitleSelection == "Part 6" then
                 jingle:play()
                 Episode = NewEpisode(settings.jory_trial_6_path)
                 Episode:begin()
-<<<<<<< HEAD
-=======
                 CurrentScene.penalties = 5;
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
                 screens.jorytrial.displayed = false;
             end
         elseif key == controls.press_right then
@@ -330,10 +279,6 @@ JoryTrialConfig = {
         end
     end;
     onDisplay = function()
-<<<<<<< HEAD
-        screens.jorytrial.displayed = true
-        screens.browsescenes.displayed = false
-=======
         screens.browsescenes.displayed = false
         screens.pause.displayed = false
         screens.courtRecords.displayed = false
@@ -341,7 +286,6 @@ JoryTrialConfig = {
         screens.options.displayed = false
         screens.title.displayed = false
         screens.volume.displayed = true
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     end;
     draw = function()
         if screens.jorytrial.displayed == true then

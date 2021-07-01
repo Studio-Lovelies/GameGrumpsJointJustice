@@ -6,18 +6,6 @@ function DrawBrowseScreen()
     love.graphics.rectangle("fill", 0, 0, love.graphics.getWidth(), love.graphics.getHeight())
 
     local blackImage = love.graphics.newImage(settings.black_screen_path)
-<<<<<<< HEAD
-    local blackImageScale = 3
-
-    local jorytrialImage = love.graphics.newImage(settings.court_path)
-    local jorytrialImageScale = 6
-
-    local posttrialImage = love.graphics.newImage(settings.lobby_path)
-    local posttrialImageScale = 6
-
-    local backW = (dimensions.window_width * 1/5)
-    local backX = (dimensions.window_width * 6.75/18)
-=======
     local blackImageScale = 2*dimensions.window_width/1920 * 2
 
     local jorytrialImage = love.graphics.newImage(settings.court_path)
@@ -28,92 +16,55 @@ function DrawBrowseScreen()
 
     local backW = (dimensions.window_width * 1/5)
     local backX = (dimensions.window_width * 1/6 - backW/2)
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     local backY = blackImage:getHeight()*blackImageScale + 150
     local backH = 60
 
     local jorytrialW = (dimensions.window_width * 1/3.75)
-<<<<<<< HEAD
-    local jorytrialX = (dimensions.window_width * 10.65/18)
-=======
     local jorytrialX = (dimensions.window_width * 3/6 - jorytrialW/2)
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     local jorytrialY = blackImage:getHeight()*blackImageScale + 150
     local jorytrialH = 60
 
     local posttrialW = (dimensions.window_width * 1/3.75)
-<<<<<<< HEAD
-    local posttrialX = (dimensions.window_width * 15.75/18)
-=======
     local posttrialX = (dimensions.window_width * 5/6 - posttrialW/2)
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     local posttrialY = blackImage:getHeight()*blackImageScale + 150
     local posttrialH = 60
 
     local dx = 8
     local dy = 8
 
-<<<<<<< HEAD
-    love.graphics.setColor(0.44,0.56,0.89)
-    if TitleSelection == "Jory's Trial" then
-        love.graphics.rectangle("fill", jorytrialX-dx, jorytrialY-dy, jorytrialW+2*dx, jorytrialH+2*dy)
-        love.graphics.draw(
-            jorytrialImage,
-            0,
-=======
     if TitleSelection == "Jory's Trial" then
         love.graphics.setColor(0.44,0.56,0.89)
         love.graphics.draw(
             jorytrialImage,
             dimensions.window_width/2 - (jorytrialImage:getWidth() * jorytrialImageScale)/2 + 20,
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
             0,
             0,
             jorytrialImageScale,
             jorytrialImageScale
         )
-<<<<<<< HEAD
-    elseif TitleSelection == "Post-Trial" then
-        love.graphics.rectangle("fill", posttrialX-dx, posttrialY-dy, posttrialW+2*dx, posttrialH+2*dy)
-        love.graphics.draw(
-            posttrialImage,
-            0,
-=======
         love.graphics.rectangle("fill", jorytrialX-dx, jorytrialY-dy, jorytrialW+2*dx, jorytrialH+2*dy)
     elseif TitleSelection == "Post-Trial" then
         love.graphics.setColor(0.44,0.56,0.89)
         love.graphics.draw(
             posttrialImage,
             dimensions.window_width/2 - (posttrialImage:getWidth() * posttrialImageScale)/2 + 20,
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
             0,
             0,
             posttrialImageScale,
             posttrialImageScale
         )
-<<<<<<< HEAD
-    else
-        love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
-        love.graphics.draw(
-            blackImage,
-            0,
-=======
         love.graphics.rectangle("fill", posttrialX-dx, posttrialY-dy, posttrialW+2*dx, posttrialH+2*dy)
     else
         love.graphics.setColor(0.44,0.56,0.89)
         love.graphics.draw(
             blackImage,
             dimensions.window_width/2 - (blackImage:getWidth() * blackImageScale)/2 + 20,
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
             0,
             0,
             blackImageScale,
             blackImageScale
         )
-<<<<<<< HEAD
-=======
         love.graphics.rectangle("fill", backX-dx, backY-dy, backW+2*dx, backH+2*dy)
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
     end
 
     love.graphics.setColor(222, 0, 0)
@@ -182,10 +133,7 @@ BrowseScreenConfig = {
                 DrawTitleScreen();
                 screens.browsescenes.displayed = false;
                 SelectionIndex = 1;
-<<<<<<< HEAD
-=======
                 TitleSelection = "Case Select";
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
             elseif TitleSelection == "Jory's Trial" then
                 blip2:play()
                 screens.jorytrial.displayed = true;
@@ -197,10 +145,7 @@ BrowseScreenConfig = {
                 jingle:play()
                 Episode = NewEpisode(settings.posttrial_path)
                 Episode:begin()
-<<<<<<< HEAD
-=======
                 CurrentScene.penalties = 5;
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
                 screens.browsescenes.displayed = false;
             end
         elseif key == controls.press_right then
@@ -226,10 +171,7 @@ BrowseScreenConfig = {
         screens.jorytrial.displayed = false
         screens.options.displayed = false
         screens.title.displayed = false
-<<<<<<< HEAD
-=======
         screens.volume.displayed = false
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
         TitleSelection = "Back";
         SelectionIndex = 0;
     end;
@@ -239,9 +181,5 @@ BrowseScreenConfig = {
             blip2:setVolume(settings.sfx_volume / 100 / 2)
             jingle:setVolume(settings.sfx_volume / 100 / 2)
         end
-<<<<<<< HEAD
-    end;
-=======
     end
->>>>>>> 800b1e61d4303d7a21b0c31c90a7c14b6d7c9ab9
 }
