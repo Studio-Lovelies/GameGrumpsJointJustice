@@ -48,10 +48,23 @@ function love.update(dt)
     -- Loading Screen
     if not isDoneLoading then
         currentLoadingAsset = AssetLoader.lambdas[AssetLoader.index]
-        if currentLoadingAsset then
+        local timeAtStartOfFrame = love.timer.getTime()
+
+        local loadingDt = 0
+
+        while currentLoadingAsset and loadingDt < 1 / 60 do
+            -- loads an asset and tracks how long we've spent loading that asset
+            -- if we took less than 1/60 seconds to load, then load the next asset
             currentLoadingAsset()
+
             AssetLoader.index = AssetLoader.index + 1
-            return -- skip the rest of this update, we're still in the loading screen
+            currentLoadingAsset = AssetLoader.lambdas[AssetLoader.index]
+            loadingDt = love.timer.getTime() - timeAtStartOfFrame
+        end
+
+        if currentLoadingAsset then
+            -- we still have more loading to do; skip the rest of update()
+            return
         end
 
         FinishLoadingAssets()
