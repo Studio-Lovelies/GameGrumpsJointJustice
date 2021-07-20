@@ -10,6 +10,7 @@ require "code/scriptloader"
 local logoOpacity = 1
 local drawLogo = true
 local logoTimer = 0
+local doneLoading = false
 local AssetLoader
 local currentLoadingAsset
 
@@ -42,11 +43,15 @@ end
 -- transfer the update and draw over to the current game scene
 function love.update(dt)
     -- Loading Screen
-    currentLoadingAsset = AssetLoader.lambdas[AssetLoader.index]
-    if currentLoadingAsset then
-        currentLoadingAsset()
-        AssetLoader.index = AssetLoader.index + 1
-        return -- skip the rest of this update, we're still in the loading screen
+    if not doneLoading then
+        currentLoadingAsset = AssetLoader.lambdas[AssetLoader.index]
+        if currentLoadingAsset then
+            currentLoadingAsset()
+            AssetLoader.index = AssetLoader.index + 1
+            return -- skip the rest of this update, we're still in the loading screen
+        end
+
+        doneLoading = true
     end
     -- /Loading Screen
 

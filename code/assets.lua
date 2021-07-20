@@ -27,16 +27,22 @@ local function LoadMusic(directoryName)
     Music = {}
 
     local files = love.filesystem.getDirectoryItems(directoryName)
+    local lambdas = {}
 
-    for b, i in ipairs(files) do
-        if string.match(i, ".mp3") then
-            local a = i:gsub(".mp3", ""):upper()
-            Music[a] = love.audio.newSource(directoryName .. i, "static")
-        elseif string.match(i, ".wav") then
-            local a = i:gsub(".wav", ""):upper()
-            Music[a] = love.audio.newSource(directoryName .. i, "static")
+    for index, song in ipairs(files) do
+        lambdas[index] = function()
+            print("loading music", song)
+            if string.match(song, ".mp3") then
+                local a = song:gsub(".mp3", ""):upper()
+                Music[a] = love.audio.newSource(directoryName .. song, "static")
+            elseif string.match(song, ".wav") then
+                local a = song:gsub(".wav", ""):upper()
+                Music[a] = love.audio.newSource(directoryName .. song, "static")
+            end
         end
     end
+
+    return lambdas
 end
 
 local function FinishLoadingMusic()
@@ -112,10 +118,10 @@ local function LoadSFX(directoryName)
     Sounds = {}
 
     local files = love.filesystem.getDirectoryItems(directoryName)
-    local loadSFXLambdas = {}
+    local lambdas = {}
 
     for index, sfx in ipairs(files) do
-        loadSFXLambdas[index] = function()
+        lambdas[index] = function()
             print("loading SFX", sfx)
             if string.match(sfx, ".mp3") then
                 local a = sfx:gsub(".mp3", ""):upper()
@@ -127,7 +133,7 @@ local function LoadSFX(directoryName)
         end
     end
 
-    return loadSFXLambdas
+    return lambdas
 end
 
 local function FinishLoadingSFX()
@@ -182,14 +188,28 @@ end
 
 function LoadAssets()
     LoadBackgrounds(settings.background_directory)
-    LoadMusic(settings.music_directory)
+    local musicLambdas = LoadMusic(settings.music_directory)
     LoadSprites(settings.sprite_directory)
     LoadShouts(settings.shouts_directory)
     local soundEffectLambdas = LoadSFX(settings.sfx_directory)
     LoadFonts()
 
+    local allLambdas = {}
+    local index = 1
+    for i, lambda in ipairs(soundEffectLambdas) do
+        allLambdas[index] = lambda
+        index = index + 1
+    end
+
+    for i, lambda in ipairs(musicLambdas) do
+        allLambdas[index] = lambda
+        index = index + 1
+    end
+
+    return allLambdas
+end
+
+function FinishLoadingAssets()
     FinishLoadingMusic()
     FinishLoadingSFX()
-
-    return soundEffectLambdas
 end
