@@ -122,7 +122,9 @@ local function LoadSFX(directoryName)
             Sounds[a] = love.audio.newSource(directoryName .. i, "static")
         end
     end
+end
 
+local function FinishLoadingSFX()
     for i, v in pairs(Sounds) do
         if i ~= "maletalk" and i ~= "femaletalk" then
             v:setVolume(SFXVolume / 100 / 2)
@@ -181,4 +183,5 @@ function LoadAssets()
     LoadFonts()
 
     FinishLoadingMusic()
+    FinishLoadingSFX()
 end
