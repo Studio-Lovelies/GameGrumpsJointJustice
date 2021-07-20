@@ -27,6 +27,9 @@ function love.load()
     DtReset = false -- so scene load times don't factor into dt
 
     AssetLoader = {lambdas = LoadAssets(), index = 1}
+end
+
+function OnLoadingScreenDone()
     Episode = NewEpisode(settings.episode_path)
 
     -- Select the first scene in the loaded episode
@@ -52,6 +55,7 @@ function love.update(dt)
         end
 
         FinishLoadingAssets()
+        OnLoadingScreenDone()
         isDoneLoading = true
     end
     -- /Loading Screen

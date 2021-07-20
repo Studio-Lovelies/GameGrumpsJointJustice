@@ -4,23 +4,29 @@ local function LoadBackgrounds(directoryName)
     }
 
     local files = love.filesystem.getDirectoryItems(directoryName)
+    local lambdas = {}
 
-    for b, i in ipairs(files) do
-        if string.match(i, ".png") then
-            if string.match(i, "_1") then
-                local a = i:gsub(".png", "")
-                local a = a:gsub("_1", "")
-                Backgrounds[a] = {love.graphics.newImage(directoryName .. i)}
-            elseif string.match(i, "_2") then
-                local a = i:gsub(".png", "")
-                local a = a:gsub("_2", "")
-                table.insert(Backgrounds[a], love.graphics.newImage(directoryName .. i))
-            else
-                local a = i:gsub(".png", "")
-                Backgrounds[a] = {love.graphics.newImage(directoryName .. i)}
+    for index, background in ipairs(files) do
+        lambdas[index] = function()
+            print("loading background", background)
+            if string.match(background, ".png") then
+                if string.match(background, "_1") then
+                    local a = background:gsub(".png", "")
+                    local a = a:gsub("_1", "")
+                    Backgrounds[a] = {love.graphics.newImage(directoryName .. background)}
+                elseif string.match(background, "_2") then
+                    local a = background:gsub(".png", "")
+                    local a = a:gsub("_2", "")
+                    table.insert(Backgrounds[a], love.graphics.newImage(directoryName .. background))
+                else
+                    local a = background:gsub(".png", "")
+                    Backgrounds[a] = {love.graphics.newImage(directoryName .. background)}
+                end
             end
         end
     end
+
+    return lambdas
 end
 
 local function LoadMusic(directoryName)
@@ -56,62 +62,74 @@ local function LoadSprites(directoryName)
     Sprites = {}
 
     local files = love.filesystem.getDirectoryItems(directoryName)
+    local lambdas = {}
 
-    for b, i in ipairs(files) do
-        if string.match(i, ".png") then
-            if string.match(i, "_") then
-                if string.match(i, "_1") then
-                    local a = i:gsub(".png", "")
-                    local a = a:gsub("_1", "")
-                    local a = a .. "Animation"
-                    Sprites[a] = {love.graphics.newImage(directoryName .. i)}
-                elseif string.match(i, "_2") then
-                    local a = i:gsub(".png", "")
-                    local a = a:gsub("_2", "")
-                    local a = a .. "Animation"
-                    table.insert(Sprites[a], love.graphics.newImage(directoryName .. i))
-                elseif string.match(i, "_3") then
-                    local a = i:gsub(".png", "")
-                    local a = a:gsub("_3", "")
-                    local a = a .. "Animation"
-                    table.insert(Sprites[a], love.graphics.newImage(directoryName .. i))
-                elseif string.match(i, "_4") then
-                    local a = i:gsub(".png", "")
-                    local a = a:gsub("_4", "")
-                    local a = a .. "Animation"
-                    table.insert(Sprites[a], love.graphics.newImage(directoryName .. i))
-                elseif string.match(i, "_5") then
-                    local a = i:gsub(".png", "")
-                    local a = a:gsub("_5", "")
-                    local a = a .. "Animation"
-                    table.insert(Sprites[a], love.graphics.newImage(directoryName .. i))
-                elseif string.match(i, "_6") then
-                    local a = i:gsub(".png", "")
-                    local a = a:gsub("_6", "")
-                    local a = a .. "Animation"
-                    table.insert(Sprites[a], love.graphics.newImage(directoryName .. i))
+    for index, sprite in ipairs(files) do
+        lambdas[index] = function()
+            print("loading sprite", sprite)
+            if string.match(sprite, ".png") then
+                if string.match(sprite, "_") then
+                    if string.match(sprite, "_1") then
+                        local a = sprite:gsub(".png", "")
+                        local a = a:gsub("_1", "")
+                        local a = a .. "Animation"
+                        Sprites[a] = {love.graphics.newImage(directoryName .. sprite)}
+                    elseif string.match(sprite, "_2") then
+                        local a = sprite:gsub(".png", "")
+                        local a = a:gsub("_2", "")
+                        local a = a .. "Animation"
+                        table.insert(Sprites[a], love.graphics.newImage(directoryName .. sprite))
+                    elseif string.match(sprite, "_3") then
+                        local a = sprite:gsub(".png", "")
+                        local a = a:gsub("_3", "")
+                        local a = a .. "Animation"
+                        table.insert(Sprites[a], love.graphics.newImage(directoryName .. sprite))
+                    elseif string.match(sprite, "_4") then
+                        local a = sprite:gsub(".png", "")
+                        local a = a:gsub("_4", "")
+                        local a = a .. "Animation"
+                        table.insert(Sprites[a], love.graphics.newImage(directoryName .. sprite))
+                    elseif string.match(sprite, "_5") then
+                        local a = sprite:gsub(".png", "")
+                        local a = a:gsub("_5", "")
+                        local a = a .. "Animation"
+                        table.insert(Sprites[a], love.graphics.newImage(directoryName .. sprite))
+                    elseif string.match(sprite, "_6") then
+                        local a = sprite:gsub(".png", "")
+                        local a = a:gsub("_6", "")
+                        local a = a .. "Animation"
+                        table.insert(Sprites[a], love.graphics.newImage(directoryName .. sprite))
+                    end
+                elseif string.match(sprite, "Font") then
+                    False = false
+                else
+                    local a = sprite:gsub(".png", "")
+                    Sprites[a] = love.graphics.newImage(directoryName .. sprite)
                 end
-            elseif string.match(i, "Font") then
-                False = false
-            else
-                local a = i:gsub(".png", "")
-                Sprites[a] = love.graphics.newImage(directoryName .. i)
             end
         end
     end
+
+    return lambdas
 end
 
 local function LoadShouts(directoryName)
     Shouts = {}
 
     local files = love.filesystem.getDirectoryItems(directoryName)
+    local lambdas = {}
 
-    for b, i in ipairs(files) do
-        if string.match(i, ".png") then
-            local a = i:gsub(".png", "")
-            Shouts[a] = love.graphics.newImage(directoryName .. i)
+    for index, shout in ipairs(files) do
+        lambdas[index] = function()
+            print("loading shout", sprite)
+            if string.match(shout, ".png") then
+                local a = shout:gsub(".png", "")
+                Shouts[a] = love.graphics.newImage(directoryName .. shout)
+            end
         end
     end
+
+    return lambdas
 end
 
 local function LoadSFX(directoryName)
@@ -188,24 +206,23 @@ local function LoadFonts()
 end
 
 function LoadAssets()
-    LoadBackgrounds(settings.background_directory)
-    local musicLambdas = LoadMusic(settings.music_directory)
-    LoadSprites(settings.sprite_directory)
-    LoadShouts(settings.shouts_directory)
-    local soundEffectLambdas = LoadSFX(settings.sfx_directory)
+    local allLambdas = {}
+    local i = 1
+    local function appendListToList(subList)
+        for _, lambda in ipairs(subList) do
+            allLambdas[i] = lambda
+            i = i + 1
+        end
+    end
+
+    -- Loading fonts is pretty quick compared to everything else
     LoadFonts()
 
-    local allLambdas = {}
-    local index = 1
-    for i, lambda in ipairs(soundEffectLambdas) do
-        allLambdas[index] = lambda
-        index = index + 1
-    end
-
-    for i, lambda in ipairs(musicLambdas) do
-        allLambdas[index] = lambda
-        index = index + 1
-    end
+    appendListToList(LoadBackgrounds(settings.background_directory))
+    appendListToList(LoadMusic(settings.music_directory))
+    appendListToList(LoadSprites(settings.sprite_directory))
+    appendListToList(LoadShouts(settings.shouts_directory))
+    appendListToList(LoadSFX(settings.sfx_directory))
 
     return allLambdas
 end
