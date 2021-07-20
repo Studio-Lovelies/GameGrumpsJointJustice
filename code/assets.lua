@@ -3,7 +3,7 @@ function LoadBackgrounds(directoryName)
         NONE = {}
     }
 
-    files = love.filesystem.getDirectoryItems(directoryName)
+    local files = love.filesystem.getDirectoryItems(directoryName)
 
     for b, i in ipairs(files) do
         if string.match(i, ".png") then
@@ -26,7 +26,7 @@ end
 function LoadMusic(directoryName)
     Music = {}
 
-    files = love.filesystem.getDirectoryItems(directoryName)
+    local files = love.filesystem.getDirectoryItems(directoryName)
 
     for b, i in ipairs(files) do
         if string.match(i, ".mp3") then
@@ -47,7 +47,7 @@ end
 function LoadSprites(directoryName)
     Sprites = {}
 
-    files = love.filesystem.getDirectoryItems(directoryName)
+    local files = love.filesystem.getDirectoryItems(directoryName)
 
     for b, i in ipairs(files) do
         if string.match(i, ".png") then
@@ -96,7 +96,7 @@ end
 function LoadShouts(directoryName)
     Shouts = {}
 
-    files = love.filesystem.getDirectoryItems(directoryName)
+    local files = love.filesystem.getDirectoryItems(directoryName)
 
     for b, i in ipairs(files) do
         if string.match(i, ".png") then
@@ -109,7 +109,7 @@ end
 function LoadSFX(directoryName)
     Sounds = {}
 
-    files = love.filesystem.getDirectoryItems(directoryName)
+    local files = love.filesystem.getDirectoryItems(directoryName)
 
     for b, i in ipairs(files) do
         if string.match(i, ".mp3") then
