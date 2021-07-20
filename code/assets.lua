@@ -1,4 +1,4 @@
-function LoadBackgrounds(directoryName)
+local function LoadBackgrounds(directoryName)
     Backgrounds = {
         NONE = {}
     }
@@ -23,7 +23,7 @@ function LoadBackgrounds(directoryName)
     end
 end
 
-function LoadMusic(directoryName)
+local function LoadMusic(directoryName)
     Music = {}
 
     local files = love.filesystem.getDirectoryItems(directoryName)
@@ -44,7 +44,7 @@ function LoadMusic(directoryName)
     end
 end
 
-function LoadSprites(directoryName)
+local function LoadSprites(directoryName)
     Sprites = {}
 
     local files = love.filesystem.getDirectoryItems(directoryName)
@@ -93,7 +93,7 @@ function LoadSprites(directoryName)
     end
 end
 
-function LoadShouts(directoryName)
+local function LoadShouts(directoryName)
     Shouts = {}
 
     local files = love.filesystem.getDirectoryItems(directoryName)
@@ -106,7 +106,7 @@ function LoadShouts(directoryName)
     end
 end
 
-function LoadSFX(directoryName)
+local function LoadSFX(directoryName)
     Sounds = {}
 
     local files = love.filesystem.getDirectoryItems(directoryName)
@@ -130,7 +130,7 @@ function LoadSFX(directoryName)
     end
 end
 
-function LoadMisc()
+local function LoadMisc()
     GameFont =
         love.graphics.newImageFont(
         "sprites/GameFont.png",
