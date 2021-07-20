@@ -10,7 +10,7 @@ require "code/scriptloader"
 local logoOpacity = 1
 local drawLogo = true
 local logoTimer = 0
-local doneLoading = false
+local isDoneLoading = false
 local AssetLoader
 local currentLoadingAsset
 
@@ -43,7 +43,7 @@ end
 -- transfer the update and draw over to the current game scene
 function love.update(dt)
     -- Loading Screen
-    if not doneLoading then
+    if not isDoneLoading then
         currentLoadingAsset = AssetLoader.lambdas[AssetLoader.index]
         if currentLoadingAsset then
             currentLoadingAsset()
@@ -51,7 +51,7 @@ function love.update(dt)
             return -- skip the rest of this update, we're still in the loading screen
         end
 
-        doneLoading = true
+        isDoneLoading = true
     end
     -- /Loading Screen
 
@@ -127,6 +127,13 @@ function love.draw()
             0.35,
             0.35
         )
+
+        if not isDoneLoading then
+            love.graphics.setFont(LoadingFont)
+            local percent = math.floor((AssetLoader.index - 1) / #AssetLoader.lambdas * 100)
+            local lx, ly = math.floor(dimensions.window_height * 0.8), math.floor(dimensions.window_width)
+            love.graphics.printf("Loading: " .. percent .. "%", 0, lx, ly, "center")
+        end
     else
         love.graphics.setColor(unpack(colors.white))
         love.graphics.setCanvas(Renderable)

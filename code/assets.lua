@@ -183,6 +183,7 @@ local function LoadFonts()
         " abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!?~:(),-'*" .. '"``/#@',
         1
     )
+    LoadingFont = love.graphics.newFont(24) -- it really doesn't matter what this font is
     love.graphics.setFont(GameFont)
 end
 
