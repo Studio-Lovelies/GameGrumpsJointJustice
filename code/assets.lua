@@ -37,7 +37,9 @@ local function LoadMusic(directoryName)
             Music[a] = love.audio.newSource(directoryName .. i, "static")
         end
     end
+end
 
+local function FinishLoadingMusic()
     for i, v in pairs(Music) do
         v:setLooping(true)
         v:setVolume(MusicVolume / 100)
@@ -177,4 +179,6 @@ function LoadAssets()
     LoadShouts(settings.shouts_directory)
     LoadSFX(settings.sfx_directory)
     LoadMisc()
+
+    FinishLoadingMusic()
 end
