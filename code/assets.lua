@@ -8,7 +8,6 @@ local function LoadBackgrounds(directoryName)
 
     for index, background in ipairs(files) do
         lambdas[index] = function()
-            print("loading background", background)
             if string.match(background, ".png") then
                 if string.match(background, "_1") then
                     local a = background:gsub(".png", "")
@@ -37,7 +36,6 @@ local function LoadMusic(directoryName)
 
     for index, song in ipairs(files) do
         lambdas[index] = function()
-            print("loading music", song)
             if string.match(song, ".mp3") then
                 local a = song:gsub(".mp3", ""):upper()
                 Music[a] = love.audio.newSource(directoryName .. song, "static")
@@ -66,7 +64,6 @@ local function LoadSprites(directoryName)
 
     for index, sprite in ipairs(files) do
         lambdas[index] = function()
-            print("loading sprite", sprite)
             if string.match(sprite, ".png") then
                 if string.match(sprite, "_") then
                     if string.match(sprite, "_1") then
@@ -121,7 +118,6 @@ local function LoadShouts(directoryName)
 
     for index, shout in ipairs(files) do
         lambdas[index] = function()
-            print("loading shout", sprite)
             if string.match(shout, ".png") then
                 local a = shout:gsub(".png", "")
                 Shouts[a] = love.graphics.newImage(directoryName .. shout)
@@ -140,7 +136,6 @@ local function LoadSFX(directoryName)
 
     for index, sfx in ipairs(files) do
         lambdas[index] = function()
-            print("loading SFX", sfx)
             if string.match(sfx, ".mp3") then
                 local a = sfx:gsub(".mp3", ""):upper()
                 Sounds[a] = love.audio.newSource(directoryName .. sfx, "static")
