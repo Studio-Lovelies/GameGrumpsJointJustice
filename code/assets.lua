@@ -188,10 +188,8 @@ function LoadAssets()
     local soundEffectLambdas = LoadSFX(settings.sfx_directory)
     LoadFonts()
 
-    for i, soundEffectLambda in ipairs(soundEffectLambdas) do
-        soundEffectLambda()
-    end
-
     FinishLoadingMusic()
     FinishLoadingSFX()
+
+    return soundEffectLambdas
 end

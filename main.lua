@@ -10,6 +10,8 @@ require "code/scriptloader"
 local logoOpacity = 1
 local drawLogo = true
 local logoTimer = 0
+local AssetLoader
+local currentLoadingAsset
 
 function love.load()
     InitGlobalConfigVariables()
@@ -23,7 +25,7 @@ function love.load()
     ScreenShake = 0
     DtReset = false -- so scene load times don't factor into dt
 
-    loadingLambdas = LoadAssets()
+    AssetLoader = {lambdas = LoadAssets(), index = 1}
     Episode = NewEpisode(settings.episode_path)
 
     -- Select the first scene in the loaded episode
@@ -39,6 +41,15 @@ end
 -- love.update and love.draw get called 60 times per second
 -- transfer the update and draw over to the current game scene
 function love.update(dt)
+    -- Loading Screen
+    currentLoadingAsset = AssetLoader.lambdas[AssetLoader.index]
+    if currentLoadingAsset then
+        currentLoadingAsset()
+        AssetLoader.index = AssetLoader.index + 1
+        return -- skip the rest of this update, we're still in the loading screen
+    end
+    -- /Loading Screen
+
     if DtReset then
         dt = 1 / 60
         DtReset = false
