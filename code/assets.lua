@@ -132,7 +132,7 @@ local function LoadSFX(directoryName)
     end
 end
 
-local function LoadMisc()
+local function LoadFonts()
     GameFont =
         love.graphics.newImageFont(
         "sprites/GameFont.png",
@@ -178,7 +178,7 @@ function LoadAssets()
     LoadSprites(settings.sprite_directory)
     LoadShouts(settings.shouts_directory)
     LoadSFX(settings.sfx_directory)
-    LoadMisc()
+    LoadFonts()
 
     FinishLoadingMusic()
 end
