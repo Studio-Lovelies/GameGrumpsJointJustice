@@ -51,6 +51,7 @@ function love.update(dt)
             return -- skip the rest of this update, we're still in the loading screen
         end
 
+        FinishLoadingAssets()
         isDoneLoading = true
     end
     -- /Loading Screen
