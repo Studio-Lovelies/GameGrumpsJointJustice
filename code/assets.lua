@@ -112,16 +112,22 @@ local function LoadSFX(directoryName)
     Sounds = {}
 
     local files = love.filesystem.getDirectoryItems(directoryName)
+    local loadSFXLambdas = {}
 
-    for b, i in ipairs(files) do
-        if string.match(i, ".mp3") then
-            local a = i:gsub(".mp3", ""):upper()
-            Sounds[a] = love.audio.newSource(directoryName .. i, "static")
-        elseif string.match(i, ".wav") then
-            local a = i:gsub(".wav", ""):upper()
-            Sounds[a] = love.audio.newSource(directoryName .. i, "static")
+    for index, sfx in ipairs(files) do
+        loadSFXLambdas[index] = function()
+            print("loading SFX", sfx)
+            if string.match(sfx, ".mp3") then
+                local a = sfx:gsub(".mp3", ""):upper()
+                Sounds[a] = love.audio.newSource(directoryName .. sfx, "static")
+            elseif string.match(sfx, ".wav") then
+                local a = sfx:gsub(".wav", ""):upper()
+                Sounds[a] = love.audio.newSource(directoryName .. sfx, "static")
+            end
         end
     end
+
+    return loadSFXLambdas
 end
 
 local function FinishLoadingSFX()
@@ -179,8 +185,12 @@ function LoadAssets()
     LoadMusic(settings.music_directory)
     LoadSprites(settings.sprite_directory)
     LoadShouts(settings.shouts_directory)
-    LoadSFX(settings.sfx_directory)
+    local soundEffectLambdas = LoadSFX(settings.sfx_directory)
     LoadFonts()
+
+    for i, soundEffectLambda in ipairs(soundEffectLambdas) do
+        soundEffectLambda()
+    end
 
     FinishLoadingMusic()
     FinishLoadingSFX()
