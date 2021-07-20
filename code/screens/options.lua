@@ -98,30 +98,6 @@ blip2 = love.audio.newSource("sounds/selectblip2.wav", "static")
 jingle = love.audio.newSource("sounds/selectjingle.wav", "static")
 blip2:setVolume(settings.sfx_volume / 100 / 2)
 jingle:setVolume(settings.sfx_volume / 100 / 2)
-Music = {}
-Sounds = {}
-
-musicFiles = love.filesystem.getDirectoryItems(settings.music_directory)
-soundFiles = love.filesystem.getDirectoryItems(settings.sfx_directory)
-
-for b, i in ipairs(musicFiles) do
-    if string.match(i, ".mp3") then
-        local a = i:gsub(".mp3", ""):upper()
-        Music[a] = love.audio.newSource(settings.music_directory .. i, "static")
-    elseif string.match(i, ".wav") then
-        local a = i:gsub(".wav", ""):upper()
-        Music[a] = love.audio.newSource(settings.music_directory .. i, "static")
-    end
-end
-for b, i in ipairs(soundFiles) do
-    if string.match(i, ".mp3") then
-        local a = i:gsub(".mp3", ""):upper()
-        Sounds[a] = love.audio.newSource(settings.sfx_directory .. i, "static")
-    elseif string.match(i, ".wav") then
-        local a = i:gsub(".wav", ""):upper()
-        Sounds[a] = love.audio.newSource(settings.sfx_directory .. i, "static")
-    end
-end
 
 OptionsConfig = {
     displayed = false,
