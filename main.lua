@@ -6,6 +6,7 @@ require "code/assets"
 require "code/episode"
 require "code/scene"
 require "code/scriptloader"
+require "code/controller-support"
 
 local logoOpacity = 1
 local drawLogo = true

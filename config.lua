@@ -49,6 +49,21 @@ controls = {
     press_toggle_profiles = "down"
 }
 
+-- Mapping from XBox controller inputs to literal keypresses, we just forward to love.keypressed
+-- TODO: What about PlayStation? Will this just work (tm)?
+controller_button_to_keys = {
+    start = "return",
+    back = "escape", -- "back" is that button we usually think of as "Select" to the left of "Start"
+    a = "x",
+    b = "z",
+    x = "x", -- x -> x, incredible
+    y = "z",
+    dpup = "up",
+    dpdown = "down",
+    dpleft = "left",
+    dpright = "right"
+}
+
 dimensions = {
     graphics_scale = 4,
     window_width = 1280,
