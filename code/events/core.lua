@@ -46,8 +46,8 @@ function NewAnimationEvent(name, animation, speed)
         scene.canShowCourtRecord = false
         scene.textHidden = true
 
-        self.timer = self.timer + dt*self.speed
-        self.animIndex = math.max(math.floor(self.timer +0.5), 1)
+        self.timer = self.timer + dt * self.speed
+        self.animIndex = math.max(math.floor(self.timer + 0.5), 1)
 
         local animation = scene.characters[self.name].animations[self.animation]
         if self.animIndex <= #animation.anim then
@@ -111,24 +111,24 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
 
         if love.keyboard.isDown("x") then
             if startTimer(self, dt) >= 0.6 then
-                scrollSpeed = scrollSpeed*8
+                scrollSpeed = scrollSpeed * 8
             end
         else
             if currentChar == "." then
                 if string.sub(self.text, math.floor(self.textScroll - 2), math.floor(self.textScroll)):lower() == "mr." then
                     scrollSpeed = scrollSpeed
                 else
-                    scrollSpeed = scrollSpeed*0.15
+                    scrollSpeed = scrollSpeed * 0.15
                 end
             elseif currentChar == "!" or currentChar == "?" then
-                scrollSpeed = scrollSpeed*0.15
+                scrollSpeed = scrollSpeed * 0.15
             elseif currentChar == "," then
-                scrollSpeed = scrollSpeed*0.25
+                scrollSpeed = scrollSpeed * 0.25
             elseif currentChar == " " then
-                scrollSpeed = scrollSpeed*0.75
+                scrollSpeed = scrollSpeed * 0.75
             end
         end
-        self.textScroll = math.min(self.textScroll + dt*scrollSpeed, #self.text)
+        self.textScroll = math.min(self.textScroll + dt * scrollSpeed, #self.text)
 
         if self.textScroll < #self.text then
             scene.characterTalking = self.animates
@@ -140,24 +140,23 @@ function NewSpeakEvent(who, text, locorlit, color, needsPressing)
             scene.textTalker = scene.characterLocations[self.who].name
         end
 
-        if self.textScroll > lastScroll
-        and currentChar ~= " "
-        and currentChar ~= ","
-        and currentChar ~= "-"
-        and currentChar ~= "."
-        and currentChar ~= "?"
-        and currentChar ~= "!"
-        and currentChar ~= "'"
-        and currentChar ~= ":"
-        and currentChar ~= ";"
-        and currentChar ~= ")"
-        and currentChar ~= "("
-        and self.speaks then
+        if
+            self.textScroll > lastScroll and currentChar ~= " " and currentChar ~= "," and currentChar ~= "-" and
+                currentChar ~= "." and
+                currentChar ~= "?" and
+                currentChar ~= "!" and
+                currentChar ~= "'" and
+                currentChar ~= ":" and
+                currentChar ~= ";" and
+                currentChar ~= ")" and
+                currentChar ~= "(" and
+                self.speaks
+         then
             if scene.characters[scene.textTalker].gender == "MALE" then
-                Sounds.MALETALK:setVolume(settings.speech_volume/100)
+                Sounds.MALETALK:setVolume(settings.speech_volume / 100)
                 Sounds.MALETALK:play()
             else
-                Sounds.FEMALETALK:setVolume(settings.speech_volume/100)
+                Sounds.FEMALETALK:setVolume(settings.speech_volume / 100)
                 Sounds.FEMALETALK:play()
             end
         end
@@ -219,24 +218,24 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
 
         if love.keyboard.isDown("x") then
             if startTimer(self, dt) >= 0.6 then
-                scrollSpeed = scrollSpeed*8
+                scrollSpeed = scrollSpeed * 8
             end
         else
             if currentChar == "." then
                 if string.sub(self.text, math.floor(self.textScroll - 2), math.floor(self.textScroll)):lower() == "mr." then
                     scrollSpeed = scrollSpeed
                 else
-                    scrollSpeed = scrollSpeed*0.15
+                    scrollSpeed = scrollSpeed * 0.15
                 end
             elseif currentChar == "!" or currentChar == "?" then
-                scrollSpeed = scrollSpeed*0.15
+                scrollSpeed = scrollSpeed * 0.15
             elseif currentChar == "," then
-                scrollSpeed = scrollSpeed*0.25
+                scrollSpeed = scrollSpeed * 0.25
             elseif currentChar == " " then
-                scrollSpeed = scrollSpeed*0.75
+                scrollSpeed = scrollSpeed * 0.75
             end
         end
-        self.textScroll = math.min(self.textScroll + dt*scrollSpeed, #self.text)
+        self.textScroll = math.min(self.textScroll + dt * scrollSpeed, #self.text)
 
         if self.textScroll < #self.text then
             scene.characterTalking = self.animates
@@ -248,25 +247,24 @@ function NewQuietSpeakEvent(who, text, locorlit, color, needsPressing)
             scene.textTalker = scene.characterLocations[self.who].name
         end
 
-        if self.textScroll > lastScroll
-        and currentChar ~= " "
-        and currentChar ~= ","
-        and currentChar ~= "-"
-        and currentChar ~= "."
-        and currentChar ~= "?"
-        and currentChar ~= "!"
-        and currentChar ~= "'"
-        and currentChar ~= ":"
-        and currentChar ~= ";"
-        and currentChar ~= ")"
-        and currentChar ~= "("
-        and currentChar ~= "#"
-        and self.speaks then
+        if
+            self.textScroll > lastScroll and currentChar ~= " " and currentChar ~= "," and currentChar ~= "-" and
+                currentChar ~= "." and
+                currentChar ~= "?" and
+                currentChar ~= "!" and
+                currentChar ~= "'" and
+                currentChar ~= ":" and
+                currentChar ~= ";" and
+                currentChar ~= ")" and
+                currentChar ~= "(" and
+                currentChar ~= "#" and
+                self.speaks
+         then
             if scene.characters[scene.textTalker].gender == "MALE" then
-                Sounds.MALETALK:setVolume(settings.speech_volume/100)
+                Sounds.MALETALK:setVolume(settings.speech_volume / 100)
                 Sounds.MALETALK:play()
             else
-                Sounds.FEMALETALK:setVolume(settings.speech_volume/100)
+                Sounds.FEMALETALK:setVolume(settings.speech_volume / 100)
                 Sounds.FEMALETALK:play()
             end
         end
@@ -317,8 +315,8 @@ end
 function NewHideTextEvent()
     local self = {}
     self.update = function(self, scene, dt)
-        scene.textHidden = true;
-        return false;
+        scene.textHidden = true
+        return false
     end
 
     return self
@@ -333,7 +331,7 @@ function NewTypeWriterEvent(text)
     self.update = function(self, scene, dt)
         scene.textHidden = false
         local lastScroll = self.textScroll
-        self.textScroll = math.min(self.textScroll + dt*TextScrollSpeed, #self.text)
+        self.textScroll = math.min(self.textScroll + dt * TextScrollSpeed, #self.text)
 
         if self.textScroll > lastScroll then
             Sounds.TYPEWRITER:play()
@@ -341,7 +339,7 @@ function NewTypeWriterEvent(text)
 
         scene.fullText = self.text
         scene.textCentered = true
-        scene.textColor = {0,1,0}
+        scene.textColor = {0, 1, 0}
         scene.text = string.sub(self.text, 1, math.floor(self.textScroll))
         scene.textTalker = ""
         scene.textBoxSprite = Sprites["AnonTextBox"]
@@ -357,7 +355,7 @@ function NewTypeWriterEvent(text)
 
     self.draw = function(self, scene)
         love.graphics.setColor(0, 0, 0)
-        love.graphics.rectangle('fill', 0, 0, GraphicsWidth, GraphicsHeight)
+        love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
     end
 
     return self
@@ -368,14 +366,12 @@ function NewSetSyncEvent(sync)
     self.sync = sync:lower()
 
     self.update = function(self, scene, dt)
-
         scene.stack[2].event.sync = self.sync
 
         return false
     end
 
     return self
-
 end
 
 function NewPanImageEvent(a, b, c, d)
@@ -455,7 +451,6 @@ function NewCameraEvent(x, y)
     self.y = y
 
     self.update = function(self, scene, dt)
-
         camerapan = {self.x, self.y}
 
         return false
@@ -471,12 +466,12 @@ function NewPlayMusicEvent(music)
     self.update = function(self, scene, dt)
         scene.music = music
 
-        for i,v in pairs(Music) do
+        for i, v in pairs(Music) do
             -- Don't stop the current track before attempting to
             -- play it. This allows us to have consequtive scripts
             -- play the same music without the track restarting
             if i == self.music then
-                v:setVolume(MusicVolume/100)
+                v:setVolume(MusicVolume / 100)
                 v:play()
             else
                 v:stop()
@@ -491,7 +486,7 @@ end
 
 function NewFadeMusicEvent()
     local self = {}
-    self.timer = MusicVolume/100
+    self.timer = MusicVolume / 100
 
     self.update = function(self, scene, dt)
         scene.music = nil
@@ -499,7 +494,7 @@ function NewFadeMusicEvent()
         local lastTimer = self.timer
         self.timer = self.timer - (dt / (1 / (MusicVolume / 100)))
 
-        for i,v in pairs(Music) do
+        for i, v in pairs(Music) do
             v:setVolume(self.timer)
         end
 
@@ -515,7 +510,7 @@ function NewStopMusicEvent()
     self.update = function(self, scene, dt)
         scene.music = nil
 
-        for i,v in pairs(Music) do
+        for i, v in pairs(Music) do
             v:stop()
         end
 
@@ -569,7 +564,6 @@ function NewCourtRecordAddEvent(itemType, name)
             end
 
             table.insert(Episode.courtRecords.evidence, scene.evidence[self.name])
-
         elseif self.itemType == "PROFILE" then
             if ItemExistsInTable(self.name, Episode.courtRecords.profiles) then
                 return false
@@ -591,12 +585,12 @@ function NewAddToCourtRecordAnimationEvent(evidenceSpriteName)
     self.wasPressing = true
 
     self.update = function(self, scene, dt)
-        self.text = self.evidence.." added to#the Court Record."
-        self.textScroll = math.min(self.textScroll + dt*TextScrollSpeed, #self.text)
+        self.text = self.evidence .. " added to#the Court Record."
+        self.textScroll = math.min(self.textScroll + dt * TextScrollSpeed, #self.text)
         scene.fullText = self.text
         scene.textCentered = true
-        local r,g,b = RGBColorConvert(107,198,247)
-        scene.textColor = {r,g,b}
+        local r, g, b = RGBColorConvert(107, 198, 247)
+        scene.textColor = {r, g, b}
         scene.text = string.sub(self.text, 1, math.floor(self.textScroll))
         scene.textTalker = ""
         scene.textBoxSprite = Sprites["AnonTextBox"]
@@ -611,11 +605,11 @@ function NewAddToCourtRecordAnimationEvent(evidenceSpriteName)
     end
 
     self.draw = function(self, scene)
-        love.graphics.setColor(1,1,1)
+        love.graphics.setColor(1, 1, 1)
         if Sprites[self.evidence:gsub(" ", "")] == nil then
-            love.graphics.draw(Sprites["MissingTexture"], 16,16)
+            love.graphics.draw(Sprites["MissingTexture"], 16, 16)
         else
-            love.graphics.draw(Sprites[self.evidence:gsub(" ", "")], 24,24)
+            love.graphics.draw(Sprites[self.evidence:gsub(" ", "")], 24, 24)
         end
     end
 
@@ -717,7 +711,7 @@ function NewChoiceEvent(options, isFake)
             if not self.wasPressingDown and pressingDown then
                 self.select = self.select + 2
 
-                if self.select > #self.options -1 then
+                if self.select > #self.options - 1 then
                     self.select = 1
                 end
             end
@@ -733,7 +727,7 @@ function NewChoiceEvent(options, isFake)
             if not self.wasPressingDown and pressingDown then
                 self.select = self.select + 3
 
-                if self.select > #self.options -1 then
+                if self.select > #self.options - 1 then
                     self.select = 1
                 end
             end
@@ -843,7 +837,7 @@ end
 function NewFadeToBlackEvent(fadeMusic)
     local self = {}
     self.timer = 0
-    self.musicTimer = MusicVolume/100
+    self.musicTimer = MusicVolume / 100
     self.fadeMusic = fadeMusic
 
     self.update = function(self, scene, dt)
@@ -853,9 +847,9 @@ function NewFadeToBlackEvent(fadeMusic)
         local lastTimer = self.timer
         local lastMusicTimer = self.musicTimer
         self.timer = self.timer + (dt / 2)
-        self.musicTimer = self.musicTimer - (dt / (1 / (MusicVolume/100)))
+        self.musicTimer = self.musicTimer - (dt / (1 / (MusicVolume / 100)))
 
-        for i,v in pairs(Music) do
+        for i, v in pairs(Music) do
             if self.fadeMusic then
                 v:setVolume(self.musicTimer)
             end
@@ -887,8 +881,8 @@ function NewFadeToWhiteEvent()
     end
 
     self.draw = function(self, scene)
-        love.graphics.setColor(255,255,255, self.timer)
-        love.graphics.rectangle("fill", 0,0, GraphicsWidth,GraphicsHeight)
+        love.graphics.setColor(255, 255, 255, self.timer)
+        love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
     end
 
     return self
@@ -905,7 +899,7 @@ function NewFadeInEvent()
         local lastTimer = self.timer
         self.timer = self.timer - dt
 
-        return self.timer >= 0 and lastTimer >=0
+        return self.timer >= 0 and lastTimer >= 0
     end
 
     self.draw = function(self, scene)
@@ -932,7 +926,7 @@ function NewCrossFadeEvent(scene1, scene2)
         local lastTimer2 = self.timer2
         self.timer2 = self.timer2 + dt
 
-        return self.timer1 >= 0 and lastTimer1 >=0 and self.timer2 <= 1 and lastTimer2 <= 1
+        return self.timer1 >= 0 and lastTimer1 >= 0 and self.timer2 <= 1 and lastTimer2 <= 1
     end
 
     self.draw = function(self, scene)
@@ -999,7 +993,7 @@ function NewSetFlagEvent(flag, set)
 
     self.update = function(self, scene, dt)
         scene.flags[self.flag] = self.set
-        print("set "..self.flag.." to "..self.set)
+        print("set " .. self.flag .. " to " .. self.set)
         return false
     end
 
@@ -1073,13 +1067,13 @@ function NewGameOverEvent()
     local self = {}
 
     self.update = function(self, scene, dt)
-        Episode:stop();
-        local episodePath = Episode.episodePath;
-        local sceneIndex = Episode.sceneIndex;
-        Episode = NewEpisode(settings.game_over_path);
-        Episode.nextEpisode = NewEpisode(episodePath);
-        Episode.restartSceneIndex = sceneIndex;
-        Episode:begin();
+        Episode:stop()
+        local episodePath = Episode.episodePath
+        local sceneIndex = Episode.sceneIndex
+        Episode = NewEpisode(settings.game_over_path)
+        Episode.nextEpisode = NewEpisode(episodePath)
+        Episode.restartSceneIndex = sceneIndex
+        Episode:begin()
 
         return false
     end
@@ -1098,28 +1092,28 @@ function stringInsert(str1, str2, pos)
     if string.match(str1:sub(charPos + 1, charPos + 2), "$n") then
         return str1
     end
-    return str1:sub(1, charPos)..str2..str1:sub(charPos + 1)
+    return str1:sub(1, charPos) .. str2 .. str1:sub(charPos + 1)
 end
 
 function stringSplit(s, delimiter)
-    result = {};
+    result = {}
 
-    for match in (s..delimiter):gmatch("(.-)"..delimiter) do
-        table.insert(result, match);
+    for match in (s .. delimiter):gmatch("(.-)" .. delimiter) do
+        table.insert(result, match)
     end
-    return result;
+    return result
 end
 
 function isNaN(n)
     if (tostring(n) == "nan") then
         return true
-    else return false
+    else
+        return false
     end
 end
 
 function startTimer(event, dt)
-
-    event.xTimer = event.xTimer + dt*2
+    event.xTimer = event.xTimer + dt * 2
 
     return event.xTimer
 end
