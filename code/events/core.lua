@@ -492,7 +492,11 @@ function NewFadeMusicEvent()
         scene.music = nil
 
         local lastTimer = self.timer
-        self.timer = self.timer - (dt / (1 / (MusicVolume / 100)))
+        local tick = (dt / (1 / (MusicVolume / 100)))
+        if tick == 0 then
+            tick = dt
+        end
+        self.timer = self.timer - tick
 
         for i, v in pairs(Music) do
             v:setVolume(self.timer)
