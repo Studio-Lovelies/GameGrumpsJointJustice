@@ -1,5 +1,7 @@
+local background = love.graphics.newImage(settings.power_hour_set_path)
+local logoImage = love.graphics.newImage(settings.main_logo_path)
+
 function DrawTitleScreen()
-    local background = love.graphics.newImage(settings.power_hour_set_path)
     local backgroundScale = 2 * dimensions.window_width / 1920
     GameFont:setLineHeight(1)
 
@@ -10,7 +12,6 @@ function DrawTitleScreen()
 
     love.graphics.setColor(1, 1, 1, 1)
 
-    local logoImage = love.graphics.newImage(settings.main_logo_path)
     local logoScale = backgroundScale * 0.75
 
     love.graphics.draw(
@@ -63,7 +64,7 @@ function DrawTitleScreen()
     love.graphics.rectangle("fill", newX, newY, newW, newH)
 
     love.graphics.setColor(222, 0, 0)
-     --love.graphics.setColor(0.3,0.3,0.3) -- greyed out
+    --love.graphics.setColor(0.3,0.3,0.3) -- greyed out
     love.graphics.rectangle("fill", quitX, quitY, quitW, quitH)
 
     love.graphics.setColor(0.3, 0.3, 0.3) -- greyed out
@@ -85,7 +86,7 @@ function DrawTitleScreen()
     )
 
     local quitGameText = love.graphics.newText(GameFont, "Quit Game")
-     --"Load Game")
+    --"Load Game")
     love.graphics.draw(
         quitGameText,
         quitX + quitW / 2 - quitGameText:getWidth() * 3 / 2,
