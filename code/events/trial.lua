@@ -274,6 +274,7 @@ function NewPresentEvent(type, evidence)
                         table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
                     end
                 elseif self.type == "PROFILE" then
+                    -- Crash below?
                     if
                         Episode.courtRecords.profiles[CourtRecordIndexP].characterName:gsub("%s+", ""):lower() ==
                             self.evidence:lower() and
