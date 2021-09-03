@@ -6,7 +6,7 @@ math.random()
 function NewShoutEvent(who, what)
     local self = {}
     self.timer = 0
-    self.x,self.y = 0,0
+    self.x, self.y = 0, 0
     self.who = who
     self.what = what:lower()
     local shout = Shouts[self.what]
@@ -18,14 +18,14 @@ function NewShoutEvent(who, what)
             scene.characters[self.who].sounds[self.what]:play()
         end
         self.timer = self.timer + dt
-        self.x = self.x + love.math.random()*choose{1,-1}*2
-        self.y = self.y + love.math.random()*choose{1,-1}*2
+        self.x = self.x + love.math.random() * choose {1, -1} * 2
+        self.y = self.y + love.math.random() * choose {1, -1} * 2
 
         return self.timer < 0.5
     end
 
     self.draw = function(self, scene)
-        love.graphics.draw(shout, self.x,self.y)
+        love.graphics.draw(shout, self.x, self.y)
     end
 
     return self
@@ -51,7 +51,7 @@ function NewWitnessEvent(queue)
     local cornerSprite = nil
     if self.eventType == "WitnessTestimony" then
         cornerSprite = Sprites["Testimony"]
-    else  -- "CrossExamination"
+    else -- "CrossExamination"
         cornerSprite = Sprites["Penalty"]
     end
 
@@ -60,7 +60,7 @@ function NewWitnessEvent(queue)
             self.textIndex = self.textIndex + 1
             self.textScroll = 1
             self.wasPressing = true
-        else  -- "CrossExamination"
+        else -- "CrossExamination"
             if self.textIndex == 3 then
                 self.textIndex = self.textIndex + 1
             else
@@ -70,7 +70,7 @@ function NewWitnessEvent(queue)
             self.textScroll = 1
             self.wasPressing = true
 
-            if self.textIndex > #self.queue then  -- Loop cross examination
+            if self.textIndex > #self.queue then -- Loop cross examination
                 self.textIndex = 4
             end
         end
@@ -78,7 +78,7 @@ function NewWitnessEvent(queue)
 
     self.update = function(self, scene, dt)
         if self.animIndex < 20 then
-            for i,v in pairs(Music) do
+            for i, v in pairs(Music) do
                 v:stop()
             end
         end
@@ -93,18 +93,18 @@ function NewWitnessEvent(queue)
         local text = self.queue[self.textIndex]
         local lastScroll = self.textScroll
 
-        if not text then  -- Terminate witness testimony
+        if not text then -- Terminate witness testimony
             return false
         end
 
         local inTitle = self.textIndex == 3
-        if inTitle then  -- Title formatting
+        if inTitle then -- Title formatting
             scene.textColor = {1, 0.5, 0}
             scene.textCentered = true
             scene.textBoxSprite = Sprites["AnonTextBox"]
             scene.characterTalking = false
             scene.textTalker = ""
-        else  -- Dialogue formatting
+        else -- Dialogue formatting
             if self.textScroll < #text then
                 scene.characterTalking = true
                 scene.textTalker = self.who
@@ -112,7 +112,7 @@ function NewWitnessEvent(queue)
 
             if self.eventType == "WitnessTestimony" then
                 scene.textColor = {1, 1, 1}
-            else  -- "CrossExamination"
+            else -- "CrossExamination"
                 scene.textColor = {0, 1, 0}
             end
         end
@@ -129,22 +129,19 @@ function NewWitnessEvent(queue)
 
         if love.keyboard.isDown("x") then
             if startTimer(self, dt) >= 1 then
-                scrollSpeed = scrollSpeed*8
+                scrollSpeed = scrollSpeed * 8
             end
         end
 
-        self.textScroll = math.min(self.textScroll + dt*scrollSpeed, #text)
+        self.textScroll = math.min(self.textScroll + dt * scrollSpeed, #text)
 
         if not inTitle then
-            if self.textScroll > lastScroll
-            and currentChar ~= " "
-            and currentChar ~= ","
-            and currentChar ~= "-" then
+            if self.textScroll > lastScroll and currentChar ~= " " and currentChar ~= "," and currentChar ~= "-" then
                 if scene.characters[scene.textTalker].gender == "MALE" then
-                    Sounds.MALETALK:setVolume(settings.speech_volume/100)
+                    Sounds.MALETALK:setVolume(settings.speech_volume / 100)
                     Sounds.MALETALK:play()
                 else
-                    Sounds.FEMALETALK:setVolume(settings.speech_volume/100)
+                    Sounds.FEMALETALK:setVolume(settings.speech_volume / 100)
                     Sounds.FEMALETALK:play()
                 end
             end
@@ -160,9 +157,7 @@ function NewWitnessEvent(queue)
             scene.canAdvance = false
         end
 
-        if pressing
-        and not self.wasPressing
-        and canAdvance then
+        if pressing and not self.wasPressing and canAdvance then
             scene.canAdvance = false
             self:advanceText()
         end
@@ -170,23 +165,22 @@ function NewWitnessEvent(queue)
 
         if self.eventType == "CrossExamination" then
             -- Press witness
-            if love.keyboard.isDown("c")
-            and self.queue[self.textIndex+1] ~= "Witness' Account"
-            and self.queue[self.textIndex+1] ~= "CrossExamFail"
-            and not self.queue[self.textIndex+1]:match("%s")
-            and canAdvance then
-                if self.queue[self.textIndex+2] ~= "1" then
-                    scene:runDefinition(self.queue[self.textIndex+1])
+            if
+                love.keyboard.isDown("c") and self.queue[self.textIndex + 1] ~= "Witness' Account" and
+                    self.queue[self.textIndex + 1] ~= "CrossExamFail" and
+                    not self.queue[self.textIndex + 1]:match("%s") and
+                    canAdvance
+             then
+                if self.queue[self.textIndex + 2] ~= "1" then
+                    scene:runDefinition(self.queue[self.textIndex + 1])
                 else
-                    scene:runDefinition(self.queue[self.textIndex+1], 2)
+                    scene:runDefinition(self.queue[self.textIndex + 1], 2)
                     return false
                 end
             end
 
             -- Present evidence
-            if love.keyboard.isDown(controls.press_confirm)
-            and screens.courtRecords.displayed
-            and not inTitle then
+            if love.keyboard.isDown(controls.press_confirm) and screens.courtRecords.displayed and not inTitle then
                 screens.courtRecords.displayed = false
 
                 if Episode.courtRecords.evidence[CourtRecordIndexE].name ~= self.queue[self.textIndex + 2] then
@@ -198,7 +192,6 @@ function NewWitnessEvent(queue)
             end
         end
         -- End controls handling
-
 
         if self.timer > self.animIndex * 0.075 then
             if self.animIndex < 20 then
@@ -217,9 +210,18 @@ function NewWitnessEvent(queue)
 
     self.draw = function(self, scene)
         if self.timer < self.animationTime then
-            love.graphics.draw(Sprites[self.eventType..self.animIndex], GraphicsWidth/2, GraphicsHeight/2 - 20, 0, 1, 1, Sprites[self.eventType..self.animIndex]:getWidth()/2, Sprites[self.eventType..self.animIndex]:getHeight()/2)
+            love.graphics.draw(
+                Sprites[self.eventType .. self.animIndex],
+                GraphicsWidth / 2,
+                GraphicsHeight / 2 - 20,
+                0,
+                1,
+                1,
+                Sprites[self.eventType .. self.animIndex]:getWidth() / 2,
+                Sprites[self.eventType .. self.animIndex]:getHeight() / 2
+            )
         else
-            love.graphics.setColor(1,1,1)
+            love.graphics.setColor(1, 1, 1)
 
             if self.eventType == "WitnessTestimony" then
                 if self.timer2 > 1 then
@@ -230,13 +232,13 @@ function NewWitnessEvent(queue)
                         self.sprite = false
                         self.cornerSpriteBlink = true
                     end
-                  self.timer2 = self.timer2 - 1
+                    self.timer2 = self.timer2 - 1
                 end
                 if self.sprite then
                     love.graphics.draw(self.sprite, 0 + 2, 2)
                 end
-            else  -- "CrossExamination"
-                for i=1, scene.penalties do
+            else -- "CrossExamination"
+                for i = 1, scene.penalties do
                     love.graphics.draw(cornerSprite, (i - 1) * 12 + 2, 2)
                 end
             end
@@ -258,7 +260,12 @@ function NewPresentEvent(type, evidence)
         if screens.courtRecords.displayed then
             if not self.wasPressingConfirm and pressingConfirm then
                 if self.type == "EVIDENCE" then
-                    if Episode.courtRecords.evidence[CourtRecordIndexE].externalName:gsub("%s+", ""):lower() == self.evidence:lower() and Episode.courtRecords.evidence[CourtRecordIndexP].externalName:gsub("%s+", ""):lower() ~= self.evidence:lower() then
+                    if
+                        Episode.courtRecords.evidence[CourtRecordIndexE].externalName:gsub("%s+", ""):lower() ==
+                            self.evidence:lower() and
+                            Episode.courtRecords.evidence[CourtRecordIndexP].externalName:gsub("%s+", ""):lower() ~=
+                                self.evidence:lower()
+                     then
                         screens.courtRecords.displayed = false
                         scene.drawPenalties = false
                         return false
@@ -267,7 +274,12 @@ function NewPresentEvent(type, evidence)
                         table.insert(scene.stack, 1, {lineParts = "penaltyIssued", event = NewIssuePenaltyEvent(scene)})
                     end
                 elseif self.type == "PROFILE" then
-                    if Episode.courtRecords.profiles[CourtRecordIndexP].characterName:gsub("%s+", ""):lower() == self.evidence:lower() and Episode.courtRecords.profiles[CourtRecordIndexE].characterName:gsub("%s+", ""):lower() ~= self.evidence:lower() then
+                    if
+                        Episode.courtRecords.profiles[CourtRecordIndexP].characterName:gsub("%s+", ""):lower() ==
+                            self.evidence:lower() and
+                            Episode.courtRecords.profiles[CourtRecordIndexE].characterName:gsub("%s+", ""):lower() ~=
+                                self.evidence:lower()
+                     then
                         screens.courtRecords.displayed = false
                         scene.drawPenalties = false
                         return false
@@ -281,14 +293,14 @@ function NewPresentEvent(type, evidence)
             return true
         else
             screens.courtRecords.displayed = true
-            screens.courtRecords.menu_type = "evidence";
-            CourtRecordIndexE = 1;
+            screens.courtRecords.menu_type = "evidence"
+            CourtRecordIndexE = 1
             return true
         end
     end
 
     self.draw = function(self, scene)
-        for i=1, scene.penalties do
+        for i = 1, scene.penalties do
             love.graphics.draw(Sprites["Penalty"], (i - 1) * 12 + 2, 2)
         end
     end
@@ -301,22 +313,119 @@ function NewIssuePenaltyEvent(scene)
 
     self.scripts = {
         {
-            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Thinking"}, {"SPEAK", "Judge Brent", "..."}, {"SPEAK", "Judge Brent", "You can't be serious with this, right?"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Uhhhh..."}, {"POSE", "Arin", "Embarassed"}, {"SPEAK", "Arin", "Maybe?"}, {"JUMPCUT", "COURT_JUDGE"}, {"SPEAK", "Judge Brent", "..."}, {"POSE", "Judge Brent", "Warning"}, {"SPEAK", "Judge Brent", "You need to take this more seriously Arin. Hopefully this Penalty will help you focus."}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Y-yes, Your Honor. My bad."}, {"JUMPCUT", "COURT_WITNESS"}, {"CHECK_PENALTIES"}
+            {"JUMPCUT", "COURT_JUDGE"},
+            {"POSE", "Judge Brent", "Thinking"},
+            {"SPEAK", "Judge Brent", "..."},
+            {"SPEAK", "Judge Brent", "You can't be serious with this, right?"},
+            {"JUMPCUT", "COURT_DEFENSE"},
+            {"POSE", "Arin", "Sweaty"},
+            {"SPEAK", "Arin", "Uhhhh..."},
+            {"POSE", "Arin", "Embarassed"},
+            {"SPEAK", "Arin", "Maybe?"},
+            {"JUMPCUT", "COURT_JUDGE"},
+            {"SPEAK", "Judge Brent", "..."},
+            {"POSE", "Judge Brent", "Warning"},
+            {
+                "SPEAK",
+                "Judge Brent",
+                "You need to take this more seriously Arin. Hopefully this Penalty will help you focus."
+            },
+            {"ISSUE_PENALTY"},
+            {"JUMPCUT", "COURT_DEFENSE"},
+            {"POSE", "Arin", "Sweaty"},
+            {"SPEAK", "Arin", "Y-yes, Your Honor. My bad."},
+            {"JUMPCUT", "COURT_WITNESS"},
+            {"CHECK_PENALTIES"}
         },
         {
-            {"JUMPCUT", "COURT_ASSISTANT"}, {"POSE", "Dan", "Angry"}, {"SPEAK", "Dan", "Arin."}, {"SPEAK", "Arin", "What? It's the right answer, right?"}, {"POSE", "Dan", "Sad"}, {"SPEAK", "Dan", "..."}, {"POSE", "Dan", "SideAngryTurned"}, {"SPEAK", "Dan", "No arin, we're getting a penalty for that one."}, {"SPEAK", "Arin", "Wait, really?"}, {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Warning"}, {"SPEAK", "Judge Brent", "Yes!"}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"SFX", "damage1"}, {"SET_SYNC", "TRUE"}, {"ANIMATION", "Arin", "Shock"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "OOF."}, {"THINK", "Arin", "(I need to be more thoughtful and pay more attention I guess.)"}, {"JUMPCUT", "COURT_WITNESS"}, {"CHECK_PENALTIES"}
+            {"JUMPCUT", "COURT_ASSISTANT"},
+            {"POSE", "Dan", "Angry"},
+            {"SPEAK", "Dan", "Arin."},
+            {"SPEAK", "Arin", "What? It's the right answer, right?"},
+            {"POSE", "Dan", "Sad"},
+            {"SPEAK", "Dan", "..."},
+            {"POSE", "Dan", "SideAngryTurned"},
+            {"SPEAK", "Dan", "No arin, we're getting a penalty for that one."},
+            {"SPEAK", "Arin", "Wait, really?"},
+            {"JUMPCUT", "COURT_JUDGE"},
+            {"POSE", "Judge Brent", "Warning"},
+            {"SPEAK", "Judge Brent", "Yes!"},
+            {"ISSUE_PENALTY"},
+            {"JUMPCUT", "COURT_DEFENSE"},
+            {"SFX", "damage1"},
+            {"SET_SYNC", "TRUE"},
+            {"ANIMATION", "Arin", "Shock"},
+            {"POSE", "Arin", "Sweaty"},
+            {"SPEAK", "Arin", "OOF."},
+            {"THINK", "Arin", "(I need to be more thoughtful and pay more attention I guess.)"},
+            {"JUMPCUT", "COURT_WITNESS"},
+            {"CHECK_PENALTIES"}
         },
         {
-            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Surprised"}, {"SPEAK", "Judge Brent", "WHAM BAM BAZAAAM, THAT'S THE WRONG ANSWER MA'AM!"}, {"SET_SYNC", "TRUE"}, {"ISSUE_PENALTY"}, {"GAVEL"}, {"JUMPCUT", "COURT_ASSISTANT"}, {"POSE", "Dan", "SideNormalTurned"}, {"SPEAK", "Dan", "... I think you should try a different answer Arin."}, {"SPEAK", "Arin", "Gee ya THINK SO, DAN?"}, {"POSE", "Dan", "SideNormal"}, {"SPEAK", "Dan", "Yes. Yes I do Arin. I do."}, {"SPEAK", "Arin", "..."}, {"SPEAK", "Arin", "Yeah I guess so..."}, {"JUMPCUT", "COURT_WITNESS"}, {"CHECK_PENALTIES"}
+            {"JUMPCUT", "COURT_JUDGE"},
+            {"POSE", "Judge Brent", "Surprised"},
+            {"SPEAK", "Judge Brent", "WHAM BAM BAZAAAM, THAT'S THE WRONG ANSWER MA'AM!"},
+            {"SET_SYNC", "TRUE"},
+            {"ISSUE_PENALTY"},
+            {"GAVEL"},
+            {"JUMPCUT", "COURT_ASSISTANT"},
+            {"POSE", "Dan", "SideNormalTurned"},
+            {"SPEAK", "Dan", "... I think you should try a different answer Arin."},
+            {"SPEAK", "Arin", "Gee ya THINK SO, DAN?"},
+            {"POSE", "Dan", "SideNormal"},
+            {"SPEAK", "Dan", "Yes. Yes I do Arin. I do."},
+            {"SPEAK", "Arin", "..."},
+            {"SPEAK", "Arin", "Yeah I guess so..."},
+            {"JUMPCUT", "COURT_WITNESS"},
+            {"CHECK_PENALTIES"}
         },
         {
-            {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Normal"}, {"SPEAK", "Judge Brent", "I don't see how this could be the right answer..."}, {"SPEAK", "Judge Brent", "But I'm in a good mood, so I think I won't penalize you this time."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Embarassed"}, {"SPEAK", "Arin", "Dang, thanks Brent. This is a lot harder than it looks!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Confident"}, {"SPEAK", "Tutorial Boy", "Yes, accept his freebie. It won't help you in the long run, Mr. 'Video game BABY!'"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "DeskSlam"}, {"SFX", "damage1"}, {"SCREEN_SHAKE"}, {"SPEAK", "Arin", "You shut your goddamn pie hole-"}, {"SFX", "objectionclean"}, {"POSE", "Arin", "CloseUp"}, {"SPEAK", "Arin", "-you FUCKING CLOD!!!"}, {"JUMPCUT", "COURT_PROSECUTION"}, {"POSE", "Tutorial Boy", "Sweaty"}, {"SPEAK", "Tutorial Boy", "..."}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "..."}, {"POSE", "Arin", "Embarassed"}, {"INTERRUPTED_SPEAK", "Arin", "Er... What I meant to say was--"}, {"JUMPCUT", "COURT_JUDGE"}, {"POSE", "Judge Brent", "Warning"}, {"SCREEN_SHAKE"}, {"SFX", "stab2"}, {"SPEAK", "Judge Brent", "Changed my mind. Penalty given."}, {"ISSUE_PENALTY"}, {"JUMPCUT", "COURT_DEFENSE"}, {"POSE", "Arin", "Sweaty"}, {"SPEAK", "Arin", "Aw man..."}, {"JUMPCUT", "COURT_WITNESS"}, {"CHECK_PENALTIES"}
+            {"JUMPCUT", "COURT_JUDGE"},
+            {"POSE", "Judge Brent", "Normal"},
+            {"SPEAK", "Judge Brent", "I don't see how this could be the right answer..."},
+            {"SPEAK", "Judge Brent", "But I'm in a good mood, so I think I won't penalize you this time."},
+            {"JUMPCUT", "COURT_DEFENSE"},
+            {"POSE", "Arin", "Embarassed"},
+            {"SPEAK", "Arin", "Dang, thanks Brent. This is a lot harder than it looks!"},
+            {"JUMPCUT", "COURT_PROSECUTION"},
+            {"POSE", "Tutorial Boy", "Confident"},
+            {
+                "SPEAK",
+                "Tutorial Boy",
+                "Yes, accept his freebie. It won't help you in the long run, Mr. 'Video game BABY!'"
+            },
+            {"JUMPCUT", "COURT_DEFENSE"},
+            {"POSE", "Arin", "DeskSlam"},
+            {"SFX", "damage1"},
+            {"SCREEN_SHAKE"},
+            {"SPEAK", "Arin", "You shut your goddamn pie hole-"},
+            {"SFX", "objectionclean"},
+            {"POSE", "Arin", "CloseUp"},
+            {"SPEAK", "Arin", "-you FUCKING CLOD!!!"},
+            {"JUMPCUT", "COURT_PROSECUTION"},
+            {"POSE", "Tutorial Boy", "Sweaty"},
+            {"SPEAK", "Tutorial Boy", "..."},
+            {"JUMPCUT", "COURT_DEFENSE"},
+            {"POSE", "Arin", "Sweaty"},
+            {"SPEAK", "Arin", "..."},
+            {"POSE", "Arin", "Embarassed"},
+            {"INTERRUPTED_SPEAK", "Arin", "Er... What I meant to say was--"},
+            {"JUMPCUT", "COURT_JUDGE"},
+            {"POSE", "Judge Brent", "Warning"},
+            {"SCREEN_SHAKE"},
+            {"SFX", "stab2"},
+            {"SPEAK", "Judge Brent", "Changed my mind. Penalty given."},
+            {"ISSUE_PENALTY"},
+            {"JUMPCUT", "COURT_DEFENSE"},
+            {"POSE", "Arin", "Sweaty"},
+            {"SPEAK", "Arin", "Aw man..."},
+            {"JUMPCUT", "COURT_WITNESS"},
+            {"CHECK_PENALTIES"}
         }
     }
     self.scriptLines = self.scripts[math.random(1, #self.scripts)]
 
-    for i,v in pairs(self.scriptLines) do
-
+    for i, v in pairs(self.scriptLines) do
         if v[1] == "SPEAK" then
             table.insert(scene.stack, i, {lineParts = v, event = NewSpeakEvent(v[2], v[3], "literal")})
         end
@@ -358,8 +467,8 @@ function NewIssuePenaltyEvent(scene)
 
         if v[1] == "CHECK_PENALTIES" then
             if scene.penalties <= 1 then
-                table.insert(scene.stack, i, { lineParts = "fadeToBlackEvent", event = NewFadeToBlackEvent(true) })
-                table.insert(scene.stack, i+1, {lineParts = "gameOverEvent", event = NewGameOverEvent()})
+                table.insert(scene.stack, i, {lineParts = "fadeToBlackEvent", event = NewFadeToBlackEvent(true)})
+                table.insert(scene.stack, i + 1, {lineParts = "gameOverEvent", event = NewGameOverEvent()})
             end
         end
     end
@@ -369,7 +478,7 @@ function NewIssuePenaltyEvent(scene)
     end
 
     self.draw = function(self, scene)
-        for i=1, scene.penalties do
+        for i = 1, scene.penalties do
             love.graphics.draw(Sprites["Penalty"], (i - 1) * 12 + 2, 2)
         end
     end
@@ -384,7 +493,6 @@ function NewStartPenaltyAnimationEvent(scene, event)
     self.removedPenalty = false
 
     self.update = function(self, scene, dt)
-
         if not self.removedPenalty then
             self.removedPenalty = true
             scene.penalties = scene.penalties - 1
@@ -404,11 +512,11 @@ function NewStartPenaltyAnimationEvent(scene, event)
     end
 
     self.draw = function(self, scene)
-        for i=1, scene.penalties do
+        for i = 1, scene.penalties do
             love.graphics.draw(Sprites["Penalty"], (i - 1) * 12 + 2, 2)
         end
         if self.animIndex < 4 then
-            love.graphics.draw(Sprites["Explosion"..self.animIndex], scene.penalties * 12 + 1, 1, 0, 0.2, 0.2)
+            love.graphics.draw(Sprites["Explosion" .. self.animIndex], scene.penalties * 12 + 1, 1, 0, 0.2, 0.2)
         end
     end
 
@@ -427,8 +535,8 @@ function NewWideShotEvent()
         self.timer = self.timer + dt
         self.frameCounter = self.frameCounter + dt
 
-        while self.frameCounter >= 2/15 do
-            self.frameCounter = self.frameCounter - 2/15
+        while self.frameCounter >= 2 / 15 do
+            self.frameCounter = self.frameCounter - 2 / 15
             self.headAnim = self.headAnim + 1
             if self.headAnim > 4 then
                 self.headAnim = 1
@@ -446,7 +554,7 @@ function NewWideShotEvent()
 
         if self.timer >= 2 then
             Sounds.MUTTER:stop()
-            for i,v in pairs(self.sources) do
+            for i, v in pairs(self.sources) do
                 v:play()
             end
             return false
@@ -460,7 +568,7 @@ function NewWideShotEvent()
         love.graphics.draw(Sprites["WideShot"])
         love.graphics.draw(talkingHeadAnimation[self.headAnim])
 
-        for i,v in pairs(scene.characters) do
+        for i, v in pairs(scene.characters) do
             love.graphics.draw(v.wideshot.source, GetCenterOffset(v.wideshot.source:getWidth()))
         end
     end
@@ -483,7 +591,7 @@ function NewGavelEvent()
 
         if not self.muted then
             self.muted = true
-            --self.sources = love.audio.pause()
+        --self.sources = love.audio.pause()
         end
 
         if self.timer > 0.3 then
@@ -500,7 +608,7 @@ function NewGavelEvent()
         end
 
         if self.timer >= 1.3 then
-            for i,v in pairs(self.sources) do
+            for i, v in pairs(self.sources) do
                 v:play()
             end
             return false
@@ -509,12 +617,12 @@ function NewGavelEvent()
     end
 
     self.draw = function(self, scene)
-        love.graphics.setColor(0,0,0)
+        love.graphics.setColor(0, 0, 0)
         love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
-        love.graphics.setColor(1,1,1)
+        love.graphics.setColor(1, 1, 1)
         local gavelAnimation = Sprites["GavelAnimation"]
         local spr = gavelAnimation[self.index]
-        love.graphics.draw(spr, 0, 0, 0, GraphicsWidth/spr:getWidth(),GraphicsHeight/spr:getHeight())
+        love.graphics.draw(spr, 0, 0, 0, GraphicsWidth / spr:getWidth(), GraphicsHeight / spr:getHeight())
     end
     return self
 end
@@ -532,7 +640,6 @@ function NewGavel3Event()
         scene.canShowCourtRecord = false
 
         if self.loopIndex <= 1.45 then
-
             if self.timer > 0.19 then
                 self.index = 2
             end
@@ -563,13 +670,13 @@ function NewGavel3Event()
     end
 
     self.draw = function(self, scene)
-        love.graphics.setColor(0,0,0)
+        love.graphics.setColor(0, 0, 0)
         love.graphics.rectangle("fill", 0, 0, GraphicsWidth, GraphicsHeight)
-        love.graphics.setColor(1,1,1)
+        love.graphics.setColor(1, 1, 1)
         local gavelAnimation = Sprites["GavelAnimation"]
         local spr = gavelAnimation[self.index]
         if self.loopIndex <= 1.5 then
-            love.graphics.draw(spr, 0, 0, 0, GraphicsWidth/spr:getWidth(),GraphicsHeight/spr:getHeight())
+            love.graphics.draw(spr, 0, 0, 0, GraphicsWidth / spr:getWidth(), GraphicsHeight / spr:getHeight())
         end
     end
     return self
@@ -585,7 +692,7 @@ function NewPanEvent(from, to)
         self.xStart = courtPanSprite:getWidth() - GraphicsWidth
     end
     if from == "COURT_WITNESS" then
-        self.xStart = courtPanSprite:getWidth()/2 - GraphicsWidth/2
+        self.xStart = courtPanSprite:getWidth() / 2 - GraphicsWidth / 2
     end
 
     if to == "COURT_DEFENSE" then
@@ -595,7 +702,7 @@ function NewPanEvent(from, to)
         self.xTo = courtPanSprite:getWidth() - GraphicsWidth
     end
     if to == "COURT_WITNESS" then
-        self.xTo = courtPanSprite:getWidth()/2 - GraphicsWidth/2
+        self.xTo = courtPanSprite:getWidth() / 2 - GraphicsWidth / 2
     end
     self.x = self.xStart
 
@@ -604,7 +711,7 @@ function NewPanEvent(from, to)
         scene.canShowCharacter = false
         scene.textHidden = true
 
-        self.x = self.x + 24*dt*60*GetSign(self.xTo-self.xStart)
+        self.x = self.x + 24 * dt * 60 * GetSign(self.xTo - self.xStart)
         if self.xStart < self.xTo then
             return self.x < self.xTo
         end
@@ -613,13 +720,13 @@ function NewPanEvent(from, to)
     end
 
     self.draw = function(self, scene)
-        love.graphics.draw(courtPanSprite, -1*self.x, 0)
-        scene:drawCharacterAt("COURT_DEFENSE", -1*self.x, 0)
-        scene:drawBackgroundTopLayer("COURT_DEFENSE", -1*self.x, 0)
-        scene:drawCharacterAt("COURT_PROSECUTION", courtPanSprite:getWidth() - GraphicsWidth -1*self.x, 0)
-        scene:drawBackgroundTopLayer("COURT_PROSECUTION", courtPanSprite:getWidth() - GraphicsWidth -1*self.x, 0)
-        scene:drawCharacterAt("COURT_WITNESS", courtPanSprite:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
-        scene:drawBackgroundTopLayer("COURT_WITNESS", courtPanSprite:getWidth()/2 - GraphicsWidth/2 -1*self.x, 0)
+        love.graphics.draw(courtPanSprite, -1 * self.x, 0)
+        scene:drawCharacterAt("COURT_DEFENSE", -1 * self.x, 0)
+        scene:drawBackgroundTopLayer("COURT_DEFENSE", -1 * self.x, 0)
+        scene:drawCharacterAt("COURT_PROSECUTION", courtPanSprite:getWidth() - GraphicsWidth - 1 * self.x, 0)
+        scene:drawBackgroundTopLayer("COURT_PROSECUTION", courtPanSprite:getWidth() - GraphicsWidth - 1 * self.x, 0)
+        scene:drawCharacterAt("COURT_WITNESS", courtPanSprite:getWidth() / 2 - GraphicsWidth / 2 - 1 * self.x, 0)
+        scene:drawBackgroundTopLayer("COURT_WITNESS", courtPanSprite:getWidth() / 2 - GraphicsWidth / 2 - 1 * self.x, 0)
     end
 
     return self
@@ -647,7 +754,7 @@ function NewVerdictEvent(verdict)
                 end
             end
             if self.animIndex == 10 or self.animIndex == 21 then
-                for i,v in pairs(Sounds) do
+                for i, v in pairs(Sounds) do
                     v:stop()
                 end
                 Sounds["DRAMAPOUND"]:play()
@@ -659,7 +766,7 @@ function NewVerdictEvent(verdict)
                     self.animIndex = self.animIndex + 1
                 end
                 if (self.animIndex % 3 == 0 and self.animIndex ~= 18) or self.animIndex == 17 then
-                    for i,v in pairs(Sounds) do
+                    for i, v in pairs(Sounds) do
                         v:stop()
                     end
                     Sounds["DRAMAPOUND"]:play()
@@ -671,7 +778,7 @@ function NewVerdictEvent(verdict)
     end
 
     self.draw = function(self, scene)
-        love.graphics.draw(Sprites[self.verdict..self.animIndex], GraphicsWidth/2 - 125, 0)
+        love.graphics.draw(Sprites[self.verdict .. self.animIndex], GraphicsWidth / 2 - 125, 0)
     end
 
     return self
@@ -679,29 +786,31 @@ end
 
 function tablelength(T)
     local count = 0
-    for _ in pairs(T) do count = count + 1 end
+    for _ in pairs(T) do
+        count = count + 1
+    end
     return count
 end
 
 function stringSplit(s, delimiter)
-    result = {};
+    result = {}
 
-    for match in (s..delimiter):gmatch("(.-)"..delimiter) do
-        table.insert(result, match);
+    for match in (s .. delimiter):gmatch("(.-)" .. delimiter) do
+        table.insert(result, match)
     end
-    return result;
+    return result
 end
 
 function isNaN(n)
     if (tostring(n) == "nan") then
         return true
-    else return false
+    else
+        return false
     end
 end
 
 function startTimer(event, dt)
-
-    event.xTimer = event.xTimer + dt*2
+    event.xTimer = event.xTimer + dt * 2
 
     return event.xTimer
 end
