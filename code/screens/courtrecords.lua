@@ -11,7 +11,6 @@ function DrawCourtRecords(ui)
         -- TODO: Can you present a profile?
         {
             title = "Present",
-
             key = controls.press_confirm
         }
     }
@@ -21,7 +20,7 @@ function DrawCourtRecords(ui)
         menuTitle = "Evidence"
 
         -- Draw evidence UI
-        for i=1, #Episode.courtRecords.evidence do
+        for i = 1, #Episode.courtRecords.evidence do
             table.insert(bodyOptions, Episode.courtRecords.evidence[i].sprite)
         end
 
@@ -44,7 +43,7 @@ function DrawCourtRecords(ui)
         menuTitle = "Profiles"
 
         -- Draw profiles UI
-        for i=1, #Episode.courtRecords.profiles do
+        for i = 1, #Episode.courtRecords.profiles do
             table.insert(bodyOptions, Episode.courtRecords.profiles[i].sprite)
         end
         table.insert(
@@ -58,34 +57,37 @@ function DrawCourtRecords(ui)
         if Episode.courtRecords.profiles[CourtRecordIndexP] ~= nil then
             bodySelected = {
                 image = Episode.courtRecords.profiles[CourtRecordIndexP].sprite,
-                title = Episode.courtRecords.profiles[CourtRecordIndexP].characterName.." (Age: "..Episode.courtRecords.profiles[CourtRecordIndexP].age..")",
+                title = Episode.courtRecords.profiles[CourtRecordIndexP].characterName ..
+                    " (Age: " .. Episode.courtRecords.profiles[CourtRecordIndexP].age .. ")",
                 details = Episode.courtRecords.profiles[CourtRecordIndexP].info
             }
         end
     end
 
-    DrawCenteredRectangle({
-        width = love.graphics.getWidth() * 4/5,
-        height = love.graphics.getHeight() - 120,
-        buttons = menuButtons,
-        title = menuTitle,
-        body = {
-            selected = bodySelected,
-            options = bodyOptions
+    DrawCenteredRectangle(
+        {
+            width = love.graphics.getWidth() * 4 / 5,
+            height = love.graphics.getHeight() - 120,
+            buttons = menuButtons,
+            title = menuTitle,
+            body = {
+                selected = bodySelected,
+                options = bodyOptions
+            }
         }
-    })
+    )
 end
 
 bleep = love.audio.newSource("sounds/bleep.wav", "static")
 bleep:setVolume(settings.sfx_volume / 100 / 2)
 
 CourtRecordsConfig = {
-    displayed = false;
-    displayKey = controls.press_court_record;
+    displayed = false,
+    displayKey = controls.press_court_record,
     displayCondition = function()
         -- You can only view your court records
-        return true;
-    end;
+        return true
+    end,
     onDisplay = function()
         screens.pause.displayed = false
         screens.courtRecords.displayed = true
@@ -95,7 +97,7 @@ CourtRecordsConfig = {
         CourtRecordIndexE = 1
         CourtRecordIndexP = 1
         menu_type = "evidence"
-    end;
+    end,
     onKeyPressed = function(key)
         if CourtRecordIndexE == nil then
             CourtRecordIndexE = 1
@@ -153,7 +155,7 @@ CourtRecordsConfig = {
                 end
             end
         end
-    end;
+    end,
     draw = function()
         DrawCourtRecords(menu_type)
     end
