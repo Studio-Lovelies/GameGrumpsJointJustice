@@ -123,6 +123,7 @@ CourtRecordsConfig = {
                 -- TODO: Implement what happens when you confirm?
             elseif key == controls.press_toggle_profiles then
                 CourtRecordIndexP = 1
+                CourtRecordIndexE = 1
                 if menu_type == "evidence" then
                     -- Toggle on profiles UI
                     menu_type = "profiles"
@@ -145,6 +146,7 @@ CourtRecordsConfig = {
             elseif key == controls.press_confirm then
                 -- TODO: Implement what happens when you confirm?
             elseif key == controls.press_toggle_profiles then
+                CourtRecordIndexP = 1
                 CourtRecordIndexE = 1
                 if menu_type == "evidence" then
                     -- Toggle on profiles UI
