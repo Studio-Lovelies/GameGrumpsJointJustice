@@ -10,7 +10,9 @@ require "code/scriptloader"
 local logoOpacity = 1
 local drawLogo = true
 local logoTimer = 0
-
+local isDoneLoading = false
+local AssetLoader
+local currentLoadingAsset
 
 function love.load()
     InitGlobalConfigVariables()
@@ -24,7 +26,10 @@ function love.load()
     ScreenShake = 0
     DtReset = false -- so scene load times don't factor into dt
 
-    LoadAssets()
+    AssetLoader = {lambdas = LoadAssets(), index = 1}
+end
+
+function OnLoadingScreenDone()
     Episode = NewEpisode(settings.episode_path)
 
     -- Select the first scene in the loaded episode
@@ -40,8 +45,36 @@ end
 -- love.update and love.draw get called 60 times per second
 -- transfer the update and draw over to the current game scene
 function love.update(dt)
+    -- Loading Screen
+    if not isDoneLoading then
+        currentLoadingAsset = AssetLoader.lambdas[AssetLoader.index]
+        local timeAtStartOfFrame = love.timer.getTime()
+
+        local loadingDt = 0
+
+        while currentLoadingAsset and loadingDt < 1 / 60 do
+            -- loads an asset and tracks how long we've spent loading that asset
+            -- if we took less than 1/60 seconds to load, then load the next asset
+            currentLoadingAsset()
+
+            AssetLoader.index = AssetLoader.index + 1
+            currentLoadingAsset = AssetLoader.lambdas[AssetLoader.index]
+            loadingDt = love.timer.getTime() - timeAtStartOfFrame
+        end
+
+        if currentLoadingAsset then
+            -- we still have more loading to do; skip the rest of update()
+            return
+        end
+
+        FinishLoadingAssets()
+        OnLoadingScreenDone()
+        isDoneLoading = true
+    end
+    -- /Loading Screen
+
     if DtReset then
-        dt = 1/60
+        dt = 1 / 60
         DtReset = false
     end
 
@@ -63,7 +96,7 @@ end
 
 function love.keypressed(key)
     if drawLogo then
-        return;
+        return
     end
     local currentDisplayedScreen
     local nextScreenToDisplay
@@ -75,8 +108,10 @@ function love.keypressed(key)
             currentDisplayedScreen = screenName
         end
 
-        if screenConfig.displayKey and key == screenConfig.displayKey and
-            (screenConfig.displayCondition == nil or screenConfig.displayCondition()) then
+        if
+            screenConfig.displayKey and key == screenConfig.displayKey and
+                (screenConfig.displayCondition == nil or screenConfig.displayCondition())
+         then
             if screenName == currentDisplayedScreen then
                 screenConfig.displayed = false
             else
@@ -85,7 +120,6 @@ function love.keypressed(key)
         elseif screenConfig.displayed and screenConfig.onKeyPressed then
             screenConfig.onKeyPressed(key)
         end
-
     end
 
     if nextScreenToDisplay and currentDisplayedScreen == nil then
@@ -99,12 +133,25 @@ end
 logo = love.graphics.newImage("studioloveliesfinal.png")
 
 function love.draw()
-
     if drawLogo then
         love.graphics.setColor(0, 0, 0)
         love.graphics.rectangle("fill", 0, 0, dimensions.window_width, dimensions.window_height)
         love.graphics.setColor(1, 1, 1, logoOpacity)
-        love.graphics.draw(logo, dimensions.window_width/2 - logo:getWidth()/5.71, dimensions.window_height/2 - logo:getHeight()/5.71, 0, 0.35, 0.35)
+        love.graphics.draw(
+            logo,
+            dimensions.window_width / 2 - logo:getWidth() / 5.71,
+            dimensions.window_height / 2 - logo:getHeight() / 5.71,
+            0,
+            0.35,
+            0.35
+        )
+
+        if not isDoneLoading then
+            love.graphics.setFont(LoadingFont)
+            local percent = math.floor((AssetLoader.index - 1) / #AssetLoader.lambdas * 100)
+            local lx, ly = math.floor(dimensions.window_height * 0.8), math.floor(dimensions.window_width)
+            love.graphics.printf("Loading: " .. percent .. "%", 0, lx, ly, "center")
+        end
     else
         love.graphics.setColor(unpack(colors.white))
         love.graphics.setCanvas(Renderable)
@@ -112,10 +159,10 @@ function love.draw()
         CurrentScene:draw()
         love.graphics.setCanvas()
 
-        local dx,dy = 0,0
+        local dx, dy = 0, 0
         if ScreenShake > 0 then
-            dx = love.math.random() * choose{1, -1} * 2
-            dy = love.math.random() * choose{1, -1} * 2
+            dx = love.math.random() * choose {1, -1} * 2
+            dy = love.math.random() * choose {1, -1} * 2
         end
 
         --dx = camerapan[1]
@@ -125,11 +172,11 @@ function love.draw()
 
         love.graphics.draw(
             Renderable,
-            dx*love.graphics.getWidth()/GraphicsWidth,
-            dy*love.graphics.getHeight()/GraphicsHeight,
+            dx * love.graphics.getWidth() / GraphicsWidth,
+            dy * love.graphics.getHeight() / GraphicsHeight,
             0,
-            love.graphics.getWidth()/GraphicsWidth,
-            love.graphics.getHeight()/GraphicsHeight
+            love.graphics.getWidth() / GraphicsWidth,
+            love.graphics.getHeight() / GraphicsHeight
         )
 
         for screenName, screenConfig in pairs(screens) do
