@@ -147,10 +147,10 @@ TitleScreenConfig = {
             if TitleSelection == "Settings" then
                 blip2:stop()
                 blip2:play()
-                screens.browsescenes.displayed = true
-                DrawBrowseScreen()
-                --screens.options.displayed = true;
-                --DrawOptionsScreen()
+                --screens.browsescenes.displayed = true
+                --DrawBrowseScreen()
+                screens.options.displayed = true;
+                DrawOptionsScreen()
                 screens.title.displayed = false
                 SelectionIndex = 0
             elseif TitleSelection == "Case Select" then
