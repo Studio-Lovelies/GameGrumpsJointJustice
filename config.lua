@@ -77,7 +77,7 @@ key_display_names = {
     ['rctrl'] = 'Ctrl (R)';
     ['lctrl'] = 'Ctrl (L)';
     ['rshift'] = 'Shift (R)';
-    ['lshift'] = 'Shfit (L)';
+    ['lshift'] = 'Shift (L)';
 }
 
 function InitGlobalConfigVariables()
